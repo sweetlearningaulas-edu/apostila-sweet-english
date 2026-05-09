@@ -346,6 +346,15 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .soon-acc{color:var(--acc,var(--blue));}
 .soon-line{width:48px;height:2px;background:linear-gradient(to right,var(--acc,var(--blue)),var(--purple));border-radius:1px;}
 .soon-desc{font-size:14px;color:var(--s);line-height:1.7;max-width:280px;}
+.idx-search-wrap{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0 4px;transition:border-color .2s;}
+.idx-search-wrap:focus-within{border-color:var(--acc,var(--blue));}
+.idx-search-icon{font-size:15px;flex-shrink:0;opacity:.5;}
+.idx-search{flex:1;background:none;border:none;outline:none;font-family:inherit;font-size:14px;color:var(--tx);}
+.idx-search::placeholder{color:var(--m);}
+.idx-search-clear{background:none;border:none;color:var(--m);font-size:13px;cursor:pointer;padding:0;line-height:1;flex-shrink:0;}
+.idx-noresult{text-align:center;color:var(--m);font-size:14px;padding:24px 0;}
+.idx-item[data-hidden]{display:none;}
+.idx-group[data-hidden]{display:none;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -603,6 +612,17 @@ const gBank=[
   {words:['Eles','alugaram','um','apartamento','novo'],verb:'alugaram'},
   {words:['O','Josh','guardou','o','celular','no','bolso'],verb:'guardou'},
   {words:['Ela','limpou','a','casa','toda'],verb:'limpou'},
+  {words:['A','Camila','estuda','inglês','todo','dia'],verb:'estuda'},
+  {words:['O','Josh','vai','comprar','um','café'],verb:'vai',alsoVerbs:['comprar']},
+  {words:['Nós','adoramos','assistir','Netflix'],verb:'adoramos',alsoVerbs:['assistir']},
+  {words:['O','Ryan','está','correndo','no','parque'],verb:'está',alsoVerbs:['correndo']},
+  {words:['Eu','preciso','de','mais','tempo'],verb:'preciso'},
+  {words:['A','Megan','vai','viajar','amanhã'],verb:'vai',alsoVerbs:['viajar']},
+  {words:['Eles','estavam','conversando','na','sala'],verb:'estavam',alsoVerbs:['conversando']},
+  {words:['O','Jake','toca','violão','muito','bem'],verb:'toca'},
+  {words:['Douglas','está','jogando','videogame'],verb:'está',alsoVerbs:['jogando']},
+  {words:['Eu','vou','pedir','um','iFood'],verb:'vou',alsoVerbs:['pedir']},
+  {words:['A','Taylor','escreve','músicas','incríveis'],verb:'escreve'},
 ];
 let gS={};
 function initGame(){gS={frases:shuffle(gBank).slice(0,6),cur:0,acertos:0,erroAtual:false};renderGame();}
@@ -1054,34 +1074,12 @@ const pages=[
   <div class="inst-item inst-shimmer">
     <div class="inst-icon">🌓</div>
     <div class="inst-text"><strong>Modo claro / escuro</strong><span>Alterne o tema. Sua preferência é salva.</span></div>
-    <button class="sp-toggle" id="theme-toggle" onclick="toggleTheme()"></button>
+    <button class="sp-toggle" id="theme-toggle" onclick="toggleTheme()" class="sp-toggle on"></button>
   </div>
   <div class="inst-item inst-shimmer">
     <div class="inst-icon">✨</div>
     <div class="inst-text"><strong><span class="en" style="font-weight:700;cursor:default;">Efeito shimmer</span></strong><span>Brilho suave nas palavras em inglês.</span></div>
-    <button class="sp-toggle" id="shimmer-toggle" onclick="toggleShimmer()"></button>
-  </div>
-</div>`,
-
-`<div class="page pg-idx">
-  <div class="idx-title">Índice</div>
-  <div class="idx-sub">Toque para ir direto à matéria</div>
-  <div class="idx-list">
-    <div class="idx-cap">Capítulo 1 — Fundamentos</div>
-    <div class="idx-item" onclick="go(5)"><div class="idx-num">01</div><div class="idx-info"><div class="idx-name">Pronomes Pessoais</div><div class="idx-desc">I, You, He, She, It, We, They</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(7)"><div class="idx-num">02</div><div class="idx-info"><div class="idx-name">O que é um Verbo?</div><div class="idx-desc">A ação da frase</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(9)"><div class="idx-num">03</div><div class="idx-info"><div class="idx-name">Continuous Tenses</div><div class="idx-desc">O -ndo em inglês</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(11)"><div class="idx-num">04</div><div class="idx-info"><div class="idx-name">Verbo To Be</div><div class="idx-desc">Ser e estar — todos os tempos</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(13)"><div class="idx-num">05</div><div class="idx-info"><div class="idx-name">Adjetivos</div><div class="idx-desc">Características de coisas e pessoas</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(15)"><div class="idx-num">06</div><div class="idx-info"><div class="idx-name">Artigos</div><div class="idx-desc">The, A, An e Some</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(17)" style="border-color:rgba(255,213,128,.3);"><div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 1</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-cap" style="margin-top:16px;">Capítulo 2 — Tempos Verbais</div>
-    <div class="idx-item" onclick="go(19)"><div class="idx-num">07</div><div class="idx-info"><div class="idx-name">Presente</div><div class="idx-desc">Verbo sem alteração · +S no he/she/it</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(21)"><div class="idx-num">08</div><div class="idx-info"><div class="idx-name">Passado</div><div class="idx-desc">Regular (-ed) · Irregular</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(23)"><div class="idx-num">09</div><div class="idx-info"><div class="idx-name">Futuro</div><div class="idx-desc">Will · Won't</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(25)"><div class="idx-num">10</div><div class="idx-info"><div class="idx-name">To Go</div><div class="idx-desc">Go vs Will · Went · Will go</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(27)"><div class="idx-num">11</div><div class="idx-info"><div class="idx-name">Sujeito Oculto</div><div class="idx-desc">O sujeito nunca some em inglês</div></div><div class="idx-arrow">→</div></div>
-    <div class="idx-item" onclick="go(29)" style="border-color:rgba(255,213,128,.3);"><div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 2</div></div><div class="idx-arrow">→</div></div>
+    <button class="sp-toggle" id="shimmer-toggle" onclick="toggleShimmer()" class="sp-toggle on"></button>
   </div>
 </div>`,
 
@@ -1124,6 +1122,59 @@ const pages=[
   </div>
   <div id="tool-panel" class="tl-panel" style="display:none;">
     <div id="tool-panel-body"></div>
+  </div>
+</div>`,
+
+`<div class="page pg-idx">
+  <div class="idx-title">Índice</div>
+  <div class="idx-search-wrap">
+    <span class="idx-search-icon">🔍</span>
+    <input class="idx-search" id="idx-search" type="text" placeholder="Buscar palavra-chave..." oninput="idxSearch(this.value)" autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="idx-search-clear" id="idx-search-clear" onclick="idxClear()" style="display:none;">✕</button>
+  </div>
+  <div id="idx-no-result" class="idx-noresult" style="display:none;">Nenhuma matéria encontrada.</div>
+  <div class="idx-list" id="idx-list">
+    <div class="idx-cap idx-group" data-group="cap1">Capítulo 1 — Fundamentos</div>
+    <div class="idx-item" onclick="go(5)" data-kw="pronome pessoal eu você ele ela nós eles they we i you he she it sujeito pessoa">
+      <div class="idx-num">01</div><div class="idx-info"><div class="idx-name">Pronomes Pessoais</div><div class="idx-desc">I, You, He, She, It, We, They</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(7)" data-kw="verbo ação frase o que é verbo infinitivo play eat run walk">
+      <div class="idx-num">02</div><div class="idx-info"><div class="idx-name">O que é um Verbo?</div><div class="idx-desc">A ação da frase</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(9)" data-kw="continuous gerundio gerúndio ndo ing jogando comendo dormindo correndo present continuous">
+      <div class="idx-num">03</div><div class="idx-info"><div class="idx-name">Continuous Tenses</div><div class="idx-desc">O -ndo em inglês</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(11)" data-kw="to be ser estar am is are was were will be sou estou é está somos são eram estavam">
+      <div class="idx-num">04</div><div class="idx-info"><div class="idx-name">Verbo To Be</div><div class="idx-desc">Ser e estar — todos os tempos</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(13)" data-kw="adjetivo adjetivos característica qualidade bonito feio alto baixo feliz triste beautiful tall">
+      <div class="idx-num">05</div><div class="idx-info"><div class="idx-name">Adjetivos</div><div class="idx-desc">Características de coisas e pessoas</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(15)" data-kw="artigo the a an some o a os as um uma uns algumas definido indefinido">
+      <div class="idx-num">06</div><div class="idx-info"><div class="idx-name">Artigos</div><div class="idx-desc">The, A, An e Some</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(17)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap1 capítulo 1">
+      <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 1</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-cap idx-group" style="margin-top:16px;" data-group="cap2">Capítulo 2 — Tempos Verbais</div>
+    <div class="idx-item" onclick="go(19)" data-kw="presente simple present tempo presente conjugação habito rotina todo dia go goes likes works plays">
+      <div class="idx-num">07</div><div class="idx-info"><div class="idx-name">Presente</div><div class="idx-desc">Verbo sem alteração · +S no he/she/it</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(21)" data-kw="passado simple past ed irregular went ate bought played watched worked ontem yesterday">
+      <div class="idx-num">08</div><div class="idx-info"><div class="idx-name">Passado</div><div class="idx-desc">Regular (-ed) · Irregular</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(23)" data-kw="futuro will wont amanhã tomorrow vai vou vamos vão will not future">
+      <div class="idx-num">09</div><div class="idx-info"><div class="idx-name">Futuro</div><div class="idx-desc">Will · Won't</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(25)" data-kw="to go ir goes went will go lugar place viajar viagem fui foi fomos foram">
+      <div class="idx-num">10</div><div class="idx-info"><div class="idx-name">To Go</div><div class="idx-desc">Go vs Will · Went · Will go</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(27)" data-kw="sujeito oculto eu joguei played i they we pronome obrigatório hidden subject">
+      <div class="idx-num">11</div><div class="idx-info"><div class="idx-name">Sujeito Oculto</div><div class="idx-desc">O sujeito nunca some em inglês</div></div><div class="idx-arrow">→</div>
+    </div>
+    <div class="idx-item" onclick="go(29)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap2 capítulo 2">
+      <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 2</div></div><div class="idx-arrow">→</div>
+    </div>
   </div>
 </div>`,
 
@@ -1438,7 +1489,7 @@ const pages=[
     <div class="tobe-card" id="you-singular-plural-pres">
       <div class="tobe-card-hd" style="background:#5a3a8a;">You — Singular e Plural</div>
       <div class="tobe-card-body">
-        <p class="intro">Como já vimos em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>, o <strong>you</strong> é singular e plural ao mesmo tempo. Por isso, no verbo to be, o <strong>you</strong> sempre será conjugado no plural — mesmo que esteja fazendo papel de "você" (singular).</p>
+        <p class="intro">Como já vimos em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>, o <strong>you</strong> é singular e plural ao mesmo tempo. Por isso, no verbo to be, o <strong>you</strong> sempre será conjugado no plural — mesmo que esteja fazendo papel de "você" (singular).</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Você é legal. <span class="q-tr">(singular)</span></div>
@@ -1451,7 +1502,7 @@ const pages=[
             <div class="q-en"><span class="en" data-speak="You aren't nice">You aren't nice. ✓</span></div>
           </div>
         </div>
-        <p class="intro" style="margin-top:4px;">O problema é que, no plural, a frase fica igualzinha. Para deixar claro que é plural, adicionamos as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>.</p>
+        <p class="intro" style="margin-top:4px;">O problema é que, no plural, a frase fica igualzinha. Para deixar claro que é plural, adicionamos as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>.</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Vocês são legais.</div>
@@ -1583,7 +1634,7 @@ const pages=[
     <div class="tobe-card" id="you-singular-plural-past">
       <div class="tobe-card-hd" style="background:#5a3a8a;">You — Singular e Plural no Passado</div>
       <div class="tobe-card-body">
-        <p class="intro">Assim como no presente, o <strong>you</strong> sempre usa <strong>were</strong> — mesmo no singular. E quando precisar deixar claro que é plural, adicione as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>.</p>
+        <p class="intro">Assim como no presente, o <strong>you</strong> sempre usa <strong>were</strong> — mesmo no singular. E quando precisar deixar claro que é plural, adicione as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>.</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Você era legal. <span class="q-tr">(singular)</span></div>
@@ -2354,7 +2405,7 @@ function go(i){
     const sb=document.getElementById('shimmer-toggle');if(sb)sb.className='sp-toggle '+(document.body.classList.contains('no-shimmer')?'off':'on');
     const tb=document.getElementById('theme-toggle');if(tb)tb.className='sp-toggle '+(document.body.classList.contains('dark')?'on':'off');
   }
-  if(cur>3){const hd=document.querySelector('.pg-hd');if(hd&&!hd.querySelector('.hd-idx-btn')){const b=document.createElement('button');b.className='hd-idx-btn';b.textContent='← Índice';b.onclick=()=>go(2);hd.appendChild(b);}}
+  if(cur>3){const hd=document.querySelector('.pg-hd');if(hd&&!hd.querySelector('.hd-idx-btn')){const b=document.createElement('button');b.className='hd-idx-btn';b.textContent='← Índice';b.onclick=()=>go(3);hd.appendChild(b);}}
   document.getElementById('ctr').textContent=(cur+1)+' / '+pages.length;
   document.getElementById('prog-fill').style.width=((cur+1)/pages.length*100)+'%';
   document.getElementById('prev').disabled=cur===0;
@@ -2553,9 +2604,39 @@ function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 async function callClaude(prompt,cb){
   try{
     const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
-    if(!r.ok){cb('⚠️ Ferramenta disponível no site completo.');return;}
-    const d=await r.json();cb(d.text||'Erro ao processar.');
-  }catch(e){cb('⚠️ Ferramenta disponível no site completo.');}
+    const d=await r.json();
+    if(d.error)cb('Erro: '+d.error);
+    else cb(d.text||'Erro ao processar.');
+  }catch(e){cb('Erro de conexão: '+e.message);}
+}
+
+function idxSearch(q){
+  const clear=document.getElementById('idx-search-clear');
+  if(clear)clear.style.display=q?'block':'none';
+  const items=document.querySelectorAll('#idx-list .idx-item');
+  const groups=document.querySelectorAll('#idx-list .idx-group');
+  const noRes=document.getElementById('idx-no-result');
+  const term=q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  let anyVisible=false;
+  items.forEach(el=>{
+    const kw=(el.dataset.kw||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const name=el.querySelector('.idx-name')?.textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')||'';
+    const desc=el.querySelector('.idx-desc')?.textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')||'';
+    const match=!term||kw.includes(term)||name.includes(term)||desc.includes(term);
+    el.toggleAttribute('data-hidden',!match);
+    if(match)anyVisible=true;
+  });
+  groups.forEach(g=>{
+    let sib=g.nextElementSibling;let hasVisible=false;
+    while(sib&&!sib.classList.contains('idx-group')){if(!sib.hasAttribute('data-hidden'))hasVisible=true;sib=sib.nextElementSibling;}
+    g.toggleAttribute('data-hidden',!hasVisible);
+  });
+  if(noRes)noRes.style.display=anyVisible||!term?'none':'block';
+}
+function idxClear(){
+  const inp=document.getElementById('idx-search');
+  if(inp){inp.value='';inp.focus();}
+  idxSearch('');
 }
 
 go(0);
