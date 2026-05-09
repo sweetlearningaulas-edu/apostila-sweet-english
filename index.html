@@ -578,7 +578,32 @@ document.addEventListener('click',e=>{const el=e.target.closest('.en');if(el)spe
 
 /* ── CHAT ── */
 const chatH=[];let chatOpen=false;
-const SYS=`Você é assistente de inglês da apostila "Home Sweet English" de Caique Santana, Sweet Learning. REGRAS OBRIGATÓRIAS: Responda SEMPRE em português do Brasil. Seja EXTREMAMENTE conciso — máximo 2-3 linhas para dúvidas simples, máximo 1 parágrafo curto para dúvidas complexas. Só responda dúvidas de inglês. Sem jargão técnico. Exemplos do cotidiano (Netflix, iFood, etc). Nunca diga "americanos" — diga "falantes da língua inglesa". Tom de amigo, não de livro. Formato: português → inglês. Se houver qualquer chance de erro, diga em UMA linha: "Confirme com o professor Caique.". NUNCA faça respostas longas.`;
+const SYS=`Você é o assistente da apostila "Home Sweet English" de Caique Santana (Sweet Learning).
+
+CONTEÚDO DA APOSTILA (use SEMPRE que possível):
+Cap.1 — Fundamentos:
+- Pg 5: Pronomes Pessoais (I, You, He, She, It, We, They)
+- Pg 8: O que é um Verbo (a ação da frase)
+- Pg 10: Continuous Tenses (-ndo em inglês, regras do -ing)
+- Pg 12: Verbo To Be (am/is/are/was/were/will be, negativo, interrogativo)
+- Pg 14: Adjetivos (posição, sem plural)
+- Pg 16: Artigos (the, a, an, some)
+Cap.2 — Tempos Verbais:
+- Pg 20: Presente Simple (+s no he/she/it, regras -es/-ies)
+- Pg 22: Passado Simple (regulares -ed, irregulares)
+- Pg 24: Futuro (will/won't)
+- Pg 26: To Go (go/goes/went/will go vs was/were)
+- Pg 28: Sujeito Oculto (obrigatório em inglês)
+
+REGRAS OBRIGATÓRIAS:
+1. Responda SEMPRE em português do Brasil
+2. Máximo 2-3 linhas para dúvidas simples, 1 parágrafo curto para complexas
+3. SEMPRE mencione a página da apostila quando o assunto estiver lá. Ex: "Como vimos na página 20..."
+4. Só use conhecimento externo se o assunto NÃO está na apostila
+5. Nunca diga "americanos" — diga "falantes da língua inglesa"
+6. Tom de amigo, não de livro
+7. Se houver chance de erro, diga: "Confirme com o professor Caique."
+8. NUNCA faça respostas longas`;
 
 const LOGO_SRC="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9InMtc2hhcGUiPgogICAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9InRvcC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyNTIiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImJvdC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMjQ4IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjI2MCIvPgogICAgPC9jbGlwUGF0aD4KICAgIAogICAgPCEtLSBVUyBmbGFnIHN0cmlwZXMgLS0+CiAgICA8cGF0dGVybiBpZD0idXMtc3RyaXBlcyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iODAiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTY4Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxNjgiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMCIgICAgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSIxMi45MiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMjUuODUiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMzguNzciIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IndoaXRlIi8+CiAgICAgIDxyZWN0IHk9IjUxLjY5IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjY0LjYyIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB5PSI3Ny41NCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSI5MC40NiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTAzLjM4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjExNi4zMSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTI5LjIzIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjE0Mi4xNSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTU1LjA4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkCBPVVRFUiBSSU5HIOKVkOKVkCAtLT4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuMjUiLz4KCiAgPCEtLSDilZDilZAgVE9QIEJBTk5FUiAtIFNXRUVUIExFQVJOSU5HIOKVkOKVkCAtLT4KICA8IS0tIEJhbm5lciBzaGFwZSAtLT4KICA8cGF0aCBkPSJNNjQgMjA1IFE4MCAxMjAgMTU1IDcyIFEyMDAgNDUgMjUwIDQyIFEzMDAgNDUgMzQ1IDcyIFE0MjAgMTIwIDQzNiAyMDUgTDQxOCAyMTAgUTQwOCAxMzIgMzQwIDg2IFEyOTggNjAgMjUwIDU4IFEyMDIgNjAgMTYwIDg2IFE5MiAxMzIgODIgMjEwIFoiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggaWQ9InRwYXRoIiBkPSJNIDgyIDIwOCBBIDE3OCAxNzggMCAwIDEgNDE4IDIwOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgVmVyZGFuYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzExMSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHRQYXRoIGhyZWY9IiN0cGF0aCIgc3RhcnRPZmZzZXQ9IjUwJSI+U1dFRVQgTEVBUk5JTkc8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgQk9UVE9NIEJBTk5FUiAtIEFVTEFTIFBBUlRJQ1VMQVJFUyDilZDilZAgLS0+CiAgPHBhdGggZD0iTTY0IDI5NSBRODIgMzgwIDE1NSA0MjggUTIwMCA0NTUgMjUwIDQ1OCBRMzAwIDQ1NSAzNDUgNDI4IFE0MTggMzgwIDQzNiAyOTUgTDQxOCAyOTAgUTQwNiAzNjggMzQwIDQxMiBRMjk4IDQzOCAyNTAgNDQwIFEyMDIgNDM4IDE2MCA0MTIgUTkyIDM2OCA4MiAyOTAgWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBpZD0iYnBhdGgiIGQ9Ik0gODQgMjkyIEEgMTc2IDE3NiAwIDAgMCA0MTYgMjkyIiBmaWxsPSJub25lIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIiBsZXR0ZXItc3BhY2luZz0iMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dFBhdGggaHJlZj0iI2JwYXRoIiBzdGFydE9mZnNldD0iNTAlIj5BVUxBUyBQQVJUSUNVTEFSRVM8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgUyBMRVRURVIgLSBVTklURUQgU1RBVEVTICh0b3AgaGFsZikg4pWQ4pWQIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNzLXNoYXBlKSI+CiAgICA8IS0tIFRvcCBoYWxmOiBVUyBmbGFnIC0tPgogICAgPGcgY2xpcC1wYXRoPSJ1cmwoI3RvcC1oYWxmKSI+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI2NyIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxODUiIGZpbGw9InVybCgjdXMtc3RyaXBlcykiLz4KICAgICAgPCEtLSBCbHVlIGNhbnRvbiAtLT4KICAgICAgPHJlY3QgeD0iOTAiIHk9IjY3IiB3aWR0aD0iMTQyIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzNDM0I2RSIvPgogICAgICA8IS0tIFN0YXJzIHNpbXBsaWZpZWQgYXMgd2hpdGUgY2lyY2xlcyAtLT4KICAgICAgPGcgZmlsbD0id2hpdGUiPgogICAgICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTI4IiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSI4MyIgcj0iNCIvPjxjaXJjbGUgY3g9IjE2NCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTgyIiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSI4MyIgcj0iNCIvPgogICAgICAgIDxjaXJjbGUgY3g9IjExOSIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTM3IiBjeT0iOTYiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI5NiIgcj0iNCIvPjxjaXJjbGUgY3g9IjE3MyIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTkxIiBjeT0iOTYiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDkiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxMjIiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMzUiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxNDgiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjEiIHI9IjQiLz4KICAgICAgPC9nPgogICAgPC9nPgoKICAgIDwhLS0gQm90dG9tIGhhbGY6IFVLIGZsYWcgLS0+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjYm90LWhhbGYpIj4KICAgICAgPCEtLSBOYXZ5IGJhY2tncm91bmQgLS0+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIyNDgiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTg3IiBmaWxsPSIjMDEyMTY5Ii8+CiAgICAgIDwhLS0gV2hpdGUgZGlhZ29uYWxzIChTdC4gUGF0cmljayArIFN0LiBBbmRyZXcgY29tYmluZWQpIC0tPgogICAgICA8bGluZSB4MT0iOTAiIHkxPSIyNDgiIHgyPSI0MTAiIHkyPSI0MzUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNTIiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUyIi8+CiAgICAgIDwhLS0gUmVkIGRpYWdvbmFscyAtLT4KICAgICAgPGxpbmUgeDE9IjkwIiB5MT0iMjQ4IiB4Mj0iNDEwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPCEtLSBXaGl0ZSBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIyMiIgeT0iMjQ4IiB3aWR0aD0iNTYiIGhlaWdodD0iMTg3IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB4PSI5MCIgeT0iMzEwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8IS0tIFJlZCBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIzMiIgeT0iMjQ4IiB3aWR0aD0iMzYiIGhlaWdodD0iMTg3IiBmaWxsPSIjQzgxMDJFIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIzMjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMzYiIGZpbGw9IiNDODEwMkUiLz4KICAgIDwvZz4KCiAgICA8IS0tIFMgc3Ryb2tlIG91dGxpbmUgLS0+CiAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuNSkiIHN0cm9rZS13aWR0aD0iNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICA8L2c+CgogIDwhLS0g4pWQ4pWQIENPTk5FQ1RJTkcgQVJDIExJTkVTIOKVkOKVkCAtLT4KICA8cGF0aCBkPSJNIDY0IDIwNSBBIDE5NSAxOTUgMCAwIDAgNjQgMjk1IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgogIDxwYXRoIGQ9Ik0gNDM2IDIwNSBBIDE5NSAxOTUgMCAwIDEgNDM2IDI5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+";
 function toggleChat(){chatOpen?closeChat():openChat();}
@@ -750,16 +775,27 @@ window['fut_bk']=[
   {pt:'Ela não vai vir amanhã.',before:'She',blank:"won't come",after:'tomorrow.',options:["won't come","doesn't come","didn't come","not come"]},
 ];
 window['togo_bk']=[
-  {pt:'Eu sempre vou ao mercado.',before:'I always',blank:'go',after:'to the market.',options:['go','goes','went','will go']},
-  {pt:'Ela vai ao restaurante quando está faminta.',before:'She',blank:'goes',after:'to the restaurant when she is hungry.',options:['go','goes','went','will go']},
-  {pt:'Eu fui ao mercado ontem.',before:'I',blank:'went',after:'to the market yesterday.',options:['go','goes','went','will go']},
-  {pt:'Ela vai para o restaurante amanhã.',before:'She',blank:'will go',after:'to the restaurant tomorrow.',options:['go','goes','went','will go']},
-  {pt:'Douglas vai para o estúdio todo final de semana.',before:'Douglas',blank:'goes',after:'to the studio every weekend.',options:['go','goes','went','will go']},
+  {pt:'Megan vai ao shopping toda semana.',before:'Megan',blank:'goes',after:'to the mall every week.',options:['go','goes','went','will go']},
+  {pt:'Eu vou à academia toda manhã.',before:'I',blank:'go',after:'to the gym every morning.',options:['go','goes','went','will go']},
+  {pt:'Jake e Taylor vão à praia toda sexta.',before:'Jake and Taylor',blank:'go',after:'to the beach every Friday.',options:['go','goes','went','will go']},
+  {pt:'O Ryan vai ao escritório todo dia.',before:'Ryan',blank:'goes',after:'to the office every day.',options:['go','goes','went','will go']},
+  {pt:'Ryan vai ao shopping amanhã.',before:'Ryan',blank:'will go',after:'to the mall tomorrow.',options:['go','goes','went','will go']},
+  {pt:'Megan não vai à academia amanhã.',before:'Megan',blank:"won't go",after:'to the gym tomorrow.',options:['goes','went','will go',"won't go"]},
+  {pt:'Jake não vai ao escritório na sexta.',before:'Jake',blank:"won't go",after:'to the office on Friday.',options:['goes','went','will go',"won't go"]},
+  {pt:'Raphael vai viajar a trabalho.',before:'Raphael',blank:'will travel',after:'for work.',options:['will travel','goes','went','travel']},
+  {pt:'Camila não vai trabalhar amanhã.',before:'Camila',blank:"won't work",after:'tomorrow.',options:["won't work","doesn't work","won't go","goes"]},
+  {pt:'Eu fui ao banco hoje de manhã.',before:'I',blank:'went',after:'to the bank this morning.',options:['go','goes','went','will go']},
+  {pt:'Raphael foi ao aeroporto ontem.',before:'Raphael',blank:'went',after:'to the airport yesterday.',options:['go','goes','went','will go']},
+  {pt:'Jake e Taylor foram ao show ontem.',before:'Jake and Taylor',blank:'went',after:'to the show yesterday.',options:['go','goes','went','will go']},
   {pt:'Nós fomos para a festa semana passada.',before:'We',blank:'went',after:'to the party last week.',options:['go','goes','went','will go']},
-  {pt:'Camila foi feliz. (= era feliz)',before:'Camila',blank:'was',after:'happy.',options:['went','was','were','will be']},
-  {pt:'Renato e Bruno foram amigos. (= eram amigos)',before:'Renato and Bruno',blank:'were',after:'friends.',options:['went','was','were','will be']},
-  {pt:'Raphael vai viajar para NY. (vai + verbo = ?)',before:'Raphael',blank:'will travel',after:'to New York.',options:['will travel','goes','went','travel']},
-  {pt:'Douglas não vai para o estúdio semana que vem.',before:'Douglas',blank:"won't go",after:'to the studio next week.',options:["won't go","doesn't go","didn't go","not go"]},
+  {pt:'Camila foi feliz naquele período.',before:'Camila',blank:'was',after:'happy at that time.',options:['went','was','were','will be']},
+  {pt:'Jake foi um ótimo aluno.',before:'Jake',blank:'was',after:'a great student.',options:['went','was','were','will be']},
+  {pt:'A festa foi incrível.',before:'The party',blank:'was',after:'amazing.',options:['went','was','were','will be']},
+  {pt:'Camila não foi feliz naquela época.',before:'Camila',blank:"wasn't",after:'happy at that time.',options:["wasn't","weren't","didn't go","went"]},
+  {pt:'Ryan e Josh foram grandes amigos.',before:'Ryan and Josh',blank:'were',after:'great friends.',options:['went','was','were','will be']},
+  {pt:'Megan e Taylor foram colegas de faculdade.',before:'Megan and Taylor',blank:'were',after:'university classmates.',options:['went','was','were','will be']},
+  {pt:'Eles não foram amigos por muito tempo.',before:'They',blank:"weren't",after:'friends for long.',options:["wasn't","weren't","didn't go","went"]},
+  {pt:'Douglas não foi ao estúdio ontem.',before:'Douglas',blank:"didn't go",after:'to the studio yesterday.',options:["didn't go","wasn't","went","goes"]},
 ];
 window['suj_bk']=[
   {pt:'Eu joguei videogame.',before:'',blank:'I played',after:'videogame.',options:['I played','Played','They played','We played']},
@@ -774,26 +810,32 @@ window['suj_bk']=[
   {pt:'Eu vou estudar inglês.',before:'',blank:'I will study',after:'English.',options:['I will study','Will study','She will study','We will study']},
 ];
 window['rev2_bk']=[
-  // Presente
+  // Presente — +s no he/she/it
   {pt:'Ela trabalha muito.',before:'She',blank:'works',after:'a lot.',options:['work','works','worked','will work']},
-  {pt:'Eu estudo todo dia.',before:'I',blank:'study',after:'every day.',options:['study','studies','studied','will study']},
-  {pt:'Ryan assiste Netflix.',before:'Ryan',blank:'watches',after:'Netflix.',options:['watch','watches','watched','will watch']},
-  // Passado
+  {pt:'Ryan assiste Netflix toda noite.',before:'Ryan',blank:'watches',after:'Netflix every night.',options:['watch','watches','watched','will watch']},
+  {pt:'Meu chefe tem muitos projetos.',before:'My boss',blank:'has',after:'many projects.',options:['have','has','had','will have']},
+  {pt:'Eu estudo inglês todo dia.',before:'I',blank:'study',after:'English every day.',options:['study','studies','studied','will study']},
+  // Passado regular e irregular
   {pt:'Camila comprou chocolates.',before:'Camila',blank:'bought',after:'chocolates.',options:['buy','buys','bought','will buy']},
-  {pt:'Eu trabalhei ontem.',before:'I',blank:'worked',after:'yesterday.',options:['work','works','worked','will work']},
   {pt:'Renato dormiu cedo.',before:'Renato',blank:'slept',after:'early.',options:['sleep','sleeps','slept','will sleep']},
-  // Futuro
+  {pt:'O show acabou tarde.',before:'The show',blank:'ended',after:'late.',options:['end','ends','ended','will end']},
+  {pt:'Eles mandaram uma mensagem.',before:'They',blank:'sent',after:'a message.',options:['send','sends','sent','will send']},
+  // Futuro will / won't
   {pt:'Douglas vai jogar amanhã.',before:'Douglas',blank:'will play',after:'tomorrow.',options:['will play','plays','played','play']},
-  {pt:'Ashley não vai trabalhar.',before:'Ashley',blank:"won't work",after:'.',options:["won't work","doesn't work","didn't work","not work"]},
-  // To Go
-  {pt:'Eu fui ao mercado ontem.',before:'I',blank:'went',after:'to the market yesterday.',options:['go','goes','went','will go']},
+  {pt:'Ela não vai responder.',before:'She',blank:"won't answer",after:'.',options:["won't answer","doesn't answer","didn't answer","not answer"]},
+  {pt:'Raphael vai viajar a trabalho.',before:'Raphael',blank:'will travel',after:'for work.',options:['will travel','travels','traveled','travel']},
+  // To Go — go/goes / went / will go / won't go / was / were
   {pt:'Ela vai ao restaurante toda semana.',before:'She',blank:'goes',after:'to the restaurant every week.',options:['go','goes','went','will go']},
-  {pt:'Camila foi feliz. (= era feliz)',before:'Camila',blank:'was',after:'happy.',options:['went','was','were','will be']},
-  {pt:'Raphael vai viajar para NY.',before:'Raphael',blank:'will travel',after:'to New York.',options:['will travel','goes','went','travel']},
+  {pt:'Eu fui ao mercado ontem.',before:'I',blank:'went',after:'to the market yesterday.',options:['go','goes','went','will go']},
+  {pt:'Megan não vai à academia amanhã.',before:'Megan',blank:"won't go",after:'to the gym tomorrow.',options:['goes','went','will go',"won't go"]},
+  {pt:'Jake foi um ótimo aluno.',before:'Jake',blank:'was',after:'a great student.',options:['went','was','were','will be']},
+  {pt:'Ryan e Josh foram grandes amigos.',before:'Ryan and Josh',blank:'were',after:'great friends.',options:['went','was','were','will be']},
   // Sujeito Oculto
-  {pt:'Eu joguei videogame. (sujeito obrigatório)',before:'',blank:'I played',after:'videogame.',options:['I played','Played','She played','We played']},
+  {pt:'Eu joguei videogame.',before:'',blank:'I played',after:'videogame.',options:['I played','Played','She played','We played']},
   {pt:'Eles assistiram um filme.',before:'',blank:'They watched',after:'a movie.',options:['They watched','Watched','She watched','I watched']},
   {pt:'Nós chegamos tarde.',before:'',blank:'We arrived',after:'late.',options:['We arrived','Arrived','She arrived','They arrived']},
+  {pt:'Camila saiu cedo.',before:'',blank:'Camila left',after:'early.',options:['Camila left','Left','She left','He left']},
+  {pt:'Josh ganhou o jogo.',before:'',blank:'Josh won',after:'the game.',options:['Josh won','Won','He won','They won']},
 ];
 window['pres_bk']=[
   {pt:'Ryan joga futebol todo sábado.',before:'Ryan',blank:'plays',after:'football every Saturday.',options:['play','plays','played','will play']},
@@ -2444,11 +2486,12 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
   if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
 });
-let tx=0;
-document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tx;
-  if(Math.abs(dx)>50&&!chatOpen)go(dx<0?cur+1:cur-1);
+  const dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>110&&Math.abs(dx)>Math.abs(dy)*2&&!chatOpen)go(dx<0?cur+1:cur-1);
 },{passive:true});
 /* ── SETTINGS ── */
 function toggleShimmer(){
@@ -2536,7 +2579,7 @@ const toolTemplates={
     </div>
     <div class="tl-panel-scroll">
       <div class="tl-card">
-        <div class="tl-card-label">Nível</div>
+        <div class="tl-card-label">Dificuldade</div>
         <div class="tl-lvl-row" id="dic-level-btns">
           <button class="tl-lvl-btn active" onclick="setDicLevel('easy',this)">Fácil</button>
           <button class="tl-lvl-btn" onclick="setDicLevel('medium',this)">Médio</button>
@@ -2544,18 +2587,18 @@ const toolTemplates={
         </div>
       </div>
       <div class="tl-card">
-        <div class="tl-card-label">Frase — toque para gerar e ouvir</div>
-        <div class="tl-audio-card" id="dic-sentence" onclick="dicMainAction()">
-          <span class="tl-audio-icon" id="dic-audio-icon">▶</span>
-          <span class="tl-audio-txt" id="dic-sentence-txt">Toque aqui para gerar uma nova frase</span>
+        <div class="tl-card-label">Frase</div>
+        <div class="tl-audio-card" id="dic-sentence">
+          <span class="tl-audio-icon" id="dic-audio-icon">🎲</span>
+          <span class="tl-audio-txt" id="dic-sentence-txt">Gere uma frase para começar</span>
         </div>
-        <div class="tl-btn-row" id="dic-extra-btns" style="display:none;">
-          <button class="tl-btn tl-btn-sec" onclick="dicSpeak()" style="flex:1;">🔊 Ouvir de novo</button>
-          <button class="tl-btn tl-btn-sec" onclick="dicSpeakSlow()" style="flex:1;">🐢 Mais devagar</button>
+        <div class="tl-btn-row">
+          <button class="tl-btn" id="dic-new-btn" onclick="dicGenerate()" style="flex:1;">🎲 Nova frase</button>
+          <button class="tl-btn tl-btn-sec" id="dic-repeat-btn" onclick="dicSpeak()" style="flex:1;" disabled>🔊 Repetir</button>
+          <button class="tl-btn tl-btn-sec" id="dic-slow-btn" onclick="dicSpeakSlow()" style="flex:1;" disabled>🐢 Devagar</button>
         </div>
-        <button class="tl-new-btn" id="dic-new-btn" onclick="dicGenerate()" style="display:none;">↺ Gerar nova frase</button>
       </div>
-      <div class="tl-card" id="dic-write-card" style="display:none;">
+      <div class="tl-card">
         <div class="tl-card-label">O que você ouviu?</div>
         <textarea class="tl-input" id="dic-input" placeholder="Escreva aqui o que ouviu..." rows="3"></textarea>
         <button class="tl-btn" onclick="dicCheck()" style="width:100%;">Verificar</button>
@@ -2651,13 +2694,14 @@ function dicGenerate(){
   const s=document.getElementById('dic-sentence-txt');const r=document.getElementById('dic-result');const inp=document.getElementById('dic-input');
   if(s)s.textContent='Gerando frase...';if(r)r.textContent='';if(inp)inp.value='';
   const lvlMap={easy:'simple vocab, present tense, 5-7 words',medium:'mixed tenses, 8-11 words, everyday Brazilian context',hard:'12-15 words, natural conversational English'};
-  callClaude('Generate ONE English sentence for dictation. Level: '+lvlMap[dicLevel]+'. Reply ONLY with the sentence, no quotes.',res=>{dicCurrent=res.trim();if(s)s.textContent='';
-      const icon=document.getElementById('dic-audio-icon');if(icon)icon.textContent='🔊';
-      const eb=document.getElementById('dic-extra-btns');if(eb)eb.style.display='flex';
-      const nb=document.getElementById('dic-new-btn');if(nb)nb.style.display='block';
-      const wc=document.getElementById('dic-write-card');if(wc)wc.style.display='flex';
-      if(btn)btn.disabled=false;
-      dicSpeak();});
+  callClaude('Generate ONE random English sentence for dictation practice. Level: '+lvlMap[dicLevel]+'. Use different vocabulary each time. Seed: '+Math.random()+'. Reply ONLY with the sentence, no quotes, no explanation.',res=>{dicCurrent=res.trim();if(s)s.textContent=dicCurrent;
+  const icon=document.getElementById('dic-audio-icon');if(icon)icon.textContent='🔊';
+  const rb=document.getElementById('dic-repeat-btn');if(rb)rb.disabled=false;
+  const sb=document.getElementById('dic-slow-btn');if(sb)sb.disabled=false;
+  if(btn)btn.disabled=false;
+  const inp=document.getElementById('dic-input');if(inp)inp.value='';
+  const r=document.getElementById('dic-result');if(r)r.textContent='';
+  dicSpeak();});
 }
 function dicMainAction(){
   if(!dicCurrent){dicGenerate();}
