@@ -433,45 +433,57 @@ body.no-shimmer .en{animation:none !important;background:none !important;-webkit
 .en:hover{animation-duration:1s;}
 
 /* ── TOOLS PAGE ── */
-.pg-tools{min-height:100%;display:flex;flex-direction:column;background:var(--bg);}
-.tl-menu{display:flex;flex-direction:column;padding:8px 16px 32px;}
-.tl-item{display:flex;align-items:center;gap:14px;padding:14px 12px;border-radius:12px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--line);}
+.pg-tools{min-height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden;}
+.tl-menu{display:flex;flex-direction:column;overflow-y:auto;}
+.tl-item{display:flex;align-items:center;gap:16px;padding:16px 20px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--line);}
 .tl-item:last-child{border-bottom:none;}
 .tl-item:active{background:var(--card2);}
-.tl-icon{font-size:22px;width:36px;text-align:center;flex-shrink:0;}
+.tl-icon{font-size:24px;width:44px;height:44px;background:var(--card2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .tl-info{flex:1;}
-.tl-name{font-size:14px;font-weight:700;color:var(--tx);}
-.tl-desc{font-size:11px;color:var(--m);margin-top:2px;}
-.tl-arrow{font-size:14px;color:var(--m);}
-.tl-panel{display:flex;flex-direction:column;gap:14px;padding:0 16px 32px;}
-.tl-hd{display:flex;align-items:center;gap:10px;padding:12px 0 4px;border-bottom:2px solid var(--acc,var(--blue));margin-bottom:4px;}
-.tl-back-btn{background:none;border:none;color:var(--m);font-size:18px;cursor:pointer;padding:0;line-height:1;flex-shrink:0;}
-.tl-hd-title{font-size:15px;font-weight:700;color:var(--tx);}
-.tl-hint{font-size:13px;color:var(--s);line-height:1.6;}
-.tl-input{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:14px;color:var(--tx);resize:none;outline:none;transition:border-color .2s;}
+.tl-name{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:2px;}
+.tl-desc{font-size:12px;color:var(--m);}
+.tl-arrow{font-size:16px;color:var(--m);opacity:.5;}
+
+/* ── TOOL PANEL ── */
+.tl-panel{display:flex;flex-direction:column;flex:1;overflow:hidden;}
+.tl-panel-scroll{display:flex;flex-direction:column;gap:16px;padding:20px 20px 40px;overflow-y:auto;flex:1;}
+.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;position:sticky;top:0;background:var(--bg);z-index:1;}
+.tl-back-btn{width:36px;height:36px;border-radius:10px;background:var(--card2);border:none;color:var(--tx);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tl-back-btn:hover{background:var(--line);}
+.tl-hd-title{font-size:16px;font-weight:700;color:var(--tx);}
+
+/* ── TOOL CARDS ── */
+.tl-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;}
+.tl-card-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--acc,var(--blue));margin-bottom:-4px;}
+.tl-hint{font-size:13px;color:var(--s);line-height:1.65;}
+.tl-input{width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;font-family:inherit;font-size:14px;color:var(--tx);resize:none;outline:none;transition:border-color .2s;line-height:1.6;}
 .tl-input:focus{border-color:var(--acc,var(--blue));}
-.tl-input-sm{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:14px;color:var(--tx);outline:none;min-width:0;}
-.tl-btn{padding:12px 20px;background:var(--acc,var(--blue));border:none;border-radius:10px;color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;flex-shrink:0;}
+.tl-input-sm{flex:1;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14px;color:var(--tx);outline:none;min-width:0;transition:border-color .2s;}
+.tl-input-sm:focus{border-color:var(--acc,var(--blue));}
+.tl-btn{padding:13px 22px;background:var(--acc,var(--blue));border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;flex-shrink:0;letter-spacing:.3px;}
 .tl-btn:hover{opacity:.85;}
-.tl-btn:disabled{opacity:.35;cursor:default;}
-.tl-btn-sec{background:var(--card2);color:var(--tx);border:1px solid var(--line);}
+.tl-btn:active{opacity:.7;}
+.tl-btn:disabled{opacity:.3;cursor:default;}
+.tl-btn-sec{background:var(--card2);color:var(--tx);border:1.5px solid var(--line);}
 .tl-btn-row{display:flex;gap:8px;}
-.tl-inline-row{display:flex;gap:8px;align-items:center;}
-.tl-result{font-size:14px;color:var(--s);line-height:1.7;min-height:20px;}
-.tl-result strong{color:var(--tx);}
+.tl-inline-row{display:flex;gap:8px;align-items:stretch;}
+.tl-result{font-size:14px;color:var(--tx);line-height:1.75;background:var(--card2);border-radius:12px;padding:14px 16px;}
+.tl-result:empty{display:none;}
 .tl-result .tr-correct{color:var(--green);font-weight:700;}
-.tl-result .tr-error{color:var(--red);}
-.tl-result .tr-note{font-size:12px;color:var(--m);margin-top:6px;}
+.tl-result .tr-error{color:var(--red);font-weight:600;}
+.tl-result .tr-note{font-size:12px;color:var(--m);margin-top:6px;display:block;}
 .tl-result .tr-loading{color:var(--m);font-style:italic;}
-.tl-lang-row{display:flex;gap:6px;}
-.tl-dir-btn{padding:7px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card2);color:var(--m);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;}
-.tl-dir-btn.active{background:var(--acc,var(--blue));border-color:var(--acc,var(--blue));color:#fff;}
-.tl-level-row{display:flex;gap:6px;}
-.tl-lvl-btn{flex:1;padding:8px 4px;border-radius:8px;border:1px solid var(--line);background:var(--card2);color:var(--m);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;}
-.tl-lvl-btn.active{background:var(--acc,var(--blue));border-color:var(--acc,var(--blue));color:#fff;}
-.tl-audio-row{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .2s;}
-.tl-audio-row:active{border-color:var(--acc,var(--blue));}
-.tl-audio-icon{font-size:18px;flex-shrink:0;}
+.tl-dir-row{display:flex;background:var(--card2);border-radius:12px;padding:4px;gap:4px;}
+.tl-dir-btn{flex:1;padding:9px 4px;border-radius:9px;border:none;background:none;color:var(--m);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.tl-dir-btn.active{background:var(--acc,var(--blue));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.tl-lvl-row{display:flex;background:var(--card2);border-radius:12px;padding:4px;gap:4px;}
+.tl-lvl-btn{flex:1;padding:9px 4px;border-radius:9px;border:none;background:none;color:var(--m);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.tl-lvl-btn.active{background:var(--acc,var(--blue));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.tl-audio-card{background:var(--bg);border:1.5px solid var(--acc,var(--blue));border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;}
+.tl-audio-card:active{opacity:.8;}
+.tl-audio-icon{font-size:22px;flex-shrink:0;}
+.tl-new-btn{background:none;border:none;color:var(--m);font-family:inherit;font-size:12px;cursor:pointer;padding:4px 0;text-align:center;width:100%;}
+.tl-audio-txt{font-size:14px;color:var(--tx);font-weight:500;flex:1;line-height:1.5;}
 /* ── TOGO TABLE ── */
 .togo-table{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
 .togo-section{display:flex;flex-direction:column;gap:6px;}
@@ -579,8 +591,13 @@ async function sendMsg(){
   const inp=document.getElementById('chat-input');const txt=inp.value.trim();if(!txt)return;
   inp.value='';inp.style.height='auto';document.getElementById('chat-send').disabled=true;
   addMsg('user',txt);chatH.push({role:'user',content:txt});addTyping();
-  try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:300,system:SYS,messages:chatH.slice(-10)})});const data=await r.json();remTyping();const rep=data.content?.[0]?.text||'Erro. Tente de novo.';chatH.push({role:'assistant',content:rep});addMsg('ai',rep);}
-  catch{remTyping();addMsg('ai','Ops! Verifique sua conexão.');}
+  try{
+    const msgs=[{role:'user',content:'[SYSTEM: '+SYS+']\n\nHistórico:\n'+chatH.slice(-6).map(m=>m.role+': '+m.content).join('\n')+'\n\nAluno: '+chatH[chatH.length-1].content}];
+    const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:msgs[0].content})});
+    const data=await r.json();remTyping();
+    const rep=data.text||data.error||'Erro. Tente de novo.';
+    chatH.push({role:'assistant',content:rep});addMsg('ai',rep);
+  }catch(e){remTyping();addMsg('ai','Ops! Erro de conexão: '+e.message);}
   document.getElementById('chat-send').disabled=false;
 }
 function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
@@ -2448,67 +2465,126 @@ function toggleShimmer(){
 /* ── TOOL TEMPLATES ── */
 const toolTemplates={
   translator:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">🌐 Tradutor</span></div>
-    <div class="tl-lang-row">
-      <button class="tl-dir-btn active" id="trl-pt-en" onclick="setTrlDir('pt-en')">PT → EN</button>
-      <button class="tl-dir-btn" id="trl-en-pt" onclick="setTrlDir('en-pt')">EN → PT</button>
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">🌐 Tradutor</span>
     </div>
-    <textarea class="tl-input" id="trl-input" placeholder="Digite para traduzir..." rows="4" oninput="trlTyping()"></textarea>
-    <div class="tl-result" id="trl-result"></div>`,
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Direção</div>
+        <div class="tl-dir-row">
+          <button class="tl-dir-btn active" id="trl-pt-en" onclick="setTrlDir('pt-en')">Português → Inglês</button>
+          <button class="tl-dir-btn" id="trl-en-pt" onclick="setTrlDir('en-pt')">Inglês → Português</button>
+        </div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-label">Texto</div>
+        <textarea class="tl-input" id="trl-input" placeholder="Digite para traduzir..." rows="4" oninput="trlTyping()"></textarea>
+      </div>
+      <div class="tl-result" id="trl-result"></div>
+    </div>`,
   tts:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">🔊 Ouvir em inglês</span></div>
-    <textarea class="tl-input" id="tts-input" placeholder="Digite qualquer texto em inglês..." rows="5"></textarea>
-    <div class="tl-btn-row">
-      <button class="tl-btn" onclick="toolSpeak()">▶ Ouvir</button>
-      <button class="tl-btn tl-btn-sec" onclick="toolSpeakSlow()">🐢 Devagar</button>
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">🔊 Ouvir em inglês</span>
+    </div>
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Texto em inglês</div>
+        <p class="tl-hint">Digite qualquer texto em inglês e ouça a pronúncia.</p>
+        <textarea class="tl-input" id="tts-input" placeholder="Ex: I always go to the supermarket on Fridays." rows="5"></textarea>
+        <div class="tl-btn-row">
+          <button class="tl-btn" onclick="toolSpeak()" style="flex:1;">▶ Ouvir normal</button>
+          <button class="tl-btn tl-btn-sec" onclick="toolSpeakSlow()" style="flex:1;">🐢 Devagar</button>
+        </div>
+      </div>
     </div>`,
   correct:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">✏️ Corretor de frases</span></div>
-    <p class="tl-hint">Escreva uma frase em inglês. A IA corrige e explica o erro.</p>
-    <textarea class="tl-input" id="cor-input" placeholder="Ex: She go to school every day." rows="4"></textarea>
-    <button class="tl-btn" id="cor-btn" onclick="toolCorrect()">Verificar</button>
-    <div class="tl-result" id="cor-result"></div>`,
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">✏️ Corretor de frases</span>
+    </div>
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Sua frase em inglês</div>
+        <p class="tl-hint">Escreva uma frase em inglês. A IA verifica se está correta e explica qualquer erro em português.</p>
+        <textarea class="tl-input" id="cor-input" placeholder="Ex: She go to school every day." rows="4"></textarea>
+        <button class="tl-btn" id="cor-btn" onclick="toolCorrect()">Verificar frase</button>
+      </div>
+      <div class="tl-result" id="cor-result"></div>
+    </div>`,
   examples:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">💬 Exemplos</span></div>
-    <p class="tl-hint">Digite uma palavra e veja ela em 3 frases do cotidiano.</p>
-    <div class="tl-inline-row">
-      <input class="tl-input-sm" id="ex-input" type="text" placeholder="Ex: run, beautiful...">
-      <button class="tl-btn" id="ex-btn" onclick="toolExamples()">Buscar</button>
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">💬 Exemplos</span>
     </div>
-    <div class="tl-result" id="ex-result"></div>`,
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Palavra ou expressão</div>
+        <p class="tl-hint">Digite uma palavra em inglês e veja ela em 3 frases do cotidiano com tradução.</p>
+        <div class="tl-inline-row">
+          <input class="tl-input-sm" id="ex-input" type="text" placeholder="Ex: beautiful, go, have...">
+          <button class="tl-btn" id="ex-btn" onclick="toolExamples()">Buscar</button>
+        </div>
+      </div>
+      <div class="tl-result" id="ex-result"></div>
+    </div>`,
   dictation:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">🎧 Ditado</span></div>
-    <p class="tl-hint">Escolha o nível, ouça a frase e escreva o que ouviu.</p>
-    <div class="tl-level-row" id="dic-level-btns">
-      <button class="tl-lvl-btn active" onclick="setDicLevel('easy',this)">Fácil</button>
-      <button class="tl-lvl-btn" onclick="setDicLevel('medium',this)">Médio</button>
-      <button class="tl-lvl-btn" onclick="setDicLevel('hard',this)">Difícil</button>
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">🎧 Ditado</span>
     </div>
-    <div class="tl-audio-row" id="dic-sentence" onclick="dicSpeak()">
-      <span class="tl-audio-icon">🔊</span>
-      <span id="dic-sentence-txt">Toque em Nova frase para começar</span>
-    </div>
-    <textarea class="tl-input" id="dic-input" placeholder="O que você ouviu?" rows="3"></textarea>
-    <div class="tl-btn-row">
-      <button class="tl-btn" onclick="dicCheck()">Verificar</button>
-      <button class="tl-btn tl-btn-sec" id="dic-new-btn" onclick="dicGenerate()">Nova frase</button>
-    </div>
-    <div class="tl-result" id="dic-result"></div>`,
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Nível</div>
+        <div class="tl-lvl-row" id="dic-level-btns">
+          <button class="tl-lvl-btn active" onclick="setDicLevel('easy',this)">Fácil</button>
+          <button class="tl-lvl-btn" onclick="setDicLevel('medium',this)">Médio</button>
+          <button class="tl-lvl-btn" onclick="setDicLevel('hard',this)">Difícil</button>
+        </div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-label">Frase — toque para gerar e ouvir</div>
+        <div class="tl-audio-card" id="dic-sentence" onclick="dicMainAction()">
+          <span class="tl-audio-icon" id="dic-audio-icon">▶</span>
+          <span class="tl-audio-txt" id="dic-sentence-txt">Toque aqui para gerar uma nova frase</span>
+        </div>
+        <div class="tl-btn-row" id="dic-extra-btns" style="display:none;">
+          <button class="tl-btn tl-btn-sec" onclick="dicSpeak()" style="flex:1;">🔊 Ouvir de novo</button>
+          <button class="tl-btn tl-btn-sec" onclick="dicSpeakSlow()" style="flex:1;">🐢 Mais devagar</button>
+        </div>
+        <button class="tl-new-btn" id="dic-new-btn" onclick="dicGenerate()" style="display:none;">↺ Gerar nova frase</button>
+      </div>
+      <div class="tl-card" id="dic-write-card" style="display:none;">
+        <div class="tl-card-label">O que você ouviu?</div>
+        <textarea class="tl-input" id="dic-input" placeholder="Escreva aqui o que ouviu..." rows="3"></textarea>
+        <button class="tl-btn" onclick="dicCheck()" style="width:100%;">Verificar</button>
+      </div>
+      <div class="tl-result" id="dic-result"></div>
+    </div>`,
   dict:`
-    <div class="tl-hd"><button class="tl-back-btn" onclick="closeTool()">←</button><span class="tl-hd-title">📖 Dicionário rápido</span></div>
-    <p class="tl-hint">Digite uma palavra em inglês para ver significado, exemplo e pronúncia.</p>
-    <div class="tl-inline-row">
-      <input class="tl-input-sm" id="dict-input" type="text" placeholder="Ex: beautiful, run...">
-      <button class="tl-btn" id="dict-btn" onclick="toolDict()">Buscar</button>
+    <div class="tl-hd">
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <span class="tl-hd-title">📖 Dicionário rápido</span>
     </div>
-    <div class="tl-result" id="dict-result"></div>`
+    <div class="tl-panel-scroll">
+      <div class="tl-card">
+        <div class="tl-card-label">Palavra em inglês</div>
+        <p class="tl-hint">Digite uma palavra e veja o significado, um exemplo de uso e como pronunciar.</p>
+        <div class="tl-inline-row">
+          <input class="tl-input-sm" id="dict-input" type="text" placeholder="Ex: beautiful, run, have...">
+          <button class="tl-btn" id="dict-btn" onclick="toolDict()">Buscar</button>
+        </div>
+      </div>
+      <div class="tl-result" id="dict-result"></div>
+    </div>`
 };
 let activeTool=null;
 function openTool(id){
   activeTool=id;
   document.getElementById('tool-menu').style.display='none';
   const panel=document.getElementById('tool-panel');
-  panel.style.display='flex';
+  panel.style.display='flex';panel.style.flex='1';panel.style.overflow='hidden';
   document.getElementById('tool-panel-body').innerHTML=toolTemplates[id]||'';
   if(id==='dictation'){dicLevel='easy';}
 }
@@ -2575,14 +2651,32 @@ function dicGenerate(){
   const s=document.getElementById('dic-sentence-txt');const r=document.getElementById('dic-result');const inp=document.getElementById('dic-input');
   if(s)s.textContent='Gerando frase...';if(r)r.textContent='';if(inp)inp.value='';
   const lvlMap={easy:'simple vocab, present tense, 5-7 words',medium:'mixed tenses, 8-11 words, everyday Brazilian context',hard:'12-15 words, natural conversational English'};
-  callClaude('Generate ONE English sentence for dictation. Level: '+lvlMap[dicLevel]+'. Reply ONLY with the sentence, no quotes.',res=>{dicCurrent=res.trim();if(s)s.textContent='Toque para ouvir ▶';if(btn)btn.disabled=false;dicSpeak();});
+  callClaude('Generate ONE English sentence for dictation. Level: '+lvlMap[dicLevel]+'. Reply ONLY with the sentence, no quotes.',res=>{dicCurrent=res.trim();if(s)s.textContent='';
+      const icon=document.getElementById('dic-audio-icon');if(icon)icon.textContent='🔊';
+      const eb=document.getElementById('dic-extra-btns');if(eb)eb.style.display='flex';
+      const nb=document.getElementById('dic-new-btn');if(nb)nb.style.display='block';
+      const wc=document.getElementById('dic-write-card');if(wc)wc.style.display='flex';
+      if(btn)btn.disabled=false;
+      dicSpeak();});
+}
+function dicMainAction(){
+  if(!dicCurrent){dicGenerate();}
+  else{dicSpeak();}
 }
 function dicSpeak(){
   if(!window.speechSynthesis||!dicCurrent)return;
   const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='🔊 Ouvindo...';
   window.speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(dicCurrent);u.lang='en-US';u.rate=.7;
-  u.onend=()=>{const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='Toque para ouvir de novo ▶';};
+  u.onend=()=>{const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='Toque na frase ou nos botões abaixo para ouvir de novo';};
+  window.speechSynthesis.speak(u);
+}
+function dicSpeakSlow(){
+  if(!window.speechSynthesis||!dicCurrent)return;
+  const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='🐢 Ouvindo devagar...';
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(dicCurrent);u.lang='en-US';u.rate=.45;
+  u.onend=()=>{const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='Toque na frase ou nos botões abaixo para ouvir de novo';};
   window.speechSynthesis.speak(u);
 }
 function dicCheck(){
