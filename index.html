@@ -355,6 +355,10 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .idx-noresult{text-align:center;color:var(--m);font-size:14px;padding:24px 0;}
 .idx-item[data-hidden]{display:none;}
 .idx-group[data-hidden]{display:none;}
+.tl-result-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.tl-result-row:last-child{margin-bottom:0;}
+.tl-speak-btn{background:none;border:none;font-size:16px;cursor:pointer;flex-shrink:0;padding:0;line-height:1;opacity:.7;transition:opacity .2s;}
+.tl-speak-btn:hover{opacity:1;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -2601,7 +2605,10 @@ const toolTemplates={
       <div class="tl-card">
         <div class="tl-card-label">O que você ouviu?</div>
         <textarea class="tl-input" id="dic-input" placeholder="Escreva aqui o que ouviu..." rows="3"></textarea>
-        <button class="tl-btn" onclick="dicCheck()" style="width:100%;">Verificar</button>
+        <div class="tl-btn-row">
+          <button class="tl-btn" onclick="dicCheck()" style="flex:1;">Verificar</button>
+          <button class="tl-btn tl-btn-sec" onclick="dicReveal()" id="dic-reveal-btn" style="flex:1;">👁 Revelar</button>
+        </div>
       </div>
       <div class="tl-result" id="dic-result"></div>
     </div>`,
@@ -2652,7 +2659,22 @@ function trlTyping(){
   const v=document.getElementById('trl-input').value.trim();
   if(!v){document.getElementById('trl-result').textContent='';return;}
   document.getElementById('trl-result').innerHTML='<span class="tr-loading">Traduzindo...</span>';
-  trlTimer=setTimeout(()=>callClaude(trlDir==='pt-en'?'Traduza para inglês americano. Responda APENAS com a tradução, sem explicação, sem aspas:\n'+v:'Translate to Brazilian Portuguese. Reply ONLY with the translation, no explanation, no quotes:\n'+v,res=>document.getElementById('trl-result').innerHTML='<strong>'+escHtml(res)+'</strong>'),700);
+  trlTimer=setTimeout(()=>callClaude(trlDir==='pt-en'?'Traduza para inglês americano. Responda APENAS com a tradução, sem explicação, sem aspas:\n'+v:'Translate to Brazilian Portuguese. Reply ONLY with the translation, no explanation, no quotes:\n'+v,res=>{
+      const txt=escHtml(res);
+      const isEN=trlDir==='pt-en';
+      document.getElementById('trl-result').innerHTML='<div class="tl-result-row"><strong>'+txt+'</strong>'+(isEN?'<button class="tl-speak-btn" id="trl-speak-btn">🔊</button>':'')+'</div>';
+      if(isEN){const b=document.getElementById('trl-speak-btn');if(b){b.onclick=()=>toolSpeakText(res,b);}}
+    }),700);
+}
+function toolSpeakText(txt,btn){
+  if(!window.speechSynthesis||!txt)return;
+  window.speechSynthesis.cancel();
+  // Show wave on button if provided
+  document.querySelectorAll('.tl-speak-btn').forEach(b=>b.textContent='🔊');
+  if(btn){btn.innerHTML='<span class="en-wave"><span></span><span></span><span></span><span></span><span></span></span>';}
+  const u=new SpeechSynthesisUtterance(txt);u.lang='en-US';u.rate=.9;
+  u.onend=()=>{document.querySelectorAll('.tl-speak-btn').forEach(b=>b.textContent='🔊');};
+  window.speechSynthesis.speak(u);
 }
 function toolSpeak(){
   if(!window.speechSynthesis)return;
@@ -2676,7 +2698,21 @@ function toolExamples(){
   const v=document.getElementById('ex-input').value.trim();if(!v)return;
   const btn=document.getElementById('ex-btn');if(btn)btn.disabled=true;
   document.getElementById('ex-result').innerHTML='<span class="tr-loading">Gerando exemplos...</span>';
-  callClaude('Give 3 short natural English sentences using "'+v+'". Everyday Brazilian context. Format: 1. <sentence> — <Portuguese translation>. Reply ONLY with the 3 examples.',res=>{document.getElementById('ex-result').innerHTML=res.split('\n').join('<br>');if(btn)btn.disabled=false;});
+  callClaude('Give 3 short natural English sentences using "'+v+'". Everyday Brazilian context. Format: 1. <sentence> — <Portuguese translation>. Reply ONLY with the 3 examples.',res=>{
+      const lines=res.split('\n').filter(l=>l.trim());
+      const div=document.createElement('div');
+      lines.forEach((l,i)=>{
+        const enMatch=l.match(/^\d+\.\s*(.+?)\s*—/);
+        const enTxt=enMatch?enMatch[1].trim():'';
+        const row=document.createElement('div');row.className='tl-result-row';
+        const span=document.createElement('span');span.textContent=l;row.appendChild(span);
+        if(enTxt){const b=document.createElement('button');b.className='tl-speak-btn';b.textContent='🔊';b.onclick=()=>toolSpeakText(enTxt,b);row.appendChild(b);}
+        div.appendChild(row);
+      });
+      document.getElementById('ex-result').innerHTML='';
+      document.getElementById('ex-result').appendChild(div);
+      if(btn)btn.disabled=false;
+    });
 }
 let dicCurrent='';
 let dicLevel='easy';
@@ -2693,7 +2729,11 @@ function dicGenerate(){
   const btn=document.getElementById('dic-new-btn');if(btn)btn.disabled=true;
   const s=document.getElementById('dic-sentence-txt');const r=document.getElementById('dic-result');const inp=document.getElementById('dic-input');
   if(s)s.textContent='Gerando frase...';if(r)r.textContent='';if(inp)inp.value='';
-  const lvlMap={easy:'simple vocab, present tense, 5-7 words',medium:'mixed tenses, 8-11 words, everyday Brazilian context',hard:'12-15 words, natural conversational English'};
+  const lvlMap={
+    easy:'Generate a SHORT, FUN English sentence (5-7 words). Present tense only. Use everyday topics like food, Netflix, Instagram, games, friends, school, music. Examples of good sentences: I love watching Netflix at night. She eats pizza every Friday. They play games together. NO "the cat" or boring sentences.',
+    medium:'Generate a natural English sentence (8-10 words). Use past or present tense. Topic: everyday Brazilian life, apps like iFood or Uber, weekend activities, friends, work. Natural and fun.',
+    hard:'Generate a longer natural English sentence (11-14 words). Mix past and future tenses. Topic: real everyday situations. Natural conversational English.'
+  };
   callClaude('Generate ONE random English sentence for dictation practice. Level: '+lvlMap[dicLevel]+'. Use different vocabulary each time. Seed: '+Math.random()+'. Reply ONLY with the sentence, no quotes, no explanation.',res=>{dicCurrent=res.trim();if(s)s.textContent=dicCurrent;
   const icon=document.getElementById('dic-audio-icon');if(icon)icon.textContent='🔊';
   const rb=document.getElementById('dic-repeat-btn');if(rb)rb.disabled=false;
@@ -2723,6 +2763,11 @@ function dicSpeakSlow(){
   u.onend=()=>{const s=document.getElementById('dic-sentence-txt');if(s)s.textContent='Toque na frase ou nos botões abaixo para ouvir de novo';};
   window.speechSynthesis.speak(u);
 }
+function dicReveal(){
+  if(!dicCurrent)return;
+  const r=document.getElementById('dic-result');
+  if(r)r.innerHTML='<span class="tr-note">Frase: <strong>'+escHtml(dicCurrent)+'</strong></span>';
+}
 function dicCheck(){
   if(!dicCurrent){const r=document.getElementById('dic-result');if(r)r.innerHTML='<span class="tr-error">Gere uma frase primeiro.</span>';return;}
   const v=(document.getElementById('dic-input').value||'').trim().toLowerCase();
@@ -2736,7 +2781,21 @@ function toolDict(){
   const v=document.getElementById('dict-input').value.trim();if(!v)return;
   const btn=document.getElementById('dict-btn');if(btn)btn.disabled=true;
   document.getElementById('dict-result').innerHTML='<span class="tr-loading">Buscando...</span>';
-  callClaude('Dictionary for Brazilian students. Word: "'+v+'". Reply in 3 lines:\n📌 <word> — <Portuguese meaning>\n📝 <example sentence> — <Portuguese translation>\n🔊 <pronunciation hint in Portuguese phonetics>',res=>{document.getElementById('dict-result').innerHTML=res.split('\n').join('<br>');if(btn)btn.disabled=false;});
+  callClaude('Dictionary for Brazilian students. Word: "'+v+'". Reply in 3 lines:\n📌 <word> — <Portuguese meaning>\n📝 <example sentence> — <Portuguese translation>\n🔊 <pronunciation hint in Portuguese phonetics>',res=>{
+      const lines=res.split('\n').filter(l=>l.trim());
+      const div=document.createElement('div');
+      lines.forEach(l=>{
+        const enMatch=l.match(/📝\s*(.+?)\s*—/);
+        const enTxt=enMatch?enMatch[1].trim():'';
+        const row=document.createElement('div');row.className='tl-result-row';
+        const span=document.createElement('span');span.textContent=l;row.appendChild(span);
+        if(enTxt){const b=document.createElement('button');b.className='tl-speak-btn';b.textContent='🔊';b.onclick=()=>toolSpeakText(enTxt,b);row.appendChild(b);}
+        div.appendChild(row);
+      });
+      document.getElementById('dict-result').innerHTML='';
+      document.getElementById('dict-result').appendChild(div);
+      if(btn)btn.disabled=false;
+    });
 }
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 async function callClaude(prompt,cb){
