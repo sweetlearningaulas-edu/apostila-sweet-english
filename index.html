@@ -847,13 +847,21 @@ function scrollAndHighlight(anchor){
     btn.id='inline-back-btn';btn.innerHTML='← Voltar ao exercício';btn.className='inline-back-btn';
     btn.onclick=()=>{
       btn.remove();
-      const exEl=document.getElementById(window.exS?window.exS.id+'-body':'');
+      // Find active exercise body
+      const allEx=document.querySelectorAll('[id$="-body"]');
+      let exEl=null;
+      allEx.forEach(el=>{if(el.querySelector('.opt-btn'))exEl=el;});
       if(exEl)exEl.scrollIntoView({behavior:'smooth',block:'center'});
     };
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
-    el.classList.add('highlight-pulse');
-    setTimeout(()=>el.classList.remove('highlight-pulse'),5000);
+    // Highlight the whole block — walk up to nearest rule-box, tip, or pron-section
+    let target=el;
+    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('pg-body')){
+      target=target.parentElement;
+    }
+    target.classList.add('highlight-pulse');
+    setTimeout(()=>target.classList.remove('highlight-pulse'),5000);
   }
 }
 function nextEx(id,bank,total){window[id+'_s'].cur++;window[id+'_s'].erroAtual=false;renderEx(id,bank,total);}
@@ -1292,91 +1300,91 @@ window['ing_bk']=[
 ];
 window['tobe_bk']=[
   // Presente afirmativo
-  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are','was']},
-  {pt:'Ela é professora.',before:'She',blank:'is',after:'a teacher.',options:['am','is','are','was']},
-  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['am','is','are','was']},
-  {pt:'Você é incrível.',before:'You',blank:'are',after:'amazing.',options:['am','is','are','was']},
-  {pt:'O Jake é muito alto.',before:'Jake',blank:'is',after:'very tall.',options:['am','is','are','was']},
-  {pt:'Eles são estudantes.',before:'They',blank:'are',after:'students.',options:['am','is','are','was']},
-  {pt:'Eu sou brasileiro.',before:'I',blank:'am',after:'Brazilian.',options:['am','is','are','was']},
-  {pt:'A Megan é muito inteligente.',before:'Megan',blank:'is',after:'very smart.',options:['am','is','are','was']},
-  {pt:'Nós somos colegas de trabalho.',before:'We',blank:'are',after:'coworkers.',options:['am','is','are','was']},
-  {pt:'O cachorro está com fome.',before:'The dog',blank:'is',after:'hungry.',options:['am','is','are','was']},
+  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Ela é professora.',before:'She',blank:'is',after:'a teacher.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Você é incrível.',before:'You',blank:'are',after:'amazing.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'O Jake é muito alto.',before:'Jake',blank:'is',after:'very tall.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Eles são estudantes.',before:'They',blank:'are',after:'students.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Eu sou brasileiro.',before:'I',blank:'am',after:'Brazilian.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'A Megan é muito inteligente.',before:'Megan',blank:'is',after:'very smart.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Nós somos colegas de trabalho.',before:'We',blank:'are',after:'coworkers.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'O cachorro está com fome.',before:'The dog',blank:'is',after:'hungry.',options:['am','is','are','was'],anchor:'tobe-passado'},
   // Presente negativo
-  {pt:'Eu não estou bem.',before:'I',blank:"am not",after:'okay.',options:['am not',"isn't","aren't","wasn't"]},
-  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","am not","wasn't"]},
-  {pt:'Eles não são irmãos.',before:'They',blank:"aren't",after:'siblings.',options:["isn't","aren't","am not","weren't"]},
-  {pt:'O Ryan não é meu amigo.',before:'Ryan',blank:"isn't",after:'my friend.',options:["isn't","aren't","am not","wasn't"]},
-  {pt:'Nós não estamos prontos.',before:'We',blank:"aren't",after:'ready.',options:["isn't","aren't","am not","weren't"]},
-  {pt:'Você não está errado.',before:'You',blank:"aren't",after:'wrong.',options:["isn't","aren't","am not","weren't"]},
-  {pt:'A Taylor não é famosa.',before:'Taylor',blank:"isn't",after:'famous.',options:["isn't","aren't","am not","wasn't"]},
-  {pt:'Eu não sou perfeito.',before:'I',blank:"am not",after:'perfect.',options:['am not',"isn't","aren't","wasn't"]},
+  {pt:'Eu não estou bem.',before:'I',blank:"am not",after:'okay.',options:['am not',"isn't","aren't","wasn't"],anchor:'tobe-passado'},
+  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","am not","wasn't"],anchor:'tobe-passado'},
+  {pt:'Eles não são irmãos.',before:'They',blank:"aren't",after:'siblings.',options:["isn't","aren't","am not","weren't"],anchor:'tobe-passado'},
+  {pt:'O Ryan não é meu amigo.',before:'Ryan',blank:"isn't",after:'my friend.',options:["isn't","aren't","am not","wasn't"],anchor:'tobe-passado'},
+  {pt:'Nós não estamos prontos.',before:'We',blank:"aren't",after:'ready.',options:["isn't","aren't","am not","weren't"],anchor:'tobe-passado'},
+  {pt:'Você não está errado.',before:'You',blank:"aren't",after:'wrong.',options:["isn't","aren't","am not","weren't"],anchor:'tobe-passado'},
+  {pt:'A Taylor não é famosa.',before:'Taylor',blank:"isn't",after:'famous.',options:["isn't","aren't","am not","wasn't"],anchor:'tobe-passado'},
+  {pt:'Eu não sou perfeito.',before:'I',blank:"am not",after:'perfect.',options:['am not',"isn't","aren't","wasn't"],anchor:'tobe-passado'},
   // Presente interrogativo
-  {pt:'Você está ocupado?',before:'',blank:'Are you',after:'busy?',options:['Are you','Is you','Am you','Were you']},
-  {pt:'Ela está aqui?',before:'',blank:'Is she',after:'here?',options:['Is she','Are she','Was she','Am she']},
-  {pt:'Eles são brasileiros?',before:'',blank:'Are they',after:'Brazilian?',options:['Are they','Is they','Were they','Am they']},
-  {pt:'Você não está com fome?',before:'',blank:"Aren't you",after:'hungry?',options:["Aren't you","Isn't you","Wasn't you","Weren't you"]},
-  {pt:'Ela não é sua amiga?',before:'',blank:"Isn't she",after:'your friend?',options:["Isn't she","Aren't she","Wasn't she","Weren't she"]},
+  {pt:'Você está ocupado?',before:'',blank:'Are you',after:'busy?',options:['Are you','Is you','Am you','Were you'],anchor:'tobe-interrogativo-past'},
+  {pt:'Ela está aqui?',before:'',blank:'Is she',after:'here?',options:['Is she','Are she','Was she','Am she'],anchor:'tobe-interrogativo-pres'},
+  {pt:'Eles são brasileiros?',before:'',blank:'Are they',after:'Brazilian?',options:['Are they','Is they','Were they','Am they'],anchor:'tobe-interrogativo-pres'},
+  {pt:'Você não está com fome?',before:'',blank:"Aren't you",after:'hungry?',options:["Aren't you","Isn't you","Wasn't you","Weren't you"],anchor:'tobe-interrogativo-pres'},
+  {pt:'Ela não é sua amiga?',before:'',blank:"Isn't she",after:'your friend?',options:["Isn't she","Aren't she","Wasn't she","Weren't she"],anchor:'tobe-interrogativo-pres'},
   // Passado afirmativo
-  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','is','was','were']},
-  {pt:'Ela estava cansada.',before:'She',blank:'was',after:'tired.',options:['is','was','were','will be']},
-  {pt:'Nós éramos amigos.',before:'We',blank:'were',after:'friends.',options:['are','was','were','will be']},
-  {pt:'O café estava quente.',before:'The coffee',blank:'was',after:'hot.',options:['is','was','were','will be']},
-  {pt:'Eles eram barulhentos.',before:'They',blank:'were',after:'very loud.',options:['are','was','were','will be']},
-  {pt:'Você estava dormindo.',before:'You',blank:'were',after:'sleeping.',options:['are','was','were','will be']},
-  {pt:'A festa estava ótima.',before:'The party',blank:'was',after:'great.',options:['is','was','were','will be']},
-  {pt:'Eu estava em casa ontem.',before:'I',blank:'was',after:'at home yesterday.',options:['am','was','were','will be']},
-  {pt:'O Jake estava atrasado.',before:'Jake',blank:'was',after:'late.',options:['is','was','were','will be']},
-  {pt:'As meninas estavam felizes.',before:'The girls',blank:'were',after:'happy.',options:['are','was','were','will be']},
+  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','is','was','were'],anchor:'tobe-passado'},
+  {pt:'Ela estava cansada.',before:'She',blank:'was',after:'tired.',options:['is','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'Nós éramos amigos.',before:'We',blank:'were',after:'friends.',options:['are','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'O café estava quente.',before:'The coffee',blank:'was',after:'hot.',options:['is','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'Eles eram barulhentos.',before:'They',blank:'were',after:'very loud.',options:['are','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'Você estava dormindo.',before:'You',blank:'were',after:'sleeping.',options:['are','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'A festa estava ótima.',before:'The party',blank:'was',after:'great.',options:['is','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'Eu estava em casa ontem.',before:'I',blank:'was',after:'at home yesterday.',options:['am','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'O Jake estava atrasado.',before:'Jake',blank:'was',after:'late.',options:['is','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'As meninas estavam felizes.',before:'The girls',blank:'were',after:'happy.',options:['are','was','were','will be'],anchor:'tobe-futuro'},
   // Passado negativo
-  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't","am not"]},
-  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't","aren't"]},
-  {pt:'O Jake não estava no trabalho.',before:'Jake',blank:"wasn't",after:'at work.',options:["wasn't","weren't","isn't","aren't"]},
-  {pt:'Nós não éramos do mesmo time.',before:'We',blank:"weren't",after:'on the same team.',options:["wasn't","weren't","isn't","aren't"]},
-  {pt:'Você não estava em casa.',before:'You',blank:"weren't",after:'at home.',options:["wasn't","weren't","isn't","aren't"]},
-  {pt:'A Megan não estava disponível.',before:'Megan',blank:"wasn't",after:'available.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't","am not"],anchor:'tobe-passado'},
+  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
+  {pt:'O Jake não estava no trabalho.',before:'Jake',blank:"wasn't",after:'at work.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
+  {pt:'Nós não éramos do mesmo time.',before:'We',blank:"weren't",after:'on the same team.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
+  {pt:'Você não estava em casa.',before:'You',blank:"weren't",after:'at home.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
+  {pt:'A Megan não estava disponível.',before:'Megan',blank:"wasn't",after:'available.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
   // Passado interrogativo
-  {pt:'Você estava dormindo?',before:'',blank:'Were you',after:'sleeping?',options:['Were you','Was you','Are you','Is you']},
-  {pt:'A Megan estava lá?',before:'',blank:'Was Megan',after:'there?',options:['Was Megan','Were Megan','Is Megan','Are Megan']},
-  {pt:'Eles estavam juntos?',before:'',blank:'Were they',after:'together?',options:['Were they','Was they','Are they','Is they']},
-  {pt:'Você não estava lá?',before:'',blank:"Weren't you",after:'there?',options:["Weren't you","Wasn't you","Aren't you","Isn't you"]},
-  {pt:'A festa não estava boa?',before:'',blank:"Wasn't the party",after:'good?',options:["Wasn't the party","Weren't the party","Isn't the party","Aren't the party"]},
+  {pt:'Você estava dormindo?',before:'',blank:'Were you',after:'sleeping?',options:['Were you','Was you','Are you','Is you'],anchor:'tobe-interrogativo-past'},
+  {pt:'A Megan estava lá?',before:'',blank:'Was Megan',after:'there?',options:['Was Megan','Were Megan','Is Megan','Are Megan'],anchor:'tobe-presente'},
+  {pt:'Eles estavam juntos?',before:'',blank:'Were they',after:'together?',options:['Were they','Was they','Are they','Is they'],anchor:'tobe-interrogativo-pres'},
+  {pt:'Você não estava lá?',before:'',blank:"Weren't you",after:'there?',options:["Weren't you","Wasn't you","Aren't you","Isn't you"],anchor:'tobe-interrogativo-pres'},
+  {pt:'A festa não estava boa?',before:'',blank:"Wasn't the party",after:'good?',options:["Wasn't the party","Weren't the party","Isn't the party","Aren't the party"],anchor:'tobe-interrogativo-pres'},
   // Futuro afirmativo
-  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be','were']},
-  {pt:'Ela vai estar aqui amanhã.',before:'She',blank:'will be',after:'here tomorrow.',options:['is','was','will be','were']},
-  {pt:'Eu vou estar disponível.',before:'I',blank:'will be',after:'available.',options:['am','was','will be','were']},
-  {pt:'Nós vamos estar juntos.',before:'We',blank:'will be',after:'together.',options:['are','was','will be','were']},
-  {pt:'O Ryan vai ser famoso.',before:'Ryan',blank:'will be',after:'famous.',options:['is','was','will be','were']},
-  {pt:'Eles vão estar prontos.',before:'They',blank:'will be',after:'ready.',options:['are','was','will be','were']},
+  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'Ela vai estar aqui amanhã.',before:'She',blank:'will be',after:'here tomorrow.',options:['is','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'Eu vou estar disponível.',before:'I',blank:'will be',after:'available.',options:['am','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'Nós vamos estar juntos.',before:'We',blank:'will be',after:'together.',options:['are','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'O Ryan vai ser famoso.',before:'Ryan',blank:'will be',after:'famous.',options:['is','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'Eles vão estar prontos.',before:'They',blank:'will be',after:'ready.',options:['are','was','will be','were'],anchor:'tobe-futuro'},
   // Futuro negativo
-  {pt:'Eu não vou estar disponível.',before:'I',blank:"won't be",after:'available.',options:["isn't","wasn't","won't be","weren't"]},
-  {pt:'Ela não vai estar aqui amanhã.',before:'She',blank:"won't be",after:'here tomorrow.',options:["isn't","wasn't","won't be","weren't"]},
-  {pt:'Nós não vamos estar prontos.',before:'We',blank:"won't be",after:'ready.',options:["aren't","weren't","won't be","isn't"]},
-  {pt:'O Jake não vai estar lá.',before:'Jake',blank:"won't be",after:'there.',options:["isn't","wasn't","won't be","weren't"]},
+  {pt:'Eu não vou estar disponível.',before:'I',blank:"won't be",after:'available.',options:["isn't","wasn't","won't be","weren't"],anchor:'tobe-futuro'},
+  {pt:'Ela não vai estar aqui amanhã.',before:'She',blank:"won't be",after:'here tomorrow.',options:["isn't","wasn't","won't be","weren't"],anchor:'tobe-futuro'},
+  {pt:'Nós não vamos estar prontos.',before:'We',blank:"won't be",after:'ready.',options:["aren't","weren't","won't be","isn't"],anchor:'tobe-futuro'},
+  {pt:'O Jake não vai estar lá.',before:'Jake',blank:"won't be",after:'there.',options:["isn't","wasn't","won't be","weren't"],anchor:'tobe-futuro'},
   // Futuro interrogativo
-  {pt:'Você vai estar pronto?',before:'',blank:'Will you be',after:'ready?',options:['Will you be','Are you','Were you','Would you be']},
-  {pt:'Ela vai estar aqui?',before:'',blank:'Will she be',after:'here?',options:['Will she be','Is she','Was she','Would she be']},
-  {pt:'Você não vai estar lá?',before:'',blank:"Won't you be",after:'there?',options:["Won't you be","Will you be","Aren't you","Weren't you"]},
-  {pt:'Eles não vão estar prontos?',before:'',blank:"Won't they be",after:'ready?',options:["Won't they be","Will they be","Aren't they","Weren't they"]},
+  {pt:'Você vai estar pronto?',before:'',blank:'Will you be',after:'ready?',options:['Will you be','Are you','Were you','Would you be'],anchor:'tobe-interrogativo-fut'},
+  {pt:'Ela vai estar aqui?',before:'',blank:'Will she be',after:'here?',options:['Will she be','Is she','Was she','Would she be'],anchor:'tobe-interrogativo-fut'},
+  {pt:'Você não vai estar lá?',before:'',blank:"Won't you be",after:'there?',options:["Won't you be","Will you be","Aren't you","Weren't you"],anchor:'tobe-interrogativo-fut'},
+  {pt:'Eles não vão estar prontos?',before:'',blank:"Won't they be",after:'ready?',options:["Won't they be","Will they be","Aren't they","Weren't they"],anchor:'tobe-interrogativo-fut'},
   // Abreviações presentes
-  {pt:'Eu estou feliz. (informal)',before:"I",blank:"'m",after:'happy.',options:["'m","'s","'re","'ll"]},
-  {pt:'Ela está cansada. (informal)',before:"She",blank:"'s",after:'tired.',options:["'m","'s","'re","'ll"]},
-  {pt:'Nós somos amigos. (informal)',before:"We",blank:"'re",after:'friends.',options:["'m","'s","'re","'ll"]},
+  {pt:'Eu estou feliz. (informal)',before:"I",blank:"'m",after:'happy.',options:["'m","'s","'re","'ll"],anchor:'tobe-presente'},
+  {pt:'Ela está cansada. (informal)',before:"She",blank:"'s",after:'tired.',options:["'m","'s","'re","'ll"],anchor:'tobe-presente'},
+  {pt:'Nós somos amigos. (informal)',before:"We",blank:"'re",after:'friends.',options:["'m","'s","'re","'ll"],anchor:'tobe-presente'},
   // Abreviação futuro
-  {pt:'Ela vai estar aqui. (informal)',before:"She",blank:"'ll be",after:'here.',options:["'m","'s","'re","'ll be"]},
+  {pt:'Ela vai estar aqui. (informal)',before:"She",blank:"'ll be",after:'here.',options:["'m","'s","'re","'ll be"],anchor:'tobe-presente'},
   // You singular e plural
-  {pt:'Você é legal.',before:'You',blank:'are',after:'nice.',options:['am','is','are','was']},
-  {pt:'Você não é legal.',before:'You',blank:"aren't",after:'nice.',options:["isn't","aren't","am not","wasn't"]},
-  {pt:'Você dois são legais.',before:'You two',blank:'are',after:'nice.',options:['am','is','are','was']},
+  {pt:'Você é legal.',before:'You',blank:'are',after:'nice.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Você não é legal.',before:'You',blank:"aren't",after:'nice.',options:["isn't","aren't","am not","wasn't"],anchor:'tobe-passado'},
+  {pt:'Você dois são legais.',before:'You two',blank:'are',after:'nice.',options:['am','is','are','was'],anchor:'tobe-passado'},
   // Extras variados
-  {pt:'O show está ótimo.',before:'The show',blank:'is',after:'great.',options:['am','is','are','was']},
-  {pt:'Os ingressos estão caros.',before:'The tickets',blank:'are',after:'expensive.',options:['am','is','are','was']},
-  {pt:'A comida estava deliciosa.',before:'The food',blank:'was',after:'delicious.',options:['is','was','were','will be']},
-  {pt:'Os meninos estavam brincando.',before:'The boys',blank:'were',after:'playing.',options:['are','was','were','will be']},
-  {pt:'A reunião vai ser importante.',before:'The meeting',blank:'will be',after:'important.',options:['is','was','will be','were']},
-  {pt:'Eu não estou com sono.',before:'I',blank:"am not",after:'sleepy.',options:['am not',"isn't","aren't","wasn't"]},
-  {pt:'Eles não estavam com fome.',before:'They',blank:"weren't",after:'hungry.',options:["wasn't","weren't","isn't","aren't"]},
-  {pt:'A nota não vai ser boa?',before:'',blank:"Won't the grade be",after:'good?',options:["Won't the grade be","Will the grade be","Isn't the grade","Wasn't the grade"]},
+  {pt:'O show está ótimo.',before:'The show',blank:'is',after:'great.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'Os ingressos estão caros.',before:'The tickets',blank:'are',after:'expensive.',options:['am','is','are','was'],anchor:'tobe-passado'},
+  {pt:'A comida estava deliciosa.',before:'The food',blank:'was',after:'delicious.',options:['is','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'Os meninos estavam brincando.',before:'The boys',blank:'were',after:'playing.',options:['are','was','were','will be'],anchor:'tobe-futuro'},
+  {pt:'A reunião vai ser importante.',before:'The meeting',blank:'will be',after:'important.',options:['is','was','will be','were'],anchor:'tobe-futuro'},
+  {pt:'Eu não estou com sono.',before:'I',blank:"am not",after:'sleepy.',options:['am not',"isn't","aren't","wasn't"],anchor:'tobe-passado'},
+  {pt:'Eles não estavam com fome.',before:'They',blank:"weren't",after:'hungry.',options:["wasn't","weren't","isn't","aren't"],anchor:'tobe-passado'},
+  {pt:'A nota não vai ser boa?',before:'',blank:"Won't the grade be",after:'good?',options:["Won't the grade be","Will the grade be","Isn't the grade","Wasn't the grade"],anchor:'tobe-interrogativo-fut'},
 ];
 window['adj_bk']=[
   // Ordem: adjetivo antes do substantivo
@@ -2889,12 +2897,14 @@ function goAndHighlight(pageIdx, targetId){
     // insert inline back btn right above the target element
     const btn=document.createElement('button');
     btn.id='inline-back-btn';
-    btn.innerHTML='← Voltar';
+    btn.innerHTML='← Voltar ao exercício';
     btn.onclick=goBack;
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
-    el.classList.add('highlight-pulse');
-    setTimeout(()=>el.classList.remove('highlight-pulse'),5000);
+    let target=el;
+    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('pg-body')){target=target.parentElement;}
+    target.classList.add('highlight-pulse');
+    setTimeout(()=>target.classList.remove('highlight-pulse'),5000);
   },350);
 }
 function goBack(){
