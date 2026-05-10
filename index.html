@@ -791,8 +791,19 @@ function checkPron(btn,val,correct){
   const s=pronS,fb=document.getElementById('pron-fb');
   const btns=document.querySelectorAll('#pron-body .opt-btn');
   if(btn.classList.contains('correct')||btn.classList.contains('wrong'))return;
-  if(val===correct){btn.classList.add('correct');fb.textContent='Certo! ✓';fb.className='game-feedback ok';btns.forEach(b=>b.style.pointerEvents='none');s.acertos++;setTimeout(()=>{s.cur++;renderPronGame();},900);}
-  else{btn.classList.add('wrong');fb.textContent='Tente de novo.';fb.className='game-feedback err';setTimeout(()=>btn.classList.remove('wrong'),600);}
+  if(val===correct){
+    btn.classList.add('correct');fb.textContent='Certo! ✓';fb.className='game-feedback ok';
+    btns.forEach(b=>b.style.pointerEvents='none');s.acertos++;
+    if(window.speechSynthesis){
+      window.speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(val);u.lang='en-US';u.rate=.85;
+      window.speechSynthesis.speak(u);
+    }
+    setTimeout(()=>{s.cur++;renderPronGame();},900);
+  } else {
+    btn.classList.add('wrong');fb.textContent='Tente de novo.';fb.className='game-feedback err';
+    setTimeout(()=>btn.classList.remove('wrong'),600);
+  }
 }
 
 /* ── EXERCISE ENGINE ── */
@@ -1174,48 +1185,7 @@ window['togo_bk']=[
   {pt:'Os alunos foram dedicados.',before:'The students',blank:'were',after:'dedicated.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'As meninas não foram à aula.',before:'The girls',blank:"didn't go",after:'to class.',options:["didn't go","weren't","went","goes"],anchor:'togo-went'},
 ];
-window['suj_bk']=[
-  {pt:'Eu comprei um celular novo.',before:'',blank:'I bought',after:'a new phone.',options:['I bought','Bought','She bought','They bought'],anchor:'suj-regra'},
-  {pt:'Ela comprou um celular novo.',before:'',blank:'She bought',after:'a new phone.',options:['She bought','Bought','I bought','He bought'],anchor:'suj-regra'},
-  {pt:'Eles compraram um celular novo.',before:'',blank:'They bought',after:'a new phone.',options:['They bought','Bought','She bought','I bought'],anchor:'suj-regra'},
-  {pt:'Ryan foi ao mercado.',before:'',blank:'Ryan went',after:'to the market.',options:['Ryan went','Went','He went','She went'],anchor:'suj-regra'},
-  {pt:'Megan e Jake foram ao mercado.',before:'',blank:'Megan and Jake went',after:'to the market.',options:['Megan and Jake went','Went','He went','They went'],anchor:'suj-regra'},
-  {pt:'Nós comemos pizza.',before:'',blank:'We ate',after:'pizza.',options:['We ate','Ate','They ate','I ate'],anchor:'suj-regra'},
-  {pt:'Ela estudou muito.',before:'',blank:'She studied',after:'a lot.',options:['She studied','Studied','He studied','They studied'],anchor:'suj-regra'},
-  {pt:'Douglas gravou um vídeo.',before:'',blank:'Douglas recorded',after:'a video.',options:['Douglas recorded','Recorded','He recorded','They recorded'],anchor:'suj-regra'},
-  {pt:'Eu vou viajar amanhã.',before:'',blank:'I will travel',after:'tomorrow.',options:['I will travel','Will travel','She will travel','We will travel'],anchor:'suj-regra'},
-  {pt:'Eles vão trabalhar amanhã.',before:'',blank:'They will work',after:'tomorrow.',options:['They will work','Will work','She will work','I will work'],anchor:'suj-regra'},
-  {pt:'Raphael vai ao aeroporto amanhã.',before:'',blank:'Raphael will go',after:'to the airport tomorrow.',options:['Raphael will go','Will go','He will go','They will go'],anchor:'suj-regra'},
-  {pt:'Camila saiu cedo.',before:'',blank:'Camila left',after:'early.',options:['Camila left','Left','She left','He left'],anchor:'suj-regra'},
-  {pt:'Jake e Taylor viajaram juntos.',before:'',blank:'Jake and Taylor traveled',after:'together.',options:['Jake and Taylor traveled','Traveled','They traveled','He traveled'],anchor:'suj-regra'},
-  {pt:'Eu dormi tarde.',before:'',blank:'I slept',after:'late.',options:['I slept','Slept','She slept','We slept'],anchor:'suj-regra'},
-  {pt:'Megan ligou para mim.',before:'',blank:'Megan called',after:'me.',options:['Megan called','Called','She called','He called'],anchor:'suj-regra'},
-  {pt:'Nós chegamos cedo.',before:'',blank:'We arrived',after:'early.',options:['We arrived','Arrived','She arrived','They arrived'],anchor:'suj-regra'},
-  {pt:'Eles mandaram uma mensagem.',before:'',blank:'They sent',after:'a message.',options:['They sent','Sent','She sent','I sent'],anchor:'suj-regra'},
-  {pt:'Josh ganhou o jogo.',before:'',blank:'Josh won',after:'the game.',options:['Josh won','Won','He won','They won'],anchor:'suj-regra'},
-  {pt:'Ela vai responder amanhã.',before:'',blank:'She will answer',after:'tomorrow.',options:['She will answer','Will answer','I will answer','They will answer'],anchor:'suj-regra'},
-  {pt:'Eu fui ao banco.',before:'',blank:'I went',after:'to the bank.',options:['I went','Went','She went','We went'],anchor:'suj-regra'},
-  {pt:'Eles foram ao show.',before:'',blank:'They went',after:'to the show.',options:['They went','Went','She went','I went'],anchor:'suj-regra'},
-  {pt:'Ashley abriu a janela.',before:'',blank:'Ashley opened',after:'the window.',options:['Ashley opened','Opened','He opened','They opened'],anchor:'suj-regra'},
-  {pt:'Nós jogamos futebol.',before:'',blank:'We played',after:'football.',options:['We played','Played','She played','I played'],anchor:'suj-regra'},
-  {pt:'Raphael vendeu o carro.',before:'',blank:'Raphael sold',after:'the car.',options:['Raphael sold','Sold','He sold','They sold'],anchor:'suj-regra'},
-  {pt:'Eu comprei um presente.',before:'',blank:'I bought',after:'a gift.',options:['I bought','Bought','She bought','We bought'],anchor:'suj-regra'},
-  {pt:'Taylor escreveu uma música.',before:'',blank:'Taylor wrote',after:'a song.',options:['Taylor wrote','Wrote','He wrote','They wrote'],anchor:'suj-regra'},
-  {pt:'Ela vai morar em Londres.',before:'',blank:'She will live',after:'in London.',options:['She will live','Will live','I will live','They will live'],anchor:'suj-regra'},
-  {pt:'Eles vão ganhar o jogo.',before:'',blank:'They will win',after:'the game.',options:['They will win','Will win','She will win','I will win'],anchor:'suj-regra'},
-  {pt:'Megan cozinhou para a família.',before:'',blank:'Megan cooked',after:'for her family.',options:['Megan cooked','Cooked','She cooked','He cooked'],anchor:'suj-regra'},
-  {pt:'Douglas vai tocar no show.',before:'',blank:'Douglas will play',after:'at the show.',options:['Douglas will play','Will play','He will play','They will play'],anchor:'suj-regra'},
-  {pt:'Nós vamos estudar juntos.',before:'',blank:'We will study',after:'together.',options:['We will study','Will study','She will study','I will study'],anchor:'suj-regra'},
-  {pt:'Jake correu a maratona.',before:'',blank:'Jake ran',after:'the marathon.',options:['Jake ran','Ran','He ran','They ran'],anchor:'suj-regra'},
-  {pt:'Ela dormiu cedo.',before:'',blank:'She slept',after:'early.',options:['She slept','Slept','I slept','They slept'],anchor:'suj-regra'},
-  {pt:'Eu terminei o projeto.',before:'',blank:'I finished',after:'the project.',options:['I finished','Finished','She finished','We finished'],anchor:'suj-regra'},
-  {pt:'Renato viajou para o Japão.',before:'',blank:'Renato traveled',after:'to Japan.',options:['Renato traveled','Traveled','He traveled','They traveled'],anchor:'suj-regra'},
-  {pt:'Elas assistiram o show.',before:'',blank:'They watched',after:'the show.',options:['They watched','Watched','She watched','I watched'],anchor:'suj-regra'},
-  {pt:'Ashley vai abrir uma empresa.',before:'',blank:'Ashley will open',after:'a company.',options:['Ashley will open','Will open','She will open','He will open'],anchor:'suj-regra'},
-  {pt:'Eu perdi o ônibus.',before:'',blank:'I missed',after:'the bus.',options:['I missed','Missed','She missed','We missed'],anchor:'suj-regra'},
-  {pt:'Eles vão se mudar.',before:'',blank:'They will move',after:'.',options:['They will move','Will move','She will move','I will move'],anchor:'suj-regra'},
-  {pt:'Ryan fechou o negócio.',before:'',blank:'Ryan closed',after:'the deal.',options:['Ryan closed','Closed','He closed','They closed'],anchor:'suj-regra'},
-];
+
 window['rev2_bk']=[
   // Presente — base I/You/We/They → presente-base
   {pt:'Eu acordo cedo toda semana.',before:'I',blank:'wake up',after:'early every week.',options:['wake up','wakes up','woke up','will wake up'],anchor:'20:presente-base'},
@@ -1349,29 +1319,7 @@ window['fut_bk']=[
   {pt:'Camila vai visitar a família.',before:'Camila',blank:'will visit',after:'her family.',options:['will visit','visits','visited','visit']},
   {pt:'Douglas não vai ao show semana que vem.',before:'Douglas',blank:"won't go",after:'to the show next week.',options:["won't go","doesn't go","didn't go","not go"]},
 ];
-window['suj_bk']=[
-  {pt:'Eu comprei um celular novo.',before:'',blank:'I bought',after:'a new phone.',options:['I bought','Bought','She bought','They bought']},
-  {pt:'Ela comprou um celular novo.',before:'',blank:'She bought',after:'a new phone.',options:['She bought','Bought','I bought','He bought']},
-  {pt:'Eles compraram um celular novo.',before:'',blank:'They bought',after:'a new phone.',options:['They bought','Bought','She bought','I bought']},
-  {pt:'Ryan foi ao mercado.',before:'',blank:'Ryan went',after:'to the market.',options:['Ryan went','Went','He went','She went']},
-  {pt:'Megan e Jake foram ao mercado.',before:'',blank:'Megan and Jake went',after:'to the market.',options:['Megan and Jake went','Went','He went','They went']},
-  {pt:'Nós comemos pizza.',before:'',blank:'We ate',after:'pizza.',options:['We ate','Ate','They ate','I ate']},
-  {pt:'Ela estudou muito.',before:'',blank:'She studied',after:'a lot.',options:['She studied','Studied','He studied','They studied']},
-  {pt:'Douglas gravou um vídeo.',before:'',blank:'Douglas recorded',after:'a video.',options:['Douglas recorded','Recorded','He recorded','They recorded']},
-  {pt:'Eu vou viajar amanhã.',before:'',blank:'I will travel',after:'tomorrow.',options:['I will travel','Will travel','She will travel','We will travel']},
-  {pt:'Eles vão trabalhar amanhã.',before:'',blank:'They will work',after:'tomorrow.',options:['They will work','Will work','She will work','I will work']},
-  {pt:'Raphael vai ao aeroporto amanhã.',before:'',blank:'Raphael will go',after:'to the airport tomorrow.',options:['Raphael will go','Will go','He will go','They will go']},
-  {pt:'Camila saiu cedo.',before:'',blank:'Camila left',after:'early.',options:['Camila left','Left','She left','He left']},
-  {pt:'Jake e Taylor viajaram juntos.',before:'',blank:'Jake and Taylor traveled',after:'together.',options:['Jake and Taylor traveled','Traveled','They traveled','He traveled']},
-  {pt:'Eu dormi tarde.',before:'',blank:'I slept',after:'late.',options:['I slept','Slept','She slept','We slept']},
-  {pt:'Megan ligou para mim.',before:'',blank:'Megan called',after:'me.',options:['Megan called','Called','She called','He called']},
-  {pt:'Nós chegamos cedo.',before:'',blank:'We arrived',after:'early.',options:['We arrived','Arrived','She arrived','They arrived']},
-  {pt:'Eles mandaram uma mensagem.',before:'',blank:'They sent',after:'a message.',options:['They sent','Sent','She sent','I sent']},
-  {pt:'Josh ganhou o jogo.',before:'',blank:'Josh won',after:'the game.',options:['Josh won','Won','He won','They won']},
-  {pt:'Ela vai responder amanhã.',before:'',blank:'She will answer',after:'tomorrow.',options:['She will answer','Will answer','I will answer','They will answer']},
-  {pt:'Eu fui ao banco.',before:'',blank:'I went',after:'to the bank.',options:['I went','Went','She went','We went']},
-  {pt:'Eles foram ao show.',before:'',blank:'They went',after:'to the show.',options:['They went','Went','She went','I went']},
-];
+
 window['ing_bk']=[
   {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran'],anchor:'ing-regras'},
   {pt:'Ela está assistindo um filme.',before:'She is',blank:'watching',after:'a movie.',options:['watching','watch','watched','to watch'],anchor:'ing-regras'},
@@ -3015,7 +2963,7 @@ const pages=[
         <div class="eg-row"><span class="eg-pt">Nós jogamos videogame.</span><span class="eg-en" data-speak="We played videogame"><strong>We</strong> played videogame. ✅</span></div>
       </div>
     </div>
-    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Sujeito Oculto — exercício</span><span class="ex-score" id="suj-score">0/10</span></div><div class="ex-body" id="suj-body"></div></div>
+    
   </div>
 </div>`,
 
@@ -3024,7 +2972,7 @@ const pages=[
     <div class="rev-big-icon">☕</div>
     <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
     <div class="rev-big-line"></div>
-    <div class="rev-big-desc">Fim do Capítulo 2 — presente, passado, futuro, to go e sujeito oculto.</div>
+    <div class="rev-big-desc">Fim do Capítulo 2 — presente, passado, futuro e to go.</div>
   </div>
   <div class="pg-body">
     <p class="intro">Exercício com todas as matérias do Capítulo 2. Cada rodada sorteia perguntas diferentes.</p>
@@ -3117,7 +3065,6 @@ function go(i){
   if(cur===22)initEx('past',window['past_bk'],10);
   if(cur===24)initEx('fut',window['fut_bk'],10);
   if(cur===26)initEx('togo',window['togo_bk'],10);
-  if(cur===28)initEx('suj',window['suj_bk'],10);
   if(cur===29)initEx('rev2',window['rev2_bk'],15);
 }
 document.addEventListener('keydown',e=>{
