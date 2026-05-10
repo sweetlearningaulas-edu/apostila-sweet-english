@@ -793,6 +793,7 @@ function renderEx(id,bank,total){
   if(!body)return;
   if(c>=tot){const p=Math.round((s.acertos/tot)*100);body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div><button class="ex-restart" onclick="initEx('${id}',window['${id}_bk'],${total})">Tentar de novo</button></div>`;score.textContent=`${s.acertos}/${tot}`;return;}
   const item=s.items[c],opts=shuffle(item.options);
+  s.curQ=item;
   body.innerHTML=`<div class="ex-sentence"><div class="ex-pt2">${item.pt}</div><div class="ex-en-blank">${item.before} <span class="blank" id="${id}-bl">___</span> ${item.after}</div></div><div class="ex-options">${opts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${item.blank.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div><button class="ex-next" id="${id}-nx" onclick="nextEx('${id}',window['${id}_bk'],${total})">Próxima →</button>`;
   score.textContent=`${s.acertos}/${tot}`;
 }
@@ -801,8 +802,59 @@ function checkOpt(id,btn,val,correct){
   const fb=document.getElementById(id+'-fb'),bl=document.getElementById(id+'-bl');
   const btns=document.querySelectorAll(`#${id}-body .opt-btn`);
   if(btn.classList.contains('correct')||btn.classList.contains('wrong'))return;
-  if(val===correct){btn.classList.add('correct');bl.textContent=val;bl.style.color='var(--green)';fb.textContent='Certo! ✓';fb.className='ex-feedback ok';if(!s.erroAtual)s.acertos++;btns.forEach(b=>b.style.pointerEvents='none');document.getElementById(id+'-nx').style.display='block';}
-  else{btn.classList.add('wrong');fb.textContent='Não é esse. Tente de novo.';fb.className='ex-feedback err';s.erroAtual=true;setTimeout(()=>btn.classList.remove('wrong'),600);}
+  // Find current question for anchor and audio
+  const bank=window[id+'_bk'];
+  const q=bank?shuffle(bank).slice(0,s.total)[s.cur]:null;
+  if(val===correct){
+    btn.classList.add('correct');bl.textContent=val;bl.style.color='var(--green)';
+    fb.textContent='Certo! ✓';fb.className='ex-feedback ok';
+    if(!s.erroAtual)s.acertos++;
+    btns.forEach(b=>b.style.pointerEvents='none');
+    document.getElementById(id+'-nx').style.display='block';
+    // Remove explain button if exists
+    const old=document.getElementById('ex-explain-btn');if(old)old.remove();
+    // Speak correct answer
+    if(window.speechSynthesis){
+      const sentence=((s.curQ.before?s.curQ.before+' ':'')+val+(s.curQ.after?' '+s.curQ.after:'')).trim();
+      window.speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(sentence);u.lang='en-US';u.rate=.85;
+      window.speechSynthesis.speak(u);
+    }
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent='Não é esse. Tente de novo.';fb.className='ex-feedback err';
+    s.erroAtual=true;
+    setTimeout(()=>btn.classList.remove('wrong'),600);
+    // Show explain button if question has anchor
+    const old=document.getElementById('ex-explain-btn');if(old)old.remove();
+    if(s.curQ&&s.curQ.anchor){
+      const expBtn=document.createElement('button');
+      expBtn.id='ex-explain-btn';expBtn.className='ex-explain-btn';
+      expBtn.textContent='Ver explicação →';
+      expBtn.onclick=()=>scrollAndHighlight(s.curQ.anchor);
+      fb.parentNode.insertBefore(expBtn,fb.nextSibling);
+    }
+  }
+}
+function scrollAndHighlight(anchor){
+  const parts=anchor.split(':');
+  if(parts.length===2){
+    goAndHighlight(parseInt(parts[0]),parts[1]);
+  } else {
+    const el=document.getElementById(parts[0]);if(!el)return;
+    const old=document.getElementById('inline-back-btn');if(old)old.remove();
+    const btn=document.createElement('button');
+    btn.id='inline-back-btn';btn.innerHTML='← Voltar ao exercício';btn.className='inline-back-btn';
+    btn.onclick=()=>{
+      btn.remove();
+      const exEl=document.getElementById(window.exS?window.exS.id+'-body':'');
+      if(exEl)exEl.scrollIntoView({behavior:'smooth',block:'center'});
+    };
+    el.parentNode.insertBefore(btn,el);
+    btn.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.add('highlight-pulse');
+    setTimeout(()=>el.classList.remove('highlight-pulse'),5000);
+  }
 }
 function nextEx(id,bank,total){window[id+'_s'].cur++;window[id+'_s'].erroAtual=false;renderEx(id,bank,total);}
 
