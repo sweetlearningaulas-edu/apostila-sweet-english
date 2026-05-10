@@ -359,6 +359,7 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .tl-result-row:last-child{margin-bottom:0;}
 .tl-speak-btn{background:none;border:none;font-size:16px;cursor:pointer;flex-shrink:0;padding:0;line-height:1;opacity:.7;transition:opacity .2s;}
 .tl-speak-btn:hover{opacity:1;}
+.ex-explain-btn{background:none;border:none;color:var(--acc,var(--blue));font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;padding:6px 0 0;display:block;text-decoration:underline;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -669,6 +670,74 @@ const gBank=[
   {words:['Douglas','está','jogando','videogame'],verb:'está',alsoVerbs:['jogando']},
   {words:['Eu','vou','pedir','um','iFood'],verb:'vou',alsoVerbs:['pedir']},
   {words:['A','Taylor','escreve','músicas','incríveis'],verb:'escreve'},
+  {words:['A','Camila','começou','a','estudar','inglês'],verb:'começou',alsoVerbs:['estudar']},
+  {words:['O','Douglas','parou','de','fumar'],verb:'parou',alsoVerbs:['fumar']},
+  {words:['Eles','foram','ao','shopping','ontem'],verb:'foram'},
+  {words:['A','Ashley','adora','tomar','café','pela','manhã'],verb:'adora',alsoVerbs:['tomar']},
+  {words:['O','Ryan','perdeu','o','celular','na','festa'],verb:'perdeu'},
+  {words:['Nós','vamos','jantar','fora','hoje'],verb:'vamos',alsoVerbs:['jantar']},
+  {words:['A','Megan','está','trabalhando','em','casa'],verb:'está',alsoVerbs:['trabalhando']},
+  {words:['O','Jake','vendeu','o','carro'],verb:'vendeu'},
+  {words:['Eu','preciso','ligar','para','ela'],verb:'preciso',alsoVerbs:['ligar']},
+  {words:['A','Taylor','gravou','um','vídeo','novo'],verb:'gravou'},
+  {words:['O','Renato','chegou','atrasado','na','reunião'],verb:'chegou'},
+  {words:['Ela','tentou','abrir','a','porta'],verb:'tentou',alsoVerbs:['abrir']},
+  {words:['O','Josh','esqueceu','de','responder','a','mensagem'],verb:'esqueceu',alsoVerbs:['responder']},
+  {words:['Nós','saímos','cedo','hoje'],verb:'saímos'},
+  {words:['A','Camila','quer','aprender','a','tocar','violão'],verb:'quer',alsoVerbs:['aprender','tocar']},
+  {words:['O','Douglas','está','gravando','um','álbum'],verb:'está',alsoVerbs:['gravando']},
+  {words:['Eles','decidiram','viajar','nas','férias'],verb:'decidiram',alsoVerbs:['viajar']},
+  {words:['A','Ashley','mandou','flores','para','a','amiga'],verb:'mandou'},
+  {words:['Eu','vou','sair','mais','cedo'],verb:'vou',alsoVerbs:['sair']},
+  {words:['O','Ryan','terminou','o','projeto','ontem'],verb:'terminou'},
+  {words:['A','Megan','resolveu','cozinhar','em','casa'],verb:'resolveu',alsoVerbs:['cozinhar']},
+  {words:['O','Jake','ficou','em','casa','o','dia','todo'],verb:'ficou'},
+  {words:['Raphael','viajou','para','Nova','Iorque'],verb:'viajou'},
+  {words:['Ela','gosta','de','ouvir','música','no','trabalho'],verb:'gosta',alsoVerbs:['ouvir']},
+  {words:['Nós','precisamos','resolver','isso','hoje'],verb:'precisamos',alsoVerbs:['resolver']},
+  {words:['O','Josh','abriu','a','janela','da','sala'],verb:'abriu'},
+  {words:['A','Taylor','foi','ao','mercado','cedo'],verb:'foi'},
+  {words:['Eu','acabei','de','chegar','em','casa'],verb:'acabei',alsoVerbs:['chegar']},
+  {words:['O','Douglas','ensaiou','a','música','nova'],verb:'ensaiou'},
+  {words:['A','Ashley','aceitou','o','convite'],verb:'aceitou'},
+  {words:['Eles','estão','esperando','o','ônibus'],verb:'estão',alsoVerbs:['esperando']},
+  {words:['O','Ryan','esqueceu','de','trazer','o','contrato'],verb:'esqueceu',alsoVerbs:['trazer']},
+  {words:['Camila','passou','horas','estudando'],verb:'passou',alsoVerbs:['estudando']},
+  {words:['O','Jake','tocou','guitarra','na','festa'],verb:'tocou'},
+  {words:['Ela','prometeu','ligar','mais','cedo'],verb:'prometeu',alsoVerbs:['ligar']},
+  {words:['Nós','fomos','à','praia','no','feriado'],verb:'fomos'},
+  {words:['O','Josh','demorou','para','responder'],verb:'demorou',alsoVerbs:['responder']},
+  {words:['A','Megan','começou','a','malhar','todo','dia'],verb:'começou',alsoVerbs:['malhar']},
+  {words:['Raphael','resolveu','comprar','um','apartamento'],verb:'resolveu',alsoVerbs:['comprar']},
+  {words:['A','Taylor','está','aprendendo','a','dirigir'],verb:'está',alsoVerbs:['aprendendo','dirigir']},
+  {words:['Eu','terminei','de','ler','o','livro'],verb:'terminei',alsoVerbs:['ler']},
+  {words:['O','Douglas','fechou','o','negócio'],verb:'fechou'},
+  {words:['Eles','adoram','jogar','videogame','juntos'],verb:'adoram',alsoVerbs:['jogar']},
+  {words:['A','Ashley','voltou','de','viagem','ontem'],verb:'voltou'},
+  {words:['O','Ryan','contratou','um','assistente'],verb:'contratou'},
+  {words:['Ela','acordou','tarde','hoje'],verb:'acordou'},
+  {words:['Nós','combinamos','de','nos','encontrar'],verb:'combinamos',alsoVerbs:['encontrar']},
+  {words:['O','Jake','lembrou','de','pagar','a','conta'],verb:'lembrou',alsoVerbs:['pagar']},
+  {words:['A','Camila','entrou','na','faculdade'],verb:'entrou'},
+  {words:['Josh','ganhou','um','prêmio','ontem'],verb:'ganhou'},
+  {words:['Ela','continua','estudando','todo','dia'],verb:'continua',alsoVerbs:['estudando']},
+  {words:['O','Renato','deixou','o','celular','em','casa'],verb:'deixou'},
+  {words:['A','Megan','desistiu','de','esperar'],verb:'desistiu',alsoVerbs:['esperar']},
+  {words:['Raphael','conseguiu','o','emprego','dos','sonhos'],verb:'conseguiu'},
+  {words:['A','Taylor','riu','muito','na','festa'],verb:'riu'},
+  {words:['Eu','resolvi','largar','tudo'],verb:'resolvi',alsoVerbs:['largar']},
+  {words:['O','Douglas','treina','todos','os','dias'],verb:'treina'},
+  {words:['Eles','pararam','de','reclamar'],verb:'pararam',alsoVerbs:['reclamar']},
+  {words:['A','Ashley','criou','uma','conta','nova'],verb:'criou'},
+  {words:['O','Ryan','avisou','todo','mundo'],verb:'avisou'},
+  {words:['Ela','conseguiu','dormir','bem','ontem'],verb:'conseguiu',alsoVerbs:['dormir']},
+  {words:['Nós','resolvemos','mudar','de','planos'],verb:'resolvemos',alsoVerbs:['mudar']},
+  {words:['O','Jake','parou','o','carro','na','esquina'],verb:'parou'},
+  {words:['A','Camila','ensinou','inglês','para','o','sobrinho'],verb:'ensinou'},
+  {words:['Josh','lançou','um','podcast','novo'],verb:'lançou'},
+  {words:['Ela','chegou','cedo','para','a','reunião'],verb:'chegou'},
+  {words:['O','Douglas','comprou','um','microfone','novo'],verb:'comprou'},
+  {words:['Raphael','decidiu','morar','no','exterior'],verb:'decidiu',alsoVerbs:['morar']},
 ];
 let gS={};
 function initGame(){gS={frases:shuffle(gBank).slice(0,6),cur:0,acertos:0,erroAtual:false};renderGame();}
@@ -1071,146 +1140,369 @@ window['suj_bk']=[
   {pt:'Eles foram ao show.',before:'',blank:'They went',after:'to the show.',options:['They went','Went','She went','I went']},
 ];
 window['ing_bk']=[
-  {pt:'dormindo',before:'',blank:'sleeping',after:'',options:['sleeping','sleepping','sleepying']},
-  {pt:'comendo',before:'',blank:'eating',after:'',options:['eating','eatting','eatying']},
-  {pt:'jogando',before:'',blank:'playing',after:'',options:['playing','playying','plaing']},
-  {pt:'correndo',before:'',blank:'running',after:'',options:['running','runing','runying']},
-  {pt:'fazendo',before:'',blank:'making',after:'',options:['making','makeing','makking']},
-  {pt:'sentando',before:'',blank:'sitting',after:'',options:['sitting','siting','seating']},
-  {pt:'escrevendo',before:'',blank:'writing',after:'',options:['writing','writeing','writting']},
-  {pt:'trabalhando',before:'',blank:'working',after:'',options:['working','workking','workying']},
-  {pt:'nadando',before:'',blank:'swimming',after:'',options:['swimming','swiming','swimying']},
-  {pt:'dançando',before:'',blank:'dancing',after:'',options:['dancing','danceing','dansing']},
-  {pt:'estudando',before:'',blank:'studying',after:'',options:['studying','studding','studiing']},
-  {pt:'dirigindo',before:'',blank:'driving',after:'',options:['driving','driveing','drving']},
-  {pt:'batendo',before:'',blank:'hitting',after:'',options:['hitting','hiting','hitying']},
-  {pt:'falando',before:'',blank:'talking',after:'',options:['talking','talkking','takeing']},
-  {pt:'vindo',before:'',blank:'coming',after:'',options:['coming','comeing','comming']},
-  {pt:'cantando',before:'',blank:'singing',after:'',options:['singing','singeing','singingg']},
-  {pt:'lendo',before:'',blank:'reading',after:'',options:['reading','readding','readying']},
-  {pt:'cozinhando',before:'',blank:'cooking',after:'',options:['cooking','cookking','cookying']},
-  {pt:'ouvindo',before:'',blank:'listening',after:'',options:['listening','listenning','listeening']},
-  {pt:'abrindo',before:'',blank:'opening',after:'',options:['opening','openning','opeing']},
-  {pt:'fechando',before:'',blank:'closing',after:'',options:['closing','closeing','clozing']},
-  {pt:'assistindo',before:'',blank:'watching',after:'',options:['watching','watchhing','waching']},
-  {pt:'pensando',before:'',blank:'thinking',after:'',options:['thinking','thinkking','thinkying']},
-  {pt:'andando',before:'',blank:'walking',after:'',options:['walking','walkking','walkying']},
-  {pt:'gritando',before:'',blank:'screaming',after:'',options:['screaming','screamming','screameing']},
+  {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran']},
+  {pt:'Ela está assistindo um filme.',before:'She is',blank:'watching',after:'a movie.',options:['watching','watch','watched','to watch']},
+  {pt:'Eles estão jogando videogame.',before:'They are',blank:'playing',after:'videogame.',options:['playing','play','played','to play']},
+  {pt:'Douglas está gravando uma música.',before:'Douglas is',blank:'recording',after:'a song.',options:['recording','record','recorded','to record']},
+  {pt:'Nós estamos comendo pizza.',before:'We are',blank:'eating',after:'pizza.',options:['eating','eat','ate','to eat']},
+  {pt:'O Ryan está trabalhando de casa.',before:'Ryan is',blank:'working',after:'from home.',options:['working','work','worked','to work']},
+  {pt:'A Ashley está estudando inglês.',before:'Ashley is',blank:'studying',after:'English.',options:['studying','study','studied','to study']},
+  {pt:'Camila está dirigindo agora.',before:'Camila is',blank:'driving',after:'right now.',options:['driving','drive','drove','to drive']},
+  {pt:'Eles estavam conversando na sala.',before:'They were',blank:'talking',after:'in the living room.',options:['talking','talk','talked','to talk']},
+  {pt:'Eu estava dormindo quando você ligou.',before:'I was',blank:'sleeping',after:'when you called.',options:['sleeping','sleep','slept','to sleep']},
+  {pt:'A Taylor está cantando no chuveiro.',before:'Taylor is',blank:'singing',after:'in the shower.',options:['singing','sing','sang','to sing']},
+  {pt:'O Jake está treinando agora.',before:'Jake is',blank:'training',after:'right now.',options:['training','train','trained','to train']},
+  {pt:'Nós estávamos rindo muito.',before:'We were',blank:'laughing',after:'a lot.',options:['laughing','laugh','laughed','to laugh']},
+  {pt:'Ela está lendo um livro.',before:'She is',blank:'reading',after:'a book.',options:['reading','read','read','to read']},
+  {pt:'Megan está cozinhando agora.',before:'Megan is',blank:'cooking',after:'right now.',options:['cooking','cook','cooked','to cook']},
+  {pt:'O Josh está digitando a mensagem.',before:'Josh is',blank:'typing',after:'the message.',options:['typing','type','typed','to type']},
+  {pt:'Raphael está viajando esta semana.',before:'Raphael is',blank:'traveling',after:'this week.',options:['traveling','travel','traveled','to travel']},
+  {pt:'Eu estou ouvindo música.',before:'I am',blank:'listening to',after:'music.',options:['listening to','listen to','listened to','to listen to']},
+  {pt:'A Ashley está dançando na festa.',before:'Ashley is',blank:'dancing',after:'at the party.',options:['dancing','dance','danced','to dance']},
+  {pt:'Eles estão chegando agora.',before:'They are',blank:'arriving',after:'now.',options:['arriving','arrive','arrived','to arrive']},
+  {pt:'O Douglas estava ensaiando ontem.',before:'Douglas was',blank:'rehearsing',after:'yesterday.',options:['rehearsing','rehearse','rehearsed','to rehearse']},
+  {pt:'Ela está mandando uma mensagem.',before:'She is',blank:'sending',after:'a message.',options:['sending','send','sent','to send']},
+  {pt:'Nós estamos assistindo um jogo.',before:'We are',blank:'watching',after:'a game.',options:['watching','watch','watched','to watch']},
+  {pt:'Ryan está dirigindo para o trabalho.',before:'Ryan is',blank:'driving',after:'to work.',options:['driving','drive','drove','to drive']},
+  {pt:'A Camila estava chorando.',before:'Camila was',blank:'crying',after:'.',options:['crying','cry','cried','to cry']},
+  {pt:'Jake está esperando o ônibus.',before:'Jake is',blank:'waiting for',after:'the bus.',options:['waiting for','wait for','waited for','to wait for']},
+  {pt:'Eu estou tentando dormir.',before:'I am',blank:'trying',after:'to sleep.',options:['trying','try','tried','to try']},
+  {pt:'Eles estão construindo uma casa.',before:'They are',blank:'building',after:'a house.',options:['building','build','built','to build']},
+  {pt:'A Megan está escrevendo um e-mail.',before:'Megan is',blank:'writing',after:'an email.',options:['writing','write','wrote','to write']},
+  {pt:'O Josh estava bebendo água.',before:'Josh was',blank:'drinking',after:'water.',options:['drinking','drink','drank','to drink']},
+  {pt:'Eu estou aprendendo a cozinhar.',before:'I am',blank:'learning',after:'to cook.',options:['learning','learn','learned','to learn']},
+  {pt:'A Taylor está pintando a parede.',before:'Taylor is',blank:'painting',after:'the wall.',options:['painting','paint','painted','to paint']},
+  {pt:'Raphael está correndo na esteira.',before:'Raphael is',blank:'running',after:'on the treadmill.',options:['running','run','ran','to run']},
+  {pt:'Nós estamos planejando uma viagem.',before:'We are',blank:'planning',after:'a trip.',options:['planning','plan','planned','to plan']},
+  {pt:'Ela estava gritando muito.',before:'She was',blank:'screaming',after:'a lot.',options:['screaming','scream','screamed','to scream']},
+  {pt:'O Ryan está comprando mantimentos.',before:'Ryan is',blank:'buying',after:'groceries.',options:['buying','buy','bought','to buy']},
+  {pt:'Jake está jogando futebol agora.',before:'Jake is',blank:'playing',after:'football now.',options:['playing','play','played','to play']},
+  {pt:'Eu estou fazendo o dever.',before:'I am',blank:'doing',after:'the homework.',options:['doing','do','did','to do']},
+  {pt:'A Ashley estava lendo a mensagem.',before:'Ashley was',blank:'reading',after:'the message.',options:['reading','read','read','to read']},
+  {pt:'Douglas está postando um vídeo.',before:'Douglas is',blank:'posting',after:'a video.',options:['posting','post','posted','to post']},
+  {pt:'Eles estão saindo agora.',before:'They are',blank:'leaving',after:'now.',options:['leaving','leave','left','to leave']},
+  {pt:'A Megan estava sorrindo muito.',before:'Megan was',blank:'smiling',after:'a lot.',options:['smiling','smile','smiled','to smile']},
+  {pt:'Eu estou ligando para ela agora.',before:'I am',blank:'calling',after:'her now.',options:['calling','call','called','to call']},
+  {pt:'O Josh está abrindo a janela.',before:'Josh is',blank:'opening',after:'the window.',options:['opening','open','opened','to open']},
+  {pt:'A Camila está pedindo iFood.',before:'Camila is',blank:'ordering',after:'iFood.',options:['ordering','order','ordered','to order']},
+  {pt:'Raphael estava pensando em você.',before:'Raphael was',blank:'thinking about',after:'you.',options:['thinking about','think about','thought about','to think about']},
+  {pt:'Ela está usando o celular.',before:'She is',blank:'using',after:'her phone.',options:['using','use','used','to use']},
+  {pt:'Nós estamos esperando a resposta.',before:'We are',blank:'waiting for',after:'the answer.',options:['waiting for','wait for','waited for','to wait for']},
+  {pt:'O Ryan estava dormindo no sofá.',before:'Ryan was',blank:'sleeping',after:'on the couch.',options:['sleeping','sleep','slept','to sleep']},
+  {pt:'Taylor está tocando piano agora.',before:'Taylor is',blank:'playing',after:'piano now.',options:['playing','play','played','to play']},
+  {pt:'Eu estou tentando resolver o problema.',before:'I am',blank:'trying',after:'to solve the problem.',options:['trying','try','tried','to try']},
+  {pt:'A Ashley está correndo na rua.',before:'Ashley is',blank:'running',after:'on the street.',options:['running','run','ran','to run']},
+  {pt:'Douglas estava gravando um podcast.',before:'Douglas was',blank:'recording',after:'a podcast.',options:['recording','record','recorded','to record']},
+  {pt:'Eles estão fazendo exercício.',before:'They are',blank:'exercising',after:'.',options:['exercising','exercise','exercised','to exercise']},
+  {pt:'A Megan está tirando uma foto.',before:'Megan is',blank:'taking',after:'a photo.',options:['taking','take','took','to take']},
+  {pt:'O Jake estava limpando o quarto.',before:'Jake was',blank:'cleaning',after:'the room.',options:['cleaning','clean','cleaned','to clean']},
+  {pt:'Eu estou assistindo uma série.',before:'I am',blank:'watching',after:'a series.',options:['watching','watch','watched','to watch']},
+  {pt:'Josh está respondendo o e-mail.',before:'Josh is',blank:'answering',after:'the email.',options:['answering','answer','answered','to answer']},
+  {pt:'A Camila está cantando no carro.',before:'Camila is',blank:'singing',after:'in the car.',options:['singing','sing','sang','to sing']},
+  {pt:'Raphael está trabalhando no projeto.',before:'Raphael is',blank:'working on',after:'the project.',options:['working on','work on','worked on','to work on']},
+  {pt:'Ela estava procurando as chaves.',before:'She was',blank:'looking for',after:'her keys.',options:['looking for','look for','looked for','to look for']},
+  {pt:'Nós estamos estudando para a prova.',before:'We are',blank:'studying',after:'for the test.',options:['studying','study','studied','to study']},
+  {pt:'O Ryan está fazendo uma ligação.',before:'Ryan is',blank:'making',after:'a call.',options:['making','make','made','to make']},
+  {pt:'Taylor estava lendo as mensagens.',before:'Taylor was',blank:'reading',after:'the messages.',options:['reading','read','read','to read']},
+  {pt:'Eu estou caminhando no parque.',before:'I am',blank:'walking',after:'in the park.',options:['walking','walk','walked','to walk']},
+  {pt:'A Ashley está comprando roupas.',before:'Ashley is',blank:'buying',after:'clothes.',options:['buying','buy','bought','to buy']},
+  {pt:'Douglas está ensaiando para o show.',before:'Douglas is',blank:'rehearsing',after:'for the show.',options:['rehearsing','rehearse','rehearsed','to rehearse']},
+  {pt:'Eles estavam discutindo muito.',before:'They were',blank:'arguing',after:'a lot.',options:['arguing','argue','argued','to argue']},
+  {pt:'A Megan está tomando café.',before:'Megan is',blank:'having',after:'coffee.',options:['having','have','had','to have']},
+  {pt:'Jake estava pintando o quarto.',before:'Jake was',blank:'painting',after:'the room.',options:['painting','paint','painted','to paint']},
+  {pt:'Eu estou pensando em você.',before:'I am',blank:'thinking about',after:'you.',options:['thinking about','think about','thought about','to think about']},
+  {pt:'O Josh está procurando emprego.',before:'Josh is',blank:'looking for',after:'a job.',options:['looking for','look for','looked for','to look for']},
+  {pt:'A Camila estava sorrindo para a foto.',before:'Camila was',blank:'smiling',after:'for the photo.',options:['smiling','smile','smiled','to smile']},
+  {pt:'Raphael está aprendendo inglês.',before:'Raphael is',blank:'learning',after:'English.',options:['learning','learn','learned','to learn']},
+  {pt:'Ela está esperando você.',before:'She is',blank:'waiting for',after:'you.',options:['waiting for','wait for','waited for','to wait for']},
+  {pt:'Nós estávamos rindo da piada.',before:'We were',blank:'laughing at',after:'the joke.',options:['laughing at','laugh at','laughed at','to laugh at']},
+  {pt:'O Ryan estava dirigindo na chuva.',before:'Ryan was',blank:'driving',after:'in the rain.',options:['driving','drive','drove','to drive']},
+  {pt:'Taylor está gravando um vídeo.',before:'Taylor is',blank:'recording',after:'a video.',options:['recording','record','recorded','to record']},
+  {pt:'Eu estou mandando o arquivo.',before:'I am',blank:'sending',after:'the file.',options:['sending','send','sent','to send']},
+  {pt:'A Ashley estava dançando na festa.',before:'Ashley was',blank:'dancing',after:'at the party.',options:['dancing','dance','danced','to dance']},
+  {pt:'Douglas está compondo uma música.',before:'Douglas is',blank:'composing',after:'a song.',options:['composing','compose','composed','to compose']},
+  {pt:'Eles estão chegando em cinco minutos.',before:'They are',blank:'arriving',after:'in five minutes.',options:['arriving','arrive','arrived','to arrive']},
+  {pt:'A Megan estava fazendo ioga.',before:'Megan was',blank:'doing',after:'yoga.',options:['doing','do','did','to do']},
+  {pt:'Jake está ajudando o amigo.',before:'Jake is',blank:'helping',after:'his friend.',options:['helping','help','helped','to help']},
+  {pt:'Eu estava assistindo o jogo.',before:'I was',blank:'watching',after:'the game.',options:['watching','watch','watched','to watch']},
+  {pt:'Josh está saindo do trabalho.',before:'Josh is',blank:'leaving',after:'work.',options:['leaving','leave','left','to leave']},
+  {pt:'A Camila está falando com o professor.',before:'Camila is',blank:'talking to',after:'the teacher.',options:['talking to','talk to','talked to','to talk to']},
+  {pt:'Raphael estava correndo na praia.',before:'Raphael was',blank:'running',after:'on the beach.',options:['running','run','ran','to run']},
+  {pt:'Ela está fazendo o jantar.',before:'She is',blank:'making',after:'dinner.',options:['making','make','made','to make']},
+  {pt:'Nós estamos jogando cartas.',before:'We are',blank:'playing',after:'cards.',options:['playing','play','played','to play']},
+  {pt:'O Ryan está respondendo os e-mails.',before:'Ryan is',blank:'answering',after:'the emails.',options:['answering','answer','answered','to answer']},
+  {pt:'Taylor estava cantando na festa.',before:'Taylor was',blank:'singing',after:'at the party.',options:['singing','sing','sang','to sing']},
+  {pt:'Eu estou usando o aplicativo.',before:'I am',blank:'using',after:'the app.',options:['using','use','used','to use']},
+  {pt:'A Ashley está postando uma foto.',before:'Ashley is',blank:'posting',after:'a photo.',options:['posting','post','posted','to post']},
+  {pt:'Douglas estava tocando bateria.',before:'Douglas was',blank:'playing',after:'drums.',options:['playing','play','played','to play']},
+  {pt:'Eles estão planejando a festa.',before:'They are',blank:'planning',after:'the party.',options:['planning','plan','planned','to plan']},
+  {pt:'A Megan está terminando o trabalho.',before:'Megan is',blank:'finishing',after:'the work.',options:['finishing','finish','finished','to finish']},
 ];
 window['tobe_bk']=[
-  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are']},
-  {pt:'Ela é professora.',before:'She',blank:'is',after:'a teacher.',options:['am','is','are']},
-  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['is','are','am']},
-  {pt:'Você é incrível.',before:'You',blank:'are',after:'amazing.',options:['am','is','are']},
-  {pt:'O Jake é muito alto.',before:'Jake',blank:'is',after:'very tall.',options:['am','is','are']},
-  {pt:'Eu não estou bem.',before:'I',blank:'am not',after:'okay.',options:['am not','is not','are not']},
-  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","wasn't"]},
-  {pt:'Eles não estão em casa.',before:'They',blank:"aren't",after:'home.',options:["isn't","aren't","weren't"]},
-  {pt:'O Ryan não é meu amigo.',before:'Ryan',blank:"isn't",after:'my friend.',options:["isn't","aren't","wasn't"]},
-  {pt:'Você está ocupado?',before:'',blank:'Are',after:'you busy?',options:['Am','Is','Are']},
-  {pt:'Ela está aqui?',before:'',blank:'Is',after:'she here?',options:['Am','Is','Are']},
-  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','was','were']},
-  {pt:'Vocês eram muito legais.',before:'You',blank:'were',after:'really cool.',options:['was','were','are']},
-  {pt:'A festa foi incrível.',before:'The party',blank:'was',after:'amazing.',options:['is','was','were']},
-  {pt:'Eles eram barulhentos.',before:'They',blank:'were',after:'very loud.',options:['was','were','are']},
-  {pt:'Eu estava em casa ontem.',before:'I',blank:'was',after:'at home yesterday.',options:['am','was','were']},
-  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't"]},
-  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't"]},
-  {pt:'O Jake não estava no trabalho.',before:'Jake',blank:"wasn't",after:'at work.',options:["wasn't","weren't","aren't"]},
-  {pt:'Você estava dormindo?',before:'',blank:'Were',after:'you sleeping?',options:['Was','Were','Are']},
-  {pt:'A Megan estava lá?',before:'',blank:'Was',after:'Megan there?',options:['Was','Were','Is']},
-  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be']},
-  {pt:'Ela vai estar aqui amanhã.',before:'She',blank:'will be',after:'here tomorrow.',options:['is','was','will be']},
-  {pt:'Eu não vou estar disponível.',before:'I',blank:"won't be",after:'available.',options:["isn't","wasn't","won't be"]},
-  {pt:'Você vai estar pronto?',before:'',blank:'Will',after:'you be ready?',options:['Was','Is','Will']},
+  // Presente afirmativo
+  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are','was']},
+  {pt:'Ela é professora.',before:'She',blank:'is',after:'a teacher.',options:['am','is','are','was']},
+  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['am','is','are','was']},
+  {pt:'Você é incrível.',before:'You',blank:'are',after:'amazing.',options:['am','is','are','was']},
+  {pt:'O Jake é muito alto.',before:'Jake',blank:'is',after:'very tall.',options:['am','is','are','was']},
+  {pt:'Eles são estudantes.',before:'They',blank:'are',after:'students.',options:['am','is','are','was']},
+  {pt:'Eu sou brasileiro.',before:'I',blank:'am',after:'Brazilian.',options:['am','is','are','was']},
+  {pt:'A Megan é muito inteligente.',before:'Megan',blank:'is',after:'very smart.',options:['am','is','are','was']},
+  {pt:'Nós somos colegas de trabalho.',before:'We',blank:'are',after:'coworkers.',options:['am','is','are','was']},
+  {pt:'O cachorro está com fome.',before:'The dog',blank:'is',after:'hungry.',options:['am','is','are','was']},
+  // Presente negativo
+  {pt:'Eu não estou bem.',before:'I',blank:"am not",after:'okay.',options:['am not',"isn't","aren't","wasn't"]},
+  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","am not","wasn't"]},
+  {pt:'Eles não são irmãos.',before:'They',blank:"aren't",after:'siblings.',options:["isn't","aren't","am not","weren't"]},
+  {pt:'O Ryan não é meu amigo.',before:'Ryan',blank:"isn't",after:'my friend.',options:["isn't","aren't","am not","wasn't"]},
+  {pt:'Nós não estamos prontos.',before:'We',blank:"aren't",after:'ready.',options:["isn't","aren't","am not","weren't"]},
+  {pt:'Você não está errado.',before:'You',blank:"aren't",after:'wrong.',options:["isn't","aren't","am not","weren't"]},
+  {pt:'A Taylor não é famosa.',before:'Taylor',blank:"isn't",after:'famous.',options:["isn't","aren't","am not","wasn't"]},
+  {pt:'Eu não sou perfeito.',before:'I',blank:"am not",after:'perfect.',options:['am not',"isn't","aren't","wasn't"]},
+  // Presente interrogativo
+  {pt:'Você está ocupado?',before:'',blank:'Are you',after:'busy?',options:['Are you','Is you','Am you','Were you']},
+  {pt:'Ela está aqui?',before:'',blank:'Is she',after:'here?',options:['Is she','Are she','Was she','Am she']},
+  {pt:'Eles são brasileiros?',before:'',blank:'Are they',after:'Brazilian?',options:['Are they','Is they','Were they','Am they']},
+  {pt:'Você não está com fome?',before:'',blank:"Aren't you",after:'hungry?',options:["Aren't you","Isn't you","Wasn't you","Weren't you"]},
+  {pt:'Ela não é sua amiga?',before:'',blank:"Isn't she",after:'your friend?',options:["Isn't she","Aren't she","Wasn't she","Weren't she"]},
+  // Passado afirmativo
+  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','is','was','were']},
+  {pt:'Ela estava cansada.',before:'She',blank:'was',after:'tired.',options:['is','was','were','will be']},
+  {pt:'Nós éramos amigos.',before:'We',blank:'were',after:'friends.',options:['are','was','were','will be']},
+  {pt:'O café estava quente.',before:'The coffee',blank:'was',after:'hot.',options:['is','was','were','will be']},
+  {pt:'Eles eram barulhentos.',before:'They',blank:'were',after:'very loud.',options:['are','was','were','will be']},
+  {pt:'Você estava dormindo.',before:'You',blank:'were',after:'sleeping.',options:['are','was','were','will be']},
+  {pt:'A festa estava ótima.',before:'The party',blank:'was',after:'great.',options:['is','was','were','will be']},
+  {pt:'Eu estava em casa ontem.',before:'I',blank:'was',after:'at home yesterday.',options:['am','was','were','will be']},
+  {pt:'O Jake estava atrasado.',before:'Jake',blank:'was',after:'late.',options:['is','was','were','will be']},
+  {pt:'As meninas estavam felizes.',before:'The girls',blank:'were',after:'happy.',options:['are','was','were','will be']},
+  // Passado negativo
+  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't","am not"]},
+  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'O Jake não estava no trabalho.',before:'Jake',blank:"wasn't",after:'at work.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'Nós não éramos do mesmo time.',before:'We',blank:"weren't",after:'on the same team.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'Você não estava em casa.',before:'You',blank:"weren't",after:'at home.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'A Megan não estava disponível.',before:'Megan',blank:"wasn't",after:'available.',options:["wasn't","weren't","isn't","aren't"]},
+  // Passado interrogativo
+  {pt:'Você estava dormindo?',before:'',blank:'Were you',after:'sleeping?',options:['Were you','Was you','Are you','Is you']},
+  {pt:'A Megan estava lá?',before:'',blank:'Was Megan',after:'there?',options:['Was Megan','Were Megan','Is Megan','Are Megan']},
+  {pt:'Eles estavam juntos?',before:'',blank:'Were they',after:'together?',options:['Were they','Was they','Are they','Is they']},
+  {pt:'Você não estava lá?',before:'',blank:"Weren't you",after:'there?',options:["Weren't you","Wasn't you","Aren't you","Isn't you"]},
+  {pt:'A festa não estava boa?',before:'',blank:"Wasn't the party",after:'good?',options:["Wasn't the party","Weren't the party","Isn't the party","Aren't the party"]},
+  // Futuro afirmativo
+  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be','were']},
+  {pt:'Ela vai estar aqui amanhã.',before:'She',blank:'will be',after:'here tomorrow.',options:['is','was','will be','were']},
+  {pt:'Eu vou estar disponível.',before:'I',blank:'will be',after:'available.',options:['am','was','will be','were']},
+  {pt:'Nós vamos estar juntos.',before:'We',blank:'will be',after:'together.',options:['are','was','will be','were']},
+  {pt:'O Ryan vai ser famoso.',before:'Ryan',blank:'will be',after:'famous.',options:['is','was','will be','were']},
+  {pt:'Eles vão estar prontos.',before:'They',blank:'will be',after:'ready.',options:['are','was','will be','were']},
+  // Futuro negativo
+  {pt:'Eu não vou estar disponível.',before:'I',blank:"won't be",after:'available.',options:["isn't","wasn't","won't be","weren't"]},
+  {pt:'Ela não vai estar aqui amanhã.',before:'She',blank:"won't be",after:'here tomorrow.',options:["isn't","wasn't","won't be","weren't"]},
+  {pt:'Nós não vamos estar prontos.',before:'We',blank:"won't be",after:'ready.',options:["aren't","weren't","won't be","isn't"]},
+  {pt:'O Jake não vai estar lá.',before:'Jake',blank:"won't be",after:'there.',options:["isn't","wasn't","won't be","weren't"]},
+  // Futuro interrogativo
+  {pt:'Você vai estar pronto?',before:'',blank:'Will you be',after:'ready?',options:['Will you be','Are you','Were you','Would you be']},
+  {pt:'Ela vai estar aqui?',before:'',blank:'Will she be',after:'here?',options:['Will she be','Is she','Was she','Would she be']},
+  {pt:'Você não vai estar lá?',before:'',blank:"Won't you be",after:'there?',options:["Won't you be","Will you be","Aren't you","Weren't you"]},
+  {pt:'Eles não vão estar prontos?',before:'',blank:"Won't they be",after:'ready?',options:["Won't they be","Will they be","Aren't they","Weren't they"]},
+  // Abreviações presentes
+  {pt:'Eu estou feliz. (informal)',before:"I",blank:"'m",after:'happy.',options:["'m","'s","'re","'ll"]},
+  {pt:'Ela está cansada. (informal)',before:"She",blank:"'s",after:'tired.',options:["'m","'s","'re","'ll"]},
+  {pt:'Nós somos amigos. (informal)',before:"We",blank:"'re",after:'friends.',options:["'m","'s","'re","'ll"]},
+  // Abreviação futuro
+  {pt:'Ela vai estar aqui. (informal)',before:"She",blank:"'ll be",after:'here.',options:["'m","'s","'re","'ll be"]},
+  // You singular e plural
+  {pt:'Você é legal.',before:'You',blank:'are',after:'nice.',options:['am','is','are','was']},
+  {pt:'Você não é legal.',before:'You',blank:"aren't",after:'nice.',options:["isn't","aren't","am not","wasn't"]},
+  {pt:'Você dois são legais.',before:'You two',blank:'are',after:'nice.',options:['am','is','are','was']},
+  // Extras variados
+  {pt:'O show está ótimo.',before:'The show',blank:'is',after:'great.',options:['am','is','are','was']},
+  {pt:'Os ingressos estão caros.',before:'The tickets',blank:'are',after:'expensive.',options:['am','is','are','was']},
+  {pt:'A comida estava deliciosa.',before:'The food',blank:'was',after:'delicious.',options:['is','was','were','will be']},
+  {pt:'Os meninos estavam brincando.',before:'The boys',blank:'were',after:'playing.',options:['are','was','were','will be']},
+  {pt:'A reunião vai ser importante.',before:'The meeting',blank:'will be',after:'important.',options:['is','was','will be','were']},
+  {pt:'Eu não estou com sono.',before:'I',blank:"am not",after:'sleepy.',options:['am not',"isn't","aren't","wasn't"]},
+  {pt:'Eles não estavam com fome.',before:'They',blank:"weren't",after:'hungry.',options:["wasn't","weren't","isn't","aren't"]},
+  {pt:'A nota não vai ser boa?',before:'',blank:"Won't the grade be",after:'good?',options:["Won't the grade be","Will the grade be","Isn't the grade","Wasn't the grade"]},
 ];
 window['adj_bk']=[
-  {pt:'Eu comprei uma caneta azul.',before:'I bought a',blank:'blue pen.',after:'',options:['blue pen.','pen blue.','blues pen.']},
-  {pt:'As camisetas amarelas estão sujas.',before:'The',blank:'yellow',after:"t-shirts are dirty.",options:['yellow','yellows','dirty yellow']},
-  {pt:'Meu pai comprou um computador potente e rápido.',before:'My dad bought a powerful and',blank:'fast',after:'computer.',options:['fast','fasts','fastly']},
-  {pt:'A amiga dela tem uma casa grande e bonita.',before:'Her friend has a big and',blank:'beautiful',after:'house.',options:['beautiful','beautifuls','house beautiful']},
-  {pt:'A camiseta é amarela.',before:'The t-shirt',blank:'is yellow.',after:'',options:['is yellow.','yellow is.','are yellow.']},
-  {pt:'O carro estava quebrado.',before:'The car',blank:'was broken.',after:'',options:['was broken.','broken was.','is broken.']},
-  {pt:'Aqueles meninos são legais.',before:'Those boys',blank:'are cool.',after:'',options:['are cool.','is cool.','are cools.']},
-  {pt:'Douglas conheceu uma menina legal.',before:'Douglas met a',blank:'cool',after:'girl.',options:['cool','cools','girl cool']},
-  {pt:'O casal será feliz.',before:'The couple',blank:'will be happy.',after:'',options:['will be happy.','will be happys.','happy will be.']},
-  {pt:'Ela tem um carro vermelho.',before:'She has a',blank:'red',after:'car.',options:['red','reds','car red']},
-  {pt:'Ele é um homem alto.',before:'He is a',blank:'tall',after:'man.',options:['tall','talls','man tall']},
-  {pt:'Eu vi um filme chato ontem.',before:'I watched a',blank:'boring',after:'movie yesterday.',options:['boring','borings','movie boring']},
-  {pt:'A Ashley tem um gato preto.',before:'Ashley has a',blank:'black',after:'cat.',options:['black','blacks','cat black']},
-  {pt:'O café estava quente.',before:'The coffee',blank:'was hot.',after:'',options:['was hot.','hot was.','is hot.']},
-  {pt:'Eles compraram uma mesa redonda.',before:'They bought a',blank:'round',after:'table.',options:['round','rounds','table round']},
-  {pt:'O novo restaurante é caro.',before:'The new restaurant',blank:'is expensive.',after:'',options:['is expensive.','expensive is.','are expensive.']},
-  {pt:'Ela tem cabelos longos.',before:'She has',blank:'long',after:'hair.',options:['long','longs','hair long']},
-  {pt:'O Ryan é uma pessoa inteligente.',before:'Ryan is a',blank:'smart',after:'person.',options:['smart','smarts','person smart']},
-  {pt:'O apartamento estava sujo.',before:'The apartment',blank:'was dirty.',after:'',options:['was dirty.','dirty was.','is dirty.']},
-  {pt:'Eles vão comprar uma bicicleta nova.',before:'They will buy a',blank:'new',after:'bike.',options:['new','news','bike new']},
-  {pt:'Eu quero uma pizza grande.',before:'I want a',blank:'big',after:'pizza.',options:['big','bigs','pizza big']},
-  {pt:'A Megan é muito engraçada.',before:'Megan',blank:'is very funny.',after:'',options:['is very funny.','funny is very.','are very funny.']},
+  // Ordem: adjetivo antes do substantivo
+  {pt:'Eu comprei uma caneta azul.',before:'I bought',blank:'a blue pen',after:'.',options:['a blue pen','a pen blue','blue pens','pen blue'],anchor:'adj-ordem'},
+  {pt:'Douglas conheceu uma menina legal.',before:'Douglas met',blank:'a cool girl',after:'.',options:['a cool girl','a girl cool','cool girls','girl cool'],anchor:'adj-ordem'},
+  {pt:'Ela tem uma casa grande e bonita.',before:'She has',blank:'a big and beautiful house',after:'.',options:['a big and beautiful house','a house big and beautiful','big and beautiful houses','house big beautiful'],anchor:'adj-ordem'},
+  {pt:'Meu pai comprou um computador potente.',before:'My dad bought',blank:'a powerful computer',after:'.',options:['a powerful computer','a computer powerful','powerful computers','computer powerful'],anchor:'adj-ordem'},
+  {pt:'Ryan conheceu uma pessoa interessante.',before:'Ryan met',blank:'an interesting person',after:'.',options:['an interesting person','a person interesting','interesting persons','person interesting'],anchor:'adj-ordem'},
+  {pt:'Camila tem um gato preto.',before:'Camila has',blank:'a black cat',after:'.',options:['a black cat','a cat black','black cats','cat black'],anchor:'adj-ordem'},
+  {pt:'Josh comprou uma camisa vermelha.',before:'Josh bought',blank:'a red shirt',after:'.',options:['a red shirt','a shirt red','red shirts','shirt red'],anchor:'adj-ordem'},
+  {pt:'Megan tem um apartamento pequeno.',before:'Megan has',blank:'a small apartment',after:'.',options:['a small apartment','a apartment small','small apartments','apartment small'],anchor:'adj-ordem'},
+  {pt:'Eu quero um carro rápido.',before:'I want',blank:'a fast car',after:'.',options:['a fast car','a car fast','fast cars','car fast'],anchor:'adj-ordem'},
+  {pt:'Ashley conheceu um menino simpático.',before:'Ashley met',blank:'a nice boy',after:'.',options:['a nice boy','a boy nice','nice boys','boy nice'],anchor:'adj-ordem'},
+  // Sem plural no adjetivo
+  {pt:'As camisetas amarelas estão sujas.',before:'The',blank:'yellow',after:'t-shirts are dirty.',options:['yellow','yellows','yellowes','yellowing'],anchor:'adj-plural'},
+  {pt:'Os carros vermelhos são caros.',before:'The',blank:'red',after:'cars are expensive.',options:['red','reds','redes','reding'],anchor:'adj-plural'},
+  {pt:'As meninas altas são minhas amigas.',before:'The',blank:'tall',after:'girls are my friends.',options:['tall','talls','talles','talling'],anchor:'adj-plural'},
+  {pt:'Os computadores novos são rápidos.',before:'The',blank:'new',after:'computers are fast.',options:['new','news','newes','newing'],anchor:'adj-plural'},
+  {pt:'As casas grandes são bonitas.',before:'The',blank:'big',after:'houses are beautiful.',options:['big','bigs','bigges','bigging'],anchor:'adj-plural'},
+  {pt:'Os meninos legais são meus amigos.',before:'The',blank:'cool',after:'boys are my friends.',options:['cool','cools','cooles','cooling'],anchor:'adj-plural'},
+  // Adjetivo após to be
+  {pt:'O carro estava quebrado.',before:'The car',blank:'was broken',after:'.',options:['was broken','was breakeds','were broken','is broken'],anchor:'adj-tobe'},
+  {pt:'O casal vai ser feliz.',before:'The couple',blank:'will be happy',after:'.',options:['will be happy','will be happys','will happy','be happy'],anchor:'adj-tobe'},
+  {pt:'Aqueles meninos são legais.',before:'Those boys',blank:'are cool',after:'.',options:['are cool','are cools','is cool','were cool'],anchor:'adj-tobe'},
+  {pt:'A comida estava deliciosa.',before:'The food',blank:'was delicious',after:'.',options:['was delicious','was deliciouss','were delicious','is delicious'],anchor:'adj-tobe'},
+  {pt:'A reunião vai ser longa.',before:'The meeting',blank:'will be long',after:'.',options:['will be long','will be longs','will long','is long'],anchor:'adj-tobe'},
+  {pt:'O show estava incrível.',before:'The show',blank:'was amazing',after:'.',options:['was amazing','was amazings','were amazing','is amazing'],anchor:'adj-tobe'},
+  {pt:'Ela é muito inteligente.',before:'She',blank:'is very smart',after:'.',options:['is very smart','is very smarts','are very smart','was very smart'],anchor:'adj-tobe'},
+  {pt:'Eles estavam cansados.',before:'They',blank:'were tired',after:'.',options:['were tired','were tireds','was tired','are tired'],anchor:'adj-tobe'},
+  // Sem "de" — adjetivo direto antes do substantivo
+  {pt:'Eu quero uma garrafa de plástico.',before:'I want',blank:'a plastic bottle',after:'.',options:['a plastic bottle','a bottle of plastic','plastic bottles','bottle of plastic'],anchor:'adj-de'},
+  {pt:'A janela de vidro está limpa.',before:'The',blank:'glass',after:'window is clean.',options:['glass','of glass','glasses','glassy'],anchor:'adj-de'},
+  {pt:'Ele comprou uma camiseta de algodão.',before:'He bought',blank:'a cotton t-shirt',after:'.',options:['a cotton t-shirt','a t-shirt of cotton','cotton t-shirts','t-shirt of cotton'],anchor:'adj-de'},
+  {pt:'Ela tem uma bolsa de couro.',before:'She has',blank:'a leather bag',after:'.',options:['a leather bag','a bag of leather','leather bags','bag of leather'],anchor:'adj-de'},
+  {pt:'Eu quero uma porta de madeira.',before:'I want',blank:'a wooden door',after:'.',options:['a wooden door','a door of wood','wooden doors','door of wood'],anchor:'adj-de'},
+  {pt:'Ryan comprou um sapato de couro.',before:'Ryan bought',blank:'a leather shoe',after:'.',options:['a leather shoe','a shoe of leather','leather shoes','shoe of leather'],anchor:'adj-de'},
+  {pt:'Megan quer uma mesa de vidro.',before:'Megan wants',blank:'a glass table',after:'.',options:['a glass table','a table of glass','glass tables','table of glass'],anchor:'adj-de'},
+  {pt:'Camila tem um vestido de seda.',before:'Camila has',blank:'a silk dress',after:'.',options:['a silk dress','a dress of silk','silk dresses','dress of silk'],anchor:'adj-de'},
+  // Mixed review
+  {pt:'Os meninos são legais.',before:'The boys',blank:'are cool',after:'.',options:['are cool','are cools','is cool','were cool'],anchor:'adj-plural'},
+  {pt:'Ela comprou uma mochila preta.',before:'She bought',blank:'a black backpack',after:'.',options:['a black backpack','a backpack black','black backpacks','backpack black'],anchor:'adj-ordem'},
+  {pt:'O sorvete estava gelado.',before:'The ice cream',blank:'was cold',after:'.',options:['was cold','was colds','were cold','is cold'],anchor:'adj-tobe'},
+  {pt:'Josh quer um celular novo.',before:'Josh wants',blank:'a new phone',after:'.',options:['a new phone','a phone new','new phones','phone new'],anchor:'adj-ordem'},
+  {pt:'As flores são lindas.',before:'The flowers',blank:'are beautiful',after:'.',options:['are beautiful','are beautifuls','is beautiful','were beautiful'],anchor:'adj-plural'},
+  {pt:'Taylor tem um violão de madeira.',before:'Taylor has',blank:'a wooden guitar',after:'.',options:['a wooden guitar','a guitar of wood','wooden guitars','guitar of wood'],anchor:'adj-de'},
+  {pt:'Os sapatos vermelhos são bonitos.',before:'The',blank:'red',after:'shoes are beautiful.',options:['red','reds','redes','reding'],anchor:'adj-plural'},
+  {pt:'Raphael conheceu uma pessoa famosa.',before:'Raphael met',blank:'a famous person',after:'.',options:['a famous person','a person famous','famous persons','person famous'],anchor:'adj-ordem'},
 ];
 window['art_bk']=[
-  {pt:'O menino estava dormindo.',before:'',blank:'The',after:'boy was sleeping.',options:['The','A','An']},
-  {pt:'Os meninos estavam dormindo.',before:'',blank:'The',after:'boys were sleeping.',options:['The','Some','A']},
-  {pt:'Ele vai comprar um carro.',before:'He will buy',blank:'a',after:'car.',options:['a','an','the']},
-  {pt:'Eu vou comprar um carro laranja.',before:'I will buy',blank:'an',after:'orange car.',options:['an','a','the']},
-  {pt:'Uma maçã.',before:'',blank:'An',after:'apple.',options:['An','A','The']},
-  {pt:'Ontem eu conheci algumas meninas.',before:'Yesterday I met',blank:'some',after:'girls.',options:['some','a','the']},
-  {pt:'Eu quero comer umas maçãs.',before:'I want to eat',blank:'some',after:'apples.',options:['some','an','the']},
-  {pt:'A Jaden estava brincando.',before:'',blank:'Jaden',after:'was playing.',options:['Jaden','The Jaden','A Jaden']},
-  {pt:'Um elefante.',before:'',blank:'An',after:'elephant.',options:['An','A','The']},
-  {pt:'Meu amigo vendeu uns CDs.',before:'My friend sold',blank:'some',after:'CDs.',options:['some','a','the']},
-  {pt:'A Ashley estava no trabalho.',before:'',blank:'Ashley',after:'was at work.',options:['Ashley','The Ashley','An Ashley']},
-  {pt:'Ele é um médico incrível.',before:'He is',blank:'an',after:'amazing doctor.',options:['an','a','the']},
-  {pt:'Eu comi uma pizza.',before:'I ate',blank:'a',after:'pizza.',options:['a','an','the']},
-  {pt:'Ela bebeu um suco de laranja.',before:'She drank',blank:'an',after:'orange juice.',options:['an','a','the']},
-  {pt:'O gato estava dormindo.',before:'',blank:'The',after:'cat was sleeping.',options:['The','A','An']},
-  {pt:'Eu vi uns filmes legais.',before:'I watched',blank:'some',after:'cool movies.',options:['some','a','the']},
-  {pt:'Ryan é meu amigo.',before:'',blank:'Ryan',after:'is my friend.',options:['Ryan','The Ryan','A Ryan']},
-  {pt:'Ele comprou uma mochila.',before:'He bought',blank:'a',after:'backpack.',options:['a','an','the']},
-  {pt:'Eu tenho uma ideia incrível.',before:'I have',blank:'an',after:'amazing idea.',options:['an','a','the']},
-  {pt:'A janela estava aberta.',before:'',blank:'The',after:'window was open.',options:['The','A','An']},
-  {pt:'Ela tem umas amigas legais.',before:'She has',blank:'some',after:'cool friends.',options:['some','a','the']},
-  {pt:'Eu sei uma hora em inglês.',before:'I know',blank:'an',after:'hour in English.',options:['an','a','the']},
-  {pt:'O livro estava na mesa.',before:'',blank:'The',after:'book was on the table.',options:['The','A','An']},
-  {pt:'Ela encontrou uma carteira.',before:'She found',blank:'a',after:'wallet.',options:['a','an','the']},
-  {pt:'Eu comi uns biscoitos.',before:'I ate',blank:'some',after:'cookies.',options:['some','a','the']},
-  {pt:'Eu quero um pouco de café.',before:'I want',blank:'some',after:'coffee.',options:['some','a','an']},
-  {pt:'Ela bebeu um pouco de água.',before:'She drank',blank:'some',after:'water.',options:['some','a','an']},
-  {pt:'Ele comeu um pouco de pão.',before:'He ate',blank:'some',after:'bread.',options:['some','a','an']},
-  {pt:'Ela mora nos Estados Unidos.',before:'She lives in',blank:'the United States.',after:'',options:['the United States.','United States.','a United States.']},
-  {pt:'O Rio Amazonas é enorme.',before:'',blank:'The Amazon',after:'is enormous.',options:['The Amazon','Amazon','An Amazon']},
+  // The — definido
+  {pt:'O menino estava dormindo.',before:'',blank:'The',after:'boy was sleeping.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'Os meninos estavam dormindo.',before:'',blank:'The',after:'boys were sleeping.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'O show foi incrível.',before:'',blank:'The',after:'show was amazing.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'O cachorro que vi ontem é fofo.',before:'',blank:'The',after:'dog I saw yesterday is cute.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'O sol está forte hoje.',before:'',blank:'The',after:'sun is strong today.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'A festa foi ótima.',before:'',blank:'The',after:'party was great.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'O café estava quente.',before:'',blank:'The',after:'coffee was hot.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'A reunião começou tarde.',before:'',blank:'The',after:'meeting started late.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'Os ingressos estão caros.',before:'',blank:'The',after:'tickets are expensive.',options:['A','An','The','Some'],anchor:'art-the'},
+  {pt:'A comida estava deliciosa.',before:'',blank:'The',after:'food was delicious.',options:['A','An','The','Some'],anchor:'art-the'},
+  // A — som de consoante
+  {pt:'Ontem eu vi um cachorro na rua.',before:'Yesterday I saw',blank:'a',after:'dog on the street.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Ryan vai comprar um carro.',before:'Ryan will buy',blank:'a',after:'car.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Camila tem um gato.',before:'Camila has',blank:'a',after:'cat.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Eu quero um emprego novo.',before:'I want',blank:'a',after:'new job.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Josh tem um carro vermelho.',before:'Josh has',blank:'a',after:'red car.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Megan conheceu um menino legal.',before:'Megan met',blank:'a',after:'cool boy.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Douglas gravou uma música nova.',before:'Douglas recorded',blank:'a',after:'new song.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Taylor tem uma voz bonita.',before:'Taylor has',blank:'a',after:'beautiful voice.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Raphael tem um restaurante.',before:'Raphael has',blank:'a',after:'restaurant.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Eu comprei uma bolsa preta.',before:'I bought',blank:'a',after:'black bag.',options:['a','an','the','some'],anchor:'art-a-an'},
+  // An — som de vogal ou H mudo
+  {pt:'Eu preciso de uma hora.',before:'I need',blank:'an',after:'hour.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Ryan vai comprar um carro laranja.',before:'Ryan will buy',blank:'an',after:'orange car.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Ela é uma pessoa honesta.',before:'She is',blank:'an',after:'honest person.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Eu tenho um apartamento.',before:'I have',blank:'an',after:'apartment.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Ela comeu uma maçã.',before:'She ate',blank:'an',after:'apple.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Josh fez uma oferta incrível.',before:'Josh made',blank:'an',after:'amazing offer.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Camila tem um guarda-chuva.',before:'Camila has',blank:'an',after:'umbrella.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Eu quero um sorvete.',before:'I want',blank:'an',after:'ice cream.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Megan teve uma ideia ótima.',before:'Megan had',blank:'an',after:'great idea.',options:['a','an','the','some'],anchor:'art-a-an'},
+  {pt:'Ela é uma atriz famosa.',before:'She is',blank:'an',after:'famous actress.',options:['a','an','the','some'],anchor:'art-a-an'},
+  // Some + plural
+  {pt:'Ontem eu conheci algumas meninas.',before:'Yesterday I met',blank:'some',after:'girls.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Eu quero comer umas maçãs.',before:'I want to eat',blank:'some',after:'apples.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Ela comprou uns livros.',before:'She bought',blank:'some',after:'books.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Ryan trouxe umas flores.',before:'Ryan brought',blank:'some',after:'flowers.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Megan fez umas perguntas.',before:'Megan asked',blank:'some',after:'questions.',options:['a','an','the','some'],anchor:'art-some'},
+  // Some + singular = um pouco de
+  {pt:'Eu quero um pouco de água.',before:'I want',blank:'some',after:'water.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Camila quer um pouco de café.',before:'Camila wants',blank:'some',after:'coffee.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Ele comeu um pouco de pão.',before:'He ate',blank:'some',after:'bread.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Josh precisa de um pouco de dinheiro.',before:'Josh needs',blank:'some',after:'money.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Ela bebeu um pouco de suco.',before:'She drank',blank:'some',after:'juice.',options:['a','an','the','some'],anchor:'art-some'},
+  {pt:'Megan comeu um pouco de arroz.',before:'Megan ate',blank:'some',after:'rice.',options:['a','an','the','some'],anchor:'art-some'},
 ];
 window['rev_bk']=[
-  {pt:'A Ashley e a Megan estão no shopping.',before:'',blank:'They',after:'are at the mall.',options:['They','She','We']},
-  {pt:'O computador está muito lento.',before:'',blank:'It',after:'is very slow.',options:['It','He','She']},
-  {pt:'Carlos e eu somos amigos.',before:'',blank:'We',after:'are friends.',options:['We','They','You']},
-  {pt:'Vocês três precisam esperar aqui.',before:'',blank:'You three',after:'need to wait here.',options:['You three','We three','They three']},
-  {pt:'Alguém ligou e deixou recado.',before:'Someone called.',blank:'They',after:'left a message.',options:['They','He','She']},
-  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are']},
-  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['is','are','am']},
-  {pt:'O Jake é alto.',before:'Jake',blank:'is',after:'tall.',options:['am','is','are']},
-  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","wasn't"]},
-  {pt:'Eles não estão em casa.',before:'They',blank:"aren't",after:'home.',options:["isn't","aren't","weren't"]},
-  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','was','were']},
-  {pt:'Vocês eram muito legais.',before:'You',blank:'were',after:'really cool.',options:['was','were','are']},
-  {pt:'A festa foi incrível.',before:'The party',blank:'was',after:'amazing.',options:['is','was','were']},
-  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't"]},
-  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't"]},
-  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be']},
-  {pt:'Ela estava comendo.',before:'She',blank:'was eating.',after:'',options:['was eating.','is eating.','were eating.']},
-  {pt:'Nós não vamos estar jogando.',before:'We',blank:"won't be playing.",after:'',options:["won't be playing.","aren't playing.","wasn't playing."]},
-  {pt:'Eu comprei uma caneta azul.',before:'I bought a',blank:'blue pen.',after:'',options:['blue pen.','pen blue.','blues pen.']},
-  {pt:'As camisetas amarelas estão sujas.',before:'The',blank:'yellow',after:"t-shirts are dirty.",options:['yellow','yellows','dirty']},
-  {pt:'A camiseta é amarela.',before:'The t-shirt',blank:'is yellow.',after:'',options:['is yellow.','yellow is.','are yellow.']},
-  {pt:'O carro estava quebrado.',before:'The car',blank:'was broken.',after:'',options:['was broken.','broken was.','is broken.']},
-  {pt:'O menino estava dormindo.',before:'',blank:'The',after:'boy was sleeping.',options:['The','A','An']},
-  {pt:'Eu vou comprar um carro laranja.',before:'I will buy',blank:'an',after:'orange car.',options:['an','a','the']},
-  {pt:'Ontem eu conheci algumas meninas.',before:'Yesterday I met',blank:'some',after:'girls.',options:['some','a','the']},
-  {pt:'A Jaden estava brincando.',before:'',blank:'Jaden',after:'was playing.',options:['Jaden','The Jaden','A Jaden']},
-  {pt:'Eu quero um pouco de café.',before:'I want',blank:'some',after:'coffee.',options:['some','a','an']},
-  {pt:'Ela bebeu um pouco de água.',before:'She drank',blank:'some',after:'water.',options:['some','a','an']},
-  {pt:'Ela mora nos Estados Unidos.',before:'She lives in',blank:'the United States.',after:'',options:['the United States.','United States.','a United States.']},
-  {pt:'O Rio Amazonas é enorme.',before:'',blank:'The Amazon',after:'is enormous.',options:['The Amazon','Amazon','An Amazon']},
+  // Pronomes — substituição
+  {pt:'A Ashley e a Megan estão no shopping.',before:'',blank:'They',after:'are at the mall.',options:['We','They','It','You'],anchor:'6:pron-they'},
+  {pt:'O computador está muito lento.',before:'',blank:'It',after:'is very slow.',options:['He','She','It','They'],anchor:'6:pron-it'},
+  {pt:'Carlos e eu somos amigos.',before:'',blank:'We',after:'are friends.',options:['They','We','You','I'],anchor:'6:pron-intro'},
+  {pt:'Vocês três precisam esperar aqui.',before:'',blank:'You three',after:'need to wait here.',options:['We','You','You three','They'],anchor:'6:you-plural-section'},
+  {pt:'Douglas e eu trabalhamos juntos.',before:'',blank:'We',after:'work together.',options:['They','We','You','I'],anchor:'6:pron-intro'},
+  {pt:'A Camila está com fome.',before:'',blank:'She',after:'is hungry.',options:['He','She','It','They'],anchor:'6:pron-intro'},
+  {pt:'O Jake e o Ryan são amigos.',before:'',blank:'They',after:'are friends.',options:['We','They','It','You'],anchor:'6:pron-they'},
+  {pt:'O celular caiu no chão.',before:'',blank:'It',after:'fell on the floor.',options:['He','She','It','They'],anchor:'6:pron-it'},
+  {pt:'Raphael é meu professor.',before:'',blank:'He',after:'is my teacher.',options:['He','She','It','They'],anchor:'6:pron-intro'},
+  {pt:'Jaden estava brincando.',before:'',blank:'Jaden',after:'was playing.',options:['The Jaden','Jaden','He Jaden','A Jaden'],anchor:'6:pron-nomes'},
+  {pt:'Ela mora nos Estados Unidos.',before:'She lives in',blank:'the United States',after:'.',options:['United States','the United States','The United States','a United States'],anchor:'6:pron-the'},
+  {pt:'O Rio Amazonas é enorme.',before:'',blank:'The Amazon',after:'is enormous.',options:['Amazon','The Amazon','A Amazon','An Amazon'],anchor:'6:pron-the'},
+  // Continuous — present e past
+  {pt:'O Ryan estava correndo.',before:'Ryan',blank:'was running',after:'.',options:['was running','is running','ran','run'],anchor:'10:ing-regras'},
+  {pt:'Eles estão jogando juntos.',before:'They',blank:'are playing',after:'together.',options:['are playing','were playing','played','play'],anchor:'10:ing-regras'},
+  {pt:'Ela estava comendo quando eu cheguei.',before:'She',blank:'was eating',after:'when I arrived.',options:['was eating','is eating','ate','eat'],anchor:'10:ing-regras'},
+  {pt:'Camila está estudando agora.',before:'Camila',blank:'is studying',after:'right now.',options:['is studying','was studying','studied','study'],anchor:'10:ing-regras'},
+  {pt:'Nós estávamos rindo muito.',before:'We',blank:'were laughing',after:'a lot.',options:['were laughing','are laughing','laughed','laugh'],anchor:'10:ing-regras'},
+  {pt:'Douglas está gravando um vídeo.',before:'Douglas',blank:'is recording',after:'a video.',options:['is recording','was recording','recorded','record'],anchor:'10:ing-regras'},
+  {pt:'Eu estava dormindo quando você ligou.',before:'I',blank:'was sleeping',after:'when you called.',options:['was sleeping','is sleeping','slept','sleep'],anchor:'10:ing-regras'},
+  // To Be — presente afirmativo
+  {pt:'Eu estou cansado.',before:'I',blank:'am',after:'tired.',options:['am','is','are','was'],anchor:'12:tobe-presente'},
+  {pt:'O Jake é alto.',before:'Jake',blank:'is',after:'tall.',options:['am','is','are','was'],anchor:'12:tobe-presente'},
+  {pt:'Nós somos amigos.',before:'We',blank:'are',after:'friends.',options:['am','is','are','was'],anchor:'12:tobe-presente'},
+  // To Be — presente negativo
+  {pt:'Eu não estou bem.',before:'I',blank:"am not",after:'okay.',options:['am not',"isn't","aren't","wasn't"],anchor:'12:tobe-presente'},
+  {pt:'Ela não é médica.',before:'She',blank:"isn't",after:'a doctor.',options:["isn't","aren't","am not","wasn't"],anchor:'12:tobe-presente'},
+  {pt:'Eles não são irmãos.',before:'They',blank:"aren't",after:'siblings.',options:["isn't","aren't","am not","weren't"],anchor:'12:tobe-presente'},
+  // To Be — presente interrogativo
+  {pt:'Você está ocupado?',before:'',blank:'Are you',after:'busy?',options:['Are you','Is you','Am you','Were you'],anchor:'12:tobe-interrogativo-pres'},
+  {pt:'Ela está aqui?',before:'',blank:'Is she',after:'here?',options:['Is she','Are she','Was she','Am she'],anchor:'12:tobe-interrogativo-pres'},
+  {pt:'Você não está com fome?',before:'',blank:"Aren't you",after:'hungry?',options:["Aren't you","Isn't you","Wasn't you","Weren't you"],anchor:'12:tobe-interrogativo-pres'},
+  // To Be — passado afirmativo
+  {pt:'Eu estava com fome.',before:'I',blank:'was',after:'hungry.',options:['am','is','was','were'],anchor:'12:tobe-passado'},
+  {pt:'Vocês eram muito legais.',before:'You',blank:'were',after:'really cool.',options:['was','were','are','am'],anchor:'12:tobe-passado'},
+  {pt:'O café estava quente.',before:'The coffee',blank:'was',after:'hot.',options:['is','was','were','will be'],anchor:'12:tobe-passado'},
+  // To Be — passado negativo
+  {pt:'Eu não estava bem.',before:'I',blank:"wasn't",after:'okay.',options:["wasn't","weren't","isn't","am not"],anchor:'12:tobe-passado'},
+  {pt:'Eles não eram amigos.',before:'They',blank:"weren't",after:'friends.',options:["wasn't","weren't","isn't","aren't"],anchor:'12:tobe-passado'},
+  // To Be — passado interrogativo
+  {pt:'Você estava dormindo?',before:'',blank:'Were you',after:'sleeping?',options:['Were you','Was you','Are you','Is you'],anchor:'12:tobe-interrogativo-past'},
+  {pt:'A Megan estava lá?',before:'',blank:'Was Megan',after:'there?',options:['Was Megan','Were Megan','Is Megan','Are Megan'],anchor:'12:tobe-interrogativo-past'},
+  // To Be — futuro afirmativo
+  {pt:'A festa vai ser incrível.',before:'The party',blank:'will be',after:'amazing.',options:['is','was','will be','were'],anchor:'12:tobe-futuro'},
+  {pt:'Ela vai estar aqui amanhã.',before:'She',blank:'will be',after:'here tomorrow.',options:['is','was','will be','were'],anchor:'12:tobe-futuro'},
+  // To Be — futuro negativo
+  {pt:'Eu não vou estar disponível.',before:'I',blank:"won't be",after:'available.',options:["isn't","wasn't","won't be","weren't"],anchor:'12:tobe-futuro'},
+  // To Be — futuro interrogativo
+  {pt:'Você vai estar pronto?',before:'',blank:'Will you be',after:'ready?',options:['Will you be','Are you','Were you','Would you be'],anchor:'12:tobe-interrogativo-fut'},
+  {pt:'Você não vai estar lá?',before:'',blank:"Won't you be",after:'there?',options:["Won't you be","Will you be","Aren't you","Weren't you"],anchor:'12:tobe-interrogativo-fut'},
+  // Adjetivos — ordem
+  {pt:'Ela comprou uma bolsa preta.',before:'She bought',blank:'a black bag',after:'.',options:['a black bag','a bag black','black bags','bag black'],anchor:'14:adj-ordem'},
+  {pt:'Ryan conheceu uma pessoa interessante.',before:'Ryan met',blank:'an interesting person',after:'.',options:['an interesting person','a person interesting','interesting persons','person interesting'],anchor:'14:adj-ordem'},
+  {pt:'Josh quer um celular novo.',before:'Josh wants',blank:'a new phone',after:'.',options:['a new phone','a phone new','new phones','phone new'],anchor:'14:adj-ordem'},
+  // Adjetivos — sem plural
+  {pt:'As camisetas amarelas estão sujas.',before:'The',blank:'yellow',after:'t-shirts are dirty.',options:['yellow','yellows','yellowes','yellowing'],anchor:'14:adj-plural'},
+  {pt:'Os meninos são legais.',before:'The boys',blank:'are cool',after:'.',options:['are cool','are cools','is cool','were cool'],anchor:'14:adj-plural'},
+  // Adjetivos — após to be
+  {pt:'O show estava incrível.',before:'The show',blank:'was amazing',after:'.',options:['was amazing','was amazings','were amazing','is amazing'],anchor:'14:adj-tobe'},
+  {pt:'A reunião vai ser longa.',before:'The meeting',blank:'will be long',after:'.',options:['will be long','will be longs','will long','is long'],anchor:'14:adj-tobe'},
+  // Adjetivos — sem "de"
+  {pt:'Eu quero uma garrafa de plástico.',before:'I want',blank:'a plastic bottle',after:'.',options:['a plastic bottle','a bottle of plastic','plastic bottles','bottle of plastic'],anchor:'14:adj-de'},
+  {pt:'Ryan comprou um sapato de couro.',before:'Ryan bought',blank:'a leather shoe',after:'.',options:['a leather shoe','a shoe of leather','leather shoes','shoe of leather'],anchor:'14:adj-de'},
+  // Artigos — the
+  {pt:'O sol está forte hoje.',before:'',blank:'The',after:'sun is strong today.',options:['A','An','The','Some'],anchor:'16:art-the'},
+  {pt:'Os ingressos estão caros.',before:'',blank:'The',after:'tickets are expensive.',options:['A','An','The','Some'],anchor:'16:art-the'},
+  // Artigos — a
+  {pt:'Camila tem um gato.',before:'Camila has',blank:'a',after:'cat.',options:['a','an','the','some'],anchor:'16:art-a-an'},
+  {pt:'Douglas gravou uma música nova.',before:'Douglas recorded',blank:'a',after:'new song.',options:['a','an','the','some'],anchor:'16:art-a-an'},
+  // Artigos — an
+  {pt:'Eu preciso de uma hora.',before:'I need',blank:'an',after:'hour.',options:['a','an','the','some'],anchor:'16:art-a-an'},
+  {pt:'Ryan vai comprar um carro laranja.',before:'Ryan will buy',blank:'an',after:'orange car.',options:['a','an','the','some'],anchor:'16:art-a-an'},
+  {pt:'Ela é uma pessoa honesta.',before:'She is',blank:'an',after:'honest person.',options:['a','an','the','some'],anchor:'16:art-a-an'},
+  // Artigos — some plural
+  {pt:'Eu quero comer umas maçãs.',before:'I want to eat',blank:'some',after:'apples.',options:['a','an','the','some'],anchor:'16:art-some'},
+  {pt:'Ryan trouxe umas flores.',before:'Ryan brought',blank:'some',after:'flowers.',options:['a','an','the','some'],anchor:'16:art-some'},
+  // Artigos — some singular
+  {pt:'Eu quero um pouco de água.',before:'I want',blank:'some',after:'water.',options:['a','an','the','some'],anchor:'16:art-some'},
+  {pt:'Camila quer um pouco de café.',before:'Camila wants',blank:'some',after:'coffee.',options:['a','an','the','some'],anchor:'16:art-some'},
+  {pt:'Ela comeu um pouco de pão.',before:'She ate',blank:'some',after:'bread.',options:['a','an','the','some'],anchor:'16:art-some'},
 ];
 
 /* ── PAGES ── */
@@ -1380,12 +1672,12 @@ const pages=[
 `<div class="page pg-content">
   <div class="pg-hd"><div class="pg-lbl">Seção 01 · Pronomes Pessoais</div><div class="pg-ttl">O que são?</div></div>
   <div class="pg-body">
-    <p class="intro">Pronomes pessoais são palavras que entram no lugar dos nomes — de pessoas, animais ou objetos — para evitar que a gente fique repetindo a mesma palavra toda hora.</p>
+    <p class="intro" id="pron-intro">Pronomes pessoais são palavras que entram no lugar dos nomes — de pessoas, animais ou objetos — para evitar que a gente fique repetindo a mesma palavra toda hora.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">O <b>Ryan</b> foi ao mercado. O <b>Ryan</b> comprou café. O <b>Ryan</b> voltou pra casa.</div><div class="q-pt">O Ryan foi ao mercado. <b>Ele</b> comprou café. <b>Ele</b> voltou pra casa.</div></div>
       <div class="quote"><div class="q-pt">A <b>Ashley e a Megan</b> estão no shopping. A <b>Ashley e a Megan</b> são melhores amigas.</div><div class="q-pt">A Ashley e a Megan estão no shopping. <b>Elas</b> são melhores amigas.</div></div>
     </div>
-    <div class="sub-label">Os 7 pronomes</div>
+    <div class="sub-label" id="pron-tabela">Os 7 pronomes</div>
     <div class="pron-table">
       <div class="prow"><div class="prow-en"><span class="en" data-speak="I">I</span></div><div class="prow-arr">—</div><div class="prow-pt">Eu</div></div>
       <div class="prow"><div class="prow-en"><span class="en" data-speak="You">You</span></div><div class="prow-arr">—</div><div class="prow-pt">Você / Vocês</div></div>
@@ -1395,7 +1687,7 @@ const pages=[
       <div class="prow"><div class="prow-en"><span class="en" data-speak="We">We</span></div><div class="prow-arr">—</div><div class="prow-pt">Nós</div></div>
       <div class="prow"><div class="prow-en"><span class="en" data-speak="They">They</span></div><div class="prow-arr">—</div><div class="prow-pt">Eles / Elas</div></div>
     </div>
-    <div class="tip"><div class="tip-lbl">📌 I — Sempre maiúsculo</div><p class="tip-txt">O pronome <strong>I</strong> (Eu) é sempre escrito com letra maiúscula em inglês, não importa a posição que ele ocupe na frase.<br><br>
+    <div class="tip" id="pron-i"><div class="tip-lbl">📌 I — Sempre maiúsculo</div><p class="tip-txt">O pronome <strong>I</strong> (Eu) é sempre escrito com letra maiúscula em inglês, não importa a posição que ele ocupe na frase.<br><br>
       <span class="en" data-speak="I am happy">I am happy.</span> ✅ &nbsp;·&nbsp; <span style="color:var(--red)">i am happy.</span> ❌<br>
       <span class="en" data-speak="She and I are friends">She and I are friends.</span> ✅ &nbsp;·&nbsp; <span style="color:var(--red)">she and i are friends.</span> ❌</p></div>
 
@@ -1409,7 +1701,7 @@ const pages=[
         <div class="bitem"><span><strong><span class="en" data-speak="You guys are cool">You guys:</span></strong> <em>Vocês caras são firmeza.</em></span></div>
       </div>
     </div>
-    <div class="pron-section">
+    <div class="pron-section" id="pron-it">
       <div class="pron-header"><span class="pron-word"><span class="en" data-speak="It">It</span></span><span class="pron-tr">— Ele / Ela (sem gênero)</span></div>
       <p class="pron-body">O <strong>It</strong> é utilizado quando "ele" ou "ela" é algo não-humano e que não possui gênero — objetos e fenômenos da natureza. Para animais, se você souber o gênero, pode usar <strong>he</strong> ou <strong>she</strong>.</p>
       <div class="ex-list">
@@ -1417,7 +1709,7 @@ const pages=[
         <div class="ex-ex"><div class="ex-pt">Ela (pantufa) estava embaixo da cama.</div><div class="ex-en"><span class="en" data-speak="It was under the bed">It was under the bed.</span></div></div>
       </div>
     </div>
-    <div class="pron-section">
+    <div class="pron-section" id="pron-they">
       <div class="pron-header"><span class="pron-word"><span class="en" data-speak="They">They</span></span><span class="pron-tr">— Eles / Elas / Pronome Neutro</span></div>
       <p class="pron-body">No plural, o <strong>They</strong> pode ser usado para pessoas ou objetos.</p>
       <div class="blist">
@@ -1499,7 +1791,7 @@ const pages=[
     <p class="intro">O <strong>-ing</strong> aparece em outras situações também, que vamos ver mais pra frente. Mas uma coisa é certa: sempre que você ver um <strong>-ndo</strong> em português, vai ser <strong>-ing</strong> em inglês.</p>
     <div class="sub-label">Regras do -ing</div>
     <div class="rule-list">
-      <div class="rule"><div class="rule-title">Verbo termina em -e</div><div class="rule-body">Tira o <strong>e</strong> antes do <strong>-ing</strong></div><div class="rule-ex"><span class="en" data-speak="make">make</span> (fazer) → <span class="en" data-speak="making">mak<b>ing</b></span> &nbsp;·&nbsp; <span class="en" data-speak="write">write</span> (escrever) → <span class="en" data-speak="writing">writ<b>ing</b></span></div></div>
+      <div class="rule"><div class="rule-title" id="ing-regras">Verbo termina em -e</div><div class="rule-body">Tira o <strong>e</strong> antes do <strong>-ing</strong></div><div class="rule-ex"><span class="en" data-speak="make">make</span> (fazer) → <span class="en" data-speak="making">mak<b>ing</b></span> &nbsp;·&nbsp; <span class="en" data-speak="write">write</span> (escrever) → <span class="en" data-speak="writing">writ<b>ing</b></span></div></div>
       <div class="rule"><div class="rule-title">Verbo curto (consoante–vogal–consoante)</div><div class="rule-body">Dobra a última letra</div><div class="rule-ex"><span class="en" data-speak="run">run</span> (correr) → <span class="en" data-speak="running">runn<b>ing</b></span> &nbsp;·&nbsp; <span class="en" data-speak="sit">sit</span> (sentar) → <span class="en" data-speak="sitting">sitt<b>ing</b></span></div></div>
     </div>
     <div class="tip"><div class="tip-lbl">📝 Só na escrita</div><p class="tip-txt">Essas regras são relevantes só na <strong>escrita</strong> — na fala, ninguém vai notar.</p><p class="tip-txt" style="margin-top:8px;">O G do <strong>-ing</strong> nunca é pronunciado: <em>sleepin'</em>, <em>runnin'</em>.</p></div>
@@ -1534,7 +1826,7 @@ const pages=[
     <!-- ════ PRESENTE ════ -->
     <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Presente</div><div class="tobe-divider-line"></div></div>
 
-    <div class="tobe-card">
+    <div class="tobe-card" id="tobe-presente">
       <div class="tobe-card-hd">Presente — Afirmativo</div>
       <div class="tobe-card-body">
         <div class="conj-big">
@@ -1703,7 +1995,7 @@ const pages=[
     </div>
 
     <!-- ════ PRESENTE INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Presente — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-pres">Presente — Interrogativo</div><div class="tobe-divider-line"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Presente — Interrogativo</div>
@@ -1742,7 +2034,7 @@ const pages=[
     <!-- ════ PASSADO ════ -->
     <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Passado</div><div class="tobe-divider-line"></div></div>
 
-    <div class="tobe-card">
+    <div class="tobe-card" id="tobe-passado">
       <div class="tobe-card-hd pur">Passado — Afirmativo</div>
       <div class="tobe-card-body">
         <div class="conj-big">
@@ -1825,7 +2117,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Passado — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-past">Passado — Interrogativo</div><div class="tobe-divider-line"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Passado — Interrogativo</div>
@@ -1850,7 +2142,7 @@ const pages=[
     <!-- ════ FUTURO ════ -->
     <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Futuro</div><div class="tobe-divider-line"></div></div>
 
-    <div class="tobe-card">
+    <div class="tobe-card" id="tobe-futuro">
       <div class="tobe-card-hd yel">Futuro — Afirmativo</div>
       <div class="tobe-card-body">
         <p class="intro">Em inglês não existe conjugação direta para o futuro. Usamos <span class="en" data-speak="will be">will be</span> para todo mundo.</p>
@@ -1909,7 +2201,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Futuro — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-fut">Futuro — Interrogativo</div><div class="tobe-divider-line"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Futuro — Interrogativo</div>
@@ -2045,13 +2337,13 @@ const pages=[
 `<div class="page pg-content">
   <div class="pg-hd"><div class="pg-lbl">Seção 05 · Adjetivos</div><div class="pg-ttl">Como descrever as coisas</div></div>
   <div class="pg-body">
-    <p class="intro">Um <strong>adjetivo</strong> é uma palavra que descreve a característica de algo ou alguém.</p>
+    <p class="intro" id="adj-intro">Um <strong>adjetivo</strong> é uma palavra que descreve a característica de algo ou alguém.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Eu comprei uma caneta <b>azul</b>.</div></div>
       <div class="quote"><div class="q-pt">A camiseta <b>amarela</b> está suja.</div></div>
       <div class="quote"><div class="q-pt">Meu pai comprou um computador <b>potente e rápido</b>.</div></div>
     </div>
-    <div class="tip red"><div class="tip-lbl">⚠️ Regra principal</div><p class="tip-txt">Em português o adjetivo vem <strong>depois</strong> do substantivo. Em inglês, vem <strong>sempre antes</strong>.</p></div>
+    <div class="tip red" id="adj-ordem"><div class="tip-lbl">⚠️ Regra principal</div><p class="tip-txt">Em português o adjetivo vem <strong>depois</strong> do substantivo. Em inglês, vem <strong>sempre antes</strong>.</p></div>
     <div class="sub-label">Exemplos</div>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Eu comprei uma caneta azul.</div><div class="q-en">I bought a <span class="en" data-speak="blue pen">blue pen</span>.</div></div>
@@ -2059,8 +2351,8 @@ const pages=[
       <div class="quote"><div class="q-pt">A amiga dela tem uma casa grande e bonita.</div><div class="q-en">Her friend has a <span class="en" data-speak="big and beautiful house">big and beautiful house</span>.</div></div>
       <div class="quote"><div class="q-pt">Douglas conheceu uma menina legal.</div><div class="q-en">Douglas met a <span class="en" data-speak="cool girl">cool girl</span>.</div></div>
     </div>
-    <div class="tip grn"><div class="tip-lbl">💡 Adjetivos não têm plural</div><p class="tip-txt">Em português: carro <strong>vermelho</strong>, carros <strong>vermelhos</strong>. Em inglês o adjetivo nunca muda.<br><br>The <span class="en" data-speak="yellow t-shirts">yellow</span> t-shirts are dirty. ✅<br>The yellows t-shirts are dirty. ❌</p></div>
-    <div class="sub-label">Adjetivo após o verbo to be</div>
+    <div class="tip grn"><div class="tip-lbl" id="adj-plural">💡 Adjetivos não têm plural</div><p class="tip-txt">Em português: carro <strong>vermelho</strong>, carros <strong>vermelhos</strong>. Em inglês o adjetivo nunca muda.<br><br>The <span class="en" data-speak="yellow t-shirts">yellow</span> t-shirts are dirty. ✅<br>The yellows t-shirts are dirty. ❌</p></div>
+    <div class="sub-label" id="adj-tobe">Adjetivo após o verbo to be</div>
     <p class="intro">Quando o adjetivo vem depois do verbo to be, a ordem é a mesma do português.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">A camiseta é amarela.</div><div class="q-en">The t-shirt <span class="en" data-speak="is yellow">is yellow</span>.</div></div>
@@ -2068,7 +2360,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Aqueles meninos são legais.</div><div class="q-en">Those boys <span class="en" data-speak="are cool">are cool</span>.</div></div>
       <div class="quote"><div class="q-pt">O casal será feliz.</div><div class="q-en">The couple <span class="en" data-speak="will be happy">will be happy</span>.</div></div>
     </div>
-    <div class="sub-label">Quando o "de" some em inglês</div>
+    <div class="sub-label" id="adj-de">Quando o "de" some em inglês</div>
     <p class="intro">Em português, usamos "de" para ligar um substantivo a uma característica: <strong>janela de vidro</strong>, <strong>camiseta de algodão</strong>. Em inglês, o "de" não existe — o adjetivo simplesmente fica antes, sem nada entre eles.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">janela de vidro</div><div class="q-en"><span class="en" data-speak="glass window">glass window</span></div></div>
@@ -2105,13 +2397,13 @@ const pages=[
 `<div class="page pg-content">
   <div class="pg-hd"><div class="pg-lbl">Seção 06 · Artigos</div><div class="pg-ttl">The, A, An e Some</div></div>
   <div class="pg-body">
-    <div class="sub-label">Artigo Definido — The</div>
+    <div class="sub-label" id="art-the">Artigo Definido — The</div>
     <p class="intro"><span class="en" data-speak="the">The</span> equivale ao <strong>o, a, os, as</strong>. Usado quando ambos sabem do que se fala, ou quando o objeto já foi mencionado.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">O menino estava dormindo.</div><div class="q-en"><span class="en" data-speak="The boy was sleeping">The boy was sleeping</span>.</div></div>
       <div class="quote"><div class="q-pt">Os meninos estavam dormindo.</div><div class="q-en"><span class="en" data-speak="The boys were sleeping">The boys were sleeping</span>.</div></div>
     </div>
-    <div class="tip red"><div class="tip-lbl">⚠️ Nomes próprios de pessoas</div><p class="tip-txt">Em inglês <strong>não se usa artigo antes de nomes de pessoas</strong>.<br><br>Jaden was playing. ✅ &nbsp; <s>The Jaden was playing.</s> ❌</p></div>
+    <div class="tip" id="pron-nomes" red"><div class="tip-lbl">⚠️ Nomes próprios de pessoas</div><p class="tip-txt">Em inglês <strong>não se usa artigo antes de nomes de pessoas</strong>.<br><br>Jaden was playing. ✅ &nbsp; <s>The Jaden was playing.</s> ❌</p></div>
     <div class="tip yel"><div class="tip-lbl">⚠️ Exceções — nomes próprios que usam "the"</div><p class="tip-txt">
       <strong>Países compostos ou no plural:</strong><br>
       <span class="en" data-speak="The United States">The United States</span> · <span class="en" data-speak="The United Kingdom">The United Kingdom</span> · <span class="en" data-speak="The Netherlands">The Netherlands</span><br><br>
@@ -2129,7 +2421,7 @@ const pages=[
     <span class="en" data-speak="The Amazon">The Amazon</span> — O Amazonas<br>
     <span class="en" data-speak="The Beatles">The Beatles</span> — A banda<br>
     <span class="en" data-speak="The New York Times">The New York Times</span> — O jornal</p></div>
-    <div class="sub-label">Artigo Indefinido — A / An</div>
+    <div class="sub-label" id="art-a-an">Artigo Indefinido — A / An</div>
     <p class="intro"><span class="en" data-speak="a">A</span> e <span class="en" data-speak="an">An</span> equivalem ao <strong>um, uma</strong>. Use quando fala de algo pela primeira vez ou de qualquer objeto do tipo.</p>
     <div class="tip"><div class="tip-lbl">📌 A vs An</div><p class="tip-txt">Use <strong>a</strong> antes de som de <strong>consoante</strong>. Use <strong>an</strong> antes de som de <strong>vogal</strong>. O que importa é o <strong>som</strong>, não a letra.</p></div>
     <div class="quote-list">
@@ -2138,7 +2430,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Uma maçã.</div><div class="q-en"><span class="en" data-speak="An apple">An apple</span>.</div></div>
     </div>
     <div class="tip yel"><div class="tip-lbl">⚠️ H mudo</div><p class="tip-txt">Palavras com <strong>H mudo</strong> usam <strong>an</strong>:<br><span class="en" data-speak="an hour">an hour</span> <span class="q-tr">(uma hora)</span> &nbsp;·&nbsp; <span class="en" data-speak="an honest person">an honest person</span></p></div>
-    <div class="sub-label">Artigo Indefinido Plural — Some</div>
+    <div class="sub-label" id="art-some">Artigo Indefinido Plural — Some</div>
     <p class="intro"><span class="en" data-speak="some">Some</span> equivale ao <strong>uns, umas, alguns, algumas</strong>.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Ontem eu conheci algumas meninas.</div><div class="q-en">Yesterday I met <span class="en" data-speak="some girls">some girls</span>.</div></div>
@@ -2202,7 +2494,7 @@ const pages=[
 `<div class="page pg-content">
   <div class="pg-hd"><div class="pg-lbl">Seção 07 · Presente</div><div class="pg-ttl">Conjugação</div></div>
   <div class="pg-body">
-    <p class="intro">Para conjugar a maioria dos verbos no presente, basta colocá-los <strong>sem nenhuma alteração</strong> após o sujeito. Porém nos pronomes he, she e it, acrescentamos um <strong>s</strong> no final do verbo.</p>
+    <p class="intro" id="presente-base">Para conjugar a maioria dos verbos no presente, basta colocá-los <strong>sem nenhuma alteração</strong> após o sujeito. Porém nos pronomes he, she e it, acrescentamos um <strong>s</strong> no final do verbo.</p>
     <div class="conj-table" style="margin:14px 0;">
       <div class="conj-row hd"><span>Português</span><span>Inglês</span></div>
       <div class="conj-row"><span>Eu como</span><span class="en" data-speak="I eat">I eat</span></div>
@@ -2281,7 +2573,7 @@ const pages=[
       </div>
     </div>
     <div class="rule-box">
-      <div class="rule-title">Verbos Irregulares → conjugação aleatória</div>
+      <div class="rule-title" id="passado-irregular">Verbos Irregulares → conjugação aleatória</div>
       <p class="intro">Alguns verbos têm conjugação própria no passado — não seguem regra, precisam ser memorizados aos poucos.</p>
       <div class="eg-block" style="margin-top:10px;">
         <div class="eg-row"><span class="eg-pt">Eu fiz o projeto.</span><span class="eg-en en" data-speak="I did the project">I <strong>did</strong> the project.</span> <span class="eg-hint">(do → did)</span></div>
@@ -2316,7 +2608,7 @@ const pages=[
 `<div class="page pg-content">
   <div class="pg-hd"><div class="pg-lbl">Seção 09 · Futuro</div><div class="pg-ttl">Will e Won't</div></div>
   <div class="pg-body">
-    <p class="intro">Para conjugar no futuro, basta colocar <span class="en" data-speak="will">will</span> <strong>antes do verbo</strong>. Para o negativo, usamos <span class="en" data-speak="won't">won't</span>.</p>
+    <p class="intro" id="futuro-base">Para conjugar no futuro, basta colocar <span class="en" data-speak="will">will</span> <strong>antes do verbo</strong>. Para o negativo, usamos <span class="en" data-speak="won't">won't</span>.</p>
     <div class="conj-table" style="margin:14px 0;">
       <div class="conj-row hd"><span>Português</span><span>Inglês</span></div>
       <div class="conj-row"><span>vou, vai, vamos, vão</span><span class="en" data-speak="will">will</span></div>
@@ -2483,7 +2775,7 @@ const pages=[
       </div>
     </div>
     <div class="rule-box" style="margin-top:16px;">
-      <div class="rule-title">Em inglês, isso é impossível ❌</div>
+      <div class="rule-title" id="suj-regra">Em inglês, isso é impossível ❌</div>
       <p>Em inglês, <strong>o verbo não muda de acordo com o pronome</strong> (exceto he/she/it no presente). Sem o sujeito, não tem como saber quem fez a ação.</p>
       <div class="eg-block" style="margin-top:10px;">
         <div class="eg-row" style="flex-direction:column;align-items:flex-start;gap:2px;">
