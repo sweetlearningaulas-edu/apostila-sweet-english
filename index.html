@@ -110,7 +110,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .idx-name{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.1px;}
 .idx-desc{font-size:12px;color:var(--m);margin-top:2px;line-height:1.4;}
 .idx-arrow{font-size:13px;color:var(--m);opacity:.4;}
-.pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 28px 48px;position:relative;overflow:hidden;}
+.pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 28px 48px;position:relative;overflow:hidden;}
 .pg-sec::before{content:'';position:absolute;top:-40px;right:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(196,160,255,.07),transparent 65%);pointer-events:none;}
 .pg-sec::after{content:'';position:absolute;top:15%;right:0;width:2px;height:50%;background:linear-gradient(to bottom,transparent,var(--acc,var(--blue)),transparent);opacity:.4;}
 .sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
@@ -547,6 +547,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .inst-prefs-btns{display:flex;gap:8px;margin-bottom:10px;}
 .inst-theme-btn{border:none;border-radius:14px;padding:14px 20px;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:var(--blue);cursor:pointer;width:100%;display:block;box-shadow:0 4px 14px rgba(0,0,0,.25);letter-spacing:.2px;}
 .inst-mode-btn{border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;color:var(--s);background:var(--card2);cursor:pointer;}
+.sec-back-btn{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:20px;font-family:inherit;font-size:12px;font-weight:700;color:var(--m);cursor:pointer;padding:7px 16px;margin-bottom:auto;align-self:flex-start;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -1675,10 +1676,10 @@ window['rev3_bk']=[
   {pt:'Eu moro nesta rua.',before:'I live',blank:'on this',after:'street.',options:['in this','on this','at this','in that'],anchor:'37:indem-regra'},
   {pt:'Jake trabalha naquele escritório.',before:'Jake works',blank:'in that',after:'office.',options:['in that','on that','at that','in this'],anchor:'37:indem-regra'},
   {pt:'Renato está neste ônibus.',before:'Renato is',blank:'on this',after:'bus.',options:['in this','on this','at this','on that'],anchor:'37:indem-regra'},
-  {pt:'O menino que estava jogando é meu amigo.',before:'The boy',blank:'who',after:'was playing is my friend.',options:['who','that','which','where'],anchor:'39:queexp-who'},
-  {pt:'O carro que eu comprei é vermelho.',before:'The car',blank:'that',after:'I bought is red.',options:['who','that','which','where'],anchor:'39:queexp-that'},
-  {pt:'A música que ela cantou foi linda.',before:'The song',blank:'that',after:'she sang was beautiful.',options:['who','that','which','where'],anchor:'39:queexp-that'},
-  {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',options:['who','that','which','where'],anchor:'39:queexp-who'},
+  {pt:'O menino que estava jogando é meu amigo.',before:'The boy',blank:'who',after:'was playing is my friend.',options:['who','which'],anchor:'39:queexp-who'},
+  {pt:'O carro que eu comprei é vermelho.',before:'The car',blank:'which',after:'I bought is red.',options:['who','which'],anchor:'39:queexp-that'},
+  {pt:'A música que ela cantou foi linda.',before:'The song',blank:'which',after:'she sang was beautiful.',options:['who','which'],anchor:'39:queexp-that'},
+  {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',options:['who','which'],anchor:'39:queexp-who'},
 ];
 window['ing_bk']=[
   {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran'],anchor:'ing-regras'},
@@ -2237,6 +2238,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 01</div>
   <div class="sec-title">Pronomes<br><span class="acc">Pessoais</span></div>
@@ -2314,6 +2316,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 02</div>
   <div class="sec-title">O que é<br>um <span class="acc">Verbo?</span></div>
@@ -2348,6 +2351,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 03</div>
   <div class="sec-title">Continuous<br><span class="acc">Tenses</span></div>
@@ -2389,6 +2393,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 04</div>
   <div class="sec-title">Verbo<br><span class="acc">To Be</span></div>
@@ -2906,6 +2911,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 05</div>
   <div class="sec-title">Adjetivos</div>
@@ -2967,6 +2973,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 06</div>
   <div class="sec-title">Artigos</div>
@@ -3067,6 +3074,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 07</div>
   <div class="sec-title">Presente<br><span class="acc">Simple</span></div>
   <div class="sec-sep"></div>
@@ -3130,6 +3138,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 08</div>
   <div class="sec-title">Passado<br><span class="acc">Simple</span></div>
   <div class="sec-sep"></div>
@@ -3183,6 +3192,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 09</div>
   <div class="sec-title">Futuro<br><span class="acc">Will</span></div>
   <div class="sec-sep"></div>
@@ -3233,6 +3243,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 10</div>
   <div class="sec-title">To Go<br><span class="acc">Ir</span></div>
   <div class="sec-sep"></div>
@@ -3337,6 +3348,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 11</div>
   <div class="sec-title">Sujeito<br><span class="acc">Oculto</span></div>
   <div class="sec-sep"></div>
@@ -3409,6 +3421,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 12</div>
   <div class="sec-title">In, On, At<br><span class="acc">Preposições</span></div>
   <div class="sec-sep"></div>
@@ -3869,6 +3882,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 13</div>
   <div class="sec-title">Pronomes<br><span class="acc">Demonstrativos</span></div>
   <div class="sec-sep"></div>
@@ -3983,6 +3997,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 14</div>
   <div class="sec-title">In, On, At<br><span class="acc">+ Demonstrativos</span></div>
   <div class="sec-sep"></div>
@@ -4083,6 +4098,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 15</div>
   <div class="sec-title">Que<br><span class="acc">Explicativo</span></div>
   <div class="sec-sep"></div>
