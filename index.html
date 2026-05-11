@@ -548,6 +548,52 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .inst-theme-btn{border:none;border-radius:14px;padding:14px 20px;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:var(--blue);cursor:pointer;width:100%;display:block;box-shadow:0 4px 14px rgba(0,0,0,.25);letter-spacing:.2px;}
 .inst-mode-btn{border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;color:var(--s);background:var(--card2);cursor:pointer;}
 .sec-back-btn{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:20px;font-family:inherit;font-size:12px;font-weight:700;color:var(--m);cursor:pointer;padding:7px 16px;margin-bottom:auto;align-self:flex-start;}
+.poss-pt-list{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;font-size:15px;color:var(--s);}
+.poss-hl-adj{color:var(--blue);font-weight:700;}
+.poss-hl-pp{color:var(--purple);font-weight:700;}
+.poss-tipos-row{display:flex;gap:10px;margin:4px 0 12px;}
+.poss-tipo{flex:1;border-radius:14px;padding:14px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;}
+.poss-tipo.ppa{background:rgba(99,179,237,.08);border:1.5px solid rgba(99,179,237,.25);}
+.poss-tipo.pp{background:rgba(196,160,255,.08);border:1.5px solid rgba(196,160,255,.25);}
+.poss-tipo-sigla{font-size:22px;font-weight:800;}
+.poss-tipo.ppa .poss-tipo-sigla{color:var(--blue);}
+.poss-tipo.pp .poss-tipo-sigla{color:var(--purple);}
+.poss-tipo-nome{font-size:11px;color:var(--m);line-height:1.4;}
+.poss-arrow-list{display:flex;flex-direction:column;gap:0;background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;}
+.poss-arrow-row{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line);}
+.poss-arrow-row:last-child{border-bottom:none;}
+.poss-arrow-pt{font-size:14px;color:var(--s);flex:1;}
+.poss-arrow-line{font-size:16px;color:var(--blue);flex-shrink:0;}
+.poss-arrow-en{font-size:18px;font-weight:800;color:var(--blue);flex-shrink:0;min-width:70px;text-align:right;}
+.poss-triple-table{background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;}
+.poss-triple-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;padding:11px 16px;border-bottom:1px solid var(--line);gap:4px;align-items:center;}
+.poss-triple-row:last-child{border-bottom:none;}
+.poss-triple-row.hd{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--m);padding:10px 16px;background:var(--card2);}
+.poss-triple-row span:first-child{font-size:13px;color:var(--s);}
+.poss-triple-row .ppa{font-size:15px;font-weight:800;color:var(--blue);text-align:center;display:flex;justify-content:center;}
+.poss-triple-row .pp{font-size:15px;font-weight:800;color:var(--purple);text-align:center;display:flex;justify-content:center;}
+.poss-triple-row.hd span{display:flex;justify-content:center;}
+.poss-triple-row.hd span:first-child{justify-content:flex-start;}
+.poss-triple-row.hd .poss-hl-adj{color:var(--blue);}
+.poss-triple-row.hd .poss-hl-pp{color:var(--purple);}
+.poss-hl-noun{color:var(--yel);font-weight:700;}
+.poss-hl-tobe{color:var(--green);font-weight:700;}
+.poss-legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.poss-legend-item{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.poss-legend-item.adj{background:rgba(99,179,237,.12);color:var(--blue);}
+.poss-legend-item.noun{background:rgba(255,213,128,.12);color:var(--yel);}
+.poss-legend-item.tobe{background:rgba(125,232,160,.12);color:var(--green);}
+.poss-ex-list{display:flex;flex-direction:column;gap:10px;}
+.poss-ex-block{background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;display:flex;}
+.poss-ex-tag{writing-mode:vertical-rl;text-orientation:mixed;font-size:10px;font-weight:800;letter-spacing:1px;padding:12px 8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.poss-ex-tag.ppa-tag{background:rgba(99,179,237,.12);color:var(--blue);}
+.poss-ex-tag.pp-tag{background:rgba(196,160,255,.12);color:var(--purple);}
+.poss-ex-sentences{padding:12px 14px;display:flex;flex-direction:column;gap:5px;flex:1;}
+.poss-ex-sent{font-size:15px;font-weight:600;}
+.poss-ex-sent.en{font-size:14px;}
+.poss-ex-note{font-size:12px;color:var(--m);line-height:1.5;padding:4px 0;}
+.q-note{font-size:12px;color:var(--m);margin:4px 0;line-height:1.5;}
+.q-note{font-size:12px;color:var(--m);margin:4px 0;font-style:italic;line-height:1.5;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -1045,6 +1091,10 @@ function checkOpt(id,btn,val,correct){
   }
 }
 function scrollAndHighlight(anchor){
+  window._backPage=cur;
+  window._backAnchor=null;
+  // Store current scroll anchor if possible
+  const curAnchors=document.querySelectorAll('[id]');
   const parts=anchor.split(':');
   if(parts.length===2){
     goAndHighlight(parseInt(parts[0]),parts[1]);
@@ -1052,14 +1102,23 @@ function scrollAndHighlight(anchor){
     const el=document.getElementById(parts[0]);if(!el)return;
     const old=document.getElementById('inline-back-btn');if(old)old.remove();
     const btn=document.createElement('button');
-    btn.id='inline-back-btn';btn.innerHTML='← Voltar ao exercício';btn.className='inline-back-btn';
+    btn.id='inline-back-btn';btn.innerHTML='← Voltar';btn.className='inline-back-btn';
     btn.onclick=()=>{
       btn.remove();
-      // Find active exercise body
-      const allEx=document.querySelectorAll('[id$="-body"]');
-      let exEl=null;
-      allEx.forEach(el=>{if(el.querySelector('.opt-btn'))exEl=el;});
-      if(exEl)exEl.scrollIntoView({behavior:'smooth',block:'center'});
+      if(window._backPage!==undefined){
+        go(window._backPage);
+        if(window._backAnchor){
+          setTimeout(()=>{
+            const el=document.getElementById(window._backAnchor);
+            if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+          },200);
+        }
+      } else {
+        const allEx=document.querySelectorAll('[id$="-body"]');
+        let exEl=null;
+        allEx.forEach(el=>{if(el.querySelector('.opt-btn'))exEl=el;});
+        if(exEl)exEl.scrollIntoView({behavior:'smooth',block:'center'});
+      }
     };
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
@@ -1681,6 +1740,154 @@ window['rev3_bk']=[
   {pt:'A música que ela cantou foi linda.',before:'The song',blank:'which',after:'she sang was beautiful.',options:['who','which'],anchor:'39:queexp-that'},
   {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',options:['who','which'],anchor:'39:queexp-who'},
 ];
+
+window['poss_bk']=[
+  // ── PPA (25) ──────────────────────────────────────────────
+  {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ela ama a família dela.',before:'She loves',blank:'her',after:'family.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós vendemos a nossa casa.',before:'We sold',blank:'our',after:'house.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles perderam as malas deles.',before:'They lost',blank:'their',after:'bags.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ryan adora a mãe dele.',before:'Ryan loves',blank:'his',after:'mom.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você esqueceu a sua carteira.',before:'You forgot',blank:'your',after:'wallet.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Megan perdeu a bolsa dela.',before:'Megan lost',blank:'her',after:'bag.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu preciso do meu passaporte.',before:'I need',blank:'my',after:'passport.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós adoramos o nosso time.',before:'We love',blank:'our',after:'team.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles cancelaram o voo deles.',before:'They cancelled',blank:'their',after:'flight.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Jake esqueceu o celular dele.',before:'Jake forgot',blank:'his',after:'phone.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ashley adora o trabalho dela.',before:'Ashley loves',blank:'her',after:'job.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu lavei o meu carro.',before:'I washed',blank:'my',after:'car.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você terminou a sua tarefa.',before:'You finished',blank:'your',after:'task.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós ganhamos o nosso jogo.',before:'We won',blank:'our',after:'game.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles venderam a empresa deles.',before:'They sold',blank:'their',after:'company.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Douglas gravou o álbum dele.',before:'Douglas recorded',blank:'his',after:'album.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Camila terminou o curso dela.',before:'Camila finished',blank:'her',after:'course.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu vou cuidar do meu irmão.',before:'I will take care of',blank:'my',after:'brother.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você vai vender o seu apartamento.',before:'You will sell',blank:'your',after:'apartment.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós vamos renovar o nosso contrato.',before:'We will renew',blank:'our',after:'contract.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles vão mudar o nome deles.',before:'They will change',blank:'their',after:'name.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Taylor publicou a música dela.',before:'Taylor released',blank:'her',after:'song.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Josh não encontrou o passaporte dele.',before:'Josh did not find',blank:'his',after:'passport.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Renato vai apresentar o projeto dele.',before:'Renato will present',blank:'his',after:'project.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  // ── PP (25) ───────────────────────────────────────────────
+  {pt:'Aquele carro é meu.',before:'That car is',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Este livro era seu.',before:'This book was',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A ideia não era dele.',before:'The idea was not',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A culpa não é dela.',before:'The fault is not',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A decisão era nossa.',before:'The decision was',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse celular não era seu.',before:'That phone was not',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa cadeira não é minha.',before:'This chair is not',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse carro é dela?',before:'Is that car',blank:'hers',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa ideia era deles?',before:'Was that idea',blank:'theirs',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse projeto não era nosso?',before:'Was not that project',blank:'ours',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A vitória foi deles.',before:'The victory was',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A bolsa é dela.',before:'The bag is',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse apartamento vai ser nosso.',before:'That apartment will be',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse prêmio vai ser meu.',before:'That prize will be',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse erro não é meu.',before:'That mistake is not',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse trabalho vai ser seu.',before:'That job will be',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Aquela casa não era deles.',before:'That house was not',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse cachorro é dele?',before:'Is that dog',blank:'his',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa bicicleta não era minha?',before:'Was not that bike',blank:'mine',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse lugar vai ser nosso?',before:'Will that place be',blank:'ours',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A responsabilidade é nossa.',before:'The responsibility is',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse ingresso não é seu.',before:'That ticket is not',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A culpa foi deles?',before:'Was the fault',blank:'theirs',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse troféu vai ser dele.',before:'That trophy will be',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa vitória não vai ser dela.',before:'That victory will not be',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  // ── OF + PP (10) ──────────────────────────────────────────
+  {pt:'Um amigo dela.',before:'A friend of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um colega meu.',before:'A colleague of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um amigo nosso.',before:'A friend of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma ideia sua.',before:'An idea of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um sonho meu.',before:'A dream of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um primo dele.',before:'A cousin of',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma amiga dela.',before:'A friend of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um projeto nosso.',before:'A project of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma conquista deles.',before:'An achievement of',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um desejo seu.',before:'A wish of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+];
+
+
+window['poss_bk']=[
+  // ── PPA (25) ──────────────────────────────────────────────
+  {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ela ama a família dela.',before:'She loves',blank:'her',after:'family.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós vendemos a nossa casa.',before:'We sold',blank:'our',after:'house.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles perderam as malas deles.',before:'They lost',blank:'their',after:'bags.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ryan adora a mãe dele.',before:'Ryan loves',blank:'his',after:'mom.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você esqueceu a sua carteira.',before:'You forgot',blank:'your',after:'wallet.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Megan perdeu a bolsa dela.',before:'Megan lost',blank:'her',after:'bag.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu preciso do meu passaporte.',before:'I need',blank:'my',after:'passport.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós adoramos o nosso time.',before:'We love',blank:'our',after:'team.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles cancelaram o voo deles.',before:'They cancelled',blank:'their',after:'flight.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Jake esqueceu o celular dele.',before:'Jake forgot',blank:'his',after:'phone.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Ashley adora o trabalho dela.',before:'Ashley loves',blank:'her',after:'job.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu lavei o meu carro.',before:'I washed',blank:'my',after:'car.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você terminou a sua tarefa.',before:'You finished',blank:'your',after:'task.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós ganhamos o nosso jogo.',before:'We won',blank:'our',after:'game.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles venderam a empresa deles.',before:'They sold',blank:'their',after:'company.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Douglas gravou o álbum dele.',before:'Douglas recorded',blank:'his',after:'album.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Camila terminou o curso dela.',before:'Camila finished',blank:'her',after:'course.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eu vou cuidar do meu irmão.',before:'I will take care of',blank:'my',after:'brother.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Você vai vender o seu apartamento.',before:'You will sell',blank:'your',after:'apartment.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Nós vamos renovar o nosso contrato.',before:'We will renew',blank:'our',after:'contract.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Eles vão mudar o nome deles.',before:'They will change',blank:'their',after:'name.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Taylor publicou a música dela.',before:'Taylor released',blank:'her',after:'song.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Josh não encontrou o passaporte dele.',before:'Josh did not find',blank:'his',after:'passport.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  {pt:'Renato vai apresentar o projeto dele.',before:'Renato will present',blank:'his',after:'project.',options:['my','your','his','her','our','their'],noShuffle:true,anchor:'poss-adj-intro'},
+  // ── PP (25) ───────────────────────────────────────────────
+  {pt:'Aquele carro é meu.',before:'That car is',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Este livro era seu.',before:'This book was',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A ideia não era dele.',before:'The idea was not',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A culpa não é dela.',before:'The fault is not',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A decisão era nossa.',before:'The decision was',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse celular não era seu.',before:'That phone was not',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa cadeira não é minha.',before:'This chair is not',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse carro é dela?',before:'Is that car',blank:'hers',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa ideia era deles?',before:'Was that idea',blank:'theirs',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse projeto não era nosso?',before:'Was not that project',blank:'ours',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A vitória foi deles.',before:'The victory was',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A bolsa é dela.',before:'The bag is',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse apartamento vai ser nosso.',before:'That apartment will be',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse prêmio vai ser meu.',before:'That prize will be',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse erro não é meu.',before:'That mistake is not',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse trabalho vai ser seu.',before:'That job will be',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Aquela casa não era deles.',before:'That house was not',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse cachorro é dele?',before:'Is that dog',blank:'his',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa bicicleta não era minha?',before:'Was not that bike',blank:'mine',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse lugar vai ser nosso?',before:'Will that place be',blank:'ours',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A responsabilidade é nossa.',before:'The responsibility is',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse ingresso não é seu.',before:'That ticket is not',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'A culpa foi deles?',before:'Was the fault',blank:'theirs',after:'?',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Esse troféu vai ser dele.',before:'That trophy will be',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  {pt:'Essa vitória não vai ser dela.',before:'That victory will not be',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-pron-label'},
+  // ── OF + PP (25) ──────────────────────────────────────────
+  {pt:'Um amigo dela.',before:'A friend of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um colega meu.',before:'A colleague of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um amigo nosso.',before:'A friend of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma ideia sua.',before:'An idea of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um sonho meu.',before:'A dream of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um primo dele.',before:'A cousin of',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma amiga dela.',before:'A friend of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um projeto nosso.',before:'A project of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma conquista deles.',before:'An achievement of',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um desejo seu.',before:'A wish of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma decisão minha.',before:'A decision of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um problema dele.',before:'A problem of',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma responsabilidade nossa.',before:'A responsibility of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um erro deles.',before:'A mistake of',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma conquista sua.',before:'An achievement of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um plano meu.',before:'A plan of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma escolha dela.',before:'A choice of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um talento dele.',before:'A talent of',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma vitória nossa.',before:'A victory of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma surpresa deles.',before:'A surprise of',blank:'theirs',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um segredo seu.',before:'A secret of',blank:'yours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma lembrança minha.',before:'A memory of',blank:'mine',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um sonho dele.',before:'A dream of',blank:'his',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Uma promessa dela.',before:'A promise of',blank:'hers',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+  {pt:'Um desejo nosso.',before:'A wish of',blank:'ours',after:'.',options:['mine','yours','his','hers','ours','theirs'],noShuffle:true,anchor:'poss-regra'},
+];
 window['ing_bk']=[
   {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran'],anchor:'ing-regras'},
   {pt:'Ela está assistindo um filme.',before:'She is',blank:'watching',after:'a movie.',options:['watching','watch','watched','to watch'],anchor:'ing-regras'},
@@ -2224,6 +2431,20 @@ const pages=[
         </div>
         <div class="idx-item" onclick="go(39)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CAPÍTULO 4 ── -->
+    <div class="idx-chapter" id="idxcap4">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap4')" style="--ch-color:#f6ad55;">
+        <span class="idx-chapter-num">4</span>
+        <span class="idx-chapter-title">Capítulo 4</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap4-body">
+        <div class="idx-item" onclick="go(42)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
+          <div class="idx-num">16</div><div class="idx-info"><div class="idx-name">Pronomes de Posse</div><div class="idx-desc">My, your, his — mine, yours, hers</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -3019,8 +3240,8 @@ const pages=[
     <span class="en" data-speak="The Amazon">The Amazon</span> — O Amazonas<br>
     <span class="en" data-speak="The Beatles">The Beatles</span> — A banda<br>
     <span class="en" data-speak="The New York Times">The New York Times</span> — O jornal</p></div>
-    <div class="sub-label" id="art-a-an">Artigo Indefinido — A / An</div>
-    <p class="intro"><span class="en" data-speak="a">A</span> e <span class="en" data-speak="an">An</span> equivalem ao <strong>um, uma</strong>. Use quando fala de algo pela primeira vez ou de qualquer objeto do tipo.</p>
+    <div class="sub-label">Artigo Indefinido — A / An</div>
+    <div id="art-a-an" style="scroll-margin-top:20px;"><p class="intro" style="margin:0 0 8px;"><span class="en" data-speak="a">A</span> e <span class="en" data-speak="an">An</span> equivalem ao <strong>um, uma</strong>. Use quando fala de algo pela primeira vez ou de qualquer objeto do tipo.</p>
     <div class="tip"><div class="tip-lbl">📌 A vs An</div><p class="tip-txt">Use <strong>a</strong> antes de som de <strong>consoante</strong>. Use <strong>an</strong> antes de som de <strong>vogal</strong>. O que importa é o <strong>som</strong>, não a letra.</p></div>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Ele vai comprar um carro.</div><div class="q-en">He will buy <span class="en" data-speak="a car">a car</span>.</div></div>
@@ -3029,6 +3250,7 @@ const pages=[
     </div>
     <div class="tip yel"><div class="tip-lbl">⚠️ H mudo</div><p class="tip-txt">Palavras com <strong>H mudo</strong> usam <strong>an</strong>:<br><span class="en" data-speak="an hour">an hour</span> <span class="q-tr">(uma hora)</span> &nbsp;·&nbsp; <span class="en" data-speak="an honest person">an honest person</span></p></div>
     <div class="tip"><div class="tip-lbl">💡 E o W e o U?</div><p class="tip-txt">Algumas letras enganam:<br><br><strong>W</strong> — tem som parecido com "u" (<em>uállet, uíq</em>), mas em inglês é classificado como consoante. Usamos <strong>a</strong>:<br><span class="en" data-speak="a wallet">a wallet</span> <span class="q-tr">(uma carteira)</span> &nbsp;·&nbsp; <span class="en" data-speak="a week">a week</span> <span class="q-tr">(uma semana)</span> &nbsp;·&nbsp; <span class="en" data-speak="a window">a window</span> <span class="q-tr">(uma janela)</span><br><br><strong>U</strong> — às vezes soa como "yu" (consoante + vogal). Nesses casos, usamos <strong>a</strong>:<br><span class="en" data-speak="a university">a university</span> <span class="q-tr">(uma universidade)</span> &nbsp;·&nbsp; <span class="en" data-speak="a uniform">a uniform</span> <span class="q-tr">(um uniforme)</span><br><br>Quando o U soa como vogal pura, usamos <strong>an</strong>:<br><span class="en" data-speak="an umbrella">an umbrella</span> <span class="q-tr">(um guarda-chuva)</span> &nbsp;·&nbsp; <span class="en" data-speak="an uncle">an uncle</span> <span class="q-tr">(um tio)</span></p></div>
+    </div>
     <div class="sub-label" id="art-some">Artigo Indefinido Plural — Some</div>
     <p class="intro"><span class="en" data-speak="some">Some</span> equivale ao <strong>uns, umas, alguns, algumas</strong>.</p>
     <div class="quote-list">
@@ -3433,7 +3655,7 @@ const pages=[
       <div class="curiosidade-icon">🌍</div>
       <div class="curiosidade-text">
         <div class="curiosidade-label">Você sabia?</div>
-        <div class="curiosidade-fact">Em inglês, as preposições variam pelo contexto, não pela tradução literal. A mesma palavra "em" pode virar in, on ou at dependendo do que vem depois.</div>
+        <div class="curiosidade-fact">A música "In the Air Tonight" do Phil Collins foi lançada em 1981 e a batida de bateria que explode no meio da música é considerada um dos momentos mais icônicos da história do rock.</div>
       </div>
     </div>
   </div>
@@ -3894,7 +4116,7 @@ const pages=[
       <div class="curiosidade-icon">👆</div>
       <div class="curiosidade-text">
         <div class="curiosidade-label">Você sabia?</div>
-        <div class="curiosidade-fact">Em inglês, this e that funcionam para masculino e feminino — não existe "thiso" ou "thisa". E aqui e lá também têm tradução própria: here e there.</div>
+        <div class="curiosidade-fact">A frase "That's one small step for man, one giant leap for mankind" foi dita por Neil Armstrong ao pisar na Lua em 1969. É uma das frases mais citadas da história.</div>
       </div>
     </div>
   </div>
@@ -4009,7 +4231,7 @@ const pages=[
       <div class="curiosidade-icon">🔗</div>
       <div class="curiosidade-text">
         <div class="curiosidade-label">Você sabia?</div>
-        <div class="curiosidade-fact">Em português, contraímos "em + este" em "neste". Em inglês não existe essa contração — basta escrever a preposição e o pronome separados: in this, on that, at those.</div>
+        <div class="curiosidade-fact">A série Friends foi ao ar de 1994 a 2004 e ainda hoje é uma das mais assistidas no mundo. Estima-se que mais de 100 milhões de pessoas assistam a algum episódio por mês nas plataformas de streaming.</div>
       </div>
     </div>
   </div>
@@ -4110,7 +4332,7 @@ const pages=[
       <div class="curiosidade-icon">🔤</div>
       <div class="curiosidade-text">
         <div class="curiosidade-label">Você sabia?</div>
-        <div class="curiosidade-fact">O "that" em inglês é muito versátil — pode significar "que" explicativo, "aquele/aquela" e até "tão" em algumas expressões. O contexto sempre vai revelar qual é qual.</div>
+        <div class="curiosidade-fact">O filme "The Lion King" da Disney foi originalmente lançado em 1994 e seu roteiro foi inspirado em Hamlet, de Shakespeare. "Hakuna Matata" virou expressão conhecida mundialmente mesmo sem ser inglês — é suaíli.</div>
       </div>
     </div>
   </div>
@@ -4184,12 +4406,151 @@ const pages=[
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
 </div>`,
 
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">4</div>
+</div>`,
+
+`<div class="page pg-sec">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
+  <div class="pg-watermark"></div>
+  <div class="sec-eyebrow">Seção 16</div>
+  <div class="sec-title">Pronomes<br><span class="acc">de Posse</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">My, your, his, her — e os que substituem o substantivo.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🔑</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A música "She Loves You" dos Beatles, lançada em 1963, foi a primeira da banda a vender mais de 1 milhão de cópias no Reino Unido. O "yeah yeah yeah" do refrão virou símbolo de uma geração inteira.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec-btns-row">
+    <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+    <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 16 · Pronomes de Posse</div><div class="pg-ttl">Pronomes de Posse</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="poss-intro">Um <strong>pronome de posse</strong>, ou pronome possessivo, serve para indicar de quem é a posse.</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt"><span class="poss-hl-adj">Meu</span> carro é bem bonito.</div></div>
+      <div class="quote"><div class="q-pt">Ontem nós estávamos na casa <span class="poss-hl-pp">dela</span>.</div></div>
+      <div class="quote"><div class="q-pt">João sempre compra os <span class="poss-hl-adj">nossos</span> produtos.</div></div>
+    </div>
+
+    <p class="intro" style="margin-top:8px;">Em inglês nós temos dois tipos de pronomes de posse: <span class="poss-hl-adj"><strong>pronomes possessivos adjetivos (PPA)</strong></span> e <span class="poss-hl-pp"><strong>pronomes possessivos (PP)</strong></span>.</p>
+
+
+    <div class="poss-triple-table" id="poss-tabela">
+      <div class="poss-triple-row hd">
+        <span>Português</span>
+        <span class="poss-hl-adj">PPA</span>
+        <span class="poss-hl-pp">PP</span>
+      </div>
+      <div class="poss-triple-row"><span>Meu(s), Minha(s)</span><span class="en ppa" data-speak="my">My</span><span class="en pp" data-speak="mine">Mine</span></div>
+      <div class="poss-triple-row"><span>Seu(s), Sua(s)</span><span class="en ppa" data-speak="your">Your</span><span class="en pp" data-speak="yours">Yours</span></div>
+      <div class="poss-triple-row"><span>Dele</span><span class="en ppa" data-speak="his">His</span><span class="en pp" data-speak="his">His</span></div>
+      <div class="poss-triple-row"><span>Dela</span><span class="en ppa" data-speak="her">Her</span><span class="en pp" data-speak="hers">Hers</span></div>
+      <div class="poss-triple-row"><span>Dele/Dela (sem gênero)</span><span class="en ppa" data-speak="its">Its</span><span class="en pp" data-speak="its">Its</span></div>
+      <div class="poss-triple-row"><span>Nosso(s), Nossa(s)</span><span class="en ppa" data-speak="our">Our</span><span class="en pp" data-speak="ours">Ours</span></div>
+      <div class="poss-triple-row"><span>Deles, Delas</span><span class="en ppa" data-speak="their">Their</span><span class="en pp" data-speak="theirs">Theirs</span></div>
+    </div>
+
+    <div class="rule-box" id="poss-regra">
+      <p style="font-size:13px;color:var(--s);line-height:1.8;">Todo pronome de posse deverá aparecer <strong>antes da posse</strong>, utilizando <span class="poss-hl-adj"><strong>PPA</strong></span>.<br>
+      A menos que esteja logo após um <strong>verbo to be</strong>, utilizando <span class="poss-hl-pp"><strong>PP</strong></span>.<br>
+      Além disso, <strong>não usamos "the"</strong> antes de pronomes de posse.</p>
+    </div>
+
+    <div class="poss-legend">
+      <span class="poss-legend-item adj">Pronome de posse</span>
+      <span class="poss-legend-item noun">A posse</span>
+      <span class="poss-legend-item tobe">Verbo to be</span>
+    </div>
+
+    <div class="poss-ex-list">
+
+      <div class="poss-ex-block">
+        <div class="poss-ex-tag ppa-tag">PPA</div>
+        <div class="poss-ex-sentences">
+          <div class="poss-ex-sent pt"><span class="poss-hl-adj">Meu</span> <span class="poss-hl-noun">carro</span> é legal.</div>
+          <div class="poss-ex-note">O pronome de posse <span class="poss-hl-adj">"meu"</span> está antes da posse <span class="poss-hl-noun">"carro"</span> → usamos <strong>PPA</strong>.</div>
+          <div class="poss-ex-sent en"><span class="en" data-speak="My car is nice."><span class="poss-hl-adj">My</span> <span class="poss-hl-noun">car</span> is nice.</span></div>
+        </div>
+      </div>
+
+      <div class="poss-ex-block">
+        <div class="poss-ex-tag ppa-tag">PPA</div>
+        <div class="poss-ex-sentences">
+          <div class="poss-ex-sent pt">O <span class="poss-hl-noun">carro</span> <span class="poss-hl-pp">dela</span> é legal.</div>
+          <div class="poss-ex-note">O pronome de posse está depois da posse — isso não pode. Colocamos antes e usamos <strong>PPA</strong>. Sem <em>the</em> antes do pronome.</div>
+          <div class="poss-ex-sent en"><span class="en" data-speak="Her car is nice."><span class="poss-hl-pp">Her</span> <span class="poss-hl-noun">car</span> is nice.</span></div>
+        </div>
+      </div>
+
+      <div class="poss-ex-block">
+        <div class="poss-ex-tag pp-tag">PP</div>
+        <div class="poss-ex-sentences">
+          <div class="poss-ex-sent pt">O carro <span class="poss-hl-tobe">é</span> <span class="poss-hl-pp">dela</span>.</div>
+          <div class="poss-ex-note">O pronome de posse está logo após um <span class="poss-hl-tobe">verbo to be</span> → traduzimos ao pé da letra e usamos <strong>PP</strong>.</div>
+          <div class="poss-ex-sent en"><span class="en" data-speak="The car is hers.">The car <span class="poss-hl-tobe">is</span> <span class="poss-hl-pp">hers</span>.</span></div>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="poss-ex-block">
+        <div class="poss-ex-tag pp-tag">OF + PP</div>
+        <div class="poss-ex-sentences">
+          <div class="poss-ex-note">Quando quisermos usar pronomes de posse com algum <span onclick="scrollAndHighlight('16:art-a-an')" style="color:var(--blue);font-weight:700;cursor:pointer;text-decoration:underline;">artigo indefinido</span> (a, an, some), traduziremos ao pé da letra, mas no local do pronome de posse utilizaremos <strong>of + PP</strong>.</div>
+          <div class="poss-ex-sent pt">Um amigo <span class="poss-hl-pp">dela</span>.</div>
+          <div class="poss-ex-sent en"><span class="en" data-speak="A friend of hers.">A friend of <span class="poss-hl-pp">hers</span>.</span></div>
+        </div>
+      </div>
+
+    <div class="tip" style="margin-top:12px;">
+      <div class="tip-lbl">📌 Observação</div>
+      <p class="tip-txt">No futuro veremos que podemos usar o <span class="poss-hl-pp"><strong>PP</strong></span> em algumas outras situações.</p>
+    </div>
+
+    <div class="rule-box" style="margin-top:12px;" id="poss-seu-atencao">
+      <div class="rule-title">⚠️ Cuidado com seu(s), sua(s)</div>
+      <p style="font-size:13px;color:var(--s);line-height:1.7;margin-bottom:10px;">Em português podemos usar <strong>seu/sua</strong> para a terceira pessoa. Mas em inglês, se traduzirmos como <span class="poss-hl-adj"><strong>your</strong></span>, o cachorro não vai ser do Brian — vai ser <strong>seu</strong>!</p>
+      <div class="quote-list">
+        <div class="quote">
+          <div class="q-pt">Brian está passeando com <span class="poss-hl-adj">seu</span> cachorro.</div>
+          <div class="q-note" style="color:var(--red);">❌ Brian is walking with <span class="poss-hl-adj">your</span> dog. <em>(o cachorro não é do Brian)</em></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Brian está passeando com o cachorro <strong>dele</strong>.</div>
+          <div class="q-note" style="color:var(--green);">✓ Neste caso, usamos <strong>dele</strong> para deixar claro de quem é.</div>
+          <div class="q-en"><span class="en" data-speak="Brian is walking with his dog.">Brian is walking with <span class="poss-hl-adj">his</span> dog.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes de Posse — exercício</span><span class="ex-score" id="poss-score">0/10</span></div><div class="ex-body" id="poss-body"></div></div>
+</div>`,
+
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
   <div class="soon-title">Mais conteúdo<br><span class="soon-acc">em breve</span></div>
   <div class="soon-line"></div>
   <div class="soon-desc">Novos capítulos e matérias estão a caminho. Continue praticando o que aprendeu!</div>
 </div>`
+
+
 ];
 
 /* ── ENGINE ── */
@@ -4209,12 +4570,12 @@ function goAndHighlight(pageIdx, targetId){
     // insert inline back btn right above the target element
     const btn=document.createElement('button');
     btn.id='inline-back-btn';
-    btn.innerHTML='← Voltar ao exercício';
+    btn.innerHTML='← Voltar';
     btn.onclick=goBack;
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
     let target=el;
-    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('pg-body')){target=target.parentElement;}
+    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&target.id!=='art-a-an'&&!target.classList.contains('pg-body')){target=target.parentElement;}
     target.classList.add('highlight-pulse');
     setTimeout(()=>target.classList.remove('highlight-pulse'),5000);
   },350);
@@ -4269,6 +4630,8 @@ function go(i){
   if(cur===36)initEx('indem',window['indem_bk'],10);
   if(cur===38)initEx('queexp',window['queexp_bk'],10);
   if(cur===39)initEx('rev3',window['rev3_bk'],10);
+  if(cur===42)initEx('poss',window['poss_bk'],15);
+  if(cur===43)initEx('poss',window['poss_bk'],10);
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
