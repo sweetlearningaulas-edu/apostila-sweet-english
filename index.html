@@ -73,7 +73,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 #chat-send:disabled{opacity:.3;cursor:default;}
 
 /* ══ PAGES ══ */
-.page{background:var(--bg);}
+.page{background:var(--page-bg,var(--bg));}
 .pg-cover{min-height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:40px 28px 48px;position:relative;overflow:hidden;}
 .pg-cover::before{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(110,181,255,.07),transparent 65%);pointer-events:none;}
 .pg-cover::after{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(196,160,255,.06),transparent 65%);pointer-events:none;}
@@ -101,15 +101,15 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .pg-idx{min-height:100%;display:flex;flex-direction:column;padding:24px 20px 36px;}
 .idx-title{font-size:24px;font-weight:700;color:var(--tx);margin-bottom:4px;}
 .idx-sub{font-size:11px;color:var(--m);margin-bottom:14px;}
-.idx-list{display:flex;flex-direction:column;gap:5px;}
+.idx-list{display:flex;flex-direction:column;gap:0;}
 .idx-cap{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sublabel);padding:6px 2px 3px;}
-.idx-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:all .2s;}
-.idx-item:hover{border-color:var(--blue);}
-.idx-num{font-size:11px;font-weight:700;color:var(--m);min-width:22px;}
+.idx-item{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;background:var(--bg);border:1.5px solid var(--line);cursor:pointer;transition:all .2s;}
+.idx-item:active{border-color:var(--acc,var(--blue));background:var(--card2);}
+.idx-num{font-size:11px;font-weight:800;color:var(--m);min-width:24px;opacity:.7;}
 .idx-info{flex:1;}
-.idx-name{font-size:14px;font-weight:700;color:var(--tx);}
-.idx-desc{font-size:11px;color:var(--m);margin-top:1px;}
-.idx-arrow{font-size:13px;color:var(--m);}
+.idx-name{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.1px;}
+.idx-desc{font-size:12px;color:var(--m);margin-top:2px;line-height:1.4;}
+.idx-arrow{font-size:13px;color:var(--m);opacity:.4;}
 .pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 28px 48px;position:relative;overflow:hidden;}
 .pg-sec::before{content:'';position:absolute;top:-40px;right:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(196,160,255,.07),transparent 65%);pointer-events:none;}
 .pg-sec::after{content:'';position:absolute;top:15%;right:0;width:2px;height:50%;background:linear-gradient(to bottom,transparent,var(--acc,var(--blue)),transparent);opacity:.4;}
@@ -346,10 +346,10 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .soon-acc{color:var(--acc,var(--blue));}
 .soon-line{width:48px;height:2px;background:linear-gradient(to right,var(--acc,var(--blue)),var(--purple));border-radius:1px;}
 .soon-desc{font-size:14px;color:var(--s);line-height:1.7;max-width:280px;}
-.idx-search-wrap{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0 4px;transition:border-color .2s;}
+.idx-search-wrap{display:flex;align-items:center;gap:8px;background:var(--card2);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;margin:10px 0 8px;transition:border-color .2s;}
 .idx-search-wrap:focus-within{border-color:var(--acc,var(--blue));}
 .idx-search-icon{font-size:15px;flex-shrink:0;opacity:.5;}
-.idx-search{flex:1;background:none;border:none;outline:none;font-family:inherit;font-size:14px;color:var(--tx);}
+.idx-search{flex:1;background:none;border:none;outline:none;font-family:inherit;font-size:15px;color:var(--tx);}
 .idx-search::placeholder{color:var(--m);}
 .idx-search-clear{background:none;border:none;color:var(--m);font-size:13px;cursor:pointer;padding:0;line-height:1;flex-shrink:0;}
 .idx-noresult{text-align:center;color:var(--m);font-size:14px;padding:24px 0;}
@@ -360,6 +360,190 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .tl-speak-btn{background:none;border:none;font-size:16px;cursor:pointer;flex-shrink:0;padding:0;line-height:1;opacity:.7;transition:opacity .2s;}
 .tl-speak-btn:hover{opacity:1;}
 .ex-explain-btn{background:none;border:none;color:var(--acc,var(--blue));font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;padding:6px 0 0;display:block;text-decoration:underline;}
+
+.tag-pill{display:inline-flex;align-items:center;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.5px;padding:3px 10px;border-radius:20px;margin-right:6px;flex-shrink:0;white-space:nowrap;}
+.tag-pill.in{background:rgba(99,179,237,.15);color:#63b3ed;border:1px solid rgba(99,179,237,.3);}
+.tag-pill.on{background:rgba(154,230,180,.15);color:#68d391;border:1px solid rgba(154,230,180,.3);}
+.tag-pill.at{background:rgba(252,176,69,.15);color:#f6ad55;border:1px solid rgba(252,176,69,.3);}
+.tip-list{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.tip-list-item{display:flex;align-items:flex-start;gap:6px;font-size:13px;color:var(--s);line-height:1.6;}
+.idx-chapter{border-radius:16px;overflow:hidden;margin-bottom:8px;border:1.5px solid var(--line);background:var(--card);}
+.idx-chapter-btn{width:100%;display:flex;align-items:center;gap:12px;padding:16px 18px;background:none;border:none;cursor:pointer;text-align:left;transition:background .2s;}
+.idx-chapter-btn:active{background:var(--card2);}
+.idx-chapter-num{width:32px;height:32px;border-radius:10px;background:var(--ch-color,var(--acc,var(--blue)));color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.idx-chapter-title{flex:1;font-size:15px;font-weight:700;color:var(--tx);letter-spacing:-.2px;}
+.idx-chapter-arrow{font-size:14px;color:var(--m);transition:transform .25s;flex-shrink:0;opacity:.6;}
+.idx-chapter.closed .idx-chapter-arrow{transform:rotate(-90deg);}
+.idx-chapter-body{display:flex;flex-direction:column;gap:5px;padding:0 10px 10px;}
+.idx-chapter.closed .idx-chapter-body{display:none;}
+.idx-chapter-body{border-top:1px solid var(--line);margin-top:0;}
+.the-hl{color:var(--acc,var(--blue));font-weight:700;}
+
+.inonat-group{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:4px;}
+.inonat-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);gap:12px;}
+.inonat-item:last-child{border-bottom:none;}
+.inonat-desc{font-size:13px;color:var(--s);flex:1;line-height:1.4;}
+.inonat-prep{font-size:15px;font-weight:800;padding:4px 12px;border-radius:20px;flex-shrink:0;cursor:pointer;}
+.inonat-prep.in{background:rgba(99,179,237,.15);color:#63b3ed;}
+.inonat-prep.on{background:rgba(154,230,180,.15);color:#68d391;}
+.inonat-prep.at{background:rgba(252,176,69,.15);color:#f6ad55;}
+
+.inonat-section-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--acc,var(--blue));margin:18px 0 6px;padding:0 2px;}
+.inonat-global-row{display:flex;align-items:center;gap:12px;margin:0 0 16px;}
+.inonat-global-btn{background:var(--acc,var(--blue));border:none;border-radius:10px;padding:9px 18px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer;flex-shrink:0;}
+.inonat-tip-click{font-size:12px;color:var(--m);line-height:1.4;}
+.inonat-list{display:flex;flex-direction:column;gap:6px;margin-bottom:4px;}
+.inonat-bubble{border-radius:14px;border:1.5px solid var(--line);background:var(--card);overflow:hidden;}
+.inonat-bubble-btn{width:100%;display:flex;align-items:center;gap:10px;padding:13px 16px;background:none;border:none;cursor:pointer;text-align:left;}
+.inonat-bubble-title{flex:1;font-size:13px;color:var(--s);font-weight:600;line-height:1.4;}
+.inonat-bubble-prep{font-size:14px;font-weight:800;padding:3px 12px;border-radius:20px;flex-shrink:0;}
+.inonat-bubble-prep.in{background:rgba(99,179,237,.15);color:#63b3ed;}
+.inonat-bubble-prep.on{background:rgba(154,230,180,.15);color:#68d391;}
+.inonat-bubble-prep.at{background:rgba(252,176,69,.15);color:#f6ad55;}
+.inonat-bubble-arrow{font-size:13px;color:var(--m);transition:transform .2s;flex-shrink:0;opacity:.6;}
+.inonat-bubble.open .inonat-bubble-arrow{transform:rotate(180deg);}
+.inonat-bubble-body{display:none;padding:0 16px 14px;border-top:1px solid var(--line);}
+.inonat-bubble.open .inonat-bubble-body{display:block;}
+.inonat-note{font-size:12px;color:var(--m);font-style:italic;margin:10px 0 8px;line-height:1.5;}
+.inonat-ex{margin-top:8px;}
+.inonat-ex-en{display:block;font-size:13px;font-weight:600;color:var(--tx);}
+.inonat-ex-pt{display:block;font-size:12px;color:var(--m);margin-top:1px;}
+.demo-list{display:flex;flex-direction:column;gap:8px;}
+.demo-item{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;position:relative;}
+.demo-item.demo-perto{border-color:rgba(99,179,237,.4);}
+.demo-item.demo-longe{border-color:rgba(154,230,180,.4);}
+.demo-badge{position:absolute;top:12px;right:14px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:20px;}
+.demo-item.demo-perto .demo-badge{background:rgba(99,179,237,.15);color:#63b3ed;}
+.demo-item.demo-longe .demo-badge{background:rgba(154,230,180,.15);color:#68d391;}
+.demo-header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-right:60px;}
+.demo-pt{font-size:14px;font-weight:700;color:var(--tx);flex:1;min-width:0;}
+.demo-eq{font-size:14px;color:var(--m);flex-shrink:0;}
+.demo-en{font-size:20px;font-weight:800;color:var(--acc,var(--blue));flex-shrink:0;}
+.demo-example{background:var(--bg);border-radius:10px;padding:12px 14px;}
+.demo-example .q-pt{font-size:13px;color:var(--m);margin-bottom:4px;}
+.demo-example .q-en{font-size:14px;font-weight:600;}
+.indem-decomp-list{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:0;margin:16px 0;overflow:hidden;}
+.indem-decomp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:700;}
+.indem-decomp-row:last-child{border-bottom:none;padding-bottom:0;}
+.indem-decomp-row:first-child{padding-top:0;}
+.indem-word{color:var(--acc,var(--blue));min-width:90px;}
+.indem-eq{color:var(--m);font-weight:400;}
+.indem-em{color:#f6ad55;}
+.indem-plus{color:var(--m);font-weight:400;}
+.indem-demo{color:#68d391;}
+.indem-examples{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.indem-ex-block{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;}
+.indem-ex-line{font-size:14px;line-height:1.6;}
+.indem-ex-line.pt{color:var(--m);}
+.indem-ex-line.decomp{color:var(--m);font-size:13px;opacity:.8;}
+.indem-ex-line.en{font-size:15px;font-weight:600;color:var(--tx);margin-top:3px;padding-top:6px;border-top:1px solid var(--line);}
+.indem-hl-word{color:var(--acc,var(--blue));font-weight:700;}
+.indem-hl-em{color:#f6ad55;font-weight:700;}
+.indem-hl-demo{color:#68d391;font-weight:700;}
+.indem-hl-result{color:var(--acc,var(--blue));font-weight:800;}
+.que-summary{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+.que-card{border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;border:1.5px solid transparent;}
+.que-card-that{background:rgba(246,173,85,.1);border-color:rgba(246,173,85,.3);}
+.que-card-who{background:rgba(99,179,237,.1);border-color:rgba(99,179,237,.3);}
+.que-card-which{background:rgba(252,129,129,.1);border-color:rgba(252,129,129,.3);}
+.que-card-en{font-size:22px;font-weight:800;}
+.que-card-that .que-card-en{color:#f6ad55;}
+.que-card-who .que-card-en{color:#63b3ed;}
+.que-card-which .que-card-en{color:#fc8181;}
+.que-card-label{font-size:13px;font-weight:700;color:var(--tx);}
+.que-card-desc{font-size:12px;color:var(--m);}
+.que-ex-block{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.que-ex-pt{font-size:14px;color:var(--m);margin-bottom:2px;}
+.que-ex-en{font-size:15px;font-weight:600;color:var(--tx);}
+.que-rel{color:#68d391;font-weight:700;}
+.que-subj{color:#63b3ed;font-weight:700;}
+.que-subj-obj{color:#fc8181;font-weight:700;}
+.que-that{color:#f6ad55;font-weight:800;}
+.que-who{color:#63b3ed;font-weight:800;}
+.que-which{color:#fc8181;font-weight:800;}
+
+/* ════════════════════════════════════════
+   THEMES — 10 temas · dark e light
+   Standard não precisa de classe extra
+════════════════════════════════════════ */
+
+/* ── OCEAN ── */
+body.t-ocean.dark{--bg:#060e1a;--bg-shell:#040a12;--card:#0c1a2e;--card2:#101e34;--line:#162440;--blue:#38bdf8;--purple:#818cf8;--green:#34d399;--red:#f87171;--yel:#fbbf24;--tx:#c8e0f8;--s:#6090b8;--m:#3a6080;--sublabel:#5080a0;}
+body.t-ocean.dark .page{background:radial-gradient(ellipse at 20% 0%,#0a3060 0%,transparent 55%),linear-gradient(180deg,#061428 0%,#020810 100%);}
+body.t-ocean.light{--bg:#f0f9ff;--bg-shell:#e0f2fe;--card:#fff;--card2:#e0f2fe;--line:#bae6fd;--blue:#0284c7;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#082840;--s:#1a5070;--m:#4a90a8;--sublabel:#5090a0;}
+body.t-ocean.light .page{background:radial-gradient(ellipse at 20% 0%,#bae6fd 0%,transparent 55%),linear-gradient(180deg,#e0f4ff 0%,#f5fbff 100%);}
+
+/* ── VIOLET ── */
+body.t-violet.dark{--bg:#080612;--bg-shell:#050410;--card:#12082a;--card2:#160a32;--line:#220f40;--blue:#a78bfa;--purple:#c084fc;--green:#34d399;--red:#f87171;--yel:#fbbf24;--tx:#ddd6fe;--s:#7868a8;--m:#4a3880;--sublabel:#6858a0;}
+body.t-violet.dark .page{background:radial-gradient(ellipse at 80% 0%,#2a0a5a 0%,transparent 55%),radial-gradient(ellipse at 10% 100%,#1a0840 0%,transparent 50%),#080612;}
+body.t-violet.light{--bg:#f5f3ff;--bg-shell:#ede9fe;--card:#fff;--card2:#ede9fe;--line:#ddd6fe;--blue:#7c3aed;--purple:#9333ea;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#1e0a4a;--s:#4a1890;--m:#7c5cc0;--sublabel:#8868c0;}
+body.t-violet.light .page{background:radial-gradient(ellipse at 80% 0%,#ddd6fe 0%,transparent 50%),linear-gradient(170deg,#f0ecff 0%,#f8f6ff 60%,#fff 100%);}
+
+/* ── SUNSET ── */
+body.t-sunset.dark{--bg:#0e0418;--bg-shell:#0a0212;--card:#1a0808;--card2:#200a0a;--line:#341010;--blue:#fb923c;--purple:#f472b6;--green:#34d399;--red:#fb7185;--yel:#fbbf24;--tx:#fde8d0;--s:#906040;--m:#604030;--sublabel:#805040;}
+body.t-sunset.dark .page{background:radial-gradient(ellipse at 50% 0%,#3a0a00 0%,transparent 55%),linear-gradient(160deg,#1a0600 0%,#0e0418 100%);}
+body.t-sunset.light{--bg:#fff7ed;--bg-shell:#fed7aa;--card:#fff;--card2:#fff7ed;--line:#fed7aa;--blue:#ea580c;--purple:#be185d;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#431407;--s:#7c2c10;--m:#a06040;--sublabel:#b07050;}
+body.t-sunset.light .page{background:radial-gradient(ellipse at 50% 0%,#fed7aa 0%,transparent 55%),linear-gradient(170deg,#fff7ed 0%,#fff1f2 60%,#fffaf8 100%);}
+
+/* ── FOREST ── */
+body.t-forest.dark{--bg:#040e06;--bg-shell:#020a04;--card:#081a0c;--card2:#0a1e10;--line:#102a14;--blue:#4ade80;--purple:#a78bfa;--green:#86efac;--red:#f87171;--yel:#fbbf24;--tx:#c8e8c0;--s:#5a9060;--m:#306040;--sublabel:#508050;}
+body.t-forest.dark .page{background:radial-gradient(ellipse at 15% 15%,#0a2e10 0%,transparent 55%),linear-gradient(155deg,#040e06 0%,#020808 100%);}
+body.t-forest.light{--bg:#f0fdf4;--bg-shell:#dcfce7;--card:#fff;--card2:#dcfce7;--line:#bbf7d0;--blue:#15803d;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#052e16;--s:#14532d;--m:#40806a;--sublabel:#509060;}
+body.t-forest.light .page{background:radial-gradient(ellipse at 15% 0%,#bbf7d0 0%,transparent 50%),linear-gradient(170deg,#dcfce7 0%,#f0fdf4 55%,#fafffe 100%);}
+
+/* ── ROSÉ ── */
+body.t-rose.dark{--bg:#0e0408;--bg-shell:#0a0206;--card:#180808;--card2:#1e0a0e;--line:#300a14;--blue:#f472b6;--purple:#e879f9;--green:#34d399;--red:#fb7185;--yel:#fbbf24;--tx:#fce7f3;--s:#905870;--m:#603050;--sublabel:#804060;}
+body.t-rose.dark .page{background:radial-gradient(ellipse at 70% 5%,#3a0820 0%,transparent 55%),linear-gradient(155deg,#180608 0%,#0e0408 100%);}
+body.t-rose.light{--bg:#fdf2f8;--bg-shell:#fbcfe8;--card:#fff;--card2:#fdf2f8;--line:#fbcfe8;--blue:#be185d;--purple:#9333ea;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#500724;--s:#881337;--m:#a04070;--sublabel:#b05080;}
+body.t-rose.light .page{background:radial-gradient(ellipse at 70% 0%,#fbcfe8 0%,transparent 55%),linear-gradient(170deg,#fdf2f8 0%,#fff0f8 55%,#fffafd 100%);}
+
+/* ── EMBER ── */
+body.t-ember.dark{--bg:#0e0600;--bg-shell:#0a0400;--card:#180c00;--card2:#1e1000;--line:#301800;--blue:#f59e0b;--purple:#c084fc;--green:#34d399;--red:#f87171;--yel:#fcd34d;--tx:#fef3c7;--s:#907040;--m:#605030;--sublabel:#806040;}
+body.t-ember.dark .page{background:radial-gradient(ellipse at 40% 0%,#3a1400 0%,transparent 55%),linear-gradient(155deg,#180800 0%,#0e0600 100%);}
+body.t-ember.light{--bg:#fffbeb;--bg-shell:#fde68a;--card:#fff;--card2:#fffbeb;--line:#fde68a;--blue:#b45309;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#451a03;--s:#78340f;--m:#a06040;--sublabel:#b07050;}
+body.t-ember.light .page{background:radial-gradient(ellipse at 40% 0%,#fde68a 0%,transparent 55%),linear-gradient(170deg,#fffbeb 0%,#fef9e0 55%,#fffdf8 100%);}
+
+/* ── ARCTIC ── */
+body.t-arctic.dark{--bg:#040c1e;--bg-shell:#020810;--card:#081428;--card2:#0a1830;--line:#102240;--blue:#93c5fd;--purple:#a78bfa;--green:#34d399;--red:#f87171;--yel:#fbbf24;--tx:#e0ecff;--s:#5878a8;--m:#304870;--sublabel:#506090;}
+body.t-arctic.dark .page{background:radial-gradient(ellipse at 50% 0%,#0a2050 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#061030 0%,transparent 50%),#040c1e;}
+body.t-arctic.light{--bg:#eff6ff;--bg-shell:#dbeafe;--card:#fff;--card2:#eff6ff;--line:#dbeafe;--blue:#1d4ed8;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#0f172a;--s:#1e3a6a;--m:#4060a0;--sublabel:#507080;}
+body.t-arctic.light .page{background:radial-gradient(ellipse at 50% 0%,#dbeafe 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,#e0f2fe 0%,transparent 45%),#f8fbff;}
+
+/* ── SAND ── */
+body.t-sand.dark{--bg:#0a0800;--bg-shell:#080600;--card:#160e00;--card2:#1a1000;--line:#281800;--blue:#d9b478;--purple:#c084fc;--green:#34d399;--red:#f87171;--yel:#fcd34d;--tx:#f5e8d0;--s:#907860;--m:#605840;--sublabel:#807060;}
+body.t-sand.dark .page{background:radial-gradient(ellipse at 30% 10%,#2e1a00 0%,transparent 55%),linear-gradient(155deg,#140c00 0%,#0a0800 100%);}
+body.t-sand.light{--bg:#fdf6e0;--bg-shell:#fde68a;--card:#fff;--card2:#fdf6e0;--line:#fde68a;--blue:#78521a;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#2c1a08;--s:#5a3a18;--m:#907060;--sublabel:#a08060;}
+body.t-sand.light .page{background:radial-gradient(ellipse at 30% 0%,#fde68a 0%,transparent 55%),linear-gradient(170deg,#fdf6e0 0%,#faf3e8 55%,#fdfaf5 100%);}
+
+/* ── JADE ── */
+body.t-jade.dark{--bg:#040e08;--bg-shell:#020a06;--card:#081808;--card2:#0a1c0c;--line:#102a12;--blue:#34d399;--purple:#a78bfa;--green:#6ee7b7;--red:#f87171;--yel:#fbbf24;--tx:#c8f0d8;--s:#508860;--m:#307050;--sublabel:#508868;}
+body.t-jade.dark .page{background:radial-gradient(ellipse at 20% 10%,#0a2818 0%,transparent 55%),linear-gradient(160deg,#040e08 0%,#020806 100%);}
+body.t-jade.light{--bg:#ecfdf5;--bg-shell:#a7f3d0;--card:#fff;--card2:#ecfdf5;--line:#a7f3d0;--blue:#047857;--purple:#7c3aed;--green:#059669;--red:#dc2626;--yel:#d97706;--tx:#022c22;--s:#064e3b;--m:#408060;--sublabel:#509070;}
+body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,transparent 55%),linear-gradient(170deg,#ecfdf5 0%,#f0fdf8 55%,#fafffe 100%);}
+
+
+.tsheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:800;opacity:0;transition:opacity .25s;}
+#theme-sheet{position:fixed;inset:0;z-index:801;pointer-events:none;}
+#theme-sheet.open{pointer-events:all;}
+#theme-sheet.open .tsheet-backdrop{opacity:1;}
+.tsheet-panel{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:420px;background:var(--card);border-radius:24px 24px 0 0;padding:20px 16px 32px;transition:transform .3s cubic-bezier(.32,.72,0,1);z-index:802;}
+#theme-sheet.open .tsheet-panel{transform:translateX(-50%) translateY(0);}
+.tsheet-title{font-size:14px;font-weight:800;color:var(--tx);text-align:center;margin-bottom:16px;}
+.tsheet-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.tsheet-item{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:2px solid transparent;border-radius:14px;padding:8px 4px;cursor:pointer;transition:all .2s;font-family:inherit;}
+.tsheet-item:active{transform:scale(.95);}
+.tsheet-active{border-color:var(--blue);}
+.tsheet-swatch{width:36px;height:36px;border-radius:50%;flex-shrink:0;}
+.tsheet-lbl{font-size:10px;font-weight:700;color:var(--m);white-space:nowrap;}
+.tsheet-active .tsheet-lbl{color:var(--blue);}
+.sec-theme-btn,.sec-mode-btn{border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-family:inherit;font-size:11px;font-weight:600;color:var(--m);background:transparent;cursor:pointer;transition:all .2s;opacity:.7;}
+.sec-theme-btn:active,.sec-mode-btn:active{opacity:.4;}
+.sec-btns-row{display:flex;gap:6px;justify-content:center;margin-top:10px;}
+
+.tools-theme-row{display:flex;gap:6px;padding:0 0 14px;}
+.inst-prefs-btns{display:flex;gap:8px;margin-bottom:10px;}
+.inst-theme-btn{border:none;border-radius:14px;padding:14px 20px;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:var(--blue);cursor:pointer;width:100%;display:block;box-shadow:0 4px 14px rgba(0,0,0,.25);letter-spacing:.2px;}
+.inst-mode-btn{border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;color:var(--s);background:var(--card2);cursor:pointer;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -425,8 +609,8 @@ body.light .curiosidade-fact strong{color:#000;}
   .inst-text strong{font-size:17px;}
   .inst-text span{font-size:15px;}
   .pg-idx{padding:32px 28px 48px;}
-  .idx-name{font-size:16px;}
-  .idx-desc{font-size:12px;}
+  .idx-name{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.1px;}
+  .idx-desc{font-size:12px;color:var(--m);margin-top:2px;}
   .tobe-card-hd{font-size:11px;padding:13px 18px;}
   .tobe-card-body{padding:18px;gap:14px;}
 }
@@ -593,6 +777,12 @@ Cap.1 — Fundamentos:
 - Pg 12: Verbo To Be (am/is/are/was/were/will be, negativo, interrogativo)
 - Pg 14: Adjetivos (posição, sem plural)
 - Pg 16: Artigos (the, a, an, some)
+Cap.3 — Preposições:
+- Pg 32: In, On, At (em/no/na — tempo, lugar, tecnologia)
+- Pg 34: Pronomes Demonstrativos (this/these/that/those/here/there)
+- Pg 36: In, On, At + Demonstrativos (neste/nessa/naquele)
+- Pg 38: Que explicativo (who/that/which)
+
 Cap.2 — Tempos Verbais:
 - Pg 20: Presente Simple (+s no he/she/it, regras -es/-ies)
 - Pg 22: Passado Simple (regulares -ed, irregulares)
@@ -607,12 +797,12 @@ REGRAS OBRIGATÓRIAS:
 4. Só use conhecimento externo se o assunto NÃO está na apostila
 5. Nunca diga "americanos" — diga "falantes da língua inglesa"
 6. Tom de amigo, não de livro
-7. Se houver chance de erro, diga: "Confirme com o professor Caique."
+7. Se houver chance de erro, diga: "Confirme com o professor."
 8. NUNCA faça respostas longas`;
 
 const LOGO_SRC="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9InMtc2hhcGUiPgogICAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9InRvcC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyNTIiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImJvdC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMjQ4IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjI2MCIvPgogICAgPC9jbGlwUGF0aD4KICAgIAogICAgPCEtLSBVUyBmbGFnIHN0cmlwZXMgLS0+CiAgICA8cGF0dGVybiBpZD0idXMtc3RyaXBlcyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iODAiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTY4Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxNjgiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMCIgICAgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSIxMi45MiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMjUuODUiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMzguNzciIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IndoaXRlIi8+CiAgICAgIDxyZWN0IHk9IjUxLjY5IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjY0LjYyIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB5PSI3Ny41NCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSI5MC40NiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTAzLjM4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjExNi4zMSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTI5LjIzIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjE0Mi4xNSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTU1LjA4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkCBPVVRFUiBSSU5HIOKVkOKVkCAtLT4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuMjUiLz4KCiAgPCEtLSDilZDilZAgVE9QIEJBTk5FUiAtIFNXRUVUIExFQVJOSU5HIOKVkOKVkCAtLT4KICA8IS0tIEJhbm5lciBzaGFwZSAtLT4KICA8cGF0aCBkPSJNNjQgMjA1IFE4MCAxMjAgMTU1IDcyIFEyMDAgNDUgMjUwIDQyIFEzMDAgNDUgMzQ1IDcyIFE0MjAgMTIwIDQzNiAyMDUgTDQxOCAyMTAgUTQwOCAxMzIgMzQwIDg2IFEyOTggNjAgMjUwIDU4IFEyMDIgNjAgMTYwIDg2IFE5MiAxMzIgODIgMjEwIFoiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggaWQ9InRwYXRoIiBkPSJNIDgyIDIwOCBBIDE3OCAxNzggMCAwIDEgNDE4IDIwOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgVmVyZGFuYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzExMSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHRQYXRoIGhyZWY9IiN0cGF0aCIgc3RhcnRPZmZzZXQ9IjUwJSI+U1dFRVQgTEVBUk5JTkc8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgQk9UVE9NIEJBTk5FUiAtIEFVTEFTIFBBUlRJQ1VMQVJFUyDilZDilZAgLS0+CiAgPHBhdGggZD0iTTY0IDI5NSBRODIgMzgwIDE1NSA0MjggUTIwMCA0NTUgMjUwIDQ1OCBRMzAwIDQ1NSAzNDUgNDI4IFE0MTggMzgwIDQzNiAyOTUgTDQxOCAyOTAgUTQwNiAzNjggMzQwIDQxMiBRMjk4IDQzOCAyNTAgNDQwIFEyMDIgNDM4IDE2MCA0MTIgUTkyIDM2OCA4MiAyOTAgWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBpZD0iYnBhdGgiIGQ9Ik0gODQgMjkyIEEgMTc2IDE3NiAwIDAgMCA0MTYgMjkyIiBmaWxsPSJub25lIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIiBsZXR0ZXItc3BhY2luZz0iMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dFBhdGggaHJlZj0iI2JwYXRoIiBzdGFydE9mZnNldD0iNTAlIj5BVUxBUyBQQVJUSUNVTEFSRVM8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgUyBMRVRURVIgLSBVTklURUQgU1RBVEVTICh0b3AgaGFsZikg4pWQ4pWQIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNzLXNoYXBlKSI+CiAgICA8IS0tIFRvcCBoYWxmOiBVUyBmbGFnIC0tPgogICAgPGcgY2xpcC1wYXRoPSJ1cmwoI3RvcC1oYWxmKSI+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI2NyIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxODUiIGZpbGw9InVybCgjdXMtc3RyaXBlcykiLz4KICAgICAgPCEtLSBCbHVlIGNhbnRvbiAtLT4KICAgICAgPHJlY3QgeD0iOTAiIHk9IjY3IiB3aWR0aD0iMTQyIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzNDM0I2RSIvPgogICAgICA8IS0tIFN0YXJzIHNpbXBsaWZpZWQgYXMgd2hpdGUgY2lyY2xlcyAtLT4KICAgICAgPGcgZmlsbD0id2hpdGUiPgogICAgICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTI4IiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSI4MyIgcj0iNCIvPjxjaXJjbGUgY3g9IjE2NCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTgyIiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSI4MyIgcj0iNCIvPgogICAgICAgIDxjaXJjbGUgY3g9IjExOSIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTM3IiBjeT0iOTYiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI5NiIgcj0iNCIvPjxjaXJjbGUgY3g9IjE3MyIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTkxIiBjeT0iOTYiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDkiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxMjIiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMzUiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxNDgiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjEiIHI9IjQiLz4KICAgICAgPC9nPgogICAgPC9nPgoKICAgIDwhLS0gQm90dG9tIGhhbGY6IFVLIGZsYWcgLS0+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjYm90LWhhbGYpIj4KICAgICAgPCEtLSBOYXZ5IGJhY2tncm91bmQgLS0+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIyNDgiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTg3IiBmaWxsPSIjMDEyMTY5Ii8+CiAgICAgIDwhLS0gV2hpdGUgZGlhZ29uYWxzIChTdC4gUGF0cmljayArIFN0LiBBbmRyZXcgY29tYmluZWQpIC0tPgogICAgICA8bGluZSB4MT0iOTAiIHkxPSIyNDgiIHgyPSI0MTAiIHkyPSI0MzUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNTIiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUyIi8+CiAgICAgIDwhLS0gUmVkIGRpYWdvbmFscyAtLT4KICAgICAgPGxpbmUgeDE9IjkwIiB5MT0iMjQ4IiB4Mj0iNDEwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPCEtLSBXaGl0ZSBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIyMiIgeT0iMjQ4IiB3aWR0aD0iNTYiIGhlaWdodD0iMTg3IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB4PSI5MCIgeT0iMzEwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8IS0tIFJlZCBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIzMiIgeT0iMjQ4IiB3aWR0aD0iMzYiIGhlaWdodD0iMTg3IiBmaWxsPSIjQzgxMDJFIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIzMjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMzYiIGZpbGw9IiNDODEwMkUiLz4KICAgIDwvZz4KCiAgICA8IS0tIFMgc3Ryb2tlIG91dGxpbmUgLS0+CiAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuNSkiIHN0cm9rZS13aWR0aD0iNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICA8L2c+CgogIDwhLS0g4pWQ4pWQIENPTk5FQ1RJTkcgQVJDIExJTkVTIOKVkOKVkCAtLT4KICA8cGF0aCBkPSJNIDY0IDIwNSBBIDE5NSAxOTUgMCAwIDAgNjQgMjk1IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgogIDxwYXRoIGQ9Ik0gNDM2IDIwNSBBIDE5NSAxOTUgMCAwIDEgNDM2IDI5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+";
 function toggleChat(){chatOpen?closeChat():openChat();}
-function openChat(){chatOpen=true;document.getElementById('chat-panel').classList.add('open');document.getElementById('chat-overlay').classList.add('open');document.getElementById('chat-btn').textContent='✕';if(!chatH.length)addMsg('ai','Olá! 👋 Pode me perguntar qualquer dúvida de inglês da apostila. Sou uma IA e posso cometer erros — em caso de dúvidas, consulte o professor Caique.');}
+function openChat(){chatOpen=true;document.getElementById('chat-panel').classList.add('open');document.getElementById('chat-overlay').classList.add('open');document.getElementById('chat-btn').textContent='✕';if(!chatH.length)addMsg('ai','Olá! 👋 Pode me perguntar qualquer dúvida de inglês da apostila. Sou uma IA e posso cometer erros — em caso de dúvidas, consulte o professor.');}
 function closeChat(){chatOpen=false;document.getElementById('chat-panel').classList.remove('open');document.getElementById('chat-overlay').classList.remove('open');document.getElementById('chat-btn').textContent='💬';}
 function addMsg(r,txt){const msgs=document.getElementById('chat-msgs');const d=document.createElement('div');d.className='msg '+r;const fmt=txt.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');d.innerHTML=`<div class="msg-bubble">${fmt}</div>`;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
 function addTyping(){const msgs=document.getElementById('chat-msgs');const d=document.createElement('div');d.className='msg ai';d.id='typ';d.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
@@ -762,7 +952,7 @@ function checkWord(w){
   } else if(fr.alsoVerbs&&fr.alsoVerbs.includes(w)){
     cl.classList.add('also-verb');
     fb.innerHTML='Esse também é um verbo! 👏<br><span style="font-size:.9em;opacity:.8;">Mas qual é o verbo <strong>principal</strong> da frase?</span>';
-    fb.className='game-feedback also';s.erroAtual=true;
+    fb.className='game-feedback also';
   } else {
     cl.classList.add('wrong');fb.textContent='Não é esse. Tente de novo.';fb.className='game-feedback err';
     s.erroAtual=true;setTimeout(()=>cl.classList.remove('wrong'),600);
@@ -808,14 +998,15 @@ function checkPron(btn,val,correct){
 
 /* ── EXERCISE ENGINE ── */
 function initEx(id,bank,total){window[id+'_s']={items:shuffle(bank).slice(0,total),cur:0,acertos:0,erroAtual:false};renderEx(id,bank,total);}
+function hlThe(txt){if(!txt)return '';return txt.replace(/\bthe\b/g,'<span class="the-hl">the</span>');}
 function renderEx(id,bank,total){
   const s=window[id+'_s'],tot=s.items.length,c=s.cur;
   const body=document.getElementById(id+'-body'),score=document.getElementById(id+'-score');
   if(!body)return;
   if(c>=tot){const p=Math.round((s.acertos/tot)*100);body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div><button class="ex-restart" onclick="initEx('${id}',window['${id}_bk'],${total})">Tentar de novo</button></div>`;score.textContent=`${s.acertos}/${tot}`;return;}
-  const item=s.items[c],opts=shuffle(item.options);
+  const item=s.items[c],opts=item.noShuffle?item.options:shuffle(item.options);
   s.curQ=item;
-  body.innerHTML=`<div class="ex-sentence"><div class="ex-pt2">${item.pt}</div><div class="ex-en-blank">${item.before} <span class="blank" id="${id}-bl">___</span> ${item.after}</div></div><div class="ex-options">${opts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${item.blank.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div><button class="ex-next" id="${id}-nx" onclick="nextEx('${id}',window['${id}_bk'],${total})">Próxima →</button>`;
+  body.innerHTML=`<div class="ex-sentence"><div class="ex-pt2">${item.pt}</div><div class="ex-en-blank">${item.before} <span class="blank" id="${id}-bl">___</span> ${item.after}</div></div><div class="ex-options">${opts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${item.blank.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div>`;
   score.textContent=`${s.acertos}/${tot}`;
 }
 function checkOpt(id,btn,val,correct){
@@ -831,7 +1022,7 @@ function checkOpt(id,btn,val,correct){
     fb.textContent='Certo! ✓';fb.className='ex-feedback ok';
     if(!s.erroAtual)s.acertos++;
     btns.forEach(b=>b.style.pointerEvents='none');
-    document.getElementById(id+'-nx').style.display='block';
+    setTimeout(()=>{nextEx(id);},900);
     // Remove explain button if exists
     const old=document.getElementById('ex-explain-btn');if(old)old.remove();
     // Speak correct answer
@@ -1145,10 +1336,10 @@ window['togo_bk']=[
   {pt:'Ashley não vai à festa amanhã.',before:'Ashley',blank:"won't go",after:'to the party tomorrow.',options:['goes','went','will go',"won't go"],anchor:'togo-will-vs-go'},
   // vai + verbo → will / won't — togo-will-vs-go
   {pt:'Raphael vai viajar amanhã.',before:'Raphael',blank:'will travel',after:'tomorrow.',options:['will travel','goes','went','travel'],anchor:'togo-will-vs-go'},
-  {pt:'Camila não vai trabalhar amanhã.',before:'Camila',blank:"won't work",after:'tomorrow.',options:["won't work","doesn't work","won't go","goes"],anchor:'togo-will-vs-go'},
+  {pt:'Camila não vai trabalhar amanhã.',before:'Camila',blank:"won't work",after:'tomorrow.',options:["won't work",'works',"won't go","goes"],anchor:'togo-will-vs-go'},
   {pt:'Taylor vai cantar no show.',before:'Taylor',blank:'will sing',after:'at the show.',options:['will sing','sings','sang','sing'],anchor:'togo-will-vs-go'},
   {pt:'Douglas vai gravar um álbum.',before:'Douglas',blank:'will record',after:'an album.',options:['will record','goes','went','record'],anchor:'togo-will-vs-go'},
-  {pt:'Ela não vai aceitar a proposta.',before:'She',blank:"won't accept",after:'the proposal.',options:["won't accept","doesn't accept","won't go","goes"],anchor:'togo-will-vs-go'},
+  {pt:'Ela não vai aceitar a proposta.',before:'She',blank:"won't accept",after:'the proposal.',options:["won't accept",'accepts',"won't go","goes"],anchor:'togo-will-vs-go'},
   // fui/foi/fomos/foram + lugar → went — togo-went
   {pt:'Eu fui ao banco hoje de manhã.',before:'I',blank:'went',after:'to the bank this morning.',options:['go','goes','went','will go'],anchor:'togo-went'},
   {pt:'Raphael foi ao aeroporto ontem.',before:'Raphael',blank:'went',after:'to the airport yesterday.',options:['go','goes','went','will go'],anchor:'togo-went'},
@@ -1163,8 +1354,6 @@ window['togo_bk']=[
   {pt:'Camila foi à academia ontem.',before:'Camila',blank:'went',after:'to the gym yesterday.',options:['go','goes','went','will go'],anchor:'togo-went'},
   {pt:'Elas foram ao shopping juntas.',before:'They',blank:'went',after:'to the mall together.',options:['go','goes','went','will go'],anchor:'togo-went'},
   {pt:'Douglas foi ao estúdio ontem.',before:'Douglas',blank:'went',after:'to the studio yesterday.',options:['go','goes','went','will go'],anchor:'togo-went'},
-  {pt:'Douglas não foi ao estúdio ontem.',before:'Douglas',blank:"didn't go",after:'to the studio yesterday.',options:["didn't go","wasn't","went","goes"],anchor:'togo-went'},
-  {pt:'Eu não fui ao jantar.',before:'I',blank:"didn't go",after:'to dinner.',options:["didn't go","wasn't","went","goes"],anchor:'togo-went'},
   // fui/foi + estado/identidade singular → was/wasn't — togo-went-vs-tobe
   {pt:'Camila foi feliz naquele período.',before:'Camila',blank:'was',after:'happy at that time.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'Jake foi um ótimo aluno.',before:'Jake',blank:'was',after:'a great student.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
@@ -1173,17 +1362,17 @@ window['togo_bk']=[
   {pt:'Ashley foi uma boa líder.',before:'Ashley',blank:'was',after:'a good leader.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'Ryan foi um ótimo chefe.',before:'Ryan',blank:'was',after:'a great boss.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'A viagem foi cansativa.',before:'The trip',blank:'was',after:'tiring.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
-  {pt:'Camila não foi feliz naquela época.',before:'Camila',blank:"wasn't",after:'happy at that time.',options:["wasn't","weren't","didn't go","went"],anchor:'togo-went-vs-tobe'},
-  {pt:'O apartamento não foi barato.',before:'The apartment',blank:"wasn't",after:'cheap.',options:["wasn't","weren't","didn't go","went"],anchor:'togo-went-vs-tobe'},
-  {pt:'A decisão não foi fácil.',before:'The decision',blank:"wasn't",after:'easy.',options:["wasn't","weren't","didn't go","went"],anchor:'togo-went-vs-tobe'},
+  {pt:'Camila não foi feliz naquela época.',before:'Camila',blank:"wasn't",after:'happy at that time.',options:["wasn't","weren't",'going',"went"],anchor:'togo-went-vs-tobe'},
+  {pt:'O apartamento não foi barato.',before:'The apartment',blank:"wasn't",after:'cheap.',options:["wasn't","weren't",'going',"went"],anchor:'togo-went-vs-tobe'},
+  {pt:'A decisão não foi fácil.',before:'The decision',blank:"wasn't",after:'easy.',options:["wasn't","weren't",'going',"went"],anchor:'togo-went-vs-tobe'},
   // fomos/foram + estado/identidade plural → were/weren't — togo-went-vs-tobe
   {pt:'Ryan e Josh foram grandes amigos.',before:'Ryan and Josh',blank:'were',after:'great friends.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'Megan e Taylor foram colegas de faculdade.',before:'Megan and Taylor',blank:'were',after:'university classmates.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
-  {pt:'Eles não foram amigos por muito tempo.',before:'They',blank:"weren't",after:'friends for long.',options:["wasn't","weren't","didn't go","went"],anchor:'togo-went-vs-tobe'},
-  {pt:'Jake e Douglas não foram parceiros.',before:'Jake and Douglas',blank:"weren't",after:'partners.',options:["wasn't","weren't","didn't go","went"],anchor:'togo-went-vs-tobe'},
+  {pt:'Eles não foram amigos por muito tempo.',before:'They',blank:"weren't",after:'friends for long.',options:["wasn't","weren't",'going',"went"],anchor:'togo-went-vs-tobe'},
+  {pt:'Jake e Douglas não foram parceiros.',before:'Jake and Douglas',blank:"weren't",after:'partners.',options:["wasn't","weren't",'going',"went"],anchor:'togo-went-vs-tobe'},
   {pt:'Renato e Bruno foram grandes rivais.',before:'Renato and Bruno',blank:'were',after:'great rivals.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
   {pt:'Os alunos foram dedicados.',before:'The students',blank:'were',after:'dedicated.',options:['went','was','were','will be'],anchor:'togo-went-vs-tobe'},
-  {pt:'As meninas não foram à aula.',before:'The girls',blank:"didn't go",after:'to class.',options:["didn't go","weren't","went","goes"],anchor:'togo-went'},
+  {pt:'As meninas não foram à aula.',before:'The girls',blank:'going',after:'to class.',options:['going',"weren't","went","goes"],anchor:'togo-went'},
 ];
 
 window['rev2_bk']=[
@@ -1320,6 +1509,174 @@ window['fut_bk']=[
   {pt:'Douglas não vai ao show semana que vem.',before:'Douglas',blank:"won't go",after:'to the show next week.',options:["won't go","doesn't go","didn't go","not go"]},
 ];
 
+
+window['inonat_bk']=[
+  // Tempo do dia
+  {pt:'Eu bebo café de manhã.',before:'I drink coffee',blank:'in',after:'the morning.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
+  {pt:'Nós jogamos futebol à tarde.',before:'We play soccer',blank:'in',after:'the afternoon.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
+  {pt:'Eu assisto TV no começo da noite.',before:'I watch TV',blank:'in',after:'the evening.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
+  {pt:'Eu durmo de noite.',before:'I sleep',blank:'at',after:'night.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
+  {pt:'O bebê chorou no meio da noite.',before:'The baby cried',blank:'in',after:'the night.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
+  // Datas — anos e meses
+  {pt:'A loja abriu em 2020.',before:'The store opened',blank:'in',after:'2020.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Meu aniversário é em março.',before:'My birthday is',blank:'in',after:'March.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'O curso começa em fevereiro.',before:'The course starts',blank:'in',after:'February.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Datas — séculos e décadas
+  {pt:'Nós vivemos no século 21.',before:'We live',blank:'in',after:'the 21st century.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Ele nasceu nos anos 90.',before:'He was born',blank:'in',after:'the 90s.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Datas — estações
+  {pt:'Nós vamos à praia no verão.',before:'We go to the beach',blank:'in',after:'the summer.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'As flores desabrocham na primavera.',before:'Flowers bloom',blank:'in',after:'the spring.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Datas — dias e finais de semana
+  {pt:'Eu tenho aula de inglês na segunda.',before:'I have English class',blank:'on',after:'Monday.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Nós nao trabalhamos no domingo.',before:'We do not work',blank:'on',after:'Sunday.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Eu durmo até tarde no fim de semana.',before:'I sleep late',blank:'on',after:'the weekend.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Datas — completas e feriados
+  {pt:'A festa é no dia 10 de maio.',before:'The party is',blank:'on',after:'May 10th.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Casais comemoram no Dia dos Namorados.',before:'Couples celebrate',blank:'on',after:"Valentine's Day.",noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'As famílias se reúnem no Natal.',before:'Families gather',blank:'at',after:'Christmas.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Datas — horários
+  {pt:'O ônibus chega às 8h.',before:'The bus arrives',blank:'at',after:'8:00.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  {pt:'Eu almoço ao meio-dia.',before:'I eat lunch',blank:'at',after:'noon.',noShuffle:true,options:['in','on','at'],anchor:'inonat-datas'},
+  // Lugares — in
+  {pt:'Eu moro no Brasil.',before:'I live',blank:'in',after:'Brazil.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'O restaurante fica em Moema.',before:'The restaurant is',blank:'in',after:'Moema.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'O dinheiro está na caixa.',before:'The money is',blank:'in',after:'the box.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Ela está cozinhando na cozinha.',before:'She is cooking',blank:'in',after:'the kitchen.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Nós assistimos TV na sala.',before:'We watch TV',blank:'in',after:'the living room.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Um médico trabalha em um hospital.',before:'A doctor works',blank:'in',after:'a hospital.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  // Lugares — on
+  {pt:'O livro está na mesa.',before:'The book is',blank:'on',after:'the table.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'O quadro está na parede.',before:'The picture is',blank:'on',after:'the wall.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'A porta fica à esquerda.',before:'The door is',blank:'on',after:'the left.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'A loja fica na Avenida Paulista.',before:'The store is',blank:'on',after:'Paulista Avenue.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Ele mora em uma ilha.',before:'He lives',blank:'on',after:'an island.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  // Lugares — at
+  {pt:'Eu estou esperando no ponto de ônibus.',before:'I am waiting',blank:'at',after:'the bus stop.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'A escola fica na Rua Principal, 100.',before:'The school is',blank:'at',after:'100 Main Street.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'A farmácia fica na esquina.',before:'The pharmacy is',blank:'at',after:'the corner.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Eu estou em casa agora.',before:'I am',blank:'at',after:'home now.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  {pt:'Ela está no trabalho hoje.',before:'She is',blank:'at',after:'work today.',noShuffle:true,options:['in','on','at'],anchor:'inonat-lugar'},
+  // Tecnologia e grupos
+  {pt:'Eu vi a notícia na internet.',before:'I saw the news',blank:'on',after:'the internet.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Ele está falando no telefone.',before:'He is talking',blank:'on',after:'the phone.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Nós assistimos a um filme na TV.',before:'We watched a movie',blank:'on',after:'TV.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Eu li a história em um livro.',before:'I read the story',blank:'in',after:'a book.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Olhe as pessoas na foto.',before:'Look at the people',blank:'in',after:'the picture.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Eu estou no ônibus.',before:'I am',blank:'on',after:'the bus.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Ele vai para o trabalho de moto.',before:'He goes to work',blank:'on',after:'a motorcycle.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Nós estamos no carro.',before:'We are',blank:'in',after:'the car.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Ela foi para casa de táxi.',before:'She went home',blank:'in',after:'a taxi.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Ela está no comitê.',before:'She is',blank:'on',after:'the committee.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+  {pt:'Ele está em um grupo de amigos.',before:'He is',blank:'in',after:'a group of friends.',noShuffle:true,options:['in','on','at'],anchor:'inonat-outros'},
+];
+
+window['demo_bk']=[
+  // This — singular perto
+  {pt:'Este celular é meu.',before:'',blank:'This',after:'phone is mine.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Esta ideia é perfeita.',before:'',blank:'This',after:'idea is perfect.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Este podcast é ótimo!',before:'',blank:'This',after:'podcast is great!',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Este livro é meu.',before:'',blank:'This',after:'book is mine.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Esta música é incrível.',before:'',blank:'This',after:'song is amazing.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  // These — plural perto
+  {pt:'Estas fotos são lindas.',before:'',blank:'These',after:'photos are beautiful.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Estes sapatos são caros.',before:'',blank:'These',after:'shoes are expensive.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Estes documentos são importantes.',before:'',blank:'These',after:'documents are important.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Estas camisetas são bonitas.',before:'',blank:'These',after:'t-shirts are beautiful.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  {pt:'Estes caras são legais.',before:'',blank:'These',after:'guys are cool.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-this-these'},
+  // That — singular longe
+  {pt:'Aquele restaurante é caro.',before:'',blank:'That',after:'restaurant is expensive.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aquela festa foi incrível.',before:'',blank:'That',after:'party was amazing.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Esse cara é incrível.',before:'',blank:'That',after:'guy is amazing.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aquele carro é rápido.',before:'',blank:'That',after:'car is fast.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aquele show foi ótimo.',before:'',blank:'That',after:'show was great.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Essa música é linda.',before:'',blank:'That',after:'song is beautiful.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aquele livro é incrível.',before:'',blank:'That',after:'book is amazing.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  // Those — plural longe
+  {pt:'Aquelas pessoas são famosas.',before:'',blank:'Those',after:'people are famous.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aqueles caras são legais.',before:'',blank:'Those',after:'guys are cool.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Essas músicas são ótimas.',before:'',blank:'Those',after:'songs are great.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Aquelas meninas são minhas amigas.',before:'',blank:'Those',after:'girls are my friends.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  {pt:'Esses documentos são importantes.',before:'',blank:'Those',after:'documents are important.',noShuffle:true,options:['This','These','That','Those'],anchor:'demo-that-those'},
+  // Here / There
+  {pt:'Camila está aqui.',before:'Camila is',blank:'here',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+  {pt:'O Ryan está ali.',before:'Ryan is',blank:'there',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+  {pt:'Ela está aqui.',before:'She is',blank:'here',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+  {pt:'Ele está lá.',before:'He is',blank:'there',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+  {pt:'Josh está aqui.',before:'Josh is',blank:'here',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+  {pt:'A Ashley está lá.',before:'Ashley is',blank:'there',after:'.',noShuffle:true,options:['here','there','this','that'],anchor:'demo-here-there'},
+];
+
+window['indem_bk']=[
+  // in this/that/those
+  {pt:'Eu estou neste quarto.',before:'I am',blank:'in this',after:'bedroom.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Jake trabalha naquele escritório.',before:'Jake works',blank:'in that',after:'office.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Camila estava nessas reuniões.',before:'Camila was',blank:'in those',after:'meetings.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Eu nasci neste país.',before:'I was born',blank:'in this',after:'country.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Megan trabalha naquela equipe.',before:'Megan works',blank:'in that',after:'team.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Eu estava nesta reunião.',before:'I was',blank:'in this',after:'meeting.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Douglas gravou naquele estúdio.',before:'Douglas recorded',blank:'in that',after:'studio.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Nós moramos neste bairro.',before:'We live',blank:'in this',after:'neighborhood.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Ela trabalha naquela empresa.',before:'She works',blank:'in that',after:'company.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  {pt:'Os alunos estudam naquelas salas.',before:'The students study',blank:'in those',after:'rooms.',noShuffle:true,options:['in this','in that','in those'],anchor:'indem-regra'},
+  // on this/that/those
+  {pt:'Eu vi as notícias naquele website.',before:'I saw the news',blank:'on that',after:'website.',noShuffle:true,options:['on this','on that','on those'],anchor:'indem-regra'},
+  {pt:'Renato está neste ônibus.',before:'Renato is',blank:'on this',after:'bus.',noShuffle:true,options:['on this','on that','on those'],anchor:'indem-regra'},
+  {pt:'Eu moro nesta rua.',before:'I live',blank:'on this',after:'street.',noShuffle:true,options:['on this','on that','on those'],anchor:'indem-regra'},
+  {pt:'Ryan postou naquele Instagram.',before:'Ryan posted',blank:'on that',after:'Instagram.',noShuffle:true,options:['on this','on that','on those'],anchor:'indem-regra'},
+  {pt:'Eles estão trabalhando naqueles projetos.',before:'They are working',blank:'on those',after:'projects.',noShuffle:true,options:['on this','on that','on those'],anchor:'indem-regra'},
+  // at this/that/those
+  {pt:'Vanessa trabalha naquele restaurante.',before:'Vanessa works',blank:'at that',after:'restaurant.',noShuffle:true,options:['at this','at that','at those'],anchor:'indem-regra'},
+  {pt:'Ashley estudou naquela escola.',before:'Ashley studied',blank:'at that',after:'school.',noShuffle:true,options:['at this','at that','at those'],anchor:'indem-regra'},
+  {pt:'Josh estava naquela festa.',before:'Josh was',blank:'at that',after:'party.',noShuffle:true,options:['at this','at that','at those'],anchor:'indem-regra'},
+  {pt:'Ela trabalha nesta empresa.',before:'She works',blank:'at this',after:'company.',noShuffle:true,options:['at this','at that','at those'],anchor:'indem-regra'},
+  {pt:'Eu estava naqueles eventos.',before:'I was',blank:'at those',after:'events.',noShuffle:true,options:['at this','at that','at those'],anchor:'indem-regra'},
+];
+
+window['queexp_bk']=[
+  // who — pessoas
+  {pt:'O menino que estava dormindo é meu amigo.',before:'The boy',blank:'who',after:'was sleeping is my friend.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'A menina que estudou inglês conseguiu o emprego.',before:'The girl',blank:'who',after:'studied English got the job.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'O professor que me ajudou foi incrível.',before:'The teacher',blank:'who',after:'helped me was amazing.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'O cara que ganhou o prêmio é meu amigo.',before:'The guy',blank:'who',after:'won the prize is my friend.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'O aluno que chegou cedo foi o Ryan.',before:'The student',blank:'who',after:'arrived early was Ryan.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'A mulher que está ali é minha mãe.',before:'The woman',blank:'who',after:'is there is my mom.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'O médico que me atendeu foi ótimo.',before:'The doctor',blank:'who',after:'treated me was great.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'O amigo que me ajudou mora em SP.',before:'The friend',blank:'who',after:'helped me lives in SP.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  {pt:'A cantora que eu ouvi foi incrível.',before:'The singer',blank:'who',after:'I heard was amazing.',noShuffle:true,options:['who','which'],anchor:'queexp-who'},
+  // which — coisas
+  {pt:'O computador que estava quebrado é meu.',before:'The computer',blank:'which',after:'was broken is mine.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'O carro que eu comprei é vermelho.',before:'The car',blank:'which',after:'I bought is red.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'A música que ela cantou foi linda.',before:'The song',blank:'which',after:'she sang was beautiful.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'O livro que eu li foi incrível.',before:'The book',blank:'which',after:'I read was amazing.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'A casa que eles compraram é grande.',before:'The house',blank:'which',after:'they bought is big.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'O projeto que Douglas apresentou foi aprovado.',before:'The project',blank:'which',after:'Douglas presented was approved.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'A comida que Camila fez estava deliciosa.',before:'The food',blank:'which',after:'Camila made was delicious.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'O filme que nós assistimos foi ótimo.',before:'The movie',blank:'which',after:'we watched was great.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'O restaurante que ele indicou é caro.',before:'The restaurant',blank:'which',after:'he recommended is expensive.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+  {pt:'A música que está tocando é ótima.',before:'The song',blank:'which',after:'is playing is great.',noShuffle:true,options:['who','which'],anchor:'queexp-which'},
+];
+
+window['rev3_bk']=[
+  {pt:'Eu nasci em março.',before:'I was born',blank:'in',after:'March.',options:['in','on','at','in the'],anchor:'33:inonat-tempo'},
+  {pt:'A reunião é na segunda.',before:'The meeting is',blank:'on',after:'Monday.',options:['in','on','at','in the'],anchor:'33:inonat-tempo'},
+  {pt:'Camila estava na Alemanha.',before:'Camila was',blank:'in',after:'Germany.',options:['in','on','at','in the'],anchor:'33:inonat-lugar'},
+  {pt:'Eu estou no ônibus.',before:'I am',blank:'on the',after:'bus.',options:['in','on','at','on the'],anchor:'33:inonat-lugar'},
+  {pt:'Eu vi esse vídeo no Instagram.',before:'I saw this video',blank:'on',after:'Instagram.',options:['in','on','at','in the'],anchor:'33:inonat-outros'},
+  {pt:'Eu chego às 9h.',before:'I arrive',blank:'at',after:'9am.',options:['in','on','at','in the'],anchor:'33:inonat-tempo'},
+  {pt:'Este celular é meu.',before:'',blank:'This',after:'phone is mine.',options:['This','These','That','Those'],anchor:'35:demo-this-these'},
+  {pt:'Aquelas meninas são minhas amigas.',before:'',blank:'Those',after:'girls are my friends.',options:['This','These','That','Those'],anchor:'35:demo-that-those'},
+  {pt:'Ela está aqui.',before:'She is',blank:'here',after:'.',options:['here','there','this','that'],anchor:'35:demo-here-there'},
+  {pt:'Aquele show foi ótimo.',before:'',blank:'That',after:'show was great.',options:['This','These','That','Those'],anchor:'35:demo-that-those'},
+  {pt:'Eu moro nesta rua.',before:'I live',blank:'on this',after:'street.',options:['in this','on this','at this','in that'],anchor:'37:indem-regra'},
+  {pt:'Jake trabalha naquele escritório.',before:'Jake works',blank:'in that',after:'office.',options:['in that','on that','at that','in this'],anchor:'37:indem-regra'},
+  {pt:'Renato está neste ônibus.',before:'Renato is',blank:'on this',after:'bus.',options:['in this','on this','at this','on that'],anchor:'37:indem-regra'},
+  {pt:'O menino que estava jogando é meu amigo.',before:'The boy',blank:'who',after:'was playing is my friend.',options:['who','that','which','where'],anchor:'39:queexp-who'},
+  {pt:'O carro que eu comprei é vermelho.',before:'The car',blank:'that',after:'I bought is red.',options:['who','that','which','where'],anchor:'39:queexp-that'},
+  {pt:'A música que ela cantou foi linda.',before:'The song',blank:'that',after:'she sang was beautiful.',options:['who','that','which','where'],anchor:'39:queexp-that'},
+  {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',options:['who','that','which','where'],anchor:'39:queexp-who'},
+];
 window['ing_bk']=[
   {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran'],anchor:'ing-regras'},
   {pt:'Ela está assistindo um filme.',before:'She is',blank:'watching',after:'a movie.',options:['watching','watch','watched','to watch'],anchor:'ing-regras'},
@@ -1509,16 +1866,16 @@ window['tobe_bk']=[
 ];
 window['adj_bk']=[
   // Ordem: adjetivo antes do substantivo
-  {pt:'Eu comprei uma caneta azul.',before:'I bought',blank:'a blue pen',after:'.',options:['a blue pen','a pen blue','blue pens','pen blue'],anchor:'adj-ordem'},
-  {pt:'Douglas conheceu uma menina legal.',before:'Douglas met',blank:'a cool girl',after:'.',options:['a cool girl','a girl cool','cool girls','girl cool'],anchor:'adj-ordem'},
-  {pt:'Ela tem uma casa grande e bonita.',before:'She has',blank:'a big and beautiful house',after:'.',options:['a big and beautiful house','a house big and beautiful','big and beautiful houses','house big beautiful'],anchor:'adj-ordem'},
-  {pt:'Meu pai comprou um computador potente.',before:'My dad bought',blank:'a powerful computer',after:'.',options:['a powerful computer','a computer powerful','powerful computers','computer powerful'],anchor:'adj-ordem'},
-  {pt:'Ryan conheceu uma pessoa interessante.',before:'Ryan met',blank:'an interesting person',after:'.',options:['an interesting person','a person interesting','interesting persons','person interesting'],anchor:'adj-ordem'},
-  {pt:'Camila tem um gato preto.',before:'Camila has',blank:'a black cat',after:'.',options:['a black cat','a cat black','black cats','cat black'],anchor:'adj-ordem'},
-  {pt:'Josh comprou uma camisa vermelha.',before:'Josh bought',blank:'a red shirt',after:'.',options:['a red shirt','a shirt red','red shirts','shirt red'],anchor:'adj-ordem'},
-  {pt:'Megan tem um apartamento pequeno.',before:'Megan has',blank:'a small apartment',after:'.',options:['a small apartment','a apartment small','small apartments','apartment small'],anchor:'adj-ordem'},
-  {pt:'Eu quero um carro rápido.',before:'I want',blank:'a fast car',after:'.',options:['a fast car','a car fast','fast cars','car fast'],anchor:'adj-ordem'},
-  {pt:'Ashley conheceu um menino simpático.',before:'Ashley met',blank:'a nice boy',after:'.',options:['a nice boy','a boy nice','nice boys','boy nice'],anchor:'adj-ordem'},
+  {pt:'Eu comprei uma caneta azul.',before:'I bought a',blank:'blue pen',after:'.',options:['blue pen','pen blue','blue pens','pen blue'],anchor:'adj-ordem'},
+  {pt:'Douglas conheceu uma menina legal.',before:'Douglas met a',blank:'cool girl',after:'.',options:['cool girl','girl cool','cool girls','girl cool'],anchor:'adj-ordem'},
+  {pt:'Ela tem uma casa grande e bonita.',before:'She has a',blank:'big and beautiful house',after:'.',options:['big and beautiful house','house big and beautiful','big and beautiful houses','house big beautiful'],anchor:'adj-ordem'},
+  {pt:'Meu pai comprou um computador potente.',before:'My dad bought a',blank:'powerful computer',after:'.',options:['powerful computer','computer powerful','powerful computers','computer powerful'],anchor:'adj-ordem'},
+  {pt:'Ryan conheceu uma pessoa interessante.',before:'Ryan met an',blank:'interesting person',after:'.',options:['interesting person','person interesting','interesting persons','person interesting'],anchor:'adj-ordem'},
+  {pt:'Camila tem um gato preto.',before:'Camila has a',blank:'black cat',after:'.',options:['black cat','cat black','black cats','cat black'],anchor:'adj-ordem'},
+  {pt:'Josh comprou uma camisa vermelha.',before:'Josh bought a',blank:'red shirt',after:'.',options:['red shirt','shirt red','red shirts','shirt red'],anchor:'adj-ordem'},
+  {pt:'Megan tem um apartamento pequeno.',before:'Megan has a',blank:'small apartment',after:'.',options:['small apartment','apartment small','small apartments','apartment small'],anchor:'adj-ordem'},
+  {pt:'Eu quero um carro rápido.',before:'I want a',blank:'fast car',after:'.',options:['fast car','car fast','fast cars','car fast'],anchor:'adj-ordem'},
+  {pt:'Ashley conheceu um menino simpático.',before:'Ashley met a',blank:'nice boy',after:'.',options:['nice boy','boy nice','nice boys','boy nice'],anchor:'adj-ordem'},
   // Sem plural no adjetivo
   {pt:'As camisetas amarelas estão sujas.',before:'The',blank:'yellow',after:'t-shirts are dirty.',options:['yellow','yellows','yellowes','yellowing'],anchor:'adj-plural'},
   {pt:'Os carros vermelhos são caros.',before:'The',blank:'red',after:'cars are expensive.',options:['red','reds','redes','reding'],anchor:'adj-plural'},
@@ -1536,23 +1893,23 @@ window['adj_bk']=[
   {pt:'Ela é muito inteligente.',before:'She',blank:'is very smart',after:'.',options:['is very smart','is very smarts','are very smart','was very smart'],anchor:'adj-tobe'},
   {pt:'Eles estavam cansados.',before:'They',blank:'were tired',after:'.',options:['were tired','were tireds','was tired','are tired'],anchor:'adj-tobe'},
   // Sem "de" — adjetivo direto antes do substantivo
-  {pt:'Eu quero uma garrafa de plástico.',before:'I want',blank:'a plastic bottle',after:'.',options:['a plastic bottle','a bottle of plastic','plastic bottles','bottle of plastic'],anchor:'adj-de'},
+  {pt:'Eu quero uma garrafa de plástico.',before:'I want a',blank:'plastic bottle',after:'.',options:['plastic bottle','bottle of plastic','plastic bottles','plastics bottle'],anchor:'adj-de'},
   {pt:'A janela de vidro está limpa.',before:'The',blank:'glass',after:'window is clean.',options:['glass','of glass','glasses','glassy'],anchor:'adj-de'},
-  {pt:'Ele comprou uma camiseta de algodão.',before:'He bought',blank:'a cotton t-shirt',after:'.',options:['a cotton t-shirt','a t-shirt of cotton','cotton t-shirts','t-shirt of cotton'],anchor:'adj-de'},
-  {pt:'Ela tem uma bolsa de couro.',before:'She has',blank:'a leather bag',after:'.',options:['a leather bag','a bag of leather','leather bags','bag of leather'],anchor:'adj-de'},
-  {pt:'Eu quero uma porta de madeira.',before:'I want',blank:'a wooden door',after:'.',options:['a wooden door','a door of wood','wooden doors','door of wood'],anchor:'adj-de'},
-  {pt:'Ryan comprou um sapato de couro.',before:'Ryan bought',blank:'a leather shoe',after:'.',options:['a leather shoe','a shoe of leather','leather shoes','shoe of leather'],anchor:'adj-de'},
-  {pt:'Megan quer uma mesa de vidro.',before:'Megan wants',blank:'a glass table',after:'.',options:['a glass table','a table of glass','glass tables','table of glass'],anchor:'adj-de'},
-  {pt:'Camila tem um vestido de seda.',before:'Camila has',blank:'a silk dress',after:'.',options:['a silk dress','a dress of silk','silk dresses','dress of silk'],anchor:'adj-de'},
+  {pt:'Ele comprou uma camiseta de algodão.',before:'He bought a',blank:'cotton t-shirt',after:'.',options:['cotton t-shirt','t-shirt of cotton','cotton t-shirts','cottons t-shirt'],anchor:'adj-de'},
+  {pt:'Ela tem uma bolsa de couro.',before:'She has a',blank:'leather bag',after:'.',options:['leather bag','bag of leather','leather bags','leathers bag'],anchor:'adj-de'},
+  {pt:'Eu quero uma porta de madeira.',before:'I want a',blank:'wooden door',after:'.',options:['wooden door','door of wood','wooden doors','woodens door'],anchor:'adj-de'},
+  {pt:'Ryan comprou um sapato de couro.',before:'Ryan bought a',blank:'leather shoe',after:'.',options:['leather shoe','shoe of leather','leather shoes','leathers shoe'],anchor:'adj-de'},
+  {pt:'Megan quer uma mesa de vidro.',before:'Megan wants a',blank:'glass table',after:'.',options:['glass table','table of glass','glass tables','glasses table'],anchor:'adj-de'},
+  {pt:'Camila tem um vestido de seda.',before:'Camila has a',blank:'silk dress',after:'.',options:['silk dress','dress of silk','silk dresses','silks dress'],anchor:'adj-de'},
   // Mixed review
   {pt:'Os meninos são legais.',before:'The boys',blank:'are cool',after:'.',options:['are cool','are cools','is cool','were cool'],anchor:'adj-plural'},
-  {pt:'Ela comprou uma mochila preta.',before:'She bought',blank:'a black backpack',after:'.',options:['a black backpack','a backpack black','black backpacks','backpack black'],anchor:'adj-ordem'},
+  {pt:'Ela comprou uma mochila preta.',before:'She bought a',blank:'black backpack',after:'.',options:['black backpack','backpack black','black backpacks','backpack black'],anchor:'adj-ordem'},
   {pt:'O sorvete estava gelado.',before:'The ice cream',blank:'was cold',after:'.',options:['was cold','was colds','were cold','is cold'],anchor:'adj-tobe'},
-  {pt:'Josh quer um celular novo.',before:'Josh wants',blank:'a new phone',after:'.',options:['a new phone','a phone new','new phones','phone new'],anchor:'adj-ordem'},
+  {pt:'Josh quer um celular novo.',before:'Josh wants a',blank:'new phone',after:'.',options:['new phone','phone new','new phones','phone new'],anchor:'adj-ordem'},
   {pt:'As flores são lindas.',before:'The flowers',blank:'are beautiful',after:'.',options:['are beautiful','are beautifuls','is beautiful','were beautiful'],anchor:'adj-plural'},
-  {pt:'Taylor tem um violão de madeira.',before:'Taylor has',blank:'a wooden guitar',after:'.',options:['a wooden guitar','a guitar of wood','wooden guitars','guitar of wood'],anchor:'adj-de'},
+  {pt:'Taylor tem um violão de madeira.',before:'Taylor has a',blank:'wooden guitar',after:'.',options:['wooden guitar','guitar of wood','wooden guitars','woodens guitar'],anchor:'adj-de'},
   {pt:'Os sapatos vermelhos são bonitos.',before:'The',blank:'red',after:'shoes are beautiful.',options:['red','reds','redes','reding'],anchor:'adj-plural'},
-  {pt:'Raphael conheceu uma pessoa famosa.',before:'Raphael met',blank:'a famous person',after:'.',options:['a famous person','a person famous','famous persons','person famous'],anchor:'adj-ordem'},
+  {pt:'Raphael conheceu uma pessoa famosa.',before:'Raphael met a',blank:'famous person',after:'.',options:['famous person','person famous','famous persons','person famous'],anchor:'adj-ordem'},
 ];
 window['art_bk']=[
   // The — definido
@@ -1713,6 +2070,9 @@ const pages=[
   <div class="inst-item"><div class="inst-icon">🛠️</div><div class="inst-text"><strong>Página de Ferramentas</strong><span>Logo após esta página há ferramentas extras: tradutor, corretor, ditado com níveis, dicionário e gerador de exemplos.</span></div></div>
   <div class="inst-item"><div class="inst-icon">💬</div><div class="inst-text"><strong>Chat com IA</strong><span>O botão 💬 flutuante está disponível em todas as páginas para tirar dúvidas de inglês na hora.</span></div></div>
   <div class="inst-section-lbl">Preferências</div>
+  <div class="inst-prefs-btns">
+    <button class="inst-theme-btn" onclick="openThemePicker()">🎨 Escolher tema</button>
+  </div>
   <div class="inst-item inst-shimmer">
     <div class="inst-icon">🌓</div>
     <div class="inst-text"><strong>Modo claro / escuro</strong><span>Alterne o tema. Sua preferência é salva.</span></div>
@@ -1776,47 +2136,94 @@ const pages=[
   </div>
   <div id="idx-no-result" class="idx-noresult" style="display:none;">Nenhuma matéria encontrada.</div>
   <div class="idx-list" id="idx-list">
-    <div class="idx-cap idx-group" data-group="cap1">Capítulo 1 — Fundamentos</div>
-    <div class="idx-item" onclick="go(5)" data-kw="pronome pessoal eu você ele ela nós eles they we i you he she it sujeito pessoa">
-      <div class="idx-num">01</div><div class="idx-info"><div class="idx-name">Pronomes Pessoais</div><div class="idx-desc">I, You, He, She, It, We, They</div></div><div class="idx-arrow">→</div>
+
+    <!-- ── CAPÍTULO 1 ── -->
+    <div class="idx-chapter" id="idxcap1">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap1')" style="--ch-color:var(--acc,var(--blue));">
+        <span class="idx-chapter-num">1</span>
+        <span class="idx-chapter-title">Capítulo 1</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap1-body">
+        <div class="idx-item" onclick="go(5)" data-kw="pronome pessoal eu você ele ela nós eles they we i you he she it sujeito pessoa">
+          <div class="idx-num">01</div><div class="idx-info"><div class="idx-name">Pronomes Pessoais</div><div class="idx-desc">I, You, He, She, It, We, They</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(7)" data-kw="verbo ação frase o que é verbo infinitivo play eat run walk">
+          <div class="idx-num">02</div><div class="idx-info"><div class="idx-name">O que é um Verbo?</div><div class="idx-desc">A ação da frase</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(9)" data-kw="continuous gerundio gerúndio ndo ing jogando comendo dormindo correndo present continuous">
+          <div class="idx-num">03</div><div class="idx-info"><div class="idx-name">Continuous Tenses</div><div class="idx-desc">O -ndo em inglês</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(11)" data-kw="to be ser estar am is are was were will be sou estou é está somos são eram estavam">
+          <div class="idx-num">04</div><div class="idx-info"><div class="idx-name">Verbo To Be</div><div class="idx-desc">Ser e estar — todos os tempos</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(13)" data-kw="adjetivo adjetivos característica qualidade bonito feio alto baixo feliz triste beautiful tall">
+          <div class="idx-num">05</div><div class="idx-info"><div class="idx-name">Adjetivos</div><div class="idx-desc">Características de coisas e pessoas</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(15)" data-kw="artigo the a an some o a os as um uma uns algumas definido indefinido">
+          <div class="idx-num">06</div><div class="idx-info"><div class="idx-name">Artigos</div><div class="idx-desc">The, A, An e Some</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(17)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap1 capítulo 1">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 1</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
     </div>
-    <div class="idx-item" onclick="go(7)" data-kw="verbo ação frase o que é verbo infinitivo play eat run walk">
-      <div class="idx-num">02</div><div class="idx-info"><div class="idx-name">O que é um Verbo?</div><div class="idx-desc">A ação da frase</div></div><div class="idx-arrow">→</div>
+
+    <!-- ── CAPÍTULO 2 ── -->
+    <div class="idx-chapter" id="idxcap2">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap2')" style="--ch-color:#68d391;">
+        <span class="idx-chapter-num">2</span>
+        <span class="idx-chapter-title">Capítulo 2</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap2-body">
+        <div class="idx-item" onclick="go(19)" data-kw="presente simple present tempo presente conjugação habito rotina todo dia go goes likes works plays">
+          <div class="idx-num">07</div><div class="idx-info"><div class="idx-name">Presente</div><div class="idx-desc">Verbo sem alteração · +S no he/she/it</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(21)" data-kw="passado simple past ed irregular went ate bought played watched worked ontem yesterday">
+          <div class="idx-num">08</div><div class="idx-info"><div class="idx-name">Passado</div><div class="idx-desc">Regular (-ed) · Irregular</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(23)" data-kw="futuro will wont amanhã tomorrow vai vou vamos vão will not future">
+          <div class="idx-num">09</div><div class="idx-info"><div class="idx-name">Futuro</div><div class="idx-desc">Will · Won't</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(25)" data-kw="to go ir goes went will go lugar place viajar viagem fui foi fomos foram">
+          <div class="idx-num">10</div><div class="idx-info"><div class="idx-name">To Go</div><div class="idx-desc">Go vs Will · Went · Will go</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(27)" data-kw="sujeito oculto eu joguei played i they we pronome obrigatório hidden subject">
+          <div class="idx-num">11</div><div class="idx-info"><div class="idx-name">Sujeito Oculto</div><div class="idx-desc">O sujeito nunca some em inglês</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(29)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap2 capítulo 2">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 2</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
     </div>
-    <div class="idx-item" onclick="go(9)" data-kw="continuous gerundio gerúndio ndo ing jogando comendo dormindo correndo present continuous">
-      <div class="idx-num">03</div><div class="idx-info"><div class="idx-name">Continuous Tenses</div><div class="idx-desc">O -ndo em inglês</div></div><div class="idx-arrow">→</div>
+
+    <!-- ── CAPÍTULO 3 ── -->
+    <div class="idx-chapter" id="idxcap3">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap3')" style="--ch-color:#b794f4;">
+        <span class="idx-chapter-num">3</span>
+        <span class="idx-chapter-title">Capítulo 3</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap3-body">
+        <div class="idx-item" onclick="go(31)" data-kw="in on at preposição em no na nos nas tempo lugar tecnologia morning afternoon night">
+          <div class="idx-num">12</div><div class="idx-info"><div class="idx-name">In, On, At</div><div class="idx-desc">Em, no, na, nos, nas</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(33)" data-kw="pronomes demonstrativos this these that those this aqui ali here there este essa aquele">
+          <div class="idx-num">13</div><div class="idx-info"><div class="idx-name">Pronomes Demonstrativos</div><div class="idx-desc">This, These, That, Those</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(35)" data-kw="in on at demonstrativos neste nessa naquele naquela naqueles in this on that at those">
+          <div class="idx-num">14</div><div class="idx-info"><div class="idx-name">In, On, At + Demonstrativos</div><div class="idx-desc">Neste, nessa, naquele, naquelas</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(37)" data-kw="que explicativo who that which relativo menino que estava the boy who was">
+          <div class="idx-num">15</div><div class="idx-info"><div class="idx-name">Que (explicativo)</div><div class="idx-desc">Who, That, Which</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(39)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
     </div>
-    <div class="idx-item" onclick="go(11)" data-kw="to be ser estar am is are was were will be sou estou é está somos são eram estavam">
-      <div class="idx-num">04</div><div class="idx-info"><div class="idx-name">Verbo To Be</div><div class="idx-desc">Ser e estar — todos os tempos</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(13)" data-kw="adjetivo adjetivos característica qualidade bonito feio alto baixo feliz triste beautiful tall">
-      <div class="idx-num">05</div><div class="idx-info"><div class="idx-name">Adjetivos</div><div class="idx-desc">Características de coisas e pessoas</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(15)" data-kw="artigo the a an some o a os as um uma uns algumas definido indefinido">
-      <div class="idx-num">06</div><div class="idx-info"><div class="idx-name">Artigos</div><div class="idx-desc">The, A, An e Some</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(17)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap1 capítulo 1">
-      <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 1</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-cap idx-group" style="margin-top:16px;" data-group="cap2">Capítulo 2 — Tempos Verbais</div>
-    <div class="idx-item" onclick="go(19)" data-kw="presente simple present tempo presente conjugação habito rotina todo dia go goes likes works plays">
-      <div class="idx-num">07</div><div class="idx-info"><div class="idx-name">Presente</div><div class="idx-desc">Verbo sem alteração · +S no he/she/it</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(21)" data-kw="passado simple past ed irregular went ate bought played watched worked ontem yesterday">
-      <div class="idx-num">08</div><div class="idx-info"><div class="idx-name">Passado</div><div class="idx-desc">Regular (-ed) · Irregular</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(23)" data-kw="futuro will wont amanhã tomorrow vai vou vamos vão will not future">
-      <div class="idx-num">09</div><div class="idx-info"><div class="idx-name">Futuro</div><div class="idx-desc">Will · Won't</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(25)" data-kw="to go ir goes went will go lugar place viajar viagem fui foi fomos foram">
-      <div class="idx-num">10</div><div class="idx-info"><div class="idx-name">To Go</div><div class="idx-desc">Go vs Will · Went · Will go</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(27)" data-kw="sujeito oculto eu joguei played i they we pronome obrigatório hidden subject">
-      <div class="idx-num">11</div><div class="idx-info"><div class="idx-name">Sujeito Oculto</div><div class="idx-desc">O sujeito nunca some em inglês</div></div><div class="idx-arrow">→</div>
-    </div>
-    <div class="idx-item" onclick="go(29)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap2 capítulo 2">
-      <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 2</div></div><div class="idx-arrow">→</div>
-    </div>
+
   </div>
 </div>`,
 
@@ -1833,7 +2240,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Palavras que substituem nomes e indicam quem realiza a ação.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🖊️</div>
       <div class="curiosidade-text">
@@ -1909,7 +2317,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">A palavra que indica o que está acontecendo na frase.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🔍</div>
       <div class="curiosidade-text">
@@ -1942,7 +2351,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Como dizer que algo está, estava ou vai estar acontecendo.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎵</div>
       <div class="curiosidade-text">
@@ -1982,7 +2392,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">O verbo ser e estar — nos três tempos, com afirmação, negação e perguntas.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎭</div>
       <div class="curiosidade-text">
@@ -2498,7 +2909,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">As palavras que descrevem características de pessoas e coisas.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎷</div>
       <div class="curiosidade-text">
@@ -2558,7 +2970,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">O, a, os, as, um, uma, alguns — como usar cada um em inglês.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎸</div>
       <div class="curiosidade-text">
@@ -2656,7 +3069,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Conjugação de verbos no tempo presente.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">📅</div>
       <div class="curiosidade-text">
@@ -2718,7 +3132,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Verbos regulares e irregulares no passado.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">⏮️</div>
       <div class="curiosidade-text">
@@ -2770,7 +3185,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Expressando ações que vão acontecer.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🚀</div>
       <div class="curiosidade-text">
@@ -2819,7 +3235,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">A diferença entre go e will.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🗺️</div>
       <div class="curiosidade-text">
@@ -2922,7 +3339,8 @@ const pages=[
   <div class="sec-sep"></div>
   <div class="sec-desc">Por que o sujeito nunca pode sumir em inglês.</div>
   <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
-  <div class="curiosidade">
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🕵️</div>
       <div class="curiosidade-text">
@@ -2980,6 +3398,773 @@ const pages=[
   </div>
 </div>`,
 
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">3</div>
+</div>`,
+
+`<div class="page pg-sec">
+  <div class="sec-eyebrow">Seção 12</div>
+  <div class="sec-title">In, On, At<br><span class="acc">Preposições</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">Em, no, na, nos, nas — e quando usar cada uma.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🌍</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em inglês, as preposições variam pelo contexto, não pela tradução literal. A mesma palavra "em" pode virar in, on ou at dependendo do que vem depois.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 12 · In, On, At</div><div class="pg-ttl">Preposições</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="inonat-intro"><span class="en" data-speak="In, on, at">In, on, at</span> equivale a <strong>em</strong>. Já <span class="en" data-speak="in the, on the, at the">in the, on the, at the</span> equivale a <strong>no, na, nos, nas</strong>. A escolha depende do contexto.</p>
+
+    <div class="tip red" id="inonat-nomes">
+      <div class="tip-lbl">⚠️ Nome próprio</div>
+      <p class="tip-txt">Antes de nomes próprios, removemos o <em>the</em>:<br>no McDonald's = <span class="en" data-speak="at McDonald's">at McDonald's</span> <span class="q-tr">(não "at the McDonald's")</span></p>
+    </div>
+
+    <div class="inonat-global-row">
+      <button class="inonat-global-btn" id="inonat-global-btn" onclick="toggleAllIB()">Revelar tudo</button>
+      <span class="inonat-tip-click">💡 Toque em qualquer bolha para expandir</span>
+    </div>
+    <div class="inonat-section-label">⏰ Tempo do dia</div>
+    <div class="inonat-list" data-group="tempo">
+    <div class="inonat-bubble" id="ib-tempo1">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tempo1')">
+        <span class="inonat-bubble-title">Manhã (morning) e tarde (afternoon)</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I drink coffee in the morning.">I drink coffee in the morning.</span></span><span class="inonat-ex-pt">Eu bebo café de manhã.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We play soccer in the afternoon.">We play soccer in the afternoon.</span></span><span class="inonat-ex-pt">Nós jogamos futebol à tarde.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The class ends in the afternoon.">The class ends in the afternoon.</span></span><span class="inonat-ex-pt">A aula termina à tarde.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tempo2">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tempo2')">
+        <span class="inonat-bubble-title">Começo da noite (evening)</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I watch TV in the evening.">I watch TV in the evening.</span></span><span class="inonat-ex-pt">Eu assisto TV no começo da noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They have dinner in the evening.">They have dinner in the evening.</span></span><span class="inonat-ex-pt">Eles jantam no começo da noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Manoela reads books in the evening.">Manoela reads books in the evening.</span></span><span class="inonat-ex-pt">Manoela lê livros no começo da noite.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tempo3">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tempo3')">
+        <span class="inonat-bubble-title">Noite em geral</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I sleep at night.">I sleep at night.</span></span><span class="inonat-ex-pt">Eu durmo de noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The stars shine at night.">The stars shine at night.</span></span><span class="inonat-ex-pt">As estrelas brilham à noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Caique studies at night.">Caique studies at night.</span></span><span class="inonat-ex-pt">Caique estuda de noite.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tempo4">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tempo4')">
+        <span class="inonat-bubble-title">Durante a madrugada ou uma noite específica</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I heard a dog in the night.">I heard a dog in the night.</span></span><span class="inonat-ex-pt">Eu ouvi um cachorro durante a noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The baby cried in the night.">The baby cried in the night.</span></span><span class="inonat-ex-pt">O bebê chorou no meio da noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="It rained in the night.">It rained in the night.</span></span><span class="inonat-ex-pt">Choveu durante a madrugada.</span></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="inonat-section-label">📅 Datas e Períodos</div>
+    <div class="inonat-list" data-group="datas">
+    <div class="inonat-bubble" id="ib-datas1">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas1')">
+        <span class="inonat-bubble-title">Indicação de ano</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The store opened in 2020.">The store opened in 2020.</span></span><span class="inonat-ex-pt">A loja abriu em 2020.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She graduated in 2018.">She graduated in 2018.</span></span><span class="inonat-ex-pt">Ela se formou em 2018.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We traveled to Europe in 2023.">We traveled to Europe in 2023.</span></span><span class="inonat-ex-pt">Nós viajamos para a Europa em 2023.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas2">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas2')">
+        <span class="inonat-bubble-title">Indicação de mês</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="My birthday is in March.">My birthday is in March.</span></span><span class="inonat-ex-pt">Meu aniversário é em março.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Christmas is in December.">Christmas is in December.</span></span><span class="inonat-ex-pt">O Natal é em dezembro.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The course starts in February.">The course starts in February.</span></span><span class="inonat-ex-pt">O curso começa em fevereiro.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas3">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas3')">
+        <span class="inonat-bubble-title">Indicação de séculos</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We live in the 21st century.">We live in the 21st century.</span></span><span class="inonat-ex-pt">Nós vivemos no século 21.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Cars were invented in the 19th century.">Cars were invented in the 19th century.</span></span><span class="inonat-ex-pt">Os carros foram inventados no século 19.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The castle was built in the 15th century.">The castle was built in the 15th century.</span></span><span class="inonat-ex-pt">O castelo foi construído no século 15.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas4">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas4')">
+        <span class="inonat-bubble-title">Indicação de décadas</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He was born in the 90s.">He was born in the 90s.</span></span><span class="inonat-ex-pt">Ele nasceu nos anos 90.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Rock music was popular in the 80s.">Rock music was popular in the 80s.</span></span><span class="inonat-ex-pt">A música rock era popular nos anos 80.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They grew up in the 70s.">They grew up in the 70s.</span></span><span class="inonat-ex-pt">Eles cresceram nos anos 70.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas5">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas5')">
+        <span class="inonat-bubble-title">Estações do ano</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="It snows in the winter.">It snows in the winter.</span></span><span class="inonat-ex-pt">Neva no inverno.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We go to the beach in the summer.">We go to the beach in the summer.</span></span><span class="inonat-ex-pt">Nós vamos à praia no verão.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Flowers bloom in the spring.">Flowers bloom in the spring.</span></span><span class="inonat-ex-pt">As flores desabrocham na primavera.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas6">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas6')">
+        <span class="inonat-bubble-title">Dias da semana</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I have English class on Monday.">I have English class on Monday.</span></span><span class="inonat-ex-pt">Eu tenho aula de inglês na segunda-feira.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She visits her grandmother on Friday.">She visits her grandmother on Friday.</span></span><span class="inonat-ex-pt">Ela visita a avó na sexta-feira.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We don't work on Sunday.">We don't work on Sunday.</span></span><span class="inonat-ex-pt">Nós não trabalhamos no domingo.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas7">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas7')">
+        <span class="inonat-bubble-title">Finais de semana</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I sleep late on the weekend.">I sleep late on the weekend.</span></span><span class="inonat-ex-pt">Eu durmo até tarde no fim de semana.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They play games on the weekend.">They play games on the weekend.</span></span><span class="inonat-ex-pt">Eles jogam videogame no fim de semana.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We watch movies on the weekend.">We watch movies on the weekend.</span></span><span class="inonat-ex-pt">Nós assistimos filmes no fim de semana.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas8">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas8')">
+        <span class="inonat-bubble-title">Datas completas (pelo menos dia e mês)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The party is on May 10th.">The party is on May 10th.</span></span><span class="inonat-ex-pt">A festa é no dia 10 de maio.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I was born on March 17th.">I was born on March 17th.</span></span><span class="inonat-ex-pt">Eu nasci no dia 17 de março.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The meeting is on April 5th.">The meeting is on April 5th.</span></span><span class="inonat-ex-pt">A reunião é no dia 5 de abril.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas9">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas9')">
+        <span class="inonat-bubble-title">Feriados que usam a palavra "dia" (Day)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We eat turkey on Thanksgiving Day.">We eat turkey on Thanksgiving Day.</span></span><span class="inonat-ex-pt">Nós comemos peru no Dia de Ação de Graças.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I get presents on Christmas Day.">I get presents on Christmas Day.</span></span><span class="inonat-ex-pt">Eu ganho presentes no Dia de Natal.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Couples celebrate on Valentine's Day.">Couples celebrate on Valentine's Day.</span></span><span class="inonat-ex-pt">Casais comemoram no Dia dos Namorados.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas10">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas10')">
+        <span class="inonat-bubble-title">Feriados que não usam a palavra "dia" (épocas festivas)</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Families gather at Christmas.">Families gather at Christmas.</span></span><span class="inonat-ex-pt">As famílias se reúnem no Natal.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We eat chocolate at Easter.">We eat chocolate at Easter.</span></span><span class="inonat-ex-pt">Nós comemos chocolate na Páscoa.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They travel at Thanksgiving.">They travel at Thanksgiving.</span></span><span class="inonat-ex-pt">Eles viajam no feriado de Ação de Graças.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas11">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas11')">
+        <span class="inonat-bubble-title">Horários</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The bus arrives at 8:00.">The bus arrives at 8:00.</span></span><span class="inonat-ex-pt">O ônibus chega às 8:00.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="My alarm rings at 6:30.">My alarm rings at 6:30.</span></span><span class="inonat-ex-pt">Meu alarme toca às 6:30.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Let's meet at 10:15.">Let's meet at 10:15.</span></span><span class="inonat-ex-pt">Vamos nos encontrar às 10:15.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-datas12">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas12')">
+        <span class="inonat-bubble-title">Meio-dia e meia-noite</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I eat lunch at noon.">I eat lunch at noon.</span></span><span class="inonat-ex-pt">Eu almoço ao meio-dia.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The magic spell ends at midnight.">The magic spell ends at midnight.</span></span><span class="inonat-ex-pt">O feitiço acaba à meia-noite.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The sun is hot at noon.">The sun is hot at noon.</span></span><span class="inonat-ex-pt">O sol está quente ao meio-dia.</span></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="inonat-section-label">📍 Lugares</div>
+    <div class="inonat-list" data-group="lugar">
+    <div class="inonat-bubble" id="ib-lugar1">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar1')">
+        <span class="inonat-bubble-title">Continentes, países, estados e cidades</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Em regra, não se usa "the". As exceções são países com nomes no plural ou que contenham termos como Republic, Kingdom ou States.</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I live in Brazil.">I live in Brazil.</span></span><span class="inonat-ex-pt">Eu moro no Brasil.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She lives in the United States.">She lives in the United States.</span></span><span class="inonat-ex-pt">Ela mora nos Estados Unidos.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The restaurant is in Moema.">The restaurant is in Moema.</span></span><span class="inonat-ex-pt">O restaurante fica em Moema.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar2">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar2')">
+        <span class="inonat-bubble-title">Bairros, comunidades, etc</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We live in Tatuapé.">We live in Tatuapé.</span></span><span class="inonat-ex-pt">Nós moramos no Tatuapé.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She grew up in a small village.">She grew up in a small village.</span></span><span class="inonat-ex-pt">Ela cresceu em uma pequena vila.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He lives in a nice neighborhood.">He lives in a nice neighborhood.</span></span><span class="inonat-ex-pt">Ele mora em um bairro legal.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar3">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar3')">
+        <span class="inonat-bubble-title">Sinônimo de dentro (inside)</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The money is in the box.">The money is in the box.</span></span><span class="inonat-ex-pt">O dinheiro está na caixa.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The keys are in the bag.">The keys are in the bag.</span></span><span class="inonat-ex-pt">As chaves estão na bolsa.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The milk is in the fridge.">The milk is in the fridge.</span></span><span class="inonat-ex-pt">O leite está na geladeira.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar4">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar4')">
+        <span class="inonat-bubble-title">Cômodo de algum lugar</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She is cooking in the kitchen.">She is cooking in the kitchen.</span></span><span class="inonat-ex-pt">Ela está cozinhando na cozinha.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He is sleeping in the bedroom.">He is sleeping in the bedroom.</span></span><span class="inonat-ex-pt">Ele está dormindo no quarto.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We watch TV in the living room.">We watch TV in the living room.</span></span><span class="inonat-ex-pt">Nós assistimos TV na sala de estar.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar5">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar5')">
+        <span class="inonat-bubble-title">Locais não-específicos</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Quando o ouvinte não sabe qual local específico é.</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="A doctor works in a hospital.">A doctor works in a hospital.</span></span><span class="inonat-ex-pt">Um médico trabalha em um hospital.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I saw him in a bank.">I saw him in a bank.</span></span><span class="inonat-ex-pt">Eu o vi em um banco.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She wants to work in a school.">She wants to work in a school.</span></span><span class="inonat-ex-pt">Ela quer trabalhar em uma escola.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar6">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar6')">
+        <span class="inonat-bubble-title">Superfícies / sinônimo de em cima (on top of)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The book is on the table.">The book is on the table.</span></span><span class="inonat-ex-pt">O livro está na mesa.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The picture is on the wall.">The picture is on the wall.</span></span><span class="inonat-ex-pt">O quadro está na parede.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The cat is on the roof.">The cat is on the roof.</span></span><span class="inonat-ex-pt">O gato está no telhado.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar7">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar7')">
+        <span class="inonat-bubble-title">Posição (à direita / à esquerda)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The door is on the left.">The door is on the left.</span></span><span class="inonat-ex-pt">A porta fica à esquerda.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The window is on the right.">The window is on the right.</span></span><span class="inonat-ex-pt">A janela fica à direita.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Drive on the right side.">Drive on the right side.</span></span><span class="inonat-ex-pt">Dirija no lado direito.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar8">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar8')">
+        <span class="inonat-bubble-title">Locais específicos</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Quando o ouvinte sabe qual local específico é.</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I am waiting at the bus stop.">I am waiting at the bus stop.</span></span><span class="inonat-ex-pt">Eu estou esperando no ponto de ônibus.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He is at the door.">He is at the door.</span></span><span class="inonat-ex-pt">Ele está na porta.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We are at the train station.">We are at the train station.</span></span><span class="inonat-ex-pt">Nós estamos na estação de trem.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar9">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar9')">
+        <span class="inonat-bubble-title">Endereços completos (com número)</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The school is at 100 Main Street.">The school is at 100 Main Street.</span></span><span class="inonat-ex-pt">A escola fica na Rua Principal, 100.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He lives at 55 Park Avenue.">He lives at 55 Park Avenue.</span></span><span class="inonat-ex-pt">Ele mora na Avenida Park, 55.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Let's meet at 10 Downing Street.">Let's meet at 10 Downing Street.</span></span><span class="inonat-ex-pt">Vamos nos encontrar na Downing Street, 10.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar10">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar10')">
+        <span class="inonat-bubble-title">Esquinas</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The pharmacy is at the corner.">The pharmacy is at the corner.</span></span><span class="inonat-ex-pt">A farmácia fica na esquina.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Wait for me at the corner.">Wait for me at the corner.</span></span><span class="inonat-ex-pt">Espere por mim na esquina.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Turn right at the corner.">Turn right at the corner.</span></span><span class="inonat-ex-pt">Vire à direita na esquina.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar11">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar11')">
+        <span class="inonat-bubble-title">Expressões fixas de rotina</span>
+        <span class="inonat-bubble-prep at">at</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Expressões como at home, at work e at school não usam artigo.</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I am at home now.">I am at home now.</span></span><span class="inonat-ex-pt">Eu estou em casa agora.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She is at work today.">She is at work today.</span></span><span class="inonat-ex-pt">Ela está no trabalho hoje.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The kids are at school.">The kids are at school.</span></span><span class="inonat-ex-pt">As crianças estão na escola.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar12">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar12')">
+        <span class="inonat-bubble-title">Endereços incompletos (nome da rua/avenida)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Nunca se usa "the" antes do nome próprio da rua. Se "street" ou "avenue" forem usados sozinhos, o "the" é obrigatório.</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The store is on Paulista Avenue.">The store is on Paulista Avenue.</span></span><span class="inonat-ex-pt">A loja fica na Avenida Paulista.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They live on Main Street.">They live on Main Street.</span></span><span class="inonat-ex-pt">Eles moram na Rua Principal.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I saw a cat on the street.">I saw a cat on the street.</span></span><span class="inonat-ex-pt">Eu vi um gato na rua.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-lugar13">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar13')">
+        <span class="inonat-bubble-title">Ilhas, fazendas e campi universitários</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Nomes próprios de ilhas nunca levam "the".</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He lives on an island.">He lives on an island.</span></span><span class="inonat-ex-pt">Ele mora em uma ilha.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="My uncle works on a farm.">My uncle works on a farm.</span></span><span class="inonat-ex-pt">Meu tio trabalha em uma fazenda.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The students live on campus.">The students live on campus.</span></span><span class="inonat-ex-pt">Os alunos moram no campus.</span></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="inonat-section-label">📱 Tecnologia, Mídia e Grupos</div>
+    <div class="inonat-list" data-group="tech">
+    <div class="inonat-bubble" id="ib-tech1">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech1')">
+        <span class="inonat-bubble-title">Coisas tecnológicas (telas, internet, rádio)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        <p class="inonat-note">Internet e rádio usam "on the". Aparelhos como telefone e computador também usam "on the".</p>
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I saw the news on the internet.">I saw the news on the internet.</span></span><span class="inonat-ex-pt">Eu vi a notícia na internet.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He is talking on the phone.">He is talking on the phone.</span></span><span class="inonat-ex-pt">Ele está falando no telefone.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We watched a movie on TV.">We watched a movie on TV.</span></span><span class="inonat-ex-pt">Nós assistimos a um filme na TV.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech2">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech2')">
+        <span class="inonat-bubble-title">Mídia impressa / texto digital</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I read the story in a book.">I read the story in a book.</span></span><span class="inonat-ex-pt">Eu li a história em um livro.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She found the information in an email.">She found the information in an email.</span></span><span class="inonat-ex-pt">Ela achou a informação em um e-mail.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The picture is in the magazine.">The picture is in the magazine.</span></span><span class="inonat-ex-pt">A foto está na revista.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech3">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech3')">
+        <span class="inonat-bubble-title">Fotografias, imagens e filmes</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="Look at the people in the picture.">Look at the people in the picture.</span></span><span class="inonat-ex-pt">Olhe as pessoas na foto.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="My favorite actor is in that movie.">My favorite actor is in that movie.</span></span><span class="inonat-ex-pt">Meu ator favorito está naquele filme.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I love the colors in this drawing.">I love the colors in this drawing.</span></span><span class="inonat-ex-pt">Eu amo as cores neste desenho.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech4">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech4')">
+        <span class="inonat-bubble-title">Transportes públicos</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="I am on the bus.">I am on the bus.</span></span><span class="inonat-ex-pt">Eu estou no ônibus.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They travel on a train.">They travel on a train.</span></span><span class="inonat-ex-pt">Eles viajam de trem.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She sleeps on the plane.">She sleeps on the plane.</span></span><span class="inonat-ex-pt">Ela dorme no avião.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech5">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech5')">
+        <span class="inonat-bubble-title">Transportes de montar (moto, bicicleta, cavalo)</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He goes to work on a motorcycle.">He goes to work on a motorcycle.</span></span><span class="inonat-ex-pt">Ele vai para o trabalho de moto.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The boy is on a bicycle.">The boy is on a bicycle.</span></span><span class="inonat-ex-pt">O menino está em uma bicicleta.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="The farmer rides on a horse.">The farmer rides on a horse.</span></span><span class="inonat-ex-pt">O fazendeiro anda a cavalo.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech6">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech6')">
+        <span class="inonat-bubble-title">Transportes fechados/restritos (carro, táxi, helicóptero)</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We are in the car.">We are in the car.</span></span><span class="inonat-ex-pt">Nós estamos no carro.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She went home in a taxi.">She went home in a taxi.</span></span><span class="inonat-ex-pt">Ela foi para casa de táxi.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They flew in a helicopter.">They flew in a helicopter.</span></span><span class="inonat-ex-pt">Eles voaram em um helicóptero.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech7">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech7')">
+        <span class="inonat-bubble-title">Grupo de pessoas</span>
+        <span class="inonat-bubble-prep in">in</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He is in a group of friends.">He is in a group of friends.</span></span><span class="inonat-ex-pt">Ele está em um grupo de amigos.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She got lost in the crowd.">She got lost in the crowd.</span></span><span class="inonat-ex-pt">Ela se perdeu na multidão.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="We stand in a line.">We stand in a line.</span></span><span class="inonat-ex-pt">Nós ficamos em uma fila.</span></div>
+      </div>
+    </div>
+    <div class="inonat-bubble" id="ib-tech8">
+      <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech8')">
+        <span class="inonat-bubble-title">Grupo de pessoas onde se é eleito</span>
+        <span class="inonat-bubble-prep on">on</span>
+        <span class="inonat-bubble-arrow">▾</span>
+      </button>
+      <div class="inonat-bubble-body">
+        
+        <div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="She is on the committee.">She is on the committee.</span></span><span class="inonat-ex-pt">Ela está no comitê.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="He is a player on the team.">He is a player on the team.</span></span><span class="inonat-ex-pt">Ele é um jogador no time.</span></div><div class="inonat-ex"><span class="inonat-ex-en"><span class="en" data-speak="They are on the city council.">They are on the city council.</span></span><span class="inonat-ex-pt">Eles estão na câmara municipal.</span></div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In, On, At — exercício</span><span class="ex-score" id="inonat-score">0/10</span></div><div class="ex-body" id="inonat-body"></div></div>
+</div>`,
+
+`<div class="page pg-sec">
+  <div class="sec-eyebrow">Seção 13</div>
+  <div class="sec-title">Pronomes<br><span class="acc">Demonstrativos</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">This, these, that, those — este, esses, aquele, aquelas.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">👆</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em inglês, this e that funcionam para masculino e feminino — não existe "thiso" ou "thisa". E aqui e lá também têm tradução própria: here e there.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 13 · Pronomes Demonstrativos</div><div class="pg-ttl">This, These, That, Those</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="demo-intro">Pronomes demonstrativos apontam para pessoas ou coisas. Em inglês, eles <strong>não mudam de acordo com o gênero</strong> — é o mesmo para masculino, feminino e neutro.</p>
+
+    <div class="demo-list">
+
+      <div class="demo-item demo-perto" id="demo-this-these">
+        <div class="demo-badge">perto</div>
+        <div class="demo-header">
+          <span class="demo-pt">Este, Esta, Isto</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="this">this</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">Este podcast é ótimo!</div>
+          <div class="q-en"><span class="en" data-speak="This podcast is great!">This podcast is great!</span></div>
+        </div>
+      </div>
+
+      <div class="demo-item demo-perto">
+        <div class="demo-badge">perto</div>
+        <div class="demo-header">
+          <span class="demo-pt">Estes, Estas</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="these">these</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">Estas fotos são lindas.</div>
+          <div class="q-en"><span class="en" data-speak="These photos are beautiful.">These photos are beautiful.</span></div>
+        </div>
+      </div>
+
+      <div class="demo-item demo-longe" id="demo-that-those">
+        <div class="demo-badge">longe</div>
+        <div class="demo-header">
+          <span class="demo-pt">Esse, Essa, Isso, Aquele, Aquela, Aquilo</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="that">that</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">Aquele restaurante é caro.</div>
+          <div class="q-en"><span class="en" data-speak="That restaurant is expensive.">That restaurant is expensive.</span></div>
+        </div>
+      </div>
+
+      <div class="demo-item demo-longe">
+        <div class="demo-badge">longe</div>
+        <div class="demo-header">
+          <span class="demo-pt">Esses, Essas, Aqueles, Aquelas</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="those">those</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">Aquelas pessoas são famosas.</div>
+          <div class="q-en"><span class="en" data-speak="Those people are famous.">Those people are famous.</span></div>
+        </div>
+      </div>
+
+      <div class="demo-item" id="demo-here-there">
+        <div class="demo-header">
+          <span class="demo-pt">Aqui</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="here">here</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">Camila está aqui.</div>
+          <div class="q-en"><span class="en" data-speak="Camila is here.">Camila is here.</span></div>
+        </div>
+      </div>
+
+      <div class="demo-item">
+        <div class="demo-header">
+          <span class="demo-pt">Lá, Ali, Aí</span>
+          <span class="demo-eq">=</span>
+          <span class="demo-en en" data-speak="there">there</span>
+        </div>
+        <div class="demo-example">
+          <div class="q-pt">O Ryan está ali.</div>
+          <div class="q-en"><span class="en" data-speak="Ryan is there.">Ryan is there.</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip" style="margin-top:16px;">
+      <div class="tip-lbl">📌 Perto e longe</div>
+      <p class="tip-txt"><span class="en" data-speak="this">this</span> e <span class="en" data-speak="these">these</span> → coisas ou pessoas que estão <strong>perto</strong>.<br>
+      <span class="en" data-speak="that">that</span> e <span class="en" data-speak="those">those</span> → coisas ou pessoas que estão <strong>longe</strong>.</p>
+    </div>
+
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Demonstrativos — exercício</span><span class="ex-score" id="demo-score">0/10</span></div><div class="ex-body" id="demo-body"></div></div>
+</div>`,
+
+`<div class="page pg-sec">
+  <div class="sec-eyebrow">Seção 14</div>
+  <div class="sec-title">In, On, At<br><span class="acc">+ Demonstrativos</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">Neste, nessa, naquele, naquelas — unindo preposições com demonstrativos.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🔗</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em português, contraímos "em + este" em "neste". Em inglês não existe essa contração — basta escrever a preposição e o pronome separados: in this, on that, at those.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 14 · In, On, At + Demonstrativos</div><div class="pg-ttl">Neste, Nessa, Naquele...</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="indem-intro">Antes de entendermos em inglês como podemos unir <span class="en" data-speak="in">in</span>, <span class="en" data-speak="on">on</span> e <span class="en" data-speak="at">at</span> aos pronomes demonstrativos, temos que entender a razão desta junção, algo facilmente visualizado em português:</p>
+
+    <div class="indem-decomp-list" id="indem-regra">
+      <div class="indem-decomp-row">
+        <span class="indem-word">Neste(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">este(s)</span>
+      </div>
+      <div class="indem-decomp-row">
+        <span class="indem-word">Nesta(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">esta(s)</span>
+      </div>
+      <div class="indem-decomp-row">
+        <span class="indem-word">Nesse(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">esse(s)</span>
+      </div>
+      <div class="indem-decomp-row">
+        <span class="indem-word">Nessa(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">essa(s)</span>
+      </div>
+      <div class="indem-decomp-row">
+        <span class="indem-word">Naquele(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">aquele(s)</span>
+      </div>
+      <div class="indem-decomp-row">
+        <span class="indem-word">Naquela(s)</span>
+        <span class="indem-eq">=</span>
+        <span class="indem-em">em</span>
+        <span class="indem-plus">+</span>
+        <span class="indem-demo">aquela(s)</span>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-lbl">💡 Em inglês é a mesma lógica</div>
+      <p class="tip-txt">Tendo entendido as junções do <strong>em</strong> com os pronomes demonstrativos, utilizá-las em inglês fica extremamente fácil — basta unirmos <span class="en" data-speak="in">in</span>, <span class="en" data-speak="on">on</span> e <span class="en" data-speak="at">at</span> com as regras de pronomes demonstrativos.</p>
+    </div>
+
+    <div class="indem-examples">
+
+      <div class="indem-ex-block">
+        <div class="indem-ex-line pt">Eu estou <span class="indem-hl-word">neste</span> quarto.</div>
+        <div class="indem-ex-line decomp">Eu estou <span class="indem-hl-em">em</span> + <span class="indem-hl-demo">este</span> quarto.</div>
+        <div class="indem-ex-line en"><span class="en" data-speak="I am in this bedroom.">I am <span class="indem-hl-result">in this</span> bedroom.</span></div>
+      </div>
+
+      <div class="indem-ex-block">
+        <div class="indem-ex-line pt">Eu vi as notícias <span class="indem-hl-word">naquele</span> website.</div>
+        <div class="indem-ex-line decomp">Eu vi as notícias <span class="indem-hl-em">em</span> + <span class="indem-hl-demo">aquele</span> website.</div>
+        <div class="indem-ex-line en"><span class="en" data-speak="I saw the news on that website.">I saw the news <span class="indem-hl-result">on that</span> website.</span></div>
+      </div>
+
+      <div class="indem-ex-block">
+        <div class="indem-ex-line pt">Vanessa trabalha <span class="indem-hl-word">naquele</span> restaurante.</div>
+        <div class="indem-ex-line decomp">Vanessa trabalha <span class="indem-hl-em">em</span> + <span class="indem-hl-demo">aquele</span> restaurante.</div>
+        <div class="indem-ex-line en"><span class="en" data-speak="Vanessa works at that restaurant.">Vanessa works <span class="indem-hl-result">at that</span> restaurant.</span></div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In/On/At + Demonstrativos — exercício</span><span class="ex-score" id="indem-score">0/10</span></div><div class="ex-body" id="indem-body"></div></div>
+</div>`,
+
+`<div class="page pg-sec">
+  <div class="sec-eyebrow">Seção 15</div>
+  <div class="sec-title">Que<br><span class="acc">Explicativo</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">O menino que estava jogando — o "que" que explica.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
+    <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🔤</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O "that" em inglês é muito versátil — pode significar "que" explicativo, "aquele/aquela" e até "tão" em algumas expressões. O contexto sempre vai revelar qual é qual.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 15 · Que (explicativo)</div><div class="pg-ttl">Who, That, Which</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="queexp-intro">Em inglês, utilizamos o pronome relativo <strong>"que"</strong> de três formas diferentes.</p>
+
+    <div class="que-summary" id="queexp-resumo">
+      <div class="que-card que-card-that">
+        <div class="que-card-en"><span class="en" data-speak="that">That</span></div>
+        <div class="que-card-label">Coringa</div>
+        <div class="que-card-desc">Funciona para pessoas e coisas</div>
+      </div>
+      <div class="que-card que-card-who">
+        <div class="que-card-en"><span class="en" data-speak="who">Who</span></div>
+        <div class="que-card-label">Seres humanos</div>
+        <div class="que-card-desc">Usado exclusivamente para pessoas</div>
+      </div>
+      <div class="que-card que-card-which">
+        <div class="que-card-en"><span class="en" data-speak="which">Which</span></div>
+        <div class="que-card-label">Não-humanos</div>
+        <div class="que-card-desc">Animais, objetos e coisas em geral</div>
+      </div>
+    </div>
+
+    <div class="que-ex-block" id="queexp-who">
+      <div class="que-ex-pt">O <span class="que-subj">menino</span> <span class="que-rel">que</span> estava dormindo é meu amigo.</div>
+      <div class="que-ex-en"><span class="en" data-speak="The boy that was sleeping is my friend.">The <span class="que-subj">boy</span> <span class="que-that">that</span> was sleeping is my friend.</span></div>
+      <div class="que-ex-en"><span class="en" data-speak="The boy who was sleeping is my friend.">The <span class="que-subj">boy</span> <span class="que-who">who</span> was sleeping is my friend.</span></div>
+    </div>
+
+    <div class="que-ex-block" id="queexp-which">
+      <div class="que-ex-pt">O <span class="que-subj-obj">computador</span> <span class="que-rel">que</span> estava quebrado é meu.</div>
+      <div class="que-ex-en"><span class="en" data-speak="The computer that was broken is mine.">The <span class="que-subj-obj">computer</span> <span class="que-that">that</span> was broken is mine.</span></div>
+      <div class="que-ex-en"><span class="en" data-speak="The computer which was broken is mine.">The <span class="que-subj-obj">computer</span> <span class="que-which">which</span> was broken is mine.</span></div>
+    </div>
+
+    <div class="tip" id="queexp-that">
+      <div class="tip-lbl">💡 That é o coringa</div>
+      <p class="tip-txt"><span class="en" data-speak="that">That</span> funciona para <strong>qualquer coisa</strong> — pessoas, animais e objetos. Em inglês informal, é o mais usado.</p>
+    </div>
+
+    <div class="tip" id="queexp-who-tip">
+      <div class="tip-lbl">👤 Who é só para pessoas</div>
+      <p class="tip-txt"><span class="en" data-speak="who">Who</span> é usado <strong>exclusivamente para seres humanos</strong>. Nunca use who para animais ou objetos.</p>
+    </div>
+
+    <div class="tip yel">
+      <div class="tip-lbl">⚠️ Which nunca para pessoas</div>
+      <p class="tip-txt"><span class="en" data-speak="which">Which</span> é usado apenas para <strong>coisas e animais</strong>, nunca para pessoas. É mais comum no inglês escrito e formal.</p>
+    </div>
+
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Que (explicativo) — exercício</span><span class="ex-score" id="queexp-score">0/10</span></div><div class="ex-body" id="queexp-body"></div></div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 3 — in/on/at, demonstrativos e que explicativo.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 3.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
+</div>`,
+
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
   <div class="soon-title">Mais conteúdo<br><span class="soon-acc">em breve</span></div>
@@ -2990,16 +4175,8 @@ const pages=[
 
 /* ── ENGINE ── */
 let cur=0;
-function toggleTheme(){
-  const d=document.body.classList.contains('dark');
-  document.body.classList.toggle('dark',!d);document.body.classList.toggle('light',d);
-  localStorage.setItem('hse-theme',d?'light':'dark');
-  const btn=document.getElementById('theme-toggle');
-  if(btn)btn.className='sp-toggle '+(d?'off':'on');
-}
-const sv=localStorage.getItem('hse-theme');
-if(sv==='light')document.body.classList.replace('dark','light');
-
+function toggleTheme(){ toggleDarkLight(); }
+// theme init handled by applyTheme system
 let backState=null;
 function goAndHighlight(pageIdx, targetId){
   backState={page:cur, scrollTop:document.getElementById('slides').scrollTop};
@@ -3046,6 +4223,8 @@ function go(i){
   if(chatOpen)closeChat();
   document.getElementById('slides').innerHTML=pages[cur];
   document.getElementById('slides').scrollTop=0;
+  // Init collapsible chapters when idx page (3) is shown
+  if(cur===3){document.querySelectorAll('.idx-chapter').forEach(c=>{if(!c.classList.contains('closed'))c.classList.add('closed');});}
   if(cur===1){
     const sb=document.getElementById('shimmer-toggle');if(sb)sb.className='sp-toggle '+(document.body.classList.contains('no-shimmer')?'off':'on');
     const tb=document.getElementById('theme-toggle');if(tb)tb.className='sp-toggle '+(document.body.classList.contains('light')?'off':'on');
@@ -3066,6 +4245,11 @@ function go(i){
   if(cur===24)initEx('fut',window['fut_bk'],10);
   if(cur===26)initEx('togo',window['togo_bk'],10);
   if(cur===29)initEx('rev2',window['rev2_bk'],15);
+  if(cur===32)initEx('inonat',window['inonat_bk'],10);
+  if(cur===34)initEx('demo',window['demo_bk'],10);
+  if(cur===36)initEx('indem',window['indem_bk'],10);
+  if(cur===38)initEx('queexp',window['queexp_bk'],10);
+  if(cur===39)initEx('rev3',window['rev3_bk'],10);
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
@@ -3384,9 +4568,30 @@ async function callClaude(prompt,cb){
   }catch(e){cb('Erro de conexão: '+e.message);}
 }
 
+function toggleIB(id){
+  const el=document.getElementById(id);
+  if(el)el.classList.toggle('open');
+}
+function toggleAllIB(){
+  const btn=document.getElementById('inonat-global-btn');
+  const all=document.querySelectorAll('.inonat-bubble');
+  const anyOpen=[...all].some(b=>b.classList.contains('open'));
+  if(anyOpen){all.forEach(b=>b.classList.remove('open'));if(btn)btn.textContent='Revelar tudo';}
+  else{all.forEach(b=>b.classList.add('open'));if(btn)btn.textContent='Esconder tudo';}
+}
+function toggleIdxCap(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.classList.toggle('closed');
+}
 function idxSearch(q){
   const clear=document.getElementById('idx-search-clear');
   if(clear)clear.style.display=q?'block':'none';
+  // Expand all chapters when searching, collapse when empty
+  document.querySelectorAll('.idx-chapter').forEach(c=>{
+    if(q) c.classList.remove('closed');
+    else c.classList.add('closed');
+  });
   const items=document.querySelectorAll('#idx-list .idx-item');
   const groups=document.querySelectorAll('#idx-list .idx-group');
   const noRes=document.getElementById('idx-no-result');
@@ -3407,11 +4612,104 @@ function idxSearch(q){
   });
   if(noRes)noRes.style.display=anyVisible||!term?'none':'block';
 }
-function idxClear(){
+function idxClear(){document.querySelectorAll('.idx-chapter').forEach(c=>c.classList.add('closed'));
   const inp=document.getElementById('idx-search');
   if(inp){inp.value='';inp.focus();}
   idxSearch('');
 }
+
+
+/* ── THEME SYSTEM ── */
+const THEMES = [
+  {id:'standard', label:'Standard', dark:'#6eb5ff', light:'#3a7bd5'},
+  {id:'ocean',    label:'Ocean',    dark:'#38bdf8', light:'#0284c7'},
+  {id:'violet',   label:'Violet',   dark:'#a78bfa', light:'#7c3aed'},
+  {id:'sunset',   label:'Sunset',   dark:'#fb923c', light:'#ea580c'},
+  {id:'forest',   label:'Forest',   dark:'#4ade80', light:'#15803d'},
+  {id:'rose',     label:'Rosé',     dark:'#f472b6', light:'#be185d'},
+  {id:'ember',    label:'Ember',    dark:'#f59e0b', light:'#b45309'},
+  {id:'arctic',   label:'Arctic',   dark:'#93c5fd', light:'#1d4ed8'},
+  {id:'sand',     label:'Sand',     dark:'#d9b478', light:'#78521a'},
+  {id:'jade',     label:'Jade',     dark:'#34d399', light:'#047857'},
+];
+
+function applyTheme(name, mode){
+  const b=document.body;
+  // Remove all theme classes
+  THEMES.forEach(t=>b.classList.remove('t-'+t.id));
+  b.classList.remove('dark','light');
+  if(name!=='standard') b.classList.add('t-'+name);
+  b.classList.add(mode);
+  localStorage.setItem('hse-theme-name', name);
+  localStorage.setItem('hse-theme', mode);
+  // Update shimmer toggle label color if needed
+  updateThemeUI();
+}
+
+function toggleDarkLight(){
+  const isDark=document.body.classList.contains('dark');
+  const name=localStorage.getItem('hse-theme-name')||'standard';
+  applyTheme(name, isDark?'light':'dark');
+  const btn=document.getElementById('theme-toggle');
+  if(btn)btn.className='sp-toggle '+(isDark?'off':'on');
+}
+
+function openThemePicker(){
+  let sheet=document.getElementById('theme-sheet');
+  if(!sheet){
+    sheet=document.createElement('div');
+    sheet.id='theme-sheet';
+    sheet.innerHTML=`<div class="tsheet-backdrop" onclick="closeThemePicker()"></div>
+<div class="tsheet-panel">
+  <div class="tsheet-title">Escolher tema</div>
+  <div class="tsheet-grid" id="tsheet-grid"></div>
+</div>`;
+    document.body.appendChild(sheet);
+    const grid=document.getElementById('tsheet-grid');
+    const curName=localStorage.getItem('hse-theme-name')||'standard';
+    const curMode=localStorage.getItem('hse-theme')||'dark';
+    THEMES.forEach(t=>{
+      const btn=document.createElement('button');
+      btn.className='tsheet-item'+(curName===t.id?' tsheet-active':'');
+      btn.innerHTML=`<span class="tsheet-swatch" style="background:linear-gradient(135deg,${t.dark} 50%,${t.light} 50%)"></span><span class="tsheet-lbl">${t.label}</span>`;
+      btn.onclick=()=>{
+        document.querySelectorAll('.tsheet-item').forEach(b=>b.classList.remove('tsheet-active'));
+        btn.classList.add('tsheet-active');
+        const mode=document.body.classList.contains('dark')?'dark':'light';
+        applyTheme(t.id, mode);
+        setTimeout(closeThemePicker, 300);
+      };
+      grid.appendChild(btn);
+    });
+  }
+  sheet.classList.add('open');
+}
+
+function closeThemePicker(){
+  const s=document.getElementById('theme-sheet');
+  if(s)s.classList.remove('open');
+}
+
+function updateThemeUI(){
+  const curName=localStorage.getItem('hse-theme-name')||'standard';
+  document.querySelectorAll('.tsheet-item').forEach((b,i)=>{
+    b.classList.toggle('tsheet-active', THEMES[i]&&THEMES[i].id===curName);
+  });
+  const isDark=document.body.classList.contains('dark');
+  document.querySelectorAll('.sec-mode-btn').forEach(b=>{
+    b.textContent=isDark?'☀️ Light':'🌙 Dark';
+  });
+  const themeBtn=document.getElementById('theme-toggle');
+  if(themeBtn)themeBtn.className='sp-toggle '+(isDark?'on':'off');
+}
+
+// Init theme on load
+(function(){
+  const name=localStorage.getItem('hse-theme-name')||'standard';
+  const mode=localStorage.getItem('hse-theme')||'dark';
+  if(name!=='standard') document.body.classList.add('t-'+name);
+  document.body.classList.add(mode);
+})();
 
 go(0);
 </script>
