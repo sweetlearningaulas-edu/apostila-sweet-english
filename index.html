@@ -110,7 +110,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .idx-name{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.1px;}
 .idx-desc{font-size:12px;color:var(--m);margin-top:2px;line-height:1.4;}
 .idx-arrow{font-size:13px;color:var(--m);opacity:.4;}
-.pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 28px 48px;position:relative;overflow:hidden;}
+.pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 28px 48px;position:relative;overflow:hidden;background:var(--bg);}
 .pg-sec::before{content:'';position:absolute;top:-40px;right:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(196,160,255,.07),transparent 65%);pointer-events:none;}
 .pg-sec::after{content:'';position:absolute;top:15%;right:0;width:2px;height:50%;background:linear-gradient(to bottom,transparent,var(--acc,var(--blue)),transparent);opacity:.4;}
 .sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
@@ -135,7 +135,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .pg-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:4px;}
 .pg-ttl{font-size:21px;font-weight:700;color:var(--tx);}
 .pg-body{padding:20px 22px 36px;display:flex;flex-direction:column;gap:14px;}
-.intro{font-size:15px;color:var(--s);line-height:1.7;}
+.intro{font-size:17px;color:var(--s);line-height:1.7;}
 .intro strong{color:var(--tx);font-weight:700;}
 .sub-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sublabel);margin-top:4px;}
 
@@ -200,9 +200,9 @@ body.light .big-tbl-wrap{box-shadow:0 2px 12px rgba(0,0,0,.08);}
 
 .quote-list{display:flex;flex-direction:column;gap:7px;}
 .quote{border-left:2px solid var(--line);padding:6px 13px;display:flex;flex-direction:column;gap:4px;}
-.q-pt{font-size:14px;color:var(--s);}
+.q-pt{font-size:16px;color:var(--s);}
 .q-pt b{color:var(--tx);}
-.q-en{font-size:15px;font-weight:600;color:var(--tx);}
+.q-en{font-size:17px;font-weight:600;color:var(--tx);}
 .q-tr{font-size:11px;color:var(--m);font-weight:400;}
 .tip{background:var(--card);border-radius:11px;padding:12px 14px;border-left:2px solid var(--blue);}
 body.light .tip{box-shadow:0 1px 4px rgba(0,0,0,.06);}
@@ -213,7 +213,7 @@ body.light .tip{box-shadow:0 1px 4px rgba(0,0,0,.06);}
 .tip.red .tip-lbl{color:var(--red);}
 .tip.grn .tip-lbl{color:var(--green);}
 .tip.yel .tip-lbl{color:var(--yel);}
-.tip-txt{font-size:13px;color:var(--s);line-height:1.6;}
+.tip-txt{font-size:15px;color:var(--s);line-height:1.6;}
 .tip-txt strong{color:var(--tx);font-weight:700;}
 .pron-table{background:var(--card);border-radius:13px;overflow:hidden;}
 body.light .pron-table{box-shadow:0 1px 6px rgba(0,0,0,.07);}
@@ -273,7 +273,7 @@ td:first-child{font-weight:700;color:var(--blue);white-space:nowrap;}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-3px);}80%{transform:translateX(3px);}}
 .ex-sentence{background:var(--card2);border-radius:9px;padding:12px 13px;display:flex;flex-direction:column;gap:5px;}
 .ex-pt2{font-size:14px;color:var(--s);line-height:1.5;}
-.ex-en-blank{font-size:15px;font-weight:600;color:var(--tx);line-height:1.6;}
+.ex-en-blank{font-size:17px;font-weight:600;color:var(--tx);line-height:1.6;}
 .blank{display:inline-block;min-width:56px;border-bottom:2px solid var(--blue);margin:0 3px;text-align:center;color:var(--blue);}
 .ex-options{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;}
 .ex-feedback,.game-feedback{font-size:12px;font-weight:700;text-align:center;min-height:18px;}
@@ -382,8 +382,8 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .inonat-group{display:flex;flex-direction:column;background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:4px;}
 .inonat-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);gap:12px;}
 .inonat-item:last-child{border-bottom:none;}
-.inonat-desc{font-size:13px;color:var(--s);flex:1;line-height:1.4;}
-.inonat-prep{font-size:15px;font-weight:800;padding:4px 12px;border-radius:20px;flex-shrink:0;cursor:pointer;}
+.inonat-desc{font-size:15px;color:var(--s);flex:1;line-height:1.4;}
+.inonat-prep{font-size:17px;font-weight:800;padding:4px 12px;border-radius:20px;flex-shrink:0;cursor:pointer;}
 .inonat-prep.in{background:rgba(99,179,237,.15);color:#63b3ed;}
 .inonat-prep.on{background:rgba(154,230,180,.15);color:#68d391;}
 .inonat-prep.at{background:rgba(252,176,69,.15);color:#f6ad55;}
@@ -395,7 +395,7 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .inonat-list{display:flex;flex-direction:column;gap:6px;margin-bottom:4px;}
 .inonat-bubble{border-radius:14px;border:1.5px solid var(--line);background:var(--card);overflow:hidden;}
 .inonat-bubble-btn{width:100%;display:flex;align-items:center;gap:10px;padding:13px 16px;background:none;border:none;cursor:pointer;text-align:left;}
-.inonat-bubble-title{flex:1;font-size:13px;color:var(--s);font-weight:600;line-height:1.4;}
+.inonat-bubble-title{flex:1;font-size:15px;color:var(--s);font-weight:600;line-height:1.4;}
 .inonat-bubble-prep{font-size:14px;font-weight:800;padding:3px 12px;border-radius:20px;flex-shrink:0;}
 .inonat-bubble-prep.in{background:rgba(99,179,237,.15);color:#63b3ed;}
 .inonat-bubble-prep.on{background:rgba(154,230,180,.15);color:#68d391;}
@@ -404,10 +404,10 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .inonat-bubble.open .inonat-bubble-arrow{transform:rotate(180deg);}
 .inonat-bubble-body{display:none;padding:0 16px 14px;border-top:1px solid var(--line);}
 .inonat-bubble.open .inonat-bubble-body{display:block;}
-.inonat-note{font-size:12px;color:var(--m);font-style:italic;margin:10px 0 8px;line-height:1.5;}
+.inonat-note{font-size:14px;color:var(--m);font-style:italic;margin:10px 0 8px;line-height:1.5;}
 .inonat-ex{margin-top:8px;}
-.inonat-ex-en{display:block;font-size:13px;font-weight:600;color:var(--tx);}
-.inonat-ex-pt{display:block;font-size:12px;color:var(--m);margin-top:1px;}
+.inonat-ex-en{display:block;font-size:15px;font-weight:600;color:var(--tx);}
+.inonat-ex-pt{display:block;font-size:14px;color:var(--m);margin-top:1px;}
 .demo-list{display:flex;flex-direction:column;gap:10px;}
 .demo-item{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden;}
 .demo-item.demo-perto{border-color:rgba(99,179,237,.35);}
@@ -418,13 +418,13 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .demo-item.demo-perto .demo-badge{background:rgba(99,179,237,.12);color:#63b3ed;}
 .demo-item.demo-longe .demo-badge{background:rgba(104,211,145,.12);color:#68d391;}
 .demo-header{display:flex;align-items:center;gap:10px;padding-right:65px;margin-bottom:12px;}
-.demo-pt{font-size:13px;font-weight:600;color:var(--s);flex:1;min-width:0;}
+.demo-pt{font-size:15px;font-weight:600;color:var(--s);flex:1;min-width:0;}
 .demo-eq{font-size:13px;color:var(--m);opacity:.5;flex-shrink:0;}
-.demo-en{font-size:22px;font-weight:800;color:var(--acc,var(--blue));flex-shrink:0;letter-spacing:-.5px;}
+.demo-en{font-size:24px;font-weight:800;color:var(--acc,var(--blue));flex-shrink:0;letter-spacing:-.5px;}
 .demo-item.demo-longe .demo-en{color:var(--green);}
 .demo-example{background:var(--card2);border-radius:10px;padding:11px 14px;}
-.demo-example .q-pt{font-size:12px;color:var(--m);margin-bottom:3px;}
-.demo-example .q-en{font-size:13px;font-weight:700;color:var(--tx);}
+.demo-example .q-pt{font-size:14px;color:var(--m);margin-bottom:3px;}
+.demo-example .q-en{font-size:15px;font-weight:700;color:var(--tx);}
 .indem-decomp-list{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:0;margin:16px 0;overflow:hidden;}
 .indem-decomp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:700;}
 .indem-decomp-row:last-child{border-bottom:none;padding-bottom:0;}
@@ -436,10 +436,10 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .indem-demo{color:#68d391;}
 .indem-examples{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
 .indem-ex-block{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;}
-.indem-ex-line{font-size:14px;line-height:1.6;}
+.indem-ex-line{font-size:16px;line-height:1.6;}
 .indem-ex-line.pt{color:var(--m);}
-.indem-ex-line.decomp{color:var(--m);font-size:13px;opacity:.8;}
-.indem-ex-line.en{font-size:15px;font-weight:600;color:var(--tx);margin-top:3px;padding-top:6px;border-top:1px solid var(--line);}
+.indem-ex-line.decomp{color:var(--m);font-size:15px;opacity:.8;}
+.indem-ex-line.en{font-size:17px;font-weight:600;color:var(--tx);margin-top:3px;padding-top:6px;border-top:1px solid var(--line);}
 .indem-hl-word{color:var(--acc,var(--blue));font-weight:700;}
 .indem-hl-em{color:#f6ad55;font-weight:700;}
 .indem-hl-demo{color:#68d391;font-weight:700;}
@@ -453,11 +453,11 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .que-card-that .que-card-en{color:#f6ad55;}
 .que-card-who .que-card-en{color:#63b3ed;}
 .que-card-which .que-card-en{color:#fc8181;}
-.que-card-label{font-size:13px;font-weight:700;color:var(--tx);}
-.que-card-desc{font-size:12px;color:var(--m);}
+.que-card-label{font-size:15px;font-weight:700;color:var(--tx);}
+.que-card-desc{font-size:14px;color:var(--m);}
 .que-ex-block{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
-.que-ex-pt{font-size:14px;color:var(--m);margin-bottom:2px;}
-.que-ex-en{font-size:15px;font-weight:600;color:var(--tx);}
+.que-ex-pt{font-size:16px;color:var(--m);margin-bottom:2px;}
+.que-ex-en{font-size:17px;font-weight:600;color:var(--tx);}
 .que-rel{color:#68d391;font-weight:700;}
 .que-subj{color:#63b3ed;font-weight:700;}
 .que-subj-obj{color:#fc8181;font-weight:700;}
@@ -548,7 +548,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .inst-theme-btn{border:none;border-radius:14px;padding:14px 20px;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:var(--blue);cursor:pointer;width:100%;display:block;box-shadow:0 4px 14px rgba(0,0,0,.25);letter-spacing:.2px;}
 .inst-mode-btn{border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;color:var(--s);background:var(--card2);cursor:pointer;}
 .sec-back-btn{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:20px;font-family:inherit;font-size:12px;font-weight:700;color:var(--m);cursor:pointer;padding:7px 16px;margin-bottom:auto;align-self:flex-start;}
-.poss-pt-list{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;font-size:15px;color:var(--s);}
+.poss-pt-list{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;font-size:17px;color:var(--s);}
 .poss-hl-adj{color:var(--blue);font-weight:700;}
 .poss-hl-pp{color:var(--purple);font-weight:700;}
 .poss-tipos-row{display:flex;gap:10px;margin:4px 0 12px;}
@@ -562,16 +562,16 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .poss-arrow-list{display:flex;flex-direction:column;gap:0;background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;}
 .poss-arrow-row{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line);}
 .poss-arrow-row:last-child{border-bottom:none;}
-.poss-arrow-pt{font-size:14px;color:var(--s);flex:1;}
+.poss-arrow-pt{font-size:16px;color:var(--s);flex:1;}
 .poss-arrow-line{font-size:16px;color:var(--blue);flex-shrink:0;}
-.poss-arrow-en{font-size:18px;font-weight:800;color:var(--blue);flex-shrink:0;min-width:70px;text-align:right;}
+.poss-arrow-en{font-size:20px;font-weight:800;color:var(--blue);flex-shrink:0;min-width:70px;text-align:right;}
 .poss-triple-table{background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;}
 .poss-triple-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;padding:11px 16px;border-bottom:1px solid var(--line);gap:4px;align-items:center;}
 .poss-triple-row:last-child{border-bottom:none;}
 .poss-triple-row.hd{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--m);padding:10px 16px;background:var(--card2);}
-.poss-triple-row span:first-child{font-size:13px;color:var(--s);}
-.poss-triple-row .ppa{font-size:15px;font-weight:800;color:var(--blue);text-align:center;display:flex;justify-content:center;}
-.poss-triple-row .pp{font-size:15px;font-weight:800;color:var(--purple);text-align:center;display:flex;justify-content:center;}
+.poss-triple-row span:first-child{font-size:15px;color:var(--s);}
+.poss-triple-row .ppa{font-size:17px;font-weight:800;color:var(--blue);text-align:center;display:flex;justify-content:center;}
+.poss-triple-row .pp{font-size:17px;font-weight:800;color:var(--purple);text-align:center;display:flex;justify-content:center;}
 .poss-triple-row.hd span{display:flex;justify-content:center;}
 .poss-triple-row.hd span:first-child{justify-content:flex-start;}
 .poss-triple-row.hd .poss-hl-adj{color:var(--blue);}
@@ -589,11 +589,30 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .poss-ex-tag.ppa-tag{background:rgba(99,179,237,.12);color:var(--blue);}
 .poss-ex-tag.pp-tag{background:rgba(196,160,255,.12);color:var(--purple);}
 .poss-ex-sentences{padding:12px 14px;display:flex;flex-direction:column;gap:5px;flex:1;}
-.poss-ex-sent{font-size:15px;font-weight:600;}
-.poss-ex-sent.en{font-size:14px;}
-.poss-ex-note{font-size:12px;color:var(--m);line-height:1.5;padding:4px 0;}
-.q-note{font-size:12px;color:var(--m);margin:4px 0;line-height:1.5;}
+.poss-ex-sent{font-size:17px;font-weight:600;}
+.poss-ex-sent.en{font-size:16px;}
+.poss-ex-note{font-size:14px;color:var(--m);line-height:1.5;padding:4px 0;}
+.q-note{font-size:14px;color:var(--m);margin:4px 0;line-height:1.5;}
 .q-note{font-size:12px;color:var(--m);margin:4px 0;font-style:italic;line-height:1.5;}
+.sec-ghost{position:absolute;top:-20px;right:-8px;font-size:160px;font-weight:900;color:rgba(255,255,255,.03);letter-spacing:-8px;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.pg-sec>*:not(.sec-ghost){position:relative;z-index:1;}
+.cp-formula{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;}
+.cp-formula-label{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--m);margin-bottom:10px;}
+.cp-formula-body{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.cp-f-dono{font-size:15px;font-weight:800;color:var(--blue);}
+.cp-f-dono2{font-size:15px;font-weight:800;color:var(--purple);}
+.cp-f-op{font-size:17px;font-weight:900;color:var(--yel);}
+.cp-f-plus{font-size:13px;color:var(--m);}
+.cp-f-posse{font-size:15px;font-weight:800;color:var(--green);}
+.en .cp-f-dono,.q-en .cp-f-dono{color:var(--blue) !important;background:none !important;-webkit-text-fill-color:var(--blue) !important;animation:none !important;}
+.en .cp-f-dono2,.q-en .cp-f-dono2{color:var(--purple) !important;background:none !important;-webkit-text-fill-color:var(--purple) !important;animation:none !important;}
+.en .cp-f-op,.q-en .cp-f-op{color:var(--yel) !important;background:none !important;-webkit-text-fill-color:var(--yel) !important;animation:none !important;}
+.en .cp-f-posse,.q-en .cp-f-posse{color:var(--green) !important;background:none !important;-webkit-text-fill-color:var(--green) !important;animation:none !important;}
+.cp-expr-list{display:flex;flex-direction:column;gap:8px;}
+.cp-expr-item{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;}
+.cp-expr-pt{font-size:12px;color:var(--m);margin-bottom:2px;}
+.cp-expr-en{font-size:17px;font-weight:800;color:var(--blue);margin-bottom:6px;}
+.cp-expr-ex{font-size:13px;color:var(--s);font-style:italic;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -2446,6 +2465,9 @@ const pages=[
         <div class="idx-item" onclick="go(42)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
           <div class="idx-num">16</div><div class="idx-info"><div class="idx-name">Pronomes de Posse</div><div class="idx-desc">My, your, his — mine, yours, hers</div></div><div class="idx-arrow">→</div>
         </div>
+        <div class="idx-item" onclick="go(43)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
+          <div class="idx-num">17</div><div class="idx-info"><div class="idx-name">Caso Possessivo e OF</div><div class="idx-desc">Teacher's car · End of the movie</div></div><div class="idx-arrow">→</div>
+        </div>
       </div>
     </div>
 
@@ -2458,7 +2480,7 @@ const pages=[
   <div class="ch-num">1</div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">01</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 01</div>
@@ -2536,7 +2558,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">02</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 02</div>
@@ -2571,7 +2593,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">03</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 03</div>
@@ -2613,7 +2635,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">04</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 04</div>
@@ -3131,7 +3153,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">05</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 05</div>
@@ -3193,7 +3215,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">06</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 06</div>
@@ -3295,7 +3317,7 @@ const pages=[
   <div class="ch-num">2</div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">07</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 07</div>
   <div class="sec-title">Presente<br><span class="acc">Simple</span></div>
@@ -3359,7 +3381,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">08</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 08</div>
   <div class="sec-title">Passado<br><span class="acc">Simple</span></div>
@@ -3413,7 +3435,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">09</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 09</div>
   <div class="sec-title">Futuro<br><span class="acc">Will</span></div>
@@ -3464,7 +3486,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">10</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 10</div>
   <div class="sec-title">To Go<br><span class="acc">Ir</span></div>
@@ -3569,7 +3591,7 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">11</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 11</div>
   <div class="sec-title">Sujeito<br><span class="acc">Oculto</span></div>
@@ -3642,7 +3664,7 @@ const pages=[
   <div class="ch-num">3</div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">12</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 12</div>
   <div class="sec-title">In, On, At<br><span class="acc">Preposições</span></div>
@@ -4103,7 +4125,7 @@ const pages=[
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In, On, At — exercício</span><span class="ex-score" id="inonat-score">0/10</span></div><div class="ex-body" id="inonat-body"></div></div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">13</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 13</div>
   <div class="sec-title">Pronomes<br><span class="acc">Demonstrativos</span></div>
@@ -4218,7 +4240,7 @@ const pages=[
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Demonstrativos — exercício</span><span class="ex-score" id="demo-score">0/10</span></div><div class="ex-body" id="demo-body"></div></div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">14</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 14</div>
   <div class="sec-title">In, On, At<br><span class="acc">+ Demonstrativos</span></div>
@@ -4319,7 +4341,7 @@ const pages=[
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In/On/At + Demonstrativos — exercício</span><span class="ex-score" id="indem-score">0/10</span></div><div class="ex-body" id="indem-body"></div></div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">15</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 15</div>
   <div class="sec-title">Que<br><span class="acc">Explicativo</span></div>
@@ -4413,7 +4435,7 @@ const pages=[
   <div class="ch-num">4</div>
 </div>`,
 
-`<div class="page pg-sec">
+`<div class="page pg-sec"><div class="sec-ghost">16</div>
   <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
   <div class="sec-eyebrow">Seção 16</div>
@@ -4541,6 +4563,149 @@ const pages=[
 
   </div>
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes de Posse — exercício</span><span class="ex-score" id="poss-score">0/10</span></div><div class="ex-body" id="poss-body"></div></div>
+</div>`,
+
+`<div class="page pg-sec">
+  <div class="sec-ghost">17</div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
+  <div class="sec-eyebrow">Seção 17</div>
+  <div class="sec-title">Caso<br><span class="acc">Possessivo</span></div>
+  <div class="sec-sep"></div>
+  <div class="sec-desc">Indicando o dono com nomes reais.</div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">📜</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A expressão "The Lord of the Rings" foi criada por J.R.R. Tolkien em 1954. O livro foi eleito o mais popular do século XX em diversas pesquisas do Reino Unido.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec-btns-row">
+    <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+    <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+  </div>
+</div>`,
+
+`<div class="page pg-content">
+  <div class="pg-hd"><div class="pg-lbl">Seção 17 · Caso Possessivo e OF</div><div class="pg-ttl">Caso Possessivo e OF</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="cp-intro">Ao contrário da matéria anterior, onde indicávamos o dono com pronomes, aqui utilizaremos <strong>nomes reais</strong>.</p>
+
+    <div class="sub-label" id="cp-humanos">Humanos e animais — Caso Possessivo</div>
+
+    <div class="cp-formula" id="cp-formula1">
+      <div class="cp-formula-label">Fórmula — 1 dono</div>
+      <div class="cp-formula-body">
+        <span class="cp-f-dono">dono</span>
+        <span class="cp-f-op">'s</span>
+        <span class="cp-f-plus">+</span>
+        <span class="cp-f-posse">posse</span>
+      </div>
+    </div>
+
+    <div class="quote-list">
+      <div class="quote">
+        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">professor</span>.</div>
+        <div class="q-en"><span class="en" data-speak="The teacher's car.">The <span class="cp-f-dono">teacher</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">O <span class="cp-f-posse">carro</span> da <span class="cp-f-dono">Ashley</span>.</div>
+        <div class="q-en"><span class="en" data-speak="Ashley's car."><span class="cp-f-dono">Ashley</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+        <div class="q-note">Retiramos o <em>the</em> porque Ashley é nome próprio.</div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo</span> dela.</div>
+        <div class="q-en"><span class="en" data-speak="Her friend's car.">Her <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="cp-formula" id="cp-formula2" style="margin-top:16px;">
+      <div class="cp-formula-label">Fórmula — 2 ou mais donos</div>
+      <div class="cp-formula-body">
+        <span class="cp-f-dono2">dono²</span>
+        <span class="cp-f-op">'s</span>
+        <span class="cp-f-plus">+</span>
+        <span class="cp-f-dono">dono¹</span>
+        <span class="cp-f-op">'s</span>
+        <span class="cp-f-plus">+</span>
+        <span class="cp-f-posse">posse</span>
+      </div>
+    </div>
+
+    <div class="quote-list">
+      <div class="quote">
+        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo¹</span> do <span class="cp-f-dono2">professor²</span>.</div>
+        <div class="q-en"><span class="en" data-speak="The teacher's friend's car.">The <span class="cp-f-dono2">teacher</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo¹</span> da <span class="cp-f-dono2">Ashley²</span>.</div>
+        <div class="q-en"><span class="en" data-speak="Ashley's friend's car."><span class="cp-f-dono2">Ashley</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+        <div class="q-note">Retiramos o <em>the</em> porque Ashley é nome próprio.</div>
+      </div>
+    </div>
+
+    <div class="tip yel" id="cp-s-obs" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Nome terminando em S</div>
+      <p class="tip-txt">Se o nome terminar com <strong>s</strong>, adicionamos apenas o apóstrofo e pronunciamos <em>-sses</em>.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">Lucas</span>.</div>
+          <div class="q-en"><span class="en" data-speak="Lucas' car."><span class="cp-f-dono">Lucas</span><span class="cp-f-op">'</span> <span class="cp-f-posse">car</span>.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-label" id="cp-of">Inanimados e cargos — OF</div>
+
+    <p class="intro">Quando o dono é algo <strong>inanimado</strong> ou quando é <strong>título/cargo</strong>, utilizamos:</p>
+
+    <p class="intro"><span class="en" data-speak="of">Of</span> = <strong>de</strong> &nbsp;·&nbsp; <span class="en" data-speak="of the">of the</span> = <strong>do, da, dos, das</strong> <span class="q-tr">(atentar às regras onde o <em>the</em> tem que sumir)</span></p>
+
+    <div class="quote-list">
+      <div class="quote">
+        <div class="q-pt">O final do filme.</div>
+        <div class="q-en"><span class="en" data-speak="The end of the movie.">The end <strong>of the</strong> movie.</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">A porta do carro.</div>
+        <div class="q-en"><span class="en" data-speak="The door of the car.">The door <strong>of the</strong> car.</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">O presidente da república.</div>
+        <div class="q-en"><span class="en" data-speak="The president of the republic.">The president <strong>of the</strong> republic.</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">O Senhor dos Anéis.</div>
+        <div class="q-en"><span class="en" data-speak="The Lord of The Rings.">The Lord <strong>of The</strong> Rings.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" id="cp-of-obs" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Observação</div>
+      <p class="tip-txt">Ainda podemos utilizar o caso possessivo (<em>dono + 's + posse</em>) quando o dono é inanimado.</p>
+    </div>
+
+    <div class="sub-label" id="cp-expressoes">Expressões com OF</div>
+
+    <p class="intro">Algumas expressões também utilizam o <span class="en" data-speak="of">of</span>.</p>
+
+    <div class="cp-expr-list">
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Fora de controle</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Out of control">Out of control</span></div>
+        <div class="cp-expr-ex"><span class="en" data-speak="The situation is out of control.">The situation is out of control.</span></div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Ponto de vista</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Point of view">Point of view <span class="q-tr">(POV)</span></span></div>
+        <div class="cp-expr-ex"><span class="en" data-speak="This is the best way, but it's just my point of view.">This is the best way, but it's just my point of view.</span></div>
+      </div>
+    </div>
+
+  </div>
 </div>`,
 
 `<div class="page pg-soon">
