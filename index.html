@@ -32,7 +32,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 #slides{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;}
 #slides::-webkit-scrollbar{width:3px;}
 #slides::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
-#nav{display:flex;align-items:center;gap:16px;width:100%;max-width:100%;justify-content:center;background:var(--bg);border-top:1px solid var(--line);flex-shrink:0;padding:8px 0;}
+#nav{display:flex;align-items:center;gap:16px;width:100%;max-width:100%;justify-content:center;background:var(--bg);border-top:1px solid var(--line);flex-shrink:0;padding:8px 16px;position:relative;}
 .nb{width:44px;height:44px;border-radius:50%;background:var(--nb-bg);border:1px solid var(--nb-bdr);color:var(--s);font-size:18px;cursor:pointer;transition:all .2s;display:grid;place-items:center;font-family:inherit;line-height:1;padding:0;}
 .nb:hover{color:var(--tx);}
 .nb:disabled{opacity:.2;cursor:default;}
@@ -616,6 +616,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .sec-topbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .sec-topbar-right{display:flex;gap:6px;}
 .nb-sm{width:36px;height:36px;font-size:14px;}
+.nb-idx{position:absolute;left:16px;}
 .sec-lvl-bars{display:flex;gap:10px;align-items:center;}
 .sec-mid{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;overflow:hidden;}
 /* ── LOGO WATERMARK ── */
@@ -815,6 +816,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 <div id="shell">
   <div id="frame"><div id="slides"></div></div>
   <div id="nav">
+    <button class="nb nb-sm nb-idx" onclick="go(3)" title="Índice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     <button class="nb nb-sm" onclick="goPrevSec()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="19 18 13 12 19 6"/><line x1="5" y1="6" x2="5" y2="18"/></svg></button>
     <button class="nb" id="prev" onclick="go(cur-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div id="ctr"></div>
@@ -2489,7 +2491,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#63b3ed;"><div class="sec-ghost">01</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -2574,7 +2575,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#68d391;"><div class="sec-ghost">02</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -2616,7 +2616,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">03</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -2665,7 +2664,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">04</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3191,7 +3189,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">05</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3260,7 +3257,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">06</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3370,7 +3366,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#68d391;"><div class="sec-ghost">07</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3441,7 +3436,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">08</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3502,7 +3496,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#63b3ed;"><div class="sec-ghost">09</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3560,7 +3553,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">10</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3673,7 +3665,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">11</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -3753,7 +3744,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#b794f4;"><div class="sec-ghost">12</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4222,7 +4212,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">13</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4344,7 +4333,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">14</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4453,7 +4441,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">15</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4554,7 +4541,6 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#ffd580;"><div class="sec-ghost">16</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4690,7 +4676,6 @@ const pages=[
 `<div class="page pg-sec" style="--acc:#68d391;">
   <div class="sec-ghost">17</div>
   <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
     <div class="sec-topbar-right">
       <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
       <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
@@ -4904,7 +4889,7 @@ function go(i){
     const sb=document.getElementById('shimmer-toggle');if(sb)sb.className='sp-toggle '+(document.body.classList.contains('no-shimmer')?'off':'on');
     const tb=document.getElementById('theme-toggle');if(tb)tb.className='sp-toggle '+(document.body.classList.contains('light')?'off':'on');
   }
-  if(cur>3){const hd=document.querySelector('.pg-hd');if(hd&&!hd.querySelector('.hd-idx-btn')){const b=document.createElement('button');b.className='hd-idx-btn';b.textContent='← Índice';b.onclick=()=>go(3);hd.appendChild(b);}}
+  
   document.getElementById('ctr').textContent=(cur+1)+' / '+pages.length;
   document.getElementById('prog-fill').style.width=((cur+1)/pages.length*100)+'%';
   document.getElementById('prev').disabled=cur===0;
