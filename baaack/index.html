@@ -25,15 +25,15 @@ body{background:var(--bg-shell);}
 #prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(--line);z-index:100;}
 #prog-fill{height:100%;background:linear-gradient(to right,var(--purple),var(--acc,var(--blue)));transition:width .35s ease;}
 
-#shell{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;gap:0;}
-#frame{width:100%;max-width:100%;flex:1;min-height:0;border-radius:0;overflow:hidden;}
+#shell{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 16px 14px;gap:10px;}
+#frame{width:100%;max-width:420px;height:calc(100dvh - 76px);border-radius:20px;overflow:hidden;}
 body.dark #frame{box-shadow:0 40px 80px rgba(0,0,0,.85);}
 body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 #slides{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;}
 #slides::-webkit-scrollbar{width:3px;}
 #slides::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
-#nav{display:flex;align-items:center;gap:16px;width:100%;max-width:100%;justify-content:center;background:var(--bg);border-top:1px solid var(--line);flex-shrink:0;padding:8px 0;}
-.nb{width:44px;height:44px;border-radius:50%;background:var(--nb-bg);border:1px solid var(--nb-bdr);color:var(--s);font-size:18px;cursor:pointer;transition:all .2s;display:grid;place-items:center;font-family:inherit;line-height:1;padding:0;}
+#nav{display:flex;align-items:center;gap:16px;width:100%;max-width:420px;justify-content:center;}
+.nb{width:44px;height:44px;border-radius:50%;background:var(--nb-bg);border:1px solid var(--nb-bdr);color:var(--s);font-size:17px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-family:inherit;}
 .nb:hover{color:var(--tx);}
 .nb:disabled{opacity:.2;cursor:default;}
 #ctr{font-size:12px;color:var(--m);letter-spacing:1px;min-width:56px;text-align:center;}
@@ -110,7 +110,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .idx-name{font-size:14px;font-weight:700;color:var(--tx);letter-spacing:-.1px;}
 .idx-desc{font-size:12px;color:var(--m);margin-top:2px;line-height:1.4;}
 .idx-arrow{font-size:13px;color:var(--m);opacity:.4;}
-.pg-sec{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:12px 28px 16px;position:relative;overflow:hidden;background:var(--bg);}
+.pg-sec{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 28px 48px;position:relative;overflow:hidden;background:var(--bg);}
 .pg-sec::before{content:'';position:absolute;top:-40px;right:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(196,160,255,.07),transparent 65%);pointer-events:none;}
 .pg-sec::after{content:'';position:absolute;top:15%;right:0;width:2px;height:50%;background:linear-gradient(to bottom,transparent,var(--acc,var(--blue)),transparent);opacity:.4;}
 .sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
@@ -118,8 +118,8 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .sec-title .acc{color:var(--acc,var(--blue));}
 .sec-sep{width:100%;height:1px;background:var(--line);margin-bottom:13px;}
 .sec-desc{font-size:15px;color:var(--s);line-height:1.6;margin-bottom:20px;max-width:300px;}
-.sec-lvl{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:20px;}
-.lv{width:30px;height:5px;border-radius:3px;background:var(--line);}
+.sec-lvl{display:flex;gap:6px;align-items:center;}
+.lv{width:24px;height:2px;border-radius:1px;background:var(--line);}
 .lv.on{background:var(--acc,var(--blue));}
 .lv-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-left:8px;}
 .pg-rev{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;text-align:center;gap:14px;position:relative;overflow:hidden;}
@@ -613,11 +613,6 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .cp-expr-pt{font-size:12px;color:var(--m);margin-bottom:2px;}
 .cp-expr-en{font-size:17px;font-weight:800;color:var(--blue);margin-bottom:6px;}
 .cp-expr-ex{font-size:13px;color:var(--s);font-style:italic;}
-.sec-topbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.sec-topbar-right{display:flex;gap:6px;}
-.nb-sm{width:36px;height:36px;font-size:14px;}
-.sec-lvl-bars{display:flex;gap:10px;align-items:center;}
-.sec-mid{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;overflow:hidden;}
 /* ── LOGO WATERMARK ── */
 .pg-watermark{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
 .pg-watermark img{width:52px;height:52px;opacity:.13;}
@@ -625,10 +620,10 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .pg-cover-logo img{width:140px;height:140px;}
 
 /* ── CURIOSIDADE ── */
-.curiosidade{flex-shrink:0;background:none;border:none;padding:0;display:flex;flex-direction:column;}
+.curiosidade{margin-top:auto;background:rgba(0,0,0,.25);border-radius:12px;padding:0;display:flex;flex-direction:column;overflow:hidden;position:relative;z-index:1;border:1px solid rgba(255,255,255,.08);}
 body.light .curiosidade{background:rgba(255,255,255,.5);border-color:rgba(0,0,0,.08);}
 
-.curiosidade-body{display:flex;gap:10px;align-items:flex-start;padding:4px 0;}
+.curiosidade-body{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;}
 .curiosidade-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
 .curiosidade-text{display:flex;flex-direction:column;gap:3px;}
 .curiosidade-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);}
@@ -815,11 +810,9 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 <div id="shell">
   <div id="frame"><div id="slides"></div></div>
   <div id="nav">
-    <button class="nb nb-sm" onclick="goPrevSec()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="19 18 13 12 19 6"/><line x1="5" y1="6" x2="5" y2="18"/></svg></button>
-    <button class="nb" id="prev" onclick="go(cur-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="nb" id="prev" onclick="go(cur-1)">←</button>
     <div id="ctr"></div>
-    <button class="nb" id="next" onclick="go(cur+1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
-      <button class="nb nb-sm" onclick="goNextSec()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 18 11 12 5 6"/><line x1="19" y1="6" x2="19" y2="18"/></svg></button>
+    <button class="nb" id="next" onclick="go(cur+1)">→</button>
   </div>
 </div>
 <script>
@@ -2473,7 +2466,7 @@ const pages=[
           <div class="idx-num">16</div><div class="idx-info"><div class="idx-name">Pronomes de Posse</div><div class="idx-desc">My, your, his — mine, yours, hers</div></div><div class="idx-arrow">→</div>
         </div>
         <div class="idx-item" onclick="go(43)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
-          <div class="idx-num">17</div><div class="idx-info"><div class="idx-name">Caso Possessivo e Of</div><div class="idx-desc">Teacher's car · End of the movie</div></div><div class="idx-arrow">→</div>
+          <div class="idx-num">17</div><div class="idx-info"><div class="idx-name">Caso Possessivo e OF</div><div class="idx-desc">Teacher's car · End of the movie</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -2488,21 +2481,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#63b3ed;"><div class="sec-ghost">01</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 01</div>
   <div class="sec-title">Pronomes<br><span class="acc">Pessoais</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Palavras que substituem nomes e indicam quem realiza a ação.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🖊️</div>
@@ -2573,21 +2559,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#68d391;"><div class="sec-ghost">02</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 02</div>
   <div class="sec-title">O que é<br>um <span class="acc">Verbo?</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">A palavra que indica o que está acontecendo na frase.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🔍</div>
@@ -2615,21 +2594,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">03</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 03</div>
   <div class="sec-title">Continuous<br><span class="acc">Tenses</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Como dizer que algo está, estava ou vai estar acontecendo.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎵</div>
@@ -2664,22 +2636,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">04</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 04</div>
   <div class="sec-title">Verbo<br><span class="acc">To Be</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">O verbo ser e estar — nos três tempos, com afirmação, negação e perguntas.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎭</div>
@@ -3190,21 +3154,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">05</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 05</div>
   <div class="sec-title">Adjetivos</div>
   <div class="sec-sep"></div>
   <div class="sec-desc">As palavras que descrevem características de pessoas e coisas.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎷</div>
@@ -3259,22 +3216,14 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">06</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 06</div>
   <div class="sec-title">Artigos</div>
   <div class="sec-sep"></div>
   <div class="sec-desc">O, a, os, as, um, uma, alguns — como usar cada um em inglês.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🎸</div>
@@ -3369,20 +3318,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#68d391;"><div class="sec-ghost">07</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 07</div>
   <div class="sec-title">Presente<br><span class="acc">Simple</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Conjugação de verbos no tempo presente.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">📅</div>
@@ -3440,20 +3382,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">08</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 08</div>
   <div class="sec-title">Passado<br><span class="acc">Simple</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Verbos regulares e irregulares no passado.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">⏮️</div>
@@ -3501,20 +3436,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#63b3ed;"><div class="sec-ghost">09</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 09</div>
   <div class="sec-title">Futuro<br><span class="acc">Will</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Expressando ações que vão acontecer.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🚀</div>
@@ -3559,21 +3487,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">10</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 10</div>
   <div class="sec-title">To Go<br><span class="acc">Ir</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">A diferença entre go e will.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🗺️</div>
@@ -3672,20 +3592,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">11</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 11</div>
   <div class="sec-title">Sujeito<br><span class="acc">Oculto</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Por que o sujeito nunca pode sumir em inglês.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🕵️</div>
@@ -3752,21 +3665,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#b794f4;"><div class="sec-ghost">12</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 12</div>
   <div class="sec-title">In, On, At<br><span class="acc">Preposições</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Em, no, na, nos, nas — e quando usar cada uma.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🌍</div>
@@ -4221,20 +4126,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">13</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 13</div>
   <div class="sec-title">Pronomes<br><span class="acc">Demonstrativos</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">This, these, that, those — este, esses, aquele, aquelas.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">👆</div>
@@ -4343,21 +4241,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">14</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 14</div>
   <div class="sec-title">In, On, At<br><span class="acc">+ Demonstrativos</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Neste, nessa, naquele, naquelas — unindo preposições com demonstrativos.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🔗</div>
@@ -4452,20 +4342,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">15</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 15</div>
   <div class="sec-title">Que<br><span class="acc">Explicativo</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">O menino que estava jogando — o "que" que explica.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv"></div><div class="lv"></div></div></div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
+  <div class="sec-btns-row"><button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button><button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button></div>
     <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🔤</div>
@@ -4553,22 +4436,13 @@ const pages=[
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#ffd580;"><div class="sec-ghost">16</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="pg-watermark"></div>
-  <div class="sec-mid">
   <div class="sec-eyebrow">Seção 16</div>
   <div class="sec-title">Pronomes<br><span class="acc">de Posse</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">My, your, his, her — e os que substituem o substantivo.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv"></div><div class="lv"></div><span class="lv-lbl">Fácil</span></div>
   <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">🔑</div>
@@ -4577,6 +4451,10 @@ const pages=[
         <div class="curiosidade-fact">A música "She Loves You" dos Beatles, lançada em 1963, foi a primeira da banda a vender mais de 1 milhão de cópias no Reino Unido. O "yeah yeah yeah" do refrão virou símbolo de uma geração inteira.</div>
       </div>
     </div>
+  </div>
+  <div class="sec-btns-row">
+    <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+    <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
   </div>
 </div>`,
 
@@ -4689,21 +4567,12 @@ const pages=[
 
 `<div class="page pg-sec" style="--acc:#68d391;">
   <div class="sec-ghost">17</div>
-  <div class="sec-topbar">
-    <button class="sec-back-btn" onclick="go(3)">← Índice</button>
-    <div class="sec-topbar-right">
-      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
-      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
-    </div>
-  </div>
-  <div class="sec-mid">
+  <button class="sec-back-btn" onclick="go(3)">← Índice</button>
   <div class="sec-eyebrow">Seção 17</div>
   <div class="sec-title">Caso<br><span class="acc">Possessivo</span></div>
   <div class="sec-sep"></div>
   <div class="sec-desc">Indicando o dono com nomes reais.</div>
-  <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div>
-  </div>
-  </div>
+  <div class="sec-lvl"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div><span class="lv-lbl">Médio</span></div>
   <div class="curiosidade">
     <div class="curiosidade-body">
       <div class="curiosidade-icon">📜</div>
@@ -4713,10 +4582,14 @@ const pages=[
       </div>
     </div>
   </div>
+  <div class="sec-btns-row">
+    <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+    <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+  </div>
 </div>`,
 
 `<div class="page pg-content" style="--acc:#68d391;">
-  <div class="pg-hd"><div class="pg-lbl">Seção 17 · Caso Possessivo e Of</div><div class="pg-ttl">Caso Possessivo e Of</div></div>
+  <div class="pg-hd"><div class="pg-lbl">Seção 17 · Caso Possessivo e OF</div><div class="pg-ttl">Caso Possessivo e OF</div></div>
   <div class="pg-body">
 
     <p class="intro" id="cp-intro">Ao contrário da matéria anterior, onde indicávamos o dono com pronomes, aqui utilizaremos <strong>nomes reais</strong>.</p>
@@ -4881,9 +4754,6 @@ function goBack(){
   setTimeout(()=>{document.getElementById('slides').scrollTop=s.scrollTop;},350);
 }
 
-
-function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1){go(j);return;}}go(0);}
-function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1){go(j);return;}}go(pages.length-1);}
 function go(i){
   if(i<0||i>=pages.length)return;
   cur=i;
@@ -5389,7 +5259,6 @@ function updateThemeUI(){
 })();
 
 go(0);
-
 </script>
 </body>
 </html>
