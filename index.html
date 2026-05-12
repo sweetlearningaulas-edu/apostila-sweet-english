@@ -1676,6 +1676,17 @@ window['rev2_bk']=[
   {pt:'Ryan e Josh foram grandes amigos.',before:'Ryan and Josh',blank:'were',after:'great friends.',options:['went','was','were','will be'],anchor:'26:togo-went-vs-tobe'},
   {pt:'Megan e Taylor foram colegas de faculdade.',before:'Megan and Taylor',blank:'were',after:'university classmates.',options:['went','was','were','will be'],anchor:'26:togo-went-vs-tobe'},
   {pt:'Eles não foram amigos por muito tempo.',before:'They',blank:"weren't",after:'friends for long.',options:["wasn't","weren't","didn't go","went"],anchor:'26:togo-went-vs-tobe'},
+
+  {pt:"Ryan não vai viajar esse mês.",before:'Ryan',blank:"won't travel",after:'this month.',options:["won't travel",'will travel','traveled','travels'],anchor:'fut-neg'},
+  {pt:"Eles não vão ao cinema hoje.",before:'They',blank:"won't go",after:'to the movies today.',options:["won't go",'will go','go','went'],anchor:'togo-wontgo'},
+  {pt:"Você vai terminar hoje?",before:'',blank:'Will you finish',after:'today?',options:['Will you finish','Do you finish','Did you finish','You will finish'],anchor:'fut-int'},
+  {pt:"Você não vai ao médico?",before:'',blank:"Won't you go",after:'to the doctor?',options:["Won't you go",'Will you go','Do you go','Did you go'],anchor:'togo-wontgo-int'},
+  {pt:"Camila foi feliz na infância.",before:'Camila',blank:'was',after:'happy in her childhood.',options:['was','were','is','will be'],anchor:'togo-was'},
+  {pt:"Eles não foram amigos por muito tempo.",before:'They',blank:"weren't",after:'friends for long.',options:["weren't","wasn't","aren't","won't be"],anchor:'togo-werent'},
+  {pt:"Noah foi ao estúdio ontem.",before:'Noah',blank:'went',after:'to the studio yesterday.',options:['went','go','goes','will go'],anchor:'togo-went'},
+  {pt:"O show não foi bom?",before:'',blank:"Wasn't the show",after:'good?',options:["Wasn't the show","Weren't the show","Isn't the show","Won't the show be"],anchor:'togo-wasnt-int'},
+  {pt:"Nós fomos ao cinema no sábado.",before:'We',blank:'went',after:'to the movies on Saturday.',options:['went','go','goes','will go'],anchor:'togo-went'},
+  {pt:"Jake e Liam não foram parceiros?",before:'',blank:"Weren't Jake and Liam",after:'partners?',options:["Weren't Jake and Liam","Wasn't Jake and Liam","Aren't Jake and Liam","Won't Jake and Liam be"],anchor:'togo-werent-int'},
 ];
 window['pres_bk']=[
   {pt:'Ryan joga futebol todo sábado.',before:'Ryan',blank:'plays',after:'football every Saturday.',options:['play','plays','played','will play']},
@@ -1916,6 +1927,13 @@ window['rev3_bk']=[
   {pt:'O carro que eu comprei é vermelho.',before:'The car',blank:'which',after:'I bought is red.',options:['who','which'],anchor:'39:queexp-that'},
   {pt:'A música que ela cantou foi linda.',before:'The song',blank:'which',after:'she sang was beautiful.',options:['who','which'],anchor:'39:queexp-that'},
   {pt:'A pessoa que me ligou era a Ashley.',before:'The person',blank:'who',after:'called me was Ashley.',options:['who','which'],anchor:'39:queexp-who'},
+
+  {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','mine','his','her'],anchor:'poss-adj-intro'},
+  {pt:'Aquele carro é meu.',before:'That car is',blank:'mine',after:'.',options:['mine','my','yours','hers'],anchor:'poss-pron-label'},
+  {pt:'Um amigo dela.',before:'A friend of',blank:'hers',after:'.',options:['hers','her','mine','ours'],anchor:'poss-regra'},
+  {pt:'Megan perdeu a bolsa dela.',before:'Megan lost',blank:'her',after:'bag.',options:['her','hers','my','their'],anchor:'poss-adj-intro'},
+  {pt:'A bolsa é dela.',before:'The bag is',blank:'hers',after:'.',options:['hers','her','mine','ours'],anchor:'poss-pron-label'},
+  {pt:'A decisão era nossa.',before:'The decision was',blank:'ours',after:'.',options:['ours','our','mine','theirs'],anchor:'poss-pron-label'},
 ];
 
 window['poss_bk']=[
@@ -1983,6 +2001,48 @@ window['poss_bk']=[
 
 
 
+window['caso_bk']=[
+  {pt:'Eu usei o celular do Ryan.',before:'I used',blank:"Ryan's phone",after:'.',options:["Phone's Ryan","Ryan's phone","Ryan phone's",'Ryans phone'],anchor:'caso-s'},
+  {pt:'Eu estava na casa da Ashley.',before:'I was at',blank:"Ashley's house",after:'.',options:["Ashley's house","House's Ashley",'Ashleys house',"The Ashley's house"],anchor:'caso-s'},
+  {pt:'Eu vi o cachorro do professor.',before:'I saw',blank:"the teacher's dog",after:'.',options:["Dog's teacher",'Teachers dog',"The teacher dog's","the teacher's dog"],anchor:'caso-s'},
+  {pt:'Ela esqueceu a mochila da Camila.',before:'She forgot',blank:"Camila's backpack",after:'.',options:["Backpack's Camila","Camila's backpack","Camila backpack's","Camila's the backpack"],anchor:'caso-s'},
+  {pt:'Eu peguei emprestado o carro do meu chefe.',before:'I borrowed',blank:"my boss's car",after:'.',options:["My car's boss",'My bosses car',"my boss's car","My boss car's"],anchor:'caso-s'},
+  {pt:'Todo mundo gostou da ideia da Megan.',before:'Everyone liked',blank:"Megan's idea",after:'.',options:["Megan's idea","Idea's Megan",'Megans idea',"Megan idea's"],anchor:'caso-s'},
+  {pt:'Nós nos encontramos no escritório do Doug.',before:'We met at',blank:"Doug's office",after:'.',options:["Office's Doug",'Dougs office',"Doug office's","Doug's office"],anchor:'caso-s'},
+  {pt:'Ele consertou a bicicleta do Jake.',before:'He fixed',blank:"Jake's bike",after:'.',options:["Bike's Jake","Jake's bike",'Jakes bike',"Jake bike's"],anchor:'caso-s'},
+  {pt:'Eles visitaram o apartamento da Olivia.',before:'They visited',blank:"Olivia's apartment",after:'.',options:["Apartment's Olivia",'Olivias apartment',"Olivia's apartment","Olivia apartment's"],anchor:'caso-s'},
+  {pt:'Eu usei o celular da minha amiga.',before:'I used',blank:"my friend's phone",after:'.',options:["Phone's friend",'My friends phone',"my friend's phone","My friend phone's"],anchor:'caso-s'},
+  {pt:'Ontem eu estava na casa da amiga da Renata.',before:'Yesterday I was at',blank:"Renata's friend's house",after:'.',options:["Friend's Renata's house","Renata's friend's house","Renata's house's friend",'Renatas friends house'],anchor:'caso-ss'},
+  {pt:'Eu peguei emprestado o carro do amigo do professor.',before:'I borrowed',blank:"the teacher's friend's car",after:'.',options:["the teacher's friend's car","the friend's teacher's car",'the teachers friends car',"teacher's friend car"],anchor:'caso-ss'},
+  {pt:'Eu vi o cachorro da filha da Ashley.',before:'I saw',blank:"Ashley's daughter's dog",after:'.',options:["daughter's Ashley's dog",'Ashleys daughters dog',"Ashley's dogs daughter","Ashley's daughter's dog"],anchor:'caso-ss'},
+  {pt:'Nós adoramos a ideia do colega do Brian.',before:'We loved',blank:"Brian's colleague's idea",after:'.',options:["Brian's colleague's idea","colleague's Brian's idea",'Brians colleagues idea',"Brian's ideas colleague"],anchor:'caso-ss'},
+  {pt:'Nós fomos ao escritório do chefe do Noah.',before:'We went to',blank:"Noah's boss's office",after:'.',options:["boss's Noah's office",'Noahs bosses office',"Noah's boss's office","Noah's offices boss"],anchor:'caso-ss'},
+  {pt:'Ele achou o celular da namorada do Liam.',before:'He found',blank:"Liam's girlfriend's phone",after:'.',options:["girlfriend's Liam's phone","Liam's girlfriend's phone",'Liams girlfriends phone',"Liam's phones girlfriend"],anchor:'caso-ss'},
+  {pt:'Nós ficamos na casa da mãe da Sofia.',before:'We stayed at',blank:"Sofia's mom's house",after:'.',options:["Sofia's mom's house","mom's Sofia's house",'Sofias moms house',"Sofia's houses mom"],anchor:'caso-ss'},
+  {pt:'Eu consertei o carro do irmão da Emma.',before:'I fixed',blank:"Emma's brother's car",after:'.',options:["brother's Emma's car","Emma's brother's car",'Emmas brothers car',"Emma's cars brother"],anchor:'caso-ss'},
+  {pt:'Ela achou a mochila do filho do Ethan.',before:'She found',blank:"Ethan's son's backpack",after:'.',options:["son's Ethan's backpack",'Ethans sons backpack',"Ethan's son's backpack","Ethan's backpacks son"],anchor:'caso-ss'},
+  {pt:'Eu passeei com o cachorro da amiga da Vanessa.',before:'I walked',blank:"Vanessa's friend's dog",after:'.',options:["friend's Vanessa's dog","Vanessa's friend's dog",'Vanessas friends dog',"Vanessa's dogs friend"],anchor:'caso-ss'},
+  {pt:'Eu adorei o final do filme.',before:'I loved',blank:'the end of the movie',after:'.',options:['the end of the movie','the movie of the end','the end the movie','the of movie end'],anchor:'caso-of'},
+  {pt:'Ela abriu a porta do carro.',before:'She opened',blank:'the door of the car',after:'.',options:['the car of the door','the door of the car','the door the car','the of car door'],anchor:'caso-of'},
+  {pt:'Eu esqueci o nome do restaurante.',before:'I forgot',blank:'the name of the restaurant',after:'.',options:['the restaurant of the name','the name the restaurant','the name of the restaurant','the of restaurant name'],anchor:'caso-of'},
+  {pt:'Eu conheci o presidente da empresa.',before:'I met',blank:'the president of the company',after:'.',options:['the company of the president','the president of the company','the president the company','the of company president'],anchor:'caso-of'},
+  {pt:'Eu gostei do título do livro.',before:'I liked',blank:'the title of the book',after:'.',options:['the book of the title','the title the book','the of book title','the title of the book'],anchor:'caso-of'},
+  {pt:'Eu mudei a cor da parede.',before:'I changed',blank:'the color of the wall',after:'.',options:['the color of the wall','the wall of the color','the color the wall','the of wall color'],anchor:'caso-of'},
+  {pt:'Eu paguei o preço do ingresso.',before:'I paid',blank:'the price of the ticket',after:'.',options:['the ticket of the price','the price the ticket','the price of the ticket','the of ticket price'],anchor:'caso-of'},
+  {pt:'Eu reconheci o diretor do filme.',before:'I recognized',blank:'the director of the movie',after:'.',options:['the director of the movie','the movie of the director','the director the movie','the of movie director'],anchor:'caso-of'},
+  {pt:'Eu assisti o final da série.',before:'I watched',blank:'the end of the series',after:'.',options:['the series of the end','the end of the series','the end the series','the of series end'],anchor:'caso-of'},
+  {pt:'Eu visitei a capital do país.',before:'I visited',blank:'the capital of the country',after:'.',options:['the country of the capital','the capital the country','the capital of the country','the of country capital'],anchor:'caso-of'},
+  {pt:'Eu peguei emprestado o carro do Lucas.',before:'I borrowed',blank:"Lucas' car",after:'.',options:["Lucas' car",'Lucases car',"The Lucas' car",'Lucas car'],anchor:'caso-s-name'},
+  {pt:'Nós visitamos a casa do James.',before:'We visited',blank:"James' house",after:'.',options:['Jameses house',"James' house","The James' house",'James house'],anchor:'caso-s-name'},
+  {pt:'Eu passeei com o cachorro do Chris.',before:'I walked',blank:"Chris' dog",after:'.',options:["Chris' dog",'Chrises dog',"The Chris' dog",'Chris dog'],anchor:'caso-s-name'},
+  {pt:'Todo mundo amou a ideia do Marcus.',before:'Everyone loved',blank:"Marcus' idea",after:'.',options:['Marcuses idea',"The Marcus' idea","Marcus' idea",'Marcus idea'],anchor:'caso-s-name'},
+  {pt:'Nós nos encontramos no escritório do Carlos.',before:'We met at',blank:"Carlos' office",after:'.',options:["Carlos' office",'Carloses office',"The Carlos' office",'Carlos office'],anchor:'caso-s-name'},
+  {pt:'Ela achou a mochila do Lewis.',before:'She found',blank:"Lewis' backpack",after:'.',options:['Lewises backpack',"Lewis' backpack","The Lewis' backpack",'Lewis backpack'],anchor:'caso-s-name'},
+  {pt:'Eu revisei o projeto do Thomas.',before:'I reviewed',blank:"Thomas' project",after:'.',options:["Thomas' project",'Thomases project',"The Thomas' project",'Thomas project'],anchor:'caso-s-name'},
+  {pt:'Ele consertou a bicicleta do Alexis.',before:'He fixed',blank:"Alexis' bike",after:'.',options:['Alexises bike',"The Alexis' bike","Alexis' bike",'Alexis bike'],anchor:'caso-s-name'},
+  {pt:'Eu usei o celular do Dennis.',before:'I used',blank:"Dennis' phone",after:'.',options:["Dennis' phone",'Dennises phone',"The Dennis' phone",'Dennis phone'],anchor:'caso-s-name'},
+  {pt:'Eu visitei a empresa do Douglas.',before:'I visited',blank:"Douglas' company",after:'.',options:['Douglases company',"The Douglas' company",'Douglas company',"Douglas' company"],anchor:'caso-s-name'},
+];
 window['ing_bk']=[
   {pt:'Eu estou correndo no parque.',before:'I am',blank:'running',after:'in the park.',options:['running','to run','run','ran'],anchor:'ing-regras'},
   {pt:'Ela está assistindo um filme.',before:'She is',blank:'watching',after:'a movie.',options:['watching','watch','watched','to watch'],anchor:'ing-regras'},
@@ -4906,6 +4966,11 @@ const pages=[
     </div>
 
   </div>
+
+  <div class="ex-wrap">
+    <div class="ex-hd"><span class="ex-title">Caso Possessivo e Of — exercício</span><span class="ex-score" id="caso-score">0/10</span></div>
+    <div class="ex-body" id="caso-body"></div>
+  </div>
 </div>`,
 
 `<div class="page pg-soon">
@@ -4955,8 +5020,8 @@ function goBack(){
 }
 
 
-function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(0);}
-function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
+function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
+function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(pages.length-1);}
 function go(i){
   if(i<0||i>=pages.length)return;
   cur=i;
@@ -5000,6 +5065,7 @@ function go(i){
   if(cur===39)initEx('rev3',window['rev3_bk'],10);
   if(cur===42)initEx('poss',window['poss_bk'],15);
   if(cur===43)initEx('poss',window['poss_bk'],10);
+  if(cur===44)initEx('caso',window['caso_bk'],10);
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
