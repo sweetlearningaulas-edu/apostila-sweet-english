@@ -130,7 +130,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 .rev-title .acc{color:var(--yel);}
 .rev-line{width:48px;height:2px;background:linear-gradient(to right,var(--yel),var(--blue));border-radius:1px;position:relative;z-index:1;}
 .rev-desc{font-size:15px;color:var(--s);line-height:1.6;max-width:280px;position:relative;z-index:1;}
-.pg-content{display:flex;flex-direction:column;}
+.pg-content{display:flex;flex-direction:column;min-height:100%;background:var(--bg);}
 .pg-hd{padding:22px 22px 14px;border-bottom:2px solid var(--acc,var(--blue));flex-shrink:0;}
 .pg-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:4px;}
 .pg-ttl{font-size:21px;font-weight:700;color:var(--tx);}
@@ -2293,11 +2293,6 @@ const pages=[
 
 `<div class="page pg-inst">
   <div class="inst-title">Como usar a apostila</div>
-  <div class="inst-section-lbl">Navegação</div>
-  <div class="inst-item"><div class="inst-icon">←→</div><div class="inst-text"><strong>Trocar de página</strong><span>Deslize para os lados com swipe longo, ou use as setas no rodapé.</span></div></div>
-  <div class="inst-item"><div class="inst-icon">↕</div><div class="inst-text"><strong>Rolar o conteúdo</strong><span>Algumas páginas são longas — role para baixo para ver tudo.</span></div></div>
-  <div class="inst-item"><div class="inst-icon">📑</div><div class="inst-text"><strong>Índice rápido</strong><span>Toque em "← Índice" no topo de qualquer página. No índice há busca por palavra-chave.</span></div></div>
-  <div class="inst-item"><div class="inst-icon">🔗</div><div class="inst-text"><strong>Links internos</strong><span>Alguns trechos são clicáveis e levam a outras páginas. Um botão "← Voltar" aparece para retornar.</span></div></div>
   <div class="inst-section-lbl">Pronúncia</div>
   <div class="inst-item"><div class="inst-icon">🔊</div><div class="inst-text"><strong>Palavras em inglês</strong><span>A maior parte das palavras em inglês são clicáveis. Toque para ouvir. Toque de novo para ouvir mais devagar 🐢</span></div></div>
   <div class="inst-demo"><div class="inst-demo-txt">Tente agora → <span class="inst-demo-en" onclick="speak('You guys are cool',this)">You guys are cool</span></div></div>
@@ -4867,8 +4862,8 @@ function goBack(){
 }
 
 
-function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1){go(j);return;}}go(0);}
-function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1){go(j);return;}}go(pages.length-1);}
+function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(0);}
+function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
 function go(i){
   if(i<0||i>=pages.length)return;
   cur=i;
