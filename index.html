@@ -5437,6 +5437,14 @@ async function generar(){
     // parsed já definido acima
     const dir=window._genDir||'pt-en';
     const frases=parsed.frases;
+    // Palavras proibidas no vocabulário
+    const vocabBanned=['go','goes','went','will go',"won't go",'a','an','the','some',
+      'i','you','he','she','it','we','they','am','is','are','was','were','will',"won't",
+      'my','your','his','her','its','our','their','mine','yours','hers','ours','theirs',
+      'in','on','at','this','that','these','those'];
+    frases.forEach(f=>{
+      f.vocab=(f.vocab||[]).filter(v=>!vocabBanned.includes((v.en||'').toLowerCase().trim()));
+    });
     result.innerHTML=frases.map((f,i)=>{
       const sentence=dir==='pt-en'?f.pt:f.en;
       return `${i>0?'<hr class="gen-divider">':''}
