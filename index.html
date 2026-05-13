@@ -5319,7 +5319,7 @@ function buildGenPrompt(subjects,theme){
   else{forbidden.push('S17 PROIBIDO caso possessivo com \'s ou \'. PROIBIDO "of the" para posse.');}
 
   const globalRule='REGRA GLOBAL: Perguntas e negativos SÓ com: am,ain\'t,is,isn\'t,are,aren\'t,was,wasn\'t,were,weren\'t,will,won\'t. Presente e passado simples são SEMPRE afirmativos.';
-  const vocabRule='VOCABULÁRIO — REGRA ABSOLUTA: toda palavra que o aluno precisa saber para traduzir VAI no vocabulário de CADA frase — incluindo advérbios como muito(very), sempre(always), nunca(never), hoje(today), amanhã(tomorrow), agora(now), ontem(yesterday), bem(well), tarde(late), cedo(early), etc. TODA frase tem seu vocabulário completo e independente. Inclua: substantivos, verbos (SEMPRE no infinitivo), adjetivos, advérbios (muito=very, sempre=always, nunca=never, hoje=today, amanhã=tomorrow, agora=now, ontem=yesterday, bem=well, tarde=late, cedo=early, etc.) e qualquer outra palavra de conteúdo. NUNCA inclua: artigos, pronomes pessoais, pronomes de posse, to be, will/won\'t, go/goes/went, preposições in/on/at, demonstrativos. Pronúncia aproximada em PT. Máx 6, mín 1.';
+  const vocabRule='VOCABULÁRIO — REGRA ABSOLUTA: toda palavra que o aluno precisa saber para traduzir VAI no vocabulário de CADA frase — incluindo advérbios como muito(very), sempre(always), nunca(never), hoje(today), amanhã(tomorrow), agora(now), ontem(yesterday), bem(well), tarde(late), cedo(early), etc. TODA frase tem seu vocabulário completo e independente. Inclua: substantivos, verbos (SEMPRE no infinitivo), adjetivos, advérbios (muito=very, sempre=always, nunca=never, hoje=today, amanhã=tomorrow, agora=now, ontem=yesterday, bem=well, tarde=late, cedo=early, etc.) e qualquer outra palavra de conteúdo. NUNCA inclua no vocabulário: go, goes, went, will go, won\'t go (o aluno já sabe). Também nunca inclua: artigos (a/an/the/some), pronomes pessoais, pronomes de posse, to be, will/won\'t, preposições in/on/at, demonstrativos this/that/these/those. Pronúncia aproximada em PT. Máx 6, mín 1.';
   const dir=window._genDir||'pt-en';
   const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
   const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
@@ -5342,7 +5342,9 @@ REGRAS ADICIONAIS:
 2. NUNCA "seu/sua/seus/suas" para 3ª pessoa. Use "dele/dela/deles/delas".
 3. NUNCA "assistindo a","ir ao","ir à","ao/aos/à/às". Use "para o/a/os/as".
 4. Futuro em PT: "vou/vai/vamos/vão + infinitivo".
-5. Varie ao máximo os tipos de frase disponíveis.
+5. USE TODAS as estruturas disponíveis no PERMITIDO. Distribua obrigatoriamente entre afirmativo, negativo e interrogativo quando disponíveis. Use pronomes e nomes variados.
+6. As frases deste lote devem ser completamente diferentes das frases de outros lotes — tema, sujeito e estrutura diferentes.
+7. NUNCA repita a mesma frase ou estrutura duas vezes.
 
 ${vocabRule}
 
@@ -5361,7 +5363,7 @@ TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
 
 REGRAS: Frases naturais, variadas, nível avançado. NUNCA "ao/aos/à/às". Futuro em PT: "vou/vai/vamos/vão+infinitivo".
 
-VOCABULÁRIO: inclua toda palavra necessária para traduzir. Verbos no infinitivo. Pronúncia em PT. Máx 6, mín 1.
+VOCABULÁRIO: inclua toda palavra necessária para traduzir. Verbos no infinitivo. NUNCA inclua go/goes/went no vocab. Pronúncia em PT. Máx 3, mín 1.
 
 FORMATO — JSON puro sem markdown:
 ${fmt}`;
@@ -5425,7 +5427,14 @@ async function generar(){
       allFrases.push(...(r.frases||[]));
       if(allFrases.length>=10)break;
     }
-    const parsed={frases:allFrases.slice(0,10)};
+    // Deduplicar por texto da frase
+    const seen=new Set();
+    const unique=allFrases.filter(f=>{
+      const key=(f.pt||f.en||'').trim().toLowerCase();
+      if(seen.has(key))return false;
+      seen.add(key);return true;
+    });
+    const parsed={frases:unique.slice(0,10)};
     const text='ok'; // dummy
     // parsed já definido acima
     const dir=window._genDir||'pt-en';
