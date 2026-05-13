@@ -5306,7 +5306,7 @@ function buildGenPrompt(subjects,theme){
   const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
   const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais de empresas (Netflix,Spotify,Apple,iFood,Uber) e famosos.';
 
-  return `Você é um gerador preciso de frases para lição de casa de inglês. Gere exatamente 10 frases ${dirLabel}.
+  return `Você é um gerador preciso de frases para lição de casa de inglês. Gere exatamente 5 frases ${dirLabel}. Responda APENAS com JSON minificado (sem espaços, sem quebras de linha, sem markdown).
 
 ${globalRule}
 
@@ -5336,7 +5336,7 @@ function buildFreePrompt(theme){
   const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
   const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
   const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais.';
-  return `Gere exatamente 10 frases ${dirLabel} em inglês avançado, sem restrições gramaticais. Use qualquer tempo verbal e vocabulário rico.
+  return `Gere exatamente 5 frases ${dirLabel} em inglês avançado. Responda APENAS com JSON minificado, sem restrições gramaticais. Use qualquer tempo verbal e vocabulário rico.
 
 TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
 
@@ -5371,6 +5371,12 @@ function setGenDir(dir,el){
   document.querySelectorAll('.gen-dir-btn').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
 }
+async function callGen(prompt){
+  const resp=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+  const data=await resp.json();
+  const raw=(data.text||data.error||'').trim().replace(/^```json|```/g,'').trim();
+  return JSON.parse(raw);
+}
 async function generar(){
   const free=window._genFree||false;
   const chips=[...document.querySelectorAll('.gen-chip.on')].map(c=>c.dataset.id);
@@ -5382,17 +5388,14 @@ async function generar(){
   const errEl=document.getElementById('gen-error');
   btn.disabled=true;loading.style.display='block';result.innerHTML='';errEl.style.display='none';
   try{
-    const prompt=free?buildFreePrompt(theme):buildGenPrompt(chips,theme);
-    const resp=await fetch('/api/claude',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({prompt:prompt})
-    });
-    const data=await resp.json();
-    console.log('GEN RAW:',data);
-    const raw=data.text||data.error||'';
-    console.log('GEN TEXT:',raw.substring(0,200));
-    const text=raw.trim().replace(/^```json|```$/g,'').trim();
-    const parsed=JSON.parse(text);
+    const p1=free?buildFreePrompt(theme):buildGenPrompt(chips,theme);
+    loading.textContent='⏳ Gerando frases (1/2)...';
+    const r1=await callGen(p1);
+    loading.textContent='⏳ Gerando frases (2/2)...';
+    const r2=await callGen(p1);
+    const parsed={frases:[...r1.frases,...r2.frases]};
+    const text='ok'; // dummy para não quebrar o código abaixo
+    // parsed já definido acima
     const dir=window._genDir||'pt-en';
     const frases=parsed.frases;
     result.innerHTML=frases.map((f,i)=>{
