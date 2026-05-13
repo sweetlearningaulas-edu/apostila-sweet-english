@@ -799,6 +799,60 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .hl-wont{color:var(--red);font-weight:700;}
 .hl-go{color:var(--green);font-weight:700;}
 .hl-tobe{color:var(--yel);font-weight:700;}
+
+/* ── GERADOR ── */
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 16px 0}
+.tl-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 8px;border-radius:14px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,background .2s;text-align:center}
+.tl-card:hover{border-color:rgba(110,181,255,.4);background:rgba(110,181,255,.06)}
+.tl-card:active{transform:scale(.97)}
+.tl-card-icon{font-size:28px;line-height:1}
+.tl-card-name{font-size:11px;color:var(--s);font-weight:500;line-height:1.3}
+.tl-panel{padding:16px;overflow-y:auto;max-height:calc(100dvh - 200px)}
+.gen-wrap{display:flex;flex-direction:column;gap:0;padding-bottom:40px}
+.gen-back{background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;padding:0 0 20px;opacity:.8;text-align:left;display:block}
+.gen-section{margin-bottom:24px}
+.gen-section-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.gen-section-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--m);font-family:monospace}
+.gen-select-all{font-size:11px;color:var(--blue);background:none;border:none;cursor:pointer;opacity:.8;padding:0}
+.gen-cap-group{margin-bottom:16px}
+.gen-cap-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.gen-cap-label{font-size:11px;font-weight:700;color:var(--s);letter-spacing:.3px}
+.gen-cap-btn{border:1px solid var(--line);border-radius:20px;padding:3px 10px;font-family:inherit;font-size:10px;font-weight:600;color:var(--m);background:transparent;cursor:pointer;transition:all .2s}
+.gen-cap-btn:active{opacity:.4}
+.gen-cap-btn.on{color:var(--blue);border-color:rgba(110,181,255,.4)}
+.gen-chips{display:flex;flex-wrap:wrap;gap:7px}
+.gen-chip{padding:6px 12px;border-radius:8px;cursor:pointer;background:var(--card);border:1px solid var(--line);font-size:12px;color:var(--s);transition:all .15s;user-select:none;font-weight:500}
+.gen-chip.on{background:rgba(110,181,255,.1);border-color:rgba(110,181,255,.45);color:var(--blue);font-weight:600}
+.gen-chips-dimmed .gen-chip{opacity:.25;pointer-events:none}
+.gen-cap-btn-dimmed{opacity:.2!important;pointer-events:none!important}
+#gen-theme{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--tx);font-size:13px;resize:none;font-family:inherit;outline:none;transition:border-color .2s;width:100%}
+#gen-theme:focus{border-color:rgba(110,181,255,.4)}
+#gen-theme::placeholder{color:var(--m)}
+.gen-dir-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gen-dir-btn{padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--s);font-size:13px;cursor:pointer;transition:all .15s;font-weight:500}
+.gen-dir-btn.on{background:rgba(110,181,255,.1);border-color:rgba(110,181,255,.45);color:var(--blue);font-weight:600}
+.gen-free-card{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;cursor:pointer;transition:border-color .2s}
+.gen-free-card.on{border-color:rgba(110,181,255,.4);background:rgba(110,181,255,.05)}
+.gen-free-label{font-size:13px;font-weight:600;color:var(--tx)}
+.gen-free-desc{font-size:11px;color:var(--m);margin-top:3px}
+.gen-switch{width:42px;height:24px;border-radius:20px;background:var(--line);position:relative;transition:background .2s;flex-shrink:0}
+.gen-free-card.on .gen-switch{background:var(--blue)}
+.gen-switch::after{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.gen-free-card.on .gen-switch::after{transform:translateX(18px)}
+#gen-btn{background:var(--blue);color:#0a0a14;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-top:8px}
+#gen-btn:disabled{opacity:.35;cursor:not-allowed}
+#gen-copy-btn{display:none;background:var(--card);color:var(--blue);border:1px solid rgba(110,181,255,.3);border-radius:12px;padding:12px;font-size:13px;font-weight:600;cursor:pointer;width:100%;margin-top:10px}
+.gen-sentence-block{padding:18px 0 16px}
+.gen-divider{border:none;border-top:1px dashed rgba(110,181,255,.15);margin:0}
+.gen-sentence-pt{font-size:14px;color:var(--tx);line-height:1.6;font-weight:500;margin-bottom:14px}
+.gen-vocab-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--m);font-family:monospace;margin-bottom:8px}
+.gen-vocab{display:flex;flex-direction:column;gap:5px}
+.gen-vocab-item{font-size:12px;color:var(--s);font-family:monospace;padding:5px 10px;background:var(--card);border-radius:6px;border:1px solid var(--line)}
+.gen-vocab-item strong{color:var(--tx)}
+.gen-vocab-item .pron{color:var(--blue);opacity:.7}
+#gen-loading{text-align:center;padding:36px 0;color:var(--m);font-size:13px;display:none}
+#gen-error{color:#fc8181;font-size:12px;padding:10px 14px;background:rgba(252,129,129,.07);border-radius:8px;display:none;margin-top:8px;border:1px solid rgba(252,129,129,.2)}
+.gen-result-wrap{margin-top:8px}
 </style>
 </head>
 <body class="dark">
@@ -2482,41 +2536,37 @@ const pages=[
     <div class="pg-lbl">Ferramentas</div>
     <div class="pg-ttl">Recursos extras</div>
   </div>
-  <div id="tool-menu" class="tl-menu">
-    <div class="tl-item" onclick="openTool('translator')">
-      <div class="tl-icon">🌐</div>
-      <div class="tl-info"><div class="tl-name">Tradutor</div><div class="tl-desc">Português ↔ Inglês em tempo real</div></div>
-      <div class="tl-arrow">→</div>
+  <div id="tool-menu" class="tl-grid">
+    <div class="tl-card" onclick="openTool('generator')">
+      <div class="tl-card-icon">✨</div>
+      <div class="tl-card-name">Gerador de frases</div>
     </div>
-    <div class="tl-item" onclick="openTool('tts')">
-      <div class="tl-icon">🔊</div>
-      <div class="tl-info"><div class="tl-name">Ouvir em inglês</div><div class="tl-desc">Digite qualquer texto e ouça</div></div>
-      <div class="tl-arrow">→</div>
+    <div class="tl-card" onclick="openTool('translator')">
+      <div class="tl-card-icon">🌐</div>
+      <div class="tl-card-name">Tradutor</div>
     </div>
-    <div class="tl-item" onclick="openTool('correct')">
-      <div class="tl-icon">✏️</div>
-      <div class="tl-info"><div class="tl-name">Corretor de frases</div><div class="tl-desc">Escreva em inglês e corrija</div></div>
-      <div class="tl-arrow">→</div>
+    <div class="tl-card" onclick="openTool('tts')">
+      <div class="tl-card-icon">🔊</div>
+      <div class="tl-card-name">Ouvir em inglês</div>
     </div>
-    <div class="tl-item" onclick="openTool('examples')">
-      <div class="tl-icon">💬</div>
-      <div class="tl-info"><div class="tl-name">Exemplos</div><div class="tl-desc">Veja uma palavra em frases reais</div></div>
-      <div class="tl-arrow">→</div>
+    <div class="tl-card" onclick="openTool('correct')">
+      <div class="tl-card-icon">✅</div>
+      <div class="tl-card-name">Corretor de frases</div>
     </div>
-    <div class="tl-item" onclick="openTool('dictation')">
-      <div class="tl-icon">🎧</div>
-      <div class="tl-info"><div class="tl-name">Ditado</div><div class="tl-desc">Ouça e escreva o que ouviu</div></div>
-      <div class="tl-arrow">→</div>
+    <div class="tl-card" onclick="openTool('examples')">
+      <div class="tl-card-icon">💬</div>
+      <div class="tl-card-name">Exemplos</div>
     </div>
-    <div class="tl-item" onclick="openTool('dict')">
-      <div class="tl-icon">📖</div>
-      <div class="tl-info"><div class="tl-name">Dicionário rápido</div><div class="tl-desc">Significado, exemplo e pronúncia</div></div>
-      <div class="tl-arrow">→</div>
+    <div class="tl-card" onclick="openTool('dictation')">
+      <div class="tl-card-icon">🎧</div>
+      <div class="tl-card-name">Ditado</div>
+    </div>
+    <div class="tl-card" onclick="openTool('dict')">
+      <div class="tl-card-icon">📖</div>
+      <div class="tl-card-name">Dicionário rápido</div>
     </div>
   </div>
-  <div id="tool-panel" class="tl-panel" style="display:none;">
-    <div id="tool-panel-body"></div>
-  </div>
+  <div id="tool-panel" class="tl-panel" style="display:none;"></div>
 </div>`,
 
 `<div class="page pg-idx">
@@ -5211,7 +5261,252 @@ const toolTemplates={
     </div>`
 };
 let activeTool=null;
+
+/* ── GERADOR ── */
+function buildGenPrompt(subjects,theme){
+  const has=id=>subjects.includes(id);
+  const allowed=[];
+  const forbidden=[];
+  allowed.push('Sujeitos: I, you, he, she, it, we, they. Nomes próprios: Ryan, Ashley, Megan, Josh, Jake, Taylor, Camila, Douglas, Renato, Raphael, Vanessa, Brian, Ethan, Sofia, Lucas, Emma, Noah, Olivia, Liam.');
+  if(has('s02')){allowed.push('S02 To Be presente: am,is,are (afirm). ain\'t,isn\'t,aren\'t (neg). Is/Are/Isn\'t/Aren\'t? (interrog). Contrações: I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
+  else{forbidden.push('S02 PROIBIDO to be presente: am,is,are,ain\'t,isn\'t,aren\'t,I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
+  if(has('s03')){allowed.push('S03 Gerúndio: to be presente + verbo-ing.');}
+  else{forbidden.push('S03 PROIBIDO gerúndio: nenhum verbo-ing com to be.');}
+  if(has('s04')){allowed.push('S04 Adjetivos simples antes do substantivo ou após to be. Combinações noun+noun (plastic bottle).');}
+  else{forbidden.push('S04 PROIBIDO adjetivos descritivos e combinações noun+noun.');}
+  if(has('s05')||has('s06')){allowed.push('S05/S06 Artigos: a,an,the,some+plural,some+singular. Nomes próprios de pessoas: sem artigo.');}
+  else{forbidden.push('S05/S06 PROIBIDO artigos: a,an,the,some.');}
+  if(has('s07')){allowed.push('S07 Presente simples: APENAS afirmativo. I/you/we/they+verbo base. He/she/it+verbo+s/es/ies. have→has.');}
+  else{forbidden.push('S07 PROIBIDO presente simples de verbos de ação: eat,work,play,watch,buy,like,love,study,live,etc.');}
+  if(has('s08')){allowed.push('S08 Passado simples: APENAS afirmativo. Regulares:+ed. Irregulares: forma própria. Verbo não muda por pronome.');}
+  else{forbidden.push('S08 PROIBIDO passado simples de verbos de ação: played,watched,bought,ate,slept,saw,etc.');}
+  if(has('s09')){allowed.push('S09 Futuro: will+verbo (afirm). won\'t+verbo (neg). Will/Won\'t+sujeito+verbo? (interrog).');}
+  else{forbidden.push('S09 PROIBIDO will/won\'t com verbos de ação.');}
+  if(has('s10')){allowed.push('S10 To Go: go/goes (recorrência presente). went (passado). will go/won\'t go (futuro). Will/Won\'t go? (interrog). was/wasn\'t (estado singular passado). were/weren\'t (estado plural passado).');}
+  else{forbidden.push('S10 PROIBIDO: go,goes,went,will go,won\'t go.'+(has('s02')?'':' PROIBIDO: was,wasn\'t,were,weren\'t.'));}
+  if(has('s11')){allowed.push('S11 Sujeito oculto: 2 a 3 frases com sujeito oculto em português (ex: "Comprei um carro."=I, "Estava chovendo."=it).');}
+  else{forbidden.push('S11 PROIBIDO sujeito oculto. Toda frase deve ter sujeito explícito.');}
+  if(has('s12')){allowed.push('S12 Preposições: in,on,at (e in the,on the,at the) de tempo e lugar.');}
+  else{forbidden.push('S12 PROIBIDO preposições in,on,at.');}
+  if(has('s13')){allowed.push('S13 Demonstrativos: this,these,that,those,here,there.');}
+  else{forbidden.push('S13 PROIBIDO demonstrativos: this,these,that,those,here,there.');}
+  if(has('s14')){allowed.push('S14 Combinações in/on/at+this/these/that/those.');}
+  else{forbidden.push('S14 PROIBIDO combinar in/on/at com demonstrativos.');}
+  if(has('s15')){allowed.push('S15 Pronome relativo: that (coringa), who (humanos), which (animais/objetos).');}
+  else{forbidden.push('S15 PROIBIDO pronomes relativos that/who/which como "que" explicativo.');}
+  if(has('s16')){allowed.push('S16 PPA: my,your,his,her,its,our,their. PP: mine,yours,his,hers,its,ours,theirs. of+PP. NUNCA "seu/sua" para 3ª pessoa em PT.');}
+  else{forbidden.push('S16 PROIBIDO pronomes de posse: my,your,his,her,its,our,their,mine,yours,hers,ours,theirs.');}
+  if(has('s17')){allowed.push('S17 Caso possessivo: dono+\'s+posse. Nome em S: só apóstrofo. Inanimados: of/of the.');}
+  else{forbidden.push('S17 PROIBIDO caso possessivo com \'s ou \'. PROIBIDO "of the" para posse.');}
+
+  const globalRule='REGRA GLOBAL: Perguntas e negativos SÓ com: am,ain\'t,is,isn\'t,are,aren\'t,was,wasn\'t,were,weren\'t,will,won\'t. Presente e passado simples são SEMPRE afirmativos.';
+  const vocabRule='VOCABULÁRIO — REGRA ABSOLUTA: toda palavra que o aluno precisa saber para traduzir VAI no vocabulário de CADA frase em que aparece — sem exceção e sem omitir repetições. Inclua: substantivos, verbos (SEMPRE no infinitivo), adjetivos, advérbios (muito=very, sempre=always, nunca=never, hoje=today, amanhã=tomorrow, agora=now, ontem=yesterday, bem=well, tarde=late, cedo=early, etc.) e qualquer outra palavra de conteúdo. NUNCA inclua: artigos, pronomes pessoais, pronomes de posse, to be, will/won\'t, go/goes/went, preposições in/on/at, demonstrativos. Pronúncia aproximada em PT. Máx 6, mín 1.';
+  const dir=window._genDir||'pt-en';
+  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
+  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
+  const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais de empresas (Netflix,Spotify,Apple,iFood,Uber) e famosos.';
+
+  return `Você é um gerador preciso de frases para lição de casa de inglês. Gere exatamente 10 frases ${dirLabel}.
+
+${globalRule}
+
+PERMITIDO:
+${allowed.map(r=>'✅ '+r).join('\n')}
+
+PROIBIDO:
+${forbidden.map(r=>'❌ '+r).join('\n')}
+
+TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
+
+REGRAS ADICIONAIS:
+1. Antes de cada frase, verifique: cada palavra está no PERMITIDO? Se não, reescreva.
+2. NUNCA "seu/sua/seus/suas" para 3ª pessoa. Use "dele/dela/deles/delas".
+3. NUNCA "assistindo a","ir ao","ir à","ao/aos/à/às". Use "para o/a/os/as".
+4. Futuro em PT: "vou/vai/vamos/vão + infinitivo".
+5. Varie ao máximo os tipos de frase disponíveis.
+
+${vocabRule}
+
+FORMATO — JSON puro sem markdown:
+${fmt}`;
+}
+
+function buildFreePrompt(theme){
+  const dir=window._genDir||'pt-en';
+  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
+  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
+  const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais.';
+  return `Gere exatamente 10 frases ${dirLabel} em inglês avançado, sem restrições gramaticais. Use qualquer tempo verbal e vocabulário rico.
+
+TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
+
+REGRAS: Frases naturais, variadas, nível avançado. NUNCA "ao/aos/à/às". Futuro em PT: "vou/vai/vamos/vão+infinitivo".
+
+VOCABULÁRIO: inclua toda palavra necessária para traduzir. Verbos no infinitivo. Pronúncia em PT. Máx 6, mín 1.
+
+FORMATO — JSON puro sem markdown:
+${fmt}`;
+}
+
+function genSelectAll(){document.querySelectorAll('.gen-chip').forEach(c=>c.classList.add('on'));}
+function genToggle(el){el.classList.toggle('on');}
+function genToggleCap(capId){
+  const chips=[...document.querySelectorAll('#'+capId+' .gen-chip')];
+  const btn=document.querySelector('#'+capId+' .gen-cap-btn');
+  const allOn=chips.every(c=>c.classList.contains('on'));
+  chips.forEach(c=>allOn?c.classList.remove('on'):c.classList.add('on'));
+  btn.classList.toggle('on',!allOn);
+}
+function genToggleFree(){
+  const card=document.getElementById('gen-free-card');
+  const on=card.classList.toggle('on');
+  window._genFree=on;
+  document.querySelectorAll('.gen-chips').forEach(el=>el.classList.toggle('gen-chips-dimmed',on));
+  document.querySelectorAll('.gen-cap-btn').forEach(el=>el.classList.toggle('gen-cap-btn-dimmed',on));
+  const sa=document.querySelector('.gen-select-all');
+  if(sa){sa.style.opacity=on?'0.2':'';sa.style.pointerEvents=on?'none':'';}
+}
+function setGenDir(dir,el){
+  window._genDir=dir;
+  document.querySelectorAll('.gen-dir-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+}
+async function generar(){
+  const free=window._genFree||false;
+  const chips=[...document.querySelectorAll('.gen-chip.on')].map(c=>c.dataset.id);
+  if(!free&&!chips.length){const e=document.getElementById('gen-error');e.textContent='Selecione pelo menos uma matéria.';e.style.display='block';return;}
+  const theme=document.getElementById('gen-theme').value;
+  const btn=document.getElementById('gen-btn');
+  const loading=document.getElementById('gen-loading');
+  const result=document.getElementById('gen-result');
+  const errEl=document.getElementById('gen-error');
+  btn.disabled=true;loading.style.display='block';result.innerHTML='';errEl.style.display='none';
+  try{
+    const prompt=free?buildFreePrompt(theme):buildGenPrompt(chips,theme);
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2500,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await resp.json();
+    const text=data.content[0].text.trim().replace(/^```json|```$/g,'').trim();
+    const parsed=JSON.parse(text);
+    const dir=window._genDir||'pt-en';
+    const frases=parsed.frases;
+    result.innerHTML=frases.map((f,i)=>{
+      const sentence=dir==='pt-en'?f.pt:f.en;
+      return `${i>0?'<hr class="gen-divider">':''}
+      <div class="gen-sentence-block">
+        <div class="gen-sentence-pt">${i+1}. ${sentence}</div>
+        <div class="gen-vocab-label">Vocabulário</div>
+        <div class="gen-vocab">${f.vocab.map(v=>`<div class="gen-vocab-item">${v.pt} = <strong>${v.en}</strong> <span class="pron">(${v.pron})</span></div>`).join('')}</div>
+      </div>`;
+    }).join('');
+    window._genText=frases.map((f,i)=>{
+      const sentence=dir==='pt-en'?f.pt:f.en;
+      const vocab=f.vocab.map(v=>`  ${v.pt} = ${v.en} (${v.pron})`).join('\n');
+      return `${i+1}. ${sentence}\n\n${vocab}`;
+    }).join('\n\n——————\n\n');
+    document.getElementById('gen-copy-btn').style.display='block';
+  }catch(e){
+    errEl.textContent='Erro ao gerar frases. Tente novamente.';errEl.style.display='block';
+    console.error(e);
+  }finally{
+    btn.disabled=false;loading.style.display='none';
+  }
+}
+function genCopy(){
+  if(!window._genText)return;
+  const btn=document.getElementById('gen-copy-btn');
+  const orig=btn.innerHTML;
+  function done(ok){btn.innerHTML=ok?'✅ Copiado!':'❌ Erro';setTimeout(()=>{btn.innerHTML=orig;},2000);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(window._genText).then(()=>done(true)).catch(()=>fallback());
+  } else {fallback();}
+  function fallback(){
+    const ta=document.createElement('textarea');
+    ta.value=window._genText;ta.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{done(document.execCommand('copy'));}catch(e){done(false);}
+    document.body.removeChild(ta);
+  }
+}
+
 function openTool(id){
+  if(id==='generator'){
+    document.getElementById('tool-menu').style.display='none';
+    const p=document.getElementById('tool-panel');
+    p.style.display='block';
+    p.innerHTML=`<div class="gen-wrap">
+      <button onclick="closeTool()" class="gen-back">← Ferramentas</button>
+      <div class="gen-section">
+        <div class="gen-section-hd">
+          <div class="gen-section-label">Matérias</div>
+          <button class="gen-select-all" onclick="genSelectAll()">Selecionar tudo</button>
+        </div>
+        <div class="gen-cap-group" id="cap1">
+          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 1</div><button class="gen-cap-btn" onclick="genToggleCap('cap1')">+ Tudo</button></div>
+          <div class="gen-chips">
+            <div class="gen-chip" data-id="s01" onclick="genToggle(this)">01 · Pronomes</div>
+            <div class="gen-chip" data-id="s02" onclick="genToggle(this)">02 · To Be</div>
+            <div class="gen-chip" data-id="s03" onclick="genToggle(this)">03 · Gerúndio</div>
+            <div class="gen-chip" data-id="s04" onclick="genToggle(this)">04 · Adjetivos</div>
+            <div class="gen-chip" data-id="s05" onclick="genToggle(this)">05 · Artigos</div>
+          </div>
+        </div>
+        <div class="gen-cap-group" id="cap2">
+          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 2</div><button class="gen-cap-btn" onclick="genToggleCap('cap2')">+ Tudo</button></div>
+          <div class="gen-chips">
+            <div class="gen-chip" data-id="s07" onclick="genToggle(this)">07 · Presente</div>
+            <div class="gen-chip" data-id="s08" onclick="genToggle(this)">08 · Passado</div>
+            <div class="gen-chip" data-id="s09" onclick="genToggle(this)">09 · Futuro</div>
+            <div class="gen-chip" data-id="s10" onclick="genToggle(this)">10 · To Go</div>
+            <div class="gen-chip" data-id="s11" onclick="genToggle(this)">11 · Sujeito Oculto</div>
+          </div>
+        </div>
+        <div class="gen-cap-group" id="cap3">
+          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 3</div><button class="gen-cap-btn" onclick="genToggleCap('cap3')">+ Tudo</button></div>
+          <div class="gen-chips">
+            <div class="gen-chip" data-id="s12" onclick="genToggle(this)">12 · In, On, At</div>
+            <div class="gen-chip" data-id="s13" onclick="genToggle(this)">13 · Demonstrativos</div>
+            <div class="gen-chip" data-id="s14" onclick="genToggle(this)">14 · In/On/At + Demo</div>
+            <div class="gen-chip" data-id="s15" onclick="genToggle(this)">15 · Que Explicativo</div>
+          </div>
+        </div>
+        <div class="gen-cap-group" id="cap4">
+          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 4</div><button class="gen-cap-btn" onclick="genToggleCap('cap4')">+ Tudo</button></div>
+          <div class="gen-chips">
+            <div class="gen-chip" data-id="s16" onclick="genToggle(this)">16 · Pronomes de Posse</div>
+            <div class="gen-chip" data-id="s17" onclick="genToggle(this)">17 · Caso Possessivo</div>
+          </div>
+        </div>
+      </div>
+      <div class="gen-section">
+        <div class="gen-section-label" style="margin-bottom:10px">Modo livre</div>
+        <div class="gen-free-card" id="gen-free-card" onclick="genToggleFree()">
+          <div><div class="gen-free-label">Sem restrições de matéria</div><div class="gen-free-desc">Para alunos avançados</div></div>
+          <div class="gen-switch"></div>
+        </div>
+      </div>
+      <div class="gen-section">
+        <div class="gen-section-label" style="margin-bottom:10px">Tema / Vocabulário</div>
+        <textarea id="gen-theme" rows="2" placeholder="Ex: futebol, tecnologia, família..."></textarea>
+      </div>
+      <div class="gen-section">
+        <div class="gen-section-label" style="margin-bottom:10px">Direção</div>
+        <div class="gen-dir-wrap">
+          <button class="gen-dir-btn on" onclick="setGenDir('pt-en',this)">🇧🇷 PT → EN</button>
+          <button class="gen-dir-btn" onclick="setGenDir('en-pt',this)">🇺🇸 EN → PT</button>
+        </div>
+      </div>
+      <div id="gen-error"></div>
+      <button id="gen-btn" onclick="generar()">✨ Gerar 10 frases</button>
+      <button id="gen-copy-btn" onclick="genCopy()">📋 Copiar frases</button>
+      <div id="gen-loading">⏳ Gerando...</div>
+      <div class="gen-result-wrap"><div id="gen-result"></div></div>
+    </div>`;
+    return;
+  }
+  // outros tools via toolTemplates
   activeTool=id;
   document.getElementById('tool-menu').style.display='none';
   const panel=document.getElementById('tool-panel');
