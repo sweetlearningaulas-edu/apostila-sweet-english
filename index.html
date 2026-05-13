@@ -5388,7 +5388,9 @@ async function generar(){
       body:JSON.stringify({prompt:prompt})
     });
     const data=await resp.json();
+    console.log('GEN RAW:',data);
     const raw=data.text||data.error||'';
+    console.log('GEN TEXT:',raw.substring(0,200));
     const text=raw.trim().replace(/^```json|```$/g,'').trim();
     const parsed=JSON.parse(text);
     const dir=window._genDir||'pt-en';
@@ -5409,8 +5411,10 @@ async function generar(){
     }).join('\n\n——————\n\n');
     document.getElementById('gen-copy-btn').style.display='block';
   }catch(e){
-    errEl.textContent='Erro ao gerar frases. Tente novamente.';errEl.style.display='block';
-    console.error(e);
+    let msg='Erro ao gerar frases. Tente novamente.';
+    if(e&&e.message)msg+=' ('+e.message+')';
+    errEl.textContent=msg;errEl.style.display='block';
+    console.error('GEN ERROR:',e);
   }finally{
     btn.disabled=false;loading.style.display='none';
   }
