@@ -5340,11 +5340,18 @@ TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
 REGRAS ADICIONAIS:
 1. Antes de cada frase, verifique: cada palavra está no PERMITIDO? Se não, reescreva.
 2. NUNCA "seu/sua/seus/suas" para 3ª pessoa. Use "dele/dela/deles/delas".
-3. NUNCA "assistindo a","ir ao","ir à","ao/aos/à/às". Use "para o/a/os/as".
+3. NUNCA "ao/aos/à/às" — use "para o/para a/para os/para as" ou "de noite/de manhã".
 4. Futuro em PT: "vou/vai/vamos/vão + infinitivo".
-5. USE TODAS as estruturas disponíveis no PERMITIDO. Distribua obrigatoriamente entre afirmativo, negativo e interrogativo quando disponíveis. Use pronomes e nomes variados.
-6. As frases deste lote devem ser completamente diferentes das frases de outros lotes — tema, sujeito e estrutura diferentes.
-7. NUNCA repita a mesma frase ou estrutura duas vezes.
+5. USE TODAS as estruturas disponíveis no PERMITIDO. Distribua entre afirmativo, negativo e interrogativo. Use pronomes e nomes variados.
+6. NUNCA repita tema, sujeito ou estrutura. Cada frase deve ser única.
+7. PORTUGUÊS NATURAL — regras obrigatórias:
+   - NUNCA "assistir para" — use somente "assistir" (ex: "vai assistir o show")
+   - NUNCA "ir para assistir" — use "vai assistir"
+   - NUNCA "escutar para" — use "escutar" ou "ouvir"
+   - NUNCA "olhar para" no sentido de assistir — use "assistir" ou "ver"
+   - "de noite" = at night. NUNCA "à noite" (contém "à")
+   - "de manhã" = in the morning. NUNCA "de manhã cedo" substituído por "à manhã"
+8. VOCABULÁRIO — cada tradução deve ser 100% correta. Verifique: "assistir" = watch (não "go to"). "ir" = go (não coloque no vocab). "ver" = see/watch.
 
 ${vocabRule}
 
@@ -5392,20 +5399,19 @@ function setGenDir(dir,el){
   document.querySelectorAll('.gen-dir-btn').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
 }
-async function callGen(prompt,batch){
-  const batchNote=batch?' Lote '+batch+'. Gere frases DIFERENTES dos lotes anteriores.':'';
-  const resp=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt+batchNote,max_tokens:2000})});
+async function callGen(prompt, already){
+  const alreadyNote = already && already.length
+    ? ' JÁ GERADAS (não repita nem frase parecida): '+already.map((f,i)=>(i+1)+'. '+(f.pt||f.en)).join(' | ')
+    : '';
+  const resp=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt+alreadyNote,max_tokens:2000})});
   const data=await resp.json();
-  const raw=(data.text||data.error||'').trim().replace(/^```json[\s\S]*?(\{)/,'$1').replace(/```[\s\S]*$/,'').trim();
-  // Se JSON incompleto, tentar fechar
-  let text=raw;
-  try{return JSON.parse(text);}catch(e){
-    // Tentar reparar JSON truncado
-    let fixed=text;
-    const opens=((fixed.match(/\{/g)||[]).length);
-    const closes=((fixed.match(/\}/g)||[]).length);
-    for(let i=0;i<opens-closes;i++)fixed+='}}';
-    try{return JSON.parse(fixed);}catch(e2){throw new Error('JSON truncado mesmo após reparo');}
+  const raw=(data.text||data.error||'').trim().replace(/^```json/,'').replace(/```$/,'').trim();
+  try{return JSON.parse(raw);}catch(e){
+    let fixed=raw;
+    const opens=(fixed.match(/\{/g)||[]).length;
+    const closes=(fixed.match(/\}/g)||[]).length;
+    for(let i=0;i<opens-closes;i++)fixed+='}';
+    try{return JSON.parse(fixed);}catch(e2){return {frases:[]};}
   }
 }
 async function generar(){
@@ -5423,7 +5429,7 @@ async function generar(){
     const allFrases=[];
     for(let i=0;i<5;i++){
       loading.textContent='⏳ Gerando frases ('+(i+1)+'/5)...';
-      const r=await callGen(p1,i+1);
+      const r=await callGen(p1, allFrases);
       allFrases.push(...(r.frases||[]));
       if(allFrases.length>=10)break;
     }
@@ -5439,6 +5445,20 @@ async function generar(){
     // parsed já definido acima
     const dir=window._genDir||'pt-en';
     const frases=parsed.frases;
+    // Palavras proibidas no vocabulário
+    const vocabBanned=['go','goes','went','will go',"won't go",'go to','a','an','the','some',
+      'i','you','he','she','it','we','they','am','is','are','was','were','will',"won't",
+      'my','your','his','her','its','our','their','mine','yours','hers','ours','theirs',
+      'in','on','at','this','that','these','those'];
+    frases.forEach(f=>{
+      f.vocab=(f.vocab||[]).filter(v=>{
+        const en=(v.en||'').toLowerCase().trim();
+        // Remover se a tradução contém "go" como palavra principal
+        if(vocabBanned.includes(en))return false;
+        if(/^go/.test(en))return false; // "go to", "go there", etc
+        return true;
+      });
+    });
     result.innerHTML=frases.map((f,i)=>{
       const sentence=dir==='pt-en'?f.pt:f.en;
       return `${i>0?'<hr class="gen-divider">':''}
