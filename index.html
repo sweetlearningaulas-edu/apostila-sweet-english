@@ -391,7 +391,7 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .idx-chapter-title{flex:1;font-size:15px;font-weight:700;color:var(--tx);letter-spacing:-.2px;}
 .idx-chapter-arrow{font-size:14px;color:var(--m);transition:transform .25s;flex-shrink:0;opacity:.6;}
 .idx-chapter.closed .idx-chapter-arrow{transform:rotate(-90deg);}
-.idx-chapter-body{display:flex;flex-direction:column;gap:5px;padding:0 10px 10px;}
+.idx-chapter-body{display:flex;flex-direction:column;gap:5px;padding:8px 10px 10px;}
 .idx-chapter.closed .idx-chapter-body{display:none;}
 .idx-chapter-body{border-top:1px solid var(--line);margin-top:0;}
 .the-hl{color:var(--acc,var(--blue));font-weight:700;}
@@ -827,6 +827,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .tp-hd-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m)}
 .tp-close{background:none;border:none;color:var(--m);cursor:pointer;font-size:16px;padding:0;line-height:1}
 .tp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+.tp-card-link{text-decoration:none;color:inherit;}
 .tp-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:background .15s;text-align:center;position:relative}
 .tp-card:hover{background:rgba(110,181,255,.08)}
 .tp-card:active{transform:scale(.96)}
@@ -947,7 +948,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.22)}
 
-.cv-logo{width:clamp(48px,18%,80px);object-fit:contain;margin-bottom:clamp(8px,2vh,16px);filter:drop-shadow(0 0 12px rgba(110,181,255,.3));}
+.cv-logo{width:clamp(90px,38%,160px);object-fit:contain;margin-bottom:clamp(8px,2vh,16px);filter:drop-shadow(0 0 12px rgba(110,181,255,.3));}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@900&display=swap" rel="stylesheet">
 </head>
@@ -1496,6 +1497,8 @@ function checkPron(btn,val,correct){
 /* ── EXERCISE ENGINE ── */
 function initEx(id,bank,total){
   total=total||10;
+  // Clear any running timer from previous session
+  if(window[id+'_s']&&window[id+'_s'].timerInterval)clearInterval(window[id+'_s'].timerInterval);
   const best=localStorage.getItem('best_'+id);
   window[id+'_s']={items:shuffle(bank).slice(0,total),cur:0,acertos:0,erroAtual:false,_bank:bank,_total:total,_best:best?parseFloat(best):null};
   const body=document.getElementById(id+'-body');
@@ -1509,6 +1512,7 @@ function initEx(id,bank,total){
 function restartEx(id){const s=window[id+'_s'];initEx(id,s._bank,s._total);}
 function startEx(id){
   const s=window[id+'_s'];
+  if(s.timerInterval)clearInterval(s.timerInterval);
   s.startTime=performance.now();
   s.timerInterval=setInterval(()=>{
     const el=document.getElementById(id+'-timer');
@@ -1520,6 +1524,21 @@ function fmtTime(secs){
   const m=Math.floor(secs/60),s2=secs%60;
   return (m>0?m+'m ':'')+s2.toFixed(2)+'s';
 }
+function playQuack(){
+  try{
+    const c=new(window.AudioContext||window.webkitAudioContext)();
+    const now=c.currentTime;
+    [300,240,190,150].forEach((freq,i)=>{
+      const o=c.createOscillator(),g=c.createGain();
+      o.connect(g);g.connect(c.destination);
+      o.type='square';o.frequency.value=freq;
+      const t=now+i*0.11;
+      g.gain.setValueAtTime(0.32,t);
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
+      o.start(t);o.stop(t+0.12);
+    });
+  }catch(e){}
+}
 function hlThe(txt){if(!txt)return '';return txt.replace(/\bthe\b/g,'<span class="the-hl">the</span>');}
 function renderEx(id,bank,total){
   const s=window[id+'_s'],tot=s.items.length,c=s.cur;
@@ -1529,15 +1548,19 @@ function renderEx(id,bank,total){
     clearInterval(s.timerInterval);
     const elapsed=(performance.now()-s.startTime)/1000;
     const p=Math.round((s.acertos/tot)*100);
-    let timeHtml=`<div class="finish-time">⏱ ${fmtTime(elapsed)}</div>`;
+    const isPerfect=s.acertos===tot;
+    let timeHtml='';
     let compareHtml='';
-    if(s._best){
-      const diff=s._best-elapsed;
-      if(diff>0) compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido que antes!</div>`;
-      else if(diff<0) compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar que antes.</div>`;
-      else compareHtml=`<div class="finish-compare">Mesmo tempo de antes!</div>`;
+    if(isPerfect){
+      timeHtml=`<div class="finish-time">⏱ ${fmtTime(elapsed)}</div>`;
+      if(s._best){
+        const diff=s._best-elapsed;
+        if(diff>0) compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido que antes!</div>`;
+        else if(diff<0) compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar que antes.</div>`;
+        else compareHtml=`<div class="finish-compare">Mesmo tempo de antes!</div>`;
+      }
+      if(!s._best||elapsed<s._best){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
     }
-    if(!s._best||elapsed<s._best){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
     body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div>${timeHtml}${compareHtml}<button class="ex-restart" onclick="restartEx('${id}')">Tentar de novo</button></div>`;
     score.textContent=`${s.acertos}/${tot}`;return;
   }
@@ -1574,6 +1597,7 @@ function checkOpt(id,btn,val,correct){
     btn.classList.add('wrong');
     fb.textContent='Não é esse. Tente de novo.';fb.className='ex-feedback err';
     s.erroAtual=true;
+    playQuack();
     setTimeout(()=>btn.classList.remove('wrong'),600);
 
   }
@@ -3806,7 +3830,7 @@ const pages=[
       <tr><td>o, a, os, as</td><td style="color:var(--blue);font-weight:700">the</td><td>Definido</td></tr>
       <tr><td>um, uma (consoante)</td><td style="color:var(--blue);font-weight:700">a</td><td>Indefinido singular</td></tr>
       <tr><td>um, uma (vogal/H mudo)</td><td style="color:var(--blue);font-weight:700">an</td><td>Indefinido singular</td></tr>
-      <tr><td>uns, umas, alguns</td><td style="color:var(--blue);font-weight:700">some + plural</td><td>Indefinido plural</td></tr>
+      <tr><td>uns, umas, alguns, algumas</td><td style="color:var(--blue);font-weight:700">some + plural</td><td>Indefinido plural</td></tr>
       <tr><td>um pouco de</td><td style="color:var(--blue);font-weight:700">some + singular</td><td>Quantidade indefinida</td></tr>
     </tbody></table></div>
     <div class="sub-label">Pratique</div>
@@ -4675,8 +4699,9 @@ const pages=[
     </div>
     </div>
 
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In, On, At — exercício</span><span class="ex-score" id="inonat-score">0/10</span></div><div class="ex-body" id="inonat-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In, On, At — exercício</span><span class="ex-score" id="inonat-score">0/10</span></div><div class="ex-body" id="inonat-body"></div></div>
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">13</div>
@@ -4796,8 +4821,9 @@ const pages=[
       <span class="en" data-speak="that">that</span> e <span class="en" data-speak="those">those</span> → coisas ou pessoas que estão <strong>longe</strong>.</p>
     </div>
 
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Demonstrativos — exercício</span><span class="ex-score" id="demo-score">0/10</span></div><div class="ex-body" id="demo-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Demonstrativos — exercício</span><span class="ex-score" id="demo-score">0/10</span></div><div class="ex-body" id="demo-body"></div></div>
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">14</div>
@@ -4904,8 +4930,9 @@ const pages=[
 
     </div>
 
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In/On/At + Demonstrativos — exercício</span><span class="ex-score" id="indem-score">0/10</span></div><div class="ex-body" id="indem-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In/On/At + Demonstrativos — exercício</span><span class="ex-score" id="indem-score">0/10</span></div><div class="ex-body" id="indem-body"></div></div>
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">15</div>
@@ -4984,8 +5011,9 @@ const pages=[
       <p class="tip-txt"><span class="en" data-speak="which">Which</span> é usado apenas para <strong>coisas e animais</strong>, nunca para pessoas. É mais comum no inglês escrito e formal.</p>
     </div>
 
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Que (explicativo) — exercício</span><span class="ex-score" id="queexp-score">0/10</span></div><div class="ex-body" id="queexp-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Que (explicativo) — exercício</span><span class="ex-score" id="queexp-score">0/10</span></div><div class="ex-body" id="queexp-body"></div></div>
 </div>`,
 
 `<div class="page pg-content" style="--acc:#f6ad55;">
@@ -4997,8 +5025,9 @@ const pages=[
   </div>
   <div class="pg-body">
     <p class="intro">Exercício com todas as matérias do Capítulo 3.</p>
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
 </div>`,
 
 
@@ -5138,8 +5167,9 @@ const pages=[
       </div>
     </div>
 
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes de Posse — exercício</span><span class="ex-score" id="poss-score">0/10</span></div><div class="ex-body" id="poss-body"></div></div>
   </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes de Posse — exercício</span><span class="ex-score" id="poss-score">0/10</span></div><div class="ex-body" id="poss-body"></div></div>
 </div>`,
 
 `<div class="page pg-sec" style="--acc:#68d391;">
@@ -5286,11 +5316,8 @@ const pages=[
       </div>
     </div>
 
-  </div>
-
-  <div class="ex-wrap">
-    <div class="ex-hd"><span class="ex-title">Caso Possessivo e Of — exercício</span><span class="ex-score" id="caso-score">0/10</span></div>
-    <div class="ex-body" id="caso-body"></div>
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Caso Possessivo e Of — exercício</span><span class="ex-score" id="caso-score">0/10</span></div><div class="ex-body" id="caso-body"></div></div>
   </div>
 </div>`,
 
@@ -5849,6 +5876,10 @@ go(0);
     <button class="tp-close" onclick="closeToolsPopup()">✕</button>
   </div>
   <div class="tp-grid">
+    <a class="tp-card tp-card-link" href="https://gemini.google.com/gem/1Rjo2NeBOr-n0fwuFX8TBwBEVlA-Sf5qm?usp=sharing" target="_blank" rel="noopener" onclick="closeToolsPopup()">
+      <div class="tp-card-icon">🔮</div>
+      <div class="tp-card-name">Gemini</div>
+    </a>
     <div class="tp-card" onclick="closeToolsPopup();openToolModal('generator')">
       <div class="tp-beta">beta</div>
       <div class="tp-card-icon">✨</div>
