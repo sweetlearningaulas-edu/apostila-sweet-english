@@ -32,11 +32,11 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 #slides{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;}
 #slides::-webkit-scrollbar{width:3px;}
 #slides::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
-#nav{display:flex;align-items:center;gap:16px;width:100%;max-width:100%;justify-content:center;background:var(--bg);border-top:1px solid var(--line);flex-shrink:0;padding:8px 16px;position:relative;}
-.nb{width:44px;height:44px;border-radius:50%;background:var(--nb-bg);border:1px solid var(--nb-bdr);color:var(--s);font-size:18px;cursor:pointer;transition:all .2s;display:grid;place-items:center;font-family:inherit;line-height:1;padding:0;}
+#nav{display:flex;align-items:center;gap:clamp(5px,2vw,18px);width:100%;max-width:100%;justify-content:center;background:var(--bg);border-top:1px solid var(--line);flex-shrink:0;padding:clamp(5px,1.5vh,10px) clamp(8px,3.5vw,20px);position:relative;}
+.nb{width:clamp(34px,9.5vw,52px);height:clamp(34px,9.5vw,52px);border-radius:50%;background:var(--nb-bg);border:1px solid var(--nb-bdr);color:var(--s);font-size:clamp(14px,4vw,20px);cursor:pointer;transition:all .2s;display:grid;place-items:center;font-family:inherit;line-height:1;padding:0;}
 .nb:hover{color:var(--tx);}
 .nb:disabled{opacity:.2;cursor:default;}
-#ctr{font-size:12px;color:var(--m);letter-spacing:1px;min-width:56px;text-align:center;}
+#ctr{font-size:clamp(10px,2.8vw,13px);color:var(--m);letter-spacing:clamp(0px,0.5vw,1px);min-width:clamp(38px,11vw,62px);text-align:center;}
 #tts-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 16px;font-size:12px;font-weight:600;color:var(--blue);opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;z-index:300;box-shadow:0 4px 20px rgba(0,0,0,.2);}
 #tts-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 #chat-btn{position:fixed;bottom:76px;right:16px;z-index:150;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));border:none;color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s;}
@@ -632,8 +632,8 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .cp-expr-ex{font-size:13px;color:var(--s);font-style:italic;}
 .sec-topbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .sec-topbar-right{display:flex;gap:6px;}
-.nb-sm{width:36px;height:36px;font-size:14px;}
-.nb-idx{position:absolute;left:16px;}
+.nb-sm{width:clamp(26px,7.5vw,42px);height:clamp(26px,7.5vw,42px);font-size:clamp(11px,3vw,16px);}
+.nb-idx{position:absolute;left:clamp(8px,3vw,20px);}
 .sec-lvl-bars{display:flex;gap:10px;align-items:center;}
 .sec-mid{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;overflow:hidden;}
 .ex-start-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;}
@@ -722,8 +722,8 @@ body.no-shimmer .en{animation:none !important;background:none !important;-webkit
 .en:hover{animation-duration:1s;}
 
 /* ── TOOLS PAGE ── */
-.pg-tools{height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden;}
-.tl-menu{display:flex;flex-direction:column;overflow-y:auto;flex:1;}
+.pg-tools{min-height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden;}
+.tl-menu{display:flex;flex-direction:column;overflow-y:auto;}
 .tl-item{display:flex;align-items:center;gap:16px;padding:16px 20px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--line);}
 .tl-item:last-child{border-bottom:none;}
 .tl-item:active{background:var(--card2);}
@@ -734,10 +734,10 @@ body.no-shimmer .en{animation:none !important;background:none !important;-webkit
 .tl-arrow{font-size:16px;color:var(--m);opacity:.5;}
 
 /* ── TOOL PANEL ── */
-.tl-panel{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
-.tl-panel-scroll{display:flex;flex-direction:column;gap:16px;padding:20px 20px 60px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
-.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--bg);z-index:1;}
-.tl-back-btn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.tl-panel{display:flex;flex-direction:column;flex:1;overflow:hidden;}
+.tl-panel-scroll{display:flex;flex-direction:column;gap:16px;padding:20px 20px 40px;overflow-y:auto;flex:1;}
+.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;position:sticky;top:0;background:var(--bg);z-index:1;}
+.tl-back-btn{width:36px;height:36px;border-radius:10px;background:var(--card2);border:none;color:var(--tx);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .tl-back-btn:hover{background:var(--line);}
 .tl-hd-title{font-size:16px;font-weight:700;color:var(--tx);}
 
@@ -817,17 +817,31 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .hl-go{color:var(--green);font-weight:700;}
 .hl-tobe{color:var(--yel);font-weight:700;}
 
-/* ── GERADOR ── */
-.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 16px 24px;overflow-y:auto;flex:1;align-content:start}
-.tl-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 8px;border-radius:14px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,background .2s;text-align:center}
-.tl-card:hover{border-color:rgba(110,181,255,.4);background:rgba(110,181,255,.06)}
-.tl-card:active{transform:scale(.97)}
-.tl-beta{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);background:rgba(110,181,255,.12);border:1px solid rgba(110,181,255,.3);border-radius:4px;padding:2px 5px}
-.tl-card-icon{font-size:28px;line-height:1}
-.tl-card-name{font-size:11px;color:var(--s);font-weight:500;line-height:1.3}
-.tl-panel{padding:16px;overflow-y:auto;max-height:calc(100dvh - 200px)}
-.gen-wrap{display:flex;flex-direction:column;gap:0;overflow-y:auto;flex:1;padding:16px 16px 80px;-webkit-overflow-scrolling:touch;min-height:0;}
-.gen-back{display:none}
+/* ── TOOLS POPUP ── */
+.nb-tools{position:absolute;right:clamp(8px,3vw,20px);color:var(--blue);border-color:rgba(110,181,255,.25)!important}
+.nb-tools:hover{background:rgba(110,181,255,.1)!important}
+#tools-popup{position:fixed;bottom:84px;right:12px;width:min(320px,calc(100vw - 24px));background:var(--card);border-radius:20px;border:1px solid rgba(255,255,255,.07);box-shadow:0 8px 40px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.06) inset;z-index:8000;display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:popupIn .18s ease}
+@keyframes popupIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+#tools-popup.open{display:flex}
+.tp-hd{padding:14px 16px 10px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)}
+.tp-hd-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m)}
+.tp-close{background:none;border:none;color:var(--m);cursor:pointer;font-size:16px;padding:0;line-height:1}
+.tp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+.tp-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:background .15s;text-align:center;position:relative}
+.tp-card:hover{background:rgba(110,181,255,.08)}
+.tp-card:active{transform:scale(.96)}
+.tp-card-icon{font-size:24px;line-height:1}
+.tp-card-name{font-size:10px;color:var(--s);font-weight:500;line-height:1.3}
+.tp-beta{position:absolute;top:6px;right:6px;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);background:rgba(110,181,255,.12);border:1px solid rgba(110,181,255,.25);border-radius:3px;padding:1px 4px}
+#tools-overlay{position:fixed;inset:0;z-index:7999;display:none}
+#tools-overlay.open{display:block}
+
+/* ── TOOL MODAL ── */
+@keyframes modalIn{from{opacity:0}to{opacity:1}}
+#tool-modal{transition:opacity .18s ease;}
+#tool-modal[style*="flex"]{animation:modalIn .18s ease;}
+
+/* ── GENERATOR ── */
 .gen-section{margin-bottom:24px}
 .gen-section-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .gen-section-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--m);font-family:monospace}
@@ -860,6 +874,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 #gen-btn{background:var(--blue);color:#0a0a14;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-top:8px}
 #gen-btn:disabled{opacity:.35;cursor:not-allowed}
 #gen-copy-btn{display:none;background:var(--card);color:var(--blue);border:1px solid rgba(110,181,255,.3);border-radius:12px;padding:12px;font-size:13px;font-weight:600;cursor:pointer;width:100%;margin-top:10px}
+.gen-result-wrap{margin-top:8px}
 .gen-sentence-block{padding:18px 0 16px}
 .gen-divider{border:none;border-top:1px dashed rgba(110,181,255,.15);margin:0}
 .gen-sentence-pt{font-size:14px;color:var(--tx);line-height:1.6;font-weight:500;margin-bottom:14px}
@@ -870,8 +885,63 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .gen-vocab-item .pron{color:var(--blue);opacity:.7}
 #gen-loading{text-align:center;padding:36px 0;color:var(--m);font-size:13px;display:none}
 #gen-error{color:#fc8181;font-size:12px;padding:10px 14px;background:rgba(252,129,129,.07);border-radius:8px;display:none;margin-top:8px;border:1px solid rgba(252,129,129,.2)}
-.gen-result-wrap{margin-top:8px}
+.gen-wrap{display:flex;flex-direction:column;gap:0;overflow-y:auto;flex:1;padding:16px 16px 80px;-webkit-overflow-scrolling:touch;min-height:0}
+
+/* ── TTOOLS PAGE ── */
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 16px 24px;overflow-y:auto;flex:1;align-content:start}
+.tl-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 8px;border-radius:14px;background:var(--card);border:none;cursor:pointer;transition:border-color .2s,background .2s;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.35),0 1px 0 rgba(255,255,255,.06) inset;position:relative}
+.tl-card:hover{background:rgba(110,181,255,.06)}
+.tl-card:active{transform:scale(.97)}
+.tl-card-icon{font-size:28px;line-height:1}
+.tl-card-name{font-size:11px;color:var(--s);font-weight:500;line-height:1.3}
+.tl-card-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-bottom:-4px}
+.tl-beta{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);background:rgba(110,181,255,.12);border:1px solid rgba(110,181,255,.3);border-radius:4px;padding:2px 5px}
+.tl-panel{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.tl-panel-scroll{display:flex;flex-direction:column;gap:12px;padding:16px 16px 60px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--bg);z-index:1}
+.tl-back-btn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.tl-hd-title{font-size:15px;font-weight:700;color:var(--tx)}
+.tl-card{background:var(--card);border:none;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 4px 24px rgba(0,0,0,.35),0 1px 0 rgba(255,255,255,.06) inset}
+.tl-card-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-bottom:-4px}
+.tl-hint{font-size:13px;color:var(--s);line-height:1.65}
+.tl-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;color:var(--tx);resize:none;outline:none;transition:border-color .2s,background .2s;line-height:1.6}
+.tl-input:focus{border-color:rgba(110,181,255,.35);background:rgba(255,255,255,.06)}
+.tl-input::placeholder{color:var(--m)}
+.tl-input-sm{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 14px;font-family:inherit;font-size:14px;color:var(--tx);outline:none;min-width:0;transition:border-color .2s}
+.tl-input-sm:focus{border-color:rgba(110,181,255,.35)}
+.tl-btn{padding:13px 22px;background:var(--acc,var(--blue));border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;flex-shrink:0;letter-spacing:.3px}
+.tl-btn:hover{opacity:.85}
+.tl-btn:active{opacity:.7}
+.tl-btn:disabled{opacity:.3;cursor:default}
+.tl-btn-sec{background:rgba(255,255,255,.06);color:var(--tx);border:1px solid rgba(255,255,255,.08)}
+.tl-btn-row{display:flex;gap:8px}
+.tl-inline-row{display:flex;gap:8px;align-items:stretch}
+.tl-result{font-size:14px;color:var(--tx);line-height:1.75;background:rgba(255,255,255,.04);border-radius:16px;padding:16px 18px;border:1px solid rgba(255,255,255,.06)}
+.tl-result:empty{display:none}
+.tl-dir-row{display:flex;gap:8px}
+.tl-dir-btn{flex:1;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--s);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+.tl-dir-btn.active{background:rgba(110,181,255,.1);border-color:rgba(110,181,255,.4);color:var(--blue)}
+.tl-lvl-row{display:flex;gap:8px}
+.tl-lvl-btn{flex:1;padding:8px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--s);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+.tl-lvl-btn.active{background:rgba(110,181,255,.1);border-color:rgba(110,181,255,.4);color:var(--blue)}
+.tl-audio-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;text-align:center;cursor:pointer;min-height:70px;display:flex;align-items:center;justify-content:center;gap:10px}
+.tl-audio-icon{font-size:28px}
+.tl-audio-txt{font-size:14px;color:var(--s);line-height:1.5}
+
+/* ── MERGED PAGE ── */
+.merged-page{height:100%;overflow-y:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.merged-page .pg-sec{min-height:100%;height:auto!important}
+
+/* ── PAGE TRANSITIONS ── */
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+#slides>*{animation:pageIn .18s ease}
+#slides{scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+
+/* ── NAV RESPONSIVA ── */
+/* #nav gap já é clamp — aplicado abaixo na substituição do CSS do nav */
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@900&display=swap" rel="stylesheet">
 </head>
 <body class="dark">
 <div id="prog"><div id="prog-fill"></div></div>
@@ -896,15 +966,226 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 <div id="shell">
   <div id="frame"><div id="slides"></div></div>
   <div id="nav">
-    <button class="nb nb-sm nb-idx" onclick="go(3)" title="Índice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-    <button class="nb nb-sm" onclick="goPrevSec()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="19 18 13 12 19 6"/><line x1="5" y1="6" x2="5" y2="18"/></svg></button>
-    <button class="nb" id="prev" onclick="go(cur-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="nb nb-sm nb-idx" onclick="go(2)" title="Índice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <button class="nb nb-sm nb-tools" onclick="openToolsPopup()" title="Ferramentas"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></button>
+    <button class="nb" id="prev" onclick="goPrev()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div id="ctr"></div>
-    <button class="nb" id="next" onclick="go(cur+1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
-      <button class="nb nb-sm" onclick="goNextSec()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 18 11 12 5 6"/><line x1="19" y1="6" x2="19" y2="18"/></svg></button>
+    <button class="nb" id="next" onclick="goNext()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
-</div>
 <script>
+
+/* ── TOOLS POPUP ── */
+function openToolsPopup(){document.getElementById('tools-popup').classList.add('open');document.getElementById('tools-overlay').classList.add('open');}
+function closeToolsPopup(){document.getElementById('tools-popup').classList.remove('open');document.getElementById('tools-overlay').classList.remove('open');}
+
+/* ── TOOL MODAL ── */
+function openToolModal(id){
+  const modal=document.getElementById('tool-modal');
+  const body=document.getElementById('tool-modal-body');
+  body.style.cssText='display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;height:100%';
+  if(id==='generator'){
+    body.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden">
+      <div class="tl-hd">
+        <button class="tl-back-btn" onclick="closeToolModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span class="tl-hd-title">✨ Gerador de frases</span>
+      </div>
+      <div class="gen-wrap">
+        <div class="gen-section">
+          <div class="gen-section-hd"><div class="gen-section-label">Matérias</div><button class="gen-select-all" onclick="genSelectAll()">Selecionar tudo</button></div>
+          <div class="gen-cap-group" id="cap1"><div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 1</div><button class="gen-cap-btn" onclick="genToggleCap('cap1')">+ Tudo</button></div><div class="gen-chips"><div class="gen-chip" data-id="s01" onclick="genToggle(this)">01 · Pronomes</div><div class="gen-chip" data-id="s02" onclick="genToggle(this)">02 · To Be</div><div class="gen-chip" data-id="s03" onclick="genToggle(this)">03 · Gerúndio</div><div class="gen-chip" data-id="s04" onclick="genToggle(this)">04 · Adjetivos</div><div class="gen-chip" data-id="s05" onclick="genToggle(this)">05 · Artigos</div></div></div>
+          <div class="gen-cap-group" id="cap2"><div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 2</div><button class="gen-cap-btn" onclick="genToggleCap('cap2')">+ Tudo</button></div><div class="gen-chips"><div class="gen-chip" data-id="s07" onclick="genToggle(this)">07 · Presente</div><div class="gen-chip" data-id="s08" onclick="genToggle(this)">08 · Passado</div><div class="gen-chip" data-id="s09" onclick="genToggle(this)">09 · Futuro</div><div class="gen-chip" data-id="s10" onclick="genToggle(this)">10 · To Go</div><div class="gen-chip" data-id="s11" onclick="genToggle(this)">11 · Sujeito Oculto</div></div></div>
+          <div class="gen-cap-group" id="cap3"><div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 3</div><button class="gen-cap-btn" onclick="genToggleCap('cap3')">+ Tudo</button></div><div class="gen-chips"><div class="gen-chip" data-id="s12" onclick="genToggle(this)">12 · In, On, At</div><div class="gen-chip" data-id="s13" onclick="genToggle(this)">13 · Demonstrativos</div><div class="gen-chip" data-id="s14" onclick="genToggle(this)">14 · In/On/At + Demo</div><div class="gen-chip" data-id="s15" onclick="genToggle(this)">15 · Que Explicativo</div></div></div>
+          <div class="gen-cap-group" id="cap4"><div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 4</div><button class="gen-cap-btn" onclick="genToggleCap('cap4')">+ Tudo</button></div><div class="gen-chips"><div class="gen-chip" data-id="s16" onclick="genToggle(this)">16 · Pronomes de Posse</div><div class="gen-chip" data-id="s17" onclick="genToggle(this)">17 · Caso Possessivo</div></div></div>
+        </div>
+        <div class="gen-section"><div class="gen-section-label" style="margin-bottom:10px">Modo livre</div><div class="gen-free-card" id="gen-free-card" onclick="genToggleFree()"><div><div class="gen-free-label">Sem restrições de matéria</div><div class="gen-free-desc">Para alunos avançados</div></div><div class="gen-switch"></div></div></div>
+        <div class="gen-section"><div class="gen-section-label" style="margin-bottom:10px">Tema / Vocabulário</div><textarea id="gen-theme" rows="2" placeholder="Ex: futebol, tecnologia..."></textarea></div>
+        <div class="gen-section"><div class="gen-section-label" style="margin-bottom:10px">Direção</div><div class="gen-dir-wrap"><button class="gen-dir-btn on" onclick="setGenDir('pt-en',this)">🇧🇷 PT → EN</button><button class="gen-dir-btn" onclick="setGenDir('en-pt',this)">🇺🇸 EN → PT</button></div></div>
+        <div id="gen-error"></div>
+        <button id="gen-btn" onclick="generar()">✨ Gerar 10 frases</button>
+        <button id="gen-copy-btn" onclick="genCopy()">📋 Copiar frases</button>
+        <div id="gen-loading">⏳ Gerando...</div>
+        <div class="gen-result-wrap"><div id="gen-result"></div></div>
+      </div>
+    </div>`;
+  } else {
+    const tpl=toolTemplates[id]||'';
+    body.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden">${tpl.replace(/onclick="closeTool\(\)"/g,'onclick="closeToolModal()"')}</div>`;
+    if(id==='dictation')dicLevel='easy';
+  }
+  modal.style.display='flex';
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+}
+function closeToolModal(){
+  const modal=document.getElementById('tool-modal');
+  modal.style.transition='opacity .18s ease';
+  modal.style.opacity='0';
+  setTimeout(()=>{
+    modal.style.display='none';
+    modal.style.opacity='';
+    modal.style.transition='';
+    document.getElementById('tool-modal-body').innerHTML='';
+    if(window.speechSynthesis)window.speechSynthesis.cancel();
+  },180);
+}
+
+/* ── GERADOR ── */
+function buildGenPrompt(subjects,theme){
+  const has=id=>subjects.includes(id);
+  const allowed=[];const forbidden=[];
+  allowed.push('Sujeitos: I, you, he, she, it, we, they. Nomes próprios: Ryan, Ashley, Megan, Josh, Jake, Taylor, Camila, Douglas, Renato, Raphael, Vanessa, Brian, Ethan, Sofia, Lucas, Emma, Noah, Olivia, Liam.');
+  if(has('s02')){allowed.push('S02 To Be presente: am,is,are. ain\'t,isn\'t,aren\'t. Is/Are/Isn\'t/Aren\'t? Contrações: I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
+  else{forbidden.push('S02 PROIBIDO to be presente: am,is,are,ain\'t,isn\'t,aren\'t,I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
+  if(has('s03')){allowed.push('S03 Gerúndio: to be + verbo-ing.');}else{forbidden.push('S03 PROIBIDO gerúndio.');}
+  if(has('s04')){allowed.push('S04 Adjetivos antes do subst ou após to be. Noun+noun (plastic bottle).');}else{forbidden.push('S04 PROIBIDO adjetivos e noun+noun.');}
+  if(has('s05')||has('s06')){allowed.push('S05/S06 Artigos: a,an,the,some+plural,some+singular.');}else{forbidden.push('S05/S06 PROIBIDO artigos: a,an,the,some.');}
+  if(has('s07')){allowed.push('S07 Presente simples APENAS afirmativo. have→has.');}else{forbidden.push('S07 PROIBIDO presente simples de verbos de ação.');}
+  if(has('s08')){allowed.push('S08 Passado simples APENAS afirmativo.');}else{forbidden.push('S08 PROIBIDO passado simples de verbos de ação.');}
+  if(has('s09')){allowed.push('S09 Futuro: will+verbo. won\'t+verbo. Will/Won\'t+sujeito+verbo?');}else{forbidden.push('S09 PROIBIDO will/won\'t.');}
+  if(has('s10')){allowed.push('S10 To Go: go/goes/went/will go/won\'t go. was/wasn\'t/were/weren\'t.');}else{forbidden.push('S10 PROIBIDO go,goes,went,will go,won\'t go.'+(has('s02')?'':' PROIBIDO was,wasn\'t,were,weren\'t.'));}
+  if(has('s11')){allowed.push('S11 Sujeito oculto: 2-3 frases com sujeito oculto em PT.');}else{forbidden.push('S11 PROIBIDO sujeito oculto.');}
+  if(has('s12')){allowed.push('S12 in,on,at de tempo e lugar.');}else{forbidden.push('S12 PROIBIDO in,on,at.');}
+  if(has('s13')){allowed.push('S13 this,these,that,those,here,there.');}else{forbidden.push('S13 PROIBIDO this,these,that,those,here,there.');}
+  if(has('s14')){allowed.push('S14 in/on/at+this/these/that/those.');}else{forbidden.push('S14 PROIBIDO in/on/at+demonstrativos.');}
+  if(has('s15')){allowed.push('S15 that/who/which como que explicativo.');}else{forbidden.push('S15 PROIBIDO that/who/which como que explicativo.');}
+  if(has('s16')){allowed.push('S16 PPA: my,your,his,her,its,our,their. PP: mine,yours,hers,ours,theirs. NUNCA seu/sua para 3ª.');}else{forbidden.push('S16 PROIBIDO pronomes de posse: my,your,his,her,its,our,their,mine,yours,hers,ours,theirs.');}
+  if(has('s17')){allowed.push('S17 \'s/\' de posse. of/of the.');}else{forbidden.push('S17 PROIBIDO \'s/\' de posse e of the.');}
+  const globalRule='REGRA GLOBAL: Perguntas e negativos SÓ com: am,ain\'t,is,isn\'t,are,aren\'t,was,wasn\'t,were,weren\'t,will,won\'t. Presente e passado simples SEMPRE afirmativos.';
+  const vocabRule='VOCABULÁRIO ABSOLUTO: toda palavra para traduzir VAI no vocab de CADA frase. Inclua substantivos, verbos (infinitivo), adjetivos, advérbios (muito=very, sempre=always, hoje=today, etc.). NUNCA go/goes/went, artigos, pronomes, to be, will/won\'t, in/on/at, demonstrativos. REGRA DE REPETIÇÃO: se palavra aparece em mais de uma frase, repita no vocab de cada uma. Máx 6, mín 1.';
+  const dir=window._genDir||'pt-en';
+  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para traduzir para INGLÊS':'em INGLÊS para traduzir para PORTUGUÊS';
+  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
+  const defaultTheme='business, cultura pop, música, filmes, séries. Nomes reais: Netflix,Spotify,Apple,iFood,Uber.';
+  return `Gerador preciso de frases para lição de casa. Gere 2 frases ${dirLabel}. JSON minificado, linha única, sem markdown.\n\n${globalRule}\n\nPERMITIDO:\n${allowed.map(r=>'✅ '+r).join('\n')}\n\nPROIBIDO:\n${forbidden.map(r=>'❌ '+r).join('\n')}\n\nTEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}\n\nREGRAS: 1.Verifique cada palavra contra PERMITIDO antes de escrever. 2.NUNCA seu/sua para 3ª pessoa. 3.NUNCA ao/aos/à/às. 4.Futuro PT: vou/vai/vamos/vão+infinitivo. 5.Varie tipos de frase. 6.NUNCA repita tema/sujeito/estrutura. 7.assistir=watch,NÃO go to.\n\n${vocabRule}\n\nFORMATO JSON: ${fmt}`;
+}
+function buildFreePrompt(theme){
+  const dir=window._genDir||'pt-en';
+  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para traduzir para INGLÊS':'em INGLÊS para traduzir para PORTUGUÊS';
+  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
+  return `Gere 2 frases ${dirLabel} em inglês avançado sem restrições. JSON minificado linha única.\nTEMA: ${theme&&theme.trim()?theme.trim():'cultura pop, negócios, séries'}\nVOCABULÁRIO: toda palavra necessária. Verbos infinitivo. NUNCA go no vocab. Pronúncia PT. Máx 3.\nFORMATO: ${fmt}`;
+}
+function genSelectAll(){document.querySelectorAll('.gen-chip').forEach(c=>c.classList.add('on'));}
+function genToggle(el){el.classList.toggle('on');}
+function genToggleCap(capId){
+  const chips=[...document.querySelectorAll('#'+capId+' .gen-chip')];
+  const btn=document.querySelector('#'+capId+' .gen-cap-btn');
+  const allOn=chips.every(c=>c.classList.contains('on'));
+  chips.forEach(c=>allOn?c.classList.remove('on'):c.classList.add('on'));
+  btn.classList.toggle('on',!allOn);
+}
+function genToggleFree(){
+  const card=document.getElementById('gen-free-card');
+  const on=card.classList.toggle('on');
+  window._genFree=on;
+  document.querySelectorAll('.gen-chips').forEach(el=>el.classList.toggle('gen-chips-dimmed',on));
+  document.querySelectorAll('.gen-cap-btn').forEach(el=>el.classList.toggle('gen-cap-btn-dimmed',on));
+  const sa=document.querySelector('.gen-select-all');
+  if(sa){sa.style.opacity=on?'0.2':'';sa.style.pointerEvents=on?'none':'';}
+}
+function setGenDir(dir,el){
+  window._genDir=dir;
+  document.querySelectorAll('.gen-dir-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+}
+async function callGen(prompt,already){
+  const alreadyNote=already&&already.length?' JÁ GERADAS (não repita): '+already.map((f,i)=>(i+1)+'. '+(f.pt||f.en)).join(' | '):'';
+  const resp=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt+alreadyNote,max_tokens:2000})});
+  const data=await resp.json();
+  const raw=(data.text||data.error||'').trim().replace(/^```json/,'').replace(/```$/,'').trim();
+  try{return JSON.parse(raw);}catch(e){
+    let fixed=raw;
+    const opens=(fixed.match(/\{/g)||[]).length;
+    const closes=(fixed.match(/\}/g)||[]).length;
+    for(let i=0;i<opens-closes;i++)fixed+='}';
+    try{return JSON.parse(fixed);}catch(e2){return{frases:[]};}
+  }
+}
+async function generar(){
+  const free=window._genFree||false;
+  const chips=[...document.querySelectorAll('.gen-chip.on')].map(c=>c.dataset.id);
+  if(!free&&!chips.length){const e=document.getElementById('gen-error');e.textContent='Selecione pelo menos uma matéria.';e.style.display='block';return;}
+  const theme=document.getElementById('gen-theme').value;
+  const _scope=document.getElementById('tool-modal-body')||document;
+  const btn=_scope.querySelector('#gen-btn')||document.getElementById('gen-btn');
+  const loading=_scope.querySelector('#gen-loading')||document.getElementById('gen-loading');
+  const result=_scope.querySelector('#gen-result')||document.getElementById('gen-result');
+  const errEl=_scope.querySelector('#gen-error')||document.getElementById('gen-error');
+  if(!btn||!loading||!result||!errEl){console.error('gen elements not found');return;}
+  btn.disabled=true;loading.style.display='block';result.innerHTML='';errEl.style.display='none';
+  try{
+    const p1=free?buildFreePrompt(theme):buildGenPrompt(chips,theme);
+    const allFrases=[];
+    for(let i=0;i<5;i++){
+      loading.textContent='⏳ Gerando frases ('+(i+1)+'/5)...';
+      const r=await callGen(p1,allFrases);
+      allFrases.push(...(r.frases||[]));
+      if(allFrases.length>=10)break;
+    }
+    const seen=new Set();
+    const unique=allFrases.filter(f=>{const key=(f.pt||f.en||'').trim().toLowerCase();if(seen.has(key))return false;seen.add(key);return true;});
+    const parsed={frases:unique.slice(0,10)};
+    const dir=window._genDir||'pt-en';
+    const frases=parsed.frases;
+    const vocabBanned=['go','goes','went','will go',"won't go",'go to','a','an','the','some','i','you','he','she','it','we','they','am','is','are','was','were','will',"won't",'my','your','his','her','its','our','their','mine','yours','hers','ours','theirs','in','on','at','this','that','these','those'];
+    frases.forEach(f=>{f.vocab=(f.vocab||[]).filter(v=>{const en=(v.en||'').toLowerCase().trim();if(vocabBanned.includes(en))return false;if(/^go\b/.test(en))return false;return true;});});
+    result.innerHTML=frases.map((f,i)=>{
+      const sentence=dir==='pt-en'?f.pt:f.en;
+      return `${i>0?'<hr class="gen-divider">':''}<div class="gen-sentence-block"><div class="gen-sentence-pt">${i+1}. ${sentence}</div><div class="gen-vocab-label">Vocabulário</div><div class="gen-vocab">${f.vocab.map(v=>`<div class="gen-vocab-item">${v.pt} = <strong>${v.en}</strong> <span class="pron">(${v.pron})</span></div>`).join('')}</div></div>`;
+    }).join('');
+    window._genText=frases.map((f,i)=>{const sentence=dir==='pt-en'?f.pt:f.en;const vocab=f.vocab.map(v=>`  ${v.pt} = ${v.en} (${v.pron})`).join('\n');return `${i+1}. ${sentence}\n\n${vocab}`;}).join('\n\n——————\n\n');
+    const cpBtn=_scope.querySelector('#gen-copy-btn')||document.getElementById('gen-copy-btn');
+    if(cpBtn)cpBtn.style.display='block';
+  }catch(e){
+    errEl.textContent='Erro ao gerar frases. Tente novamente.';errEl.style.display='block';
+  }finally{btn.disabled=false;loading.style.display='none';}
+}
+function genCopy(){
+  if(!window._genText)return;
+  const _sc=document.getElementById('tool-modal-body')||document;
+  const btn=_sc.querySelector('#gen-copy-btn')||document.getElementById('gen-copy-btn');
+  const orig=btn.innerHTML;
+  function done(ok){btn.innerHTML=ok?'✅ Copiado!':'❌ Erro';setTimeout(()=>{btn.innerHTML=orig;},2000);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(window._genText).then(()=>done(true)).catch(()=>fallback());}else{fallback();}
+  function fallback(){const ta=document.createElement('textarea');ta.value=window._genText;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();try{done(document.execCommand('copy'));}catch(e){done(false);}document.body.removeChild(ta);}
+}
+
+/* ── MERGED PAGES + GO() REWRITE ── */
+function _isMergeableSec(n){
+  return n>=0&&n<pages.length&&pages[n]&&pages[n].indexOf('class="page pg-sec"')>-1
+    &&n+1<pages.length&&pages[n+1]&&pages[n+1].indexOf('class="page pg-content"')>-1
+    &&pages[n+1].indexOf('rev-big-hd')===-1;
+}
+function _isContentOfSec(n){
+  return n>0&&pages[n]&&pages[n].indexOf('class="page pg-content"')>-1
+    &&pages[n-1]&&pages[n-1].indexOf('class="page pg-sec"')>-1
+    &&pages[n].indexOf('rev-big-hd')===-1;
+}
+function goNext(){_isMergeableSec(cur)?go(cur+2):go(cur+1);}
+function goPrev(){go(cur-1);}
+function runInits(p){
+  if(p===5)initPronGame();
+  if(p===7)initGame();
+  if(p===9)initEx('ing',window['ing_bk'],10);
+  if(p===11)initEx('tobe',window['tobe_bk'],10);
+  if(p===13)initEx('adj',window['adj_bk'],10);
+  if(p===15)initEx('art',window['art_bk'],10);
+  if(p===16)initEx('rev',window['rev_bk'],15);
+  if(p===19)initEx('pres',window['pres_bk'],10);
+  if(p===21)initEx('past',window['past_bk'],10);
+  if(p===23)initEx('fut',window['fut_bk'],10);
+  if(p===25)initEx('togo',window['togo_bk'],10);
+  if(p===28)initEx('rev2',window['rev2_bk'],15);
+  if(p===31)initEx('inonat',window['inonat_bk'],10);
+  if(p===33)initEx('demo',window['demo_bk'],10);
+  if(p===35)initEx('indem',window['indem_bk'],10);
+  if(p===37)initEx('queexp',window['queexp_bk'],10);
+  if(p===38)initEx('rev3',window['rev3_bk'],10);
+  if(p===41)initEx('poss',window['poss_bk'],15);
+  if(p===42)initEx('poss',window['poss_bk'],10);
+  if(p===43)initEx('caso',window['caso_bk'],10);
+}
+function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
+function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
+
 /* ── TTS ── */
 const ttsC=new Map();
 function speak(w,el){
@@ -2531,7 +2812,7 @@ const pages=[
   <div class="inst-item"><div class="inst-icon">🔀</div><div class="inst-text"><strong>Perguntas aleatórias</strong><span>As perguntas são sorteadas a cada rodada. Tente de novo para ver questões diferentes.</span></div></div>
   <div class="inst-item"><div class="inst-icon">☕</div><div class="inst-text"><strong>Pausa para Revisão</strong><span>No final de cada capítulo há um exercício que mistura todas as matérias do capítulo.</span></div></div>
   <div class="inst-section-lbl">Ferramentas</div>
-  <div class="inst-item"><div class="inst-icon">🛠️</div><div class="inst-text"><strong>Página de Ferramentas</strong><span>Logo após esta página há ferramentas extras: tradutor, corretor, ditado com níveis, dicionário e gerador de exemplos.</span></div></div>
+  <div class="inst-item"><div class="inst-icon">🔧</div><div class="inst-text"><strong>Acesso rápido</strong><span>Toque no ícone de ferramentas na barra de navegação para acessar o tradutor, corretor, ditado, dicionário e gerador de frases — sem sair da página.</span></div></div>
   <div class="inst-item"><div class="inst-icon">💬</div><div class="inst-text"><strong>Chat com IA</strong><span>O botão 💬 flutuante está disponível em todas as páginas para tirar dúvidas de inglês na hora.</span></div></div>
   <div class="inst-section-lbl">Preferências</div>
   <div class="inst-prefs-btns">
@@ -2547,45 +2828,6 @@ const pages=[
     <div class="inst-text"><strong><span class="en" style="font-weight:700;cursor:default;">Efeito shimmer</span></strong><span>Brilho suave nas palavras em inglês.</span></div>
     <button class="sp-toggle" id="shimmer-toggle" onclick="toggleShimmer()" class="sp-toggle on"></button>
   </div>
-</div>`,
-
-`<div class="page pg-tools">
-  <div class="pg-hd">
-    <div class="pg-lbl">Ferramentas</div>
-    <div class="pg-ttl">Recursos extras</div>
-  </div>
-  <div id="tool-menu" class="tl-grid">
-    <div class="tl-card" onclick="openTool('generator')" style="position:relative">
-      <div class="tl-beta">beta</div>
-      <div class="tl-card-icon">✨</div>
-      <div class="tl-card-name">Gerador de frases</div>
-    </div>
-    <div class="tl-card" onclick="openTool('translator')">
-      <div class="tl-card-icon">🌐</div>
-      <div class="tl-card-name">Tradutor</div>
-    </div>
-    <div class="tl-card" onclick="openTool('tts')">
-      <div class="tl-card-icon">🔊</div>
-      <div class="tl-card-name">Ouvir em inglês</div>
-    </div>
-    <div class="tl-card" onclick="openTool('correct')">
-      <div class="tl-card-icon">✅</div>
-      <div class="tl-card-name">Corretor de frases</div>
-    </div>
-    <div class="tl-card" onclick="openTool('examples')">
-      <div class="tl-card-icon">💬</div>
-      <div class="tl-card-name">Exemplos</div>
-    </div>
-    <div class="tl-card" onclick="openTool('dictation')">
-      <div class="tl-card-icon">🎧</div>
-      <div class="tl-card-name">Ditado</div>
-    </div>
-    <div class="tl-card" onclick="openTool('dict')">
-      <div class="tl-card-icon">📖</div>
-      <div class="tl-card-name">Dicionário rápido</div>
-    </div>
-  </div>
-  <div id="tool-panel" class="tl-panel" style="display:none;"><div id="tool-panel-body"></div></div>
 </div>`,
 
 `<div class="page pg-idx">
@@ -2606,25 +2848,25 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap1-body">
-        <div class="idx-item" onclick="go(5)" data-kw="pronome pessoal eu você ele ela nós eles they we i you he she it sujeito pessoa">
+        <div class="idx-item" onclick="go(4)" data-kw="pronome pessoal eu você ele ela nós eles they we i you he she it sujeito pessoa">
           <div class="idx-num">01</div><div class="idx-info"><div class="idx-name">Pronomes Pessoais</div><div class="idx-desc">I, You, He, She, It, We, They</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(7)" data-kw="verbo ação frase o que é verbo infinitivo play eat run walk">
+        <div class="idx-item" onclick="go(6)" data-kw="verbo ação frase o que é verbo infinitivo play eat run walk">
           <div class="idx-num">02</div><div class="idx-info"><div class="idx-name">O que é um Verbo?</div><div class="idx-desc">A ação da frase</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(9)" data-kw="continuous gerundio gerúndio ndo ing jogando comendo dormindo correndo present continuous">
+        <div class="idx-item" onclick="go(8)" data-kw="continuous gerundio gerúndio ndo ing jogando comendo dormindo correndo present continuous">
           <div class="idx-num">03</div><div class="idx-info"><div class="idx-name">Continuous Tenses</div><div class="idx-desc">O -ndo em inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(11)" data-kw="to be ser estar am is are was were will be sou estou é está somos são eram estavam">
+        <div class="idx-item" onclick="go(10)" data-kw="to be ser estar am is are was were will be sou estou é está somos são eram estavam">
           <div class="idx-num">04</div><div class="idx-info"><div class="idx-name">Verbo To Be</div><div class="idx-desc">Ser e estar — todos os tempos</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(13)" data-kw="adjetivo adjetivos característica qualidade bonito feio alto baixo feliz triste beautiful tall">
+        <div class="idx-item" onclick="go(12)" data-kw="adjetivo adjetivos característica qualidade bonito feio alto baixo feliz triste beautiful tall">
           <div class="idx-num">05</div><div class="idx-info"><div class="idx-name">Adjetivos</div><div class="idx-desc">Características de coisas e pessoas</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(15)" data-kw="artigo the a an some o a os as um uma uns algumas definido indefinido">
+        <div class="idx-item" onclick="go(14)" data-kw="artigo the a an some o a os as um uma uns algumas definido indefinido">
           <div class="idx-num">06</div><div class="idx-info"><div class="idx-name">Artigos</div><div class="idx-desc">The, A, An e Some</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(17)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap1 capítulo 1">
+        <div class="idx-item" onclick="go(16)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap1 capítulo 1">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 1</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -2638,22 +2880,22 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap2-body">
-        <div class="idx-item" onclick="go(19)" data-kw="presente simple present tempo presente conjugação habito rotina todo dia go goes likes works plays">
+        <div class="idx-item" onclick="go(18)" data-kw="presente simple present tempo presente conjugação habito rotina todo dia go goes likes works plays">
           <div class="idx-num">07</div><div class="idx-info"><div class="idx-name">Presente</div><div class="idx-desc">Verbo sem alteração · +S no he/she/it</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(21)" data-kw="passado simple past ed irregular went ate bought played watched worked ontem yesterday">
+        <div class="idx-item" onclick="go(20)" data-kw="passado simple past ed irregular went ate bought played watched worked ontem yesterday">
           <div class="idx-num">08</div><div class="idx-info"><div class="idx-name">Passado</div><div class="idx-desc">Regular (-ed) · Irregular</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(23)" data-kw="futuro will wont amanhã tomorrow vai vou vamos vão will not future">
+        <div class="idx-item" onclick="go(22)" data-kw="futuro will wont amanhã tomorrow vai vou vamos vão will not future">
           <div class="idx-num">09</div><div class="idx-info"><div class="idx-name">Futuro</div><div class="idx-desc">Will · Won't</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(25)" data-kw="to go ir goes went will go lugar place viajar viagem fui foi fomos foram">
+        <div class="idx-item" onclick="go(24)" data-kw="to go ir goes went will go lugar place viajar viagem fui foi fomos foram">
           <div class="idx-num">10</div><div class="idx-info"><div class="idx-name">To Go</div><div class="idx-desc">Go vs Will · Went · Will go</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(27)" data-kw="sujeito oculto eu joguei played i they we pronome obrigatório hidden subject">
+        <div class="idx-item" onclick="go(26)" data-kw="sujeito oculto eu joguei played i they we pronome obrigatório hidden subject">
           <div class="idx-num">11</div><div class="idx-info"><div class="idx-name">Sujeito Oculto</div><div class="idx-desc">O sujeito nunca some em inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(29)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap2 capítulo 2">
+        <div class="idx-item" onclick="go(28)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap2 capítulo 2">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 2</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -2667,19 +2909,19 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap3-body">
-        <div class="idx-item" onclick="go(31)" data-kw="in on at preposição em no na nos nas tempo lugar tecnologia morning afternoon night">
+        <div class="idx-item" onclick="go(30)" data-kw="in on at preposição em no na nos nas tempo lugar tecnologia morning afternoon night">
           <div class="idx-num">12</div><div class="idx-info"><div class="idx-name">In, On, At</div><div class="idx-desc">Em, no, na, nos, nas</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(33)" data-kw="pronomes demonstrativos this these that those this aqui ali here there este essa aquele">
+        <div class="idx-item" onclick="go(32)" data-kw="pronomes demonstrativos this these that those this aqui ali here there este essa aquele">
           <div class="idx-num">13</div><div class="idx-info"><div class="idx-name">Pronomes Demonstrativos</div><div class="idx-desc">This, These, That, Those</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(35)" data-kw="in on at demonstrativos neste nessa naquele naquela naqueles in this on that at those">
+        <div class="idx-item" onclick="go(34)" data-kw="in on at demonstrativos neste nessa naquele naquela naqueles in this on that at those">
           <div class="idx-num">14</div><div class="idx-info"><div class="idx-name">In, On, At + Demonstrativos</div><div class="idx-desc">Neste, nessa, naquele, naquelas</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(37)" data-kw="que explicativo who that which relativo menino que estava the boy who was">
+        <div class="idx-item" onclick="go(36)" data-kw="que explicativo who that which relativo menino que estava the boy who was">
           <div class="idx-num">15</div><div class="idx-info"><div class="idx-name">Que (explicativo)</div><div class="idx-desc">Who, That, Which</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(39)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
+        <div class="idx-item" onclick="go(38)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -2693,10 +2935,10 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap4-body">
-        <div class="idx-item" onclick="go(42)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
+        <div class="idx-item" onclick="go(41)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
           <div class="idx-num">16</div><div class="idx-info"><div class="idx-name">Pronomes de Posse</div><div class="idx-desc">My, your, his — mine, yours, hers</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(43)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
+        <div class="idx-item" onclick="go(42)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
           <div class="idx-num">17</div><div class="idx-info"><div class="idx-name">Caso Possessivo e Of</div><div class="idx-desc">Teacher's car · End of the movie</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -2706,7 +2948,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-chapter">
-  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
   <div class="ch-eyebrow">Capítulo</div>
   <div class="ch-num">1</div>
 </div>`,
@@ -3049,7 +3291,7 @@ const pages=[
     <div class="tobe-card" id="you-singular-plural-pres">
       <div class="tobe-card-hd" style="background:#5a3a8a;">You — Singular e Plural</div>
       <div class="tobe-card-body">
-        <p class="intro">Como já vimos em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>, o <strong>you</strong> é singular e plural ao mesmo tempo. Por isso, no verbo to be, o <strong>you</strong> sempre será conjugado no plural — mesmo que esteja fazendo papel de "você" (singular).</p>
+        <p class="intro">Como já vimos em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>, o <strong>you</strong> é singular e plural ao mesmo tempo. Por isso, no verbo to be, o <strong>you</strong> sempre será conjugado no plural — mesmo que esteja fazendo papel de "você" (singular).</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Você é legal. <span class="q-tr">(singular)</span></div>
@@ -3062,7 +3304,7 @@ const pages=[
             <div class="q-en"><span class="en" data-speak="You aren't nice">You aren't nice. ✓</span></div>
           </div>
         </div>
-        <p class="intro" style="margin-top:4px;">O problema é que, no plural, a frase fica igualzinha. Para deixar claro que é plural, adicionamos as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>.</p>
+        <p class="intro" style="margin-top:4px;">O problema é que, no plural, a frase fica igualzinha. Para deixar claro que é plural, adicionamos as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>.</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Vocês são legais.</div>
@@ -3194,7 +3436,7 @@ const pages=[
     <div class="tobe-card" id="you-singular-plural-past">
       <div class="tobe-card-hd" style="background:#5a3a8a;">You — Singular e Plural no Passado</div>
       <div class="tobe-card-body">
-        <p class="intro">Assim como no presente, o <strong>you</strong> sempre usa <strong>were</strong> — mesmo no singular. E quando precisar deixar claro que é plural, adicione as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(6,'you-plural-section')">Pronomes Pessoais</span>.</p>
+        <p class="intro">Assim como no presente, o <strong>you</strong> sempre usa <strong>were</strong> — mesmo no singular. E quando precisar deixar claro que é plural, adicione as terminações já vistas em <span class="tb-link" onclick="goAndHighlight(5,'you-plural-section')">Pronomes Pessoais</span>.</p>
         <div class="quote-list">
           <div class="quote">
             <div class="q-pt">Você era legal. <span class="q-tr">(singular)</span></div>
@@ -3576,7 +3818,7 @@ const pages=[
 </div>`,
 
 `<div class="page pg-chapter">
-  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
   <div class="ch-eyebrow">Capítulo</div>
   <div class="ch-num">2</div>
 </div>`,
@@ -3954,7 +4196,7 @@ const pages=[
 
 
 `<div class="page pg-chapter">
-  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
   <div class="ch-eyebrow">Capítulo</div>
   <div class="ch-num">3</div>
 </div>`,
@@ -4751,7 +4993,7 @@ const pages=[
 
 
 `<div class="page pg-chapter">
-  <button class="ch-idx-btn" onclick="go(3)">← Índice</button>
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
   <div class="ch-eyebrow">Capítulo</div>
   <div class="ch-num">4</div>
 </div>`,
@@ -5089,10 +5331,10 @@ function goBack(){
 }
 
 
-function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
-function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-sec')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(pages.length-1);}
+
 function go(i){
   if(i<0||i>=pages.length)return;
+  if(_isContentOfSec(i))i=i-1;
   cur=i;
   const _accMap={5:'var(--blue)',6:'var(--blue)',7:'var(--green)',8:'var(--green)',
     9:'var(--purple)',10:'var(--purple)',11:'var(--yel)',12:'var(--yel)',
@@ -5103,49 +5345,32 @@ function go(i){
   if(_accMap[i])document.body.style.setProperty('--acc',_accMap[i]);
   window.speechSynthesis&&window.speechSynthesis.cancel();
   if(chatOpen)closeChat();
-  document.getElementById('slides').innerHTML=pages[cur];
-  document.getElementById('slides').scrollTop=0;
-  // Init collapsible chapters when idx page (3) is shown
-  if(cur===3){document.querySelectorAll('.idx-chapter').forEach(c=>{if(!c.classList.contains('closed'))c.classList.add('closed');});}
+  const sl=document.getElementById('slides');
+  const merged=_isMergeableSec(cur);
+  sl.innerHTML=merged?'<div class="merged-page">'+pages[cur]+pages[cur+1]+'</div>':pages[cur];
+  sl.scrollTop=0;
+  if(cur===2){document.querySelectorAll('.idx-chapter').forEach(c=>{if(!c.classList.contains('closed'))c.classList.add('closed');});}
   if(cur===1){
     const sb=document.getElementById('shimmer-toggle');if(sb)sb.className='sp-toggle '+(document.body.classList.contains('no-shimmer')?'off':'on');
     const tb=document.getElementById('theme-toggle');if(tb)tb.className='sp-toggle '+(document.body.classList.contains('light')?'off':'on');
   }
-  
   document.getElementById('ctr').textContent=(cur+1)+' / '+pages.length;
   document.getElementById('prog-fill').style.width=((cur+1)/pages.length*100)+'%';
   document.getElementById('prev').disabled=cur===0;
-  document.getElementById('next').disabled=cur===pages.length-1;  if(cur===6)initPronGame();
-  if(cur===8)initGame();
-  if(cur===10)initEx('ing',window['ing_bk'],10);
-  if(cur===12)initEx('tobe',window['tobe_bk'],10);
-  if(cur===14)initEx('adj',window['adj_bk'],10);
-  if(cur===16)initEx('art',window['art_bk'],10);
-  if(cur===17)initEx('rev',window['rev_bk'],15);
-  if(cur===20)initEx('pres',window['pres_bk'],10);
-  if(cur===22)initEx('past',window['past_bk'],10);
-  if(cur===24)initEx('fut',window['fut_bk'],10);
-  if(cur===26)initEx('togo',window['togo_bk'],10);
-  if(cur===29)initEx('rev2',window['rev2_bk'],15);
-  if(cur===32)initEx('inonat',window['inonat_bk'],10);
-  if(cur===34)initEx('demo',window['demo_bk'],10);
-  if(cur===36)initEx('indem',window['indem_bk'],10);
-  if(cur===38)initEx('queexp',window['queexp_bk'],10);
-  if(cur===39)initEx('rev3',window['rev3_bk'],10);
-  if(cur===42)initEx('poss',window['poss_bk'],15);
-  if(cur===43)initEx('poss',window['poss_bk'],10);
-  if(cur===44)initEx('caso',window['caso_bk'],10);
+  document.getElementById('next').disabled=cur===pages.length-1;
+  runInits(cur);
+  if(merged)runInits(cur+1);
 }
 document.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
-  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')goNext();
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')goPrev();
 });
 let tx=0,ty=0;
 document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tx;
   const dy=e.changedTouches[0].clientY-ty;
-  if(Math.abs(dx)>110&&Math.abs(dx)>Math.abs(dy)*2&&!chatOpen)go(dx<0?cur+1:cur-1);
+  if(Math.abs(dx)>110&&Math.abs(dx)>Math.abs(dy)*2&&!chatOpen){dx<0?goNext():goPrev();}
 },{passive:true});
 /* ── SETTINGS ── */
 function toggleShimmer(){
@@ -5163,7 +5388,7 @@ function toggleShimmer(){
 const toolTemplates={
   translator:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">🌐 Tradutor</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5182,7 +5407,7 @@ const toolTemplates={
     </div>`,
   tts:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">🔊 Ouvir em inglês</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5198,7 +5423,7 @@ const toolTemplates={
     </div>`,
   correct:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">✏️ Corretor de frases</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5212,7 +5437,7 @@ const toolTemplates={
     </div>`,
   examples:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">💬 Exemplos</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5228,7 +5453,7 @@ const toolTemplates={
     </div>`,
   dictation:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">🎧 Ditado</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5264,7 +5489,7 @@ const toolTemplates={
     </div>`,
   dict:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="tl-back-btn" onclick="closeTool()">←</button>
       <span class="tl-hd-title">📖 Dicionário rápido</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5280,324 +5505,25 @@ const toolTemplates={
     </div>`
 };
 let activeTool=null;
-
-/* ── GERADOR ── */
-function buildGenPrompt(subjects,theme){
-  const has=id=>subjects.includes(id);
-  const allowed=[];
-  const forbidden=[];
-  allowed.push('Sujeitos: I, you, he, she, it, we, they. Nomes próprios: Ryan, Ashley, Megan, Josh, Jake, Taylor, Camila, Douglas, Renato, Raphael, Vanessa, Brian, Ethan, Sofia, Lucas, Emma, Noah, Olivia, Liam.');
-  if(has('s02')){allowed.push('S02 To Be presente: am,is,are (afirm). ain\'t,isn\'t,aren\'t (neg). Is/Are/Isn\'t/Aren\'t? (interrog). Contrações: I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
-  else{forbidden.push('S02 PROIBIDO to be presente: am,is,are,ain\'t,isn\'t,aren\'t,I\'m,you\'re,he\'s,she\'s,it\'s,we\'re,they\'re.');}
-  if(has('s03')){allowed.push('S03 Gerúndio: to be presente + verbo-ing.');}
-  else{forbidden.push('S03 PROIBIDO gerúndio: nenhum verbo-ing com to be.');}
-  if(has('s04')){allowed.push('S04 Adjetivos simples antes do substantivo ou após to be. Combinações noun+noun (plastic bottle).');}
-  else{forbidden.push('S04 PROIBIDO adjetivos descritivos e combinações noun+noun.');}
-  if(has('s05')||has('s06')){allowed.push('S05/S06 Artigos: a,an,the,some+plural,some+singular. Nomes próprios de pessoas: sem artigo.');}
-  else{forbidden.push('S05/S06 PROIBIDO artigos: a,an,the,some.');}
-  if(has('s07')){allowed.push('S07 Presente simples: APENAS afirmativo. I/you/we/they+verbo base. He/she/it+verbo+s/es/ies. have→has.');}
-  else{forbidden.push('S07 PROIBIDO presente simples de verbos de ação: eat,work,play,watch,buy,like,love,study,live,etc.');}
-  if(has('s08')){allowed.push('S08 Passado simples: APENAS afirmativo. Regulares:+ed. Irregulares: forma própria. Verbo não muda por pronome.');}
-  else{forbidden.push('S08 PROIBIDO passado simples de verbos de ação: played,watched,bought,ate,slept,saw,etc.');}
-  if(has('s09')){allowed.push('S09 Futuro: will+verbo (afirm). won\'t+verbo (neg). Will/Won\'t+sujeito+verbo? (interrog).');}
-  else{forbidden.push('S09 PROIBIDO will/won\'t com verbos de ação.');}
-  if(has('s10')){allowed.push('S10 To Go: go/goes (recorrência presente). went (passado). will go/won\'t go (futuro). Will/Won\'t go? (interrog). was/wasn\'t (estado singular passado). were/weren\'t (estado plural passado).');}
-  else{forbidden.push('S10 PROIBIDO: go,goes,went,will go,won\'t go.'+(has('s02')?'':' PROIBIDO: was,wasn\'t,were,weren\'t.'));}
-  if(has('s11')){allowed.push('S11 Sujeito oculto: 2 a 3 frases com sujeito oculto em português (ex: "Comprei um carro."=I, "Estava chovendo."=it).');}
-  else{forbidden.push('S11 PROIBIDO sujeito oculto. Toda frase deve ter sujeito explícito.');}
-  if(has('s12')){allowed.push('S12 Preposições: in,on,at (e in the,on the,at the) de tempo e lugar.');}
-  else{forbidden.push('S12 PROIBIDO preposições in,on,at.');}
-  if(has('s13')){allowed.push('S13 Demonstrativos: this,these,that,those,here,there.');}
-  else{forbidden.push('S13 PROIBIDO demonstrativos: this,these,that,those,here,there.');}
-  if(has('s14')){allowed.push('S14 Combinações in/on/at+this/these/that/those.');}
-  else{forbidden.push('S14 PROIBIDO combinar in/on/at com demonstrativos.');}
-  if(has('s15')){allowed.push('S15 Pronome relativo: that (coringa), who (humanos), which (animais/objetos).');}
-  else{forbidden.push('S15 PROIBIDO pronomes relativos that/who/which como "que" explicativo.');}
-  if(has('s16')){allowed.push('S16 PPA: my,your,his,her,its,our,their. PP: mine,yours,his,hers,its,ours,theirs. of+PP. NUNCA "seu/sua" para 3ª pessoa em PT.');}
-  else{forbidden.push('S16 PROIBIDO pronomes de posse: my,your,his,her,its,our,their,mine,yours,hers,ours,theirs.');}
-  if(has('s17')){allowed.push('S17 Caso possessivo: dono+\'s+posse. Nome em S: só apóstrofo. Inanimados: of/of the.');}
-  else{forbidden.push('S17 PROIBIDO caso possessivo com \'s ou \'. PROIBIDO "of the" para posse.');}
-
-  const globalRule='REGRA GLOBAL: Perguntas e negativos SÓ com: am,ain\'t,is,isn\'t,are,aren\'t,was,wasn\'t,were,weren\'t,will,won\'t. Presente e passado simples são SEMPRE afirmativos.';
-  const vocabRule='VOCABULÁRIO — REGRA ABSOLUTA: toda palavra que o aluno precisa saber para traduzir VAI no vocabulário de CADA frase — incluindo advérbios como muito(very), sempre(always), nunca(never), hoje(today), amanhã(tomorrow), agora(now), ontem(yesterday), bem(well), tarde(late), cedo(early), etc. TODA frase tem seu vocabulário completo e independente. Inclua: substantivos, verbos (SEMPRE no infinitivo), adjetivos, advérbios (muito=very, sempre=always, nunca=never, hoje=today, amanhã=tomorrow, agora=now, ontem=yesterday, bem=well, tarde=late, cedo=early, etc.) e qualquer outra palavra de conteúdo. NUNCA inclua no vocabulário: go, goes, went, will go, won\'t go (o aluno já sabe). Também nunca inclua: artigos (a/an/the/some), pronomes pessoais, pronomes de posse, to be, will/won\'t, preposições in/on/at, demonstrativos this/that/these/those. Pronúncia aproximada em PT. Máx 6, mín 1.';
-  const dir=window._genDir||'pt-en';
-  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
-  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
-  const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais de empresas (Netflix,Spotify,Apple,iFood,Uber) e famosos.';
-
-  return `Você é um gerador preciso de frases para lição de casa de inglês. Gere exatamente 2 frases ${dirLabel}. Responda SOMENTE com JSON minificado numa única linha sem espaços. Máx 3 itens de vocab por frase.
-
-${globalRule}
-
-PERMITIDO:
-${allowed.map(r=>'✅ '+r).join('\n')}
-
-PROIBIDO:
-${forbidden.map(r=>'❌ '+r).join('\n')}
-
-TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
-
-REGRAS ADICIONAIS:
-1. Antes de cada frase, verifique: cada palavra está no PERMITIDO? Se não, reescreva.
-2. NUNCA "seu/sua/seus/suas" para 3ª pessoa. Use "dele/dela/deles/delas".
-3. NUNCA "ao/aos/à/às" — use "para o/para a/para os/para as" ou "de noite/de manhã".
-4. Futuro em PT: "vou/vai/vamos/vão + infinitivo".
-5. USE TODAS as estruturas disponíveis no PERMITIDO. Distribua entre afirmativo, negativo e interrogativo. Use pronomes e nomes variados.
-6. NUNCA repita tema, sujeito ou estrutura. Cada frase deve ser única.
-7. PORTUGUÊS NATURAL — regras obrigatórias:
-   - NUNCA "assistir para" — use somente "assistir" (ex: "vai assistir o show")
-   - NUNCA "ir para assistir" — use "vai assistir"
-   - NUNCA "escutar para" — use "escutar" ou "ouvir"
-   - NUNCA "olhar para" no sentido de assistir — use "assistir" ou "ver"
-   - "de noite" = at night. NUNCA "à noite" (contém "à")
-   - "de manhã" = in the morning. NUNCA "de manhã cedo" substituído por "à manhã"
-8. VOCABULÁRIO — cada tradução deve ser 100% correta. Verifique: "assistir" = watch (não "go to"). "ir" = go (não coloque no vocab). "ver" = see/watch.
-
-${vocabRule}
-
-FORMATO — JSON puro sem markdown:
-${fmt}`;
-}
-
-function buildFreePrompt(theme){
-  const dir=window._genDir||'pt-en';
-  const dirLabel=dir==='pt-en'?'em PORTUGUÊS para o aluno traduzir para o INGLÊS':'em INGLÊS para o aluno traduzir para o PORTUGUÊS';
-  const fmt=dir==='pt-en'?'{"frases":[{"pt":"frase","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}':'{"frases":[{"en":"sentence","vocab":[{"pt":"palavra","en":"palavra","pron":"pronúncia"}]}]}';
-  const defaultTheme='business, cultura pop, música, filmes, séries, notícias. Pode usar nomes reais.';
-  return `Gere exatamente 2 frases ${dirLabel} em inglês avançado. Responda SOMENTE com JSON minificado numa única linha sem espaços. Máx 3 itens de vocab por frase, sem restrições gramaticais. Use qualquer tempo verbal e vocabulário rico.
-
-TEMA: ${theme&&theme.trim()?theme.trim():defaultTheme}
-
-REGRAS: Frases naturais, variadas, nível avançado. NUNCA "ao/aos/à/às". Futuro em PT: "vou/vai/vamos/vão+infinitivo".
-
-VOCABULÁRIO: inclua toda palavra necessária para traduzir. Verbos no infinitivo. NUNCA inclua go/goes/went no vocab. Pronúncia em PT. Máx 3, mín 1.
-
-FORMATO — JSON puro sem markdown:
-${fmt}`;
-}
-
-function genSelectAll(){document.querySelectorAll('.gen-chip').forEach(c=>c.classList.add('on'));}
-function genToggle(el){el.classList.toggle('on');}
-function genToggleCap(capId){
-  const chips=[...document.querySelectorAll('#'+capId+' .gen-chip')];
-  const btn=document.querySelector('#'+capId+' .gen-cap-btn');
-  const allOn=chips.every(c=>c.classList.contains('on'));
-  chips.forEach(c=>allOn?c.classList.remove('on'):c.classList.add('on'));
-  btn.classList.toggle('on',!allOn);
-}
-function genToggleFree(){
-  const card=document.getElementById('gen-free-card');
-  const on=card.classList.toggle('on');
-  window._genFree=on;
-  document.querySelectorAll('.gen-chips').forEach(el=>el.classList.toggle('gen-chips-dimmed',on));
-  document.querySelectorAll('.gen-cap-btn').forEach(el=>el.classList.toggle('gen-cap-btn-dimmed',on));
-  const sa=document.querySelector('.gen-select-all');
-  if(sa){sa.style.opacity=on?'0.2':'';sa.style.pointerEvents=on?'none':'';}
-}
-function setGenDir(dir,el){
-  window._genDir=dir;
-  document.querySelectorAll('.gen-dir-btn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
-}
-async function callGen(prompt, already){
-  const alreadyNote = already && already.length
-    ? ' JÁ GERADAS (não repita nem frase parecida): '+already.map((f,i)=>(i+1)+'. '+(f.pt||f.en)).join(' | ')
-    : '';
-  const resp=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:prompt+alreadyNote,max_tokens:2000})});
-  const data=await resp.json();
-  const raw=(data.text||data.error||'').trim().replace(/^```json/,'').replace(/```$/,'').trim();
-  try{return JSON.parse(raw);}catch(e){
-    let fixed=raw;
-    const opens=(fixed.match(/\{/g)||[]).length;
-    const closes=(fixed.match(/\}/g)||[]).length;
-    for(let i=0;i<opens-closes;i++)fixed+='}';
-    try{return JSON.parse(fixed);}catch(e2){return {frases:[]};}
-  }
-}
-async function generar(){
-  const free=window._genFree||false;
-  const chips=[...document.querySelectorAll('.gen-chip.on')].map(c=>c.dataset.id);
-  if(!free&&!chips.length){const e=document.getElementById('gen-error');e.textContent='Selecione pelo menos uma matéria.';e.style.display='block';return;}
-  const theme=document.getElementById('gen-theme').value;
-  const btn=document.getElementById('gen-btn');
-  const loading=document.getElementById('gen-loading');
-  const result=document.getElementById('gen-result');
-  const errEl=document.getElementById('gen-error');
-  btn.disabled=true;loading.style.display='block';result.innerHTML='';errEl.style.display='none';
-  try{
-    const p1=free?buildFreePrompt(theme):buildGenPrompt(chips,theme);
-    const allFrases=[];
-    for(let i=0;i<5;i++){
-      loading.textContent='⏳ Gerando frases ('+(i+1)+'/5)...';
-      const r=await callGen(p1, allFrases);
-      allFrases.push(...(r.frases||[]));
-      if(allFrases.length>=10)break;
-    }
-    // Deduplicar por texto da frase
-    const seen=new Set();
-    const unique=allFrases.filter(f=>{
-      const key=(f.pt||f.en||'').trim().toLowerCase();
-      if(seen.has(key))return false;
-      seen.add(key);return true;
-    });
-    const parsed={frases:unique.slice(0,10)};
-    const text='ok'; // dummy
-    // parsed já definido acima
-    const dir=window._genDir||'pt-en';
-    const frases=parsed.frases;
-    // Palavras proibidas no vocabulário
-    const vocabBanned=['go','goes','went','will go',"won't go",'go to','a','an','the','some',
-      'i','you','he','she','it','we','they','am','is','are','was','were','will',"won't",
-      'my','your','his','her','its','our','their','mine','yours','hers','ours','theirs',
-      'in','on','at','this','that','these','those'];
-    frases.forEach(f=>{
-      f.vocab=(f.vocab||[]).filter(v=>{
-        const en=(v.en||'').toLowerCase().trim();
-        // Remover se a tradução contém "go" como palavra principal
-        if(vocabBanned.includes(en))return false;
-        if(/^go/.test(en))return false; // "go to", "go there", etc
-        return true;
-      });
-    });
-    result.innerHTML=frases.map((f,i)=>{
-      const sentence=dir==='pt-en'?f.pt:f.en;
-      return `${i>0?'<hr class="gen-divider">':''}
-      <div class="gen-sentence-block">
-        <div class="gen-sentence-pt">${i+1}. ${sentence}</div>
-        <div class="gen-vocab-label">Vocabulário</div>
-        <div class="gen-vocab">${f.vocab.map(v=>`<div class="gen-vocab-item">${v.pt} = <strong>${v.en}</strong> <span class="pron">(${v.pron})</span></div>`).join('')}</div>
-      </div>`;
-    }).join('');
-    window._genText=frases.map((f,i)=>{
-      const sentence=dir==='pt-en'?f.pt:f.en;
-      const vocab=f.vocab.map(v=>`  ${v.pt} = ${v.en} (${v.pron})`).join('\n');
-      return `${i+1}. ${sentence}\n\n${vocab}`;
-    }).join('\n\n——————\n\n');
-    document.getElementById('gen-copy-btn').style.display='block';
-  }catch(e){
-    let msg='Erro ao gerar frases. Tente novamente.';
-    if(e&&e.message)msg+=' ('+e.message+')';
-    errEl.textContent=msg;errEl.style.display='block';
-    console.error('GEN ERROR:',e);
-  }finally{
-    btn.disabled=false;loading.style.display='none';
-  }
-}
-function genCopy(){
-  if(!window._genText)return;
-  const btn=document.getElementById('gen-copy-btn');
-  const orig=btn.innerHTML;
-  function done(ok){btn.innerHTML=ok?'✅ Copiado!':'❌ Erro';setTimeout(()=>{btn.innerHTML=orig;},2000);}
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(window._genText).then(()=>done(true)).catch(()=>fallback());
-  } else {fallback();}
-  function fallback(){
-    const ta=document.createElement('textarea');
-    ta.value=window._genText;ta.style.cssText='position:fixed;opacity:0';
-    document.body.appendChild(ta);ta.focus();ta.select();
-    try{done(document.execCommand('copy'));}catch(e){done(false);}
-    document.body.removeChild(ta);
-  }
-}
-
 function openTool(id){
-  if(id==='generator'){
-    document.getElementById('tool-menu').style.display='none';
-    const p=document.getElementById('tool-panel');
-    p.style.display='block';
-    p.style.flex='1';
-    p.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden">
-      <div class="tl-hd">
-        <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span class="tl-hd-title">✨ Gerador de frases</span>
-      </div>
-      <div class="gen-wrap">
-      <div class="gen-section">
-        <div class="gen-section-hd">
-          <div class="gen-section-label">Matérias</div>
-          <button class="gen-select-all" onclick="genSelectAll()">Selecionar tudo</button>
-        </div>
-        <div class="gen-cap-group" id="cap1">
-          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 1</div><button class="gen-cap-btn" onclick="genToggleCap('cap1')">+ Tudo</button></div>
-          <div class="gen-chips">
-            <div class="gen-chip" data-id="s01" onclick="genToggle(this)">01 · Pronomes</div>
-            <div class="gen-chip" data-id="s02" onclick="genToggle(this)">02 · To Be</div>
-            <div class="gen-chip" data-id="s03" onclick="genToggle(this)">03 · Gerúndio</div>
-            <div class="gen-chip" data-id="s04" onclick="genToggle(this)">04 · Adjetivos</div>
-            <div class="gen-chip" data-id="s05" onclick="genToggle(this)">05 · Artigos</div>
-          </div>
-        </div>
-        <div class="gen-cap-group" id="cap2">
-          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 2</div><button class="gen-cap-btn" onclick="genToggleCap('cap2')">+ Tudo</button></div>
-          <div class="gen-chips">
-            <div class="gen-chip" data-id="s07" onclick="genToggle(this)">07 · Presente</div>
-            <div class="gen-chip" data-id="s08" onclick="genToggle(this)">08 · Passado</div>
-            <div class="gen-chip" data-id="s09" onclick="genToggle(this)">09 · Futuro</div>
-            <div class="gen-chip" data-id="s10" onclick="genToggle(this)">10 · To Go</div>
-            <div class="gen-chip" data-id="s11" onclick="genToggle(this)">11 · Sujeito Oculto</div>
-          </div>
-        </div>
-        <div class="gen-cap-group" id="cap3">
-          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 3</div><button class="gen-cap-btn" onclick="genToggleCap('cap3')">+ Tudo</button></div>
-          <div class="gen-chips">
-            <div class="gen-chip" data-id="s12" onclick="genToggle(this)">12 · In, On, At</div>
-            <div class="gen-chip" data-id="s13" onclick="genToggle(this)">13 · Demonstrativos</div>
-            <div class="gen-chip" data-id="s14" onclick="genToggle(this)">14 · In/On/At + Demo</div>
-            <div class="gen-chip" data-id="s15" onclick="genToggle(this)">15 · Que Explicativo</div>
-          </div>
-        </div>
-        <div class="gen-cap-group" id="cap4">
-          <div class="gen-cap-hd"><div class="gen-cap-label">Capítulo 4</div><button class="gen-cap-btn" onclick="genToggleCap('cap4')">+ Tudo</button></div>
-          <div class="gen-chips">
-            <div class="gen-chip" data-id="s16" onclick="genToggle(this)">16 · Pronomes de Posse</div>
-            <div class="gen-chip" data-id="s17" onclick="genToggle(this)">17 · Caso Possessivo</div>
-          </div>
-        </div>
-      </div>
-      <div class="gen-section">
-        <div class="gen-section-label" style="margin-bottom:10px">Modo livre</div>
-        <div class="gen-free-card" id="gen-free-card" onclick="genToggleFree()">
-          <div><div class="gen-free-label">Sem restrições de matéria</div><div class="gen-free-desc">Para alunos avançados</div></div>
-          <div class="gen-switch"></div>
-        </div>
-      </div>
-      <div class="gen-section">
-        <div class="gen-section-label" style="margin-bottom:10px">Tema / Vocabulário</div>
-        <textarea id="gen-theme" rows="2" placeholder="Ex: futebol, tecnologia, família..."></textarea>
-      </div>
-      <div class="gen-section">
-        <div class="gen-section-label" style="margin-bottom:10px">Direção</div>
-        <div class="gen-dir-wrap">
-          <button class="gen-dir-btn on" onclick="setGenDir('pt-en',this)">🇧🇷 PT → EN</button>
-          <button class="gen-dir-btn" onclick="setGenDir('en-pt',this)">🇺🇸 EN → PT</button>
-        </div>
-      </div>
-      <div id="gen-error"></div>
-      <button id="gen-btn" onclick="generar()">✨ Gerar 10 frases</button>
-      <button id="gen-copy-btn" onclick="genCopy()">📋 Copiar frases</button>
-      <div id="gen-loading">⏳ Gerando...</div>
-      <div class="gen-result-wrap"><div id="gen-result"></div></div>
-      </div>
-    </div>`;
-    return;
-  }
-  // outros tools via toolTemplates
   activeTool=id;
   document.getElementById('tool-menu').style.display='none';
   const panel=document.getElementById('tool-panel');
-  panel.style.cssText='display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden';
-  const _pb=document.getElementById('tool-panel-body')||document.getElementById('tool-panel');
-  _pb.innerHTML=toolTemplates[id]||'';
+  panel.style.display='flex';panel.style.flex='1';panel.style.overflow='hidden';
+  document.getElementById('tool-panel-body').innerHTML=toolTemplates[id]||'';
   if(id==='dictation'){dicLevel='easy';}
 }
 function closeTool(){
   activeTool=null;
   const panel=document.getElementById('tool-panel');
-  panel.style.display='none';
-  panel.style.flex='';
-  panel.style.overflowY='';
-  document.getElementById('tool-menu').style.display='grid';
-  window.speechSynthesis&&window.speechSynthesis.cancel();
+  panel.style.transition='opacity .18s ease';
+  panel.style.opacity='0';
+  setTimeout(()=>{
+    panel.style.display='none';panel.style.flex='';panel.style.overflowY='';panel.style.opacity='';panel.style.transition='';
+    const menu=document.getElementById('tool-menu');
+    if(menu){menu.style.display='grid';}
+    window.speechSynthesis&&window.speechSynthesis.cancel();
+  },180);
 }
 let trlDir='pt-en';
 function setTrlDir(d){
@@ -5904,5 +5830,49 @@ function updateThemeUI(){
 go(0);
 
 </script>
+
+<!-- TOOLS POPUP -->
+<div id="tools-overlay" onclick="closeToolsPopup()"></div>
+<div id="tools-popup">
+  <div class="tp-hd">
+    <span class="tp-hd-title">Ferramentas</span>
+    <button class="tp-close" onclick="closeToolsPopup()">✕</button>
+  </div>
+  <div class="tp-grid">
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('generator')">
+      <div class="tp-beta">beta</div>
+      <div class="tp-card-icon">✨</div>
+      <div class="tp-card-name">Gerador</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('translator')">
+      <div class="tp-card-icon">🌐</div>
+      <div class="tp-card-name">Tradutor</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('tts')">
+      <div class="tp-card-icon">🔊</div>
+      <div class="tp-card-name">Ouvir</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('correct')">
+      <div class="tp-card-icon">✅</div>
+      <div class="tp-card-name">Corretor</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('examples')">
+      <div class="tp-card-icon">💬</div>
+      <div class="tp-card-name">Exemplos</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dictation')">
+      <div class="tp-card-icon">🎧</div>
+      <div class="tp-card-name">Ditado</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dict')">
+      <div class="tp-card-icon">📖</div>
+      <div class="tp-card-name">Dicionário</div>
+    </div>
+  </div>
+</div>
+<!-- TOOL MODAL -->
+<div id="tool-modal" style="display:none;position:fixed;inset:0;z-index:8500;background:var(--bg);flex-direction:column;overflow:hidden">
+  <div id="tool-modal-body" style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden"></div>
+</div>
 </body>
 </html>
