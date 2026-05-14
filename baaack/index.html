@@ -722,8 +722,8 @@ body.no-shimmer .en{animation:none !important;background:none !important;-webkit
 .en:hover{animation-duration:1s;}
 
 /* ── TOOLS PAGE ── */
-.pg-tools{min-height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden;}
-.tl-menu{display:flex;flex-direction:column;overflow-y:auto;}
+.pg-tools{height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden;}
+.tl-menu{display:flex;flex-direction:column;overflow-y:auto;flex:1;}
 .tl-item{display:flex;align-items:center;gap:16px;padding:16px 20px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--line);}
 .tl-item:last-child{border-bottom:none;}
 .tl-item:active{background:var(--card2);}
@@ -734,10 +734,10 @@ body.no-shimmer .en{animation:none !important;background:none !important;-webkit
 .tl-arrow{font-size:16px;color:var(--m);opacity:.5;}
 
 /* ── TOOL PANEL ── */
-.tl-panel{display:flex;flex-direction:column;flex:1;overflow:hidden;}
-.tl-panel-scroll{display:flex;flex-direction:column;gap:16px;padding:20px 20px 40px;overflow-y:auto;flex:1;}
-.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;position:sticky;top:0;background:var(--bg);z-index:1;}
-.tl-back-btn{width:36px;height:36px;border-radius:10px;background:var(--card2);border:none;color:var(--tx);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tl-panel{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
+.tl-panel-scroll{display:flex;flex-direction:column;gap:16px;padding:20px 20px 60px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.tl-hd{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--bg);z-index:1;}
+.tl-back-btn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
 .tl-back-btn:hover{background:var(--line);}
 .tl-hd-title{font-size:16px;font-weight:700;color:var(--tx);}
 
@@ -818,7 +818,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .hl-tobe{color:var(--yel);font-weight:700;}
 
 /* ── GERADOR ── */
-.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 16px 0}
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 16px 24px;overflow-y:auto;flex:1;align-content:start}
 .tl-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 8px;border-radius:14px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,background .2s;text-align:center}
 .tl-card:hover{border-color:rgba(110,181,255,.4);background:rgba(110,181,255,.06)}
 .tl-card:active{transform:scale(.97)}
@@ -826,8 +826,8 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .tl-card-icon{font-size:28px;line-height:1}
 .tl-card-name{font-size:11px;color:var(--s);font-weight:500;line-height:1.3}
 .tl-panel{padding:16px;overflow-y:auto;max-height:calc(100dvh - 200px)}
-.gen-wrap{display:flex;flex-direction:column;gap:0;padding-bottom:40px}
-.gen-back{background:none;border:none;color:var(--blue);cursor:pointer;font-size:13px;padding:0 0 20px;opacity:.8;text-align:left;display:block}
+.gen-wrap{display:flex;flex-direction:column;gap:0;overflow-y:auto;flex:1;padding:16px 16px 80px;-webkit-overflow-scrolling:touch;min-height:0;}
+.gen-back{display:none}
 .gen-section{margin-bottom:24px}
 .gen-section-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .gen-section-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--m);font-family:monospace}
@@ -2585,7 +2585,7 @@ const pages=[
       <div class="tl-card-name">Dicionário rápido</div>
     </div>
   </div>
-  <div id="tool-panel" class="tl-panel" style="display:none;"></div>
+  <div id="tool-panel" class="tl-panel" style="display:none;"><div id="tool-panel-body"></div></div>
 </div>`,
 
 `<div class="page pg-idx">
@@ -5163,7 +5163,7 @@ function toggleShimmer(){
 const toolTemplates={
   translator:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🌐 Tradutor</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5182,7 +5182,7 @@ const toolTemplates={
     </div>`,
   tts:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🔊 Ouvir em inglês</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5198,7 +5198,7 @@ const toolTemplates={
     </div>`,
   correct:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">✏️ Corretor de frases</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5212,7 +5212,7 @@ const toolTemplates={
     </div>`,
   examples:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">💬 Exemplos</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5228,7 +5228,7 @@ const toolTemplates={
     </div>`,
   dictation:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🎧 Ditado</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5264,7 +5264,7 @@ const toolTemplates={
     </div>`,
   dict:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">📖 Dicionário rápido</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5505,8 +5505,13 @@ function openTool(id){
     document.getElementById('tool-menu').style.display='none';
     const p=document.getElementById('tool-panel');
     p.style.display='block';
-    p.innerHTML=`<div class="gen-wrap">
-      <button onclick="closeTool()" class="gen-back">← Ferramentas</button>
+    p.style.flex='1';
+    p.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden">
+      <div class="tl-hd">
+        <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span class="tl-hd-title">✨ Gerador de frases</span>
+      </div>
+      <div class="gen-wrap">
       <div class="gen-section">
         <div class="gen-section-hd">
           <div class="gen-section-label">Matérias</div>
@@ -5572,6 +5577,7 @@ function openTool(id){
       <button id="gen-copy-btn" onclick="genCopy()">📋 Copiar frases</button>
       <div id="gen-loading">⏳ Gerando...</div>
       <div class="gen-result-wrap"><div id="gen-result"></div></div>
+      </div>
     </div>`;
     return;
   }
@@ -5579,14 +5585,18 @@ function openTool(id){
   activeTool=id;
   document.getElementById('tool-menu').style.display='none';
   const panel=document.getElementById('tool-panel');
-  panel.style.display='flex';panel.style.flex='1';panel.style.overflow='hidden';
-  document.getElementById('tool-panel-body').innerHTML=toolTemplates[id]||'';
+  panel.style.cssText='display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden';
+  const _pb=document.getElementById('tool-panel-body')||document.getElementById('tool-panel');
+  _pb.innerHTML=toolTemplates[id]||'';
   if(id==='dictation'){dicLevel='easy';}
 }
 function closeTool(){
   activeTool=null;
-  document.getElementById('tool-panel').style.display='none';
-  document.getElementById('tool-menu').style.display='flex';
+  const panel=document.getElementById('tool-panel');
+  panel.style.display='none';
+  panel.style.flex='';
+  panel.style.overflowY='';
+  document.getElementById('tool-menu').style.display='grid';
   window.speechSynthesis&&window.speechSynthesis.cancel();
 }
 let trlDir='pt-en';
