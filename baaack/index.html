@@ -189,9 +189,11 @@ body.light .tobe-card{box-shadow:0 1px 6px rgba(0,0,0,.07);}
 .highlight-pulse{animation:hpulse 1.4s ease 3;border-color:var(--blue) !important;outline:2px solid var(--blue);outline-offset:2px;}
 
 /* Section divider between Presente/Passado/Futuro */
-.tobe-divider{display:flex;align-items:center;gap:12px;margin:10px 0 4px;}
-.tobe-divider-line{flex:1;height:1px;background:var(--line);}
-.tobe-divider-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);white-space:nowrap;}
+.sec-divider{display:flex;align-items:center;gap:10px;margin:22px 0 10px;}
+.sec-divider-line{flex:1;height:1.5px;background:linear-gradient(to right,var(--acc,var(--blue)),transparent);}
+.sec-divider-line.r{background:linear-gradient(to left,var(--acc,var(--blue)),transparent);}
+.sec-divider-label{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc,var(--blue));white-space:nowrap;padding:3px 10px;border-radius:99px;background:rgba(110,181,255,.08);border:1px solid rgba(110,181,255,.18);}
+
 
 /* Irony block */
 .irony-block{background:var(--card2);border-radius:11px;padding:13px 15px;border-left:3px solid var(--yel);}
@@ -405,7 +407,7 @@ body.light .pg-chapter{background:linear-gradient(135deg,#1a3060 0%,#2a4a8a 50%,
 .inonat-prep.on{background:rgba(154,230,180,.15);color:#68d391;}
 .inonat-prep.at{background:rgba(252,176,69,.15);color:#f6ad55;}
 
-.inonat-section-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--acc,var(--blue));margin:18px 0 6px;padding:0 2px;}
+.inonat-section-label{display:none;}
 .inonat-global-row{display:flex;align-items:center;gap:12px;margin:0 0 16px;}
 .inonat-global-btn{background:var(--acc,var(--blue));border:none;border-radius:10px;padding:9px 18px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer;flex-shrink:0;}
 .inonat-tip-click{font-size:12px;color:var(--m);line-height:1.4;}
@@ -949,6 +951,18 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.22)}
 
 .cv-logo{width:clamp(90px,38%,160px);object-fit:contain;margin-bottom:clamp(8px,2vh,16px);filter:drop-shadow(0 0 12px rgba(110,181,255,.3));}
+
+.ex-mute-btn{background:none;border:none;cursor:pointer;font-size:13px;padding:0 2px;opacity:.55;transition:opacity .15s;line-height:1;}
+.ex-mute-btn:hover{opacity:1;}
+.ex-mute-btn.muted{opacity:.3;}
+
+/* ── FOCUS MODE ── */
+.focus-mode>*{filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
+.focus-mode .focus-ancestor{filter:none!important;opacity:1!important;pointer-events:auto!important;}
+.focus-mode .focus-active{filter:none!important;opacity:1!important;pointer-events:auto!important;position:relative;z-index:3;}
+.has-focus>*:not(.focus-active){filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
+.focus-exit-hint{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:99px;pointer-events:none;opacity:0;transition:opacity .3s;z-index:100;letter-spacing:.5px;}
+.focus-exit-hint.show{opacity:1;}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@900&display=swap" rel="stylesheet">
 </head>
@@ -1503,7 +1517,19 @@ function initEx(id,bank,total){
   window[id+'_s']={items:shuffle(bank).slice(0,total),cur:0,acertos:0,erroAtual:false,_bank:bank,_total:total,_best:best?parseFloat(best):null};
   const body=document.getElementById(id+'-body');
   const score=document.getElementById(id+'-score');
-  if(score)score.textContent='0/'+total;
+  if(score){
+    score.textContent='0/'+total;
+    // Add mute btn if not already there
+    const hdr=score.parentElement;
+    if(hdr&&!hdr.querySelector('.ex-mute-btn')){
+      const mb=document.createElement('button');
+      mb.className='ex-mute-btn'+(window._exMuted?' muted':'');
+      mb.textContent=window._exMuted?'🔇':'🔊';
+      mb.title=window._exMuted?'Ativar som':'Silenciar';
+      mb.onclick=toggleExMute;
+      hdr.appendChild(mb);
+    }
+  }
   if(body){
     const bestHtml=window[id+'_s']._best?`<div class="ex-best">🏆 Melhor: ${fmtTime(window[id+'_s']._best)}</div>`:'';
     body.innerHTML=`<div class="ex-start-screen">${bestHtml}<button class="ex-start-btn" onclick="startEx('${id}')">▶ Começar</button></div>`;
@@ -1525,6 +1551,7 @@ function fmtTime(secs){
   return (m>0?m+'m ':'')+s2.toFixed(2)+'s';
 }
 function playQuack(){
+  if(window._exMuted)return;
   try{
     const c=new(window.AudioContext||window.webkitAudioContext)();
     const now=c.currentTime;
@@ -1533,11 +1560,22 @@ function playQuack(){
       o.connect(g);g.connect(c.destination);
       o.type='square';o.frequency.value=freq;
       const t=now+i*0.11;
-      g.gain.setValueAtTime(0.32,t);
+      g.gain.setValueAtTime(0.13,t);
       g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
       o.start(t);o.stop(t+0.12);
     });
   }catch(e){}
+}
+
+try{window._exMuted=localStorage.getItem('ex_muted')==='1';}catch(e){window._exMuted=false;}
+function toggleExMute(){
+  window._exMuted=!window._exMuted;
+  localStorage.setItem('ex_muted',window._exMuted?'1':'0');
+  document.querySelectorAll('.ex-mute-btn').forEach(b=>{
+    b.textContent=window._exMuted?'🔇':'🔊';
+    b.classList.toggle('muted',window._exMuted);
+    b.title=window._exMuted?'Ativar som':'Silenciar';
+  });
 }
 function hlThe(txt){if(!txt)return '';return txt.replace(/\bthe\b/g,'<span class="the-hl">the</span>');}
 function renderEx(id,bank,total){
@@ -2398,6 +2436,12 @@ window['caso_bk']=[
   {pt:'Ele consertou a bicicleta do Jake.',before:'He fixed',blank:"Jake's bike",after:'.',options:["Bike's Jake","Jake's bike",'Jakes bike',"Jake bike's"],anchor:'caso-s'},
   {pt:'Eles visitaram o apartamento da Olivia.',before:'They visited',blank:"Olivia's apartment",after:'.',options:["Apartment's Olivia",'Olivias apartment',"Olivia's apartment","Olivia apartment's"],anchor:'caso-s'},
   {pt:'Eu usei o celular da minha amiga.',before:'I used',blank:"my friend's phone",after:'.',options:["Phone's friend",'My friends phone',"my friend's phone","My friend phone's"],anchor:'caso-s'},
+  {pt:'Eu peguei emprestado o carro da amiga dela.',before:'I borrowed',blank:"her friend's car",after:'.',options:["her friend's car","the friend's her car","her car's friend","hers friend car"],anchor:'caso-s'},
+  {pt:'Ela estava dirigindo a bicicleta do nosso irmão.',before:'She was driving',blank:"our brother's bike",after:'.',options:["our brother's bike","our bike's brother","the brother's our bike","ours brother bike"],anchor:'caso-s'},
+  {pt:'Eu fui para a casa da namorada dele.',before:'I went to',blank:"his girlfriend's house",after:'.',options:["his girlfriend's house","his house's girlfriend","the girlfriend's his house","him girlfriend house"],anchor:'caso-s'},
+  {pt:'Nós pegamos o carro do professor deles.',before:'We took',blank:"their teacher's car",after:'.',options:["their teacher's car","their car's teacher","the teacher's their car","them teacher car"],anchor:'caso-s'},
+  {pt:'Eu usei o celular da minha irmã.',before:'I used',blank:"my sister's phone",after:'.',options:["my sister's phone","my phone's sister","the sister's my phone","mine sister phone"],anchor:'caso-s'},
+  {pt:'Você foi à festa da nossa amiga.',before:'You went to',blank:"our friend's party",after:'.',options:["our friend's party","our party's friend","the friend's our party","ours friend party"],anchor:'caso-s'},
   {pt:'Ontem eu estava na casa da amiga da Renata.',before:'Yesterday I was at',blank:"Renata's friend's house",after:'.',options:["Friend's Renata's house","Renata's friend's house","Renata's house's friend",'Renatas friends house'],anchor:'caso-ss'},
   {pt:'Eu peguei emprestado o carro do amigo do professor.',before:'I borrowed',blank:"the teacher's friend's car",after:'.',options:["the teacher's friend's car","the friend's teacher's car",'the teachers friends car',"teacher's friend car"],anchor:'caso-ss'},
   {pt:'Eu vi o cachorro da filha da Ashley.',before:'I saw',blank:"Ashley's daughter's dog",after:'.',options:["daughter's Ashley's dog",'Ashleys daughters dog',"Ashley's dogs daughter","Ashley's daughter's dog"],anchor:'caso-ss'},
@@ -3031,9 +3075,14 @@ const pages=[
       <div class="prow"><div class="prow-en"><span class="en" data-speak="We">We</span></div><div class="prow-arr">—</div><div class="prow-pt">Nós</div></div>
       <div class="prow"><div class="prow-en"><span class="en" data-speak="They">They</span></div><div class="prow-arr">—</div><div class="prow-pt">Eles / Elas</div></div>
     </div>
-    <div class="tip" id="pron-i"><div class="tip-lbl">📌 I — Sempre maiúsculo</div><p class="tip-txt">O pronome <strong>I</strong> (Eu) é sempre escrito com letra maiúscula em inglês, não importa a posição que ele ocupe na frase.<br><br>
-      <span class="en" data-speak="I am happy">I am happy.</span> ✅ &nbsp;·&nbsp; <span style="color:var(--red)">i am happy.</span> ❌<br>
-      <span class="en" data-speak="She and I are friends">She and I are friends.</span> ✅ &nbsp;·&nbsp; <span style="color:var(--red)">she and i are friends.</span> ❌</p></div>
+    <div class="pron-section" id="pron-i">
+      <div class="pron-header"><span class="pron-word"><span class="en" data-speak="I">I</span></span><span class="pron-tr">— Eu</span></div>
+      <p class="pron-body">O pronome <strong>I</strong> é sempre escrito com letra maiúscula em inglês, não importa a posição que ele ocupe na frase.</p>
+      <div class="ex-list">
+        <div class="ex-ex"><div class="ex-en"><span class="en" data-speak="I am happy">I am happy.</span> ✅</div><div class="ex-en" style="color:var(--red)">i am happy. ❌</div></div>
+        <div class="ex-ex"><div class="ex-en"><span class="en" data-speak="She and I are friends">She and I are friends.</span> ✅</div><div class="ex-en" style="color:var(--red)">she and i are friends. ❌</div></div>
+      </div>
+    </div>
 
     <div class="pron-section" id="you-plural-section">
       <div class="pron-header"><span class="pron-word"><span class="en" data-speak="You">You</span></span><span class="pron-tr">— Você / Vocês</span></div>
@@ -3056,9 +3105,15 @@ const pages=[
     <div class="pron-section" id="pron-they">
       <div class="pron-header"><span class="pron-word"><span class="en" data-speak="They">They</span></span><span class="pron-tr">— Eles / Elas / Pronome Neutro</span></div>
       <p class="pron-body">No plural, o <strong>They</strong> pode ser usado para pessoas ou objetos.</p>
-      <div class="blist">
-        <div class="bitem"><span><strong>Humano:</strong> <span class="en" data-speak="They are my favorite teachers">They are my favorite teachers.</span> <em>(Eles são meus professores favoritos.)</em></span></div>
-        <div class="bitem"><span><strong>Não-humano:</strong> <span class="en" data-speak="I love these shoes, they are so comfortable">I love these shoes, they are so comfortable.</span> <em>(Eles são muito confortáveis.)</em></span></div>
+      <div class="quote-list">
+        <div class="quote">
+          <div class="q-pt"><strong>Humano</strong> — Eles são meus professores favoritos.</div>
+          <div class="q-en"><span class="en" data-speak="They are my favorite teachers">They are my favorite teachers.</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>Não-humano</strong> — Eu adoro esses tênis, eles são muito confortáveis.</div>
+          <div class="q-en"><span class="en" data-speak="I love these shoes, they are so comfortable">I love these shoes, they are so comfortable.</span></div>
+        </div>
       </div>
       <p class="pron-body">O <strong>they</strong> também é usado para se referir a uma pessoa específica quando o gênero não foi mencionado ou não é conhecido — equivale a "ele ou ela".</p>
       <div class="ex-list">
@@ -3149,7 +3204,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Eles não estavam pula<b>ndo</b>.</div><div class="q-en"><span class="en" data-speak="They weren't jumping">They weren't jumpi<b>ng</b>.</span></div></div>
     </div>
     <p class="intro">O <strong>-ing</strong> aparece em outras situações também, que vamos ver mais pra frente. Mas uma coisa é certa: sempre que você ver um <strong>-ndo</strong> em português, vai ser <strong>-ing</strong> em inglês.</p>
-    <div class="sub-label">Regras do -ing</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Regras do -ing</div><div class="sec-divider-line r"></div></div>
     <div class="rule-list">
       <div class="rule"><div class="rule-title" id="ing-regras">Verbo termina em -e</div><div class="rule-body">Tira o <strong>e</strong> antes do <strong>-ing</strong></div><div class="rule-ex"><span class="en" data-speak="make">make</span> (fazer) → <span class="en" data-speak="making">mak<b>ing</b></span> &nbsp;·&nbsp; <span class="en" data-speak="write">write</span> (escrever) → <span class="en" data-speak="writing">writ<b>ing</b></span></div></div>
       <div class="rule"><div class="rule-title">Verbo curto (consoante–vogal–consoante)</div><div class="rule-body">Dobra a última letra</div><div class="rule-ex"><span class="en" data-speak="run">run</span> (correr) → <span class="en" data-speak="running">runn<b>ing</b></span> &nbsp;·&nbsp; <span class="en" data-speak="sit">sit</span> (sentar) → <span class="en" data-speak="sitting">sitt<b>ing</b></span></div></div>
@@ -3193,7 +3248,7 @@ const pages=[
     <p class="intro">O verbo <span class="en" data-speak="to be">to be</span> em português é o verbo <strong>ser</strong> e o verbo <strong>estar</strong>.</p>
 
     <!-- ════ PRESENTE ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Presente</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Presente</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-presente">
       <div class="tobe-card-hd">Presente — Afirmativo</div>
@@ -3364,7 +3419,7 @@ const pages=[
     </div>
 
     <!-- ════ PRESENTE INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-pres">Presente — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider" id="tobe-interrogativo-pres"><div class="sec-divider-line"></div><div class="sec-divider-label">Presente — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Presente — Interrogativo</div>
@@ -3401,7 +3456,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Passado</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Passado</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-passado">
       <div class="tobe-card-hd pur">Passado — Afirmativo</div>
@@ -3486,7 +3541,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-past">Passado — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider" id="tobe-interrogativo-past"><div class="sec-divider-line"></div><div class="sec-divider-label">Passado — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Passado — Interrogativo</div>
@@ -3509,7 +3564,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Futuro</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Futuro</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-futuro">
       <div class="tobe-card-hd yel">Futuro — Afirmativo</div>
@@ -3570,7 +3625,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-fut">Futuro — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider" id="tobe-interrogativo-fut"><div class="sec-divider-line"></div><div class="sec-divider-label">Futuro — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Futuro — Interrogativo</div>
@@ -3593,7 +3648,7 @@ const pages=[
     </div>
 
     <!-- ════ TABELA UNIFICADA ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Tabela — para decorar</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Tabela — para decorar</div><div class="sec-divider-line r"></div></div>
 
     <div class="big-tbl-wrap">
       <table>
@@ -3674,7 +3729,7 @@ const pages=[
     </div>
 
     <!-- ════ DICAS ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Dicas para decorar</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Dicas para decorar</div><div class="sec-divider-line r"></div></div>
     <div class="tip grn"><div class="tip-lbl">💡 I am</div><p class="tip-txt">Só o <strong>I</strong> usa <strong>am</strong>. Nenhum outro pronome.</p></div>
     <div class="tip grn"><div class="tip-lbl">💡 Was e Were</div><p class="tip-txt">Quem usa <strong>is</strong> usa <strong>was</strong>. Quem usa <strong>are</strong> usa <strong>were</strong>.<br><span class="en" data-speak="is">is</span> → <span class="en" data-speak="was">was</span> &nbsp;·&nbsp; <span class="en" data-speak="are">are</span> → <span class="en" data-speak="were">were</span></p></div>
     <div class="tip grn"><div class="tip-lbl">💡 Will be</div><p class="tip-txt"><span class="en" data-speak="will be">will be</span> é igual para todo mundo — não muda de pronome para pronome.</p></div>
@@ -3721,7 +3776,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Meu pai comprou um computador <b>potente e rápido</b>.</div></div>
     </div>
     <div class="tip red" id="adj-ordem"><div class="tip-lbl">⚠️ Regra principal</div><p class="tip-txt">Em português o adjetivo vem <strong>depois</strong> do substantivo. Em inglês, vem <strong>sempre antes</strong>.</p></div>
-    <div class="sub-label">Exemplos</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Exemplos</div><div class="sec-divider-line r"></div></div>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Eu comprei uma caneta azul.</div><div class="q-en">I bought a <span class="en" data-speak="blue pen">blue pen</span>.</div></div>
       <div class="quote"><div class="q-pt">Meu pai comprou um computador potente e rápido.</div><div class="q-en">My dad bought a <span class="en" data-speak="powerful and fast computer">powerful and fast computer</span>.</div></div>
@@ -3729,7 +3784,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Douglas conheceu uma menina legal.</div><div class="q-en">Douglas met a <span class="en" data-speak="cool girl">cool girl</span>.</div></div>
     </div>
     <div class="tip grn"><div class="tip-lbl" id="adj-plural">💡 Adjetivos não têm plural</div><p class="tip-txt">Em português: carro <strong>vermelho</strong>, carros <strong>vermelhos</strong>. Em inglês o adjetivo nunca muda.<br><br>The <span class="en" data-speak="yellow t-shirts">yellow</span> t-shirts are dirty. ✅<br>The yellows t-shirts are dirty. ❌</p></div>
-    <div class="sub-label" id="adj-tobe">Adjetivo após o verbo to be</div>
+    <div class="sec-divider" id="adj-tobe"><div class="sec-divider-line"></div><div class="sec-divider-label">Adjetivo após o verbo to be</div><div class="sec-divider-line r"></div></div>
     <p class="intro">Quando o adjetivo vem depois do verbo to be, a ordem é a mesma do português.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">A camiseta é amarela.</div><div class="q-en">The t-shirt <span class="en" data-speak="is yellow">is yellow</span>.</div></div>
@@ -3737,7 +3792,7 @@ const pages=[
       <div class="quote"><div class="q-pt">Aqueles meninos são legais.</div><div class="q-en">Those boys <span class="en" data-speak="are cool">are cool</span>.</div></div>
       <div class="quote"><div class="q-pt">O casal será feliz.</div><div class="q-en">The couple <span class="en" data-speak="will be happy">will be happy</span>.</div></div>
     </div>
-    <div class="sub-label" id="adj-de">Quando o "de" some em inglês</div>
+    <div class="sec-divider" id="adj-de"><div class="sec-divider-line"></div><div class="sec-divider-label">Quando o "de" some em inglês</div><div class="sec-divider-line r"></div></div>
     <p class="intro">Em português, usamos "de" para ligar um substantivo a uma característica: <strong>janela de vidro</strong>, <strong>camiseta de algodão</strong>. Em inglês, o "de" não existe — o adjetivo simplesmente fica antes, sem nada entre eles.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">janela de vidro</div><div class="q-en"><span class="en" data-speak="glass window">glass window</span></div></div>
@@ -3783,7 +3838,7 @@ const pages=[
 `<div class="page pg-content" style="--acc:#4fd1c5;">
   <div class="pg-hd"><div class="pg-lbl">Seção 06 · Artigos</div><div class="pg-ttl">The, A, An e Some</div></div>
   <div class="pg-body">
-    <div class="sub-label" id="art-the">Artigo Definido — The</div>
+    <div class="sec-divider" id="art-the"><div class="sec-divider-line"></div><div class="sec-divider-label">Artigo Definido — The</div><div class="sec-divider-line r"></div></div>
     <p class="intro"><span class="en" data-speak="the">The</span> equivale ao <strong>o, a, os, as</strong>. Usado quando ambos sabem do que se fala, ou quando o objeto já foi mencionado.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">O menino estava dormindo.</div><div class="q-en"><span class="en" data-speak="The boy was sleeping">The boy was sleeping</span>.</div></div>
@@ -3802,7 +3857,7 @@ const pages=[
       <strong>Jornais:</strong><br>
       <span class="en" data-speak="The New York Times">The New York Times</span> · <span class="en" data-speak="The Guardian">The Guardian</span>
     </p></div>
-    <div class="sub-label">Artigo Indefinido — A / An</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Artigo Indefinido — A / An</div><div class="sec-divider-line r"></div></div>
     <div id="art-a-an" style="scroll-margin-top:20px;"><p class="intro" style="margin:0 0 8px;"><span class="en" data-speak="a">A</span> e <span class="en" data-speak="an">An</span> equivalem ao <strong>um, uma</strong>. Use quando fala de algo pela primeira vez ou de qualquer objeto do tipo.</p>
     <div class="tip"><div class="tip-lbl">📌 A vs An</div><p class="tip-txt">Use <strong>a</strong> antes de som de <strong>consoante</strong>. Use <strong>an</strong> antes de som de <strong>vogal</strong>. O que importa é o <strong>som</strong>, não a letra.</p></div>
     <div class="quote-list">
@@ -3813,7 +3868,7 @@ const pages=[
     <div class="tip yel"><div class="tip-lbl">⚠️ H mudo</div><p class="tip-txt">Palavras com <strong>H mudo</strong> usam <strong>an</strong>:<br><span class="en" data-speak="an hour">an hour</span> <span class="q-tr">(uma hora)</span> &nbsp;·&nbsp; <span class="en" data-speak="an honest person">an honest person</span></p></div>
     <div class="tip"><div class="tip-lbl">💡 E o W e o U?</div><p class="tip-txt">Algumas letras enganam:<br><br><strong>W</strong> — tem som parecido com "u" (<em>uállet, uíq</em>), mas em inglês é classificado como consoante. Usamos <strong>a</strong>:<br><span class="en" data-speak="a wallet">a wallet</span> <span class="q-tr">(uma carteira)</span> &nbsp;·&nbsp; <span class="en" data-speak="a week">a week</span> <span class="q-tr">(uma semana)</span> &nbsp;·&nbsp; <span class="en" data-speak="a window">a window</span> <span class="q-tr">(uma janela)</span><br><br><strong>U</strong> — às vezes soa como "yu" (consoante + vogal). Nesses casos, usamos <strong>a</strong>:<br><span class="en" data-speak="a university">a university</span> <span class="q-tr">(uma universidade)</span> &nbsp;·&nbsp; <span class="en" data-speak="a uniform">a uniform</span> <span class="q-tr">(um uniforme)</span><br><br>Quando o U soa como vogal pura, usamos <strong>an</strong>:<br><span class="en" data-speak="an umbrella">an umbrella</span> <span class="q-tr">(um guarda-chuva)</span> &nbsp;·&nbsp; <span class="en" data-speak="an uncle">an uncle</span> <span class="q-tr">(um tio)</span></p></div>
     </div>
-    <div class="sub-label" id="art-some">Artigo Indefinido Plural — Some</div>
+    <div class="sec-divider" id="art-some"><div class="sec-divider-line"></div><div class="sec-divider-label">Artigo Indefinido Plural — Some</div><div class="sec-divider-line r"></div></div>
     <p class="intro"><span class="en" data-speak="some">Some</span> equivale ao <strong>uns, umas, alguns, algumas</strong>.</p>
     <div class="quote-list">
       <div class="quote"><div class="q-pt">Ontem eu conheci algumas meninas.</div><div class="q-en">Yesterday I met <span class="en" data-speak="some girls">some girls</span>.</div></div>
@@ -3825,7 +3880,7 @@ const pages=[
     <span class="en" data-speak="some coffee">some coffee</span> — um pouco de café<br>
     <span class="en" data-speak="some bread">some bread</span> — um pouco de pão<br>
     <span class="en" data-speak="some money">some money</span> — um pouco de dinheiro</p></div>
-    <div class="sub-label">Resumo</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Resumo</div><div class="sec-divider-line r"></div></div>
     <div class="tbl-wrap"><table><thead><tr><th>Português</th><th>Inglês</th><th>Uso</th></tr></thead><tbody>
       <tr><td>o, a, os, as</td><td style="color:var(--blue);font-weight:700">the</td><td>Definido</td></tr>
       <tr><td>um, uma (consoante)</td><td style="color:var(--blue);font-weight:700">a</td><td>Indefinido singular</td></tr>
@@ -4276,7 +4331,7 @@ const pages=[
       <button class="inonat-global-btn" id="inonat-global-btn" onclick="toggleAllIB()">Revelar tudo</button>
       <span class="inonat-tip-click">💡 Toque em qualquer bolha para expandir</span>
     </div>
-    <div class="inonat-section-label">⏰ Tempo do dia</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">⏰ Tempo do dia</div><div class="sec-divider-line r"></div></div>
     <div class="inonat-list" data-group="tempo">
     <div class="inonat-bubble" id="ib-tempo1">
       <button class="inonat-bubble-btn" onclick="toggleIB('ib-tempo1')">
@@ -4324,7 +4379,7 @@ const pages=[
     </div>
     </div>
 
-    <div class="inonat-section-label">📅 Datas e Períodos</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📅 Datas e Períodos</div><div class="sec-divider-line r"></div></div>
     <div class="inonat-list" data-group="datas">
     <div class="inonat-bubble" id="ib-datas1">
       <button class="inonat-bubble-btn" onclick="toggleIB('ib-datas1')">
@@ -4460,7 +4515,7 @@ const pages=[
     </div>
     </div>
 
-    <div class="inonat-section-label">📍 Lugares</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📍 Lugares</div><div class="sec-divider-line r"></div></div>
     <div class="inonat-list" data-group="lugar">
     <div class="inonat-bubble" id="ib-lugar1">
       <button class="inonat-bubble-btn" onclick="toggleIB('ib-lugar1')">
@@ -4607,7 +4662,7 @@ const pages=[
     </div>
     </div>
 
-    <div class="inonat-section-label">📱 Tecnologia, Mídia e Grupos</div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📱 Tecnologia, Mídia e Grupos</div><div class="sec-divider-line r"></div></div>
     <div class="inonat-list" data-group="tech">
     <div class="inonat-bubble" id="ib-tech1">
       <button class="inonat-bubble-btn" onclick="toggleIB('ib-tech1')">
@@ -5205,7 +5260,7 @@ const pages=[
 
     <p class="intro" id="cp-intro">Ao contrário da matéria anterior, onde indicávamos o dono com pronomes, aqui utilizaremos <strong>nomes reais</strong>.</p>
 
-    <div class="sub-label" id="cp-humanos">Humanos e animais — Caso Possessivo</div>
+    <div class="sec-divider" id="cp-humanos"><div class="sec-divider-line"></div><div class="sec-divider-label">Humanos e animais — Caso Possessivo</div><div class="sec-divider-line r"></div></div>
 
     <div class="cp-formula" id="cp-formula1">
       <div class="cp-formula-label">Fórmula — 1 dono</div>
@@ -5269,7 +5324,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sub-label" id="cp-of">Inanimados e cargos — OF</div>
+    <div class="sec-divider" id="cp-of"><div class="sec-divider-line"></div><div class="sec-divider-label">Inanimados e cargos — OF</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Quando o dono é algo <strong>inanimado</strong> ou quando é <strong>título/cargo</strong>, utilizamos:</p>
 
@@ -5299,7 +5354,7 @@ const pages=[
       <p class="tip-txt">Ainda podemos utilizar o caso possessivo (<em>dono + 's + posse</em>) quando o dono é inanimado.</p>
     </div>
 
-    <div class="sub-label" id="cp-expressoes">Expressões com OF</div>
+    <div class="sec-divider" id="cp-expressoes"><div class="sec-divider-line"></div><div class="sec-divider-label">Expressões com OF</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Algumas expressões também utilizam o <span class="en" data-speak="of">of</span>.</p>
 
@@ -5371,6 +5426,7 @@ function goBack(){
 
 function go(i){
   if(i<0||i>=pages.length)return;
+  try{if(typeof exitFocusMode==="function")exitFocusMode();}catch(e){}
   if(_isContentOfSec(i))i=i-1;
   cur=i;
   const _accMap={5:'var(--blue)',6:'var(--blue)',7:'var(--green)',8:'var(--green)',
@@ -5866,54 +5922,86 @@ function updateThemeUI(){
 
 go(0);
 
-</script>
 
-<!-- TOOLS POPUP -->
-<div id="tools-overlay" onclick="closeToolsPopup()"></div>
-<div id="tools-popup">
-  <div class="tp-hd">
-    <span class="tp-hd-title">Ferramentas</span>
-    <button class="tp-close" onclick="closeToolsPopup()">✕</button>
-  </div>
-  <div class="tp-grid">
-    <a class="tp-card tp-card-link" href="https://gemini.google.com/gem/1Rjo2NeBOr-n0fwuFX8TBwBEVlA-Sf5qm?usp=sharing" target="_blank" rel="noopener" onclick="closeToolsPopup()">
-      <div class="tp-card-icon">🔮</div>
-      <div class="tp-card-name">Gemini</div>
-    </a>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('generator')">
-      <div class="tp-beta">beta</div>
-      <div class="tp-card-icon">✨</div>
-      <div class="tp-card-name">Gerador</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('translator')">
-      <div class="tp-card-icon">🌐</div>
-      <div class="tp-card-name">Tradutor</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('tts')">
-      <div class="tp-card-icon">🔊</div>
-      <div class="tp-card-name">Ouvir</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('correct')">
-      <div class="tp-card-icon">✅</div>
-      <div class="tp-card-name">Corretor</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('examples')">
-      <div class="tp-card-icon">💬</div>
-      <div class="tp-card-name">Exemplos</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dictation')">
-      <div class="tp-card-icon">🎧</div>
-      <div class="tp-card-name">Ditado</div>
-    </div>
-    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dict')">
-      <div class="tp-card-icon">📖</div>
-      <div class="tp-card-name">Dicionário</div>
-    </div>
-  </div>
-</div>
-<!-- TOOL MODAL -->
-<div id="tool-modal" style="display:none;position:fixed;inset:0;z-index:8500;background:var(--bg);flex-direction:column;overflow:hidden">
-  <div id="tool-modal-body" style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden"></div>
-</div>
-</body>
-</html>
+
+/* ── FOCUS MODE ── */
+// Containers cujos filhos diretos são blocos focáveis
+const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
+  'inonat-list','eg-block','conj-big','tobe-card-body','ex-list',
+  'togo-section','pron-section','rule-box','tip','poss-ex-block',
+  'poss-ex-sentences','indem-ex-block','cp-formula-body','que-card',
+  'cp-formula','demo-example','irony-block','inonat-bubble-body']);
+// Tables — never split inside; the whole table is the focus unit
+const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',
+  'togo-table','big-tbl-wrap','tbl-wrap','conj-big']);
+var _focusEl=null,_focusHint=null; // focus mode state
+function _initFocusHint(){
+  if(_focusHint)return;
+  _focusHint=document.createElement('div');
+  _focusHint.className='focus-exit-hint';
+  _focusHint.textContent='Duplo clique ou ESC para sair';
+  document.body.appendChild(_focusHint);
+}
+function _findFocusTarget(startEl){
+  const pgBody=startEl.closest('.pg-body');
+  if(!pgBody)return null;
+  let el=startEl;
+  while(el&&el!==pgBody){
+    const par=el.parentElement;
+    if(!par)break;
+    // Stop when parent is pg-body or a known split-container
+    const parClasses=[...par.classList];
+    const elClasses=[...el.classList];
+    // If el itself is a table root, return the whole table
+    if(elClasses.some(c=>_TABLE_ROOTS.has(c))){
+      if(el.offsetHeight>0)return el;
+    }
+    if(par===pgBody||parClasses.some(c=>_SPLIT_PARENTS.has(c))){
+      // Don't focus invisible/structural elements
+      if(el.offsetHeight>0)return el;
+    }
+    el=par;
+  }
+  return null;
+}
+function exitFocusMode(){
+  if(!_focusEl)return;
+  _focusEl.classList.remove('focus-active');
+  let el=_focusEl.parentElement;
+  while(el&&!el.classList.contains('pg-body')){
+    el.classList.remove('focus-ancestor','has-focus');
+    el=el.parentElement;
+  }
+  if(el)el.classList.remove('focus-mode');
+  _focusEl=null;
+  if(_focusHint)_focusHint.classList.remove('show');
+}
+function enterFocusMode(target){
+  exitFocusMode();
+  _initFocusHint();
+  _focusEl=target;
+  target.classList.add('focus-active');
+  let el=target.parentElement;
+  const pgBody=target.closest('.pg-body');
+  while(el&&el!==pgBody){
+    el.classList.add('focus-ancestor');
+    if(el===target.parentElement)el.classList.add('has-focus');
+    el=el.parentElement;
+  }
+  if(pgBody)pgBody.classList.add('focus-mode');
+  if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
+}
+document.addEventListener('dblclick',e=>{
+  const target=_findFocusTarget(e.target);
+  if(target){
+    if(target===_focusEl)exitFocusMode();
+    else enterFocusMode(target);
+    e.preventDefault();
+  } else {
+    exitFocusMode();
+  }
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')exitFocusMode();});
+// Exit focus when page changes
+
+</script>
