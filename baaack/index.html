@@ -294,11 +294,11 @@ td:first-child{font-weight:700;color:var(--blue);white-space:nowrap;}
 .ex-pt2{font-size:14px;color:var(--s);line-height:1.5;}
 .ex-en-blank{font-size:17px;font-weight:600;color:var(--tx);line-height:1.6;}
 .blank{display:inline-block;min-width:56px;border-bottom:2px solid var(--blue);margin:0 3px;text-align:center;color:var(--blue);}
-.ex-options{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;}
-.ex-feedback,.game-feedback{font-size:12px;font-weight:700;text-align:center;min-height:18px;}
+.ex-options{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;width:100%;}
+.ex-feedback,.game-feedback{font-size:12px;font-weight:700;text-align:center;min-height:18px;width:100%;}
 .ex-feedback.ok,.game-feedback.ok{color:var(--green);}
 .ex-feedback.err,.game-feedback.err{color:var(--red);}
-.ex-progress,.game-progress{display:flex;gap:5px;justify-content:center;}
+.ex-progress,.game-progress{display:flex;gap:5px;justify-content:center;align-items:center;align-self:center;}
 .ep-dot,.gp-dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .3s;}
 .ep-dot.done,.gp-dot.done{background:var(--green);}
 .ep-dot.current,.gp-dot.current{background:var(--blue);}
@@ -641,7 +641,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .ex-start-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;}
 .ex-best{font-size:13px;color:var(--yel);font-weight:700;}
 .ex-start-btn{background:var(--acc,var(--blue));color:#fff;border:none;border-radius:24px;padding:14px 36px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;}
-.ex-timer{font-size:13px;font-weight:700;color:var(--m);text-align:right;padding:0 0 6px;letter-spacing:.5px;font-variant-numeric:tabular-nums;}
+.ex-timer{font-size:13px;font-weight:700;color:var(--m);text-align:center;align-self:center;padding:0 0 6px;letter-spacing:.5px;font-variant-numeric:tabular-nums;}
 .finish-time{font-size:18px;font-weight:800;color:var(--blue);margin:8px 0 4px;}
 .finish-compare{font-size:13px;color:var(--m);margin-bottom:8px;}
 .finish-compare.ok{color:var(--green);font-weight:700;}
@@ -958,6 +958,10 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 
 /* ── FOCUS MODE ── */
 .focus-mode>*{filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
+/* Curiosidade uses overlay approach (not page-level blur) */
+#cur-focus-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:7800;cursor:pointer;}
+#cur-focus-overlay.active{display:block;}
+.curiosidade.cur-focused{position:relative;z-index:7900;}
 .focus-mode .focus-ancestor{filter:none!important;opacity:1!important;pointer-events:auto!important;}
 .focus-mode .focus-active{filter:none!important;opacity:1!important;pointer-events:auto!important;position:relative;z-index:3;}
 .has-focus>*:not(.focus-active){filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
@@ -5481,7 +5485,7 @@ function toggleShimmer(){
 const toolTemplates={
   translator:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🌐 Tradutor</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5500,7 +5504,7 @@ const toolTemplates={
     </div>`,
   tts:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🔊 Ouvir em inglês</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5516,8 +5520,8 @@ const toolTemplates={
     </div>`,
   correct:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
-      <span class="tl-hd-title">✏️ Corretor de frases</span>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <span class="tl-hd-title">✅ Corretor de frases</span>
     </div>
     <div class="tl-panel-scroll">
       <div class="tl-card">
@@ -5530,7 +5534,7 @@ const toolTemplates={
     </div>`,
   examples:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">💬 Exemplos</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5546,7 +5550,7 @@ const toolTemplates={
     </div>`,
   dictation:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">🎧 Ditado</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5582,7 +5586,7 @@ const toolTemplates={
     </div>`,
   dict:`
     <div class="tl-hd">
-      <button class="tl-back-btn" onclick="closeTool()">←</button>
+      <button class="tl-back-btn" onclick="closeTool()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <span class="tl-hd-title">📖 Dicionário rápido</span>
     </div>
     <div class="tl-panel-scroll">
@@ -5943,6 +5947,9 @@ function _initFocusHint(){
   document.body.appendChild(_focusHint);
 }
 function _findFocusTarget(startEl){
+  // Special case: curiosidade block (outside pg-body)
+  const curBlock=startEl.closest('.curiosidade');
+  if(curBlock)return curBlock;
   const pgBody=startEl.closest('.pg-body');
   if(!pgBody)return null;
   let el=startEl;
@@ -5964,9 +5971,19 @@ function _findFocusTarget(startEl){
   }
   return null;
 }
-function exitFocusMode(){
+function exitCurFocus(){
   if(!_focusEl)return;
-  _focusEl.classList.remove('focus-active');
+  _focusEl.classList.remove('cur-focused');
+  const ov=document.getElementById('cur-focus-overlay');
+  if(ov)ov.classList.remove('active');
+  _focusEl=null;
+  if(_focusHint)_focusHint.classList.remove('show');
+}
+function exitFocusMode(){
+  // Handle curiosidade overlay case
+  if(_focusEl&&_focusEl.classList.contains('curiosidade')){exitCurFocus();return;}
+  if(!_focusEl)return;
+  _focusEl.classList.remove('focus-active','focus-ancestor');
   let el=_focusEl.parentElement;
   while(el&&!el.classList.contains('pg-body')){
     el.classList.remove('focus-ancestor','has-focus');
@@ -5983,6 +6000,14 @@ function enterFocusMode(target){
   target.classList.add('focus-active');
   let el=target.parentElement;
   const pgBody=target.closest('.pg-body');
+  // curiosidade uses overlay approach
+  if(!pgBody&&target.classList.contains('curiosidade')){
+    target.classList.add('cur-focused');
+    const ov=document.getElementById('cur-focus-overlay');
+    if(ov)ov.classList.add('active');
+    if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
+    return;
+  }
   while(el&&el!==pgBody){
     el.classList.add('focus-ancestor');
     if(el===target.parentElement)el.classList.add('has-focus');
@@ -6005,3 +6030,54 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')exitFocusMode();});
 // Exit focus when page changes
 
 </script>
+
+<!-- TOOLS POPUP -->
+<div id="tools-overlay" onclick="closeToolsPopup()"></div>
+<div id="tools-popup">
+  <div class="tp-hd">
+    <span class="tp-hd-title">Ferramentas</span>
+    <button class="tp-close" onclick="closeToolsPopup()">✕</button>
+  </div>
+  <div class="tp-grid">
+    <a class="tp-card tp-card-link" href="https://gemini.google.com/gem/1Rjo2NeBOr-n0fwuFX8TBwBEVlA-Sf5qm?usp=sharing" target="_blank" rel="noopener" onclick="closeToolsPopup()">
+      <div class="tp-card-icon">🔮</div>
+      <div class="tp-card-name">Gemini</div>
+    </a>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('generator')">
+      <div class="tp-beta">beta</div>
+      <div class="tp-card-icon">✨</div>
+      <div class="tp-card-name">Gerador</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('translator')">
+      <div class="tp-card-icon">🌐</div>
+      <div class="tp-card-name">Tradutor</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('tts')">
+      <div class="tp-card-icon">🔊</div>
+      <div class="tp-card-name">Ouvir</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('correct')">
+      <div class="tp-card-icon">✅</div>
+      <div class="tp-card-name">Corretor</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('examples')">
+      <div class="tp-card-icon">💬</div>
+      <div class="tp-card-name">Exemplos</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dictation')">
+      <div class="tp-card-icon">🎧</div>
+      <div class="tp-card-name">Ditado</div>
+    </div>
+    <div class="tp-card" onclick="closeToolsPopup();openToolModal('dict')">
+      <div class="tp-card-icon">📖</div>
+      <div class="tp-card-name">Dicionário</div>
+    </div>
+  </div>
+</div>
+<!-- TOOL MODAL -->
+<div id="tool-modal" style="display:none;position:fixed;inset:0;z-index:8500;background:var(--bg);flex-direction:column;overflow:hidden">
+  <div id="tool-modal-body" style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden"></div>
+</div>
+<div id="cur-focus-overlay" onclick="exitCurFocus()"></div>
+</body>
+</html>
