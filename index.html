@@ -193,6 +193,12 @@ body.light .tobe-card{box-shadow:0 1px 6px rgba(0,0,0,.07);}
 .tobe-divider-line{flex:1;height:1px;background:var(--line);}
 .tobe-divider-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--m);white-space:nowrap;}
 
+/* Pretty subject divider (gradient line + capsule label) */
+.sec-divider{display:flex;align-items:center;gap:10px;margin:22px 0 10px;}
+.sec-divider-line{flex:1;height:1.5px;background:linear-gradient(to right,var(--acc,var(--blue)),transparent);}
+.sec-divider-line.r{background:linear-gradient(to left,var(--acc,var(--blue)),transparent);}
+.sec-divider-label{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc,var(--blue));white-space:nowrap;padding:3px 10px;border-radius:99px;background:rgba(110,181,255,.08);border:1px solid rgba(110,181,255,.18);}
+
 /* Irony block */
 .irony-block{background:var(--card2);border-radius:11px;padding:13px 15px;border-left:3px solid var(--yel);}
 .irony-label{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--yel);margin-bottom:7px;}
@@ -620,6 +626,8 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .cp-f-dono2{font-size:15px;font-weight:800;color:var(--purple);}
 .cp-f-op{font-size:17px;font-weight:900;color:var(--yel);}
 .cp-f-plus{font-size:13px;color:var(--m);}
+.quote .cp-f-dono,.quote .cp-f-dono2,.quote .cp-f-posse{font-size:inherit;font-weight:600;}
+.quote .cp-f-op{font-size:inherit;font-weight:700;}
 .cp-f-posse{font-size:15px;font-weight:800;color:var(--green);}
 .en .cp-f-dono,.q-en .cp-f-dono{color:var(--blue) !important;background:none !important;-webkit-text-fill-color:var(--blue) !important;animation:none !important;}
 .en .cp-f-dono2,.q-en .cp-f-dono2{color:var(--purple) !important;background:none !important;-webkit-text-fill-color:var(--purple) !important;animation:none !important;}
@@ -629,6 +637,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .cp-expr-item{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;}
 .cp-expr-pt{font-size:12px;color:var(--m);margin-bottom:2px;}
 .cp-expr-en{font-size:17px;font-weight:800;color:var(--blue);margin-bottom:6px;}
+.cp-expr-tr{font-size:14px;color:var(--s);line-height:1.45;margin-bottom:8px;}
 .cp-expr-ex{font-size:13px;color:var(--s);font-style:italic;}
 .sec-topbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .sec-topbar-right{display:flex;gap:6px;}
@@ -954,6 +963,18 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .ex-mute-btn.muted{opacity:.3;}
 
 .pg-content > .ex-wrap{margin:0 20px 36px;}
+
+/* ── FOCUS MODE ── */
+.focus-mode>*{filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
+/* Curiosidade uses overlay approach (not page-level blur) */
+#cur-focus-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:7800;cursor:pointer;}
+#cur-focus-overlay.active{display:block;}
+.curiosidade.cur-focused{position:relative;z-index:7900;}
+.focus-mode .focus-ancestor{filter:none!important;opacity:1!important;pointer-events:auto!important;}
+.focus-mode .focus-active{filter:none!important;opacity:1!important;pointer-events:auto!important;position:relative;z-index:3;}
+.has-focus>*:not(.focus-active){filter:blur(3px);opacity:.18;pointer-events:none;transition:filter .28s,opacity .28s;}
+.focus-exit-hint{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:99px;pointer-events:none;opacity:0;transition:opacity .3s;z-index:100;letter-spacing:.5px;}
+.focus-exit-hint.show{opacity:1;}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@900&display=swap" rel="stylesheet">
 </head>
@@ -1411,7 +1432,7 @@ function renderGame(){
     const p=Math.round((s.acertos/total)*100);
     let compareHtml='';
     if(s._best){const diff=s._best-elapsed;if(diff>0)compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido!</div>`;else if(diff<0)compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar.</div>`;}
-    if(!s._best||elapsed<s._best){localStorage.setItem('best_game',elapsed);s._best=elapsed;}
+    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_game',elapsed);s._best=elapsed;}
     body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===100?'🏆':p>=66?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=66?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
   const fr=s.frases[c],wds=shuffle(fr.words);
   const gt=document.getElementById('game-timer');if(!gt){const td=document.createElement('div');td.id='game-timer';td.className='ex-timer';td.style.marginBottom='6px';body.parentElement.insertBefore(td,body);}
@@ -1472,7 +1493,7 @@ function renderPronGame(){
     const p=Math.round((s.acertos/total)*100);
     let compareHtml='';
     if(s._best){const diff=s._best-elapsed;if(diff>0)compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido!</div>`;else if(diff<0)compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar.</div>`;}
-    if(!s._best||elapsed<s._best){localStorage.setItem('best_pron',elapsed);s._best=elapsed;}
+    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_pron',elapsed);s._best=elapsed;}
     body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initPronGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
   const pair=s.pairs[c];
   const timerVal=s.startTime?fmtTime((performance.now()-s.startTime)/1000):'0.00s';
@@ -1581,7 +1602,7 @@ function renderEx(id,bank,total){
       else if(diff<0) compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar que antes.</div>`;
       else compareHtml=`<div class="finish-compare">Mesmo tempo de antes!</div>`;
     }
-    if(!s._best||elapsed<s._best){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
+    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
     body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div>${timeHtml}${compareHtml}<button class="ex-restart" onclick="restartEx('${id}')">Tentar de novo</button></div>`;
     score.textContent=`${s.acertos}/${tot}`;return;
   }
@@ -2184,79 +2205,6 @@ window['rev2_bk']=[
   {pt:'Camila postou uma foto.',before:'Camila',blank:'posted',after:'a photo.',options:['post','posts','posted','posting'],anchor:'passado-regular'},
   {pt:'Ryan joga futebol todo sábado.',before:'Ryan',blank:'plays',after:'football every Saturday.',options:['play','plays','played','playing'],anchor:'presente-hesheit'}
 ];
-window['pres_bk']=[
-  {pt:'Ryan joga futebol todo sábado.',before:'Ryan',blank:'plays',after:'football every Saturday.',options:['play','plays','played','will play']},
-  {pt:'Megan mora em São Paulo.',before:'Megan',blank:'lives',after:'in São Paulo.',options:['live','lives','lived','will live']},
-  {pt:'Eu acordo cedo toda semana.',before:'I',blank:'wake up',after:'early every week.',options:['wake up','wakes up','woke up','will wake up']},
-  {pt:'Douglas toca violão.',before:'Douglas',blank:'plays',after:'guitar.',options:['play','plays','played','will play']},
-  {pt:'Eles assistem séries juntos.',before:'They',blank:'watch',after:'series together.',options:['watch','watches','watched','will watch']},
-  {pt:'Jake corre no parque de manhã.',before:'Jake',blank:'runs',after:'in the park in the morning.',options:['run','runs','ran','will run']},
-  {pt:'Nós estudamos inglês à noite.',before:'We',blank:'study',after:'English at night.',options:['study','studies','studied','will study']},
-  {pt:'Taylor escreve músicas.',before:'Taylor',blank:'writes',after:'songs.',options:['write','writes','wrote','will write']},
-  {pt:'Ela beija o namorado quando chega em casa.',before:'She',blank:'kisses',after:'her boyfriend when she arrives home.',options:['kiss','kisses','kissed','will kiss']},
-  {pt:'O avião parte às 8h.',before:'The plane',blank:'departs',after:'at 8am.',options:['depart','departs','departed','will depart']},
-  {pt:'Raphael viaja muito a trabalho.',before:'Raphael',blank:'travels',after:'a lot for work.',options:['travel','travels','traveled','will travel']},
-  {pt:'Camila busca emprego todo mês.',before:'Camila',blank:'searches',after:'for a job every month.',options:['search','searches','searched','will search']},
-  {pt:'Eu leio um livro por semana.',before:'I',blank:'read',after:'one book a week.',options:['read','reads','read','will read']},
-  {pt:'Josh conserta carros no fim de semana.',before:'Josh',blank:'fixes',after:'cars on weekends.',options:['fix','fixes','fixed','will fix']},
-  {pt:'Nós almoçamos juntos toda sexta.',before:'We',blank:'have lunch',after:'together every Friday.',options:['have lunch','has lunch','had lunch','will have lunch']},
-  {pt:'Renato faz exercício toda manhã.',before:'Renato',blank:'exercises',after:'every morning.',options:['exercise','exercises','exercised','will exercise']},
-  {pt:'A academia fecha às 22h.',before:'The gym',blank:'closes',after:'at 10pm.',options:['close','closes','closed','will close']},
-  {pt:'Ela voa para o trabalho todo mês.',before:'She',blank:'flies',after:'for work every month.',options:['fly','flies','flew','will fly']},
-  {pt:'Eu tenho dois cachorros.',before:'I',blank:'have',after:'two dogs.',options:['have','has','had','will have']},
-  {pt:'Meu chefe tem muitos projetos.',before:'My boss',blank:'has',after:'many projects.',options:['have','has','had','will have']},
-  {pt:'Eles fazem pedido toda noite.',before:'They',blank:'order',after:'every night.',options:['order','orders','ordered','will order']},
-  {pt:'A loja abre às 9h.',before:'The store',blank:'opens',after:'at 9am.',options:['open','opens','opened','will open']},
-];
-window['past_bk']=[
-  {pt:'Ryan viajou para Nova Iorque.',before:'Ryan',blank:'traveled',after:'to New York.',options:['travel','travels','traveled','will travel']},
-  {pt:'Megan ligou para mim ontem.',before:'Megan',blank:'called',after:'me yesterday.',options:['call','calls','called','will call']},
-  {pt:'Douglas gravou um vídeo semana passada.',before:'Douglas',blank:'recorded',after:'a video last week.',options:['record','records','recorded','will record']},
-  {pt:'Jake abriu o restaurante cedo.',before:'Jake',blank:'opened',after:'the restaurant early.',options:['open','opens','opened','will open']},
-  {pt:'Eles pediram pizza ontem à noite.',before:'They',blank:'ordered',after:'pizza last night.',options:['order','orders','ordered','will order']},
-  {pt:'Camila perdeu o celular.',before:'Camila',blank:'lost',after:'her phone.',options:['lose','loses','lost','will lose']},
-  {pt:'Josh encontrou uma carteira na rua.',before:'Josh',blank:'found',after:'a wallet on the street.',options:['find','finds','found','will find']},
-  {pt:'Taylor escreveu uma música nova.',before:'Taylor',blank:'wrote',after:'a new song.',options:['write','writes','wrote','will write']},
-  {pt:'Raphael vendeu o carro.',before:'Raphael',blank:'sold',after:'the car.',options:['sell','sells','sold','will sell']},
-  {pt:'Nós tomamos café juntos.',before:'We',blank:'had coffee',after:'together.',options:['have coffee','has coffee','had coffee','will have coffee']},
-  {pt:'Eu dirigi por três horas.',before:'I',blank:'drove',after:'for three hours.',options:['drive','drives','drove','will drive']},
-  {pt:'Ela correu uma maratona.',before:'She',blank:'ran',after:'a marathon.',options:['run','runs','ran','will run']},
-  {pt:'A festa começou às 21h.',before:'The party',blank:'started',after:'at 9pm.',options:['start','starts','started','will start']},
-  {pt:'O time ganhou o campeonato.',before:'The team',blank:'won',after:'the championship.',options:['win','wins','won','will win']},
-  {pt:'Minha mãe cozinhou macarrão ontem.',before:'My mom',blank:'cooked',after:'pasta yesterday.',options:['cook','cooks','cooked','will cook']},
-  {pt:'Ashley perdeu as chaves de novo.',before:'Ashley',blank:'lost',after:'her keys again.',options:['lose','loses','lost','will lose']},
-  {pt:'Renato chegou atrasado na reunião.',before:'Renato',blank:'arrived',after:'late to the meeting.',options:['arrive','arrives','arrived','will arrive']},
-  {pt:'Eles deram uma festa surpresa.',before:'They',blank:'threw',after:'a surprise party.',options:['throw','throws','threw','will throw']},
-  {pt:'Josh mandou uma mensagem.',before:'Josh',blank:'sent',after:'a message.',options:['send','sends','sent','will send']},
-  {pt:'O show acabou tarde.',before:'The show',blank:'ended',after:'late.',options:['end','ends','ended','will end']},
-  {pt:'Eu acordei cedo no sábado.',before:'I',blank:'woke up',after:'early on Saturday.',options:['wake up','wakes up','woke up','will wake up']},
-  {pt:'Douglas bebeu três cafés hoje.',before:'Douglas',blank:'drank',after:'three coffees today.',options:['drink','drinks','drank','will drink']},
-];
-window['fut_bk']=[
-  {pt:'Ryan vai viajar para Londres.',before:'Ryan',blank:'will travel',after:'to London.',options:['will travel','travels','traveled','travel']},
-  {pt:'Megan não vai trabalhar amanhã.',before:'Megan',blank:"won't work",after:'tomorrow.',options:["won't work","doesn't work","didn't work","not work"]},
-  {pt:'Ela vai estudar inglês na faculdade.',before:'She',blank:'will study',after:'English at university.',options:['will study','studies','studied','study']},
-  {pt:'Jake não vai vir à festa.',before:'Jake',blank:"won't come",after:'to the party.',options:["won't come","doesn't come","didn't come","not come"]},
-  {pt:'Eles vão morar juntos.',before:'They',blank:'will live',after:'together.',options:['will live','live','lived','lives']},
-  {pt:'Douglas vai gravar um álbum.',before:'Douglas',blank:'will record',after:'an album.',options:['will record','records','recorded','record']},
-  {pt:'Eu não vou acordar cedo amanhã.',before:'I',blank:"won't wake up",after:'early tomorrow.',options:["won't wake up","doesn't wake up","didn't wake up","not wake up"]},
-  {pt:'Raphael vai abrir um restaurante.',before:'Raphael',blank:'will open',after:'a restaurant.',options:['will open','opens','opened','open']},
-  {pt:'Você vai terminar hoje?',before:'',blank:'Will you finish',after:'today?',options:['Will you finish','Do you finish','Did you finish','You will finish']},
-  {pt:'Ela não vai responder.',before:'She',blank:"won't answer",after:'.',options:["won't answer","doesn't answer","didn't answer","not answer"]},
-  {pt:'Nós vamos jantar fora.',before:'We',blank:'will have dinner',after:'out.',options:['will have dinner','have dinner','had dinner','has dinner']},
-  {pt:'Eles vão lançar um produto novo.',before:'They',blank:'will launch',after:'a new product.',options:['will launch','launch','launched','launches']},
-  {pt:'Ryan vai comprar um apartamento?',before:'',blank:'Will Ryan buy',after:'an apartment?',options:['Will Ryan buy','Does Ryan buy','Did Ryan buy','Ryan will buy']},
-  {pt:'Josh não vai aparecer.',before:'Josh',blank:"won't show up",after:'.',options:["won't show up","doesn't show up","didn't show up","not show up"]},
-  {pt:'A reunião vai começar às 10h.',before:'The meeting',blank:'will start',after:'at 10am.',options:['will start','starts','started','start']},
-  {pt:'Megan vai postar uma foto.',before:'Megan',blank:'will post',after:'a photo.',options:['will post','posts','posted','post']},
-  {pt:'Eu não vou mentir.',before:'I',blank:"won't lie",after:'.',options:["won't lie","doesn't lie","didn't lie","not lie"]},
-  {pt:'Ela vai ganhar a competição?',before:'',blank:'Will she win',after:'the competition?',options:['Will she win','Does she win','Did she win','She will win']},
-  {pt:'Eles não vão gostar disso.',before:'They',blank:"won't like",after:'this.',options:["won't like","don't like","didn't like","not like"]},
-  {pt:'Camila vai visitar a família.',before:'Camila',blank:'will visit',after:'her family.',options:['will visit','visits','visited','visit']},
-  {pt:'Douglas não vai ao show semana que vem.',before:'Douglas',blank:"won't go",after:'to the show next week.',options:["won't go","doesn't go","didn't go","not go"]},
-];
-
-
 window['inonat_bk']=[
   // Tempo do dia
   {pt:'Eu bebo café de manhã.',before:'I drink coffee',blank:'in',after:'the morning.',noShuffle:true,options:['in','on','at'],anchor:'inonat-tempo'},
@@ -3741,7 +3689,7 @@ const pages=[
     <p class="intro">O verbo <span class="en" data-speak="to be">to be</span> em português é o verbo <strong>ser</strong> e o verbo <strong>estar</strong>.</p>
 
     <!-- ════ PRESENTE ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Presente</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Presente</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-presente">
       <div class="tobe-card-hd">Presente — Afirmativo</div>
@@ -3912,7 +3860,7 @@ const pages=[
     </div>
 
     <!-- ════ PRESENTE INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-pres">Presente — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label" id="tobe-interrogativo-pres">Presente — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Presente — Interrogativo</div>
@@ -3949,7 +3897,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Passado</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Passado</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-passado">
       <div class="tobe-card-hd pur">Passado — Afirmativo</div>
@@ -4034,7 +3982,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-past">Passado — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label" id="tobe-interrogativo-past">Passado — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Passado — Interrogativo</div>
@@ -4057,7 +4005,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Futuro</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Futuro</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-futuro">
       <div class="tobe-card-hd yel">Futuro — Afirmativo</div>
@@ -4118,7 +4066,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO INTERROGATIVO ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label" id="tobe-interrogativo-fut">Futuro — Interrogativo</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label" id="tobe-interrogativo-fut">Futuro — Interrogativo</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card">
       <div class="tobe-card-hd grn">Futuro — Interrogativo</div>
@@ -4141,7 +4089,7 @@ const pages=[
     </div>
 
     <!-- ════ TABELA UNIFICADA ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Tabela — para decorar</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Tabela — para decorar</div><div class="sec-divider-line r"></div></div>
 
     <div class="big-tbl-wrap">
       <table>
@@ -4222,7 +4170,7 @@ const pages=[
     </div>
 
     <!-- ════ DICAS ════ -->
-    <div class="tobe-divider"><div class="tobe-divider-line"></div><div class="tobe-divider-label">Dicas para decorar</div><div class="tobe-divider-line"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Dicas para decorar</div><div class="sec-divider-line r"></div></div>
     <div class="tip grn"><div class="tip-lbl">💡 I am</div><p class="tip-txt">Só o <strong>I</strong> usa <strong>am</strong>. Nenhum outro pronome.</p></div>
     <div class="tip grn"><div class="tip-lbl">💡 Was e Were</div><p class="tip-txt">Quem usa <strong>is</strong> usa <strong>was</strong>. Quem usa <strong>are</strong> usa <strong>were</strong>.<br><span class="en" data-speak="is">is</span> → <span class="en" data-speak="was">was</span> &nbsp;·&nbsp; <span class="en" data-speak="are">are</span> → <span class="en" data-speak="were">were</span></p></div>
     <div class="tip grn"><div class="tip-lbl">💡 Will be</div><p class="tip-txt"><span class="en" data-speak="will be">will be</span> é igual para todo mundo — não muda de pronome para pronome.</p></div>
@@ -5637,10 +5585,19 @@ const pages=[
       <div class="poss-triple-row"><span>Deles, Delas</span><span class="en ppa" data-speak="their">Their</span><span class="en pp" data-speak="theirs">Theirs</span></div>
     </div>
 
-    <div class="rule-box" id="poss-regra">
-      <p style="font-size:13px;color:var(--s);line-height:1.8;">Todo pronome de posse deverá aparecer <strong>antes da posse</strong>, utilizando <span class="poss-hl-adj"><strong>PPA</strong></span>.<br>
-      A menos que esteja logo após um <strong>verbo to be</strong>, utilizando <span class="poss-hl-pp"><strong>PP</strong></span>.<br>
-      Além disso, <strong>não usamos "the"</strong> antes de pronomes de posse.</p>
+    <div class="rule-list" id="poss-regra">
+      <div class="rule">
+        <div class="rule-title">Regra principal</div>
+        <div class="rule-body">Todo pronome de posse aparece <strong>antes da posse</strong>, utilizando <span class="poss-hl-adj"><strong>PPA</strong></span>.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-title">Exceção</div>
+        <div class="rule-body">A menos que esteja logo após um <strong>verbo to be</strong>, utilizando <span class="poss-hl-pp"><strong>PP</strong></span>.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-title">Atenção</div>
+        <div class="rule-body"><strong>Não usamos "the"</strong> antes de pronomes de posse.</div>
+      </div>
     </div>
 
     <div class="poss-legend">
@@ -5745,9 +5702,7 @@ const pages=[
   <div class="pg-hd"><div class="pg-lbl">Seção 17 · Caso Possessivo e Of</div><div class="pg-ttl">Caso Possessivo e Of</div></div>
   <div class="pg-body">
 
-    <p class="intro" id="cp-intro">Ao contrário da matéria anterior, onde indicávamos o dono com pronomes, aqui utilizaremos <strong>nomes reais</strong>.</p>
-
-    <div class="sub-label" id="cp-humanos">Humanos e animais — Caso Possessivo</div>
+    <p class="intro" id="cp-intro">Até agora usamos pronomes para indicar o dono — <em>my, your, his, her...</em> Mas e quando o dono tem nome? É aí que entram o <strong>caso possessivo</strong> e o <strong>of</strong>.</p>
 
     <div class="cp-formula" id="cp-formula1">
       <div class="cp-formula-label">Fórmula — 1 dono</div>
@@ -5761,17 +5716,17 @@ const pages=[
 
     <div class="quote-list">
       <div class="quote">
-        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">professor</span>.</div>
-        <div class="q-en"><span class="en" data-speak="The teacher's car.">The <span class="cp-f-dono">teacher</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+        <div class="q-pt">O <span class="cp-f-posse">quarto</span> da <span class="cp-f-dono">minha irmã</span>.</div>
+        <div class="q-en"><span class="en" data-speak="My sister's room.">My <span class="cp-f-dono">sister</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">room</span>.</span></div>
       </div>
       <div class="quote">
-        <div class="q-pt">O <span class="cp-f-posse">carro</span> da <span class="cp-f-dono">Ashley</span>.</div>
-        <div class="q-en"><span class="en" data-speak="Ashley's car."><span class="cp-f-dono">Ashley</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
-        <div class="q-note">Retiramos o <em>the</em> porque Ashley é nome próprio.</div>
+        <div class="q-pt">O <span class="cp-f-posse">celular</span> do <span class="cp-f-dono">Ryan</span>.</div>
+        <div class="q-en"><span class="en" data-speak="Ryan's phone."><span class="cp-f-dono">Ryan</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">phone</span>.</span></div>
+        <div class="q-note">Retiramos o <em>the</em> porque Ryan é nome próprio.</div>
       </div>
       <div class="quote">
-        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo</span> dela.</div>
-        <div class="q-en"><span class="en" data-speak="Her friend's car.">Her <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+        <div class="q-pt">O <span class="cp-f-posse">osso</span> do <span class="cp-f-dono">cachorro</span>.</div>
+        <div class="q-en"><span class="en" data-speak="The dog's bone.">The <span class="cp-f-dono">dog</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">bone</span>.</span></div>
       </div>
     </div>
 
@@ -5790,13 +5745,13 @@ const pages=[
 
     <div class="quote-list">
       <div class="quote">
-        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo¹</span> do <span class="cp-f-dono2">professor²</span>.</div>
-        <div class="q-en"><span class="en" data-speak="The teacher's friend's car.">The <span class="cp-f-dono2">teacher</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
+        <div class="q-pt">A <span class="cp-f-posse">mochila</span> do <span class="cp-f-dono">namorado¹</span> da <span class="cp-f-dono2">minha prima²</span>.</div>
+        <div class="q-en"><span class="en" data-speak="My cousin's boyfriend's backpack.">My <span class="cp-f-dono2">cousin</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">boyfriend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">backpack</span>.</span></div>
       </div>
       <div class="quote">
-        <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">amigo¹</span> da <span class="cp-f-dono2">Ashley²</span>.</div>
-        <div class="q-en"><span class="en" data-speak="Ashley's friend's car."><span class="cp-f-dono2">Ashley</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">friend</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">car</span>.</span></div>
-        <div class="q-note">Retiramos o <em>the</em> porque Ashley é nome próprio.</div>
+        <div class="q-pt">O <span class="cp-f-posse">gato</span> da <span class="cp-f-dono">vizinha¹</span> do <span class="cp-f-dono2">Ryan²</span>.</div>
+        <div class="q-en"><span class="en" data-speak="Ryan's neighbor's cat."><span class="cp-f-dono2">Ryan</span><span class="cp-f-op">'s</span> <span class="cp-f-dono">neighbor</span><span class="cp-f-op">'s</span> <span class="cp-f-posse">cat</span>.</span></div>
+        <div class="q-note">Retiramos o <em>the</em> porque Ryan é nome próprio.</div>
       </div>
     </div>
 
@@ -5805,43 +5760,102 @@ const pages=[
       <p class="tip-txt">Se o nome terminar com <strong>s</strong>, adicionamos apenas o apóstrofo e pronunciamos <em>-sses</em>.</p>
       <div class="quote-list" style="margin-top:8px;">
         <div class="quote">
-          <div class="q-pt">O <span class="cp-f-posse">carro</span> do <span class="cp-f-dono">Lucas</span>.</div>
-          <div class="q-en"><span class="en" data-speak="Lucas' car."><span class="cp-f-dono">Lucas</span><span class="cp-f-op">'</span> <span class="cp-f-posse">car</span>.</span></div>
+          <div class="q-pt">A <span class="cp-f-posse">bicicleta</span> do <span class="cp-f-dono">James</span>.</div>
+          <div class="q-en"><span class="en" data-speak="James' bike."><span class="cp-f-dono">James</span><span class="cp-f-op">'</span> <span class="cp-f-posse">bike</span>.</span></div>
         </div>
       </div>
     </div>
 
-    <div class="sub-label" id="cp-of">Inanimados e cargos — OF</div>
+    <div class="sec-divider" id="cp-humanos"><div class="sec-divider-line"></div><div class="sec-divider-label">Quando usar o 's</div><div class="sec-divider-line r"></div></div>
 
-    <p class="intro">Quando o dono é algo <strong>inanimado</strong> ou quando é <strong>título/cargo</strong>, utilizamos:</p>
+    <div class="cp-expr-list">
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Pessoas</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Ryan's phone">Ryan<span class="cp-f-op">'s</span> phone</span></div>
+        <div class="cp-expr-tr">O celular do Ryan.</div>
+        <div class="cp-expr-ex">Qualquer pessoa — nome próprio, parentesco, profissão.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Animais</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The dog's bone">The dog<span class="cp-f-op">'s</span> bone</span></div>
+        <div class="cp-expr-tr">O osso do cachorro.</div>
+        <div class="cp-expr-ex">Qualquer animal, doméstico ou não.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Empresas</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Apple's CEO">Apple<span class="cp-f-op">'s</span> CEO</span></div>
+        <div class="cp-expr-tr">O CEO da Apple.</div>
+        <div class="cp-expr-ex">A empresa é tratada como uma entidade "viva", com dono e decisões.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Países</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Brazil's economy">Brazil<span class="cp-f-op">'s</span> economy</span></div>
+        <div class="cp-expr-tr">A economia do Brasil.</div>
+        <div class="cp-expr-ex">O país como agente — economia, governo, cultura.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Times e organizações</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The team's coach">The team<span class="cp-f-op">'s</span> coach</span></div>
+        <div class="cp-expr-tr">O técnico do time.</div>
+        <div class="cp-expr-ex">Grupos que agem coletivamente como uma "pessoa".</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Cargos coletivos</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The government's decision">The government<span class="cp-f-op">'s</span> decision</span></div>
+        <div class="cp-expr-tr">A decisão do governo.</div>
+        <div class="cp-expr-ex">Quando o cargo representa um grupo que age e decide.</div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="cp-of"><div class="sec-divider-line"></div><div class="sec-divider-label">Quando usar o of</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro"><span class="en" data-speak="of">Of</span> = <strong>de</strong> &nbsp;·&nbsp; <span class="en" data-speak="of the">of the</span> = <strong>do, da, dos, das</strong> <span class="q-tr">(atentar às regras onde o <em>the</em> tem que sumir)</span></p>
 
-    <div class="quote-list">
-      <div class="quote">
-        <div class="q-pt">O final do filme.</div>
-        <div class="q-en"><span class="en" data-speak="The end of the movie.">The end <strong>of the</strong> movie.</span></div>
+    <div class="cp-expr-list">
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Objetos e suas partes</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The door of the car">The door <span class="cp-f-op">of the</span> car</span></div>
+        <div class="cp-expr-tr">A porta do carro.</div>
+        <div class="cp-expr-ex">Partes de coisas inanimadas — portas, telas, rodas, tampas...</div>
       </div>
-      <div class="quote">
-        <div class="q-pt">A porta do carro.</div>
-        <div class="q-en"><span class="en" data-speak="The door of the car.">The door <strong>of the</strong> car.</span></div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Lugares</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The streets of New York">The streets <span class="cp-f-op">of</span> New York</span></div>
+        <div class="cp-expr-tr">As ruas de Nova York.</div>
+        <div class="cp-expr-ex">Elementos que pertencem a um lugar — ruas, praias, monumentos.</div>
       </div>
-      <div class="quote">
-        <div class="q-pt">O presidente da república.</div>
-        <div class="q-en"><span class="en" data-speak="The president of the republic.">The president <strong>of the</strong> republic.</span></div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Períodos de tempo</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The end of the year">The end <span class="cp-f-op">of the</span> year</span></div>
+        <div class="cp-expr-tr">O fim do ano.</div>
+        <div class="cp-expr-ex">Partes de um período — começo, meio, fim, início, término.</div>
       </div>
-      <div class="quote">
-        <div class="q-pt">O Senhor dos Anéis.</div>
-        <div class="q-en"><span class="en" data-speak="The Lord of The Rings.">The Lord <strong>of The</strong> Rings.</span></div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Conceitos abstratos</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The feeling of freedom">The feeling <span class="cp-f-op">of</span> freedom</span></div>
+        <div class="cp-expr-tr">A sensação de liberdade.</div>
+        <div class="cp-expr-ex">Sentimentos, ideias, sensações — coisas que não se tocam.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Títulos formais e poéticos</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The President of the republic">The President <span class="cp-f-op">of the</span> republic</span></div>
+        <div class="cp-expr-tr">O presidente da república.</div>
+        <div class="cp-expr-ex">Cargos únicos e formais — presidente, primeiro-ministro, rei.</div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Obras e produções</div>
+        <div class="cp-expr-en"><span class="en" data-speak="The name of the song">The name <span class="cp-f-op">of the</span> song</span></div>
+        <div class="cp-expr-tr">O nome da música.</div>
+        <div class="cp-expr-ex">Filmes, músicas, livros, séries e suas partes — título, final, letra.</div>
       </div>
     </div>
 
     <div class="tip" id="cp-of-obs" style="margin-top:14px;">
       <div class="tip-lbl">📌 Observação</div>
-      <p class="tip-txt">Ainda podemos utilizar o caso possessivo (<em>dono + 's + posse</em>) quando o dono é inanimado.</p>
+      <p class="tip-txt">Ainda podemos utilizar o caso possessivo (<em>dono + 's + posse</em>) quando o dono é inanimado. Na próxima seção veremos como aplicar essa mesma lógica com os pronomes demonstrativos — <em>this, that, these, those</em>.</p>
     </div>
 
-    <div class="sub-label" id="cp-expressoes">Expressões com OF</div>
+    <div class="sec-divider" id="cp-expressoes"><div class="sec-divider-line"></div><div class="sec-divider-label">Expressões com OF</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Algumas expressões também utilizam o <span class="en" data-speak="of">of</span>.</p>
 
@@ -5856,13 +5870,25 @@ const pages=[
         <div class="cp-expr-en"><span class="en" data-speak="Point of view">Point of view <span class="q-tr">(POV)</span></span></div>
         <div class="cp-expr-ex"><span class="en" data-speak="This is the best way, but it's just my point of view.">This is the best way, but it's just my point of view.</span></div>
       </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Em vez de</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Instead of">Instead of</span></div>
+        <div class="cp-expr-ex"><span class="en" data-speak="I had juice instead of coffee.">I had juice instead of coffee.</span></div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Com medo de</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Afraid of">Afraid of</span></div>
+        <div class="cp-expr-ex"><span class="en" data-speak="She is afraid of spiders.">She is afraid of spiders.</span></div>
+      </div>
+      <div class="cp-expr-item">
+        <div class="cp-expr-pt">Orgulhoso de</div>
+        <div class="cp-expr-en"><span class="en" data-speak="Proud of">Proud of</span></div>
+        <div class="cp-expr-ex"><span class="en" data-speak="I am so proud of you.">I am so proud of you.</span></div>
+      </div>
     </div>
 
-  </div>
-
-  <div class="ex-wrap">
-    <div class="ex-header"><span class="ex-title">Caso Possessivo e Of — exercício</span><span class="ex-score" id="caso-score">0/10</span></div>
-    <div class="ex-body" id="caso-body"></div>
+    <div class="sub-label">Pratique</div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Caso Possessivo e Of — exercício</span><span class="ex-score" id="caso-score">0/10</span></div><div class="ex-body" id="caso-body"></div></div>
   </div>
 </div>`,
 
@@ -6041,6 +6067,7 @@ function goBack(){
 
 function go(i){
   if(i<0||i>=pages.length)return;
+  try{if(typeof exitFocusMode==="function")exitFocusMode();}catch(e){}
   if(_isContentOfSec(i))i=i-1;
   cur=i;
   const _accMap={5:'var(--blue)',6:'var(--blue)',7:'var(--green)',8:'var(--green)',
@@ -6534,6 +6561,104 @@ function updateThemeUI(){
   document.body.classList.add(mode);
 })();
 
+/* ── FOCUS MODE ── */
+// Containers cujos filhos diretos são blocos focáveis
+const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
+  'inonat-list','eg-block','conj-big','tobe-card-body','ex-list',
+  'togo-section','pron-section','rule-box','tip','poss-ex-block',
+  'poss-ex-sentences','indem-ex-block','cp-formula-body','que-card',
+  'cp-formula','demo-example','irony-block','inonat-bubble-body',
+  'cp-expr-list','demo-list','poss-ex-list','indem-decomp-list']);
+// Tables — never split inside; the whole table is the focus unit
+const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',
+  'togo-table','big-tbl-wrap','tbl-wrap','conj-big']);
+var _focusEl=null,_focusHint=null; // focus mode state
+function _initFocusHint(){
+  if(_focusHint)return;
+  _focusHint=document.createElement('div');
+  _focusHint.className='focus-exit-hint';
+  _focusHint.textContent='Duplo clique ou ESC para sair';
+  document.body.appendChild(_focusHint);
+}
+function _findFocusTarget(startEl){
+  // Special case: curiosidade block (outside pg-body)
+  const curBlock=startEl.closest('.curiosidade');
+  if(curBlock)return curBlock;
+  const pgBody=startEl.closest('.pg-body');
+  if(!pgBody)return null;
+  let el=startEl;
+  while(el&&el!==pgBody){
+    const par=el.parentElement;
+    if(!par)break;
+    const parClasses=[...par.classList];
+    const elClasses=[...el.classList];
+    // If el itself is a table root, return the whole table
+    if(elClasses.some(c=>_TABLE_ROOTS.has(c))){
+      if(el.offsetHeight>0)return el;
+    }
+    if(par===pgBody||parClasses.some(c=>_SPLIT_PARENTS.has(c))){
+      if(el.offsetHeight>0)return el;
+    }
+    el=par;
+  }
+  return null;
+}
+function exitCurFocus(){
+  if(!_focusEl)return;
+  _focusEl.classList.remove('cur-focused');
+  const ov=document.getElementById('cur-focus-overlay');
+  if(ov)ov.classList.remove('active');
+  _focusEl=null;
+  if(_focusHint)_focusHint.classList.remove('show');
+}
+function exitFocusMode(){
+  if(_focusEl&&_focusEl.classList.contains('curiosidade')){exitCurFocus();return;}
+  if(!_focusEl)return;
+  _focusEl.classList.remove('focus-active','focus-ancestor');
+  let el=_focusEl.parentElement;
+  while(el&&!el.classList.contains('pg-body')){
+    el.classList.remove('focus-ancestor','has-focus');
+    el=el.parentElement;
+  }
+  if(el)el.classList.remove('focus-mode');
+  _focusEl=null;
+  if(_focusHint)_focusHint.classList.remove('show');
+}
+function enterFocusMode(target){
+  exitFocusMode();
+  _initFocusHint();
+  _focusEl=target;
+  target.classList.add('focus-active');
+  let el=target.parentElement;
+  const pgBody=target.closest('.pg-body');
+  // curiosidade uses overlay approach
+  if(!pgBody&&target.classList.contains('curiosidade')){
+    target.classList.add('cur-focused');
+    const ov=document.getElementById('cur-focus-overlay');
+    if(ov)ov.classList.add('active');
+    if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
+    return;
+  }
+  while(el&&el!==pgBody){
+    el.classList.add('focus-ancestor');
+    if(el===target.parentElement)el.classList.add('has-focus');
+    el=el.parentElement;
+  }
+  if(pgBody)pgBody.classList.add('focus-mode');
+  if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
+}
+document.addEventListener('dblclick',e=>{
+  const target=_findFocusTarget(e.target);
+  if(target){
+    if(target===_focusEl)exitFocusMode();
+    else enterFocusMode(target);
+    e.preventDefault();
+  } else {
+    exitFocusMode();
+  }
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')exitFocusMode();});
+
 go(0);
 
 </script>
@@ -6581,5 +6706,6 @@ go(0);
 <div id="tool-modal" style="display:none;position:fixed;inset:0;z-index:8500;background:var(--bg);flex-direction:column;overflow:hidden">
   <div id="tool-modal-body" style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden"></div>
 </div>
+<div id="cur-focus-overlay" onclick="exitCurFocus()"></div>
 </body>
 </html>
