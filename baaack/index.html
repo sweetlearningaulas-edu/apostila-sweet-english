@@ -997,9 +997,13 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 .ctag.c{color:#4cc9f0;border-color:rgba(76,201,240,.3);background:rgba(76,201,240,.06);}
 .ctag.r{color:#ff6b9d;border-color:rgba(255,107,157,.3);background:rgba(255,107,157,.06);}
 
-.ex-mute-btn{background:none;border:none;cursor:pointer;font-size:13px;padding:0 2px;opacity:.55;transition:opacity .15s;line-height:1;justify-self:end;}
-.ex-mute-btn:hover{opacity:1;}
-.ex-mute-btn.muted{opacity:.3;}
+.ex-hdr-actions{display:flex;gap:8px;align-items:center;justify-self:end;}
+.ex-mute-btn,.ex-timer-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;opacity:.55;transition:opacity .15s;line-height:1;font-family:'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji',sans-serif;}
+.ex-mute-btn:hover,.ex-timer-btn:hover{opacity:1;}
+.ex-mute-btn.muted,.ex-timer-btn.hidden{opacity:.45;}
+.ex-timer-btn .timer-ico{display:inline-block;position:relative;line-height:1;}
+.ex-timer-btn.hidden .timer-ico::after{content:'';position:absolute;left:-2px;right:-2px;top:50%;height:2px;background:#fc8181;transform:rotate(-35deg);border-radius:2px;box-shadow:0 0 0 1.5px rgba(0,0,0,.5);pointer-events:none;}
+body.ex-timer-hidden .ex-timer,body.ex-timer-hidden .game-timer{display:none !important;}
 
 .pg-content > .ex-wrap{margin:0 20px 36px;}
 
@@ -1528,7 +1532,10 @@ function initGame(){
   gS={frases:shuffle(gBank).slice(0,6),cur:0,acertos:0,erroAtual:false,_best:best?parseFloat(best):null};
   const body=document.getElementById('game-body');
   const score=document.getElementById('game-score');
-  if(score)score.textContent='0/6';
+  if(score){
+    score.textContent='0/6';
+    _injectExButtons(score.parentElement);
+  }
   if(body){
     const bestHtml=gS._best?`<div class="ex-best">🏆 Melhor: ${fmtTime(gS._best)}</div>`:'';
     body.innerHTML=`<div class="ex-start-screen">${bestHtml}<button class="ex-start-btn" onclick="startGame()">▶ Começar</button></div>`;
@@ -1591,7 +1598,10 @@ function initPronGame(){
   pronS={pairs:shuffle(pronPairs),cur:0,acertos:0,_best:best?parseFloat(best):null};
   const body=document.getElementById('pron-body');
   const score=document.getElementById('pron-score');
-  if(score)score.textContent='0/'+pronPairs.length;
+  if(score){
+    score.textContent='0/'+pronPairs.length;
+    _injectExButtons(score.parentElement);
+  }
   if(body){
     const bestHtml=pronS._best?`<div class="ex-best">🏆 Melhor: ${fmtTime(pronS._best)}</div>`:'';
     body.innerHTML=`<div class="ex-start-screen">${bestHtml}<button class="ex-start-btn" onclick="startPronGame()">▶ Começar</button></div>`;
@@ -1642,6 +1652,24 @@ function checkPron(btn,val,correct){
 }
 
 /* ── EXERCISE ENGINE ── */
+function _injectExButtons(hdr){
+  if(!hdr||hdr.querySelector('.ex-hdr-actions'))return;
+  const wrap=document.createElement('div');
+  wrap.className='ex-hdr-actions';
+  const tb=document.createElement('button');
+  tb.className='ex-timer-btn'+(window._exTimerHidden?' hidden':'');
+  tb.innerHTML='<span class="timer-ico">⏱️</span>';
+  tb.title=window._exTimerHidden?'Mostrar cronômetro':'Esconder cronômetro';
+  tb.onclick=toggleExTimer;
+  wrap.appendChild(tb);
+  const mb=document.createElement('button');
+  mb.className='ex-mute-btn'+(window._exMuted?' muted':'');
+  mb.textContent=window._exMuted?'🔇':'🔊';
+  mb.title=window._exMuted?'Ativar som':'Silenciar';
+  mb.onclick=toggleExMute;
+  wrap.appendChild(mb);
+  hdr.appendChild(wrap);
+}
 function initEx(id,bank,total){
   total=total||10;
   const best=localStorage.getItem('best_'+id);
@@ -1651,14 +1679,7 @@ function initEx(id,bank,total){
   if(score){
     score.textContent='0/'+total;
     const hdr=score.parentElement;
-    if(hdr&&!hdr.querySelector('.ex-mute-btn')){
-      const mb=document.createElement('button');
-      mb.className='ex-mute-btn'+(window._exMuted?' muted':'');
-      mb.textContent=window._exMuted?'🔇':'🔊';
-      mb.title=window._exMuted?'Ativar som':'Silenciar';
-      mb.onclick=toggleExMute;
-      hdr.appendChild(mb);
-    }
+    _injectExButtons(hdr);
   }
   if(body){
     const bestHtml=window[id+'_s']._best?`<div class="ex-best">🏆 Melhor: ${fmtTime(window[id+'_s']._best)}</div>`:'';
@@ -1697,6 +1718,20 @@ function playError(){
   }catch(e){}
 }
 window._exMuted=localStorage.getItem('ex_muted')==='1';
+window._exTimerHidden=localStorage.getItem('ex_timer_hidden')==='1';
+(function(){
+  function applyTimerClass(){if(window._exTimerHidden&&document.body)document.body.classList.add('ex-timer-hidden');}
+  if(document.body)applyTimerClass();else document.addEventListener('DOMContentLoaded',applyTimerClass);
+})();
+function toggleExTimer(){
+  window._exTimerHidden=!window._exTimerHidden;
+  localStorage.setItem('ex_timer_hidden',window._exTimerHidden?'1':'0');
+  document.body.classList.toggle('ex-timer-hidden',window._exTimerHidden);
+  document.querySelectorAll('.ex-timer-btn').forEach(b=>{
+    b.classList.toggle('hidden',window._exTimerHidden);
+    b.title=window._exTimerHidden?'Mostrar cronômetro':'Esconder cronômetro';
+  });
+}
 function toggleExMute(){
   window._exMuted=!window._exMuted;
   localStorage.setItem('ex_muted',window._exMuted?'1':'0');
@@ -4625,6 +4660,22 @@ const pages=[
         <div class="conj-row"><span>Eles/Elas jogaram</span><span class="en" data-speak="They played">They play<strong>ed</strong></span></div>
       </div>
     </div>
+    <div class="rule-box" id="passado-regular-extra">
+      <div class="rule-title">⚠️ Regras adicionais para verbos regulares</div>
+      <p class="intro">Dependendo da terminação do verbo, não podemos simplesmente acrescentar o <strong>-ed</strong>.</p>
+      <div class="tip" style="margin-top:10px;">
+        <div class="tip-lbl">Se terminar com -e → acrescenta só D</div>
+        <p class="tip-txt"><span class="en" data-speak="live">live</span> → <span class="en" data-speak="lived">lived</span> &nbsp;·&nbsp; <span class="en" data-speak="love">love</span> → <span class="en" data-speak="loved">loved</span></p>
+      </div>
+      <div class="tip" style="margin-top:8px;">
+        <div class="tip-lbl">Se terminar com consoante + Y → troca Y por IED</div>
+        <p class="tip-txt"><span class="en" data-speak="study">study</span> → <span class="en" data-speak="studied">studied</span> &nbsp;·&nbsp; <span class="en" data-speak="try">try</span> → <span class="en" data-speak="tried">tried</span> &nbsp;·&nbsp; <span class="en" data-speak="cry">cry</span> → <span class="en" data-speak="cried">cried</span></p>
+      </div>
+      <div class="tip" style="margin-top:8px;">
+        <div class="tip-lbl">Verbo curto (consoante–vogal–consoante) → dobra a última letra</div>
+        <p class="tip-txt"><span class="en" data-speak="stop">stop</span> → <span class="en" data-speak="stopped">stopped</span> &nbsp;·&nbsp; <span class="en" data-speak="plan">plan</span> → <span class="en" data-speak="planned">planned</span> &nbsp;·&nbsp; <span class="en" data-speak="beg">beg</span> → <span class="en" data-speak="begged">begged</span></p>
+      </div>
+    </div>
     <div class="rule-box">
       <div class="rule-title" id="passado-irregular">Verbos Irregulares → conjugação aleatória</div>
       <p class="intro">Alguns verbos têm conjugação própria no passado — não seguem regra, precisam ser memorizados aos poucos.</p>
@@ -5798,7 +5849,7 @@ const pages=[
       <div class="poss-ex-block">
         <div class="poss-ex-tag pp-tag">OF + PP</div>
         <div class="poss-ex-sentences">
-          <div class="poss-ex-note">Quando quisermos usar pronomes de posse com algum <span onclick="scrollAndHighlight('16:art-a-an')" style="color:var(--blue);font-weight:700;cursor:pointer;text-decoration:underline;">artigo indefinido</span> (a, an, some), traduziremos ao pé da letra, mas no local do pronome de posse utilizaremos <strong>of + PP</strong>.</div>
+          <div class="poss-ex-note">Quando quisermos usar pronomes de posse com algum <span class="tb-link" onclick="goAndHighlight(15,'art-a-an')">artigo indefinido</span> (a, an, some), traduziremos ao pé da letra, mas no local do pronome de posse utilizaremos <strong>of + PP</strong>.</div>
           <div class="poss-ex-sent pt">Um amigo <span class="poss-hl-pp">dela</span>.</div>
           <div class="poss-ex-sent en"><span class="en" data-speak="A friend of hers.">A friend of <span class="poss-hl-pp">hers</span>.</span></div>
         </div>
@@ -6732,10 +6783,17 @@ const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
   'togo-section','pron-section','rule-box','tip','poss-ex-block',
   'poss-ex-sentences','indem-ex-block','cp-formula-body','que-card',
   'cp-formula','demo-example','irony-block','inonat-bubble-body',
-  'cp-expr-list','demo-list','poss-ex-list','indem-decomp-list']);
-// Tables — never split inside; the whole table is the focus unit
+  'cp-expr-list','demo-list','poss-ex-list','indem-decomp-list',
+  'que-summary','indem-examples','poss-legend','cp-expr-item',
+  'demo-item','poss-ex-block','tobe-card','curiosidade-body',
+  'curiosidade-text','que-ex-block','inonat-bubble','indem-ex-line',
+  'cp-expr-item','ex-options','ex-sentence','ex-list','ex-finish']);
+// Tables and self-contained interactive blocks — never split inside; the whole unit is the focus target
 const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',
-  'togo-table','big-tbl-wrap','tbl-wrap','conj-big']);
+  'togo-table','big-tbl-wrap','tbl-wrap','conj-big',
+  'ex-wrap','game-wrap','tip','irony-block','que-summary',
+  'que-ex-block','demo-item','poss-ex-block','indem-ex-block',
+  'cp-expr-item','curiosidade','inonat-bubble']);
 var _focusEl=null,_focusHint=null; // focus mode state
 function _initFocusHint(){
   if(_focusHint)return;
@@ -6748,18 +6806,30 @@ function _findFocusTarget(startEl){
   // Special case: curiosidade block (outside pg-body)
   const curBlock=startEl.closest('.curiosidade');
   if(curBlock)return curBlock;
+  // Special case: ex-wrap/game-wrap may live outside pg-body (Cap 3+ exercises)
+  // Treat them as standalone focusable units.
+  const exWrap=startEl.closest('.ex-wrap,.game-wrap');
+  if(exWrap)return exWrap;
   const pgBody=startEl.closest('.pg-body');
   if(!pgBody)return null;
+  // First pass: walk up looking for a self-contained TABLE_ROOT.
+  // This takes priority because these blocks are designed to be focused as a unit.
   let el=startEl;
+  let firstTableRoot=null;
+  while(el&&el!==pgBody){
+    const elClasses=[...el.classList];
+    if(elClasses.some(c=>_TABLE_ROOTS.has(c))){
+      if(el.offsetHeight>0){firstTableRoot=el;break;}
+    }
+    el=el.parentElement;
+  }
+  if(firstTableRoot)return firstTableRoot;
+  // Second pass: find smallest element whose parent is a SPLIT_PARENT (siblings will be split-out).
+  el=startEl;
   while(el&&el!==pgBody){
     const par=el.parentElement;
     if(!par)break;
     const parClasses=[...par.classList];
-    const elClasses=[...el.classList];
-    // If el itself is a table root, return the whole table
-    if(elClasses.some(c=>_TABLE_ROOTS.has(c))){
-      if(el.offsetHeight>0)return el;
-    }
     if(par===pgBody||parClasses.some(c=>_SPLIT_PARENTS.has(c))){
       if(el.offsetHeight>0)return el;
     }
@@ -6776,26 +6846,33 @@ function exitCurFocus(){
   if(_focusHint)_focusHint.classList.remove('show');
 }
 function exitFocusMode(){
-  if(_focusEl&&_focusEl.classList.contains('curiosidade')){exitCurFocus();return;}
+  if(_focusEl&&_focusEl.classList.contains('cur-focused')){exitCurFocus();return;}
   if(!_focusEl)return;
   _focusEl.classList.remove('focus-active','focus-ancestor');
   let el=_focusEl.parentElement;
-  while(el&&!el.classList.contains('pg-body')){
+  const root=_focusEl.closest('.pg-body')||_focusEl.closest('.pg-content')||_focusEl.closest('.page');
+  while(el&&el!==root){
     el.classList.remove('focus-ancestor','has-focus');
     el=el.parentElement;
   }
-  if(el)el.classList.remove('focus-mode');
+  if(root)root.classList.remove('focus-mode');
   _focusEl=null;
   if(_focusHint)_focusHint.classList.remove('show');
 }
 function enterFocusMode(target){
   exitFocusMode();
+  exitCurFocus();
+  // Force-cleanup any stale focus classes left from previous interactions
+  document.querySelectorAll('.focus-active,.focus-ancestor,.has-focus,.cur-focused').forEach(el=>{
+    el.classList.remove('focus-active','focus-ancestor','has-focus','cur-focused');
+  });
+  document.querySelectorAll('.focus-mode').forEach(el=>el.classList.remove('focus-mode'));
   _initFocusHint();
   _focusEl=target;
   target.classList.add('focus-active');
   let el=target.parentElement;
   const pgBody=target.closest('.pg-body');
-  // curiosidade uses overlay approach
+  // curiosidade uses overlay approach (it lives in a different page structure)
   if(!pgBody&&target.classList.contains('curiosidade')){
     target.classList.add('cur-focused');
     const ov=document.getElementById('cur-focus-overlay');
@@ -6803,12 +6880,14 @@ function enterFocusMode(target){
     if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
     return;
   }
-  while(el&&el!==pgBody){
+  // If no pg-body, use pg-content as the focus root (for ex-wrap/game-wrap outside pg-body)
+  const root=pgBody||target.closest('.pg-content')||target.closest('.page');
+  while(el&&el!==root){
     el.classList.add('focus-ancestor');
     if(el===target.parentElement)el.classList.add('has-focus');
     el=el.parentElement;
   }
-  if(pgBody)pgBody.classList.add('focus-mode');
+  if(root)root.classList.add('focus-mode');
   if(_focusHint){_focusHint.classList.add('show');setTimeout(()=>{if(_focusHint)_focusHint.classList.remove('show');},2200);}
 }
 document.addEventListener('dblclick',e=>{
