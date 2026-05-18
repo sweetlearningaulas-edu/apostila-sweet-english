@@ -1296,6 +1296,11 @@ function runInits(p){
   if(p===47)initEx('from',window['from_bk'],10);
   if(p===49)initEx('fromdem',window['fromdem_bk'],10);
   if(p===51)initEx('desome',window['desome_bk'],10);
+  if(p===52)initEx('rev4',window['rev4_bk'],15);
+  if(p===61)initEx('toforinf',window['toforinf_bk'],10);
+  if(p===63)initEx('pronobj',window['pronobj_bk'],10);
+  if(p===65)initEx('inonatpron',window['inonatpron_bk'],10);
+  if(p===66)initEx('rev5',window['rev5_bk'],15);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -3199,6 +3204,321 @@ window['fromdem_bk']=[
   {pt:'Megan veio da Coreia.',before:'Megan came',blank:'from',after:'Korea.',options:['from the','of','from','of the'],anchor:'fromdem-regra'}
 ];
 
+window['pronobj_bk']=[
+  {pt:'Bruno foi para a festa comigo.',before:'Bruno went to the party with',blank:'me',after:'.',options:['you','me','them','us'],anchor:'pronobj-regra'},
+  {pt:'A Megan trouxe um presente para mim.',before:'Megan brought a gift for',blank:'me',after:'.',options:['you','us','him','me'],anchor:'pronobj-regra'},
+  {pt:'O Jake estava na praia sem mim.',before:'Jake was at the beach without',blank:'me',after:'.',options:['him','me','us','you'],anchor:'pronobj-regra'},
+  {pt:'A Ashley olhou para mim ontem.',before:'Ashley looked at',blank:'me',after:'yesterday.',options:['them','it','me','us'],anchor:'pronobj-regra'},
+  {pt:'A Camila comprou um livro para mim.',before:'Camila bought a book for',blank:'me',after:'.',options:['me','you','him','it'],anchor:'pronobj-regra'},
+  {pt:'Eu vou com você ao mercado.',before:'I will go to the market with',blank:'you',after:'.',options:['me','you','her','him'],anchor:'pronobj-regra'},
+  {pt:'A festa será sem você.',before:'The party will be without',blank:'you',after:'.',options:['you','them','us','her'],anchor:'pronobj-regra'},
+  {pt:'A Christy trouxe café para você.',before:'Christy brought coffee for',blank:'you',after:'.',options:['you','me','it','us'],anchor:'pronobj-regra'},
+  {pt:'O cachorro está olhando para você.',before:'The dog is looking at',blank:'you',after:'.',options:['you','them','her','us'],anchor:'pronobj-regra'},
+  {pt:'A Manoela está trabalhando com ele.',before:'Manoela is working with',blank:'him',after:'.',options:['you','her','him','me'],anchor:'pronobj-regra'},
+  {pt:'O Ryan foi para a balada sem ele.',before:'Ryan went to the nightclub without',blank:'him',after:'.',options:['him','her','it','them'],anchor:'pronobj-regra'},
+  {pt:'A Megan comprou um presente para ele.',before:'Megan bought a gift for',blank:'him',after:'.',options:['you','him','them','her'],anchor:'pronobj-regra'},
+  {pt:'Eu estou pensando nele.',before:'I am thinking about',blank:'him',after:'.',options:['us','them','you','him'],anchor:'pronobj-regra'},
+  {pt:'A polícia atirou nele.',before:'The police shot at',blank:'him',after:'.',options:['us','him','them','you'],anchor:'pronobj-regra'},
+  {pt:'O Bruno saiu com ela ontem.',before:'Bruno went out with',blank:'her',after:'yesterday.',options:['him','her','me','it'],anchor:'pronobj-regra'},
+  {pt:'A Ashley está sem ela hoje.',before:'Ashley is without',blank:'her',after:'today.',options:['us','you','him','her'],anchor:'pronobj-regra'},
+  {pt:'O Jake comprou flores para ela.',before:'Jake bought flowers for',blank:'her',after:'.',options:['you','her','them','him'],anchor:'pronobj-regra'},
+  {pt:'Eu confio nela.',before:'I trust in',blank:'her',after:'.',options:['it','them','us','her'],anchor:'pronobj-regra'},
+  {pt:'A Christy está esperando por ela.',before:'Christy is waiting for',blank:'her',after:'.',options:['us','it','her','you'],anchor:'pronobj-regra'},
+  {pt:'Eu coloquei o livro na mesa, e tudo nela.',before:'I put the book on the table, and everything on',blank:'it',after:'.',options:['it','her','them','you'],anchor:'pronobj-regra'},
+  {pt:'Os doces estão dentro dele (do pote).',before:'The candies are inside',blank:'it',after:'.',options:['her','it','him','us'],anchor:'pronobj-regra'},
+  {pt:'Não conte com ele (com o carro).',before:'Don\'t count on',blank:'it',after:'.',options:['it','us','them','him'],anchor:'pronobj-regra'},
+  {pt:'Eu olhei para ele (o quadro) por um tempo.',before:'I looked at',blank:'it',after:'for a while.',options:['it','you','them','her'],anchor:'pronobj-regra'},
+  {pt:'A Manoela foi para a praia conosco.',before:'Manoela went to the beach with',blank:'us',after:'.',options:['you','it','us','me'],anchor:'pronobj-regra'},
+  {pt:'O time perdeu sem nós.',before:'The team lost without',blank:'us',after:'.',options:['us','him','them','you'],anchor:'pronobj-regra'},
+  {pt:'O Ryan vai trazer comida para nós.',before:'Ryan will bring food for',blank:'us',after:'.',options:['us','her','me','it'],anchor:'pronobj-regra'},
+  {pt:'Os vizinhos estão dependendo de nós.',before:'The neighbors are depending on',blank:'us',after:'.',options:['us','you','them','me'],anchor:'pronobj-regra'},
+  {pt:'A Camila viajou com eles.',before:'Camila traveled with',blank:'them',after:'.',options:['me','them','you','it'],anchor:'pronobj-regra'},
+  {pt:'A festa foi sem elas.',before:'The party was without',blank:'them',after:'.',options:['you','him','it','them'],anchor:'pronobj-regra'},
+  {pt:'O Bruno comprou os ingressos para eles.',before:'Bruno bought the tickets for',blank:'them',after:'.',options:['us','them','him','her'],anchor:'pronobj-regra'},
+  {pt:'A Ashley me viu ontem.',before:'Ashley saw',blank:'me',after:'yesterday.',options:['us','me','him','you'],anchor:'pronobj-regra'},
+  {pt:'O cachorro lambeu-me na cara.',before:'The dog licked',blank:'me',after:'on the face.',options:['me','him','us','them'],anchor:'pronobj-regra'},
+  {pt:'A Megan me trouxe um livro.',before:'Megan brought',blank:'me',after:'a book.',options:['him','you','me','them'],anchor:'pronobj-regra'},
+  {pt:'O Jake me ouviu rindo.',before:'Jake heard',blank:'me',after:'laughing.',options:['you','us','me','him'],anchor:'pronobj-regra'},
+  {pt:'A Camila trouxe-me um café.',before:'Camila brought',blank:'me',after:'a coffee.',options:['them','us','him','me'],anchor:'pronobj-regra'},
+  {pt:'Eu vejo você todos os dias.',before:'I see',blank:'you',after:'every day.',options:['you','him','me','it'],anchor:'pronobj-regra'},
+  {pt:'O Bruno te ligou ontem.',before:'Bruno called',blank:'you',after:'yesterday.',options:['it','her','us','you'],anchor:'pronobj-regra'},
+  {pt:'A Ashley te comprou um café.',before:'Ashley bought',blank:'you',after:'a coffee.',options:['them','me','us','you'],anchor:'pronobj-regra'},
+  {pt:'A Christy te ensinou tudo.',before:'Christy taught',blank:'you',after:'everything.',options:['me','you','us','him'],anchor:'pronobj-regra'},
+  {pt:'A Manoela beijou ele.',before:'Manoela kissed',blank:'him',after:'.',options:['him','you','it','them'],anchor:'pronobj-regra'},
+  {pt:'A Megan abraçou-o no aeroporto.',before:'Megan hugged',blank:'him',after:'at the airport.',options:['it','him','them','me'],anchor:'pronobj-regra'},
+  {pt:'O Ryan deu-lhe um presente.',before:'Ryan gave',blank:'him',after:'a gift.',options:['me','us','you','him'],anchor:'pronobj-regra'},
+  {pt:'Eu conheci ele na faculdade.',before:'I met',blank:'him',after:'in college.',options:['me','you','him','it'],anchor:'pronobj-regra'},
+  {pt:'A Christy enviou-lhe um email.',before:'Christy sent',blank:'him',after:'an email.',options:['it','him','her','them'],anchor:'pronobj-regra'},
+  {pt:'O Bruno chamou ela ontem à noite.',before:'Bruno called',blank:'her',after:'last night.',options:['her','him','you','them'],anchor:'pronobj-regra'},
+  {pt:'O Jake levou-a para jantar.',before:'Jake took',blank:'her',after:'out for dinner.',options:['her','him','me','them'],anchor:'pronobj-regra'},
+  {pt:'A Ashley emprestou-lhe o vestido.',before:'Ashley lent',blank:'her',after:'the dress.',options:['them','her','you','us'],anchor:'pronobj-regra'},
+  {pt:'Eu vi ela na padaria.',before:'I saw',blank:'her',after:'at the bakery.',options:['us','you','her','me'],anchor:'pronobj-regra'},
+  {pt:'A Manoela escreveu-lhe uma carta.',before:'Manoela wrote',blank:'her',after:'a letter.',options:['her','me','you','us'],anchor:'pronobj-regra'},
+  {pt:'Eu adoro isso (esse jogo).',before:'I love',blank:'it',after:'.',options:['him','them','it','you'],anchor:'pronobj-regra'},
+  {pt:'O Ryan comprou isso (o carro) ontem.',before:'Ryan bought',blank:'it',after:'yesterday.',options:['him','it','you','her'],anchor:'pronobj-regra'},
+  {pt:'A Camila perdeu-o (o celular).',before:'Camila lost',blank:'it',after:'.',options:['us','it','me','her'],anchor:'pronobj-regra'},
+  {pt:'A Ashley nos viu na festa.',before:'Ashley saw',blank:'us',after:'at the party.',options:['him','us','it','you'],anchor:'pronobj-regra'},
+  {pt:'O Bruno nos trouxe sorvete.',before:'Bruno brought',blank:'us',after:'ice cream.',options:['him','them','you','us'],anchor:'pronobj-regra'},
+  {pt:'A Megan abraçou-nos quando chegou.',before:'Megan hugged',blank:'us',after:'when she arrived.',options:['them','it','us','me'],anchor:'pronobj-regra'},
+  {pt:'O Jake levou-nos para o aeroporto.',before:'Jake took',blank:'us',after:'to the airport.',options:['him','us','me','you'],anchor:'pronobj-regra'},
+  {pt:'A Christy convidou eles.',before:'Christy invited',blank:'them',after:'.',options:['them','us','him','you'],anchor:'pronobj-regra'},
+  {pt:'O Ryan ensinou-lhes inglês.',before:'Ryan taught',blank:'them',after:'English.',options:['him','her','them','it'],anchor:'pronobj-regra'},
+  {pt:'Eu encontrei elas no shopping.',before:'I met',blank:'them',after:'at the mall.',options:['them','me','him','it'],anchor:'pronobj-regra'},
+  {pt:'A Manoela deu-lhes os documentos.',before:'Manoela gave',blank:'them',after:'the documents.',options:['her','it','them','you'],anchor:'pronobj-regra'},
+];
+
+window['toforinf_bk']=[
+  {pt:'Eu fui ao mercado para comprar pão.',before:'I went to the market',blank:'to buy',after:'bread.',options:['to buy','for buying','buying','buy'],anchor:'toforinf-regra'},
+  {pt:'A Megan ligou para falar com você.',before:'Megan called',blank:'to talk',after:'to you.',options:['for talking','to talk','talking','talk'],anchor:'toforinf-regra'},
+  {pt:'O Bruno saiu cedo para pegar o ônibus.',before:'Bruno left early',blank:'to catch',after:'the bus.',options:['to catch','for catching','catching','catch'],anchor:'toforinf-regra'},
+  {pt:'A Ashley estuda para passar no vestibular.',before:'Ashley studies',blank:'to pass',after:'the college exam.',options:['for passing','to pass','passing','pass'],anchor:'toforinf-regra'},
+  {pt:'O Jake foi ao restaurante para comer.',before:'Jake went to the restaurant',blank:'to eat',after:'.',options:['to eat','for eating','eating','eat'],anchor:'toforinf-regra'},
+  {pt:'A Camila viajou para conhecer Paris.',before:'Camila traveled',blank:'to know',after:'Paris.',options:['for knowing','to know','knowing','know'],anchor:'toforinf-regra'},
+  {pt:'O Ryan parou para descansar um pouco.',before:'Ryan stopped',blank:'to rest',after:'a little.',options:['to rest','for resting','resting','rest'],anchor:'toforinf-regra'},
+  {pt:'Eles foram à academia para malhar.',before:'They went to the gym',blank:'to work out',after:'.',options:['for working out','to work out','working out','work out'],anchor:'toforinf-regra'},
+  {pt:'A Christy ligou para pedir ajuda.',before:'Christy called',blank:'to ask',after:'for help.',options:['to ask','for asking','asking','ask'],anchor:'toforinf-regra'},
+  {pt:'A Manoela acordou cedo para correr.',before:'Manoela woke up early',blank:'to run',after:'.',options:['for running','to run','running','run'],anchor:'toforinf-regra'},
+  {pt:'Eu liguei para avisar você.',before:'I called',blank:'to warn',after:'you.',options:['to warn','for warning','warning','warn'],anchor:'toforinf-regra'},
+  {pt:'O Bruno foi ao banco para sacar dinheiro.',before:'Bruno went to the bank',blank:'to withdraw',after:'money.',options:['for withdrawing','to withdraw','withdrawing','withdraw'],anchor:'toforinf-regra'},
+  {pt:'A Megan fica acordada até tarde para estudar.',before:'Megan stays up late',blank:'to study',after:'.',options:['to study','for studying','studying','study'],anchor:'toforinf-regra'},
+  {pt:'A Ashley foi à farmácia para comprar remédio.',before:'Ashley went to the pharmacy',blank:'to buy',after:'medicine.',options:['to buy','for buying','buying','buy'],anchor:'toforinf-regra'},
+  {pt:'O Jake economiza para viajar pelo mundo.',before:'Jake saves money',blank:'to travel',after:'around the world.',options:['for traveling','to travel','traveling','travel'],anchor:'toforinf-regra'},
+  {pt:'A Camila treina para ganhar a competição.',before:'Camila trains',blank:'to win',after:'the competition.',options:['for winning','to win','winning','win'],anchor:'toforinf-regra'},
+  {pt:'O Ryan abriu a janela para respirar ar fresco.',before:'Ryan opened the window',blank:'to breathe',after:'fresh air.',options:['to breathe','for breathing','breathing','breathe'],anchor:'toforinf-regra'},
+  {pt:'A Christy foi ao salão para cortar o cabelo.',before:'Christy went to the salon',blank:'to cut',after:'her hair.',options:['for cutting','to cut','cutting','cut'],anchor:'toforinf-regra'},
+  {pt:'Nós paramos no posto para abastecer.',before:'We stopped at the gas station',blank:'to fill',after:'up.',options:['to fill','for filling','filling','fill'],anchor:'toforinf-regra'},
+  {pt:'A Manoela fez chá para esquentar.',before:'Manoela made tea',blank:'to warm',after:'up.',options:['for warming','to warm','warming','warm'],anchor:'toforinf-regra'},
+  {pt:'Eu fui pro parque para passear com o cachorro.',before:'I went to the park',blank:'to walk',after:'the dog.',options:['to walk','for walking','walking','walk'],anchor:'toforinf-regra'},
+  {pt:'O Bruno apertou o botão para chamar o elevador.',before:'Bruno pressed the button',blank:'to call',after:'the elevator.',options:['for calling','to call','calling','call'],anchor:'toforinf-regra'},
+  {pt:'A Megan estuda inglês para conseguir emprego fora.',before:'Megan studies English',blank:'to get',after:'a job abroad.',options:['to get','for getting','getting','get'],anchor:'toforinf-regra'},
+  {pt:'A Ashley pegou o casaco para sair.',before:'Ashley grabbed the coat',blank:'to go out',after:'.',options:['for going out','to go out','going out','go out'],anchor:'toforinf-regra'},
+  {pt:'O Jake ligou para combinar o jantar.',before:'Jake called',blank:'to arrange',after:'dinner.',options:['to arrange','for arranging','arranging','arrange'],anchor:'toforinf-regra'},
+  {pt:'Nadar é divertido.',before:'',blank:'Swimming',after:'is fun.',options:['Swim','Swimming','To swimming','For swimming'],anchor:'toforinf-regra'},
+  {pt:'A Ashley adora ler livros.',before:'Ashley loves',blank:'reading',after:'books.',options:['read','reading','for reading','of reading'],anchor:'toforinf-regra'},
+  {pt:'Correr de manhã é saudável.',before:'',blank:'Running',after:'in the morning is healthy.',options:['Run','Running','For running','To running'],anchor:'toforinf-regra'},
+  {pt:'Eu gosto de cozinhar.',before:'I like',blank:'cooking',after:'.',options:['cook','cooking','of cooking','for cooking'],anchor:'toforinf-regra'},
+  {pt:'Fumar é ruim para a saúde.',before:'',blank:'Smoking',after:'is bad for the health.',options:['Smoke','Smoking','For smoking','To smoking'],anchor:'toforinf-regra'},
+  {pt:'A Megan parou de fumar.',before:'Megan stopped',blank:'smoking',after:'.',options:['smoke','smoking','of smoking','for smoking'],anchor:'toforinf-regra'},
+  {pt:'O Bruno odeia acordar cedo.',before:'Bruno hates',blank:'waking up',after:'early.',options:['wake up','waking up','of waking up','for waking up'],anchor:'toforinf-regra'},
+  {pt:'Estudar todo dia faz diferença.',before:'',blank:'Studying',after:'every day makes a difference.',options:['Study','Studying','For studying','To studying'],anchor:'toforinf-regra'},
+  {pt:'A Christy gosta de viajar sozinha.',before:'Christy likes',blank:'traveling',after:'alone.',options:['travel','traveling','of traveling','for traveling'],anchor:'toforinf-regra'},
+  {pt:'O Jake terminou de comer agora.',before:'Jake just finished',blank:'eating',after:'.',options:['eat','eating','of eating','to eat'],anchor:'toforinf-regra'},
+  {pt:'A Camila adora dançar.',before:'Camila loves',blank:'dancing',after:'.',options:['dance','dancing','of dancing','for dancing'],anchor:'toforinf-regra'},
+  {pt:'Andar de bicicleta é relaxante.',before:'',blank:'Riding',after:'a bike is relaxing.',options:['Ride','Riding','For riding','To riding'],anchor:'toforinf-regra'},
+  {pt:'O Ryan está cansado de trabalhar tanto.',before:'Ryan is tired of',blank:'working',after:'so much.',options:['work','working','of working','for working'],anchor:'toforinf-regra'},
+  {pt:'A Manoela continuou estudando até tarde.',before:'Manoela kept',blank:'studying',after:'until late.',options:['study','studying','of studying','for studying'],anchor:'toforinf-regra'},
+  {pt:'Aprender inglês muda a vida.',before:'',blank:'Learning',after:'English changes your life.',options:['Learn','Learning','For learning','To learning'],anchor:'toforinf-regra'},
+  {pt:'Eu odeio esperar em filas.',before:'I hate',blank:'waiting',after:'in lines.',options:['wait','waiting','of waiting','for waiting'],anchor:'toforinf-regra'},
+  {pt:'O Bruno gosta de jogar videogame.',before:'Bruno likes',blank:'playing',after:'video games.',options:['play','playing','of playing','for playing'],anchor:'toforinf-regra'},
+  {pt:'Acordar cedo é difícil para a Megan.',before:'',blank:'Waking up',after:'early is difficult for Megan.',options:['Wake up','Waking up','For waking up','To waking up'],anchor:'toforinf-regra'},
+  {pt:'A Ashley evita comer doces à noite.',before:'Ashley avoids',blank:'eating',after:'sweets at night.',options:['eat','eating','of eating','for eating'],anchor:'toforinf-regra'},
+  {pt:'O Jake desistiu de tentar.',before:'Jake gave up',blank:'trying',after:'.',options:['try','trying','of trying','for trying'],anchor:'toforinf-regra'},
+  {pt:'Esta panela é para fritar.',before:'This pan is',blank:'for frying',after:'.',options:['to fry','for frying','frying','fry'],anchor:'toforinf-regra'},
+  {pt:'Esta sala é para estudar.',before:'This room is',blank:'for studying',after:'.',options:['to study','for studying','studying','study'],anchor:'toforinf-regra'},
+  {pt:'Esse computador é para jogar.',before:'This computer is',blank:'for gaming',after:'.',options:['to game','for gaming','gaming','game'],anchor:'toforinf-regra'},
+  {pt:'Essa camiseta é de dormir.',before:'This t-shirt is',blank:'for sleeping',after:'.',options:['to sleep','for sleeping','sleeping','sleep'],anchor:'toforinf-regra'},
+  {pt:'Essa cadeira é para descansar.',before:'This chair is',blank:'for resting',after:'.',options:['to rest','for resting','resting','rest'],anchor:'toforinf-regra'},
+  {pt:'Essa faca é de cortar pão.',before:'This knife is',blank:'for cutting',after:'bread.',options:['to cut','for cutting','cutting','cut'],anchor:'toforinf-regra'},
+  {pt:'Esse tênis é para correr.',before:'These sneakers are',blank:'for running',after:'.',options:['to run','for running','running','run'],anchor:'toforinf-regra'},
+  {pt:'Essa caneta é para escrever em papel.',before:'This pen is',blank:'for writing',after:'on paper.',options:['to write','for writing','writing','write'],anchor:'toforinf-regra'},
+  {pt:'Aquele quarto é para hóspedes ficarem.',before:'That room is',blank:'for hosting',after:'guests.',options:['to host','for hosting','hosting','host'],anchor:'toforinf-regra'},
+  {pt:'Esse forno é de assar bolos.',before:'This oven is',blank:'for baking',after:'cakes.',options:['to bake','for baking','baking','bake'],anchor:'toforinf-regra'},
+  {pt:'Essas luvas são para lavar louça.',before:'These gloves are',blank:'for washing',after:'dishes.',options:['to wash','for washing','washing','wash'],anchor:'toforinf-regra'},
+  {pt:'Esse aplicativo é para aprender línguas.',before:'This app is',blank:'for learning',after:'languages.',options:['to learn','for learning','learning','learn'],anchor:'toforinf-regra'},
+  {pt:'Aquela máquina é de fazer café.',before:'That machine is',blank:'for making',after:'coffee.',options:['to make','for making','making','make'],anchor:'toforinf-regra'},
+  {pt:'Essa bolsa é para carregar livros.',before:'This bag is',blank:'for carrying',after:'books.',options:['to carry','for carrying','carrying','carry'],anchor:'toforinf-regra'},
+  {pt:'Essa janela é para deixar entrar luz.',before:'This window is',blank:'for letting',after:'light in.',options:['to let','for letting','letting','let'],anchor:'toforinf-regra'},
+];
+
+window['inonatpron_bk']=[
+  {pt:'Eu acredito nela.',before:'I believe',blank:'in',after:'her.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno acredita em mim.',before:'Bruno believes',blank:'in',after:'me.',options:['on','in','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu acredito muito nele.',before:'I really believe',blank:'in',after:'him.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'Ela colocou tudo nele (no carro).',before:'She put everything',blank:'in',after:'it.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley acredita em você.',before:'Ashley believes',blank:'in',after:'you.',options:['on','at','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O Ryan colocou as roupas nela (na mala).',before:'Ryan put the clothes',blank:'in',after:'it.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan acredita em nós.',before:'Megan believes',blank:'in',after:'us.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Christy acredita neles.',before:'Christy believes',blank:'in',after:'them.',options:['on','in','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu dependo dele.',before:'I depend',blank:'on',after:'him.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Não conte comigo agora.',before:'Don\'t count',blank:'on',after:'me now.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno depende de você.',before:'Bruno depends',blank:'on',after:'you.',options:['on','in','at','—'],anchor:'inonatpron-regra'},
+  {pt:'O livro está nela (na mesa).',before:'The book is',blank:'on',after:'it.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Você pode contar com ela.',before:'You can count',blank:'on',after:'her.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan depende de nós.',before:'Megan depends',blank:'on',after:'us.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu conto com eles para tudo.',before:'I count',blank:'on',after:'them for everything.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'O Jake foca nele (no trabalho).',before:'Jake focuses',blank:'on',after:'it.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley colocou o casaco nele (no sofá).',before:'Ashley put the coat',blank:'on',after:'it.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Camila pode contar contigo.',before:'Camila can count',blank:'on',after:'you.',options:['on','at','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O Ryan está confiando nele (no plano).',before:'Ryan is relying',blank:'on',after:'it.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'Os pais dela contam com ela sempre.',before:'Her parents count',blank:'on',after:'her always.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu olhei para ela.',before:'I looked',blank:'at',after:'her.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Não grite comigo.',before:'Don\'t shout',blank:'at',after:'me.',options:['on','at','in','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan sorriu para mim.',before:'Megan smiled',blank:'at',after:'me.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno olhou para você do outro lado.',before:'Bruno looked',blank:'at',after:'you from the other side.',options:['on','in','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Ela apontou para ele.',before:'She pointed',blank:'at',after:'him.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley olhou para ele de canto.',before:'Ashley looked',blank:'at',after:'him from the corner.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O Jake gritou com ela ontem.',before:'Jake shouted',blank:'at',after:'her yesterday.',options:['on','at','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O cachorro está olhando para nós.',before:'The dog is looking',blank:'at',after:'us.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A turma riu dele na hora.',before:'The class laughed',blank:'at',after:'him.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Christy ficou olhando para ele por minutos.',before:'Christy stared',blank:'at',after:'him for minutes.',options:['on','in','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan está olhando para mim agora.',before:'Megan is looking',blank:'at',after:'me now.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Manoela sorriu para eles na rua.',before:'Manoela smiled',blank:'at',after:'them on the street.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'Não aponte para mim assim.',before:'Don\'t point',blank:'at',after:'me like that.',options:['on','at','in','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley está rindo de nós.',before:'Ashley is laughing',blank:'at',after:'us.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno ficou olhando para ela do bar.',before:'Bruno stared',blank:'at',after:'her from the bar.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu confio nele.',before:'I trust',blank:'—',after:'him.',options:['in','on','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley casou com ele ano passado.',before:'Ashley married',blank:'—',after:'him last year.',options:['with','to','on','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno bateu nele.',before:'Bruno hit',blank:'—',after:'him.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan beijou ele.',before:'Megan kissed',blank:'—',after:'him.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu conheci ela na faculdade.',before:'I met',blank:'—',after:'her in college.',options:['with','to','at','—'],anchor:'inonatpron-regra'},
+  {pt:'O Jake odeia eles.',before:'Jake hates',blank:'—',after:'them.',options:['in','at','on','—'],anchor:'inonatpron-regra'},
+  {pt:'A Camila ama ele.',before:'Camila loves',blank:'—',after:'him.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O Ryan sente saudade dela.',before:'Ryan misses',blank:'—',after:'her.',options:['of','from','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Christy ajudou ele.',before:'Christy helped',blank:'—',after:'him.',options:['to','for','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Manoela abraçou ela.',before:'Manoela hugged',blank:'—',after:'her.',options:['at','in','on','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu vejo ele todo dia.',before:'I see',blank:'—',after:'him every day.',options:['at','on','in','—'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley conhece ela há anos.',before:'Ashley knows',blank:'—',after:'her for years.',options:['at','from','in','—'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno ligou para ela ontem.',before:'Bruno called',blank:'—',after:'her yesterday.',options:['to','for','at','—'],anchor:'inonatpron-regra'},
+  {pt:'A Megan convidou nós.',before:'Megan invited',blank:'—',after:'us.',options:['at','on','to','—'],anchor:'inonatpron-regra'},
+  {pt:'O Jake gosta de você.',before:'Jake likes',blank:'—',after:'you.',options:['of','from','at','—'],anchor:'inonatpron-regra'},
+  {pt:'Eu estava pensando nele.',before:'I was thinking',blank:'about',after:'him.',options:['in','on','at','about'],anchor:'inonatpron-regra'},
+  {pt:'A Ashley está esperando por mim.',before:'Ashley is waiting',blank:'for',after:'me.',options:['in','on','for','at'],anchor:'inonatpron-regra'},
+  {pt:'O Bruno está ouvindo ela falar.',before:'Bruno is listening',blank:'to',after:'her talk.',options:['at','to','in','on'],anchor:'inonatpron-regra'},
+  {pt:'Eles estavam falando de mim.',before:'They were talking',blank:'about',after:'me.',options:['in','of','about','at'],anchor:'inonatpron-regra'},
+  {pt:'A Megan está procurando por ele.',before:'Megan is looking',blank:'for',after:'him.',options:['at','on','for','in'],anchor:'inonatpron-regra'},
+  {pt:'A Christy reagiu mal a isso.',before:'Christy reacted badly',blank:'to',after:'it.',options:['at','on','to','for'],anchor:'inonatpron-regra'},
+  {pt:'Eu pedi por eles ontem.',before:'I asked',blank:'for',after:'them yesterday.',options:['at','for','on','in'],anchor:'inonatpron-regra'},
+  {pt:'O Jake estava pensando em nós.',before:'Jake was thinking',blank:'about',after:'us.',options:['in','on','about','at'],anchor:'inonatpron-regra'},
+  {pt:'O Ryan respondeu a eles educadamente.',before:'Ryan responded',blank:'to',after:'them politely.',options:['at','to','for','on'],anchor:'inonatpron-regra'},
+  {pt:'A Manoela está esperando por você.',before:'Manoela is waiting',blank:'for',after:'you.',options:['at','on','for','in'],anchor:'inonatpron-regra'},
+];
+
+window['rev4_bk']=[
+  {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','mine','me','I'],anchor:'rev4'},
+  {pt:'Aquela casa é minha.',before:'That house is',blank:'mine',after:'.',options:['my','mine','me','I'],anchor:'rev4'},
+  {pt:'Eu peguei a chave dele.',before:'I took',blank:'his',after:'key.',options:['his','him','he','he\'s'],anchor:'rev4'},
+  {pt:'O laptop é dela.',before:'The laptop is',blank:'hers',after:'.',options:['her','hers','she','she\'s'],anchor:'rev4'},
+  {pt:'A Megan trouxe o nosso jantar.',before:'Megan brought',blank:'our',after:'dinner.',options:['our','ours','us','we'],anchor:'rev4'},
+  {pt:'Esse caderno é seu.',before:'This notebook is',blank:'yours',after:'.',options:['your','yours','you','ya'],anchor:'rev4'},
+  {pt:'A casa deles é enorme.',before:'',blank:'their',after:'house is huge.',options:['their','theirs','them','they'],anchor:'rev4'},
+  {pt:'A bicicleta vermelha é dele.',before:'The red bicycle is',blank:'his',after:'.',options:['his','him','he','he\'s'],anchor:'rev4'},
+  {pt:'O Bruno perdeu o passaporte dele.',before:'Bruno lost',blank:'his',after:'passport.',options:['his','him','he','he\'s'],anchor:'rev4'},
+  {pt:'Esta caneta é minha.',before:'This pen is',blank:'mine',after:'.',options:['my','mine','me','I'],anchor:'rev4'},
+  {pt:'O cachorro do Jake e a coleira dele estão sumidos.',before:'Jake\'s dog and',blank:'his',after:'leash are missing.',options:['his','him','he','he\'s'],anchor:'rev4'},
+  {pt:'A apostila da Camila é nova.',before:'',blank:'Her',after:'textbook is new.',options:['Her','Hers','She','She\'s'],anchor:'rev4'},
+  {pt:'O carro do Bruno é vermelho.',before:'',blank:'Bruno\'s',after:'car is red.',options:['Bruno\'s','Bruno','Of Bruno','The Bruno\'s'],anchor:'rev4'},
+  {pt:'A capa do livro é azul.',before:'The cover',blank:'of the',after:'book is blue.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'O cachorro da Megan latiu a noite toda.',before:'',blank:'Megan\'s',after:'dog barked all night.',options:['Megan\'s','Megan','Of Megan','The Megan\'s'],anchor:'rev4'},
+  {pt:'O final do filme foi triste.',before:'The end',blank:'of the',after:'movie was sad.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'A namorada do Ryan é legal.',before:'',blank:'Ryan\'s',after:'girlfriend is cool.',options:['Ryan\'s','Ryan','Of Ryan','The Ryan\'s'],anchor:'rev4'},
+  {pt:'O som do violão me acalmou.',before:'The sound',blank:'of the',after:'guitar calmed me.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'A irmã da Ashley vai chegar amanhã.',before:'',blank:'Ashley\'s',after:'sister will arrive tomorrow.',options:['Ashley\'s','Ashley','Of Ashley','The Ashley\'s'],anchor:'rev4'},
+  {pt:'O preço do anel me assustou.',before:'The price',blank:'of the',after:'ring scared me.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'O quarto da Christy é grande.',before:'',blank:'Christy\'s',after:'bedroom is big.',options:['Christy\'s','Christy','Of Christy','The Christy\'s'],anchor:'rev4'},
+  {pt:'A porta do quarto está aberta.',before:'The door',blank:'of the',after:'bedroom is open.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'O computador do Jake travou.',before:'',blank:'Jake\'s',after:'computer froze.',options:['Jake\'s','Jake','Of Jake','The Jake\'s'],anchor:'rev4'},
+  {pt:'O título do artigo me chamou atenção.',before:'The title',blank:'of the',after:'article caught my attention.',options:['of the','from the','of','from'],anchor:'rev4'},
+  {pt:'A capa deste livro está rasgada.',before:'The cover',blank:'of this',after:'book is torn.',options:['of this','from this','this','of the'],anchor:'rev4'},
+  {pt:'O fim daquele filme me chocou.',before:'The end',blank:'of that',after:'movie shocked me.',options:['of that','from that','that','of those'],anchor:'rev4'},
+  {pt:'A letra daquelas músicas é incrível.',before:'The lyrics',blank:'of those',after:'songs are incredible.',options:['of those','from those','those','of that'],anchor:'rev4'},
+  {pt:'O título destes livros é estranho.',before:'The title',blank:'of these',after:'books is weird.',options:['of these','from these','these','of this'],anchor:'rev4'},
+  {pt:'A trilha sonora daquele jogo é incrível.',before:'The soundtrack',blank:'of that',after:'game is incredible.',options:['of that','from that','that','of those'],anchor:'rev4'},
+  {pt:'O começo desta história é triste.',before:'The beginning',blank:'of this',after:'story is sad.',options:['of this','from this','this','of these'],anchor:'rev4'},
+  {pt:'O peso destes halteres é alto.',before:'The weight',blank:'of these',after:'dumbbells is high.',options:['of these','from these','these','of this'],anchor:'rev4'},
+  {pt:'O sabor daquela comida era estranho.',before:'The flavor',blank:'of that',after:'food was weird.',options:['of that','from that','that','of those'],anchor:'rev4'},
+  {pt:'Eu vim da balada às 5 da manhã.',before:'I came',blank:'from the',after:'nightclub at 5am.',options:['from the','of the','from','of'],anchor:'rev4'},
+  {pt:'O Bruno é de São Paulo.',before:'Bruno is',blank:'from',after:'São Paulo.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'A Megan voltou do mercado.',before:'Megan came back',blank:'from the',after:'supermarket.',options:['from the','of the','from','of'],anchor:'rev4'},
+  {pt:'A loja abre das 9 às 18.',before:'The store is open',blank:'from',after:'9am to 6pm.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'O Ryan caiu da árvore ontem.',before:'Ryan fell',blank:'from the',after:'tree yesterday.',options:['from the','of the','from','of'],anchor:'rev4'},
+  {pt:'Esse vinho é da Itália.',before:'This wine is',blank:'from',after:'Italy.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'A Ashley acabou de chegar do aeroporto.',before:'Ashley just arrived',blank:'from the',after:'airport.',options:['from the','of the','from','of'],anchor:'rev4'},
+  {pt:'Eu recebi uma carta da Christy.',before:'I got a letter',blank:'from',after:'Christy.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'O Jake trabalha de segunda a sexta.',before:'Jake works',blank:'from',after:'Monday to Friday.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'A Camila pegou a chave da gaveta.',before:'Camila took the key',blank:'from the',after:'drawer.',options:['from the','of the','from','of'],anchor:'rev4'},
+  {pt:'A Manoela trouxe doces da sua avó.',before:'Manoela brought sweets',blank:'from',after:'her grandma.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'Esse café é da Colômbia.',before:'This coffee is',blank:'from',after:'Colombia.',options:['from','of','from the','of the'],anchor:'rev4'},
+  {pt:'O Bruno tirou o café deste pote.',before:'Bruno took the coffee',blank:'from this',after:'jar.',options:['from this','of this','from these','of these'],anchor:'rev4'},
+  {pt:'A Megan veio daquela sala correndo.',before:'Megan came',blank:'from that',after:'room running.',options:['from that','of that','from those','of those'],anchor:'rev4'},
+  {pt:'Os turistas vieram destes países.',before:'The tourists came',blank:'from these',after:'countries.',options:['from these','of these','from this','of this'],anchor:'rev4'},
+  {pt:'A Christy pegou o suco daquela garrafa.',before:'Christy got the juice',blank:'from that',after:'bottle.',options:['from that','of that','from those','of those'],anchor:'rev4'},
+  {pt:'O Jake pegou os documentos daqueles arquivos.',before:'Jake took the documents',blank:'from those',after:'files.',options:['from those','of those','from that','of that'],anchor:'rev4'},
+  {pt:'Eu li uma frase deste poema.',before:'I read a line',blank:'from this',after:'poem.',options:['from this','of this','from these','of these'],anchor:'rev4'},
+  {pt:'A Ashley copiou anotações daquelas pastas.',before:'Ashley copied notes',blank:'from those',after:'folders.',options:['from those','of those','from that','of that'],anchor:'rev4'},
+  {pt:'A Manoela tirou as fotos destas câmeras.',before:'Manoela took the pictures',blank:'from these',after:'cameras.',options:['from these','of these','from this','of this'],anchor:'rev4'},
+  {pt:'Eu gosto de você.',before:'I like',blank:'you',after:'.',options:['you','of you','the you','from you'],anchor:'rev4'},
+  {pt:'A Megan precisa do dinheiro.',before:'Megan needs',blank:'the',after:'money.',options:['the','of the','money','from the'],anchor:'rev4'},
+  {pt:'O Bruno desistiu de tudo.',before:'Bruno gave up',blank:'everything',after:'.',options:['everything','of everything','the everything','from everything'],anchor:'rev4'},
+  {pt:'O Jake lembrou da reunião.',before:'Jake remembered',blank:'the',after:'meeting.',options:['the','of the','from the','meeting'],anchor:'rev4'},
+  {pt:'A Ashley esqueceu daqueles convidados.',before:'Ashley forgot',blank:'those',after:'guests.',options:['those','of those','from those','that'],anchor:'rev4'},
+  {pt:'Eu sinto falta deles.',before:'I miss',blank:'them',after:'.',options:['them','of them','the them','from them'],anchor:'rev4'},
+  {pt:'A Christy precisa desta caneta agora.',before:'Christy needs',blank:'this',after:'pen now.',options:['this','of this','from this','these'],anchor:'rev4'},
+  {pt:'O Ryan gosta daqueles filmes antigos.',before:'Ryan likes',blank:'those',after:'old movies.',options:['those','of those','from those','that'],anchor:'rev4'},
+];
+
+window['rev5_bk']=[
+  {pt:'Eu vou para a festa.',before:'I\'ll go',blank:'to',after:'the party.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Obrigado pelo café.',before:'Thanks',blank:'for',after:'the coffee.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Feliz aniversário para você.',before:'Happy birthday',blank:'to',after:'you.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Eu estudei inglês por dois anos.',before:'I studied English',blank:'for',after:'two years.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A reunião está marcada para amanhã.',before:'The meeting is scheduled',blank:'for',after:'tomorrow.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'O Bruno deu o presente para a Megan.',before:'Bruno gave the gift',blank:'to',after:'Megan.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Esse remédio é para dor de cabeça.',before:'This medicine is',blank:'for',after:'headaches.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A Ashley trabalha das 9 às 18.',before:'Ashley works from 9am',blank:'to',after:'6pm.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Eu comprei o livro por 50 reais.',before:'I bought the book',blank:'for',after:'50 reais.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A Camila trabalha para a Apple.',before:'Camila works',blank:'for',after:'Apple.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Ele entregou a chave para o porteiro.',before:'He handed the key',blank:'to',after:'the doorman.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A Megan está esperando pelo ônibus.',before:'Megan is waiting',blank:'for',after:'the bus.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A loja abre das 8 às 22.',before:'The store is open from 8am',blank:'to',after:'10pm.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'O Jake é casado com a Ashley.',before:'Jake is married',blank:'to',after:'Ashley.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Eu estou procurando pelas chaves.',before:'I am looking',blank:'for',after:'the keys.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Comer vegetais é bom para você.',before:'Eating vegetables is good',blank:'for',after:'you.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'O Ryan reagiu mal à notícia.',before:'Ryan reacted badly',blank:'to',after:'the news.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'A Christy pediu por ajuda.',before:'Christy asked',blank:'for',after:'help.',options:['to','for','of','from'],anchor:'rev5'},
+  {pt:'Eu fui ao mercado para comprar pão.',before:'I went to the market',blank:'to buy',after:'bread.',options:['to buy','for buying','buying','buy'],anchor:'rev5'},
+  {pt:'Nadar é divertido.',before:'',blank:'Swimming',after:'is fun.',options:['Swim','Swimming','To swimming','For swimming'],anchor:'rev5'},
+  {pt:'Essa panela é para fritar.',before:'This pan is',blank:'for frying',after:'.',options:['to fry','for frying','frying','fry'],anchor:'rev5'},
+  {pt:'A Megan ligou para falar com você.',before:'Megan called',blank:'to talk',after:'to you.',options:['to talk','for talking','talking','talk'],anchor:'rev5'},
+  {pt:'A Ashley adora ler livros.',before:'Ashley loves',blank:'reading',after:'books.',options:['read','reading','for reading','of reading'],anchor:'rev5'},
+  {pt:'Essa sala é para estudar.',before:'This room is',blank:'for studying',after:'.',options:['to study','for studying','studying','study'],anchor:'rev5'},
+  {pt:'O Bruno saiu cedo para pegar o ônibus.',before:'Bruno left early',blank:'to catch',after:'the bus.',options:['to catch','for catching','catching','catch'],anchor:'rev5'},
+  {pt:'Fumar é ruim para a saúde.',before:'',blank:'Smoking',after:'is bad for the health.',options:['Smoke','Smoking','For smoking','To smoking'],anchor:'rev5'},
+  {pt:'Esse tênis é para correr.',before:'These sneakers are',blank:'for running',after:'.',options:['to run','for running','running','run'],anchor:'rev5'},
+  {pt:'A Christy parou de fumar.',before:'Christy stopped',blank:'smoking',after:'.',options:['smoke','smoking','of smoking','for smoking'],anchor:'rev5'},
+  {pt:'Eu fui pro parque para passear com o cachorro.',before:'I went to the park',blank:'to walk',after:'the dog.',options:['to walk','for walking','walking','walk'],anchor:'rev5'},
+  {pt:'Essa faca é de cortar pão.',before:'This knife is',blank:'for cutting',after:'bread.',options:['to cut','for cutting','cutting','cut'],anchor:'rev5'},
+  {pt:'O Bruno foi à festa comigo.',before:'Bruno went to the party with',blank:'me',after:'.',options:['me','you','him','us'],anchor:'rev5'},
+  {pt:'A Ashley olhou para ele do outro lado.',before:'Ashley looked at',blank:'him',after:'from the other side.',options:['he','him','his','them'],anchor:'rev5'},
+  {pt:'A Megan beijou ele ontem.',before:'Megan kissed',blank:'him',after:'yesterday.',options:['him','her','them','me'],anchor:'rev5'},
+  {pt:'O Jake comprou flores para ela.',before:'Jake bought flowers for',blank:'her',after:'.',options:['she','her','them','us'],anchor:'rev5'},
+  {pt:'Eu vi vocês na padaria.',before:'I saw',blank:'you',after:'at the bakery.',options:['you','me','them','us'],anchor:'rev5'},
+  {pt:'A Camila trouxe-nos um café.',before:'Camila brought',blank:'us',after:'a coffee.',options:['us','them','me','her'],anchor:'rev5'},
+  {pt:'O Ryan está sem ela hoje.',before:'Ryan is without',blank:'her',after:'today.',options:['she','her','them','me'],anchor:'rev5'},
+  {pt:'A Christy ensinou-lhes inglês.',before:'Christy taught',blank:'them',after:'English.',options:['them','us','me','you'],anchor:'rev5'},
+  {pt:'A Manoela escreveu-lhe uma carta.',before:'Manoela wrote',blank:'her',after:'a letter.',options:['him','her','them','us'],anchor:'rev5'},
+  {pt:'Eu vou viajar com vocês na próxima semana.',before:'I will travel with',blank:'you',after:'next week.',options:['you','me','us','them'],anchor:'rev5'},
+  {pt:'O cachorro lambeu-me a cara.',before:'The dog licked',blank:'me',after:'on the face.',options:['me','him','her','them'],anchor:'rev5'},
+  {pt:'A Ashley deu o livro para nós.',before:'Ashley gave the book to',blank:'us',after:'.',options:['we','us','you','them'],anchor:'rev5'},
+  {pt:'O Bruno enviou-lhe um email.',before:'Bruno sent',blank:'him',after:'an email.',options:['he','him','her','them'],anchor:'rev5'},
+  {pt:'A Megan ouviu eles cantando.',before:'Megan heard',blank:'them',after:'singing.',options:['them','us','you','me'],anchor:'rev5'},
+  {pt:'O Jake foi para a balada sem ele.',before:'Jake went to the nightclub without',blank:'him',after:'.',options:['him','her','them','us'],anchor:'rev5'},
+  {pt:'Eu acredito nela.',before:'I believe',blank:'in',after:'her.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'A Ashley está olhando para mim.',before:'Ashley is looking',blank:'at',after:'me.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'Não conte com ele agora.',before:'Don\'t count',blank:'on',after:'him now.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'O Bruno casou com ela ano passado.',before:'Bruno married',blank:'—',after:'her last year.',options:['with','to','at','—'],anchor:'rev5'},
+  {pt:'A Megan depende de você.',before:'Megan depends',blank:'on',after:'you.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'O Jake sorriu para mim na rua.',before:'Jake smiled',blank:'at',after:'me on the street.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'Eu confio nele.',before:'I trust',blank:'—',after:'him.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'A Christy estava pensando neles.',before:'Christy was thinking',blank:'about',after:'them.',options:['in','on','at','about'],anchor:'rev5'},
+  {pt:'A Camila ama ele de verdade.',before:'Camila really loves',blank:'—',after:'him.',options:['in','at','to','—'],anchor:'rev5'},
+  {pt:'O Ryan está esperando por ela.',before:'Ryan is waiting',blank:'for',after:'her.',options:['at','for','on','in'],anchor:'rev5'},
+  {pt:'A Manoela ajudou ele com o trabalho.',before:'Manoela helped',blank:'—',after:'him with the work.',options:['to','for','at','—'],anchor:'rev5'},
+  {pt:'Eu coloquei tudo nele (no carro).',before:'I put everything',blank:'in',after:'it.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'A Ashley está ouvindo ela falar.',before:'Ashley is listening',blank:'to',after:'her talk.',options:['at','to','on','in'],anchor:'rev5'},
+  {pt:'O cachorro está olhando para nós.',before:'The dog is looking',blank:'at',after:'us.',options:['in','on','at','—'],anchor:'rev5'},
+  {pt:'O Bruno bateu nele.',before:'Bruno hit',blank:'—',after:'him.',options:['at','on','in','—'],anchor:'rev5'},
+];
+
 window['desome_bk']=[
   {pt:'Eu gosto de você.',before:'I like',blank:'you',after:'.',options:['you','of you','the you','from you'],anchor:'desome-verb'},
   {pt:'Megan precisa de ajuda.',before:'Megan needs',blank:'help',after:'.',options:['help','of help','the help','from help'],anchor:'desome-verb'},
@@ -3963,8 +4283,40 @@ const pages=[
         <div class="idx-item" onclick="go(50)" data-kw="de some verbo gostar precisar esquecer lembrar desistir do da dos das daquele daquela cap4">
           <div class="idx-num">21</div><div class="idx-info"><div class="idx-name">Quando o "de" some</div><div class="idx-desc">Verbos que pedem "de" e o "de" some em inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(52)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
+        <div class="idx-item" onclick="go(52)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap4 capítulo 4 posse of from de some">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 4</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(53)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
           <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Falsos Cognatos</div><div class="idx-desc">Palavras que parecem traduzir sozinhas — e te enganam</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CAPÍTULO 5 ── -->
+    <div class="idx-chapter" id="idxcap5">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap5')" style="--ch-color:#4fd1c5;">
+        <span class="idx-chapter-num" style="background:#4fd1c5;">5</span>
+        <span class="idx-chapter-title">Capítulo 5</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap5-body">
+        <div class="idx-item" onclick="go(56)" data-kw="to para ao a pro pra movimento direcao entregar dar desejar wish happy birthday from to monday friday horario periodo cap5">
+          <div class="idx-num">22</div><div class="idx-info"><div class="idx-name">To</div><div class="idx-desc">A preposição "para" — e suas faces</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(58)" data-kw="for para por pelo pela pelos pelas duracao beneficio malefico proposito troca preco compromisso wait look ask cap5">
+          <div class="idx-num">23</div><div class="idx-info"><div class="idx-name">For</div><div class="idx-desc">O outro "para" — quando o to não cabe</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(60)" data-kw="to for infinitivo verbo cru ar er ir ing eating sleeping swimming proposito funcao objeto gostar de esquecer de cap5">
+          <div class="idx-num">24</div><div class="idx-info"><div class="idx-name">To / For + Infinitivo</div><div class="idx-desc">Verbos crus — to, ing ou for + ing?</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(62)" data-kw="pronomes objetivos obliquos me you him her it us them comigo contigo conosco with without to for objeto direto indireto cap5">
+          <div class="idx-num">25</div><div class="idx-info"><div class="idx-name">Pronomes Objetivos</div><div class="idx-desc">Me, you, him, her, it, us, them</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(64)" data-kw="in on at pronome objetivo nele nela neles nelas em pensar think about look at depend on trust marry enter cap5">
+          <div class="idx-num">26</div><div class="idx-info"><div class="idx-name">In, On, At + Pronome</div><div class="idx-desc">Nele, nela, neles, nelas — e o "em" traidor</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(66)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap5 capítulo 5 to for infinitivo pronome objetivo in on at">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 5</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -7178,6 +7530,19 @@ const pages=[
   </div>
 </div>`,
 
+`<div class="page pg-content" style="--acc:#f6ad55;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 4 — posse, of, from e o "de" que some.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 4.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 4</span><span class="ex-score" id="rev4-score">0/15</span></div><div class="ex-body" id="rev4-body"></div></div>
+</div>`,
+
 `<div class="page pg-sec" style="--acc:#a78bfa;">
   <div class="sec-ghost">✨</div>
   <div class="sec-topbar">
@@ -7466,6 +7831,1007 @@ const pages=[
   </div>
 </div>`,
 
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">5</div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#4fd1c5;"><div class="sec-ghost">22</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 22</div>
+    <div class="sec-title"><span class="acc">To</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">A preposição que traduz "para" — e tem seis caras diferentes.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎯</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O filme <strong>"To Kill a Mockingbird"</strong> (1962), baseado no romance de Harper Lee, foi eleito pelo American Film Institute como o <strong>melhor filme judicial da história do cinema</strong>. O protagonista, Atticus Finch, foi votado como o herói número 1 do cinema americano — à frente de Indiana Jones e James Bond.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#4fd1c5;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 22 · To</div><div class="pg-ttl">A preposição "para"</div></div>
+  <div class="pg-body">
+
+    <p class="intro">A preposição <strong>to</strong>, em português, significa <strong>para</strong> — e algumas variantes. Nesta seção, você vai entender quando usar <strong>to</strong> e identificar seus seis usos principais.</p>
+
+    <p class="intro" style="margin-top:14px;">Antes, uma coisa importante: o português adora <strong>contrair</strong> a palavra "para" com artigos. Essas contrações <strong>não existem em inglês</strong> — todas viram só <strong>to</strong>.</p>
+
+    <div class="sub-label">Contrações de "para"</div>
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt"><b>ao(s)</b>, <b>pro(s)</b> = para o(s)</div></div>
+      <div class="quote"><div class="q-pt"><b>à(s)</b>, <b>pra(s)</b> = para a(s)</div></div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">Veja como o português varia, mas o inglês fica igual:</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Eu vou <b>ao</b> shopping.</div><div class="q-pt">Eu vou <b>pro</b> shopping.</div><div class="q-pt">Eu vou <b>para o</b> shopping.</div><div class="q-en"><span class="en" data-speak="I will go to the mall">I will go <b>to the</b> mall.</span></div></div>
+      <div class="quote"><div class="q-pt">Eu vou <b>à</b> loja.</div><div class="q-pt">Eu vou <b>pra</b> loja.</div><div class="q-pt">Eu vou <b>para a</b> loja.</div><div class="q-en"><span class="en" data-speak="I will go to the store">I will go <b>to the</b> store.</span></div></div>
+    </div>
+
+    <div class="tip"><div class="tip-lbl">⚡ Atalho mental</div><p class="tip-txt">Sempre que aparecer <strong>ao, à, pro, pra</strong> ou <strong>para</strong>, comece desconfiando que pode ser <strong>to</strong> em inglês. Aí é só checar qual dos seis usos abaixo se encaixa.</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Os 8 usos do To</div><div class="sec-divider-line r"></div></div>
+
+    <div class="sense-list">
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(246,173,85,.12),rgba(246,173,85,.04));border-bottom-color:rgba(246,173,85,.2);">
+          <div class="sense-ico" style="background:rgba(246,173,85,.15);border-color:rgba(246,173,85,.25);">🏃</div>
+          <div class="sense-ttl" style="color:#f6ad55;">1 · Indicação de movimento</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando alguém ou algo <strong>se desloca</strong> para um lugar.</div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eu vou <b>para</b> a festa.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I'll go to the party">I'll go <b>to</b> the party.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Ele vai levar café <b>para</b> a cozinha.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He will bring coffee to the kitchen">He will bring coffee <b>to</b> the kitchen.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(99,179,237,.12),rgba(99,179,237,.04));border-bottom-color:rgba(99,179,237,.2);">
+          <div class="sense-ico" style="background:rgba(99,179,237,.15);border-color:rgba(99,179,237,.25);">🤝</div>
+          <div class="sense-ttl" style="color:#63b3ed;">2 · Entregar ou dar</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando algo <strong>passa</strong> de uma pessoa para outra.</div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Ela deu o primeiro pedaço de bolo <b>para</b> o Bruno.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She gave the first piece of cake to Bruno">She gave the first piece of cake <b>to</b> Bruno.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Nosso colega entregou a prova <b>para</b> o professor.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Our colleague handed the test to the professor">Our colleague handed the test <b>to</b> the professor.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card" id="to-wish">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(237,100,166,.12),rgba(237,100,166,.04));border-bottom-color:rgba(237,100,166,.2);">
+          <div class="sense-ico" style="background:rgba(237,100,166,.15);border-color:rgba(237,100,166,.25);">🎉</div>
+          <div class="sense-ttl" style="color:#ed64a6;">3 · Desejar algo</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Em desejos, votos, parabéns e saudações.</div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Feliz aniversário <b>para</b> você.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Happy birthday to you">Happy birthday <b>to</b> you.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Feliz Natal <b>para</b> ele.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Merry Christmas to him">Merry Christmas <b>to</b> him.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#ed64a6;"><p class="tip-txt">⚠️ <strong>Atenção:</strong> com o verbo <strong>wish</strong> (desejar) seguido de pronome, o <strong>to</strong> some — você vai entender o porquê na matéria de <em>pronomes objetivos</em>. Por enquanto, só memorize:</p></div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Eu desejo dinheiro <b>para</b> você.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I wish you money">I wish <b>you</b> money.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Ela desejou felicidade <b>para</b> nós.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She wished us happiness">She wished <b>us</b> happiness.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(72,187,120,.12),rgba(72,187,120,.04));border-bottom-color:rgba(72,187,120,.2);">
+          <div class="sense-ico" style="background:rgba(72,187,120,.15);border-color:rgba(72,187,120,.25);">🧭</div>
+          <div class="sense-ttl" style="color:#48bb78;">4 · Indicar direção</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você aponta <strong>para onde fica</strong> algo (norte, sul, esquerda, direita…).</div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">A praia fica <b>para</b> o sul.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The beach is to the south">The beach is <b>to</b> the south.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">O carro está <b>à</b> direita do ônibus.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The car is to the right of the bus">The car is <b>to</b> the right of the bus.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">⚠️ <strong>Atenção:</strong> quando aparece o verbo <strong>turn</strong> (virar, dobrar) dando uma ordem ou direção, o <strong>to</strong> desaparece.</p></div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Depois de chegar à padaria, vire <b>para</b> a esquerda.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="After reaching the bakery, turn left">After reaching the bakery, <b>turn left</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(167,139,250,.12),rgba(167,139,250,.04));border-bottom-color:rgba(167,139,250,.2);">
+          <div class="sense-ico" style="background:rgba(167,139,250,.15);border-color:rgba(167,139,250,.25);">⏱️</div>
+          <div class="sense-ttl" style="color:#a78bfa;">5 · Início e fim de período</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Qualquer palavra que <strong>ligue dois momentos no tempo</strong> (das… às, de… até, de… a) vira <strong>to</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">Ela estuda inglês das 9h <b>às</b> 10h.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She studies English from 9am to 10am">She studies English from 9am <b>to</b> 10am.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">Eu vou trabalhar de segunda <b>até</b> sexta.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I will work from Monday to Friday">I will work from Monday <b>to</b> Friday.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">O pai delas vai viajar de dezembro <b>a</b> março.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Their father will travel from December to March">Their father will travel from December <b>to</b> March.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(252,129,129,.12),rgba(252,129,129,.04));border-bottom-color:rgba(252,129,129,.2);">
+          <div class="sense-ico" style="background:rgba(252,129,129,.15);border-color:rgba(252,129,129,.25);">📍</div>
+          <div class="sense-ttl" style="color:#fc8181;">6 · Ligação entre dois pontos</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Mesma lógica do uso anterior, mas com <strong>lugares</strong> em vez de momentos. Qualquer palavra que ligue dois pontos no espaço (de… até, de… a) é <strong>to</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">São duas quadras da minha casa <b>até</b> a sua.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="It's two blocks from my house to yours">It's two blocks from my house <b>to</b> yours.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">Da minha casa <b>até</b> a sua são duas quadras.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="From my house to yours, it's two blocks">From my house <b>to</b> yours, it's two blocks.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">Eu irei andando do trabalho <b>até</b> a faculdade.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I will go walking from work to the college">I will go walking from work <b>to</b> the college.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(255,213,128,.12),rgba(255,213,128,.04));border-bottom-color:rgba(255,213,128,.2);">
+          <div class="sense-ico" style="background:rgba(255,213,128,.15);border-color:rgba(255,213,128,.25);">💬</div>
+          <div class="sense-ttl" style="color:#ffd580;">7 · Reação ou resposta</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você <strong>reage, responde ou se dirige</strong> a algo ou alguém. Verbos como <em>react, respond, listen, answer</em> pedem <strong>to</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Ela reagiu mal <b>à</b> notícia.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She reacted badly to the news">She reacted badly <b>to</b> the news.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eu gosto de escutar <b>esse</b> podcast.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I like to listen to this podcast">I like to listen <b>to</b> this podcast.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Ele respondeu <b>ao</b> meu e-mail.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He responded to my email">He responded <b>to</b> my email.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(79,209,197,.12),rgba(79,209,197,.04));border-bottom-color:rgba(79,209,197,.2);">
+          <div class="sense-ico" style="background:rgba(79,209,197,.15);border-color:rgba(79,209,197,.25);">🔗</div>
+          <div class="sense-ttl" style="color:#4fd1c5;">8 · Pertencer ou estar ligado</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando algo <strong>pertence</strong> a alguém, ou alguém está <strong>ligado</strong> a outra pessoa (verbos como <em>belong</em>, ou expressões como <em>married to</em>).</div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Esta chave pertence <b>ao</b> Bruno.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This key belongs to Bruno">This key belongs <b>to</b> Bruno.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Ela é casada <b>com</b> o Jake.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She is married to Jake">She is married <b>to</b> Jake.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Esse cachorro pertence <b>àquela</b> família.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This dog belongs to that family">This dog belongs <b>to</b> that family.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:18px;"><div class="tip-lbl">🎯 Resumo</div><p class="tip-txt">O <strong>to</strong> é "para" quando: você <strong>vai</strong> a um lugar, <strong>entrega</strong> algo a alguém, <strong>deseja</strong> algo, <strong>aponta</strong> uma direção, <strong>liga dois pontos</strong> de tempo ou espaço, <strong>reage</strong> a algo ou indica que algo <strong>pertence</strong> a alguém.</p></div>
+
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#f6ad55;"><div class="sec-ghost">23</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 23</div>
+    <div class="sec-title"><span class="acc">For</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O outro "para" — quando o to não cabe, o for entra.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">⚽</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A palavra <strong>"soccer"</strong> não foi inventada pelos americanos — foi inventada pelos próprios <strong>britânicos</strong> no fim do século XIX, como apelido para <em>"association football"</em>. Os americanos só preservaram o termo enquanto a Inglaterra voltou a chamar de <em>football</em>. Hoje, britânico que usa <em>soccer</em> apanha verbalmente — mesmo tendo sido eles que criaram o nome.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#f6ad55;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 23 · For</div><div class="pg-ttl">O outro "para"</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Você já viu que <strong>to</strong> significa "para". Agora chegamos no <strong>for</strong>, que também significa "para" — mas em situações <strong>diferentes</strong>. Cada um tem seus contextos, e misturá-los é um dos erros mais comuns de quem está aprendendo inglês.</p>
+
+    <p class="intro" style="margin-top:14px;">Antes de entrar nos usos, o português também adora contrair "por" com artigos. Essas contrações <strong>não existem em inglês</strong> — todas viram <strong>for the</strong>.</p>
+
+    <div class="sub-label">Contrações de "por"</div>
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt"><b>pelo(s)</b> = por o(s)</div></div>
+      <div class="quote"><div class="q-pt"><b>pela(s)</b> = por a(s)</div></div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">Veja na prática:</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Obrigado <b>pelo</b> café.</div><div class="q-en"><span class="en" data-speak="Thanks for the coffee">Thanks <b>for the</b> coffee.</span></div></div>
+      <div class="quote"><div class="q-pt">Eu paguei <b>pela</b> janta.</div><div class="q-en"><span class="en" data-speak="I paid for the dinner">I paid <b>for the</b> dinner.</span></div></div>
+      <div class="quote"><div class="q-pt">Ela é responsável <b>pelos</b> alunos.</div><div class="q-en"><span class="en" data-speak="She is responsible for the students">She is responsible <b>for the</b> students.</span></div></div>
+      <div class="quote"><div class="q-pt">Eu lutei <b>pelas</b> minhas ideias.</div><div class="q-en"><span class="en" data-speak="I fought for the my ideas">I fought <b>for</b> my ideas.</span></div></div>
+    </div>
+
+    <div class="tip"><div class="tip-lbl">⚡ Atalho mental</div><p class="tip-txt">Viu <strong>pelo, pela, pelos, pelas</strong>? Em inglês vira <strong>for the</strong>. (Mas atenção: na frase com <em>minhas ideias</em>, o "the" some porque já tem o pronome de posse <em>my</em> — e como você já aprendeu, não se coloca <em>the</em> antes de pronome de posse.)</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Os 8 usos do For</div><div class="sec-divider-line r"></div></div>
+
+    <div class="sense-list">
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(246,173,85,.12),rgba(246,173,85,.04));border-bottom-color:rgba(246,173,85,.2);">
+          <div class="sense-ico" style="background:rgba(246,173,85,.15);border-color:rgba(246,173,85,.25);">🤲</div>
+          <div class="sense-ttl" style="color:#f6ad55;">1 · Ajuda (em nome de outro)</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você <strong>faz algo no lugar de outra pessoa</strong>, ajudando-a. Em português, fica natural tanto com <em>para</em> quanto com <em>por</em>.</div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eu limpei a casa <b>para</b> ele.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I cleaned the house for him">I cleaned the house <b>for</b> him.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eu limpei a casa <b>por</b> ele.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I cleaned the house for him">I cleaned the house <b>for</b> him.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Ela cozinhou jantar <b>para</b> os pais.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She cooked dinner for her parents">She cooked dinner <b>for</b> her parents.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(72,187,120,.12),rgba(72,187,120,.04));border-bottom-color:rgba(72,187,120,.2);">
+          <div class="sense-ico" style="background:rgba(72,187,120,.15);border-color:rgba(72,187,120,.25);">🥗</div>
+          <div class="sense-ttl" style="color:#48bb78;">2 · Benefício ou malefício</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando algo <strong>faz bem ou mal</strong> a alguém ou alguma coisa.</div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Comer vegetais é muito bom <b>para</b> você.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Eating vegetables is very good for you">Eating vegetables is very good <b>for</b> you.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Fumar é muito ruim <b>para</b> a saúde.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Smoking is very bad for the health">Smoking is very bad <b>for</b> the health.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Dormir cedo é ótimo <b>para</b> o cérebro.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Sleeping early is great for the brain">Sleeping early is great <b>for</b> the brain.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(167,139,250,.12),rgba(167,139,250,.04));border-bottom-color:rgba(167,139,250,.2);">
+          <div class="sense-ico" style="background:rgba(167,139,250,.15);border-color:rgba(167,139,250,.25);">⏳</div>
+          <div class="sense-ttl" style="color:#a78bfa;">3 · Duração</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você fala <strong>por quanto tempo</strong> algo durou ou vai durar. Em português usamos <em>por</em>, em inglês usamos <strong>for</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">Eu estudei inglês <b>por</b> dois anos.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I studied English for two years">I studied English <b>for</b> two years.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">Ela morou em Londres <b>por</b> seis meses.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She lived in London for six months">She lived in London <b>for</b> six months.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#a78bfa;">
+            <div class="sense-ex-pt">Eles vão viajar <b>por</b> uma semana.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="They will travel for a week">They will travel <b>for</b> a week.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(99,179,237,.12),rgba(99,179,237,.04));border-bottom-color:rgba(99,179,237,.2);">
+          <div class="sense-ico" style="background:rgba(99,179,237,.15);border-color:rgba(99,179,237,.25);">🎯</div>
+          <div class="sense-ttl" style="color:#63b3ed;">4 · Propósito ou objetivo</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando algo <strong>existe ou serve para</strong> uma finalidade específica. Geralmente vem antes de um substantivo.</div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Esta bateria é <b>para</b> o controle remoto.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This battery is for the remote">This battery is <b>for</b> the remote.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Esse remédio é <b>para</b> dor de cabeça.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This medicine is for headaches">This medicine is <b>for</b> headaches.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">A chave é <b>para</b> a porta da frente.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The key is for the front door">The key is <b>for</b> the front door.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(237,100,166,.12),rgba(237,100,166,.04));border-bottom-color:rgba(237,100,166,.2);">
+          <div class="sense-ico" style="background:rgba(237,100,166,.15);border-color:rgba(237,100,166,.25);">📅</div>
+          <div class="sense-ttl" style="color:#ed64a6;">5 · Marcação de compromisso</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você marca, agenda ou reserva algo <strong>para uma data ou momento</strong> específico.</div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">A conferência está marcada <b>para</b> amanhã.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The conference is scheduled for tomorrow">The conference is scheduled <b>for</b> tomorrow.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">A reunião está marcada <b>para</b> sexta-feira.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The meeting is set for Friday">The meeting is set <b>for</b> Friday.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Eu reservei a mesa <b>para</b> as 20h.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I booked the table for 8pm">I booked the table <b>for</b> 8pm.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(255,213,128,.12),rgba(255,213,128,.04));border-bottom-color:rgba(255,213,128,.2);">
+          <div class="sense-ico" style="background:rgba(255,213,128,.15);border-color:rgba(255,213,128,.25);">💰</div>
+          <div class="sense-ttl" style="color:#ffd580;">6 · Troca ou preço</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando algo é <strong>trocado por</strong> outra coisa — dinheiro, objeto, favor. Em português usamos <em>por</em>.</div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eu comprei o livro <b>por</b> 50 reais.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I bought the book for 50 reais">I bought the book <b>for</b> 50 reais.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Ela vendeu o carro <b>por</b> 30 mil.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She sold the car for 30 thousand">She sold the car <b>for</b> 30 thousand.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eu troquei meu celular <b>por</b> um novo.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I traded my phone for a new one">I traded my phone <b>for</b> a new one.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(252,129,129,.12),rgba(252,129,129,.04));border-bottom-color:rgba(252,129,129,.2);">
+          <div class="sense-ico" style="background:rgba(252,129,129,.15);border-color:rgba(252,129,129,.25);">💼</div>
+          <div class="sense-ttl" style="color:#fc8181;">7 · Trabalhar para / representar</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando alguém <strong>trabalha para</strong> uma empresa, pessoa ou causa.</div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">Ela trabalha <b>para</b> a Apple.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She works for Apple">She works <b>for</b> Apple.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">Eu trabalhei <b>para</b> o meu tio durante o verão.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I worked for my uncle during the summer">I worked <b>for</b> my uncle during the summer.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#fc8181;">
+            <div class="sense-ex-pt">Ele joga <b>pelo</b> Real Madrid.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He plays for Real Madrid">He plays <b>for</b> Real Madrid.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(79,209,197,.12),rgba(79,209,197,.04));border-bottom-color:rgba(79,209,197,.2);">
+          <div class="sense-ico" style="background:rgba(79,209,197,.15);border-color:rgba(79,209,197,.25);">🔍</div>
+          <div class="sense-ttl" style="color:#4fd1c5;">8 · Procurar, esperar, pedir</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Verbos como <em>look (procurar)</em>, <em>wait (esperar)</em>, <em>search (buscar)</em> e <em>ask (pedir)</em> sempre vêm acompanhados de <strong>for</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Eu estou esperando <b>pelo</b> ônibus.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I am waiting for the bus">I am waiting <b>for</b> the bus.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Ela está procurando <b>pelas</b> chaves.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She is looking for the keys">She is looking <b>for</b> the keys.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#4fd1c5;">
+            <div class="sense-ex-pt">Ele pediu <b>por</b> ajuda.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He asked for help">He asked <b>for</b> help.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:18px;"><div class="tip-lbl">🎯 To vs. For</div><p class="tip-txt">Regra geral: <strong>to</strong> aponta uma <strong>direção</strong> (movimento, destino, ligação entre pontos). <strong>For</strong> indica um <strong>motivo, benefício, troca ou propósito</strong>. Quando a frase tem "por" no português, raramente é <em>to</em> — quase sempre é <strong>for</strong>.</p></div>
+
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#ed64a6;"><div class="sec-ghost">24</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 24</div>
+    <div class="sec-title">To / For<br><span class="acc">+ Infinitivo</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Verbos crus, sem ninguém fazendo a ação — e como conectá-los em inglês.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎬</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O filme <strong>"To Be or Not to Be"</strong> (1942), do diretor Ernst Lubitsch, é considerado uma das maiores comédias da história do cinema — uma sátira sobre nazistas feita <strong>durante a Segunda Guerra</strong>. O nome vem da frase mais famosa de Hamlet, de Shakespeare, e é até hoje a expressão mais reconhecida do mundo com verbo no infinitivo: <em>to be</em>.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#ed64a6;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 24 · To / For + Infinitivo</div><div class="pg-ttl">Verbos no infinitivo</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Um <strong>verbo no infinitivo</strong> é um verbo <strong>cru</strong> — não conjugado, sem ninguém realizando a ação. Em português, sempre acaba com <strong>-ar</strong>, <strong>-er</strong> ou <strong>-ir</strong>.</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Com<b>er</b></div></div>
+      <div class="quote"><div class="q-pt">And<b>ar</b></div></div>
+      <div class="quote"><div class="q-pt">Jog<b>ar</b></div></div>
+      <div class="quote"><div class="q-pt">Pul<b>ar</b></div></div>
+      <div class="quote"><div class="q-pt">Dorm<b>ir</b></div></div>
+      <div class="quote"><div class="q-pt">Sub<b>ir</b></div></div>
+      <div class="quote"><div class="q-pt">Desc<b>er</b></div></div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">Em inglês, esses verbos aparecem em três situações principais, e cada uma tem uma regra diferente. Vamos por partes.</p>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">As 3 situações</div><div class="sec-divider-line r"></div></div>
+
+    <div class="sense-list">
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(246,173,85,.12),rgba(246,173,85,.04));border-bottom-color:rgba(246,173,85,.2);">
+          <div class="sense-ico" style="background:rgba(246,173,85,.15);border-color:rgba(246,173,85,.25);">🎯</div>
+          <div class="sense-ttl" style="color:#f6ad55;">1 · Verbo após "para"</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você usa um verbo no infinitivo depois de <strong>"para"</strong>, expressando <strong>a intenção de fazer algo</strong>, em inglês usa-se <strong>to + verbo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eles vão <b>para beber</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="They'll go to drink">They'll go <b>to drink</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eu fui <b>para comprar</b> pão.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I went to buy bread">I went <b>to buy</b> bread.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Ela estuda <b>para passar</b> na prova.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She studies to pass the test">She studies <b>to pass</b> the test.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#f6ad55;"><p class="tip-txt">⚠️ <strong>Importante:</strong> aqui <strong>não funciona</strong> usar <em>for + verbo-ing</em>. "They'll go <s>for drinking</s>" não é inglês natural — soa estranho pra qualquer nativo. Pra esse sentido de propósito/intenção, é sempre <strong>to + verbo</strong>.</p></div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(99,179,237,.12),rgba(99,179,237,.04));border-bottom-color:rgba(99,179,237,.2);">
+          <div class="sense-ico" style="background:rgba(99,179,237,.15);border-color:rgba(99,179,237,.25);">🔁</div>
+          <div class="sense-ttl" style="color:#63b3ed;">2 · Verbo solto ou após "de"</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando o verbo aparece <strong>sozinho</strong> (como sujeito da frase) ou depois de <strong>"de"</strong> (gostar de, esquecer de, parar de…), você tem <strong>duas opções equivalentes</strong>: <em>to + verbo</em> ou <em>verbo + ing</em>.</div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt"><b>Comer</b> é legal.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="To eat is nice"><b>To eat</b> is nice. / <b>Eating</b> is nice.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Ela gosta <b>de comer</b> maçãs.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She likes to eat apples">She likes <b>to eat</b> apples. / She likes <b>eating</b> apples.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Ele esqueceu <b>de limpar</b> a casa.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He forgot to clean the house">He forgot <b>to clean</b> the house. / He forgot <b>cleaning</b> the house.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Eu odeio <b>acordar</b> cedo.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I hate to wake up early">I hate <b>to wake up</b> early. / I hate <b>waking up</b> early.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#63b3ed;"><p class="tip-txt">💡 <strong>Qual usar?</strong> As duas formas são corretas e o significado é o mesmo. Na prática, <strong>to + verbo</strong> é mais comum em inglês americano, e <strong>verbo + ing</strong> é mais comum em inglês britânico. Use a que se sentir mais à vontade.</p></div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(72,187,120,.12),rgba(72,187,120,.04));border-bottom-color:rgba(72,187,120,.2);">
+          <div class="sense-ico" style="background:rgba(72,187,120,.15);border-color:rgba(72,187,120,.25);">🛋️</div>
+          <div class="sense-ttl" style="color:#48bb78;">3 · Função ou uso de um objeto</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você descreve <strong>para que serve</strong> um objeto, espaço ou ferramenta — qual é a função dele —, usa-se <strong>for + verbo + ing</strong>. Em português, fica natural com <em>de</em> ou <em>para</em>.</div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Esta camiseta é <b>de dormir</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This t-shirt is for sleeping">This t-shirt is <b>for sleeping</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Este computador é <b>para jogar</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This computer is for gaming">This computer is <b>for gaming</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Esta sala é <b>para estudar</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This room is for studying">This room is <b>for studying</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Essa panela é <b>de fritar</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="This pan is for frying">This pan is <b>for frying</b>.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">A grande pegadinha</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">A diferença entre os usos <strong>1</strong> e <strong>3</strong> confunde muito. Olha esses dois exemplos:</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Eu fui <b>para nadar</b>.</div><div class="q-en"><span class="en" data-speak="I went to swim">I went <b>to swim</b>.</span></div></div>
+      <div class="quote"><div class="q-pt">Essa piscina é <b>para nadar</b>.</div><div class="q-en"><span class="en" data-speak="This pool is for swimming">This pool is <b>for swimming</b>.</span></div></div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">Em português, é exatamente o mesmo "para nadar". Em inglês, são <strong>duas coisas diferentes</strong>:</p>
+
+    <div class="tip" style="border-left-color:#f6ad55;"><div class="tip-lbl">🎯 Pergunta-teste</div><p class="tip-txt"><strong>"Alguém vai fazer a ação?"</strong> Sim → <strong>to + verbo</strong> (uso 1). <strong>"O objeto serve para quê?"</strong> → <strong>for + verbo-ing</strong> (uso 3). No primeiro caso, eu sou quem nada. No segundo, a piscina não nada — ela <em>serve</em> pra que alguém nade.</p></div>
+
+    <div class="tip" style="margin-top:14px;"><div class="tip-lbl">⚡ Atalhos mentais</div><p class="tip-txt">• Verbo depois de <strong>"para"</strong> e alguém vai fazer? → <strong>to + verbo</strong><br>• Verbo solto ou depois de <strong>"de"</strong>? → <strong>to + verbo</strong> OU <strong>verbo + ing</strong> (escolha)<br>• Verbo descrevendo <strong>função de um objeto</strong>? → <strong>for + verbo + ing</strong></p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">To / For + Infinitivo — exercício</span><span class="ex-score" id="toforinf-score">0/10</span></div><div class="ex-body" id="toforinf-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">25</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 25</div>
+    <div class="sec-title">Pronomes<br><span class="acc">Objetivos</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Me, you, him, her — quem recebe a ação e quem vem depois de preposições.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎤</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em 1965, os Beatles lançaram <strong>"Help!"</strong> — uma música em que John Lennon, no auge da fama, gritava "<em>help me if you can, I'm feeling down</em>". Anos depois ele admitiu que aquela letra era um <strong>pedido de socorro real</strong>, não invenção. A faixa virou trilha do filme homônimo e abriu uma fase mais introspectiva da banda.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 25 · Pronomes Objetivos</div><div class="pg-ttl">Pronomes Objetivos</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Os <strong>pronomes objetivos</strong> são usados para indicar a pessoa que <strong>recebe</strong> uma ação ou <strong>complementa</strong> ela. Em português, chamamos de <strong>pronomes oblíquos</strong> (me, te, o, a, nos, vos, lhe, lhes…).</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Carlos levou o carro para <b>ela</b>.</div></div>
+      <div class="quote"><div class="q-pt">Renata e Bruno estavam com <b>eles</b>.</div></div>
+      <div class="quote"><div class="q-pt">Eles foram para a festa sem <b>a gente</b>.</div></div>
+      <div class="quote"><div class="q-pt">Bruna <b>me</b> trouxe o laptop.</div></div>
+      <div class="quote"><div class="q-pt">Mafe vai <b>nos</b> levar para o show.</div></div>
+      <div class="quote"><div class="q-pt">Lucas trouxe-<b>lhes</b> aquela cerveja.</div></div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Os 7 pronomes objetivos</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Cada pronome pessoal (I, you, he…) tem uma forma <strong>objetiva</strong> correspondente. Cinco mudam, dois ficam iguais:</p>
+
+    <div class="pron-table" id="pron-obj-table">
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="I">I</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="me"><strong>Me</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="You">You</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="you"><strong>You</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="He">He</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="him"><strong>Him</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="She">She</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="her"><strong>Her</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="It">It</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="it"><strong>It</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="We">We</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="us"><strong>Us</strong></span></div></div>
+      <div class="prow"><div class="prow-en"><span class="en" data-speak="They">They</span></div><div class="prow-arr">→</div><div class="prow-pt"><span class="en" data-speak="them"><strong>Them</strong></span></div></div>
+    </div>
+
+    <div class="tip"><div class="tip-lbl">📌 Lembre-se</div><p class="tip-txt"><strong>You</strong> e <strong>it</strong> não mudam — a mesma forma serve para "eu vejo você" (<em>I see you</em>) e "você me vê" (<em>you see me</em>). Já <strong>him, her, us, them</strong> só aparecem na forma objetiva, nunca como sujeito.</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">As 5 situações</div><div class="sec-divider-line r"></div></div>
+
+    <div class="sense-list">
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(99,179,237,.12),rgba(99,179,237,.04));border-bottom-color:rgba(99,179,237,.2);">
+          <div class="sense-ico" style="background:rgba(99,179,237,.15);border-color:rgba(99,179,237,.25);">🔗</div>
+          <div class="sense-ttl" style="color:#63b3ed;">1 · Depois de preposição</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">A forma mais comum de aparecer um pronome objetivo: depois das preposições <strong>with</strong> (com), <strong>without</strong> (sem) e <strong>to/for</strong> (para).</div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Carlos foi para a festa <b>com ela</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Carlos went to the party with her">Carlos went to the party <b>with her</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Renato vai comprar um jogo <b>para nós</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Renato will buy a game for us">Renato will buy a game <b>for us</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Nós estamos trabalhando <b>sem ele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="We are working without him">We are working <b>without him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Camila vai trazer chocolates <b>para mim</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Camila will bring some chocolates for me">Camila will bring some chocolates <b>for me</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Por que vocês não vão ao mercado <b>com eles</b>?</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Why won't you go to the market with them">Why won't you go to the market <b>with them</b>?</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(246,173,85,.12),rgba(246,173,85,.04));border-bottom-color:rgba(246,173,85,.2);">
+          <div class="sense-ico" style="background:rgba(246,173,85,.15);border-color:rgba(246,173,85,.25);">🔄</div>
+          <div class="sense-ttl" style="color:#f6ad55;">2 · Comigo, contigo, conosco</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Em português, a gente <strong>junta "com" + pronome</strong>: comigo, contigo, conosco. Em inglês, isso <strong>não existe</strong> — você sempre escreve <strong>with</strong> separado.</div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt"><b>Comigo</b> <span style="opacity:.6;">(com mim)</span></div>
+            <div class="sense-ex-en"><span class="en" data-speak="With me"><b>With me</b></span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt"><b>Contigo</b> <span style="opacity:.6;">(com você)</span></div>
+            <div class="sense-ex-en"><span class="en" data-speak="With you"><b>With you</b></span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt"><b>Conosco</b> <span style="opacity:.6;">(com nós)</span></div>
+            <div class="sense-ex-en"><span class="en" data-speak="With us"><b>With us</b></span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">O carro estava <b>comigo</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The car was with me">The car was <b>with me</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Minha amiga foi à praia <b>conosco</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="My friend went to the beach with us">My friend went to the beach <b>with us</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Douglas vai comprar um presente <b>contigo</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Douglas will buy a gift with you">Douglas will buy a gift <b>with you</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(237,100,166,.12),rgba(237,100,166,.04));border-bottom-color:rgba(237,100,166,.2);">
+          <div class="sense-ico" style="background:rgba(237,100,166,.15);border-color:rgba(237,100,166,.25);">🎯</div>
+          <div class="sense-ttl" style="color:#ed64a6;">3 · Quem recebe a ação (objeto direto)</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando o pronome é <strong>quem recebe a ação do verbo</strong>, ele vai <strong>logo depois do verbo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Ela beijou <b>ele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She kissed him">She kissed <b>him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">O cachorro lambeu <b>ela</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The dog licked her">The dog licked <b>her</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Ela <b>nos</b> abraçou.</div><div class="sense-ex-pt">Ela abraçou-<b>nos</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She hugged us">She hugged <b>us</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Ela <b>me</b> abraçou.</div><div class="sense-ex-pt">Ela abraçou-<b>me</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She hugged me">She hugged <b>me</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card" id="to-some">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(72,187,120,.12),rgba(72,187,120,.04));border-bottom-color:rgba(72,187,120,.2);">
+          <div class="sense-ico" style="background:rgba(72,187,120,.15);border-color:rgba(72,187,120,.25);">🎁</div>
+          <div class="sense-ttl" style="color:#48bb78;">4 · Para quem ("para" some)</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando você tem uma frase com <strong>"para + pronome"</strong>, em inglês você pode <strong>remover o "para"</strong> e <strong>colar o pronome objetivo entre o verbo e o objeto</strong>. É o equivalente ao "trouxe-me, comprou-nos, levou-lhe" do português formal.</div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Caique trouxe um café <b>para mim</b>.</div><div class="sense-ex-pt">Caique trouxe-<b>me</b> um café.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Caique brought me a coffee">Caique brought <b>me</b> a coffee.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Bruna comprou um caderno <b>para nós</b>.</div><div class="sense-ex-pt">Bruna comprou-<b>nos</b> um caderno.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Bruna bought us a notebook">Bruna bought <b>us</b> a notebook.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Nós vamos levar um chocolate <b>para elas</b>.</div><div class="sense-ex-pt">Nós vamos levar-<b>lhes</b> um chocolate.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="We will bring them a chocolate">We will bring <b>them</b> a chocolate.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">André está trazendo um bolo <b>para ela</b>.</div><div class="sense-ex-pt">André está trazendo-<b>lhe</b> um bolo.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="André is bringing her a cake">André is bringing <b>her</b> a cake.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">💡 <strong>Lembra do <em>wish</em>?</strong> Na seção <span class="tb-link" onclick="goAndHighlight(57,'to-wish')">To · Desejar algo</span> vimos: <em>"I wish you money"</em> (em vez de <em>"I wish money to you"</em>). É exatamente essa regra — o <em>to/for</em> some quando você cola o pronome entre o verbo e o objeto.</p></div>
+          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">⚠️ <strong>Cuidado:</strong> isso não funciona com todos os verbos. Funciona muito bem com <em>bring, give, send, buy, make, show, tell, teach, offer, pay, write, wish</em>. Com verbos como <em>explain, suggest, describe</em>, você precisa <strong>manter o "to"</strong>: <em>She explained <strong>to me</strong> the problem</em> ✅, <em>She explained me the problem</em> ❌.</p></div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(255,213,128,.12),rgba(255,213,128,.04));border-bottom-color:rgba(255,213,128,.2);">
+          <div class="sense-ico" style="background:rgba(255,213,128,.15);border-color:rgba(255,213,128,.25);">📛</div>
+          <div class="sense-ttl" style="color:#ffd580;">5 · "Para + nome" também</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">A inversão também funciona quando aparece um <strong>nome próprio</strong> depois de "para" (Maria, Diego, Renata...). Em português moderno isso soa estranho, mas em inglês é totalmente natural.</div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Caique trouxe um café <b>para Maria</b>.</div><div class="sense-ex-pt">Caique trouxe-<b>Maria</b> um café.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Caique brought Maria a coffee">Caique brought <b>Maria</b> a coffee.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">André está trazendo um bolo <b>para Renata</b>.</div><div class="sense-ex-pt">André está trazendo-<b>Renata</b> um bolo.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="André is bringing Renata a cake">André is bringing <b>Renata</b> a cake.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Camila vai comprar um computador <b>para Diego</b>.</div><div class="sense-ex-pt">Camila vai comprar-<b>Diego</b> um computador.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Camila will buy Diego a computer">Camila will buy <b>Diego</b> a computer.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:18px;"><div class="tip-lbl">🎯 Resumo</div><p class="tip-txt">Use o <strong>pronome objetivo</strong> sempre que ele aparecer depois de uma <strong>preposição</strong> (with, without, to, for), depois de um <strong>verbo</strong> (kissed her, hugged us), ou quando você <strong>remover o "to/for"</strong> e colar o pronome entre o verbo e o objeto (bought me a notebook).</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Objetivos — exercício</span><span class="ex-score" id="pronobj-score">0/10</span></div><div class="ex-body" id="pronobj-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#48bb78;"><div class="sec-ghost">26</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 26</div>
+    <div class="sec-title">In, On, At<br><span class="acc">+ Pronome</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Nele, nela, neles, nelas — e o motivo de não traduzir "em" no automático.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">📺</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A série <strong>"Friends"</strong> (1994–2004) é uma das mais reprisadas da história da televisão. Em 2019, a Netflix pagou <strong>100 milhões de dólares</strong> para mantê-la no catálogo por mais um ano — antes de perdê-la para a HBO Max. A primeira fala do primeiro episódio foi do Chandler: <em>"There's nothing to tell!"</em></div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#48bb78;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 26 · In, On, At + Pronome</div><div class="pg-ttl">In, On, At + Pronome</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Em português, a gente junta <strong>"em"</strong> com pronomes pra formar contrações: <strong>nele</strong> (em + ele), <strong>nela</strong> (em + ela), <strong>neles</strong> (em + eles), <strong>nelas</strong> (em + elas). Em inglês, essas contrações <strong>não existem</strong> — usamos a <span class="tb-link" onclick="go(31)">preposição (in, on, at)</span> separada, seguida do <span class="tb-link" onclick="goAndHighlight(63,'pron-obj-table')">pronome objetivo</span>.</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt"><b>nele</b> = em + ele</div></div>
+      <div class="quote"><div class="q-pt"><b>nela</b> = em + ela</div></div>
+      <div class="quote"><div class="q-pt"><b>neles</b> = em + eles</div></div>
+      <div class="quote"><div class="q-pt"><b>nelas</b> = em + elas</div></div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">Você já viu na <span class="tb-link" onclick="go(31)">Seção de In, On, At</span> que cada uma dessas três preposições tem usos diferentes. Quando aparece um pronome depois, a regra é a mesma — só muda que o pronome agora é <strong>objetivo</strong> (me, you, him, her, it, us, them).</p>
+
+    <div class="tip"><div class="tip-lbl">⚡ Atalho mental</div><p class="tip-txt">Viu <strong>nele, nela, neles, nelas</strong>? Em inglês vira <strong>in / on / at + pronome objetivo</strong>. <strong>Qual</strong> das três você escolhe depende do verbo e do contexto.</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">As 5 situações</div><div class="sec-divider-line r"></div></div>
+
+    <div class="sense-list">
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(99,179,237,.12),rgba(99,179,237,.04));border-bottom-color:rgba(99,179,237,.2);">
+          <div class="sense-ico" style="background:rgba(99,179,237,.15);border-color:rgba(99,179,237,.25);">📦</div>
+          <div class="sense-ttl" style="color:#63b3ed;">1 · In + pronome</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando o "em" indica que algo está <strong>dentro</strong> de outra coisa, ou <strong>contido</strong> nela. Em inglês: <strong>in + pronome objetivo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Eu acredito <b>nele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I believe in him">I believe <b>in him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Ela colocou tudo <b>nele</b> (no carro).</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She put everything in it">She put everything <b>in it</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#63b3ed;">
+            <div class="sense-ex-pt">Eu confio <b>nela</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I trust in her">I trust <b>in her</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(246,173,85,.12),rgba(246,173,85,.04));border-bottom-color:rgba(246,173,85,.2);">
+          <div class="sense-ico" style="background:rgba(246,173,85,.15);border-color:rgba(246,173,85,.25);">📍</div>
+          <div class="sense-ttl" style="color:#f6ad55;">2 · On + pronome</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando o "em" indica que algo está <strong>em cima de</strong> uma superfície ou <strong>encostado</strong> em algo. Em inglês: <strong>on + pronome objetivo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">O livro está <b>nele</b> (na mesa).</div>
+            <div class="sense-ex-en"><span class="en" data-speak="The book is on it">The book is <b>on it</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Não conte <b>com eles</b> agora.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Don't count on them now">Don't count <b>on them</b> now.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#f6ad55;">
+            <div class="sense-ex-pt">Eu dependo <b>dele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I depend on him">I depend <b>on him</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(237,100,166,.12),rgba(237,100,166,.04));border-bottom-color:rgba(237,100,166,.2);">
+          <div class="sense-ico" style="background:rgba(237,100,166,.15);border-color:rgba(237,100,166,.25);">🎯</div>
+          <div class="sense-ttl" style="color:#ed64a6;">3 · At + pronome</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Quando o "em" indica um <strong>ponto específico</strong>, um <strong>alvo</strong> ou um <strong>endereço</strong>. Em inglês: <strong>at + pronome objetivo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Eu olhei <b>nela</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I looked at her">I looked <b>at her</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Ele atirou <b>neles</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="He shot at them">He shot <b>at them</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ed64a6;">
+            <div class="sense-ex-pt">Não grite <b>comigo</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="Don't shout at me">Don't shout <b>at me</b>.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(255,213,128,.12),rgba(255,213,128,.04));border-bottom-color:rgba(255,213,128,.2);">
+          <div class="sense-ico" style="background:rgba(255,213,128,.15);border-color:rgba(255,213,128,.25);">🪤</div>
+          <div class="sense-ttl" style="color:#ffd580;">4 · A preposição muda com o verbo</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Atenção: no português, qualquer verbo que peça <strong>"em"</strong> usa o mesmo "em". Em inglês, <strong>cada verbo escolhe a sua preposição</strong> — e nem sempre é <em>in</em>. Isso significa que <strong>traduzir "em" automaticamente como <em>in</em> dá erro</strong> com muita frequência.</div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eu estava pensando <b>nele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I was thinking about him">I was thinking <b>about him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Ela está esperando <b>por nós</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She is waiting for us">She is waiting <b>for us</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eu olhei <b>nele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I looked at him">I looked <b>at him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#ffd580;">
+            <div class="sense-ex-pt">Eles estão falando <b>de mim</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="They are talking about me">They are talking <b>about me</b>.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#ffd580;"><p class="tip-txt">💡 <strong>Cada verbo é casado com uma preposição específica em inglês.</strong> <em>Think</em> casa com <em>about</em>, <em>wait</em> casa com <em>for</em>, <em>look</em> casa com <em>at</em>. Você vai aprender esses pares com o tempo, naturalmente — não precisa decorar agora.</p></div>
+        </div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-head" style="background:linear-gradient(135deg,rgba(72,187,120,.12),rgba(72,187,120,.04));border-bottom-color:rgba(72,187,120,.2);">
+          <div class="sense-ico" style="background:rgba(72,187,120,.15);border-color:rgba(72,187,120,.25);">🚫</div>
+          <div class="sense-ttl" style="color:#48bb78;">5 · Verbos sem preposição</div>
+        </div>
+        <div class="sense-body">
+          <div class="sense-desc">Tem verbos em inglês que <strong>não pedem preposição nenhuma</strong> — mesmo que o português use "em", "com", "de" ou "a". O pronome objetivo vai <strong>direto depois do verbo</strong>.</div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Ela casou <b>com ele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She married him">She married <b>him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Eu entrei <b>nele</b> (no quarto).</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I entered it">I entered <b>it</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Eu confio <b>nele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="I trust him">I trust <b>him</b>.</span></div>
+          </div>
+          <div class="sense-ex" style="border-left-color:#48bb78;">
+            <div class="sense-ex-pt">Ela bateu <b>nele</b>.</div>
+            <div class="sense-ex-en"><span class="en" data-speak="She hit him">She hit <b>him</b>.</span></div>
+          </div>
+          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">⚠️ <strong>Atenção:</strong> reparou que <em>trust</em> apareceu duas vezes? <em>"I trust in him"</em> e <em>"I trust him"</em> são ambos corretos — o primeiro tem um tom mais formal/religioso (confiar/depositar fé), o segundo é o uso cotidiano (confiar em alguém). É um dos poucos verbos em inglês que aceita as duas formas.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">E o "em" que some?</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Na <span class="tb-link" onclick="goAndHighlight(63,'to-some')">Seção de Pronomes Objetivos</span>, você viu que dá pra remover o "para" e colar o pronome direto depois do verbo: <em>"Caique trouxe um café para mim" → "Caique brought me a coffee"</em>.</p>
+
+    <p class="intro" style="margin-top:10px;">Com o <strong>"em"</strong>, isso <strong>não funciona como uma regra</strong>. Cada verbo em inglês tem sua própria escolha de preposição — alguns mantêm uma (<em>think about, look at, depend on</em>), outros usam nenhuma (<em>trust, marry, enter</em>). Não dá pra simplesmente "remover o em" e esperar que funcione.</p>
+
+    <div class="quote-list">
+      <div class="quote"><div class="q-pt">Eu pensei <b>nele</b>.</div><div class="q-en">❌ <span style="opacity:.7;">I thought him.</span> &nbsp; ✅ <span class="en" data-speak="I thought about him">I thought <b>about</b> him.</span></div></div>
+      <div class="quote"><div class="q-pt">Confio <b>nele</b>.</div><div class="q-en">✅ <span class="en" data-speak="I trust him">I trust him.</span> &nbsp; ✅ <span class="en" data-speak="I trust in him">I trust <b>in</b> him.</span></div></div>
+      <div class="quote"><div class="q-pt">Eu casei <b>com ela</b>.</div><div class="q-en">❌ <span style="opacity:.7;">I married with her.</span> &nbsp; ✅ <span class="en" data-speak="I married her">I married her.</span></div></div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;"><div class="tip-lbl">🎯 Resumo</div><p class="tip-txt">A preposição em inglês <strong>depende do verbo</strong>, não do "em" do português. Aprenda os pares com o tempo: <em>think + about</em>, <em>look + at</em>, <em>depend + on</em>, <em>wait + for</em>, <em>trust + (nada)</em>, <em>marry + (nada)</em>… Cada verbo casa com uma preposição (ou nenhuma), e a tradução automática quase sempre te trai aqui.</p></div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">In, On, At + Pronome — exercício</span><span class="ex-score" id="inonatpron-score">0/10</span></div><div class="ex-body" id="inonatpron-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#4fd1c5;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 5 — to, for, infinitivos e pronomes objetivos.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 5.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 5</span><span class="ex-score" id="rev5-score">0/15</span></div><div class="ex-body" id="rev5-body"></div></div>
+</div>`,
+
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
   <div class="soon-title">Mais conteúdo<br><span class="soon-acc">em breve</span></div>
@@ -7498,7 +8864,7 @@ function goAndHighlight(pageIdx, targetId){
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
     let target=el;
-    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&target.id!=='art-a-an'&&!target.classList.contains('pg-body')){target=target.parentElement;}
+    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('sense-card')&&target.id!=='art-a-an'&&!target.classList.contains('pg-body')){target=target.parentElement;}
     target.classList.add('highlight-pulse');
     setTimeout(()=>target.classList.remove('highlight-pulse'),5000);
   },350);
@@ -7518,7 +8884,7 @@ function go(i){
   if(i<0||i>=pages.length)return;
   try{if(typeof exitFocusMode==="function")exitFocusMode();}catch(e){}
   // Clean up any running exercise/game timer intervals before changing page
-  ['ing','tobe','adj','art','rev','pres','past','fut','togo','rev2','inonat','demo','indem','queexp','rev3','poss','caso','ofdem'].forEach(id=>{
+  ['ing','tobe','adj','art','rev','pres','past','fut','togo','rev2','inonat','demo','indem','queexp','rev3','poss','caso','ofdem','from','fromdem','desome','rev4','toforinf','pronobj','inonatpron','rev5'].forEach(id=>{
     const st=window[id+'_s'];if(st&&st.timerInterval){clearInterval(st.timerInterval);st.timerInterval=null;}
   });
   if(typeof gS==='object'&&gS&&gS.timerInterval){clearInterval(gS.timerInterval);gS.timerInterval=null;}
@@ -8027,13 +9393,14 @@ const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
   'que-summary','indem-examples','poss-legend','cp-expr-item',
   'demo-item','poss-ex-block','tobe-card','curiosidade-body',
   'curiosidade-text','que-ex-block','inonat-bubble','indem-ex-line',
-  'cp-expr-item','ex-options','ex-sentence','ex-list','ex-finish']);
+  'cp-expr-item','ex-options','ex-sentence','ex-list','ex-finish',
+  'sense-list']);
 // Tables and self-contained interactive blocks — never split inside; the whole unit is the focus target
 const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',
   'togo-table','big-tbl-wrap','tbl-wrap','conj-big',
   'ex-wrap','game-wrap','tip','irony-block','que-summary',
   'que-ex-block','demo-item','poss-ex-block','indem-ex-block',
-  'cp-expr-item','curiosidade','inonat-bubble']);
+  'cp-expr-item','curiosidade','inonat-bubble','sense-card']);
 var _focusEl=null,_focusHint=null; // focus mode state
 function _initFocusHint(){
   if(_focusHint)return;
