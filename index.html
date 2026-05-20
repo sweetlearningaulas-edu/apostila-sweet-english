@@ -335,6 +335,7 @@ td:first-child{font-weight:700;color:var(--blue);white-space:nowrap;}
 .hl-wont{color:var(--red);font-weight:700;}
 .hl-go{color:var(--green);font-weight:700;}
 .hl-tobe{color:var(--yel);font-weight:700;}
+.hl-tambem{color:#fbbf24;font-weight:700;}
 /* ── RULE BOX ── */
 .conj-table{background:var(--card2);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
 .conj-row.hd{background:var(--card);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);}
@@ -1314,6 +1315,7 @@ function runInits(p){
   if(p===63)initEx('pronobj',window['pronobj_bk'],10);
   if(p===65)initEx('inonatpron',window['inonatpron_bk'],10);
   if(p===66)initEx('rev5',window['rev5_bk'],15);
+  if(p===69)initEx('tambem',window['tambem_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -1758,13 +1760,88 @@ function _pickVaried(bank,total,key){
     if(b==='its')return 'its';
     return 'na';
   };
+  const _casoType=(it)=>{
+    if(!it)return 'na';
+    if(it.anchor){
+      const a=it.anchor;
+      if(a==='caso-s')return 'caso-s';
+      if(a==='caso-ss')return 'caso-ss';
+      if(a==='caso-s-name')return 'caso-s-name';
+      if(a==='caso-of')return 'caso-of';
+    }
+    // Sem anchor — detectar pelo blank
+    const b=it.blank||'';
+    if(/\bof\b/i.test(b))return 'caso-of';
+    if((b.match(/'/g)||[]).length>=2)return 'caso-ss';
+    if(/'s?$/.test(b)||/'$/.test(b))return 'caso-s';
+    return 'na';
+  };
+  // _tambemType: detecta o sub-tipo para o banco "tambem" (also/too/as well)
+  const _tambemType=(it)=>{
+    if(!it)return 'na';
+    if(it.anchor){
+      const a=it.anchor;
+      if(a==='tambem-also-mid')return 'also-mid';
+      if(a==='tambem-also-be')return 'also-be';
+      if(a==='tambem-also-start')return 'also-start';
+      if(a==='tambem-too-end')return 'too-end';
+      if(a==='tambem-too-naked')return 'too-naked';
+      if(a==='tambem-aswell')return 'aswell';
+    }
+    const b=(it.blank||'').toLowerCase().trim();
+    if(b==='also'||b==='also,')return 'also-generic';
+    if(b==='too')return 'too';
+    if(b==='as well')return 'aswell';
+    return 'na';
+  };
+  // _revTopic: detecta o "assunto macro" para bancos de revisão (rev2/3/4/5)
+  // que misturam vários tópicos. Usado para balanceamento hierárquico.
+  const _revTopic=(it)=>{
+    if(!it)return 'na';
+    const blank=(it.blank||'').toLowerCase().trim();
+    const opts=(it.options||[]).map(o=>(o||'').toLowerCase());
+    const allText=[blank,it.before||'',it.after||''].join(' ').toLowerCase();
+    // 1) Pronome de posse (sub/adj)
+    if(/^(my|your|his|her|our|their|its|mine|yours|hers|ours|theirs)$/.test(blank))return 'poss';
+    // 2) Caso possessivo
+    if(/'s?$/.test(blank)||/'$/.test(blank))return 'caso-s';
+    if(/^of /.test(blank))return 'of-the';
+    // 3) From / preposições de origem
+    if(/^from/.test(blank))return 'from';
+    // 4) Demonstrativos
+    if(/^(this|that|these|those)$/.test(blank)||/^(this|that|these|those)/.test(blank))return 'demo';
+    if(/^(here|there)$/.test(blank))return 'here-there';
+    // 5) Who/which
+    if(/^(who|which)$/.test(blank))return 'queexp';
+    // 6) In/on/at simples
+    if(/^(in|on|at)$/.test(blank))return 'inonat';
+    // 7) In/on/at + demonstrativo (in this/on those/etc)
+    if(/^(in|on|at) (this|that|these|those)$/.test(blank))return 'indem';
+    // 8) Pronome objeto
+    if(/^(me|you|him|her|us|them|it)$/.test(blank))return 'pron-obj';
+    // 9) Preposições to/for
+    if(/^(to|for)$/.test(blank))return 'to-for';
+    if(/^(to|for) /.test(blank))return 'to-for-inf';
+    // 10) Verbo + ing
+    if(/ing$/.test(blank)&&!/^[a-z]+ing$/.test(blank.split(/\s+/)[0]||''))return 'ing';
+    if(/^[a-z]+ing$/.test(blank))return 'ing';
+    // 11) Verbo no presente/passado/futuro (detecta pelo tense já calculado)
+    const sit=_detectSit(it);
+    if(sit){
+      const tense=sit.split('|')[2];
+      if(tense==='past')return 'past-v';
+      if(tense==='fut')return 'fut-v';
+      if(tense==='pres')return 'pres-v';
+    }
+    return 'outros';
+  };
   const _catOf=(it)=>{
     if(!it)return 'X';
     const sit=_detectSit(it);
     if(!sit)return 'X';
     const parts=sit.split('|');
     // parts: [Q/A, N/P, tense, subject]
-    return parts.slice(0,3).join('|')+'|'+(_is3sg(it)?'3sg':'plr')+'|'+_possType(it);
+    return parts.slice(0,3).join('|')+'|'+(_is3sg(it)?'3sg':'plr')+'|'+_possType(it)+'|'+_casoType(it)+'|'+_revTopic(it)+'|'+_tambemType(it);
   };
   const catGroups={};
   for(const it of bank){
@@ -1774,16 +1851,29 @@ function _pickVaried(bank,total,key){
   }
   const catKeys=Object.keys(catGroups);
   for(const c of catKeys)catGroups[c]=shuffle(catGroups[c]);
-  // ── Step 2a: Hierarchical round-robin for poss bank
-  // Garante distribuição equilibrada entre tipos de pronome (adj/sub/his/its)
-  // antes de aplicar round-robin entre Q/A|N/P|tense|3sg/plr.
+  // ── Step 2a: Hierarchical round-robin para bancos com sub-tipos claros
+  //   - poss_bk: agrupa por possType (adj/sub/his/its)
+  //   - caso_bk: agrupa por casoType (caso-s, caso-ss, caso-s-name, caso-of)
+  //   - rev_bk: agrupa por revTopic (tópicos macro de revisão)
+  // Garante distribuição equilibrada entre os sub-tipos antes do round-robin geral.
   const isPossBank=bank.length>0&&bank.every(it=>_possType(it)!=='na');
+  const isCasoBank=bank.length>0&&bank.every(it=>_casoType(it)!=='na');
+  const isTambemBank=bank.length>0&&bank.every(it=>_tambemType(it)!=='na');
+  // rev_bk: detectar se banco tem mistura de tópicos (>=3 tópicos distintos no banco)
+  const topicsInBank=new Set(bank.map(_revTopic));
+  const isRevBank=!isPossBank&&!isCasoBank&&!isTambemBank&&topicsInBank.size>=3;
   const pool=[];
-  if(isPossBank){
-    // Agrupar catKeys por possType (5ª parte da chave)
+  if(isPossBank||isCasoBank||isRevBank||isTambemBank){
+    // A última parte da chave em catOf é tambemType.
+    let tokenIdx;
+    if(isPossBank)tokenIdx=4;       // 0:Q/A 1:N/P 2:tense 3:3sg/plr 4:possType
+    else if(isCasoBank)tokenIdx=5;  // 5:casoType
+    else if(isRevBank)tokenIdx=6;   // 6:revTopic
+    else tokenIdx=7;                // 7:tambemType
     const typeGroups={};
     for(const ck of catKeys){
-      const t=ck.split('|').pop();
+      const parts=ck.split('|');
+      const t=parts[tokenIdx]||parts[parts.length-1];
       if(!typeGroups[t])typeGroups[t]=[];
       typeGroups[t].push(ck);
     }
@@ -1796,7 +1886,6 @@ function _pickVaried(bank,total,key){
       const orderedTypes=shuffle(types);
       for(const t of orderedTypes){
         if(pool.length>=total)break;
-        // Procurar próximo item disponível dentro deste type
         const innerCats=shuffle(typeGroups[t]);
         let found=false;
         for(const ck of innerCats){
@@ -2102,7 +2191,13 @@ function checkOpt(id,btn,val,correct){
     const old=document.getElementById('ex-explain-btn');if(old)old.remove();
     // Speak correct answer
     if(!window._exMuted&&window.speechSynthesis){
-      const sentence=id==='poss'?val:((s.curQ.before?s.curQ.before+' ':'')+val+(s.curQ.after?' '+s.curQ.after:'')).trim();
+      let sentence;
+      if(s.curQ.ttsSentence)sentence=s.curQ.ttsSentence;
+      else if(id==='poss')sentence=val;
+      else {
+        const spokenBlank=(val===s.curQ.blank&&s.curQ.ttsBlank)?s.curQ.ttsBlank:val;
+        sentence=((s.curQ.before?s.curQ.before+' ':'')+spokenBlank+(s.curQ.after?' '+s.curQ.after:'')).trim();
+      }
       window.speechSynthesis.cancel();
       const u=new SpeechSynthesisUtterance(sentence);u.lang='en-US';u.rate=.85;
       window.speechSynthesis.speak(u);
@@ -3265,22 +3360,22 @@ window['caso_bk']=[
   {pt:'Eu reconheci o diretor do filme.',before:'I recognized',blank:'the director of the movie',after:'.',options:['the director of the movie','the movie of the director','the director the movie','the of movie director'],anchor:'caso-of'},
   {pt:'Eu assisti o final da série.',before:'I watched',blank:'the end of the series',after:'.',options:['the series of the end','the end of the series','the end the series','the of series end'],anchor:'caso-of'},
   {pt:'Eu visitei a capital do país.',before:'I visited',blank:'the capital of the country',after:'.',options:['the country of the capital','the capital the country','the capital of the country','the of country capital'],anchor:'caso-of'},
-  {pt:'Eu peguei emprestado o carro do Lucas.',before:'I borrowed',blank:"Lucas' car",after:'.',options:["Lucas' car",'Lucases car',"The Lucas' car",'Lucas car'],anchor:'caso-s-name'},
-  {pt:'Nós visitamos a casa do James.',before:'We visited',blank:"James' house",after:'.',options:['Jameses house',"James' house","The James' house",'James house'],anchor:'caso-s-name'},
-  {pt:'Eu passeei com o cachorro do Chris.',before:'I walked',blank:"Chris' dog",after:'.',options:["Chris' dog",'Chrises dog',"The Chris' dog",'Chris dog'],anchor:'caso-s-name'},
-  {pt:'Todo mundo amou a ideia do Marcus.',before:'Everyone loved',blank:"Marcus' idea",after:'.',options:['Marcuses idea',"The Marcus' idea","Marcus' idea",'Marcus idea'],anchor:'caso-s-name'},
-  {pt:'Nós nos encontramos no escritório do Carlos.',before:'We met at',blank:"Carlos' office",after:'.',options:["Carlos' office",'Carloses office',"The Carlos' office",'Carlos office'],anchor:'caso-s-name'},
-  {pt:'Ela achou a mochila do Lewis.',before:'She found',blank:"Lewis' backpack",after:'.',options:['Lewises backpack',"Lewis' backpack","The Lewis' backpack",'Lewis backpack'],anchor:'caso-s-name'},
-  {pt:'Eu revisei o projeto do Thomas.',before:'I reviewed',blank:"Thomas' project",after:'.',options:["Thomas' project",'Thomases project',"The Thomas' project",'Thomas project'],anchor:'caso-s-name'},
-  {pt:'Ele consertou a bicicleta do Alexis.',before:'He fixed',blank:"Alexis' bike",after:'.',options:['Alexises bike',"The Alexis' bike","Alexis' bike",'Alexis bike'],anchor:'caso-s-name'},
-  {pt:'Eu usei o celular do Dennis.',before:'I used',blank:"Dennis' phone",after:'.',options:["Dennis' phone",'Dennises phone',"The Dennis' phone",'Dennis phone'],anchor:'caso-s-name'},
-  {pt:'Eu visitei a empresa do Edward.',before:'I visited',blank:"Edward' company",after:'.',options:['Douglases company',"The Edward' company",'Edward company',"Edward' company"],anchor:'caso-s-name'},
+  {pt:'Eu peguei emprestado o carro do Lucas.',before:'I borrowed',blank:"Lucas' car",ttsBlank:"Lucases car",after:'.',options:["Lucas' car",'Lucases car',"The Lucas' car",'Lucas car'],anchor:'caso-s-name'},
+  {pt:'Nós visitamos a casa do James.',before:'We visited',blank:"James' house",ttsBlank:"Jameses house",after:'.',options:['Jameses house',"James' house","The James' house",'James house'],anchor:'caso-s-name'},
+  {pt:'Eu passeei com o cachorro do Chris.',before:'I walked',blank:"Chris' dog",ttsBlank:"Chrises dog",after:'.',options:["Chris' dog",'Chrises dog',"The Chris' dog",'Chris dog'],anchor:'caso-s-name'},
+  {pt:'Todo mundo amou a ideia do Marcus.',before:'Everyone loved',blank:"Marcus' idea",ttsBlank:"Marcuses idea",after:'.',options:['Marcuses idea',"The Marcus' idea","Marcus' idea",'Marcus idea'],anchor:'caso-s-name'},
+  {pt:'Nós nos encontramos no escritório do Carlos.',before:'We met at',blank:"Carlos' office",ttsBlank:"Carloses office",after:'.',options:["Carlos' office",'Carloses office',"The Carlos' office",'Carlos office'],anchor:'caso-s-name'},
+  {pt:'Ela achou a mochila do Lewis.',before:'She found',blank:"Lewis' backpack",ttsBlank:"Lewises backpack",after:'.',options:['Lewises backpack',"Lewis' backpack","The Lewis' backpack",'Lewis backpack'],anchor:'caso-s-name'},
+  {pt:'Eu revisei o projeto do Thomas.',before:'I reviewed',blank:"Thomas' project",ttsBlank:"Thomases project",after:'.',options:["Thomas' project",'Thomases project',"The Thomas' project",'Thomas project'],anchor:'caso-s-name'},
+  {pt:'Ele consertou a bicicleta do Alexis.',before:'He fixed',blank:"Alexis' bike",ttsBlank:"Alexises bike",after:'.',options:['Alexises bike',"The Alexis' bike","Alexis' bike",'Alexis bike'],anchor:'caso-s-name'},
+  {pt:'Eu usei o celular do Dennis.',before:'I used',blank:"Dennis' phone",ttsBlank:"Dennises phone",after:'.',options:["Dennis' phone",'Dennises phone',"The Dennis' phone",'Dennis phone'],anchor:'caso-s-name'},
+  {pt:'Eu visitei a empresa do Edward.',before:'I visited',blank:"Edward's company",after:'.',options:["Edward's company","Edwards company","The Edward's company","Edward company's"],anchor:'caso-s'},
   {pt:'Eu vi o celular da Megan.',before:'I saw',blank:'Megan\'s',after:'phone.',options:['Megan\'s','Megans','of Megan','of Megan\'s']},
   {pt:'Nós adoramos o apartamento do Ryan.',before:'We loved',blank:'Ryan\'s',after:'apartment.',options:['Ryan\'s','Ryans','of Ryan','Ryan of']},
   {pt:'Eu peguei o guarda-chuva da professora.',before:'I took',blank:'the teacher\'s',after:'umbrella.',options:['the teacher\'s','the teachers','of the teacher','teacher of']},
   {pt:'Ela viu o trailer do filme.',before:'She watched',blank:'the movie\'s',after:'trailer.',options:['the movie\'s','the movies','of the movie','movie of']},
-  {pt:'Eu adorei o final da série.',before:'I loved',blank:'the series\' ',after:'ending.',options:['the series\' ','the seriess','of the series','series of']},
-  {pt:'Eu conheço o chefe do Marcus.',before:'I know',blank:'Marcus\'s',after:'boss.',options:['Marcus\'s','Marcuss','of Marcus','Marcus of']},
+  {pt:'Eu adorei o final da série.',before:'I loved',blank:'the series\'',ttsBlank:'the serieses',after:'ending.',options:['the series\'','the seriess','of the series','series of']},
+  {pt:'Eu conheço o chefe do Marcus.',before:'I know',blank:'Marcus\'',ttsBlank:'Marcuses',after:'boss.',options:['Marcus\'','Marcuss','of Marcus','Marcus of']},
 ];
 window['from_bk']=[
   {pt:'Eu vim da balada.',before:'I came',blank:'from the',after:'nightclub.',options:['from the','from','of','of the'],anchor:'from-regra'},
@@ -3595,6 +3690,41 @@ window['inonatpron_bk']=[
   {pt:'O Jake estava pensando em nós.',before:'Jake was thinking',blank:'about',after:'us.',options:['in','on','about','at'],anchor:'inonatpron-regra'},
   {pt:'O Ryan respondeu a eles educadamente.',before:'Ryan responded',blank:'to',after:'them politely.',options:['at','to','for','on'],anchor:'inonatpron-regra'},
   {pt:'A Sofia está esperando por você.',before:'Sofia is waiting',blank:'for',after:'you.',options:['at','on','for','in'],anchor:'inonatpron-regra'},
+];
+
+window['tambem_bk']=[
+  // ── ALSO no meio (antes do verbo principal)
+  {pt:'Eu também gosto de pizza.',before:'I',blank:'also',after:'like pizza.',options:['also','too','as well'],anchor:'tambem-also-mid'},
+  {pt:'Ela também trabalha aos sábados.',before:'She',blank:'also',after:'works on Saturdays.',options:['also','too','as well'],anchor:'tambem-also-mid'},
+  {pt:'Nós também moramos em São Paulo.',before:'We',blank:'also',after:'live in São Paulo.',options:['also','too','as well'],anchor:'tambem-also-mid'},
+  {pt:'Eles também jogam futebol.',before:'They',blank:'also',after:'play soccer.',options:['also','too','as well'],anchor:'tambem-also-mid'},
+  {pt:'Megan também adora café.',before:'Megan',blank:'also',after:'loves coffee.',options:['also','too','as well'],anchor:'tambem-also-mid'},
+  // ── ALSO depois do verbo to be / auxiliar
+  {pt:'Ele também é um cara bonito.',before:'He is',blank:'also',after:'a handsome guy.',options:['also','too','as well'],anchor:'tambem-also-be'},
+  {pt:'Ela também é minha amiga.',before:'She is',blank:'also',after:'my friend.',options:['also','too','as well'],anchor:'tambem-also-be'},
+  {pt:'Ryan também vai vir.',before:'Ryan will',blank:'also',after:'come.',options:['also','too','as well'],anchor:'tambem-also-be'},
+  {pt:'Eles também eram meus colegas.',before:'They were',blank:'also',after:'my classmates.',options:['also','too','as well'],anchor:'tambem-also-be'},
+  {pt:'Eu também posso te ajudar.',before:'I can',blank:'also',after:'help you.',options:['also','too','as well'],anchor:'tambem-also-be'},
+  // ── ALSO no começo (= além disso)
+  {pt:'Além disso, acho que você é perfeita para a tarefa.',before:'',blank:'Also,',after:"I think you're perfect for the task.",options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
+  {pt:'Além disso, ele me ligou ontem.',before:'',blank:'Also,',after:'he called me yesterday.',options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
+  {pt:'Além disso, eles trouxeram presentes.',before:'',blank:'Also,',after:'they brought gifts.',options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
+  // ── TOO no fim (frase com verbo)
+  {pt:'Ela fala inglês também.',before:'She speaks English',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
+  {pt:'Nós iremos para a festa também.',before:"We'll go to the party",blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
+  {pt:'Eu trabalho aos domingos também.',before:'I work on Sundays',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
+  {pt:'Eles vieram para o jantar também.',before:'They came to the dinner',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
+  // ── TOO em concordância sem verbo (com pronome objetivo)
+  {pt:'Eu também!',before:'Me',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
+  {pt:'Nós também!',before:'Us',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
+  {pt:'Ela também!',before:'Her',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
+  {pt:'Eles também!',before:'Them',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
+  {pt:'Ele também!',before:'Him',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
+  // ── AS WELL no fim (sempre com verbo)
+  {pt:'Megan estuda francês também.',before:'Megan studies French',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
+  {pt:'O Jake comprou um carro novo também.',before:'Jake bought a new car',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
+  {pt:'Nós vamos jantar fora também.',before:"We'll have dinner out",blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
+  {pt:'Eles viajaram para a Europa também.',before:'They traveled to Europe',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
 ];
 
 window['rev4_bk']=[
@@ -4521,6 +4651,19 @@ const pages=[
         </div>
         <div class="idx-item" onclick="go(66)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap5 capítulo 5 to for infinitivo pronome objetivo in on at">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 5</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-chapter" id="idxcap6">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap6')" style="--ch-color:#fbbf24;">
+        <span class="idx-chapter-num" style="background:#fbbf24;">6</span>
+        <span class="idx-chapter-title">Capítulo 6</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap6-body">
+        <div class="idx-item" onclick="go(68)" data-kw="tambem also too as well advérbio meio fim frase além disso me too us too concordância sem verbo cap6">
+          <div class="idx-num">27</div><div class="idx-info"><div class="idx-name">Também</div><div class="idx-desc">Also, too, as well — os 3 "também" do inglês</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -6981,7 +7124,7 @@ const pages=[
       <div class="quote-list" style="margin-top:8px;">
         <div class="quote">
           <div class="q-pt">A <span class="cp-f-posse">bicicleta</span> do <span class="cp-f-dono">James</span>.</div>
-          <div class="q-en"><span class="en" data-speak="James' bike."><span class="cp-f-dono">James</span><span class="cp-f-op">'</span> <span class="cp-f-posse">bike</span>.</span></div>
+          <div class="q-en"><span class="en" data-speak="Jameses bike."><span class="cp-f-dono">James</span><span class="cp-f-op">'</span> <span class="cp-f-posse">bike</span>.</span></div>
         </div>
       </div>
     </div>
@@ -9014,6 +9157,157 @@ const pages=[
     <p class="intro">Exercício com todas as matérias do Capítulo 5.</p>
   </div>
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 5</span><span class="ex-score" id="rev5-score">0/15</span></div><div class="ex-body" id="rev5-body"></div></div>
+</div>`,
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">6</div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#fbbf24;"><div class="sec-ghost">27</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 27</div>
+    <div class="sec-title">Também<br><span class="acc">3 formas</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Also, too, as well — três jeitos do mesmo "também", cada um com sua regra.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">✍️</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">"<strong>Too</strong>" é uma das palavras mais escritas erradas em inglês — até por nativos. A confusão é com "<strong>to</strong>" (para) e "<strong>two</strong>" (dois): as três soam <em>quase</em> idênticas mas significam coisas completamente diferentes. Um erro clássico em redes sociais é escrever "<em>me to</em>" no lugar de "<em>me too</em>".</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#fbbf24;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 27 · Também</div><div class="pg-ttl">Também</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="tambem-intro">Em inglês há <strong>três</strong> formas de dizer "também" — <strong>also</strong>, <strong>too</strong> e <strong>as well</strong>. Cada uma tem seu lugar certo na frase, e usar a errada deixa o inglês com cara estranha mesmo que dê pra entender.</p>
+
+    <div class="tip"><div class="tip-lbl">⚡ Atalho mental</div><p class="tip-txt"><strong>Also</strong> vai no <strong>meio</strong>. <strong>Too</strong> e <strong>as well</strong> vão no <strong>fim</strong>. E só o <strong>too</strong> serve pra resposta curta sem verbo (<em>Me too!</em>).</p></div>
+
+    <div class="sec-divider" id="tambem-also"><div class="sec-divider-line"></div><div class="sec-divider-label">Also</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>also</strong> normalmente fica no <strong>meio</strong> da frase, antes do verbo principal. É o "também" mais escrito e formal.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Eu amo ler, mas eu também gosto de filmes.</span><span class="eg-en en" data-speak="I love reading, but I also like movies">I love reading, but I <span class="hl-tambem">also</span> like movies.</span></div>
+      <div class="eg-row"><span class="eg-pt">Ela também fala francês.</span><span class="eg-en en" data-speak="She also speaks French">She <span class="hl-tambem">also</span> speaks French.</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Com to be ou auxiliar</div>
+      <p class="tip-txt">Quando a frase tem o verbo <strong>to be</strong> ou um auxiliar (<em>will, can, must, was, were...</em>), o <strong>also</strong> vem <strong>depois</strong> deles — não antes.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Ele também é um cara bonito.</div>
+          <div class="q-en"><span class="en" data-speak="He is also a handsome guy">He <b>is</b> <span class="hl-tambem">also</span> a handsome guy.</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Ela também vai vir.</div>
+          <div class="q-en"><span class="en" data-speak="She will also come">She <b>will</b> <span class="hl-tambem">also</span> come.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 No início = "além disso"</div>
+      <p class="tip-txt">Se o <strong>also</strong> aparecer no <strong>começo</strong> da frase, ele muda de sentido: passa a significar <strong>"além disso"</strong>.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Além disso, acho que você é perfeita pra tarefa.</div>
+          <div class="q-en"><span class="en" data-speak="Also, I think you're perfect for the task"><span class="hl-tambem">Also,</span> I think you're perfect for the task.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tambem-too"><div class="sec-divider-line"></div><div class="sec-divider-label">Too</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>too</strong> é o "também" mais usado no inglês falado. Vem sempre no <strong>fim</strong> da frase.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Ela fala inglês também.</span><span class="eg-en en" data-speak="She speaks English too">She speaks English <span class="hl-tambem">too</span>.</span></div>
+      <div class="eg-row"><span class="eg-pt">Nós iremos para a festa também.</span><span class="eg-en en" data-speak="We'll go to the party too">We'll go to the party <span class="hl-tambem">too</span>.</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Concordância sem verbo</div>
+      <p class="tip-txt">Em respostas curtas (sem verbo), o <strong>too</strong> vem junto de um <span class="tb-link" onclick="goAndHighlight(63,'pron-obj-table')">pronome objetivo</span> — nunca do pronome pessoal.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Eu também!</div>
+          <div class="q-en"><span class="en" data-speak="Me too"><b>Me</b> <span class="hl-tambem">too</span>!</span> ✅ &nbsp; <span style="opacity:.55;text-decoration:line-through;">I too!</span> ❌</div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Nós também!</div>
+          <div class="q-en"><span class="en" data-speak="Us too"><b>Us</b> <span class="hl-tambem">too</span>!</span> ✅ &nbsp; <span style="opacity:.55;text-decoration:line-through;">We too!</span> ❌</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tambem-aswell"><div class="sec-divider-line"></div><div class="sec-divider-label">As well</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>as well</strong> também vai no <strong>fim</strong> da frase, exatamente como o <strong>too</strong> — mas com uma restrição importante.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Ela fala inglês também.</span><span class="eg-en en" data-speak="She speaks English as well">She speaks English <span class="hl-tambem">as well</span>.</span></div>
+      <div class="eg-row"><span class="eg-pt">Nós iremos para a festa também.</span><span class="eg-en en" data-speak="We'll go to the party as well">We'll go to the party <span class="hl-tambem">as well</span>.</span></div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Não funciona em frase sem verbo</div>
+      <p class="tip-txt">Diferente do <strong>too</strong>, o <strong>as well</strong> <strong>não</strong> funciona em respostas curtas de concordância.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Eu também!</div>
+          <div class="q-en"><span class="en" data-speak="Me too">Me <span class="hl-tambem">too</span>!</span> ✅ &nbsp; <span style="opacity:.55;text-decoration:line-through;">Me as well!</span> ❌</div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Nós também!</div>
+          <div class="q-en"><span class="en" data-speak="Us too">Us <span class="hl-tambem">too</span>!</span> ✅ &nbsp; <span style="opacity:.55;text-decoration:line-through;">Us as well!</span> ❌</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14.5px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">POSIÇÃO NA FRASE</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem" style="font-size:15px;">Also</span></div><div class="togo-val">No meio</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem" style="font-size:15px;">Too</span></div><div class="togo-val">No fim</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem" style="font-size:15px;">As well</span></div><div class="togo-val">No fim</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">ALSO — PARTICULARIDADES</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Com <i>to be</i> ou auxiliar</div><div class="togo-val">Vem depois deles</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">No início da frase</div><div class="togo-val">Vira "além disso"</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">RESPOSTAS CURTAS (SEM VERBO)</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Com <span class="hl-tambem">too</span></div><div class="togo-val">Funciona, com pronome objetivo</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Com <span class="hl-tambem">also</span> ou <span class="hl-tambem">as well</span></div><div class="togo-val">Não funcionam</div></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Também — exercício</span><span class="ex-score" id="tambem-score">0/10</span></div><div class="ex-body" id="tambem-body"></div></div>
+  </div>
 </div>`,
 
 `<div class="page pg-soon">
