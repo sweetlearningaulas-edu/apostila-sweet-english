@@ -2167,6 +2167,11 @@ function renderEx(id,bank,total){
     }
     const sentenceOpts=shuffle([...variants].slice(0,5));
     body.innerHTML=`<div class="ex-timer" id="${id}-timer">${timerVal}</div><div class="ex-sentence"><div class="ex-pt2">${item.pt}</div></div><div class="ex-options ex-options-sentence">${sentenceOpts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${correct.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div>`;
+  } else if(item.isFullSentence){
+    // Opções já são frases completas; uma delas é item.correct
+    const sentenceOpts=item.noShuffle?item.options:shuffle(item.options);
+    const correct=item.correct;
+    body.innerHTML=`<div class="ex-timer" id="${id}-timer">${timerVal}</div><div class="ex-sentence"><div class="ex-pt2">${item.pt}</div></div><div class="ex-options ex-options-sentence">${sentenceOpts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${correct.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div>`;
   } else {
     body.innerHTML=`<div class="ex-timer" id="${id}-timer">${timerVal}</div><div class="ex-sentence"><div class="ex-pt2">${item.pt}</div><div class="ex-en-blank">${item.before} <span class="blank" id="${id}-bl">___</span> ${item.after}</div></div><div class="ex-options">${opts.map(o=>`<button class="opt-btn" onclick="checkOpt('${id}',this,'${o.replace(/'/g,"\\'")}','${item.blank.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div><div class="ex-feedback" id="${id}-fb"></div><div class="ex-progress">${dots(c,tot,'ep')}</div>`;
   }
@@ -2193,7 +2198,7 @@ function checkOpt(id,btn,val,correct){
     if(!window._exMuted&&window.speechSynthesis){
       let sentence;
       if(s.curQ.ttsSentence)sentence=s.curQ.ttsSentence;
-      else if(id==='poss')sentence=val;
+      else if(id==='poss'||s.curQ.isFullSentence)sentence=val;
       else {
         const spokenBlank=(val===s.curQ.blank&&s.curQ.ttsBlank)?s.curQ.ttsBlank:val;
         sentence=((s.curQ.before?s.curQ.before+' ':'')+spokenBlank+(s.curQ.after?' '+s.curQ.after:'')).trim();
@@ -3225,7 +3230,7 @@ window['poss_bk']=[
   {pt:'O cachorro está lambendo a pata dele.',before:'The dog is licking',blank:'its',after:'paw.',options:['its','his','her','their'],anchor:'poss-adj-intro'},
   {pt:'O gato perdeu o brinquedo dele.',before:'The cat lost',blank:'its',after:'toy.',options:['its','his','her','their'],anchor:'poss-adj-intro'},
   {pt:'A empresa lançou o novo produto dela.',before:'The company launched',blank:'its',after:'new product.',options:['its','his','her','our'],anchor:'poss-adj-intro'},
-  {pt:'O time perdeu o jogo por causa da estratégia dele.',before:'The team lost because of',blank:'its',after:'strategy.',options:['its','their','his','our'],anchor:'poss-adj-intro'},
+  {pt:'O time perdeu o jogo por causa da estratégia dele.',before:'The team lost the game because of',blank:'its',after:'strategy.',options:['its','their','his','our'],anchor:'poss-adj-intro'},
   {pt:'Você se lembra da sua senha?',before:'Do you remember',blank:'your',after:'password?',options:['your','yours','my','her'],anchor:'poss-adj-intro'},
   {pt:'Você já fez o seu dever de casa?',before:'Have you done',blank:'your',after:'homework?',options:['your','yours','my','their'],anchor:'poss-adj-intro'},
   {pt:'Nós precisamos renovar o nosso contrato.',before:'We need to renew',blank:'our',after:'contract.',options:['our','ours','their','my'],anchor:'poss-adj-intro'},
@@ -3693,38 +3698,67 @@ window['inonatpron_bk']=[
 ];
 
 window['tambem_bk']=[
-  // ── ALSO no meio (antes do verbo principal)
-  {pt:'Eu também gosto de pizza.',before:'I',blank:'also',after:'like pizza.',options:['also','too','as well'],anchor:'tambem-also-mid'},
-  {pt:'Ela também trabalha aos sábados.',before:'She',blank:'also',after:'works on Saturdays.',options:['also','too','as well'],anchor:'tambem-also-mid'},
-  {pt:'Nós também moramos em São Paulo.',before:'We',blank:'also',after:'live in São Paulo.',options:['also','too','as well'],anchor:'tambem-also-mid'},
-  {pt:'Eles também jogam futebol.',before:'They',blank:'also',after:'play soccer.',options:['also','too','as well'],anchor:'tambem-also-mid'},
-  {pt:'Megan também adora café.',before:'Megan',blank:'also',after:'loves coffee.',options:['also','too','as well'],anchor:'tambem-also-mid'},
-  // ── ALSO depois do verbo to be / auxiliar
-  {pt:'Ele também é um cara bonito.',before:'He is',blank:'also',after:'a handsome guy.',options:['also','too','as well'],anchor:'tambem-also-be'},
-  {pt:'Ela também é minha amiga.',before:'She is',blank:'also',after:'my friend.',options:['also','too','as well'],anchor:'tambem-also-be'},
-  {pt:'Ryan também vai vir.',before:'Ryan will',blank:'also',after:'come.',options:['also','too','as well'],anchor:'tambem-also-be'},
-  {pt:'Eles também eram meus colegas.',before:'They were',blank:'also',after:'my classmates.',options:['also','too','as well'],anchor:'tambem-also-be'},
-  {pt:'Eu também posso te ajudar.',before:'I can',blank:'also',after:'help you.',options:['also','too','as well'],anchor:'tambem-also-be'},
-  // ── ALSO no começo (= além disso)
-  {pt:'Além disso, acho que você é perfeita para a tarefa.',before:'',blank:'Also,',after:"I think you're perfect for the task.",options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
-  {pt:'Além disso, ele me ligou ontem.',before:'',blank:'Also,',after:'he called me yesterday.',options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
-  {pt:'Além disso, eles trouxeram presentes.',before:'',blank:'Also,',after:'they brought gifts.',options:['Also,','Too,','As well,'],anchor:'tambem-also-start'},
-  // ── TOO no fim (frase com verbo)
-  {pt:'Ela fala inglês também.',before:'She speaks English',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
-  {pt:'Nós iremos para a festa também.',before:"We'll go to the party",blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
-  {pt:'Eu trabalho aos domingos também.',before:'I work on Sundays',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
-  {pt:'Eles vieram para o jantar também.',before:'They came to the dinner',blank:'too',after:'.',options:['too','as well','also'],anchor:'tambem-too-end'},
-  // ── TOO em concordância sem verbo (com pronome objetivo)
-  {pt:'Eu também!',before:'Me',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
-  {pt:'Nós também!',before:'Us',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
-  {pt:'Ela também!',before:'Her',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
-  {pt:'Eles também!',before:'Them',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
-  {pt:'Ele também!',before:'Him',blank:'too',after:'!',options:['too','as well','also'],anchor:'tambem-too-naked'},
-  // ── AS WELL no fim (sempre com verbo)
-  {pt:'Megan estuda francês também.',before:'Megan studies French',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
-  {pt:'O Jake comprou um carro novo também.',before:'Jake bought a new car',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
-  {pt:'Nós vamos jantar fora também.',before:"We'll have dinner out",blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
-  {pt:'Eles viajaram para a Europa também.',before:'They traveled to Europe',blank:'as well',after:'.',options:['as well','also','too'],anchor:'tambem-aswell'},
+
+  {pt:'Eu também gosto de pizza.',isFullSentence:true,options:['I also like pizza.','I like pizza also.','I like also pizza.','I is also like pizza.'],correct:'I also like pizza.',anchor:'tambem-also-mid'},
+  {pt:'Ela também trabalha aos sábados.',isFullSentence:true,options:['She also works on Saturdays.','She works on Saturdays also.','She works also on Saturdays.','She is also works on Saturdays.'],correct:'She also works on Saturdays.',anchor:'tambem-also-mid'},
+  {pt:'Nós também moramos em São Paulo.',isFullSentence:true,options:['We also live in São Paulo.','We live in São Paulo also.','We live also in São Paulo.','We is also live in São Paulo.'],correct:'We also live in São Paulo.',anchor:'tambem-also-mid'},
+  {pt:'Eles também jogam futebol.',isFullSentence:true,options:['They also play soccer.','They play soccer also.','They play also soccer.','They is also play soccer.'],correct:'They also play soccer.',anchor:'tambem-also-mid'},
+  {pt:'Megan também adora café.',isFullSentence:true,options:['Megan also loves coffee.','Megan loves coffee also.','Megan loves also coffee.','Megan is also loves coffee.'],correct:'Megan also loves coffee.',anchor:'tambem-also-mid'},
+  {pt:'O Ryan também estuda francês.',isFullSentence:true,options:['Ryan also studies French.','Ryan studies French also.','Ryan studies also French.','Ryan is also studies French.'],correct:'Ryan also studies French.',anchor:'tambem-also-mid'},
+  {pt:'Eu também leio antes de dormir.',isFullSentence:true,options:['I also read before bed.','I read before bed also.','I read also before bed.','I is also read before bed.'],correct:'I also read before bed.',anchor:'tambem-also-mid'},
+  {pt:'A Charlotte também dança balé.',isFullSentence:true,options:['Charlotte also dances ballet.','Charlotte dances ballet also.','Charlotte dances also ballet.','Charlotte is also dances ballet.'],correct:'Charlotte also dances ballet.',anchor:'tambem-also-mid'},
+  {pt:'Eles também viajam pela Europa.',isFullSentence:true,options:['They also travel through Europe.','They travel through Europe also.','They travel also through Europe.','They is also travel through Europe.'],correct:'They also travel through Europe.',anchor:'tambem-also-mid'},
+  {pt:'Nós também acordamos cedo.',isFullSentence:true,options:['We also wake up early.','We wake up early also.','We wake up also early.','We is also wake up early.'],correct:'We also wake up early.',anchor:'tambem-also-mid'},
+  {pt:'Ele também é um cara bonito.',isFullSentence:true,options:['He is also a handsome guy.','He also is a handsome guy.','He is a handsome guy also.','Also He is a handsome guy.'],correct:'He is also a handsome guy.',anchor:'tambem-also-be'},
+  {pt:'Ela também é minha amiga.',isFullSentence:true,options:['She is also my friend.','She also is my friend.','She is my friend also.','Also She is my friend.'],correct:'She is also my friend.',anchor:'tambem-also-be'},
+  {pt:'Ryan também vai vir.',isFullSentence:true,options:['Ryan will also come.','Ryan also will come.','Ryan will come also.','Also Ryan will come.'],correct:'Ryan will also come.',anchor:'tambem-also-be'},
+  {pt:'Eles também eram meus colegas.',isFullSentence:true,options:['They were also my classmates.','They also were my classmates.','They were my classmates also.','Also They were my classmates.'],correct:'They were also my classmates.',anchor:'tambem-also-be'},
+  {pt:'Eu também posso te ajudar.',isFullSentence:true,options:['I can also help you.','I also can help you.','I can help you also.','Also I can help you.'],correct:'I can also help you.',anchor:'tambem-also-be'},
+  {pt:'Megan também é dentista.',isFullSentence:true,options:['Megan is also a dentist.','Megan also is a dentist.','Megan is a dentist also.','Also Megan is a dentist.'],correct:'Megan is also a dentist.',anchor:'tambem-also-be'},
+  {pt:'Nós também estamos prontos.',isFullSentence:true,options:['We are also ready.','We also are ready.','We are ready also.','Also We are ready.'],correct:'We are also ready.',anchor:'tambem-also-be'},
+  {pt:'Você também pode tentar de novo.',isFullSentence:true,options:['You can also try again.','You also can try again.','You can try again also.','Also You can try again.'],correct:'You can also try again.',anchor:'tambem-also-be'},
+  {pt:'O Jake também estava lá.',isFullSentence:true,options:['Jake was also there.','Jake also was there.','Jake was there also.','Also Jake was there.'],correct:'Jake was also there.',anchor:'tambem-also-be'},
+  {pt:'Eles também vão participar.',isFullSentence:true,options:['They will also participate.','They also will participate.','They will participate also.','Also They will participate.'],correct:'They will also participate.',anchor:'tambem-also-be'},
+  {pt:'Além disso, acho que você é perfeita para a tarefa.',isFullSentence:true,options:['Also, I think you\'re perfect for the task.','I think you\'re perfect for the task also.','I also think you\'re perfect for the task.','Furthermore also, I think you\'re perfect for the task.'],correct:'Also, I think you\'re perfect for the task.',anchor:'tambem-also-start'},
+  {pt:'Além disso, ele me ligou ontem.',isFullSentence:true,options:['Also, he called me yesterday.','He called me yesterday also.','He also called me yesterday.','Furthermore also, he called me yesterday.'],correct:'Also, he called me yesterday.',anchor:'tambem-also-start'},
+  {pt:'Além disso, eles trouxeram presentes.',isFullSentence:true,options:['Also, they brought gifts.','They brought gifts also.','They also brought gifts.','Furthermore also, they brought gifts.'],correct:'Also, they brought gifts.',anchor:'tambem-also-start'},
+  {pt:'Além disso, a comida estava ótima.',isFullSentence:true,options:['Also, the food was great.','The food was great also.','The also food was great.','Furthermore also, the food was great.'],correct:'Also, the food was great.',anchor:'tambem-also-start'},
+  {pt:'Além disso, nós ganhamos um desconto.',isFullSentence:true,options:['Also, we got a discount.','We got a discount also.','We also got a discount.','Furthermore also, we got a discount.'],correct:'Also, we got a discount.',anchor:'tambem-also-start'},
+  {pt:'Além disso, ela tem experiência na área.',isFullSentence:true,options:['Also, she has experience in the field.','She has experience in the field also.','She also has experience in the field.','Furthermore also, she has experience in the field.'],correct:'Also, she has experience in the field.',anchor:'tambem-also-start'},
+  {pt:'Além disso, o show começou no horário.',isFullSentence:true,options:['Also, the show started on time.','The show started on time also.','The also show started on time.','Furthermore also, the show started on time.'],correct:'Also, the show started on time.',anchor:'tambem-also-start'},
+  {pt:'Além disso, eu acho a ideia genial.',isFullSentence:true,options:['Also, I think the idea is brilliant.','I think the idea is brilliant also.','I also think the idea is brilliant.','Furthermore also, I think the idea is brilliant.'],correct:'Also, I think the idea is brilliant.',anchor:'tambem-also-start'},
+  {pt:'Além disso, eles moram perto daqui.',isFullSentence:true,options:['Also, they live nearby.','They live nearby also.','They also live nearby.','Furthermore also, they live nearby.'],correct:'Also, they live nearby.',anchor:'tambem-also-start'},
+  {pt:'Além disso, Megan vai nos ajudar.',isFullSentence:true,options:['Also, Megan will help us.','Megan will help us also.','Megan also will help us.','Furthermore also, Megan will help us.'],correct:'Also, Megan will help us.',anchor:'tambem-also-start'},
+  {pt:'Ela fala inglês também.',isFullSentence:true,options:['She speaks English too.','She too speaks English.','Too She speaks English.','She speaks too English.'],correct:'She speaks English too.',anchor:'tambem-too-end'},
+  {pt:'Nós iremos para a festa também.',isFullSentence:true,options:['We\'ll go to the party too.','We\'ll too go to the party.','Too We\'ll go to the party.','We\'ll go to too the party.'],correct:'We\'ll go to the party too.',anchor:'tambem-too-end'},
+  {pt:'Eu trabalho aos domingos também.',isFullSentence:true,options:['I work on Sundays too.','I too work on Sundays.','Too I work on Sundays.','I work on too Sundays.'],correct:'I work on Sundays too.',anchor:'tambem-too-end'},
+  {pt:'Eles vieram para o jantar também.',isFullSentence:true,options:['They came to the dinner too.','They too came to the dinner.','Too They came to the dinner.','They came to too the dinner.'],correct:'They came to the dinner too.',anchor:'tambem-too-end'},
+  {pt:'Megan adora viajar também.',isFullSentence:true,options:['Megan loves to travel too.','Megan too loves to travel.','Too Megan loves to travel.','Megan loves to too travel.'],correct:'Megan loves to travel too.',anchor:'tambem-too-end'},
+  {pt:'Nós moramos no centro também.',isFullSentence:true,options:['We live downtown too.','We too live downtown.','Too We live downtown.','We live too downtown.'],correct:'We live downtown too.',anchor:'tambem-too-end'},
+  {pt:'O Ryan estudou no exterior também.',isFullSentence:true,options:['Ryan studied abroad too.','Ryan too studied abroad.','Too Ryan studied abroad.','Ryan studied too abroad.'],correct:'Ryan studied abroad too.',anchor:'tambem-too-end'},
+  {pt:'Eu li esse livro também.',isFullSentence:true,options:['I read that book too.','I too read that book.','Too I read that book.','I read too that book.'],correct:'I read that book too.',anchor:'tambem-too-end'},
+  {pt:'Eles compraram ingressos também.',isFullSentence:true,options:['They bought tickets too.','They too bought tickets.','Too They bought tickets.','They bought too tickets.'],correct:'They bought tickets too.',anchor:'tambem-too-end'},
+  {pt:'Ela canta muito bem também.',isFullSentence:true,options:['She sings very well too.','She too sings very well.','Too She sings very well.','She sings too very well.'],correct:'She sings very well too.',anchor:'tambem-too-end'},
+  {pt:'Megan estuda francês também.',isFullSentence:true,options:['Megan studies French as well.','Megan as well studies French.','As well Megan studies French.','Megan studies as well French.'],correct:'Megan studies French as well.',anchor:'tambem-aswell'},
+  {pt:'O Jake comprou um carro novo também.',isFullSentence:true,options:['Jake bought a new car as well.','Jake as well bought a new car.','As well Jake bought a new car.','Jake bought as well a new car.'],correct:'Jake bought a new car as well.',anchor:'tambem-aswell'},
+  {pt:'Nós vamos jantar fora também.',isFullSentence:true,options:['We\'ll have dinner out as well.','We\'ll as well have dinner out.','As well We\'ll have dinner out.','We\'ll have as well dinner out.'],correct:'We\'ll have dinner out as well.',anchor:'tambem-aswell'},
+  {pt:'Eles viajaram para a Europa também.',isFullSentence:true,options:['They traveled to Europe as well.','They as well traveled to Europe.','As well They traveled to Europe.','They traveled to as well Europe.'],correct:'They traveled to Europe as well.',anchor:'tambem-aswell'},
+  {pt:'Ela trabalha aos finais de semana também.',isFullSentence:true,options:['She works on weekends as well.','She as well works on weekends.','As well She works on weekends.','She works as well on weekends.'],correct:'She works on weekends as well.',anchor:'tambem-aswell'},
+  {pt:'Eu corri 10 km também.',isFullSentence:true,options:['I ran 10 km as well.','I as well ran 10 km.','As well I ran 10 km.','I ran as well 10 km.'],correct:'I ran 10 km as well.',anchor:'tambem-aswell'},
+  {pt:'Nós convidamos o Ryan também.',isFullSentence:true,options:['We invited Ryan as well.','We as well invited Ryan.','As well We invited Ryan.','We invited as well Ryan.'],correct:'We invited Ryan as well.',anchor:'tambem-aswell'},
+  {pt:'Eles ficaram até o fim também.',isFullSentence:true,options:['They stayed until the end as well.','They as well stayed until the end.','As well They stayed until the end.','They stayed as well until the end.'],correct:'They stayed until the end as well.',anchor:'tambem-aswell'},
+  {pt:'O Edward chegou cedo também.',isFullSentence:true,options:['Edward arrived early as well.','Edward as well arrived early.','As well Edward arrived early.','Edward arrived as well early.'],correct:'Edward arrived early as well.',anchor:'tambem-aswell'},
+  {pt:'Megan trouxe sobremesa também.',isFullSentence:true,options:['Megan brought dessert as well.','Megan as well brought dessert.','As well Megan brought dessert.','Megan brought as well dessert.'],correct:'Megan brought dessert as well.',anchor:'tambem-aswell'},
+  {pt:'Eu também!',isFullSentence:true,options:['Me too!','I too!','Me as well!','Too Me!'],correct:'Me too!',anchor:'tambem-too-naked'},
+  {pt:'Nós também!',isFullSentence:true,options:['Us too!','We too!','Us as well!','Too Us!'],correct:'Us too!',anchor:'tambem-too-naked'},
+  {pt:'Ela também!',isFullSentence:true,options:['Her too!','She too!','Her as well!','Too Her!'],correct:'Her too!',anchor:'tambem-too-naked'},
+  {pt:'Eles também!',isFullSentence:true,options:['Them too!','They too!','Them as well!','Too Them!'],correct:'Them too!',anchor:'tambem-too-naked'},
+  {pt:'Ele também!',isFullSentence:true,options:['Him too!','He too!','Him as well!','Too Him!'],correct:'Him too!',anchor:'tambem-too-naked'},
+  {pt:'Eu também!',isFullSentence:true,options:['Me too!','I too!','I as well!','As well Me!'],correct:'Me too!',anchor:'tambem-too-naked'},
+  {pt:'Nós também!',isFullSentence:true,options:['Us too!','We too!','We as well!','As well Us!'],correct:'Us too!',anchor:'tambem-too-naked'},
+  {pt:'Ela também!',isFullSentence:true,options:['Her too!','She too!','She as well!','As well Her!'],correct:'Her too!',anchor:'tambem-too-naked'},
+  {pt:'Eles também!',isFullSentence:true,options:['Them too!','They too!','They as well!','As well Them!'],correct:'Them too!',anchor:'tambem-too-naked'},
+  {pt:'Ele também!',isFullSentence:true,options:['Him too!','He too!','He as well!','As well Him!'],correct:'Him too!',anchor:'tambem-too-naked'},
 ];
 
 window['rev4_bk']=[

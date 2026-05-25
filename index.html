@@ -336,6 +336,16 @@ td:first-child{font-weight:700;color:var(--blue);white-space:nowrap;}
 .hl-go{color:var(--green);font-weight:700;}
 .hl-tobe{color:var(--yel);font-weight:700;}
 .hl-tambem{color:#fbbf24;font-weight:700;}
+.hl-p1{color:#c084fc;font-weight:700;}  /* peso 1 — roxo */
+.hl-p2{color:#fbbf24;font-weight:700;}  /* peso 2 — amarelo */
+.hl-p3{color:#4ade80;font-weight:700;}  /* peso 3 — verde */
+.hl-p4{color:#60a5fa;font-weight:700;}  /* peso 4 — azul */
+.hl-coringa{color:#22d3ee;font-weight:700;} /* a lot of / a lot / pretty much — coringas */
+.peso-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);margin-left:6px;letter-spacing:.5px;vertical-align:middle;}
+.peso-badge.p1{color:#c084fc;border-color:rgba(192,132,252,.35);background:rgba(192,132,252,.08);}
+.peso-badge.p2{color:#fbbf24;border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.08);}
+.peso-badge.p3{color:#4ade80;border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.08);}
+.peso-badge.p4{color:#60a5fa;border-color:rgba(96,165,250,.35);background:rgba(96,165,250,.08);}
 /* ── RULE BOX ── */
 .conj-table{background:var(--card2);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
 .conj-row.hd{background:var(--card);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);}
@@ -1316,6 +1326,7 @@ function runInits(p){
   if(p===65)initEx('inonatpron',window['inonatpron_bk'],10);
   if(p===66)initEx('rev5',window['rev5_bk'],15);
   if(p===69)initEx('tambem',window['tambem_bk'],10);
+  if(p===71)initEx('muitos',window['muitos_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -1794,6 +1805,20 @@ function _pickVaried(bank,total,key){
     if(b==='as well')return 'aswell';
     return 'na';
   };
+  // _muitosType: detecta sub-tipo para banco "muitos" (very/so/too/many/much/etc)
+  const _muitosType=(it)=>{
+    if(!it)return 'na';
+    if(it.anchor){
+      const a=it.anchor;
+      if(a==='muitos-adj')return 'adj';
+      if(a==='muitos-plural')return 'plural';
+      if(a==='muitos-singular')return 'singular';
+      if(a==='muitos-alot-of')return 'alot-of';
+      if(a==='muitos-alot')return 'alot';
+      if(a==='muitos-pretty-much')return 'pretty-much';
+    }
+    return 'na';
+  };
   // _revTopic: detecta o "assunto macro" para bancos de revisão (rev2/3/4/5)
   // que misturam vários tópicos. Usado para balanceamento hierárquico.
   const _revTopic=(it)=>{
@@ -1841,7 +1866,7 @@ function _pickVaried(bank,total,key){
     if(!sit)return 'X';
     const parts=sit.split('|');
     // parts: [Q/A, N/P, tense, subject]
-    return parts.slice(0,3).join('|')+'|'+(_is3sg(it)?'3sg':'plr')+'|'+_possType(it)+'|'+_casoType(it)+'|'+_revTopic(it)+'|'+_tambemType(it);
+    return parts.slice(0,3).join('|')+'|'+(_is3sg(it)?'3sg':'plr')+'|'+_possType(it)+'|'+_casoType(it)+'|'+_revTopic(it)+'|'+_tambemType(it)+'|'+_muitosType(it);
   };
   const catGroups={};
   for(const it of bank){
@@ -1859,17 +1884,19 @@ function _pickVaried(bank,total,key){
   const isPossBank=bank.length>0&&bank.every(it=>_possType(it)!=='na');
   const isCasoBank=bank.length>0&&bank.every(it=>_casoType(it)!=='na');
   const isTambemBank=bank.length>0&&bank.every(it=>_tambemType(it)!=='na');
+  const isMuitosBank=bank.length>0&&bank.every(it=>_muitosType(it)!=='na');
   // rev_bk: detectar se banco tem mistura de tópicos (>=3 tópicos distintos no banco)
   const topicsInBank=new Set(bank.map(_revTopic));
-  const isRevBank=!isPossBank&&!isCasoBank&&!isTambemBank&&topicsInBank.size>=3;
+  const isRevBank=!isPossBank&&!isCasoBank&&!isTambemBank&&!isMuitosBank&&topicsInBank.size>=3;
   const pool=[];
-  if(isPossBank||isCasoBank||isRevBank||isTambemBank){
-    // A última parte da chave em catOf é tambemType.
+  if(isPossBank||isCasoBank||isRevBank||isTambemBank||isMuitosBank){
+    // A última parte da chave em catOf é muitosType.
     let tokenIdx;
     if(isPossBank)tokenIdx=4;       // 0:Q/A 1:N/P 2:tense 3:3sg/plr 4:possType
     else if(isCasoBank)tokenIdx=5;  // 5:casoType
     else if(isRevBank)tokenIdx=6;   // 6:revTopic
-    else tokenIdx=7;                // 7:tambemType
+    else if(isTambemBank)tokenIdx=7;// 7:tambemType
+    else tokenIdx=8;                // 8:muitosType
     const typeGroups={};
     for(const ck of catKeys){
       const parts=ck.split('|');
@@ -3761,6 +3788,110 @@ window['tambem_bk']=[
   {pt:'Ele também!',isFullSentence:true,options:['Him too!','He too!','He as well!','As well Him!'],correct:'Him too!',anchor:'tambem-too-naked'},
 ];
 
+window['muitos_bk']=[
+
+  {pt:'Ela é muito bonita.',isFullSentence:true,options:['She is very pretty.','She is many pretty.','She is much pretty.','She is a lot of pretty.'],correct:'She is very pretty.',anchor:'muitos-adj'},
+  {pt:'O carro está muito sujo.',isFullSentence:true,options:['The car is very dirty.','The car is many dirty.','The car is much dirty.','The car is a lot of dirty.'],correct:'The car is very dirty.',anchor:'muitos-adj'},
+  {pt:'Ele está muito cansado.',isFullSentence:true,options:['He is very tired.','He is many tired.','He is much tired.','He is a lot of tired.'],correct:'He is very tired.',anchor:'muitos-adj'},
+  {pt:'Estou muito feliz hoje.',isFullSentence:true,options:['I am very happy today.','I am many happy today.','I am much happy today.','I am a lot of happy today.'],correct:'I am very happy today.',anchor:'muitos-adj'},
+  {pt:'Você é tão gentil!',isFullSentence:true,options:['You are so kind!','You are many kind!','You are much kind!','You are a lot of kind!'],correct:'You are so kind!',anchor:'muitos-adj'},
+  {pt:'O bolo está tão gostoso!',isFullSentence:true,options:['The cake is so delicious!','The cake is many delicious!','The cake is much delicious!','The cake is a lot of delicious!'],correct:'The cake is so delicious!',anchor:'muitos-adj'},
+  {pt:'Eu estou tão animado!',isFullSentence:true,options:['I am so excited!','I am many excited!','I am much excited!','I am a lot of excited!'],correct:'I am so excited!',anchor:'muitos-adj'},
+  {pt:'Está tão frio hoje!',isFullSentence:true,options:['It is so cold today!','It is many cold today!','It is much cold today!','It is a lot of cold today!'],correct:'It is so cold today!',anchor:'muitos-adj'},
+  {pt:'Está quente demais aqui.',isFullSentence:true,options:['It is too hot here.','It is many hot here.','It is much hot here.','It is a lot of hot here.'],correct:'It is too hot here.',anchor:'muitos-adj'},
+  {pt:'Esta sopa está salgada demais.',isFullSentence:true,options:['This soup is too salty.','This soup is many salty.','This soup is much salty.','This soup is a lot of salty.'],correct:'This soup is too salty.',anchor:'muitos-adj'},
+  {pt:'Ele é jovem demais para isso.',isFullSentence:true,options:['He is too young for that.','He is many young for that.','He is much young for that.','He is a lot of young for that.'],correct:'He is too young for that.',anchor:'muitos-adj'},
+  {pt:'Você está estressado demais.',isFullSentence:true,options:['You are too stressed.','You are many stressed.','You are much stressed.','You are a lot of stressed.'],correct:'You are too stressed.',anchor:'muitos-adj'},
+  {pt:'O filme foi bem interessante.',isFullSentence:true,options:['The movie was quite interesting.','The movie was many interesting.','The movie was much interesting.','The movie was a lot of interesting.'],correct:'The movie was quite interesting.',anchor:'muitos-adj'},
+  {pt:'Ela é bem inteligente.',isFullSentence:true,options:['She is quite smart.','She is many smart.','She is much smart.','She is a lot of smart.'],correct:'She is quite smart.',anchor:'muitos-adj'},
+  {pt:'Está bem tarde já.',isFullSentence:true,options:['It is pretty late already.','It is many late already.','It is much late already.','It is a lot of late already.'],correct:'It is pretty late already.',anchor:'muitos-adj'},
+  {pt:'Esse café está bem forte.',isFullSentence:true,options:['This coffee is pretty strong.','This coffee is many strong.','This coffee is much strong.','This coffee is a lot of strong.'],correct:'This coffee is pretty strong.',anchor:'muitos-adj'},
+  {pt:'Não é tão caro assim.',isFullSentence:true,options:['It isn\'t that expensive.','It isn\'t many expensive.','It isn\'t much expensive.','It isn\'t a lot of expensive.'],correct:'It isn\'t that expensive.',anchor:'muitos-adj'},
+  {pt:'Ela não é tão alta assim.',isFullSentence:true,options:['She isn\'t that tall.','She isn\'t many tall.','She isn\'t much tall.','She isn\'t a lot of tall.'],correct:'She isn\'t that tall.',anchor:'muitos-adj'},
+  {pt:'É tão difícil assim?',isFullSentence:true,options:['Is it that hard?','Is it many hard?','Is it much hard?','Is it a lot of hard?'],correct:'Is it that hard?',anchor:'muitos-adj'},
+  {pt:'Não estou tão cansado assim.',isFullSentence:true,options:['I\'m not that tired.','I\'m not many tired.','I\'m not much tired.','I\'m not a lot of tired.'],correct:'I\'m not that tired.',anchor:'muitos-adj'},
+  {pt:'Eu tenho muitos amigos.',isFullSentence:true,options:['I have many friends.','I have much friends.','I have very friends.','I have so friends.'],correct:'I have many friends.',anchor:'muitos-plural'},
+  {pt:'Ela viu muitos filmes este ano.',isFullSentence:true,options:['She watched many movies this year.','She watched much movies this year.','She watched very movies this year.','She watched so movies this year.'],correct:'She watched many movies this year.',anchor:'muitos-plural'},
+  {pt:'Existem muitos problemas aqui.',isFullSentence:true,options:['There are many problems here.','There are much problems here.','There are very problems here.','There are so problems here.'],correct:'There are many problems here.',anchor:'muitos-plural'},
+  {pt:'Megan leu muitos livros.',isFullSentence:true,options:['Megan read many books.','Megan read much books.','Megan read very books.','Megan read so books.'],correct:'Megan read many books.',anchor:'muitos-plural'},
+  {pt:'Eu tenho tantos amigos!',isFullSentence:true,options:['I have so many friends!','I have much friends!','I have very friends!','I have so friends!'],correct:'I have so many friends!',anchor:'muitos-plural'},
+  {pt:'Existem tantas pessoas aqui!',isFullSentence:true,options:['There are so many people here!','There are much people here!','There are very people here!','There are so people here!'],correct:'There are so many people here!',anchor:'muitos-plural'},
+  {pt:'Eles têm tantos brinquedos!',isFullSentence:true,options:['They have so many toys!','They have much toys!','They have very toys!','They have so toys!'],correct:'They have so many toys!',anchor:'muitos-plural'},
+  {pt:'Há carros demais nesta rua.',isFullSentence:true,options:['There are too many cars on this street.','There are much cars on this street.','There are very cars on this street.','There are so cars on this street.'],correct:'There are too many cars on this street.',anchor:'muitos-plural'},
+  {pt:'Você fez perguntas demais.',isFullSentence:true,options:['You asked too many questions.','You asked much questions.','You asked very questions.','You asked so questions.'],correct:'You asked too many questions.',anchor:'muitos-plural'},
+  {pt:'Eu como doces demais.',isFullSentence:true,options:['I eat too many sweets.','I eat much sweets.','I eat very sweets.','I eat so sweets.'],correct:'I eat too many sweets.',anchor:'muitos-plural'},
+  {pt:'Há pessoas demais da conta aqui.',isFullSentence:true,options:['There are way too many people here.','There are much people here.','There are very people here.','There are so people here.'],correct:'There are way too many people here.',anchor:'muitos-plural'},
+  {pt:'Ela tem sapatos demais da conta.',isFullSentence:true,options:['She has way too many shoes.','She has much shoes.','She has very shoes.','She has so shoes.'],correct:'She has way too many shoes.',anchor:'muitos-plural'},
+  {pt:'Eu não tenho tantos amigos assim.',isFullSentence:true,options:['I don\'t have that many friends.','I don\'t have much friends.','I don\'t have very friends.','I don\'t have so friends.'],correct:'I don\'t have that many friends.',anchor:'muitos-plural'},
+  {pt:'Você convidou tantas pessoas assim?',isFullSentence:true,options:['Did you invite that many people?','Did you invite much people?','Did you invite very people?','Did you invite so people?'],correct:'Did you invite that many people?',anchor:'muitos-plural'},
+  {pt:'Não há tantos carros assim na rua.',isFullSentence:true,options:['There aren\'t that many cars on the street.','There aren\'t much cars on the street.','There aren\'t very cars on the street.','There aren\'t so cars on the street.'],correct:'There aren\'t that many cars on the street.',anchor:'muitos-plural'},
+  {pt:'Ela não comprou tantos vestidos assim.',isFullSentence:true,options:['She didn\'t buy that many dresses.','She didn\'t buy much dresses.','She didn\'t buy very dresses.','She didn\'t buy so dresses.'],correct:'She didn\'t buy that many dresses.',anchor:'muitos-plural'},
+  {pt:'Não vi tantos filmes assim este ano.',isFullSentence:true,options:['I haven\'t seen that many movies this year.','I haven\'t seen much movies this year.','I haven\'t seen very movies this year.','I haven\'t seen so movies this year.'],correct:'I haven\'t seen that many movies this year.',anchor:'muitos-plural'},
+  {pt:'Não tenho muito dinheiro.',isFullSentence:true,options:['I don\'t have much money.','I don\'t have many money.','I don\'t have very money.','I don\'t have so money.'],correct:'I don\'t have much money.',anchor:'muitos-singular'},
+  {pt:'Ele não bebe muita água.',isFullSentence:true,options:['He doesn\'t drink much water.','He doesn\'t drink many water.','He doesn\'t drink very water.','He doesn\'t drink so water.'],correct:'He doesn\'t drink much water.',anchor:'muitos-singular'},
+  {pt:'Não há muito tempo.',isFullSentence:true,options:['There isn\'t much time.','There isn\'t many time.','There isn\'t very time.','There isn\'t so time.'],correct:'There isn\'t much time.',anchor:'muitos-singular'},
+  {pt:'Ela não tomou muito café hoje.',isFullSentence:true,options:['She didn\'t drink much coffee today.','She didn\'t drink many coffee today.','She didn\'t drink very coffee today.','She didn\'t drink so coffee today.'],correct:'She didn\'t drink much coffee today.',anchor:'muitos-singular'},
+  {pt:'Eu tenho tanto trabalho!',isFullSentence:true,options:['I have so much work!','I have many work!','I have very work!','I have so work!'],correct:'I have so much work!',anchor:'muitos-singular'},
+  {pt:'Há tanta comida aqui!',isFullSentence:true,options:['There is so much food here!','There is many food here!','There is very food here!','There is so food here!'],correct:'There is so much food here!',anchor:'muitos-singular'},
+  {pt:'Ele tem tanta paciência!',isFullSentence:true,options:['He has so much patience!','He has many patience!','He has very patience!','He has so patience!'],correct:'He has so much patience!',anchor:'muitos-singular'},
+  {pt:'Você comeu açúcar demais.',isFullSentence:true,options:['You ate too much sugar.','You ate many sugar.','You ate very sugar.','You ate so sugar.'],correct:'You ate too much sugar.',anchor:'muitos-singular'},
+  {pt:'Há barulho demais aqui.',isFullSentence:true,options:['There is too much noise here.','There is many noise here.','There is very noise here.','There is so noise here.'],correct:'There is too much noise here.',anchor:'muitos-singular'},
+  {pt:'Eu bebi café demais.',isFullSentence:true,options:['I drank too much coffee.','I drank many coffee.','I drank very coffee.','I drank so coffee.'],correct:'I drank too much coffee.',anchor:'muitos-singular'},
+  {pt:'Há fumaça demais nesta sala.',isFullSentence:true,options:['There is too much smoke in this room.','There is many smoke in this room.','There is very smoke in this room.','There is so smoke in this room.'],correct:'There is too much smoke in this room.',anchor:'muitos-singular'},
+  {pt:'Você gastou dinheiro demais da conta.',isFullSentence:true,options:['You spent way too much money.','You spent many money.','You spent very money.','You spent so money.'],correct:'You spent way too much money.',anchor:'muitos-singular'},
+  {pt:'Ele bebeu cerveja demais da conta.',isFullSentence:true,options:['He drank way too much beer.','He drank many beer.','He drank very beer.','He drank so beer.'],correct:'He drank way too much beer.',anchor:'muitos-singular'},
+  {pt:'Eu não vou gastar tanto assim.',isFullSentence:true,options:['I won\'t spend that much money.','I won\'t spend many money.','I won\'t spend very money.','I won\'t spend so money.'],correct:'I won\'t spend that much money.',anchor:'muitos-singular'},
+  {pt:'Custa tanto assim?',isFullSentence:true,options:['Does it cost that much?','Does it cost many?','Does it cost very?','Does it cost so?'],correct:'Does it cost that much?',anchor:'muitos-singular'},
+  {pt:'Não preciso de tanto açúcar assim.',isFullSentence:true,options:['I don\'t need that much sugar.','I don\'t need many sugar.','I don\'t need very sugar.','I don\'t need so sugar.'],correct:'I don\'t need that much sugar.',anchor:'muitos-singular'},
+  {pt:'Ela não bebe tanta água assim.',isFullSentence:true,options:['She doesn\'t drink that much water.','She doesn\'t drink many water.','She doesn\'t drink very water.','She doesn\'t drink so water.'],correct:'She doesn\'t drink that much water.',anchor:'muitos-singular'},
+  {pt:'Ela disse basicamente a mesma coisa.',isFullSentence:true,options:['She said pretty much the same thing.','She said very much the same thing.','She said too much the same thing.','She said so much the same thing.'],correct:'She said pretty much the same thing.',anchor:'muitos-pretty-much'},
+  {pt:'O segundo jogo é praticamente igual.',isFullSentence:true,options:['The second game is pretty much the same.','The second game is very much the same.','The second game is too much the same.','The second game is so much the same.'],correct:'The second game is pretty much the same.',anchor:'muitos-pretty-much'},
+  {pt:'Eu praticamente terminei o trabalho.',isFullSentence:true,options:['I\'m pretty much done with the work.','I\'m very much done with the work.','I\'m too much done with the work.','I\'m so much done with the work.'],correct:'I\'m pretty much done with the work.',anchor:'muitos-pretty-much'},
+  {pt:'Nós praticamente já chegamos.',isFullSentence:true,options:['We\'re pretty much there already.','We\'re very much there already.','We\'re too much there already.','We\'re so much there already.'],correct:'We\'re pretty much there already.',anchor:'muitos-pretty-much'},
+  {pt:'Está basicamente pronto.',isFullSentence:true,options:['It\'s pretty much ready.','It\'s very much ready.','It\'s too much ready.','It\'s so much ready.'],correct:'It\'s pretty much ready.',anchor:'muitos-pretty-much'},
+  {pt:'Ele praticamente vive na academia.',isFullSentence:true,options:['He pretty much lives at the gym.','He very much lives at the gym.','He too much lives at the gym.','He so much lives at the gym.'],correct:'He pretty much lives at the gym.',anchor:'muitos-pretty-much'},
+  {pt:'Eu basicamente concordo com você.',isFullSentence:true,options:['I pretty much agree with you.','I very much agree with you.','I too much agree with you.','I so much agree with you.'],correct:'I pretty much agree with you.',anchor:'muitos-pretty-much'},
+  {pt:'A casa está praticamente vazia.',isFullSentence:true,options:['The house is pretty much empty.','The house is very much empty.','The house is too much empty.','The house is so much empty.'],correct:'The house is pretty much empty.',anchor:'muitos-pretty-much'},
+  {pt:'Ela praticamente nunca atende o telefone.',isFullSentence:true,options:['She pretty much never answers the phone.','She very much never answers the phone.','She too much never answers the phone.','She so much never answers the phone.'],correct:'She pretty much never answers the phone.',anchor:'muitos-pretty-much'},
+  {pt:'Esse vinho é praticamente igual ao outro.',isFullSentence:true,options:['This wine is pretty much the same as the other one.','This wine is very much the same as the other one.','This wine is too much the same as the other one.','This wine is so much the same as the other one.'],correct:'This wine is pretty much the same as the other one.',anchor:'muitos-pretty-much'},
+  {pt:'Megan tem um monte de carros.',isFullSentence:true,options:['Megan has a lot of cars.','Megan has a lot cars.','Megan has much of cars.','Megan has many of cars.'],correct:'Megan has a lot of cars.',anchor:'muitos-alot-of'},
+  {pt:'Eu tenho um monte de amigos.',isFullSentence:true,options:['I have a lot of friends.','I have a lot friends.','I have much of friends.','I have many of friends.'],correct:'I have a lot of friends.',anchor:'muitos-alot-of'},
+  {pt:'Ela tem um monte de dinheiro.',isFullSentence:true,options:['She has a lot of money.','She has a lot money.','She has much of money.','She has many of money.'],correct:'She has a lot of money.',anchor:'muitos-alot-of'},
+  {pt:'Há um monte de açúcar nisso.',isFullSentence:true,options:['There is a lot of sugar in this.','There is a lot sugar in this.','There is much of sugar in this.','There is many of sugar in this.'],correct:'There is a lot of sugar in this.',anchor:'muitos-alot-of'},
+  {pt:'Eles trouxeram um monte de presentes.',isFullSentence:true,options:['They brought a lot of gifts.','They brought a lot gifts.','They brought much of gifts.','They brought many of gifts.'],correct:'They brought a lot of gifts.',anchor:'muitos-alot-of'},
+  {pt:'Eu bebi um monte de café hoje.',isFullSentence:true,options:['I drank a lot of coffee today.','I drank a lot coffee today.','I drank much of coffee today.','I drank many of coffee today.'],correct:'I drank a lot of coffee today.',anchor:'muitos-alot-of'},
+  {pt:'Há um monte de pessoas aqui.',isFullSentence:true,options:['There are a lot of people here.','There are a lot people here.','There are much of people here.','There are many of people here.'],correct:'There are a lot of people here.',anchor:'muitos-alot-of'},
+  {pt:'Megan leu um monte de livros este ano.',isFullSentence:true,options:['Megan read a lot of books this year.','Megan read a lot books this year.','Megan read much of books this year.','Megan read many of books this year.'],correct:'Megan read a lot of books this year.',anchor:'muitos-alot-of'},
+  {pt:'Nós temos um monte de tempo livre.',isFullSentence:true,options:['We have a lot of free time.','We have a lot free time.','We have much of free time.','We have many of free time.'],correct:'We have a lot of free time.',anchor:'muitos-alot-of'},
+  {pt:'Ele tem um monte de roupas.',isFullSentence:true,options:['He has a lot of clothes.','He has a lot clothes.','He has much of clothes.','He has many of clothes.'],correct:'He has a lot of clothes.',anchor:'muitos-alot-of'},
+  {pt:'Existem muitos restaurantes na cidade.',isFullSentence:true,options:['There are many restaurants in the city.','There are much restaurants in the city.','There are very restaurants in the city.','There are so restaurants in the city.'],correct:'There are many restaurants in the city.',anchor:'muitos-plural'},
+  {pt:'Eu vi tantas estrelas ontem!',isFullSentence:true,options:['I saw so many stars yesterday!','I saw much stars yesterday!','I saw very stars yesterday!','I saw so stars yesterday!'],correct:'I saw so many stars yesterday!',anchor:'muitos-plural'},
+  {pt:'Há crianças demais da conta no parque.',isFullSentence:true,options:['There are way too many children at the park.','There are much children at the park.','There are very children at the park.','There are so children at the park.'],correct:'There are way too many children at the park.',anchor:'muitos-plural'},
+  {pt:'Não há muita comida na geladeira.',isFullSentence:true,options:['There isn\'t much food in the fridge.','There isn\'t many food in the fridge.','There isn\'t very food in the fridge.','There isn\'t so food in the fridge.'],correct:'There isn\'t much food in the fridge.',anchor:'muitos-singular'},
+  {pt:'Ele tem tanta paciência!',isFullSentence:true,options:['He has so much patience!','He has many patience!','He has very patience!','He has so patience!'],correct:'He has so much patience!',anchor:'muitos-singular'},
+  {pt:'Eu tomei café demais da conta hoje.',isFullSentence:true,options:['I drank way too much coffee today.','I drank many coffee today.','I drank very coffee today.','I drank so coffee today.'],correct:'I drank way too much coffee today.',anchor:'muitos-singular'},
+  {pt:'Eu estudei um monte.',isFullSentence:true,options:['I studied a lot.','I studied a lot of.','I studied many.','I studied very.'],correct:'I studied a lot.',anchor:'muitos-alot'},
+  {pt:'Hoje choveu um monte.',isFullSentence:true,options:['Today it rained a lot.','Today it rained a lot of.','Today it rained many.','Today it rained very.'],correct:'Today it rained a lot.',anchor:'muitos-alot'},
+  {pt:'Nós trabalhamos um monte ontem.',isFullSentence:true,options:['We worked a lot yesterday.','We worked a lot of yesterday.','We worked many yesterday.','We worked very yesterday.'],correct:'We worked a lot yesterday.',anchor:'muitos-alot'},
+  {pt:'Ela come um monte.',isFullSentence:true,options:['She eats a lot.','She eats a lot of.','She eats many.','She eats very.'],correct:'She eats a lot.',anchor:'muitos-alot'},
+  {pt:'Ele dorme um monte.',isFullSentence:true,options:['He sleeps a lot.','He sleeps a lot of.','He sleeps many.','He sleeps very.'],correct:'He sleeps a lot.',anchor:'muitos-alot'},
+  {pt:'Eu corri um monte hoje.',isFullSentence:true,options:['I ran a lot today.','I ran a lot of today.','I ran many today.','I ran very today.'],correct:'I ran a lot today.',anchor:'muitos-alot'},
+  {pt:'Eles bebem um monte.',isFullSentence:true,options:['They drink a lot.','They drink a lot of.','They drink many.','They drink very.'],correct:'They drink a lot.',anchor:'muitos-alot'},
+  {pt:'Megan viajou um monte ano passado.',isFullSentence:true,options:['Megan traveled a lot last year.','Megan traveled a lot of last year.','Megan traveled many last year.','Megan traveled very last year.'],correct:'Megan traveled a lot last year.',anchor:'muitos-alot'},
+  {pt:'Eu pensei um monte sobre isso.',isFullSentence:true,options:['I thought a lot about it.','I thought a lot of about it.','I thought many about it.','I thought very about it.'],correct:'I thought a lot about it.',anchor:'muitos-alot'},
+  {pt:'O Ryan fala um monte.',isFullSentence:true,options:['Ryan talks a lot.','Ryan talks a lot of.','Ryan talks many.','Ryan talks very.'],correct:'Ryan talks a lot.',anchor:'muitos-alot'},
+  {pt:'Ela não fala muito.',isFullSentence:true,options:['She doesn\'t talk much.','She doesn\'t talk many.','She doesn\'t talk a lot of.','She doesn\'t talk very.'],correct:'She doesn\'t talk much.',anchor:'muitos-alot'},
+  {pt:'Ele não estudou muito.',isFullSentence:true,options:['He didn\'t study much.','He didn\'t study many.','He didn\'t study a lot of.','He didn\'t study very.'],correct:'He didn\'t study much.',anchor:'muitos-alot'},
+  {pt:'Eu te amo pra caramba.',isFullSentence:true,options:['I love you so much.','I love you so many.','I love you so very.','I love you so a lot.'],correct:'I love you so much.',anchor:'muitos-alot'},
+  {pt:'Eu sinto sua falta pra caramba.',isFullSentence:true,options:['I miss you so much.','I miss you so many.','I miss you so very.','I miss you so a lot.'],correct:'I miss you so much.',anchor:'muitos-alot'},
+  {pt:'Ele te ajudou pra caramba.',isFullSentence:true,options:['He helped you so much.','He helped you so many.','He helped you so very.','He helped you so a lot.'],correct:'He helped you so much.',anchor:'muitos-alot'},
+  {pt:'Você reclama demais.',isFullSentence:true,options:['You complain too much.','You complain too many.','You complain very much.','You complain too a lot.'],correct:'You complain too much.',anchor:'muitos-alot'},
+  {pt:'Você pensa demais.',isFullSentence:true,options:['You think too much.','You think too many.','You think very much.','You think too a lot.'],correct:'You think too much.',anchor:'muitos-alot'},
+  {pt:'Ela trabalha demais.',isFullSentence:true,options:['She works too much.','She works too many.','She works very much.','She works too a lot.'],correct:'She works too much.',anchor:'muitos-alot'},
+  {pt:'Você trabalha demais da conta.',isFullSentence:true,options:['You work way too much.','You work way too many.','You work way much.','You work way too a lot.'],correct:'You work way too much.',anchor:'muitos-alot'},
+  {pt:'Ele bebe demais da conta.',isFullSentence:true,options:['He drinks way too much.','He drinks way too many.','He drinks way much.','He drinks way too a lot.'],correct:'He drinks way too much.',anchor:'muitos-alot'},
+];
+
 window['rev4_bk']=[
   {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','mine','me','I'],anchor:'rev4'},
   {pt:'Aquela casa é minha.',before:'That house is',blank:'mine',after:'.',options:['my','mine','me','I'],anchor:'rev4'},
@@ -4698,6 +4829,9 @@ const pages=[
       <div class="idx-chapter-body" id="idxcap6-body">
         <div class="idx-item" onclick="go(68)" data-kw="tambem also too as well advérbio meio fim frase além disso me too us too concordância sem verbo cap6">
           <div class="idx-num">27</div><div class="idx-info"><div class="idx-name">Também</div><div class="idx-desc">Also, too, as well — os 3 "também" do inglês</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(70)" data-kw="muito muitos quantidade very so too quite pretty many much a lot of way too many that adjetivo substantivo singular plural cap6">
+          <div class="idx-num">28</div><div class="idx-info"><div class="idx-name">Os "muitos"</div><div class="idx-desc">Very, so, too, many, much, a lot of — qual usar</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -9344,6 +9478,261 @@ const pages=[
   </div>
 </div>`,
 
+`<div class="page pg-sec" style="--acc:#f472b6;"><div class="sec-ghost">28</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="pg-watermark"></div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 28</div>
+    <div class="sec-title">Os "muitos"<br><span class="acc">do inglês</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Very, so, too, much, many, a lot of... cada um tem seu papel. Hora de saber qual usar e quando.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">📚</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em português, a palavra <strong>"muito"</strong> serve para quase tudo: <em>muito bonito, muita água, muitos carros, eu gosto muito</em>. Em inglês, cada um desses casos pede uma palavra <strong>diferente</strong>. Confundir "muito" com "muitos" em inglês é um dos erros mais comuns entre brasileiros — e a virada de chave acontece aqui.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#f472b6;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 28 · Os "muitos"</div><div class="pg-ttl">Os "muitos"</div></div>
+  <div class="pg-body">
+
+    <p class="intro" id="muitos-intro">Em português a gente usa a palavra <strong>muito</strong> (e suas variações <em>muita, muitos, muitas, tanto, demais</em>) para praticamente tudo. Em inglês, cada situação pede uma palavra diferente. A boa notícia: dá pra organizar tudo em <strong>3 grupos</strong> baseados em <em>o que vem depois</em>.</p>
+
+    <div class="sec-divider" id="muitos-adj"><div class="sec-divider-line"></div><div class="sec-divider-label">Com adjetivos</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando o "muito" aparece antes de um <strong>adjetivo</strong> (bonito, caro, cansado, legal...), em inglês usamos um destes:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 As 5 formas com adjetivo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela é <b>muito</b> bonita.</span><span class="eg-en en" data-speak="She is very pretty">She is <span class="hl-tambem">very</span> pretty.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela é <b>tão</b> bonita!</span><span class="eg-en en" data-speak="She is so pretty">She is <span class="hl-tambem">so</span> pretty!</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela é bonita <b>demais</b>.</span><span class="eg-en en" data-speak="She is too pretty">She is <span class="hl-tambem">too</span> pretty.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela é <b>bem</b> bonita.</span><span class="eg-en en" data-speak="She is quite pretty">She is <span class="hl-tambem">quite</span> pretty.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela é <b>bem</b> bonita.</span><span class="eg-en en" data-speak="She is pretty beautiful">She is <span class="hl-tambem">pretty</span> beautiful.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Cada um tem um sabor</div>
+      <p class="tip-txt"><strong>Very</strong> é o "muito" neutro, sem emoção. <strong>So</strong> tem mais força emocional ("tão"). <strong>Too</strong> indica <em>excesso</em> — algo que passou do ponto (geralmente ruim). <strong>Quite</strong> e <strong>pretty</strong> são mais brandos ("bem", "razoavelmente"), <strong>pretty</strong> é mais informal.</p>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Too ≠ Very</div>
+      <p class="tip-txt"><strong>Too</strong> não é só "muito" — é "muito além do necessário". <em>"It's too hot"</em> = "está quente demais (não dá pra aguentar)". Já <em>"It's very hot"</em> = "está muito quente (mas tudo bem)". Confundir os dois muda totalmente o sentido.</p>
+    </div>
+
+    <div class="sec-divider" id="muitos-that-adj"><div class="sec-divider-line"></div><div class="sec-divider-label">"Tão assim" com adjetivo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando você quer dizer "<strong>tão assim</strong>" (geralmente em frases negativas ou perguntas, comparando com algo mencionado), usa <strong>that</strong> antes do adjetivo.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Ela não é <b>tão</b> legal <b>assim</b>.</span><span class="eg-en en" data-speak="She isn't that nice">She isn't <span class="hl-tambem">that</span> nice.</span></div>
+      <div class="eg-row"><span class="eg-pt">É <b>tão</b> caro <b>assim</b>?</span><span class="eg-en en" data-speak="Is it that expensive">Is it <span class="hl-tambem">that</span> expensive?</span></div>
+      <div class="eg-row"><span class="eg-pt">O filme não foi <b>tão</b> bom <b>assim</b>.</span><span class="eg-en en" data-speak="The movie wasn't that good">The movie wasn't <span class="hl-tambem">that</span> good.</span></div>
+    </div>
+
+    <div class="sec-divider" id="muitos-plural"><div class="sec-divider-line"></div><div class="sec-divider-label">Com substantivo plural</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando o "muitos" aparece antes de um <strong>substantivo no plural</strong> (carros, amigos, livros...), em inglês usamos uma família de palavras que segue uma <strong>escala crescente de intensidade</strong> — pense em "pesos" de 1 a 4.</p>
+
+    <div class="tip yel" style="margin-top:6px;">
+      <div class="tip-lbl">🎯 Os 4 pesos do plural</div>
+      <p class="tip-txt"><span class="hl-p1">Many</span> <span class="peso-badge p1">PESO 1</span> &nbsp; <span class="hl-p2">So many</span> <span class="peso-badge p2">PESO 2</span> &nbsp; <span class="hl-p3">Too many</span> <span class="peso-badge p3">PESO 3</span> &nbsp; <span class="hl-p4">Way too many</span> <span class="peso-badge p4">PESO 4</span></p>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 A escala em ação</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Megan tem <b>muitos</b> carros.</span><span class="eg-en en" data-speak="Megan has many cars">Megan has <span class="hl-p1">many</span> cars. <span class="peso-badge p1">PESO 1</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Megan tem carros <b>pra caramba</b>.</span><span class="eg-en en" data-speak="Megan has so many cars">Megan has <span class="hl-p2">so many</span> cars. <span class="peso-badge p2">PESO 2</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Megan tem carros <b>demais</b>.</span><span class="eg-en en" data-speak="Megan has too many cars">Megan has <span class="hl-p3">too many</span> cars. <span class="peso-badge p3">PESO 3</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Megan tem carros <b>demais da conta</b>.</span><span class="eg-en en" data-speak="Megan has way too many cars">Megan has <span class="hl-p4">way too many</span> cars. <span class="peso-badge p4">PESO 4</span></span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Peso 3 e 4 = passa do limite (sentido negativo)</div>
+      <p class="tip-txt">O <strong>too many</strong> e o <strong>way too many</strong> não são só "muitos" — eles indicam <strong>excesso</strong>, algo que <em>passou do limite aceitável</em>. Carregam carga negativa: incômodo, problema, reclamação. <em>"Megan has too many cars"</em> = ela tem mais carros do que precisaria/caberia (problema). Já <em>"Megan has so many cars"</em> = ela tem um monte de carros (só impressionante, sem julgamento).</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Não tenho <b>tantos assim</b></div>
+      <p class="tip-txt">O <strong>that many</strong> funciona igual ao <em>that</em> dos adjetivos: indica "tantos <b>assim</b>" em comparações, negativas e perguntas.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Eu não tenho <b>tantos</b> amigos <b>assim</b>.</div>
+          <div class="q-en"><span class="en" data-speak="I don't have that many friends">I don't have <span class="hl-tambem">that many</span> friends.</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Você convidou <b>tantas</b> pessoas <b>assim</b>?</div>
+          <div class="q-en"><span class="en" data-speak="Did you invite that many people">Did you invite <span class="hl-tambem">that many</span> people?</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="muitos-singular"><div class="sec-divider-line"></div><div class="sec-divider-label">Com substantivo singular</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando o "muito" aparece antes de um <strong>substantivo no singular</strong> (água, dinheiro, tempo, café, lição de casa...), a mesma escala de pesos se repete — só muda a palavra base.</p>
+
+    <div class="tip yel" style="margin-top:6px;">
+      <div class="tip-lbl">🎯 Os 4 pesos do singular</div>
+      <p class="tip-txt"><span class="hl-p1">Much</span> <span class="peso-badge p1">PESO 1</span> &nbsp; <span class="hl-p2">So much</span> <span class="peso-badge p2">PESO 2</span> &nbsp; <span class="hl-p3">Too much</span> <span class="peso-badge p3">PESO 3</span> &nbsp; <span class="hl-p4">Way too much</span> <span class="peso-badge p4">PESO 4</span></p>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 A escala em ação</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu tenho <b>muita</b> lição de casa para amanhã.</span><span class="eg-en en" data-speak="I have much homework for tomorrow">I have <span class="hl-p1">much</span> homework for tomorrow. <span class="peso-badge p1">PESO 1</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu tenho lição de casa <b>pra caramba</b>.</span><span class="eg-en en" data-speak="I have so much homework">I have <span class="hl-p2">so much</span> homework. <span class="peso-badge p2">PESO 2</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu tenho lição de casa <b>demais</b>.</span><span class="eg-en en" data-speak="I have too much homework">I have <span class="hl-p3">too much</span> homework. <span class="peso-badge p3">PESO 3</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu tenho lição de casa <b>demais da conta</b>.</span><span class="eg-en en" data-speak="I have way too much homework">I have <span class="hl-p4">way too much</span> homework. <span class="peso-badge p4">PESO 4</span></span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Peso 3 e 4 = passa do limite (sentido negativo)</div>
+      <p class="tip-txt">O <strong>too much</strong> e o <strong>way too much</strong> não são só "muito" — eles indicam <strong>excesso</strong>, algo que <em>passou do limite aceitável</em>. Carregam carga negativa: incômodo, reclamação, problema. <em>"I have too much homework"</em> = tenho mais lição do que dou conta de fazer (queixa). Já <em>"I have so much homework"</em> = tenho um monte de lição (só constatação, sem necessariamente reclamar).</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Não vou gastar <b>tanto assim</b></div>
+      <p class="tip-txt">O <strong>that much</strong> é o equivalente do <em>that many</em> para singular: indica "tanto <b>assim</b>" em comparações, negativas e perguntas.</p>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Eu não vou gastar <b>tanto</b> <b>assim</b>.</div>
+          <div class="q-en"><span class="en" data-speak="I won't spend that much">I won't spend <span class="hl-tambem">that much</span>.</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Custa <b>tanto</b> <b>assim</b>?</div>
+          <div class="q-en"><span class="en" data-speak="Does it cost that much">Does it cost <span class="hl-tambem">that much</span>?</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="muitos-alot-of"><div class="sec-divider-line"></div><div class="sec-divider-label">A lot of — o coringa</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>a lot of</strong> é o "<strong>um monte de</strong>" do inglês — sempre vem antes de um substantivo, igualzinho em português. Funciona tanto para plural quanto para singular, e <strong>não tem peso</strong>: não dá pra acrescentar <em>so / too / way too</em> antes dele.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Megan tem <b>um monte de</b> carros.</span><span class="eg-en en" data-speak="Megan has a lot of cars">Megan has <span class="hl-coringa">a lot of</span> cars.</span></div>
+      <div class="eg-row"><span class="eg-pt">Eu tenho <b>um monte de</b> lição de casa.</span><span class="eg-en en" data-speak="I have a lot of homework">I have <span class="hl-coringa">a lot of</span> homework.</span></div>
+      <div class="eg-row"><span class="eg-pt">Eu tenho <b>um monte de</b> dinheiro.</span><span class="eg-en en" data-speak="I have a lot of money">I have <span class="hl-coringa">a lot of</span> money.</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Espelho do português</div>
+      <p class="tip-txt">Em português a gente diz "um monte <strong>de</strong> [coisa]". Em inglês é a mesma lógica: "a lot <strong>of</strong> [coisa]". O <em>of</em> em inglês = o <em>de</em> em português. Se o "de" some na tradução, o <em>of</em> também some — e aí vira só <strong>a lot</strong>.</p>
+    </div>
+
+    <div class="sec-divider" id="muitos-alot"><div class="sec-divider-line"></div><div class="sec-divider-label">Depois de verbo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando o "muito" aparece <strong>depois de um verbo</strong> (estudei muito, choveu muito, trabalhamos muito), temos duas opções. A mais comum é o <strong>a lot</strong> ("um monte", sem o <em>of</em>, porque não tem substantivo logo depois). Mas também dá pra usar a <strong>família do much</strong> (much, so much, too much, way too much) seguindo a mesma escala de pesos.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Forma coringa — a lot</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estudei <b>um monte</b>.</span><span class="eg-en en" data-speak="I studied a lot">I studied <span class="hl-coringa">a lot</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Hoje choveu <b>um monte</b>.</span><span class="eg-en en" data-speak="Today it rained a lot">Today it rained <span class="hl-coringa">a lot</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós trabalhamos <b>um monte</b> ontem.</span><span class="eg-en en" data-speak="We worked a lot yesterday">We worked <span class="hl-coringa">a lot</span> yesterday.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Tem "de"? Tem of. Não tem "de"? Não tem of.</div>
+      <p class="tip-txt">→ "Um monte <strong>de</strong> amigos" → <strong>a lot <u>of</u></strong> friends<br>→ "Eu trabalho um monte" (sem "de") → I work <strong>a lot</strong></p>
+    </div>
+
+    <div class="pron-section" style="margin-top:18px;">
+      <div class="pron-header">📌 Com peso — família do much</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu trabalhei <b>muito</b>.</span><span class="eg-en en" data-speak="I worked much">I worked <span class="hl-p1">much</span>. <span class="peso-badge p1">PESO 1</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu trabalhei <b>pra caramba</b>.</span><span class="eg-en en" data-speak="I worked so much">I worked <span class="hl-p2">so much</span>. <span class="peso-badge p2">PESO 2</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu trabalhei <b>demais</b>.</span><span class="eg-en en" data-speak="I worked too much">I worked <span class="hl-p3">too much</span>. <span class="peso-badge p3">PESO 3</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eu trabalhei <b>demais da conta</b>.</span><span class="eg-en en" data-speak="I worked way too much">I worked <span class="hl-p4">way too much</span>. <span class="peso-badge p4">PESO 4</span></span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Qual escolher</div>
+      <p class="tip-txt">O <strong>a lot</strong> é o mais usado no inglês falado do dia a dia. A família do <strong>much</strong> aparece quando você quer marcar a <em>intensidade</em> exata com peso — principalmente do peso 2 pra cima (<em>so much, too much, way too much</em>). <strong>Much</strong> sozinho (peso 1) depois de verbo afirmativo soa formal: na fala natural, vira <em>a lot</em>.</p>
+    </div>
+
+    <div class="sec-divider" id="muitos-pretty-much"><div class="sec-divider-line"></div><div class="sec-divider-label">Pretty much — praticamente</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Esse aqui <strong>não tem muito a ver</strong> com os "muitos" propriamente — mas como usa as mesmas palavras, vale aprender junto. O <strong>pretty much</strong> significa <strong>"praticamente"</strong> ou <strong>"basicamente"</strong>.</p>
+
+    <div class="eg-block">
+      <div class="eg-row"><span class="eg-pt">Ela disse <b>basicamente</b> a mesma coisa.</span><span class="eg-en en" data-speak="She said pretty much the same thing">She said <span class="hl-coringa">pretty much</span> the same thing.</span></div>
+      <div class="eg-row"><span class="eg-pt">O segundo jogo é <b>praticamente</b> igual.</span><span class="eg-en en" data-speak="The second game is pretty much the same">The second game is <span class="hl-coringa">pretty much</span> the same.</span></div>
+      <div class="eg-row"><span class="eg-pt">Eu <b>praticamente</b> terminei o trabalho.</span><span class="eg-en en" data-speak="I'm pretty much done with the work">I'm <span class="hl-coringa">pretty much</span> done with the work.</span></div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14.5px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">COM ADJETIVO</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Muito (neutro)</div><div class="togo-val"><span class="hl-tambem">very</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Tão (emocional)</div><div class="togo-val"><span class="hl-tambem">so</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais (excesso)</div><div class="togo-val"><span class="hl-tambem">too</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Bem / razoavelmente</div><div class="togo-val"><span class="hl-tambem">quite</span> / <span class="hl-tambem">pretty</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Tão assim (negativa/pergunta)</div><div class="togo-val"><span class="hl-tambem">that</span></div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">COM SUBSTANTIVO PLURAL</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Muitos <span class="peso-badge p1">P1</span></div><div class="togo-val"><span class="hl-p1">many</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Pra caramba <span class="peso-badge p2">P2</span></div><div class="togo-val"><span class="hl-p2">so many</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais <span class="peso-badge p3">P3</span></div><div class="togo-val"><span class="hl-p3">too many</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais da conta <span class="peso-badge p4">P4</span></div><div class="togo-val"><span class="hl-p4">way too many</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Um monte de (sem peso)</div><div class="togo-val"><span class="hl-coringa">a lot of</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Tantos assim</div><div class="togo-val"><span class="hl-tambem">that many</span></div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">COM SUBSTANTIVO SINGULAR</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Muito <span class="peso-badge p1">P1</span></div><div class="togo-val"><span class="hl-p1">much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Pra caramba <span class="peso-badge p2">P2</span></div><div class="togo-val"><span class="hl-p2">so much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais <span class="peso-badge p3">P3</span></div><div class="togo-val"><span class="hl-p3">too much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais da conta <span class="peso-badge p4">P4</span></div><div class="togo-val"><span class="hl-p4">way too much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Um monte de (sem peso)</div><div class="togo-val"><span class="hl-coringa">a lot of</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Tanto assim</div><div class="togo-val"><span class="hl-tambem">that much</span></div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">DEPOIS DE VERBO</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Um monte (sem "de")</div><div class="togo-val"><span class="hl-coringa">a lot</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Muito <span class="peso-badge p1">P1</span></div><div class="togo-val"><span class="hl-p1">much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Pra caramba <span class="peso-badge p2">P2</span></div><div class="togo-val"><span class="hl-p2">so much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais <span class="peso-badge p3">P3</span></div><div class="togo-val"><span class="hl-p3">too much</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Demais da conta <span class="peso-badge p4">P4</span></div><div class="togo-val"><span class="hl-p4">way too much</span></div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">BÔNUS</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Praticamente / basicamente</div><div class="togo-val"><span class="hl-coringa">pretty much</span></div></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Muitos — exercício</span><span class="ex-score" id="muitos-score">0/10</span></div><div class="ex-body" id="muitos-body"></div></div>
+  </div>
+</div>`,
+
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
   <div class="soon-title">Mais conteúdo<br><span class="soon-acc">em breve</span></div>
@@ -9898,18 +10287,17 @@ function updateThemeUI(){
 // Containers cujos filhos diretos são blocos focáveis
 const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
   'inonat-list','eg-block','conj-big','tobe-card-body','ex-list',
-  'togo-section','pron-section','rule-box','tip','poss-ex-block',
+  'togo-section','togo-table','rule-box','tip','poss-ex-block',
   'poss-ex-sentences','indem-ex-block','cp-formula-body','que-card',
   'cp-formula','demo-example','irony-block','inonat-bubble-body',
   'cp-expr-list','demo-list','poss-ex-list','indem-decomp-list',
   'que-summary','indem-examples','poss-legend','cp-expr-item',
-  'demo-item','poss-ex-block','tobe-card','curiosidade-body',
+  'sense-list','sense-body','demo-item','tobe-card','curiosidade-body',
   'curiosidade-text','que-ex-block','inonat-bubble','indem-ex-line',
-  'cp-expr-item','ex-options','ex-sentence','ex-list','ex-finish',
-  'sense-list']);
+  'ex-options','ex-sentence','ex-finish']);
 // Tables and self-contained interactive blocks — never split inside; the whole unit is the focus target
 const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',
-  'togo-table','big-tbl-wrap','tbl-wrap','conj-big',
+  'togo-section','big-tbl-wrap','tbl-wrap','conj-big','pron-section',
   'ex-wrap','game-wrap','tip','irony-block','que-summary',
   'que-ex-block','demo-item','poss-ex-block','indem-ex-block',
   'cp-expr-item','curiosidade','inonat-bubble','sense-card']);
