@@ -177,6 +177,8 @@ body.light .tobe-card{box-shadow:0 1px 6px rgba(0,0,0,.07);}
 .enw{cursor:pointer;font-weight:700;border-bottom:1px dotted currentColor;transition:opacity .15s,color .15s;}
 .enw:hover{color:var(--acc,var(--blue));opacity:.85;}
 .enw.slow{color:var(--acc,var(--blue));}
+/* quando enw é célula direta de tabela em grid, encolhe ao conteúdo (senão o sublinhado pontilhado estica pela coluna toda, virando "can____") */
+.conj-row>.enw{width:fit-content;}
 
 /* Highlight pulse animation */
 @keyframes hpulse{0%{box-shadow:0 0 0 0 rgba(110,181,255,.6),0 0 0 0 rgba(110,181,255,.3);}50%{box-shadow:0 0 0 8px rgba(110,181,255,.2),0 0 0 16px rgba(110,181,255,.05);}100%{box-shadow:0 0 0 0 rgba(110,181,255,0),0 0 0 0 rgba(110,181,255,0);}}
@@ -1349,6 +1351,9 @@ function runInits(p){
   if(p===89)initEx('sane',window['sane_bk'],10);
   if(p===91)initEx('ter',window['ter_bk'],10);
   if(p===93)initEx('todo',window['todo_bk'],10);
+  if(p===95)initEx('modal',window['modal_bk'],10);
+  if(p===97)initEx('tag',window['tag_bk'],10);
+  if(p===99)initEx('qw',window['qw_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -4549,7 +4554,6 @@ window['todo_bk']=[
   {pt:'Eu não entendo essa regra.',isFullSentence:true,options:["I don't understand this rule.","I doesn't understand this rule.",'I not understand this rule.',"I don't understands this rule."],correct:"I don't understand this rule.",anchor:'todo-neg-pres'},
   {pt:'Você não precisa disso.',isFullSentence:true,options:["You don't need this.","You doesn't need this.",'You not need this.',"You don't needs this."],correct:"You don't need this.",anchor:'todo-neg-pres'},
   {pt:'Ela não fala francês.',isFullSentence:true,options:["She doesn't speak French.","She don't speak French.","She doesn't speaks French.",'She not speak French.'],correct:"She doesn't speak French.",anchor:'todo-neg-pres'},
-  {pt:'A Camila não usa o sistema novo.',isFullSentence:true,options:["Camila doesn't use the new system.","Camila don't use the new system.","Camila doesn't uses the new system.",'Camila not use the new system.'],correct:"Camila doesn't use the new system.",anchor:'todo-neg-pres'},
   {pt:'Eu não gostei do filme.',isFullSentence:true,options:["I didn't like the movie.","I didn't liked the movie.","I don't like the movie.",'I not liked the movie.'],correct:"I didn't like the movie.",anchor:'todo-neg-past'},
   {pt:'Ela não fez a apresentação.',isFullSentence:true,options:["She didn't do the presentation.","She didn't did the presentation.","She doesn't do the presentation.",'She not did the presentation.'],correct:"She didn't do the presentation.",anchor:'todo-neg-past'},
   {pt:'Nós não recebemos o e-mail.',isFullSentence:true,options:["We didn't receive the email.","We didn't received the email.","We don't receive the email.",'We not received the email.'],correct:"We didn't receive the email.",anchor:'todo-neg-past'},
@@ -4573,7 +4577,6 @@ window['todo_bk']=[
   {pt:'Vocês entendem a regra?',isFullSentence:true,options:['Do you understand the rule?','Does you understand the rule?','Do you understands the rule?','You do understand the rule?'],correct:'Do you understand the rule?',anchor:'todo-perg-pres'},
   {pt:'Ele tem maçãs?',isFullSentence:true,options:['Does he have apples?','Do he have apples?','Does he has apples?','He does have apples?'],correct:'Does he have apples?',anchor:'todo-perg-pres'},
   {pt:'Eles vendem esse produto?',isFullSentence:true,options:['Do they sell this product?','Does they sell this product?','Do they sells this product?','They do sell this product?'],correct:'Do they sell this product?',anchor:'todo-perg-pres'},
-  {pt:'A Sophia usa o sistema?',isFullSentence:true,options:['Does Sophia use the system?','Do Sophia use the system?','Does Sophia uses the system?','Sophia does use the system?'],correct:'Does Sophia use the system?',anchor:'todo-perg-pres'},
   {pt:'Você gostou do filme?',isFullSentence:true,options:['Did you like the movie?','Do you like the movie?','Did you liked the movie?','You did like the movie?'],correct:'Did you like the movie?',anchor:'todo-perg-past'},
   {pt:'Ela fez a apresentação?',isFullSentence:true,options:['Did she do the presentation?','Does she do the presentation?','Did she did the presentation?','She did do the presentation?'],correct:'Did she do the presentation?',anchor:'todo-perg-past'},
   {pt:'Eles fecharam o negócio?',isFullSentence:true,options:['Did they close the deal?','Do they close the deal?','Did they closed the deal?','They did close the deal?'],correct:'Did they close the deal?',anchor:'todo-perg-past'},
@@ -4585,19 +4588,210 @@ window['todo_bk']=[
   {pt:'Vocês viram o relatório?',isFullSentence:true,options:['Did you see the report?','Do you see the report?','Did you saw the report?','You did see the report?'],correct:'Did you see the report?',anchor:'todo-perg-past'},
   {pt:'Ele comprou o carro?',isFullSentence:true,options:['Did he buy the car?','Does he buy the car?','Did he bought the car?','He did buy the car?'],correct:'Did he buy the car?',anchor:'todo-perg-past'},
   {pt:'A Camila trabalhou no sábado?',isFullSentence:true,options:['Did Camila work on Saturday?','Does Camila work on Saturday?','Did Camila worked on Saturday?','Camila did work on Saturday?'],correct:'Did Camila work on Saturday?',anchor:'todo-perg-past'},
-  {pt:'Eles gostaram da ideia?',isFullSentence:true,options:['Did they like the idea?','Do they like the idea?','Did they liked the idea?','They did like the idea?'],correct:'Did they like the idea?',anchor:'todo-perg-past'},
   {pt:'Você não faz a lição de casa?',isFullSentence:true,options:["Don't you do the homework?","Doesn't you do the homework?","Don't you does the homework?",'Not you do the homework?'],correct:"Don't you do the homework?",anchor:'todo-misto'},
   {pt:'Ele não gosta de andar?',isFullSentence:true,options:["Doesn't he like to walk?","Don't he like to walk?","Doesn't he likes to walk?",'Not he like to walk?'],correct:"Doesn't he like to walk?",anchor:'todo-misto'},
   {pt:'Ela não tinha maçãs?',isFullSentence:true,options:["Didn't she have apples?","Doesn't she have apples?","Didn't she had apples?",'Not she have apples?'],correct:"Didn't she have apples?",anchor:'todo-misto'},
   {pt:'Ela faz a lição de casa?',isFullSentence:true,options:['Does she do the homework?','Does she does the homework?','Do she do the homework?','Does she make the homework?'],correct:'Does she do the homework?',anchor:'todo-misto'},
   {pt:'Eu não faço a lição de casa.',isFullSentence:true,options:["I don't do the homework.","I don't does the homework.","I doesn't do the homework.",'I not do the homework.'],correct:"I don't do the homework.",anchor:'todo-misto'},
   {pt:'Você fez o projeto?',isFullSentence:true,options:['Did you do the project?','Did you did the project?','Do you do the project?','Did you make the project?'],correct:'Did you do the project?',anchor:'todo-misto'},
+  {pt:'Você gosta de café? Gosto.',isFullSentence:true,options:['Do you like coffee? I do.','Do you like coffee? I does.','Do you like coffee? I am.','Do you like coffee? I like.'],correct:'Do you like coffee? I do.',anchor:'todo-resp'},
+  {pt:'Ela gosta de dançar? Gosta.',isFullSentence:true,options:['Does she enjoy dancing? She does.','Does she enjoy dancing? She do.','Does she enjoy dancing? She is.','Does she enjoy dancing? She enjoys.'],correct:'Does she enjoy dancing? She does.',anchor:'todo-resp'},
+  {pt:'Eles fecharam o negócio? Fecharam.',isFullSentence:true,options:['Did they close the deal? They did.','Did they close the deal? They do.','Did they close the deal? They does.','Did they close the deal? They closed.'],correct:'Did they close the deal? They did.',anchor:'todo-resp'},
   {pt:'Você realmente gosta de comer.',isFullSentence:true,options:['You do like to eat.','You does like to eat.','You did likes to eat.','You do likes to eat.'],correct:'You do like to eat.',anchor:'todo-misto'},
   {pt:'Ela realmente canta bem.',isFullSentence:true,options:['She does sing well.','She do sing well.','She does sings well.','She did sings well.'],correct:'She does sing well.',anchor:'todo-misto'},
   {pt:'O Douglas realmente falou muito.',isFullSentence:true,options:['Douglas did talk a lot.','Douglas did talked a lot.','Douglas does talk a lot.','Douglas did talks a lot.'],correct:'Douglas did talk a lot.',anchor:'todo-misto'},
   {pt:'Ele não faz o café.',isFullSentence:true,options:["He doesn't make the coffee.","He don't make the coffee.","He doesn't makes the coffee.",'He not make the coffee.'],correct:"He doesn't make the coffee.",anchor:'todo-misto'},
   {pt:'Ela fez o café ontem?',isFullSentence:true,options:['Did she make the coffee yesterday?','Did she made the coffee yesterday?','Does she make the coffee yesterday?','Did she makes the coffee yesterday?'],correct:'Did she make the coffee yesterday?',anchor:'todo-misto'},
   {pt:'Aquelas pessoas não jogam videogame?',isFullSentence:true,options:["Don't those people play videogames?","Doesn't those people play videogames?","Don't those people plays videogames?",'Not those people play videogames?'],correct:"Don't those people play videogames?",anchor:'todo-misto'},
+];
+
+window['modal_bk']=[
+  {pt:'Eu sei nadar.',isFullSentence:true,options:['I can swim.','I can to swim.','I can swims.','I cans swim.'],correct:'I can swim.',anchor:'modal-can'},
+  {pt:'Ela consegue falar três idiomas.',isFullSentence:true,options:['She can speak three languages.','She can speaks three languages.','She cans speak three languages.','She can to speak three languages.'],correct:'She can speak three languages.',anchor:'modal-can'},
+  {pt:'Eu não consigo ouvir você.',isFullSentence:true,options:["I can't hear you.","I don't can hear you.","I can't to hear you.","I can't hears you."],correct:"I can't hear you.",anchor:'modal-can'},
+  {pt:'Você pode usar minha mesa.',isFullSentence:true,options:['You can use my desk.','You can to use my desk.','You can uses my desk.','You cans use my desk.'],correct:'You can use my desk.',anchor:'modal-can'},
+  {pt:'Nós conseguimos terminar hoje.',isFullSentence:true,options:['We can finish today.','We can to finish today.','We cans finish today.','We can finishes today.'],correct:'We can finish today.',anchor:'modal-can'},
+  {pt:'Ele não consegue vir amanhã.',isFullSentence:true,options:["He can't come tomorrow.","He doesn't can come tomorrow.","He can't comes tomorrow.","He can't to come tomorrow."],correct:"He can't come tomorrow.",anchor:'modal-can'},
+  {pt:'Você sabe dirigir?',isFullSentence:true,options:['Can you drive?','Do you can drive?','Can you to drive?','Can you drives?'],correct:'Can you drive?',anchor:'modal-can'},
+  {pt:'Eles podem esperar lá fora.',isFullSentence:true,options:['They can wait outside.','They can to wait outside.','They cans wait outside.','They can waits outside.'],correct:'They can wait outside.',anchor:'modal-can'},
+  {pt:'Eu não consigo abrir o arquivo.',isFullSentence:true,options:["I can't open the file.","I can't opens the file.","I don't can open the file.","I can't to open the file."],correct:"I can't open the file.",anchor:'modal-can'},
+  {pt:'Ela sabe cozinhar muito bem.',isFullSentence:true,options:['She can cook very well.','She can cooks very well.','She cans cook very well.','She can to cook very well.'],correct:'She can cook very well.',anchor:'modal-can'},
+  {pt:'Posso ajudar você?',isFullSentence:true,options:['Can I help you?','Do I can help you?','Can I to help you?','Can I helps you?'],correct:'Can I help you?',anchor:'modal-can'},
+  {pt:'Nós não podemos pagar isso.',isFullSentence:true,options:["We can't afford that.","We don't can afford that.","We can't to afford that.","We can't affords that."],correct:"We can't afford that.",anchor:'modal-can'},
+  {pt:'Você poderia me ajudar?',isFullSentence:true,options:['Could you help me?','Do you could help me?','Could you to help me?','Could you helps me?'],correct:'Could you help me?',anchor:'modal-could-should'},
+  {pt:'Quando criança, eu sabia tocar piano.',isFullSentence:true,options:['As a child, I could play piano.','As a child, I could to play piano.','As a child, I could played piano.','As a child, I coulded play piano.'],correct:'As a child, I could play piano.',anchor:'modal-could-should'},
+  {pt:'Eu não consegui terminar ontem.',isFullSentence:true,options:["I couldn't finish yesterday.","I didn't could finish yesterday.","I couldn't finished yesterday.","I couldn't to finish yesterday."],correct:"I couldn't finish yesterday.",anchor:'modal-could-should'},
+  {pt:'Poderíamos remarcar a reunião?',isFullSentence:true,options:['Could we reschedule the meeting?','Do we could reschedule the meeting?','Could we to reschedule the meeting?','Could we reschedules the meeting?'],correct:'Could we reschedule the meeting?',anchor:'modal-could-should'},
+  {pt:'Você deveria descansar.',isFullSentence:true,options:['You should rest.','You should to rest.','You should rests.','You shoulds rest.'],correct:'You should rest.',anchor:'modal-could-should'},
+  {pt:'Nós deveríamos sair mais cedo.',isFullSentence:true,options:['We should leave earlier.','We should to leave earlier.','We shoulds leave earlier.','We should leaves earlier.'],correct:'We should leave earlier.',anchor:'modal-could-should'},
+  {pt:'Você não deveria fumar.',isFullSentence:true,options:["You shouldn't smoke.","You don't should smoke.","You shouldn't to smoke.","You shouldn't smokes."],correct:"You shouldn't smoke.",anchor:'modal-could-should'},
+  {pt:'Eu deveria ligar pra ela?',isFullSentence:true,options:['Should I call her?','Do I should call her?','Should I to call her?','Should I calls her?'],correct:'Should I call her?',anchor:'modal-could-should'},
+  {pt:'Eu poderia falar com o gerente?',isFullSentence:true,options:['Could I speak with the manager?','Do I could speak with the manager?','Could I to speak with the manager?','Could I speaks with the manager?'],correct:'Could I speak with the manager?',anchor:'modal-could-should'},
+  {pt:'Eu gostaria de um café.',isFullSentence:true,options:['I would like a coffee.','I would to like a coffee.','I would likes a coffee.','I woulds like a coffee.'],correct:'I would like a coffee.',anchor:'modal-would'},
+  {pt:'Você gostaria de participar?',isFullSentence:true,options:['Would you like to join?','Do you would like to join?','Would you to like to join?','Would you likes to join?'],correct:'Would you like to join?',anchor:'modal-would'},
+  {pt:'Ela não faria isso.',isFullSentence:true,options:["She wouldn't do that.","She don't would do that.","She wouldn't to do that.","She wouldn't does that."],correct:"She wouldn't do that.",anchor:'modal-would'},
+  {pt:'Isso seria ótimo.',isFullSentence:true,options:['That would be great.','That would to be great.','That would is great.','That woulds be great.'],correct:'That would be great.',anchor:'modal-would'},
+  {pt:'Nós gostaríamos de ver o cardápio.',isFullSentence:true,options:['We would like to see the menu.','We would to like to see the menu.','We would likes to see the menu.','We woulds like to see the menu.'],correct:'We would like to see the menu.',anchor:'modal-would'},
+  {pt:'Eles gostariam de saber a resposta.',isFullSentence:true,options:['They would like to know the answer.','They would to like to know the answer.','They would likes to know the answer.','They woulds like to know the answer.'],correct:'They would like to know the answer.',anchor:'modal-would'},
+  {pt:'Você gostaria de mais alguma coisa?',isFullSentence:true,options:['Would you like anything else?','Do you would like anything else?','Would you to like anything else?','Would you likes anything else?'],correct:'Would you like anything else?',anchor:'modal-would'},
+  {pt:'Eu não diria isso.',isFullSentence:true,options:["I wouldn't say that.","I don't would say that.","I wouldn't to say that.","I wouldn't says that."],correct:"I wouldn't say that.",anchor:'modal-would'},
+  {pt:'Ela gostaria de trabalhar aqui.',isFullSentence:true,options:['She would like to work here.','She would to like to work here.','She would likes to work here.','She woulds like to work here.'],correct:'She would like to work here.',anchor:'modal-would'},
+  {pt:'Seria possível remarcar?',isFullSentence:true,options:['Would it be possible to reschedule?','Do it would be possible to reschedule?','Would it to be possible to reschedule?','Would it is possible to reschedule?'],correct:'Would it be possible to reschedule?',anchor:'modal-would'},
+  {pt:'Eu gostaria de fazer uma pergunta.',isFullSentence:true,options:['I would like to ask a question.','I would to like to ask a question.','I would likes to ask a question.','I woulds like to ask a question.'],correct:'I would like to ask a question.',anchor:'modal-would'},
+  {pt:'Você se importaria de esperar?',isFullSentence:true,options:['Would you mind waiting?','Do you would mind waiting?','Would you to mind waiting?','Would you minds waiting?'],correct:'Would you mind waiting?',anchor:'modal-would'},
+  {pt:'Você tem que usar capacete.',isFullSentence:true,options:['You must wear a helmet.','You must to wear a helmet.','You must wears a helmet.','You musts wear a helmet.'],correct:'You must wear a helmet.',anchor:'modal-must-may'},
+  {pt:'Nós temos que entregar hoje.',isFullSentence:true,options:['We must deliver today.','We must to deliver today.','We must delivers today.','We musts deliver today.'],correct:'We must deliver today.',anchor:'modal-must-may'},
+  {pt:'Você não pode contar a ninguém.',isFullSentence:true,options:["You mustn't tell anyone.","You don't must tell anyone.","You mustn't to tell anyone.","You mustn't tells anyone."],correct:"You mustn't tell anyone.",anchor:'modal-must-may'},
+  {pt:'Ele deve estar cansado.',isFullSentence:true,options:['He must be tired.','He must to be tired.','He must is tired.','He musts be tired.'],correct:'He must be tired.',anchor:'modal-must-may'},
+  {pt:'Posso entrar?',isFullSentence:true,options:['May I come in?','Do I may come in?','May I to come in?','May I comes in?'],correct:'May I come in?',anchor:'modal-must-may'},
+  {pt:'Pode chover hoje à noite.',isFullSentence:true,options:['It may rain tonight.','It may to rain tonight.','It may rains tonight.','It mays rain tonight.'],correct:'It may rain tonight.',anchor:'modal-must-may'},
+  {pt:'Ela pode não vir.',isFullSentence:true,options:['She may not come.',"She don't may come.",'She may not to come.','She may not comes.'],correct:'She may not come.',anchor:'modal-must-may'},
+  {pt:'Você pode usar seu celular aqui.',isFullSentence:true,options:['You may use your phone here.','You may to use your phone here.','You may uses your phone here.','You mays use your phone here.'],correct:'You may use your phone here.',anchor:'modal-must-may'},
+  {pt:'Você deve estar brincando!',isFullSentence:true,options:['You must be joking!','You must are joking!','You must to be joking!','You must joking!'],correct:'You must be joking!',anchor:'modal-must-may'},
+  {pt:'Você não pode estacionar aqui.',isFullSentence:true,options:["You mustn't park here.","You don't must park here.","You mustn't to park here.","You mustn't parks here."],correct:"You mustn't park here.",anchor:'modal-must-may'},
+  {pt:'Pode ser que ele esteja certo.',isFullSentence:true,options:['He may be right.','He may to be right.','He may is right.','He mays be right.'],correct:'He may be right.',anchor:'modal-must-may'},
+  {pt:'Ela deve saber a resposta.',isFullSentence:true,options:['She must know the answer.','She must knows the answer.','She must to know the answer.','She must knowing the answer.'],correct:'She must know the answer.',anchor:'modal-must-may'},
+  {pt:'Eu vou conseguir terminar amanhã.',isFullSentence:true,options:['I will be able to finish tomorrow.','I will can finish tomorrow.','I will be able finish tomorrow.','I will be able to finishes tomorrow.'],correct:'I will be able to finish tomorrow.',anchor:'modal-future'},
+  {pt:'Nós não vamos conseguir entregar a tempo.',isFullSentence:true,options:["We won't be able to deliver on time.","We won't can deliver on time.","We don't will be able to deliver on time.","We won't be able to delivers on time."],correct:"We won't be able to deliver on time.",anchor:'modal-future'},
+  {pt:'Você vai conseguir me ajudar?',isFullSentence:true,options:['Will you be able to help me?','Will you can help me?','Do you will be able to help me?','Will you be able to helps me?'],correct:'Will you be able to help me?',anchor:'modal-future'},
+  {pt:'Ela vai poder vir na semana que vem.',isFullSentence:true,options:['She will be able to come next week.','She will can come next week.','She will be able come next week.','She will be able to comes next week.'],correct:'She will be able to come next week.',anchor:'modal-future'},
+  {pt:'Eu tenho que trabalhar amanhã.',isFullSentence:true,options:['I have to work tomorrow.','I have to works tomorrow.','I must to work tomorrow.','I have work tomorrow.'],correct:'I have to work tomorrow.',anchor:'modal-haveto'},
+  {pt:'Ela tem que assinar o documento.',isFullSentence:true,options:['She has to sign the document.','She have to sign the document.','She has to signs the document.','She must to sign the document.'],correct:'She has to sign the document.',anchor:'modal-haveto'},
+  {pt:'Você não precisa vir amanhã.',isFullSentence:true,options:["You don't have to come tomorrow.","You mustn't come tomorrow.","You don't has to come tomorrow.","You don't have to comes tomorrow."],correct:"You don't have to come tomorrow.",anchor:'modal-haveto'},
+  {pt:'Pode ser que chova mais tarde.',isFullSentence:true,options:['It could rain later.','It could to rain later.','It could rains later.','It could raining later.'],correct:'It could rain later.',anchor:'modal-could-should'},
+  {pt:'Você tem que assinar aqui?',isFullSentence:true,options:['Do you have to sign here?','Do you have to signs here?','Have you to sign here?','Does you have to sign here?'],correct:'Do you have to sign here?',anchor:'modal-haveto'},
+  {pt:'Posso usar o banheiro?',isFullSentence:true,options:['May I use the restroom?','Do I may use the restroom?','May I to use the restroom?','May I uses the restroom?'],correct:'May I use the restroom?',anchor:'modal-misto'},
+  {pt:'Ela não poderia fazer isso sozinha.',isFullSentence:true,options:["She couldn't do it alone.","She didn't could do it alone.","She couldn't to do it alone.","She couldn't does it alone."],correct:"She couldn't do it alone.",anchor:'modal-misto'},
+  {pt:'Você sabe nadar? Sei.',isFullSentence:true,options:['Can you swim? I can.','Can you swim? I do.','Can you swim? I am.','Can you swim? I can swim.'],correct:'Can you swim? I can.',anchor:'modal-resp'},
+  {pt:'Eu deveria ligar pra ela? Deveria.',isFullSentence:true,options:['Should I call her? You should.','Should I call her? You do.','Should I call her? You should call.','Should I call her? You are.'],correct:'Should I call her? You should.',anchor:'modal-resp'},
+  {pt:'Você gostaria de um café? Gostaria.',isFullSentence:true,options:['Would you like a coffee? I would.','Would you like a coffee? I do.','Would you like a coffee? I would like.','Would you like a coffee? I am.'],correct:'Would you like a coffee? I would.',anchor:'modal-resp'},
+  {pt:'Isso poderia dar certo.',isFullSentence:true,options:['That could work.','That could works.','That could to work.','That could working.'],correct:'That could work.',anchor:'modal-could-should'},
+];
+
+window['tag_bk']=[
+  {pt:'Ela é inteligente, né?',isFullSentence:true,options:["She is smart, isn't she?",'She is smart, is she?',"She is smart, doesn't she?","She is smart, isn't it?"],correct:"She is smart, isn't she?",anchor:'tag-tobe'},
+  {pt:'Eles não estão aqui, né?',isFullSentence:true,options:["They aren't here, are they?","They aren't here, aren't they?","They aren't here, do they?","They aren't here, are them?"],correct:"They aren't here, are they?",anchor:'tag-tobe'},
+  {pt:'Foi uma boa reunião, não foi?',isFullSentence:true,options:["It was a good meeting, wasn't it?",'It was a good meeting, was it?',"It was a good meeting, didn't it?","It was a good meeting, wasn't she?"],correct:"It was a good meeting, wasn't it?",anchor:'tag-tobe'},
+  {pt:'Você não estava lá, estava?',isFullSentence:true,options:["You weren't there, were you?","You weren't there, weren't you?","You weren't there, did you?","You weren't there, was you?"],correct:"You weren't there, were you?",anchor:'tag-tobe'},
+  {pt:'Você é o gerente, né?',isFullSentence:true,options:["You are the manager, aren't you?",'You are the manager, are you?',"You are the manager, don't you?","You are the manager, isn't you?"],correct:"You are the manager, aren't you?",anchor:'tag-tobe'},
+  {pt:'O café está quente, né?',isFullSentence:true,options:["The coffee is hot, isn't it?",'The coffee is hot, is it?',"The coffee is hot, doesn't it?","The coffee is hot, isn't he?"],correct:"The coffee is hot, isn't it?",anchor:'tag-tobe'},
+  {pt:'Eles eram amigos, não eram?',isFullSentence:true,options:["They were friends, weren't they?",'They were friends, were they?',"They were friends, didn't they?","They were friends, wasn't they?"],correct:"They were friends, weren't they?",anchor:'tag-tobe'},
+  {pt:'Não está frio hoje, está?',isFullSentence:true,options:["It isn't cold today, is it?","It isn't cold today, isn't it?","It isn't cold today, does it?","It isn't cold today, is he?"],correct:"It isn't cold today, is it?",anchor:'tag-tobe'},
+  {pt:'Você está pronto, né?',isFullSentence:true,options:["You are ready, aren't you?",'You are ready, are you?',"You are ready, don't you?","You are ready, isn't you?"],correct:"You are ready, aren't you?",anchor:'tag-tobe'},
+  {pt:'Ela não era a chefe, era?',isFullSentence:true,options:["She wasn't the boss, was she?","She wasn't the boss, wasn't she?","She wasn't the boss, did she?","She wasn't the boss, were she?"],correct:"She wasn't the boss, was she?",anchor:'tag-tobe'},
+  {pt:'Nós estamos atrasados, né?',isFullSentence:true,options:["We are late, aren't we?",'We are late, are we?',"We are late, don't we?","We are late, isn't we?"],correct:"We are late, aren't we?",anchor:'tag-tobe'},
+  {pt:'O projeto está pronto, né?',isFullSentence:true,options:["The project is ready, isn't it?",'The project is ready, is it?',"The project is ready, doesn't it?","The project is ready, isn't he?"],correct:"The project is ready, isn't it?",anchor:'tag-tobe'},
+  {pt:'Você vai ajudar, né?',isFullSentence:true,options:["You will help, won't you?",'You will help, will you?',"You will help, don't you?","You will help, won't they?"],correct:"You will help, won't you?",anchor:'tag-aux'},
+  {pt:'Ela sabe nadar, né?',isFullSentence:true,options:["She can swim, can't she?",'She can swim, can she?',"She can swim, doesn't she?","She can swim, can't he?"],correct:"She can swim, can't she?",anchor:'tag-aux'},
+  {pt:'Nós deveríamos esperar, não deveríamos?',isFullSentence:true,options:["We should wait, shouldn't we?",'We should wait, should we?',"We should wait, don't we?","We should wait, shouldn't they?"],correct:"We should wait, shouldn't we?",anchor:'tag-aux'},
+  {pt:'Ele não viria, viria?',isFullSentence:true,options:["He wouldn't come, would he?","He wouldn't come, wouldn't he?","He wouldn't come, did he?","He wouldn't come, would she?"],correct:"He wouldn't come, would he?",anchor:'tag-aux'},
+  {pt:'Você consegue ouvir, né?',isFullSentence:true,options:["You can hear, can't you?",'You can hear, can you?',"You can hear, don't you?","You can hear, can't they?"],correct:"You can hear, can't you?",anchor:'tag-aux'},
+  {pt:'Eles não vão vir, vão?',isFullSentence:true,options:["They won't come, will they?","They won't come, won't they?","They won't come, do they?","They won't come, will them?"],correct:"They won't come, will they?",anchor:'tag-aux'},
+  {pt:'Ela deveria descansar, não deveria?',isFullSentence:true,options:["She should rest, shouldn't she?",'She should rest, should she?',"She should rest, doesn't she?","She should rest, shouldn't he?"],correct:"She should rest, shouldn't she?",anchor:'tag-aux'},
+  {pt:'Você poderia ajudar, né?',isFullSentence:true,options:["You could help, couldn't you?",'You could help, could you?',"You could help, don't you?","You could help, couldn't they?"],correct:"You could help, couldn't you?",anchor:'tag-aux'},
+  {pt:'Eles têm que assinar, não têm?',isFullSentence:true,options:["They must sign, mustn't they?",'They must sign, must they?',"They must sign, don't they?","They must sign, mustn't them?"],correct:"They must sign, mustn't they?",anchor:'tag-aux'},
+  {pt:'Ela não pode dirigir, pode?',isFullSentence:true,options:["She can't drive, can she?","She can't drive, can't she?","She can't drive, does she?","She can't drive, can he?"],correct:"She can't drive, can she?",anchor:'tag-aux'},
+  {pt:'Nós vamos ganhar, né?',isFullSentence:true,options:["We will win, won't we?",'We will win, will we?',"We will win, don't we?","We will win, won't they?"],correct:"We will win, won't we?",anchor:'tag-aux'},
+  {pt:'Você gostaria de vir, né?',isFullSentence:true,options:["You would like to come, wouldn't you?",'You would like to come, would you?',"You would like to come, don't you?","You would like to come, wouldn't they?"],correct:"You would like to come, wouldn't you?",anchor:'tag-aux'},
+  {pt:'Você gosta de café, né?',isFullSentence:true,options:["You like coffee, don't you?",'You like coffee, do you?',"You like coffee, aren't you?","You like coffee, don't they?"],correct:"You like coffee, don't you?",anchor:'tag-do'},
+  {pt:'Ela trabalha aqui, né?',isFullSentence:true,options:["She works here, doesn't she?",'She works here, does she?',"She works here, isn't she?","She works here, don't she?"],correct:"She works here, doesn't she?",anchor:'tag-do'},
+  {pt:'Eles fecharam o negócio, não fecharam?',isFullSentence:true,options:["They closed the deal, didn't they?",'They closed the deal, did they?',"They closed the deal, don't they?","They closed the deal, weren't they?"],correct:"They closed the deal, didn't they?",anchor:'tag-do'},
+  {pt:'Você não mora aqui, mora?',isFullSentence:true,options:["You don't live here, do you?","You don't live here, don't you?","You don't live here, are you?","You don't live here, do they?"],correct:"You don't live here, do you?",anchor:'tag-do'},
+  {pt:'Ele fala inglês, né?',isFullSentence:true,options:["He speaks English, doesn't he?",'He speaks English, does he?',"He speaks English, isn't he?","He speaks English, don't he?"],correct:"He speaks English, doesn't he?",anchor:'tag-do'},
+  {pt:'Vocês viram o filme, não viram?',isFullSentence:true,options:["You saw the movie, didn't you?",'You saw the movie, did you?',"You saw the movie, don't you?","You saw the movie, weren't you?"],correct:"You saw the movie, didn't you?",anchor:'tag-do'},
+  {pt:'Ela não gosta de chá, gosta?',isFullSentence:true,options:["She doesn't like tea, does she?","She doesn't like tea, doesn't she?","She doesn't like tea, is she?","She doesn't like tea, do she?"],correct:"She doesn't like tea, does she?",anchor:'tag-do'},
+  {pt:'Eles moram em Londres, né?',isFullSentence:true,options:["They live in London, don't they?",'They live in London, do they?',"They live in London, aren't they?","They live in London, doesn't they?"],correct:"They live in London, don't they?",anchor:'tag-do'},
+  {pt:'Você comprou o carro, não comprou?',isFullSentence:true,options:["You bought the car, didn't you?",'You bought the car, did you?',"You bought the car, don't you?","You bought the car, weren't you?"],correct:"You bought the car, didn't you?",anchor:'tag-do'},
+  {pt:'Ele não trabalhou ontem, trabalhou?',isFullSentence:true,options:["He didn't work yesterday, did he?","He didn't work yesterday, didn't he?","He didn't work yesterday, does he?","He didn't work yesterday, did she?"],correct:"He didn't work yesterday, did he?",anchor:'tag-do'},
+  {pt:'Nós precisamos disso, né?',isFullSentence:true,options:["We need this, don't we?",'We need this, do we?',"We need this, aren't we?","We need this, doesn't we?"],correct:"We need this, don't we?",anchor:'tag-do'},
+  {pt:'A Camila estuda muito, né?',isFullSentence:true,options:["Camila studies a lot, doesn't she?",'Camila studies a lot, does she?',"Camila studies a lot, isn't she?","Camila studies a lot, don't she?"],correct:"Camila studies a lot, doesn't she?",anchor:'tag-do'},
+  {pt:'Você tem um carro, né?',isFullSentence:true,options:["You have a car, don't you?","You have a car, haven't you?","You have a car, aren't you?","You have a car, don't they?"],correct:"You have a car, don't you?",anchor:'tag-have-there'},
+  {pt:'Tem uma reunião hoje, né?',isFullSentence:true,options:["There is a meeting today, isn't there?",'There is a meeting today, is there?',"There is a meeting today, isn't it?","There is a meeting today, doesn't there?"],correct:"There is a meeting today, isn't there?",anchor:'tag-have-there'},
+  {pt:'Não tem café, tem?',isFullSentence:true,options:["There isn't any coffee, is there?","There isn't any coffee, isn't there?","There isn't any coffee, does there?","There isn't any coffee, is it?"],correct:"There isn't any coffee, is there?",anchor:'tag-have-there'},
+  {pt:'Ela tem dois filhos, né?',isFullSentence:true,options:["She has two kids, doesn't she?","She has two kids, hasn't she?","She has two kids, isn't she?","She has two kids, doesn't it?"],correct:"She has two kids, doesn't she?",anchor:'tag-have-there'},
+  {pt:'Tinha muita gente lá, não tinha?',isFullSentence:true,options:["There were many people there, weren't there?",'There were many people there, were there?',"There were many people there, didn't there?","There were many people there, wasn't there?"],correct:"There were many people there, weren't there?",anchor:'tag-have-there'},
+  {pt:'Eles têm uma empresa, né?',isFullSentence:true,options:["They have a company, don't they?","They have a company, haven't they?","They have a company, aren't they?","They have a company, doesn't they?"],correct:"They have a company, don't they?",anchor:'tag-have-there'},
+  {pt:'Não tinha ninguém na sala, tinha?',isFullSentence:true,options:["There wasn't anyone in the room, was there?","There wasn't anyone in the room, wasn't there?","There wasn't anyone in the room, did there?","There wasn't anyone in the room, was it?"],correct:"There wasn't anyone in the room, was there?",anchor:'tag-have-there'},
+  {pt:'Você tem tempo, né?',isFullSentence:true,options:["You have time, don't you?","You have time, haven't you?","You have time, aren't you?","You have time, don't they?"],correct:"You have time, don't you?",anchor:'tag-have-there'},
+  {pt:'Vai ter uma festa, né?',isFullSentence:true,options:["There will be a party, won't there?",'There will be a party, will there?',"There will be a party, won't it?","There will be a party, doesn't there?"],correct:"There will be a party, won't there?",anchor:'tag-have-there'},
+  {pt:'Ele tem um bom emprego, né?',isFullSentence:true,options:["He has a good job, doesn't he?","He has a good job, hasn't he?","He has a good job, isn't he?","He has a good job, doesn't it?"],correct:"He has a good job, doesn't he?",anchor:'tag-have-there'},
+  {pt:'Tem três salas, né?',isFullSentence:true,options:["There are three rooms, aren't there?",'There are three rooms, are there?',"There are three rooms, aren't they?","There are three rooms, don't there?"],correct:"There are three rooms, aren't there?",anchor:'tag-have-there'},
+  {pt:'Nós temos uma reunião, né?',isFullSentence:true,options:["We have a meeting, don't we?","We have a meeting, haven't we?","We have a meeting, aren't we?","We have a meeting, don't they?"],correct:"We have a meeting, don't we?",anchor:'tag-have-there'},
+  {pt:'Eu estou atrasado, né?',isFullSentence:true,options:["I am late, aren't I?","I am late, amn't I?",'I am late, am I?',"I am late, aren't you?"],correct:"I am late, aren't I?",anchor:'tag-especiais'},
+  {pt:'Feche a porta, pode ser?',isFullSentence:true,options:['Close the door, will you?','Close the door, do you?',"Close the door, won't you?","Close the door, aren't you?"],correct:'Close the door, will you?',anchor:'tag-especiais'},
+  {pt:'Vamos começar, vamos?',isFullSentence:true,options:["Let's start, shall we?","Let's start, will we?","Let's start, do we?","Let's start, shall you?"],correct:"Let's start, shall we?",anchor:'tag-especiais'},
+  {pt:'Eu sou seu amigo, né?',isFullSentence:true,options:["I am your friend, aren't I?",'I am your friend, am I?',"I am your friend, amn't I?","I am your friend, aren't you?"],correct:"I am your friend, aren't I?",anchor:'tag-especiais'},
+  {pt:'Me passe o sal, pode ser?',isFullSentence:true,options:['Pass me the salt, will you?','Pass me the salt, do you?','Pass me the salt, shall you?',"Pass me the salt, won't you?"],correct:'Pass me the salt, will you?',anchor:'tag-especiais'},
+  {pt:'Vamos sair, vamos?',isFullSentence:true,options:["Let's go out, shall we?","Let's go out, will we?","Let's go out, do we?","Let's go out, shall you?"],correct:"Let's go out, shall we?",anchor:'tag-especiais'},
+  {pt:'Eu estou certo, né?',isFullSentence:true,options:["I am right, aren't I?",'I am right, am I?',"I am right, amn't I?","I am right, aren't you?"],correct:"I am right, aren't I?",anchor:'tag-especiais'},
+  {pt:'Espere aqui, pode ser?',isFullSentence:true,options:['Wait here, will you?','Wait here, do you?','Wait here, shall you?',"Wait here, won't you?"],correct:'Wait here, will you?',anchor:'tag-especiais'},
+  {pt:'Vamos pedir pizza, vamos?',isFullSentence:true,options:["Let's order pizza, shall we?","Let's order pizza, will we?","Let's order pizza, do we?","Let's order pizza, shall you?"],correct:"Let's order pizza, shall we?",anchor:'tag-especiais'},
+  {pt:'Eu não estou enganado, estou?',isFullSentence:true,options:['I am not wrong, am I?',"I am not wrong, aren't I?",'I am not wrong, are I?','I am not wrong, are you?'],correct:'I am not wrong, am I?',anchor:'tag-especiais'},
+  {pt:'Me ajude com isso, pode ser?',isFullSentence:true,options:['Help me with this, will you?','Help me with this, do you?','Help me with this, shall you?',"Help me with this, aren't you?"],correct:'Help me with this, will you?',anchor:'tag-especiais'},
+  {pt:'Vamos assistir um filme, vamos?',isFullSentence:true,options:["Let's watch a movie, shall we?","Let's watch a movie, will we?","Let's watch a movie, do we?","Let's watch a movie, shall you?"],correct:"Let's watch a movie, shall we?",anchor:'tag-especiais'},
+];
+
+window['qw_bk']=[
+  {pt:'O que você quer?',isFullSentence:true,options:['What do you want?','Where do you want?','What you want?','What do you wants?'],correct:'What do you want?',anchor:'qw-basic'},
+  {pt:'Onde ela mora?',isFullSentence:true,options:['Where does she live?','What does she live?','Where she lives?','Where does she lives?'],correct:'Where does she live?',anchor:'qw-basic'},
+  {pt:'Quando é a reunião?',isFullSentence:true,options:['When is the meeting?','Where is the meeting?','When the meeting is?','When does the meeting?'],correct:'When is the meeting?',anchor:'qw-basic'},
+  {pt:'Quem ligou pra você?',isFullSentence:true,options:['Who called you?','What called you?','Who did called you?','Who calls you yesterday?'],correct:'Who called you?',anchor:'qw-basic'},
+  {pt:'Por que você está atrasado?',isFullSentence:true,options:['Why are you late?','What are you late?','Why you are late?','Why do you late?'],correct:'Why are you late?',anchor:'qw-basic'},
+  {pt:'Onde estão minhas chaves?',isFullSentence:true,options:['Where are my keys?','What are my keys?','Where my keys are?','Where is my keys?'],correct:'Where are my keys?',anchor:'qw-basic'},
+  {pt:'O que ele disse?',isFullSentence:true,options:['What did he say?','Where did he say?','What he said?','What did he said?'],correct:'What did he say?',anchor:'qw-basic'},
+  {pt:'Quando vocês chegaram?',isFullSentence:true,options:['When did you arrive?','Where did you arrive?','When you arrived?','When did you arrived?'],correct:'When did you arrive?',anchor:'qw-basic'},
+  {pt:'Por que ela saiu cedo?',isFullSentence:true,options:['Why did she leave early?','What did she leave early?','Why she left early?','Why did she left early?'],correct:'Why did she leave early?',anchor:'qw-basic'},
+  {pt:'Quem é aquele homem?',isFullSentence:true,options:['Who is that man?','What is that man?','Who that man is?','Who are that man?'],correct:'Who is that man?',anchor:'qw-basic'},
+  {pt:'O que está acontecendo?',isFullSentence:true,options:['What is happening?','Where is happening?','What happening?','What does happening?'],correct:'What is happening?',anchor:'qw-basic'},
+  {pt:'Onde você trabalha?',isFullSentence:true,options:['Where do you work?','What do you work?','Where you work?','Where do you works?'],correct:'Where do you work?',anchor:'qw-basic'},
+  {pt:'Qual é a sua cor favorita?',isFullSentence:true,options:['What is your favorite color?','Which is your favorite color?','What your favorite color is?','What are your favorite color?'],correct:'What is your favorite color?',anchor:'qw-which-how'},
+  {pt:'Qual você quer, o azul ou o vermelho?',isFullSentence:true,options:['Which one do you want, the blue or the red?','What one do you want, the blue or the red?','Which one you want, the blue or the red?','Which one do you wants, the blue or the red?'],correct:'Which one do you want, the blue or the red?',anchor:'qw-which-how'},
+  {pt:'Quantos livros você tem?',isFullSentence:true,options:['How many books do you have?','How much books do you have?','How many books you have?','How many book do you have?'],correct:'How many books do you have?',anchor:'qw-which-how'},
+  {pt:'Quanto dinheiro você precisa?',isFullSentence:true,options:['How much money do you need?','How many money do you need?','How much money you need?','How much money do you needs?'],correct:'How much money do you need?',anchor:'qw-which-how'},
+  {pt:'Com que frequência você treina?',isFullSentence:true,options:['How often do you train?','How much do you train?','How often you train?','How often do you trains?'],correct:'How often do you train?',anchor:'qw-which-how'},
+  {pt:'Quão longe fica a estação?',isFullSentence:true,options:['How far is the station?','How much is the station?','How far the station is?','How far are the station?'],correct:'How far is the station?',anchor:'qw-which-how'},
+  {pt:'Quanto tempo demora?',isFullSentence:true,options:['How long does it take?','How much does it take?','How long it takes?','How long does it takes?'],correct:'How long does it take?',anchor:'qw-which-how'},
+  {pt:'Quantos anos você tem?',isFullSentence:true,options:['How old are you?','How much are you?','How old you are?','How many years do you have?'],correct:'How old are you?',anchor:'qw-which-how'},
+  {pt:'Qual desses dois é melhor?',isFullSentence:true,options:['Which of these two is better?','What of these two is better?','Which of these two better is?','Which of these two are better?'],correct:'Which of these two is better?',anchor:'qw-which-how'},
+  {pt:'Como você está?',isFullSentence:true,options:['How are you?','What are you?','How you are?','How do you are?'],correct:'How are you?',anchor:'qw-which-how'},
+  {pt:'Quantas pessoas vieram?',isFullSentence:true,options:['How many people came?','How much people came?','How many people did came?','How many person came?'],correct:'How many people came?',anchor:'qw-which-how'},
+  {pt:'Quanto custa essa camisa?',isFullSentence:true,options:['How much is this shirt?','How many is this shirt?','How much this shirt is?','How much are this shirt?'],correct:'How much is this shirt?',anchor:'qw-which-how'},
+  {pt:'De quem é esse carro?',isFullSentence:true,options:['Whose car is this?','Who car is this?','Whose is this car?','Whose car this is?'],correct:'Whose car is this?',anchor:'qw-whose-misc'},
+  {pt:'De quem são esses livros?',isFullSentence:true,options:['Whose books are these?','Who books are these?','Whose are these books?','Whose books these are?'],correct:'Whose books are these?',anchor:'qw-whose-misc'},
+  {pt:'Quem fez o bolo?',isFullSentence:true,options:['Who made the cake?','What made the cake?','Who did make the cake?','Who makes the cake yesterday?'],correct:'Who made the cake?',anchor:'qw-whose-misc'},
+  {pt:'Por que isso aconteceu?',isFullSentence:true,options:['Why did this happen?','What did this happen?','Why this happened?','Why did this happened?'],correct:'Why did this happen?',anchor:'qw-whose-misc'},
+  {pt:'De quem é a vez?',isFullSentence:true,options:['Whose turn is it?','Who turn is it?','Whose is it turn?','Whose turn it is?'],correct:'Whose turn is it?',anchor:'qw-whose-misc'},
+  {pt:'Quem vai dirigir?',isFullSentence:true,options:['Who will drive?','What will drive?','Who will drives?','Who is drive?'],correct:'Who will drive?',anchor:'qw-whose-misc'},
+  {pt:'Por que você fez isso?',isFullSentence:true,options:['Why did you do that?','What did you do that?','Why you did that?','Why did you did that?'],correct:'Why did you do that?',anchor:'qw-whose-misc'},
+  {pt:'Quem mora aqui?',isFullSentence:true,options:['Who lives here?','What lives here?','Who do live here?','Who live here?'],correct:'Who lives here?',anchor:'qw-whose-misc'},
+  {pt:'De quem é a culpa?',isFullSentence:true,options:['Whose fault is it?','Who fault is it?','Whose is it fault?','Whose fault it is?'],correct:'Whose fault is it?',anchor:'qw-whose-misc'},
+  {pt:'Por que ela está chorando?',isFullSentence:true,options:['Why is she crying?','What is she crying?','Why she is crying?','Why does she crying?'],correct:'Why is she crying?',anchor:'qw-whose-misc'},
+  {pt:'Quem quer café?',isFullSentence:true,options:['Who wants coffee?','What wants coffee?','Who do want coffee?','Who want coffee?'],correct:'Who wants coffee?',anchor:'qw-whose-misc'},
+  {pt:'De quem foi a ideia?',isFullSentence:true,options:['Whose idea was it?','Who idea was it?','Whose was it idea?','Whose idea it was?'],correct:'Whose idea was it?',anchor:'qw-whose-misc'},
+  {pt:'Faça o que você quiser.',isFullSentence:true,options:['Do whatever you want.','Do whenever you want.','Do whatsoever you want.','Do however you want.'],correct:'Do whatever you want.',anchor:'qw-ever'},
+  {pt:'Me ligue sempre que precisar.',isFullSentence:true,options:['Call me whenever you need.','Call me whatever you need.','Call me wherever you need.','Call me whoever you need.'],correct:'Call me whenever you need.',anchor:'qw-ever'},
+  {pt:'Eu vou te seguir aonde você for.',isFullSentence:true,options:['I will follow you wherever you go.','I will follow you whenever you go.','I will follow you whatever you go.','I will follow you whoever you go.'],correct:'I will follow you wherever you go.',anchor:'qw-ever'},
+  {pt:'Quem quer que tenha feito isso, errou.',isFullSentence:true,options:['Whoever did this was wrong.','Whatever did this was wrong.','Wherever did this was wrong.','However did this was wrong.'],correct:'Whoever did this was wrong.',anchor:'qw-ever'},
+  {pt:'Escolha qualquer um que preferir.',isFullSentence:true,options:['Pick whichever you prefer.','Pick whenever you prefer.','Pick wherever you prefer.','Pick whoever you prefer.'],correct:'Pick whichever you prefer.',anchor:'qw-ever'},
+  {pt:'Por mais difícil que seja, não desista.',isFullSentence:true,options:["However hard it is, don't give up.","Whatever hard it is, don't give up.","Wherever hard it is, don't give up.","Whenever hard it is, don't give up."],correct:"However hard it is, don't give up.",anchor:'qw-ever'},
+  {pt:'Coma o que você quiser.',isFullSentence:true,options:['Eat whatever you like.','Eat whenever you like.','Eat wherever you like.','Eat whoever you like.'],correct:'Eat whatever you like.',anchor:'qw-ever'},
+  {pt:'Sente onde você quiser.',isFullSentence:true,options:['Sit wherever you want.','Sit whenever you want.','Sit whatever you want.','Sit whoever you want.'],correct:'Sit wherever you want.',anchor:'qw-ever'},
+  {pt:'Seja quem for, diga que estou ocupado.',isFullSentence:true,options:["Whoever it is, say I'm busy.","Whatever it is, say I'm busy.","Wherever it is, say I'm busy.","Whenever it is, say I'm busy."],correct:"Whoever it is, say I'm busy.",anchor:'qw-ever'},
+  {pt:'Venha quando quiser.',isFullSentence:true,options:['Come whenever you want.','Come wherever you want.','Come whatever you want.','Come whoever you want.'],correct:'Come whenever you want.',anchor:'qw-ever'},
+  {pt:'Pegue qualquer um que quiser.',isFullSentence:true,options:['Take whichever you want.','Take whenever you want.','Take wherever you want.','Take whoever you want.'],correct:'Take whichever you want.',anchor:'qw-ever'},
+  {pt:'Não importa o que aconteça, estou com você.',isFullSentence:true,options:["Whatever happens, I'm with you.","Whenever happens, I'm with you.","Wherever happens, I'm with you.","However happens, I'm with you."],correct:"Whatever happens, I'm with you.",anchor:'qw-ever'},
+  {pt:'Eu não tenho ideia nenhuma.',isFullSentence:true,options:['I have no idea whatsoever.','I have no idea whatever.','I have no idea however.','I have any idea whatsoever.'],correct:'I have no idea whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'Não há dúvida alguma.',isFullSentence:true,options:['There is no doubt whatsoever.','There is no doubt whatever.','There is no doubt however.','There is any doubt whatsoever.'],correct:'There is no doubt whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'Ele não tem nenhum respeito, nadinha.',isFullSentence:true,options:['He has no respect whatsoever.','He has no respect whatever.','He has no respect however.','He has any respect whatsoever.'],correct:'He has no respect whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'Não tem problema nenhum.',isFullSentence:true,options:['There is no problem whatsoever.','There is no problem whatever.','There is no problem however.','There is any problem whatsoever.'],correct:'There is no problem whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'O que você está fazendo?',isFullSentence:true,options:['What are you doing?','Which are you doing?','What you are doing?','What do you doing?'],correct:'What are you doing?',anchor:'qw-whatsoever'},
+  {pt:'Onde fica o banheiro?',isFullSentence:true,options:['Where is the restroom?','What is the restroom?','Where the restroom is?','Where are the restroom?'],correct:'Where is the restroom?',anchor:'qw-whatsoever'},
+  {pt:'Como isso funciona?',isFullSentence:true,options:['How does this work?','What does this work?','How this works?','How does this works?'],correct:'How does this work?',anchor:'qw-whatsoever'},
+  {pt:'Quando você vai voltar?',isFullSentence:true,options:['When will you come back?','Where will you come back?','When you will come back?','When will you comes back?'],correct:'When will you come back?',anchor:'qw-whatsoever'},
+  {pt:'Não tenho dinheiro nenhum.',isFullSentence:true,options:['I have no money whatsoever.','I have no money whatever.','I have no money however.','I have any money whatsoever.'],correct:'I have no money whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'Por que isso importa?',isFullSentence:true,options:['Why does it matter?','What does it matter?','Why it matters?','Why does it matters?'],correct:'Why does it matter?',anchor:'qw-whatsoever'},
+  {pt:'Qual prefere, café ou chá?',isFullSentence:true,options:['Which do you prefer, coffee or tea?','What do you prefer, coffee or tea?','Which you prefer, coffee or tea?','Which do you prefers, coffee or tea?'],correct:'Which do you prefer, coffee or tea?',anchor:'qw-whatsoever'},
+  {pt:'Não faço a menor ideia, nadinha.',isFullSentence:true,options:['I have no clue whatsoever.','I have no clue whatever.','I have no clue however.','I have any clue whatsoever.'],correct:'I have no clue whatsoever.',anchor:'qw-whatsoever'},
 ];
 
 window['rev4_bk']=[
@@ -5743,6 +5937,15 @@ const pages=[
         </div>
         <div class="idx-item" onclick="go(92)" data-kw="to do make fazer preparar do does did don't doesn't didn't negar perguntar pergunta negação auxiliar verbo comum enfase really cap7">
           <div class="idx-num">36</div><div class="idx-info"><div class="idx-name">O verbo To Do</div><div class="idx-desc">Do/Does/Did — negar e perguntar com qualquer verbo</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(94)" data-kw="modal verbs verbos modais can can't could couldn't should shouldn't would wouldn't must mustn't may poder dever deveria gostaria conseguir permissao obrigacao conselho cap7">
+          <div class="idx-num">37</div><div class="idx-info"><div class="idx-name">Modal Verbs</div><div class="idx-desc">Can, could, should, would, must, may</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(96)" data-kw="tag questions question tags né não é não foi rabinho confirmar polaridade invertida aren't you isn't it don't you didn't they shall we will you cap7">
+          <div class="idx-num">38</div><div class="idx-info"><div class="idx-name">Tag Questions</div><div class="idx-desc">O "né?" do inglês — aren't you?, isn't it?, did she?</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(98)" data-kw="question words wh what where when who why which whose how how many how much how often whatever whenever wherever whoever whichever however whatsoever palavras de pergunta cap7">
+          <div class="idx-num">39</div><div class="idx-info"><div class="idx-name">Question Words</div><div class="idx-desc">What, where, when, who, how — e os -ever</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -12132,6 +12335,26 @@ const pages=[
       <p class="tip-txt">Pra fazer uma pergunta <strong>negativa</strong> ("Você não...?"), usa-se a forma negativa do auxiliar na frente:<br>→ <em>Você não faz a lição?</em> = <strong class="enw" data-speak="Don't">Don't</strong> you do the homework?<br>→ <em>Ele não gosta de andar?</em> = <strong class="enw" data-speak="Doesn't">Doesn't</strong> he like to walk?<br>→ <em>Ela não tinha maçãs?</em> = <strong class="enw" data-speak="Didn't">Didn't</strong> she have apples?</p>
     </div>
 
+    <div class="sec-divider" id="todo-resp"><div class="sec-divider-line"></div><div class="sec-divider-label">Respondendo com o próprio do</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Aqui vai um truque que deixa seu inglês muito mais natural: pra responder uma pergunta feita com <strong>do/does/did</strong>, você <strong>repete o mesmo auxiliar</strong> — sem precisar repetir o verbo inteiro. É como o nosso "Você gosta de café? Gosto.".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Respostas curtas com do/does/did</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você gosta de café? Gosto.</span><span class="eg-en en" data-speak="Do you like coffee? I do.">Do you like coffee? I <span class="hl-p3">do</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela gosta de dançar? Gosta.</span><span class="eg-en en" data-speak="Does she enjoy dancing? She does.">Does she enjoy dancing? She <span class="hl-p3">does</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles fecharam o negócio? Fecharam.</span><span class="eg-en en" data-speak="Did they close the deal? They did.">Did they close the deal? They <span class="hl-p3">did</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você trabalha aqui? Não trabalho.</span><span class="eg-en en" data-speak="Do you work here? I don't.">Do you work here? I <span class="hl-wont">don't</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele veio ontem? Não veio.</span><span class="eg-en en" data-speak="Did he come yesterday? He didn't.">Did he come yesterday? He <span class="hl-wont">didn't</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 O auxiliar "ecoa" a pergunta</div>
+      <p class="tip-txt">Repare: a resposta usa o <strong>mesmo</strong> auxiliar da pergunta. <span class="enw" data-speak="Do">Do</span> you...? → I <span class="enw" data-speak="do">do</span>. &nbsp;·&nbsp; <span class="enw" data-speak="Does">Does</span> she...? → She <span class="enw" data-speak="does">does</span>. &nbsp;·&nbsp; <span class="enw" data-speak="Did">Did</span> they...? → They <span class="enw" data-speak="did">did</span>. Pra negar, é só usar a forma negativa (I <span class="enw" data-speak="don't">don't</span>).</p>
+    </div>
+
     <div class="sec-divider" id="todo-aux-verbo"><div class="sec-divider-line"></div><div class="sec-divider-label">O detalhe esperto: do auxiliar + do verbo</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong class="enw" data-speak="to do">to do</strong> é, ao mesmo tempo, um <strong>verbo auxiliar</strong> (pra perguntar/negar) e o <strong>verbo "fazer"</strong>. Quando ele aparece como verbo principal, ele ainda precisa de <strong>outro</strong> do/does/did na frente pra virar pergunta ou negação — porque, como verbo "fazer", ele <strong>não</strong> tem auxiliar próprio.</p>
@@ -12180,7 +12403,620 @@ const pages=[
     <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
     <div class="ex-wrap"><div class="ex-header"><span class="ex-title">O verbo To Do — exercício</span><span class="ex-score" id="todo-score">0/10</span></div><div class="ex-body" id="todo-body"></div></div>
   </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#818cf8;"><div class="sec-ghost">37</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 37</div>
+    <div class="sec-title">Modal<br><span class="acc">Verbs</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Poder, dever, deveria, gostaria — os verbos que dão tom à frase.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🗼</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A <strong>Torre Eiffel</strong> cresce no verão. O ferro se expande com o calor, e em dias quentes a torre pode ficar até <strong>15 centímetros mais alta</strong> do que no inverno. Ela também balança levemente com o vento — o topo pode se deslocar alguns centímetros, algo totalmente previsto no projeto de Gustave Eiffel.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#818cf8;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 37 · Modal Verbs</div><div class="pg-ttl">Modal Verbs</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Os <strong>modal verbs</strong> (verbos modais) são uns ajudantes especiais que vêm <strong>antes</strong> de outro verbo pra dar um "tom" à frase: capacidade, permissão, obrigação, conselho... São como <em>poder, dever, deveria, gostaria</em> em português.</p>
+
+    <p class="intro">A boa notícia: eles seguem <strong>três regrinhas fáceis</strong> que você já conhece de outras matérias.</p>
+
+    <div class="pron-section" id="modal-regras">
+      <div class="pron-header">🟣 As 3 regras de ouro dos modais</div>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt"><strong>1.</strong> O verbo depois do modal fica no <strong>infinitivo sem "to"</strong>.</div>
+          <div class="q-en">I can <span class="enw" data-speak="swim">swim</span>. (não "I can to swim")</div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>2.</strong> Têm <strong>negação própria</strong> — é só somar o <em>not</em> (igual você viu no To Do).</div>
+          <div class="q-en">can → <span class="enw" data-speak="can't">can't</span> &nbsp;·&nbsp; should → <span class="enw" data-speak="shouldn't">shouldn't</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>3.</strong> São <strong>verbos auxiliares</strong> — invertem com o sujeito pra perguntar (sem do/does).</div>
+          <div class="q-en"><span class="enw" data-speak="Can you help me?">Can you help me?</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Não mudam com o pronome</div>
+      <p class="tip-txt">Os modais <strong>nunca</strong> ganham S na terceira pessoa. É <em>He <span class="enw" data-speak="can">can</span></em>, não "he cans". Vale pra todos eles.</p>
+    </div>
+
+    <div class="sec-divider" id="modal-can"><div class="sec-divider-line"></div><div class="sec-divider-label">Can / Can't — poder, saber, conseguir</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>can</strong> tem dois usos que andam juntos: <strong>capacidade</strong> ("saber/conseguir fazer") e <strong>permissão</strong> informal ("pode"). A mesma palavra serve pros dois — o contexto diz qual é. A negação é <strong>can't</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Can / Can't</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu sei nadar. <span style="opacity:.6">(capacidade)</span></span><span class="eg-en en" data-speak="I can swim.">I <span class="hl-p3">can</span> swim.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela consegue falar três idiomas. <span style="opacity:.6">(capacidade)</span></span><span class="eg-en en" data-speak="She can speak three languages.">She <span class="hl-p3">can</span> speak three languages.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não consigo ouvir você.</span><span class="eg-en en" data-speak="I can't hear you.">I <span class="hl-wont">can't</span> hear you.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você pode usar minha mesa. <span style="opacity:.6">(permissão)</span></span><span class="eg-en en" data-speak="You can use my desk.">You <span class="hl-p3">can</span> use my desk.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="modal-future"><div class="sec-divider-line"></div><div class="sec-divider-label">O futuro do Can — will be able to</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Lembra da regra de ouro nº 3: <strong>não se juntam dois modais</strong>. Por isso <em>"will can"</em> <strong>não existe</strong>. Pra falar de capacidade no <strong>futuro</strong>, o inglês troca o can por <strong>will be able to</strong> ("vai conseguir / vai poder").</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Can no futuro</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu vou conseguir terminar amanhã.</span><span class="eg-en en" data-speak="I will be able to finish tomorrow.">I <span class="hl-p3">will be able to</span> finish tomorrow.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela vai poder vir na semana que vem.</span><span class="eg-en en" data-speak="She will be able to come next week.">She <span class="hl-p3">will be able to</span> come next week.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós não vamos conseguir entregar a tempo.</span><span class="eg-en en" data-speak="We won't be able to deliver on time.">We <span class="hl-wont">won't be able to</span> deliver on time.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você vai conseguir me ajudar?</span><span class="eg-en en" data-speak="Will you be able to help me?"><span class="hl-p3">Will you be able to</span> help me?</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Os três tempos do "poder/conseguir"</div>
+      <p class="tip-txt">→ Presente: <span class="enw" data-speak="can">can</span> (I can do it)<br>→ Passado: <span class="enw" data-speak="could">could</span> (I could do it)<br>→ Futuro: <span class="enw" data-speak="will be able to">will be able to</span> (I will be able to do it)<br><br>Repare que no <em>will be able to</em> o verbo vem com <strong>to</strong> (be able <strong>to</strong> finish) — é a exceção, porque aqui quem é modal é o <em>will</em>, não o "be able".</p>
+    </div>
+
+    <div class="sec-divider" id="modal-could"><div class="sec-divider-line"></div><div class="sec-divider-label">Could / Couldn't — podia, poderia</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>could</strong> tem três usos: é o <strong>passado do can</strong> ("conseguia/podia"), serve pra <strong>pedidos educados</strong> ("poderia?"), e indica <strong>possibilidade futura</strong> ("poderia / talvez aconteça"). A negação é <strong>couldn't</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Could / Couldn't</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Quando criança, eu sabia tocar piano. <span style="opacity:.6">(passado)</span></span><span class="eg-en en" data-speak="As a child, I could play piano.">As a child, I <span class="hl-p3">could</span> play piano.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você poderia me ajudar? <span style="opacity:.6">(pedido)</span></span><span class="eg-en en" data-speak="Could you help me?"><span class="hl-p3">Could</span> you help me?</span></div>
+        <div class="eg-row"><span class="eg-pt">Pode ser que chova mais tarde. <span style="opacity:.6">(possibilidade)</span></span><span class="eg-en en" data-speak="It could rain later.">It <span class="hl-p3">could</span> rain later.</span></div>
+        <div class="eg-row"><span class="eg-pt">Isso poderia dar certo. <span style="opacity:.6">(possibilidade)</span></span><span class="eg-en en" data-speak="That could work.">That <span class="hl-p3">could</span> work.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não consegui terminar ontem.</span><span class="eg-en en" data-speak="I couldn't finish yesterday.">I <span class="hl-wont">couldn't</span> finish yesterday.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Could também é "talvez" (futuro)</div>
+      <p class="tip-txt">Além de passado, o <span class="enw" data-speak="could">could</span> aponta pra uma <strong>possibilidade</strong> que pode acontecer — parecido com o <span class="enw" data-speak="may">may</span>:<br>→ <span class="enw" data-speak="We could win this game">We could win this game</span> = a gente <strong>poderia</strong> ganhar (é possível)<br>→ <span class="enw" data-speak="This could be a problem">This could be a problem</span> = isso <strong>poderia</strong> ser um problema</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Could é mais educado que Can</div>
+      <p class="tip-txt">Pra pedir algo de forma <strong>gentil</strong>, prefira <em>Could you...?</em> a <em>Can you...?</em>. É a diferença entre "você pode?" e "você poderia?".</p>
+    </div>
+
+    <div class="sec-divider" id="modal-should"><div class="sec-divider-line"></div><div class="sec-divider-label">Should / Shouldn't — deveria (conselho)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>should</strong> dá <strong>conselho</strong> ou recomendação: "deveria". A negação <strong>shouldn't</strong> = "não deveria".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Should / Shouldn't</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você deveria descansar.</span><span class="eg-en en" data-speak="You should rest.">You <span class="hl-p3">should</span> rest.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós deveríamos sair mais cedo.</span><span class="eg-en en" data-speak="We should leave earlier.">We <span class="hl-p3">should</span> leave earlier.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você não deveria fumar.</span><span class="eg-en en" data-speak="You shouldn't smoke.">You <span class="hl-wont">shouldn't</span> smoke.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu deveria ligar pra ela?</span><span class="eg-en en" data-speak="Should I call her?"><span class="hl-p3">Should</span> I call her?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="modal-would"><div class="sec-divider-line"></div><div class="sec-divider-label">Would / Wouldn't — gostaria, ia (condicional)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>would</strong> traz a ideia de <strong>condicional</strong> ("ia/gostaria") e aparece muito em <strong>pedidos educados</strong> e ofertas. A negação é <strong>wouldn't</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Would / Wouldn't</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu gostaria de um café.</span><span class="eg-en en" data-speak="I would like a coffee.">I <span class="hl-p3">would</span> like a coffee.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você gostaria de participar?</span><span class="eg-en en" data-speak="Would you like to join?"><span class="hl-p3">Would</span> you like to join?</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela não faria isso.</span><span class="eg-en en" data-speak="She wouldn't do that.">She <span class="hl-wont">wouldn't</span> do that.</span></div>
+        <div class="eg-row"><span class="eg-pt">Isso seria ótimo.</span><span class="eg-en en" data-speak="That would be great.">That <span class="hl-p3">would</span> be great.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 "I would like" = "Eu gostaria"</div>
+      <p class="tip-txt">A expressão <strong>would like</strong> é a forma educada de dizer "quero" → "gostaria". É muito mais elegante que <em>I want</em> num pedido. Repare que mesmo aqui vale a regra: depois de <em>like</em> usamos <em>to</em> + verbo (<span class="enw" data-speak="I would like to go">I would like to go</span>).</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Would é o "Will" mais educado</div>
+      <p class="tip-txt">Repare no padrão: assim como <span class="enw" data-speak="could">could</span> é a versão gentil do <span class="enw" data-speak="can">can</span>, o <span class="enw" data-speak="would">would</span> é a versão gentil do <span class="enw" data-speak="will">will</span>.<br>→ <span class="enw" data-speak="Will you help me?">Will you help me?</span> <span style="opacity:.6">(direto)</span><br>→ <span class="enw" data-speak="Would you help me?">Would you help me?</span> <span style="opacity:.6">(educado)</span></p>
+    </div>
+
+    <div class="sec-divider" id="modal-must"><div class="sec-divider-line"></div><div class="sec-divider-label">Must / Mustn't — dever (obrigação e dedução)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>must</strong> tem dois usos. O primeiro é <strong>obrigação forte</strong>: "ter que/dever". A negação <strong>mustn't</strong> é uma <strong>proibição</strong> ("não pode de jeito nenhum").</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Must — obrigação</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você tem que usar capacete.</span><span class="eg-en en" data-speak="You must wear a helmet.">You <span class="hl-p3">must</span> wear a helmet.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós temos que entregar hoje.</span><span class="eg-en en" data-speak="We must deliver today.">We <span class="hl-p3">must</span> deliver today.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você não pode contar a ninguém.</span><span class="eg-en en" data-speak="You mustn't tell anyone.">You <span class="hl-wont">mustn't</span> tell anyone.</span></div>
+      </div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">O segundo uso é <strong>dedução</strong>: quando você tem quase certeza de algo pela lógica — "deve estar / só pode ser". Aqui o must não é ordem, é uma <strong>conclusão</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Must — dedução (deve estar)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ele deve estar cansado.</span><span class="eg-en en" data-speak="He must be tired.">He <span class="hl-p3">must</span> be tired.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você deve estar brincando!</span><span class="eg-en en" data-speak="You must be joking!">You <span class="hl-p3">must</span> be joking!</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela deve saber a resposta.</span><span class="eg-en en" data-speak="She must know the answer.">She <span class="hl-p3">must</span> know the answer.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Como saber qual é qual</div>
+      <p class="tip-txt">É o contexto que diz:<br>→ <span class="enw" data-speak="You must study">You must study</span> = você <strong>tem que</strong> estudar <span style="opacity:.6">(obrigação)</span><br>→ <span class="enw" data-speak="You must be smart">You must be smart</span> = você <strong>deve ser</strong> inteligente <span style="opacity:.6">(dedução)</span><br><br>Em geral, quando o must vem antes de <em>be</em> ou de um verbo de estado (know, have...), costuma ser dedução.</p>
+    </div>
+
+    <div class="sec-divider" id="modal-haveto"><div class="sec-divider-line"></div><div class="sec-divider-label">Have to / Has to — ter que (o irmão do Must)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">No dia a dia, os americanos usam muito mais <strong>have to</strong> do que <em>must</em> pra falar de obrigação. Significa a mesma coisa: <strong>"ter que"</strong>. Na terceira pessoa (he/she/it) vira <strong>has to</strong>, e no passado <strong>had to</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Have to / Has to</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu tenho que trabalhar amanhã.</span><span class="eg-en en" data-speak="I have to work tomorrow.">I <span class="hl-p3">have to</span> work tomorrow.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela tem que assinar o documento.</span><span class="eg-en en" data-speak="She has to sign the document.">She <span class="hl-p3">has to</span> sign the document.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós tivemos que esperar uma hora.</span><span class="eg-en en" data-speak="We had to wait one hour.">We <span class="hl-p3">had to</span> wait one hour.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Have to NÃO é modal de verdade</div>
+      <p class="tip-txt">Diferente dos modais, o <strong>have to</strong> se comporta como <strong>verbo comum</strong>: pra negar e perguntar, ele usa o <span class="tb-link" onclick="goAndHighlight(93,'todo-conj')">do / does / did</span> que você aprendeu no To Do.<br>→ <span class="enw" data-speak="Do you have to work?">Do you have to work?</span><br>→ <span class="enw" data-speak="She doesn't have to come">She doesn't have to come</span></p>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Cuidado: mustn't ≠ don't have to</div>
+      <p class="tip-txt">Aqui mora a maior pegadinha dos modais. As negações <strong>parecem</strong> iguais mas dizem o oposto:<br><br>→ <span class="enw" data-speak="You mustn't go">You mustn't go</span> = você <strong>não pode</strong> ir (é proibido)<br>→ <span class="enw" data-speak="You don't have to go">You don't have to go</span> = você <strong>não precisa</strong> ir (mas pode, se quiser)<br><br>Um <strong>proíbe</strong>; o outro diz que <strong>não é obrigatório</strong>.</p>
+    </div>
+
+    <div class="sec-divider" id="modal-may"><div class="sec-divider-line"></div><div class="sec-divider-label">May / May not — poder (permissão, possibilidade)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>may</strong> indica <strong>permissão formal</strong> ou <strong>possibilidade</strong> ("pode ser que"). A negação é <strong>may not</strong> (esse não tem forma contraída comum).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 May / May not</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Posso entrar?</span><span class="eg-en en" data-speak="May I come in?"><span class="hl-p3">May</span> I come in?</span></div>
+        <div class="eg-row"><span class="eg-pt">Pode chover hoje à noite.</span><span class="eg-en en" data-speak="It may rain tonight.">It <span class="hl-p3">may</span> rain tonight.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela pode não vir.</span><span class="eg-en en" data-speak="She may not come.">She <span class="hl-wont">may not</span> come.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você pode usar seu celular aqui.</span><span class="eg-en en" data-speak="You may use your phone here.">You <span class="hl-p3">may</span> use your phone here.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar — fácil</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Como os modais já são <strong>auxiliares</strong> e têm <strong>negação própria</strong>, você não precisa do <em>do/does/did</em> com eles. É igualzinho ao to be e ao will:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Afirmar · Negar · Perguntar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela sabe dirigir.</span><span class="eg-en en" data-speak="She can drive.">She <span class="hl-p3">can</span> drive.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela não sabe dirigir.</span><span class="eg-en en" data-speak="She can't drive.">She <span class="hl-wont">can't</span> drive.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela sabe dirigir?</span><span class="eg-en en" data-speak="Can she drive?"><span class="hl-p3">Can</span> she drive?</span></div>
+      </div>
+      <p style="margin-top:8px;font-size:14px;opacity:.85;">Pra negar: soma o <em>not</em>. Pra perguntar: joga o modal pra frente do sujeito. Sem do/does.</p>
+    </div>
+
+    <div class="sec-divider" id="modal-resp"><div class="sec-divider-line"></div><div class="sec-divider-label">Respondendo com o próprio modal</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Igual ao que você viu no <span class="tb-link" onclick="goAndHighlight(93,'todo-resp')">To Do</span>, pra responder uma pergunta feita com modal você <strong>repete o mesmo modal</strong> — sem o verbo. O modal "ecoa" a pergunta.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Respostas curtas com modais</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você sabe nadar? Sei.</span><span class="eg-en en" data-speak="Can you swim? I can.">Can you swim? I <span class="hl-p3">can</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu deveria ligar pra ela? Deveria.</span><span class="eg-en en" data-speak="Should I call her? You should.">Should I call her? You <span class="hl-p3">should</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você gostaria de um café? Gostaria.</span><span class="eg-en en" data-speak="Would you like a coffee? I would.">Would you like a coffee? I <span class="hl-p3">would</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela consegue vir? Não consegue.</span><span class="eg-en en" data-speak="Can she come? She can't.">Can she come? She <span class="hl-wont">can't</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu deveria esperar? Não deveria.</span><span class="eg-en en" data-speak="Should I wait? You shouldn't.">Should I wait? You <span class="hl-wont">shouldn't</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Fácil porque o modal já é auxiliar</div>
+      <p class="tip-txt">Como o modal é auxiliar, ele responde sozinho — não precisa de do/does. <span class="enw" data-speak="Can you?">Can you?</span> → I <span class="enw" data-speak="can">can</span>. &nbsp;·&nbsp; <span class="enw" data-speak="Would you?">Would you?</span> → I <span class="enw" data-speak="would">would</span>. Pra negar, usa a forma negativa (I <span class="enw" data-speak="can't">can't</span>).</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1fr 1.4fr;"><span>Modal</span><span>Negação</span><span>Sentido</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="can">can</span><span class="enw" data-speak="can't">can't</span><span>poder / saber / conseguir</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="will be able to">will be able to</span><span class="enw" data-speak="won't be able to">won't be able to</span><span>futuro do can (vai conseguir)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="could">could</span><span class="enw" data-speak="couldn't">couldn't</span><span>podia (passado) / poderia / talvez</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="should">should</span><span class="enw" data-speak="shouldn't">shouldn't</span><span>deveria (conselho)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="would">would</span><span class="enw" data-speak="wouldn't">wouldn't</span><span>gostaria / ia (condicional)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="must">must</span><span class="enw" data-speak="mustn't">mustn't</span><span>ter que (obrigação) / deve estar (dedução)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="have to">have to / has to</span><span class="enw" data-speak="don't have to">don't have to</span><span>ter que (não é obrigado)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="may">may</span><span class="enw" data-speak="may not">may not</span><span>poder (permissão/possibilidade)</span></div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Não junte dois modais e não esqueça as 3 regras</div>
+      <p class="tip-txt">Nunca use dois modais juntos (<em>"I will can"</em> ❌). E lembre sempre: depois do modal, verbo no <strong>infinitivo sem to</strong>; pra negar, <strong>soma o not</strong>; pra perguntar, <strong>inverte</strong> com o sujeito.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Modal Verbs — exercício</span><span class="ex-score" id="modal-score">0/10</span></div><div class="ex-body" id="modal-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#f472b6;"><div class="sec-ghost">38</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 38</div>
+    <div class="sec-title">Tag<br><span class="acc">Questions</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Aquele "né?", "não é?", "não foi?" que a gente joga no fim da frase.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🐧</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Os <strong>pinguins</strong> conseguem beber água do mar. Eles têm uma glândula especial perto dos olhos que filtra o sal do sangue e o expele pelo bico — por isso parecem estar sempre "espirrando". Sem isso, não sobreviveriam em alto-mar, onde passam meses longe de qualquer fonte de água doce.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#f472b6;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 38 · Tag Questions</div><div class="pg-ttl">Tag Questions</div></div>
+  <div class="pg-body">
+
+    <p class="intro">As <strong>tag questions</strong> são aquele "rabinho" que a gente prega no fim da frase pra confirmar algo — o nosso <strong>"né?", "não é?", "não foi?", "não tem?"</strong>. Em inglês, em vez de um "né?" pra tudo, a tag <strong>muda</strong> conforme a frase.</p>
+
+    <div class="pron-section" id="tag-exemplo">
+      <div class="pron-header">📌 A ideia geral</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você é brasileiro, né?</span><span class="eg-en en" data-speak="You are Brazilian, aren't you?">You are Brazilian, <span class="hl-coringa">aren't you?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Ela não veio, né?</span><span class="eg-en en" data-speak="She didn't come, did she?">She didn't come, <span class="hl-coringa">did she?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tag-regra"><div class="sec-divider-line"></div><div class="sec-divider-label">A regra de ouro: polaridade invertida</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">A tag sempre vai pro <strong>lado oposto</strong> da frase. É como uma gangorra:</p>
+
+    <div class="quote-list" style="margin-top:8px;">
+      <div class="quote">
+        <div class="q-pt">Frase <strong>afirmativa</strong> → tag <strong>negativa</strong></div>
+        <div class="q-en">You are happy, <span class="hl-wont">aren't you?</span></div>
+      </div>
+      <div class="quote">
+        <div class="q-pt">Frase <strong>negativa</strong> → tag <strong>afirmativa</strong></div>
+        <div class="q-en">You aren't happy, <span class="hl-p3">are you?</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Como montar a tag — 3 passos</div>
+      <p class="tip-txt"><strong>1.</strong> Pega o <strong>auxiliar</strong> da frase (is, are, was, will, can, have...). Se for verbo comum sem auxiliar, usa <span class="enw" data-speak="do">do</span>/<span class="enw" data-speak="does">does</span>/<span class="enw" data-speak="did">did</span>.<br><strong>2.</strong> <strong>Inverte</strong> a polaridade (afirmativo↔negativo).<br><strong>3.</strong> Repete o sujeito como <strong>pronome</strong> (John → he, the cars → they).</p>
+    </div>
+
+    <div class="sec-divider" id="tag-tobe"><div class="sec-divider-line"></div><div class="sec-divider-label">Com o verbo To Be</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando a frase tem <strong>to be</strong> (is, are, was, were), a tag usa o próprio to be.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Tags com To Be</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela é inteligente, né?</span><span class="eg-en en" data-speak="She is smart, isn't she?">She is smart, <span class="hl-coringa">isn't she?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eles não estão aqui, né?</span><span class="eg-en en" data-speak="They aren't here, are they?">They aren't here, <span class="hl-coringa">are they?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Foi uma boa reunião, não foi?</span><span class="eg-en en" data-speak="It was a good meeting, wasn't it?">It was a good meeting, <span class="hl-coringa">wasn't it?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Você não estava lá, estava?</span><span class="eg-en en" data-speak="You weren't there, were you?">You weren't there, <span class="hl-coringa">were you?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tag-aux"><div class="sec-divider-line"></div><div class="sec-divider-label">Com will, can e os modais</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Se a frase já tem um <strong>auxiliar</strong> (will, can, could, should, would, must...), a tag repete ele — fácil, porque eles já têm negação própria.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Tags com auxiliares/modais</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você vai ajudar, né?</span><span class="eg-en en" data-speak="You will help, won't you?">You will help, <span class="hl-coringa">won't you?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Ela sabe nadar, né?</span><span class="eg-en en" data-speak="She can swim, can't she?">She can swim, <span class="hl-coringa">can't she?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Nós deveríamos esperar, não deveríamos?</span><span class="eg-en en" data-speak="We should wait, shouldn't we?">We should wait, <span class="hl-coringa">shouldn't we?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Ele não viria, viria?</span><span class="eg-en en" data-speak="He wouldn't come, would he?">He wouldn't come, <span class="hl-coringa">would he?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tag-do"><div class="sec-divider-line"></div><div class="sec-divider-label">Com verbo comum — entra o do/does/did</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando a frase tem um <strong>verbo comum</strong> (sem auxiliar), a tag usa o <span class="tb-link" onclick="goAndHighlight(93,'todo-conj')">do/does/did</span> — exatamente como você aprendeu no To Do. O tempo manda: presente → do/does, passado → did.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Tags com do/does/did</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você gosta de café, né?</span><span class="eg-en en" data-speak="You like coffee, don't you?">You like coffee, <span class="hl-coringa">don't you?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Ela trabalha aqui, né?</span><span class="eg-en en" data-speak="She works here, doesn't she?">She works here, <span class="hl-coringa">doesn't she?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Eles fecharam o negócio, não fecharam?</span><span class="eg-en en" data-speak="They closed the deal, didn't they?">They closed the deal, <span class="hl-coringa">didn't they?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Você não mora aqui, mora?</span><span class="eg-en en" data-speak="You don't live here, do you?">You don't live here, <span class="hl-coringa">do you?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tag-have"><div class="sec-divider-line"></div><div class="sec-divider-label">Com have (posse) e there is</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Lembra que a <strong>posse com have</strong> usa do/does (igual verbo comum)? Na tag vale a mesma coisa. Já o <strong>there is/are</strong> repete o próprio is/are.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Tags com have e there is</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Você tem um carro, né?</span><span class="eg-en en" data-speak="You have a car, don't you?">You have a car, <span class="hl-coringa">don't you?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Tem uma reunião hoje, né?</span><span class="eg-en en" data-speak="There is a meeting today, isn't there?">There is a meeting today, <span class="hl-coringa">isn't there?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Não tem café, tem?</span><span class="eg-en en" data-speak="There isn't any coffee, is there?">There isn't any coffee, <span class="hl-coringa">is there?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="tag-especiais"><div class="sec-divider-line"></div><div class="sec-divider-label">Os casos especiais</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Três situações fogem um pouco do padrão — vale decorar:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">⚠️ I am → aren't I?</div>
+      <p style="margin:6px 0;font-size:14px;">O "am not" não tem contração boa em pergunta, então a tag de <strong>I am</strong> vira, por convenção, <strong>aren't I?</strong>.</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estou atrasado, né?</span><span class="eg-en en" data-speak="I am late, aren't I?">I am late, <span class="hl-coringa">aren't I?</span></span></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">⚠️ Imperativo → will you?</div>
+      <p style="margin:6px 0;font-size:14px;">Quando a frase é uma <strong>ordem/pedido</strong> (imperativo), a tag costuma ser <strong>will you?</strong>.</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Feche a porta, pode ser?</span><span class="eg-en en" data-speak="Close the door, will you?">Close the door, <span class="hl-coringa">will you?</span></span></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">⚠️ Let's → shall we?</div>
+      <p style="margin:6px 0;font-size:14px;">Quando a frase começa com <strong>Let's</strong> (vamos...), a tag é <strong>shall we?</strong>.</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Vamos começar, vamos?</span><span class="eg-en en" data-speak="Let's start, shall we?">Let's start, <span class="hl-coringa">shall we?</span></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1.3fr 1fr;"><span>A frase tem...</span><span>A tag usa...</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>to be (is/are/was/were)</span><span class="enw" data-speak="isn't it">o próprio to be</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>auxiliar/modal (will/can...)</span><span>o próprio auxiliar</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>verbo comum (presente)</span><span class="enw" data-speak="don't / doesn't">don't / doesn't</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>verbo comum (passado)</span><span class="enw" data-speak="didn't">didn't</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>I am ...</span><span class="enw" data-speak="aren't I">aren't I?</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>imperativo (ordem)</span><span class="enw" data-speak="will you">will you?</span></div>
+      <div class="conj-row" style="grid-template-columns:1.3fr 1fr;"><span>Let's ...</span><span class="enw" data-speak="shall we">shall we?</span></div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Sempre inverta a polaridade</div>
+      <p class="tip-txt">O erro nº 1 é esquecer de inverter. Frase <strong>afirmativa</strong> pede tag <strong>negativa</strong>, e vice-versa. <em>You are ready, <span class="enw" data-speak="aren't you">aren't you?</span></em> ✅ &nbsp; <em>You are ready, are you?</em> ❌</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Tag Questions — exercício</span><span class="ex-score" id="tag-score">0/10</span></div><div class="ex-body" id="tag-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#2dd4bf;"><div class="sec-ghost">39</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 39</div>
+    <div class="sec-title">Question<br><span class="acc">Words</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">What, where, when, who, why, how — e os primos -ever.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🍌</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A <strong>banana</strong> é tecnicamente uma <strong>fruta vermelha</strong> — no sentido botânico, é uma <em>baga</em>. Mais curioso ainda: o pé de banana não é uma árvore, e sim a maior <strong>erva</strong> do mundo. E as bananas que comemos hoje são quase todas clones da mesma variedade, sem sementes férteis, propagadas por mudas há décadas.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#2dd4bf;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 39 · Question Words</div><div class="pg-ttl">Question Words</div></div>
+  <div class="pg-body">
+
+    <p class="intro">As <strong>question words</strong> (palavras de pergunta) são as que abrem perguntas <strong>abertas</strong> — aquelas que não se respondem com "sim/não", mas pedem uma informação. Em inglês, quase todas começam com <strong>WH</strong>, por isso também são chamadas de <strong>WH-words</strong>.</p>
+
+    <div class="sec-divider" id="qw-lista"><div class="sec-divider-line"></div><div class="sec-divider-label">As principais</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.3fr;"><span>Palavra</span><span>Significado</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="what">what</span><span>o que / qual</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="where">where</span><span>onde / aonde</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="when">when</span><span>quando</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="who">who</span><span>quem</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="why">why</span><span>por que</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="which">which</span><span>qual (entre opções)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="whose">whose</span><span>de quem</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="how">how</span><span>como</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 A estrutura: WH + pergunta normal</div>
+      <p class="tip-txt">A receita é simples: <strong>question word</strong> + a pergunta que você já sabe montar (com auxiliar/to be/do-does-did).<br>→ <span class="enw" data-speak="Where are you?">Where are you?</span> &nbsp;·&nbsp; <span class="enw" data-speak="What do you want?">What do you want?</span> &nbsp;·&nbsp; <span class="enw" data-speak="When did she leave?">When did she leave?</span></p>
+    </div>
+
+    <div class="sec-divider" id="qw-exemplos"><div class="sec-divider-line"></div><div class="sec-divider-label">Na prática</div><div class="sec-divider-line r"></div></div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Perguntas com WH</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">O que você quer?</span><span class="eg-en en" data-speak="What do you want?"><span class="hl-p3">What</span> do you want?</span></div>
+        <div class="eg-row"><span class="eg-pt">Onde ela mora?</span><span class="eg-en en" data-speak="Where does she live?"><span class="hl-p3">Where</span> does she live?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quando é a reunião?</span><span class="eg-en en" data-speak="When is the meeting?"><span class="hl-p3">When</span> is the meeting?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quem ligou pra você?</span><span class="eg-en en" data-speak="Who called you?"><span class="hl-p3">Who</span> called you?</span></div>
+        <div class="eg-row"><span class="eg-pt">Por que você está atrasado?</span><span class="eg-en en" data-speak="Why are you late?"><span class="hl-p3">Why</span> are you late?</span></div>
+        <div class="eg-row"><span class="eg-pt">De quem é esse carro?</span><span class="eg-en en" data-speak="Whose car is this?"><span class="hl-p3">Whose</span> car is this?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="qw-which"><div class="sec-divider-line"></div><div class="sec-divider-label">What vs Which — qual a diferença?</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Os dois significam "qual", mas: <strong>what</strong> é aberto (infinitas opções), e <strong>which</strong> é entre <strong>opções limitadas</strong> que já estão na mesa.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 What vs Which</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Qual é a sua cor favorita? <span style="opacity:.6">(infinitas)</span></span><span class="eg-en en" data-speak="What is your favorite color?"><span class="hl-p3">What</span> is your favorite color?</span></div>
+        <div class="eg-row"><span class="eg-pt">Qual você quer, o azul ou o vermelho? <span style="opacity:.6">(2 opções)</span></span><span class="eg-en en" data-speak="Which one do you want, the blue or the red?"><span class="hl-p3">Which</span> one do you want, the blue or the red?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="qw-how"><div class="sec-divider-line"></div><div class="sec-divider-label">As combinações com How</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>how</strong> é um coringa: junto de outra palavra, vira várias perguntas úteis.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 How + palavra</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Quantos livros? <span style="opacity:.6">(plural)</span></span><span class="eg-en en" data-speak="How many books?"><span class="hl-p3">How many</span> books?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quanto dinheiro? <span style="opacity:.6">(singular)</span></span><span class="eg-en en" data-speak="How much money?"><span class="hl-p3">How much</span> money?</span></div>
+        <div class="eg-row"><span class="eg-pt">Com que frequência você treina?</span><span class="eg-en en" data-speak="How often do you train?"><span class="hl-p3">How often</span> do you train?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quão longe fica?</span><span class="eg-en en" data-speak="How far is it?"><span class="hl-p3">How far</span> is it?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quanto tempo demora?</span><span class="eg-en en" data-speak="How long does it take?"><span class="hl-p3">How long</span> does it take?</span></div>
+        <div class="eg-row"><span class="eg-pt">Quantos anos você tem?</span><span class="eg-en en" data-speak="How old are you?"><span class="hl-p3">How old</span> are you?</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 How many vs How much</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="how many">how many</span> = <strong>quantos(as)</strong>, pra coisas no <strong>plural</strong> (How many books? How many people?)<br>→ <span class="enw" data-speak="how much">how much</span> = <strong>quanto(a)</strong>, pra coisas no <strong>singular</strong> (How much money? How much time?)</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 How much também é "quanto custa"</div>
+      <p class="tip-txt">Pra perguntar <strong>preço</strong>, usa-se <span class="enw" data-speak="how much">how much</span>:<br>→ <span class="enw" data-speak="How much is it?">How much is it?</span> = Quanto custa?<br>→ <span class="enw" data-speak="How much is this shirt?">How much is this shirt?</span> = Quanto custa essa camisa?</p>
+    </div>
+
+    <div class="sec-divider" id="qw-ever"><div class="sec-divider-line"></div><div class="sec-divider-label">Os primos -ever: "não importa qual"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando você gruda <strong>-ever</strong> numa question word, ela ganha o sentido de <strong>"qualquer / não importa qual / seja o que for"</strong>. Deixa de ser pergunta e vira uma afirmação relaxada.</p>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.4fr;"><span>Palavra</span><span>Sentido</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="whatever">whatever</span><span>o que quer que / qualquer coisa / tanto faz</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="whenever">whenever</span><span>sempre que / quando quer que</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="wherever">wherever</span><span>onde quer que / em qualquer lugar</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="whoever">whoever</span><span>quem quer que / seja quem for</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="whichever">whichever</span><span>qualquer um (entre opções)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span class="enw" data-speak="however">however</span><span>de qualquer jeito / por mais que</span></div>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Os -ever na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Faça o que você quiser.</span><span class="eg-en en" data-speak="Do whatever you want.">Do <span class="hl-coringa">whatever</span> you want.</span></div>
+        <div class="eg-row"><span class="eg-pt">Me ligue sempre que precisar.</span><span class="eg-en en" data-speak="Call me whenever you need.">Call me <span class="hl-coringa">whenever</span> you need.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou te seguir aonde você for.</span><span class="eg-en en" data-speak="I will follow you wherever you go.">I will follow you <span class="hl-coringa">wherever</span> you go.</span></div>
+        <div class="eg-row"><span class="eg-pt">Quem quer que tenha feito isso, errou.</span><span class="eg-en en" data-speak="Whoever did this was wrong."><span class="hl-coringa">Whoever</span> did this was wrong.</span></div>
+        <div class="eg-row"><span class="eg-pt">Escolha qualquer um que preferir.</span><span class="eg-en en" data-speak="Pick whichever you prefer.">Pick <span class="hl-coringa">whichever</span> you prefer.</span></div>
+        <div class="eg-row"><span class="eg-pt">Por mais difícil que seja, não desista.</span><span class="eg-en en" data-speak="However hard it is, don't give up."><span class="hl-coringa">However</span> hard it is, don't give up.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 "Whatever" sozinho = "tanto faz"</div>
+      <p class="tip-txt">Na fala, um <strong>"Whatever."</strong> solto é aquele <em>"tanto faz / sei lá / que seja"</em> meio de pouco caso. Use com cuidado — pode soar rude dependendo do tom.</p>
+    </div>
+
+    <div class="sec-divider" id="qw-whatsoever"><div class="sec-divider-line"></div><div class="sec-divider-label">Whatsoever — ênfase em negações</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>whatsoever</strong> é um reforço que vem <strong>depois</strong> de uma negação, pra dar aquela ênfase de <strong>"absolutamente nenhum / nadinha"</strong>. Vem sempre junto de <em>no</em> ou <em>any</em>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Whatsoever</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu não tenho ideia nenhuma.</span><span class="eg-en en" data-speak="I have no idea whatsoever.">I have no idea <span class="hl-coringa">whatsoever</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Não há dúvida alguma.</span><span class="eg-en en" data-speak="There is no doubt whatsoever.">There is no doubt <span class="hl-coringa">whatsoever</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele não tem nenhum respeito, nadinha.</span><span class="eg-en en" data-speak="He has no respect whatsoever.">He has no respect <span class="hl-coringa">whatsoever</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">PERGUNTAR</div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">what / where / when</div><div class="togo-val">o que / onde / quando</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">who / why / how</div><div class="togo-val">quem / por que / como</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">which / whose</div><div class="togo-val">qual (opções) / de quem</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">-EVER = "NÃO IMPORTA QUAL"</div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">whatever / whenever</div><div class="togo-val">o que quer que / sempre que</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">wherever / whoever</div><div class="togo-val">onde quer que / quem quer que</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">whatsoever</div><div class="togo-val">nadinha (reforça negação)</div></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Question Words — exercício</span><span class="ex-score" id="qw-score">0/10</span></div><div class="ex-body" id="qw-body"></div></div>
+  </div>
 </div>`
+
+
+
 ,
 
 `<div class="page pg-soon">
