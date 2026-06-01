@@ -256,7 +256,7 @@ body.light .pron-table{box-shadow:0 1px 6px rgba(0,0,0,.07);}
 .prow-arr{font-size:12px;color:var(--m);text-align:center;}
 .prow-pt{font-size:14px;color:var(--s);text-align:right;}
 .pron-section{display:flex;flex-direction:column;gap:9px;}
-.pron-header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.pron-header{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc,var(--blue));padding:6px 12px 6px 10px;border:1px solid color-mix(in srgb, var(--acc,var(--blue)) 35%, transparent);background:color-mix(in srgb, var(--acc,var(--blue)) 8%, transparent);border-radius:8px;}
 .pron-word{font-size:22px;font-weight:700;color:var(--tx);}
 .pron-tr{font-size:13px;color:var(--s);}
 .pron-body{font-size:14px;color:var(--s);line-height:1.65;}
@@ -1314,19 +1314,19 @@ function runInits(p){
   if(p===35)initEx('indem',window['indem_bk'],10);
   if(p===37)initEx('queexp',window['queexp_bk'],10);
   if(p===38)initEx('rev3',window['rev3_bk'],15);
-  if(p===41)initEx('poss',window['poss_bk'],15);
-  if(p===43)initEx('caso',window['caso_bk'],10);
-  if(p===44)initEx('ofdem',window['ofdem_bk'],10);
-  if(p===47)initEx('from',window['from_bk'],10);
-  if(p===49)initEx('fromdem',window['fromdem_bk'],10);
-  if(p===51)initEx('desome',window['desome_bk'],10);
-  if(p===52)initEx('rev4',window['rev4_bk'],15);
-  if(p===61)initEx('toforinf',window['toforinf_bk'],10);
-  if(p===63)initEx('pronobj',window['pronobj_bk'],10);
-  if(p===65)initEx('inonatpron',window['inonatpron_bk'],10);
-  if(p===66)initEx('rev5',window['rev5_bk'],15);
-  if(p===69)initEx('tambem',window['tambem_bk'],10);
-  if(p===71)initEx('muitos',window['muitos_bk'],10);
+  if(p===43)initEx('poss',window['poss_bk'],15);
+  if(p===45)initEx('caso',window['caso_bk'],10);
+  if(p===46)initEx('ofdem',window['ofdem_bk'],10);
+  if(p===49)initEx('from',window['from_bk'],10);
+  if(p===51)initEx('fromdem',window['fromdem_bk'],10);
+  if(p===53)initEx('desome',window['desome_bk'],10);
+  if(p===54)initEx('rev4',window['rev4_bk'],15);
+  if(p===63)initEx('toforinf',window['toforinf_bk'],10);
+  if(p===65)initEx('pronobj',window['pronobj_bk'],10);
+  if(p===67)initEx('inonatpron',window['inonatpron_bk'],10);
+  if(p===68)initEx('rev5',window['rev5_bk'],15);
+  if(p===71)initEx('tambem',window['tambem_bk'],10);
+  if(p===73)initEx('muitos',window['muitos_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -1624,8 +1624,8 @@ function renderGame(){
     const p=Math.round((s.acertos/total)*100);
     let compareHtml='';
     if(s._best){const diff=s._best-elapsed;if(diff>0)compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido!</div>`;else if(diff<0)compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar.</div>`;}
-    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_game',elapsed);s._best=elapsed;}
-    body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===100?'🏆':p>=66?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=66?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
+    if(p===102&&(!s._best||elapsed<s._best)){localStorage.setItem('best_game',elapsed);s._best=elapsed;}
+    body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===102?'🏆':p>=66?'💪':'📚'}</div><div class="finish-msg">${p===102?'Perfeito!':p>=66?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
   const fr=s.frases[c],wds=fr.words;
   document.querySelectorAll('#game-timer').forEach(el=>el.remove());
   const td=document.createElement('div');td.id='game-timer';td.className='ex-timer';td.style.marginBottom='6px';body.parentElement.insertBefore(td,body);
@@ -1689,8 +1689,8 @@ function renderPronGame(){
     const p=Math.round((s.acertos/total)*100);
     let compareHtml='';
     if(s._best){const diff=s._best-elapsed;if(diff>0)compareHtml=`<div class="finish-compare ok">🚀 ${fmtTime(diff)} mais rápido!</div>`;else if(diff<0)compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar.</div>`;}
-    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_pron',elapsed);s._best=elapsed;}
-    body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initPronGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
+    if(p===102&&(!s._best||elapsed<s._best)){localStorage.setItem('best_pron',elapsed);s._best=elapsed;}
+    body.innerHTML=`<div class="game-finish"><div class="finish-emoji">${p===102?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===102?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${total}.</div><div class="finish-time">⏱ ${fmtTime(elapsed)}</div>${compareHtml}<button class="game-restart" onclick="initPronGame()">Jogar de novo</button></div>`;score.textContent=`${s.acertos}/${total}`;return;}
   const pair=s.pairs[c];
   const timerVal=s.startTime?fmtTime((performance.now()-s.startTime)/1000):'0.00s';
   body.innerHTML=`<div class="ex-timer" id="pron-timer">${timerVal}</div><p class="game-instruction">Qual é o pronome em inglês para <strong>${pair.pt}</strong>?</p><div class="ex-options">${enProns.map(p=>`<button class="opt-btn" onclick="checkPron(this,'${p}','${pair.en}')">${p}</button>`).join('')}</div><div class="game-feedback" id="pron-fb"></div><div class="game-progress">${dots(c,total,'gp')}</div>`;
@@ -2091,8 +2091,8 @@ function renderEx(id,bank,total){
       else if(diff<0) compareHtml=`<div class="finish-compare slow">🐢 ${fmtTime(Math.abs(diff))} mais devagar que antes.</div>`;
       else compareHtml=`<div class="finish-compare">Mesmo tempo de antes!</div>`;
     }
-    if(p===100&&(!s._best||elapsed<s._best)){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
-    body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===100?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===100?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div>${timeHtml}${compareHtml}<button class="ex-restart" onclick="restartEx('${id}')">Tentar de novo</button></div>`;
+    if(p===102&&(!s._best||elapsed<s._best)){localStorage.setItem('best_'+id,elapsed);s._best=elapsed;}
+    body.innerHTML=`<div class="ex-finish"><div class="finish-emoji">${p===102?'🏆':p>=70?'💪':'📚'}</div><div class="finish-msg">${p===102?'Perfeito!':p>=70?'Muito bem!':'Pratique mais!'}</div><div class="finish-sub">Você acertou ${s.acertos} de ${tot}.</div>${timeHtml}${compareHtml}<button class="ex-restart" onclick="restartEx('${id}')">Tentar de novo</button></div>`;
     score.textContent=`${s.acertos}/${tot}`;return;
   }
   const item=s.items[c];
@@ -4773,6 +4773,9 @@ const pages=[
         <div class="idx-item" onclick="go(38)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
         </div>
+        <div class="idx-item" onclick="go(39)" data-kw="materia bonus plural substantivos plural nouns regular ends in s ch sh x z f fe vogal consoante y o irregular man men child children foot feet tooth teeth mouse mice person people sheep deer fish series cap3">
+          <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Plural dos Substantivos</div><div class="idx-desc">As 8 formas de transformar singular em plural</div></div><div class="idx-arrow">→</div>
+        </div>
       </div>
     </div>
 
@@ -4784,28 +4787,28 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap4-body">
-        <div class="idx-item" onclick="go(41)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
+        <div class="idx-item" onclick="go(43)" data-kw="pronomes posse my your his her its our their mine yours hers ours theirs possessivo adjetivo cap4">
           <div class="idx-num">16</div><div class="idx-info"><div class="idx-name">Pronomes de Posse</div><div class="idx-desc">My, your, his — mine, yours, hers</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(42)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
+        <div class="idx-item" onclick="go(44)" data-kw="caso possessivo of de do da dos das apostrofo s nome dono posse cap4">
           <div class="idx-num">17</div><div class="idx-info"><div class="idx-name">Caso Possessivo e Of</div><div class="idx-desc">Teacher's car · End of the movie</div></div><div class="idx-arrow">→</div>
         </div>
-          <div class="idx-item" onclick="go(44)" data-kw="of pronomes demonstrativos deste desta daquele daquela of this of that of these of those cap4">
+          <div class="idx-item" onclick="go(46)" data-kw="of pronomes demonstrativos deste desta daquele daquela of this of that of these of those cap4">
           <div class="idx-num">18</div><div class="idx-info"><div class="idx-name">Of + Pronomes Demonstrativos</div><div class="idx-desc">Of this · Of that · Of those</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(46)" data-kw="from origem local momento horas horario nome proprio pais cidade christy nightclub cap4">
+        <div class="idx-item" onclick="go(48)" data-kw="from origem local momento horas horario nome proprio pais cidade christy nightclub cap4">
           <div class="idx-num">19</div><div class="idx-info"><div class="idx-name">From</div><div class="idx-desc">Origem · Momento · vs. posse</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(48)" data-kw="from pronomes demonstrativos deste desta daquele daquela from this from that from these from those origem cap4">
+        <div class="idx-item" onclick="go(50)" data-kw="from pronomes demonstrativos deste desta daquele daquela from this from that from these from those origem cap4">
           <div class="idx-num">20</div><div class="idx-info"><div class="idx-name">From + Pronomes Demonstrativos</div><div class="idx-desc">From this · from that · from those</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(50)" data-kw="de some verbo gostar precisar esquecer lembrar desistir do da dos das daquele daquela cap4">
+        <div class="idx-item" onclick="go(52)" data-kw="de some verbo gostar precisar esquecer lembrar desistir do da dos das daquele daquela cap4">
           <div class="idx-num">21</div><div class="idx-info"><div class="idx-name">Quando o "de" some</div><div class="idx-desc">Verbos que pedem "de" e o "de" some em inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(52)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap4 capítulo 4 posse of from de some">
+        <div class="idx-item" onclick="go(54)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap4 capítulo 4 posse of from de some">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 4</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(53)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
+        <div class="idx-item" onclick="go(55)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
           <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Falsos Cognatos</div><div class="idx-desc">Palavras que parecem traduzir sozinhas — e te enganam</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -4819,22 +4822,22 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap5-body">
-        <div class="idx-item" onclick="go(56)" data-kw="to para ao a pro pra movimento direcao entregar dar desejar wish happy birthday from to monday friday horario periodo cap5">
+        <div class="idx-item" onclick="go(58)" data-kw="to para ao a pro pra movimento direcao entregar dar desejar wish happy birthday from to monday friday horario periodo cap5">
           <div class="idx-num">22</div><div class="idx-info"><div class="idx-name">To</div><div class="idx-desc">A preposição "para" — e suas faces</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(58)" data-kw="for para por pelo pela pelos pelas duracao beneficio malefico proposito troca preco compromisso wait look ask cap5">
+        <div class="idx-item" onclick="go(60)" data-kw="for para por pelo pela pelos pelas duracao beneficio malefico proposito troca preco compromisso wait look ask cap5">
           <div class="idx-num">23</div><div class="idx-info"><div class="idx-name">For</div><div class="idx-desc">O outro "para" — quando o to não cabe</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(60)" data-kw="to for infinitivo verbo cru ar er ir ing eating sleeping swimming proposito funcao objeto gostar de esquecer de cap5">
+        <div class="idx-item" onclick="go(62)" data-kw="to for infinitivo verbo cru ar er ir ing eating sleeping swimming proposito funcao objeto gostar de esquecer de cap5">
           <div class="idx-num">24</div><div class="idx-info"><div class="idx-name">To / For + Infinitivo</div><div class="idx-desc">Verbos crus — to, ing ou for + ing?</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(62)" data-kw="pronomes objetivos obliquos me you him her it us them comigo contigo conosco with without to for objeto direto indireto cap5">
+        <div class="idx-item" onclick="go(64)" data-kw="pronomes objetivos obliquos me you him her it us them comigo contigo conosco with without to for objeto direto indireto cap5">
           <div class="idx-num">25</div><div class="idx-info"><div class="idx-name">Pronomes Objetivos</div><div class="idx-desc">Me, you, him, her, it, us, them</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(64)" data-kw="in on at pronome objetivo nele nela neles nelas em pensar think about look at depend on trust marry enter cap5">
+        <div class="idx-item" onclick="go(66)" data-kw="in on at pronome objetivo nele nela neles nelas em pensar think about look at depend on trust marry enter cap5">
           <div class="idx-num">26</div><div class="idx-info"><div class="idx-name">In, On, At + Pronome</div><div class="idx-desc">Nele, nela, neles, nelas — e o "em" traidor</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(66)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap5 capítulo 5 to for infinitivo pronome objetivo in on at">
+        <div class="idx-item" onclick="go(68)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap5 capítulo 5 to for infinitivo pronome objetivo in on at">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 5</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -4847,10 +4850,10 @@ const pages=[
         <span class="idx-chapter-arrow">▾</span>
       </button>
       <div class="idx-chapter-body" id="idxcap6-body">
-        <div class="idx-item" onclick="go(68)" data-kw="tambem also too as well advérbio meio fim frase além disso me too us too concordância sem verbo cap6">
+        <div class="idx-item" onclick="go(70)" data-kw="tambem also too as well advérbio meio fim frase além disso me too us too concordância sem verbo cap6">
           <div class="idx-num">27</div><div class="idx-info"><div class="idx-name">Também</div><div class="idx-desc">Also, too, as well — os 3 "também" do inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(70)" data-kw="muito muitos quantidade very so too quite pretty many much a lot of way too many that adjetivo substantivo singular plural cap6">
+        <div class="idx-item" onclick="go(72)" data-kw="muito muitos quantidade very so too quite pretty many much a lot of way too many that adjetivo substantivo singular plural cap6">
           <div class="idx-num">28</div><div class="idx-info"><div class="idx-name">Os "muitos"</div><div class="idx-desc">Very, so, too, many, much, a lot of — qual usar</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
@@ -5702,7 +5705,7 @@ const pages=[
   <div class="sec-eyebrow">Seção 06</div>
   <div class="sec-title">Artigos</div>
   <div class="sec-sep"></div>
-  <div class="sec-desc">O, a, os, as, um, uma, alguns — como usar cada um em inglês.</div>
+  <div class="sec-desc">O, a, os, as, um, uma, alguns, algumas — como usar cada um em inglês.</div>
   <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div>
   </div>
   </div>
@@ -5768,7 +5771,7 @@ const pages=[
       <tr><td>o, a, os, as</td><td style="color:var(--blue);font-weight:700">the</td><td>Definido</td></tr>
       <tr><td>um, uma (consoante)</td><td style="color:var(--blue);font-weight:700">a</td><td>Indefinido singular</td></tr>
       <tr><td>um, uma (vogal/H mudo)</td><td style="color:var(--blue);font-weight:700">an</td><td>Indefinido singular</td></tr>
-      <tr><td>uns, umas, alguns</td><td style="color:var(--blue);font-weight:700">some + plural</td><td>Indefinido plural</td></tr>
+      <tr><td>uns, umas, alguns, algumas</td><td style="color:var(--blue);font-weight:700">some + plural</td><td>Indefinido plural</td></tr>
       <tr><td>um pouco de</td><td style="color:var(--blue);font-weight:700">some + singular</td><td>Quantidade indefinida</td></tr>
     </tbody></table></div>
     <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
@@ -7069,6 +7072,220 @@ const pages=[
     <p class="intro">Exercício com todas as matérias do Capítulo 3.</p>
   </div>
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
+</div>`,
+
+
+`<div class="page pg-sec" style="--acc:#a78bfa;">
+  <div class="sec-ghost">✨</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="bonus-eyebrow">Matéria Bônus</div>
+    <div class="sec-title">Plural dos<br><span class="acc">Substantivos</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">As regras para transformar substantivos do singular para o plural em inglês. Adicionar S é só o começo.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🐙</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Em inglês, <strong>polvo</strong> tem <strong>três</strong> plurais aceitos: <em>octopuses</em>, <em>octopi</em> e <em>octopodes</em>. Os linguistas até hoje brigam sobre qual é o "certo". Spoiler: a maioria dos dicionários hoje diz que é <strong>octopuses</strong> — mas tem gente que faz questão de escrever <em>octopi</em> só pra parecer culto.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Matéria Bônus · Plural dos Substantivos</div><div class="pg-ttl">Plural dos Substantivos</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Em português, transformar singular em plural é quase sempre adicionar um <strong>S</strong> ou <strong>ES</strong>: <em>carro → carros, lápis → lápis, papel → papéis</em>. Em inglês, a regra geral também é adicionar <strong>S</strong>, mas existem 8 padrões diferentes dependendo da letra final da palavra.</p>
+
+    <div class="sec-divider" id="plural-regulares"><div class="sec-divider-line"></div><div class="sec-divider-label">Regulares — só adiciona S</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">A grande maioria dos substantivos vira plural <strong>adicionando S</strong>. Funciona pra quase qualquer palavra que termina em consoante (exceto as exceções abaixo).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 + S</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 carro → 2 carros</span><span class="eg-en en" data-speak="one car, two cars">1 <b>car</b> → 2 <b style="color:#a78bfa;">cars</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 cachorro → 2 cachorros</span><span class="eg-en en" data-speak="one dog, two dogs">1 <b>dog</b> → 2 <b style="color:#a78bfa;">dogs</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 livro → 2 livros</span><span class="eg-en en" data-speak="one book, two books">1 <b>book</b> → 2 <b style="color:#a78bfa;">books</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 casa → 2 casas</span><span class="eg-en en" data-speak="one house, two houses">1 <b>house</b> → 2 <b style="color:#a78bfa;">houses</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 maçã → 2 maçãs</span><span class="eg-en en" data-speak="one apple, two apples">1 <b>apple</b> → 2 <b style="color:#a78bfa;">apples</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-es"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em S, CH, SH, X ou Z — adiciona ES</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Palavras que terminam em sons de <strong>chiado ou assobio</strong> (S, CH, SH, X, Z) precisam de <strong>ES</strong> no plural — só pra dar pra pronunciar.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 + ES</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 ônibus → 2 ônibus</span><span class="eg-en en" data-speak="one bus, two buses">1 <b>bus</b> → 2 <b style="color:#a78bfa;">buses</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 partida → 2 partidas</span><span class="eg-en en" data-speak="one match, two matches">1 <b>match</b> → 2 <b style="color:#a78bfa;">matches</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 prato → 2 pratos</span><span class="eg-en en" data-speak="one dish, two dishes">1 <b>dish</b> → 2 <b style="color:#a78bfa;">dishes</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 caixa → 2 caixas</span><span class="eg-en en" data-speak="one box, two boxes">1 <b>box</b> → 2 <b style="color:#a78bfa;">boxes</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 quiz → 2 quizzes</span><span class="eg-en en" data-speak="one quiz, two quizzes">1 <b>quiz</b> → 2 <b style="color:#a78bfa;">quizzes</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-vy"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em VOGAL + Y — adiciona S</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando a palavra termina em <strong>vogal antes do Y</strong> (a, e, i, o, u + y), é só adicionar S normalmente.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 + S</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 dia → 2 dias</span><span class="eg-en en" data-speak="one day, two days">1 <b>day</b> → 2 <b style="color:#a78bfa;">days</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 chave → 2 chaves</span><span class="eg-en en" data-speak="one key, two keys">1 <b>key</b> → 2 <b style="color:#a78bfa;">keys</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 garoto → 2 garotos</span><span class="eg-en en" data-speak="one boy, two boys">1 <b>boy</b> → 2 <b style="color:#a78bfa;">boys</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 cara → 2 caras</span><span class="eg-en en" data-speak="one guy, two guys">1 <b>guy</b> → 2 <b style="color:#a78bfa;">guys</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 burro → 2 burros</span><span class="eg-en en" data-speak="one donkey, two donkeys">1 <b>donkey</b> → 2 <b style="color:#a78bfa;">donkeys</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-cy"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em CONSOANTE + Y — remove Y, adiciona IES</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando tem <strong>consoante antes do Y</strong>, troca o Y por <strong>IES</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Y → IES</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 cidade → 2 cidades</span><span class="eg-en en" data-speak="one city, two cities">1 <b>city</b> → 2 <b style="color:#a78bfa;">cities</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 bebê → 2 bebês</span><span class="eg-en en" data-speak="one baby, two babies">1 <b>baby</b> → 2 <b style="color:#a78bfa;">babies</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 história → 2 histórias</span><span class="eg-en en" data-speak="one story, two stories">1 <b>story</b> → 2 <b style="color:#a78bfa;">stories</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 festa → 2 festas</span><span class="eg-en en" data-speak="one party, two parties">1 <b>party</b> → 2 <b style="color:#a78bfa;">parties</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 país → 2 países</span><span class="eg-en en" data-speak="one country, two countries">1 <b>country</b> → 2 <b style="color:#a78bfa;">countries</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-vo"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em VOGAL + O — adiciona S</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando a palavra termina em <strong>vogal antes do O</strong> (a, e, i, o, u + o), só adiciona S.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 + S</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 zoológico → 2 zoológicos</span><span class="eg-en en" data-speak="one zoo, two zoos">1 <b>zoo</b> → 2 <b style="color:#a78bfa;">zoos</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 rádio → 2 rádios</span><span class="eg-en en" data-speak="one radio, two radios">1 <b>radio</b> → 2 <b style="color:#a78bfa;">radios</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 aparelho de som → 2 aparelhos de som</span><span class="eg-en en" data-speak="one stereo, two stereos">1 <b>stereo</b> → 2 <b style="color:#a78bfa;">stereos</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 vídeo → 2 vídeos</span><span class="eg-en en" data-speak="one video, two videos">1 <b>video</b> → 2 <b style="color:#a78bfa;">videos</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 canguru → 2 cangurus</span><span class="eg-en en" data-speak="one kangaroo, two kangaroos">1 <b>kangaroo</b> → 2 <b style="color:#a78bfa;">kangaroos</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-co"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em CONSOANTE + O — adiciona ES</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Com <strong>consoante antes do O</strong>, adiciona <strong>ES</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 + ES</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 herói → 2 heróis</span><span class="eg-en en" data-speak="one hero, two heroes">1 <b>hero</b> → 2 <b style="color:#a78bfa;">heroes</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 eco → 2 ecos</span><span class="eg-en en" data-speak="one echo, two echoes">1 <b>echo</b> → 2 <b style="color:#a78bfa;">echoes</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 tomate → 2 tomates</span><span class="eg-en en" data-speak="one tomato, two tomatoes">1 <b>tomato</b> → 2 <b style="color:#a78bfa;">tomatoes</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 batata → 2 batatas</span><span class="eg-en en" data-speak="one potato, two potatoes">1 <b>potato</b> → 2 <b style="color:#a78bfa;">potatoes</b></span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Exceções comuns</div>
+      <p class="tip-txt">Algumas palavras com consoante + O fogem da regra e só ganham <strong>S</strong>: <em>piano → pianos, photo → photos</em>. Decorar caso a caso.</p>
+    </div>
+
+    <div class="sec-divider" id="plural-fe"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em F ou FE — remove F/FE, adiciona VES</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Palavras terminadas em <strong>F</strong> ou <strong>FE</strong> trocam essa terminação por <strong>VES</strong>. O som de F vira som de V.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 F/FE → VES</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 folha → 2 folhas</span><span class="eg-en en" data-speak="one leaf, two leaves">1 <b>leaf</b> → 2 <b style="color:#a78bfa;">leaves</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 lobo → 2 lobos</span><span class="eg-en en" data-speak="one wolf, two wolves">1 <b>wolf</b> → 2 <b style="color:#a78bfa;">wolves</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 vida → 2 vidas</span><span class="eg-en en" data-speak="one life, two lives">1 <b>life</b> → 2 <b style="color:#a78bfa;">lives</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 faca → 2 facas</span><span class="eg-en en" data-speak="one knife, two knives">1 <b>knife</b> → 2 <b style="color:#a78bfa;">knives</b></span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Exceções comuns</div>
+      <p class="tip-txt">Algumas palavras com F seguem a regra normal: <em>roof → roofs</em> (telhados), <em>cliff → cliffs</em> (penhascos). Decorar essas também.</p>
+    </div>
+
+    <div class="sec-divider" id="plural-irreg"><div class="sec-divider-line"></div><div class="sec-divider-label">Plurais irregulares</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Algumas palavras mudam <strong>completamente</strong> no plural — não tem regra, é decoreba pura. Mas são <strong>poucas</strong> e <strong>muito comuns</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Mudam por completo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 homem → 2 homens</span><span class="eg-en en" data-speak="one man, two men">1 <b>man</b> → 2 <b style="color:#a78bfa;">men</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 criança → 2 crianças</span><span class="eg-en en" data-speak="one child, two children">1 <b>child</b> → 2 <b style="color:#a78bfa;">children</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 pé → 2 pés</span><span class="eg-en en" data-speak="one foot, two feet">1 <b>foot</b> → 2 <b style="color:#a78bfa;">feet</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 dente → 2 dentes</span><span class="eg-en en" data-speak="one tooth, two teeth">1 <b>tooth</b> → 2 <b style="color:#a78bfa;">teeth</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 rato → 2 ratos</span><span class="eg-en en" data-speak="one mouse, two mice">1 <b>mouse</b> → 2 <b style="color:#a78bfa;">mice</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 pessoa → 2 pessoas</span><span class="eg-en en" data-speak="one person, two people">1 <b>person</b> → 2 <b style="color:#a78bfa;">people</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="plural-igual"><div class="sec-divider-line"></div><div class="sec-divider-label">Singular = Plural</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Algumas palavras <strong>não mudam</strong> entre singular e plural. Igualzinho ao português com <em>lápis, ônibus, pires</em>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Mesma palavra</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">1 ovelha → 2 ovelhas</span><span class="eg-en en" data-speak="one sheep, two sheep">1 <b>sheep</b> → 2 <b style="color:#a78bfa;">sheep</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 cervo → 2 cervos</span><span class="eg-en en" data-speak="one deer, two deer">1 <b>deer</b> → 2 <b style="color:#a78bfa;">deer</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 peixe → 2 peixes</span><span class="eg-en en" data-speak="one fish, two fish">1 <b>fish</b> → 2 <b style="color:#a78bfa;">fish</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 série → 2 séries</span><span class="eg-en en" data-speak="one series, two series">1 <b>series</b> → 2 <b style="color:#a78bfa;">series</b></span></div>
+        <div class="eg-row"><span class="eg-pt">1 espécie → 2 espécies</span><span class="eg-en en" data-speak="one species, two species">1 <b>species</b> → 2 <b style="color:#a78bfa;">species</b></span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14.5px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">REGRAS PRINCIPAIS</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Geral</div><div class="togo-val">+ S</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Termina em S, CH, SH, X, Z</div><div class="togo-val">+ ES</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Vogal + Y</div><div class="togo-val">+ S</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Consoante + Y</div><div class="togo-val">Y → IES</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Vogal + O</div><div class="togo-val">+ S</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Consoante + O</div><div class="togo-val">+ ES</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Termina em F ou FE</div><div class="togo-val">F/FE → VES</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">IRREGULARES (DECOREBA)</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">man (homem)</div><div class="togo-val">men</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">woman (mulher)</div><div class="togo-val">women</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">child (criança)</div><div class="togo-val">children</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">foot (pé)</div><div class="togo-val">feet</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">tooth (dente)</div><div class="togo-val">teeth</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">mouse (rato)</div><div class="togo-val">mice</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">person (pessoa)</div><div class="togo-val">people</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">SEM MUDANÇA</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">sheep (ovelha)</div><div class="togo-val">sheep</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">deer (cervo)</div><div class="togo-val">deer</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">fish (peixe)</div><div class="togo-val">fish</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">series (série)</div><div class="togo-val">series</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">species (espécie)</div><div class="togo-val">species</div></div>
+      </div>
+    </div>
+  </div>
 </div>`,
 
 
