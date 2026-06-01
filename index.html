@@ -1324,6 +1324,8 @@ function runInits(p){
   if(p===81)initEx('sup',window['sup_bk'],10);
   if(p===83)initEx('irreg',window['irreg_bk'],10);
   if(p===84)initEx('rev6',window['rev6_bk'],15);
+  if(p===89)initEx('sane',window['sane_bk'],10);
+  if(p===91)initEx('ter',window['ter_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -4386,6 +4388,132 @@ window['rev6_bk']=[
   {pt:'Pra mais informações, ligue pra gente.',isFullSentence:true,options:['For further information, call us.','For farther information, call us.','For more far information, call us.','For furthest information, call us.'],correct:'For further information, call us.',anchor:'irreg'},
 ];
 
+window['sane_bk']=[
+  {pt:'Tem alguém na recepção.',isFullSentence:true,options:['Someone is at the reception.','Anyone is at the reception.','No one is at the reception.','Everyone is at the reception.'],correct:'Someone is at the reception.',anchor:'sane-some'},
+  {pt:'Eu preciso de alguma coisa pra comer.',isFullSentence:true,options:['I need something to eat.','I need anything to eat.','I need nothing to eat.','I need everything to eat.'],correct:'I need something to eat.',anchor:'sane-some'},
+  {pt:'Vamos almoçar em algum lugar perto.',isFullSentence:true,options:['We will have lunch somewhere close.','We will have lunch anywhere close.','We will have lunch nowhere close.','We will have lunch everywhere close.'],correct:'We will have lunch somewhere close.',anchor:'sane-some'},
+  {pt:'Alguém vai apresentar o projeto.',isFullSentence:true,options:['Somebody will present the project.','Anybody will present the project.','Nobody will present the project.','Everybody will present the project.'],correct:'Somebody will present the project.',anchor:'sane-some'},
+  {pt:'Eu vou resolver isso de algum jeito.',isFullSentence:true,options:['I will solve it somehow.','I will solve it anyhow.','I will solve it no way.','I will solve it anyway.'],correct:'I will solve it somehow.',anchor:'sane-some'},
+  {pt:'Tem alguma coisa errada com o relatório.',isFullSentence:true,options:['Something is wrong with the report.','Anything is wrong with the report.','Nothing is wrong with the report.','Everything is wrong with the report.'],correct:'Something is wrong with the report.',anchor:'sane-some'},
+  {pt:'Eu tenho algumas ideias pra reunião.',isFullSentence:true,options:['I have some ideas for the meeting.','I have any ideas for the meeting.','I have no ideas for the meeting.','I have every ideas for the meeting.'],correct:'I have some ideas for the meeting.',anchor:'sane-some'},
+  {pt:'Ela enviou uns documentos importantes.',isFullSentence:true,options:['She sent some important documents.','She sent any important documents.','She sent no important documents.','She sent every important documents.'],correct:'She sent some important documents.',anchor:'sane-some'},
+  {pt:'A gente vai contratar alguém novo.',isFullSentence:true,options:['We will hire somebody new.','We will hire anybody new.','We will hire nobody new.','We will hire everybody new.'],correct:'We will hire somebody new.',anchor:'sane-some'},
+  {pt:'Tem algo na sua agenda hoje.',isFullSentence:true,options:['Something is on your schedule today.','Anything is on your schedule today.','Nothing is on your schedule today.','Everything is on your schedule today.'],correct:'Something is on your schedule today.',anchor:'sane-some'},
+  {pt:'Alguém está esperando na sua sala.',isFullSentence:true,options:['Someone is waiting in your office.','Anyone is waiting in your office.','No one is waiting in your office.','Everyone is waiting in your office.'],correct:'Someone is waiting in your office.',anchor:'sane-some'},
+  {pt:'Eu vou comprar alguma coisa pro escritório.',isFullSentence:true,options:['I will buy something for the office.','I will buy anything for the office.','I will buy nothing for the office.','I will buy everything for the office.'],correct:'I will buy something for the office.',anchor:'sane-some'},
+  {pt:'Tem alguém aí?',isFullSentence:true,options:['Is anyone there?','Is someone there?','Is no one there?','Is everyone there?'],correct:'Is anyone there?',anchor:'sane-any'},
+  {pt:'Você quer alguma coisa?',isFullSentence:true,options:['Will you want anything?','Will you want something?','Will you want nothing?','Will you want everything?'],correct:'Will you want anything?',anchor:'sane-any'},
+  {pt:'Tem alguém na reunião?',isFullSentence:true,options:['Is anybody in the meeting?','Is somebody in the meeting?','Is nobody in the meeting?','Is everybody in the meeting?'],correct:'Is anybody in the meeting?',anchor:'sane-any'},
+  {pt:'Vocês vão a algum lugar depois?',isFullSentence:true,options:['Will you go anywhere later?','Will you go somewhere later?','Will you go nowhere later?','Will you go everywhere later?'],correct:'Will you go anywhere later?',anchor:'sane-any'},
+  {pt:'Tem alguma coisa na sua mesa?',isFullSentence:true,options:['Is anything on your desk?','Is something on your desk?','Is nothing on your desk?','Is everything on your desk?'],correct:'Is anything on your desk?',anchor:'sane-any'},
+  {pt:'Alguém pode me ajudar?',isFullSentence:true,options:['Can anyone help me?','Can someone help me?','Can no one help me?','Can everyone help me?'],correct:'Can anyone help me?',anchor:'sane-any'},
+  {pt:'Você vai falar com alguém hoje?',isFullSentence:true,options:['Will you talk to anybody today?','Will you talk to somebody today?','Will you talk to nobody today?','Will you talk to everybody today?'],correct:'Will you talk to anybody today?',anchor:'sane-any'},
+  {pt:'Tem algum problema com o contrato?',isFullSentence:true,options:['Is there any problem with the contract?','Is there some problem with the contract?','Is there no problem with the contract?','Is there every problem with the contract?'],correct:'Is there any problem with the contract?',anchor:'sane-any'},
+  {pt:'Vai ter alguém na viagem?',isFullSentence:true,options:['Will anyone be on the trip?','Will someone be on the trip?','Will no one be on the trip?','Will everyone be on the trip?'],correct:'Will anyone be on the trip?',anchor:'sane-any'},
+  {pt:'Tem alguém disponível agora?',isFullSentence:true,options:['Is anyone available now?','Is someone available now?','Is no one available now?','Is everyone available now?'],correct:'Is anyone available now?',anchor:'sane-any'},
+  {pt:'Vocês vão precisar de alguma coisa?',isFullSentence:true,options:['Will you need anything?','Will you need something?','Will you need nothing?','Will you need everything?'],correct:'Will you need anything?',anchor:'sane-any'},
+  {pt:'Alguém pode revisar isso?',isFullSentence:true,options:['Can anybody review this?','Can somebody review this?','Can nobody review this?','Can everybody review this?'],correct:'Can anybody review this?',anchor:'sane-any'},
+  {pt:'Qualquer um pode entrar.',isFullSentence:true,options:['Anyone can come in.','Someone can come in.','No one can come in.','Everyone can come in.'],correct:'Anyone can come in.',anchor:'sane-anyq'},
+  {pt:'Você pode escolher qualquer coisa.',isFullSentence:true,options:['You can choose anything.','You can choose something.','You can choose nothing.','You can choose everything.'],correct:'You can choose anything.',anchor:'sane-anyq'},
+  {pt:'Eu vou pra qualquer lugar com você.',isFullSentence:true,options:['I will go anywhere with you.','I will go somewhere with you.','I will go nowhere with you.','I will go everywhere with you.'],correct:'I will go anywhere with you.',anchor:'sane-anyq'},
+  {pt:'Qualquer um do time consegue fazer isso.',isFullSentence:true,options:['Anybody on the team can do this.','Somebody on the team can do this.','Nobody on the team can do this.','Everybody on the team can do this.'],correct:'Anybody on the team can do this.',anchor:'sane-anyq'},
+  {pt:'Você pode me ligar a qualquer hora.',isFullSentence:true,options:['You can call me anytime.','You can call me sometime.','You can call me no time.','You can call me everytime.'],correct:'You can call me anytime.',anchor:'sane-anyq'},
+  {pt:'Enfim, vamos continuar.',isFullSentence:true,options:['Anyway, we will continue.','Someway, we will continue.','Noway, we will continue.','Everyway, we will continue.'],correct:'Anyway, we will continue.',anchor:'sane-anyq'},
+  {pt:'Pega qualquer cadeira que estiver livre.',isFullSentence:true,options:['Take any chair that is free.','Take some chair that is free.','Take no chair that is free.','Take every chair that is free.'],correct:'Take any chair that is free.',anchor:'sane-anyq'},
+  {pt:'Eu aceito qualquer proposta razoável.',isFullSentence:true,options:['I will accept any reasonable offer.','I will accept some reasonable offer.','I will accept no reasonable offer.','I will accept every reasonable offer.'],correct:'I will accept any reasonable offer.',anchor:'sane-anyq'},
+  {pt:'Qualquer pessoa é bem-vinda.',isFullSentence:true,options:['Anyone is welcome.','Someone is welcome.','No one is welcome.','Everyone is welcome.'],correct:'Anyone is welcome.',anchor:'sane-anyq'},
+  {pt:'Você pode sentar em qualquer lugar.',isFullSentence:true,options:['You can sit anywhere.','You can sit somewhere.','You can sit nowhere.','You can sit everywhere.'],correct:'You can sit anywhere.',anchor:'sane-anyq'},
+  {pt:'Eu faço isso de qualquer jeito.',isFullSentence:true,options:['I will do it anyhow.','I will do it somehow.','I will do it no way.','I will do it everyhow.'],correct:'I will do it anyhow.',anchor:'sane-anyq'},
+  {pt:'Qualquer um consegue aprender inglês.',isFullSentence:true,options:['Anybody can learn English.','Somebody can learn English.','Nobody can learn English.','Everybody can learn English.'],correct:'Anybody can learn English.',anchor:'sane-anyq'},
+  {pt:'Ninguém estava no escritório.',isFullSentence:true,options:['No one was at the office.','Anyone was at the office.','Someone was at the office.','Everyone was at the office.'],correct:'No one was at the office.',anchor:'sane-no'},
+  {pt:'Não tem nada na agenda hoje.',isFullSentence:true,options:['Nothing is on the schedule today.','Anything is on the schedule today.','Something is on the schedule today.','Everything is on the schedule today.'],correct:'Nothing is on the schedule today.',anchor:'sane-no'},
+  {pt:'A Victoria não vai convidar ninguém.',isFullSentence:true,options:['Victoria will invite no one.','Victoria will invite anyone.','Victoria will invite someone.','Victoria will invite everyone.'],correct:'Victoria will invite no one.',anchor:'sane-no'},
+  {pt:'Eu não vou comprar nenhum bolo.',isFullSentence:true,options:['I will buy no cake.','I will buy any cake.','I will buy some cake.','I will buy every cake.'],correct:'I will buy no cake.',anchor:'sane-no'},
+  {pt:'Ninguém respondeu o e-mail.',isFullSentence:true,options:['Nobody answered the email.','Anybody answered the email.','Somebody answered the email.','Everybody answered the email.'],correct:'Nobody answered the email.',anchor:'sane-no'},
+  {pt:'Não tem lugar nenhum pra estacionar.',isFullSentence:true,options:['There is nowhere to park.','There is anywhere to park.','There is somewhere to park.','There is everywhere to park.'],correct:'There is nowhere to park.',anchor:'sane-no'},
+  {pt:'De jeito nenhum eu aceito isso.',isFullSentence:true,options:['No way I will accept this.','Any way I will accept this.','Some way I will accept this.','Every way I will accept this.'],correct:'No way I will accept this.',anchor:'sane-no'},
+  {pt:'Nada estava pronto na entrega.',isFullSentence:true,options:['Nothing was ready at the delivery.','Anything was ready at the delivery.','Something was ready at the delivery.','Everything was ready at the delivery.'],correct:'Nothing was ready at the delivery.',anchor:'sane-no'},
+  {pt:'Ninguém vai ficar até tarde.',isFullSentence:true,options:['No one will stay late.','Anyone will stay late.','Someone will stay late.','Everyone will stay late.'],correct:'No one will stay late.',anchor:'sane-no'},
+  {pt:'Eu não tenho nada a dizer.',isFullSentence:true,options:['I have nothing to say.','I have anything to say.','I have something to say.','I have everything to say.'],correct:'I have nothing to say.',anchor:'sane-no'},
+  {pt:'O chefe não convidou ninguém.',isFullSentence:true,options:['The boss invited nobody.','The boss invited anybody.','The boss invited somebody.','The boss invited everybody.'],correct:'The boss invited nobody.',anchor:'sane-no'},
+  {pt:'Não tem nenhuma reunião amanhã.',isFullSentence:true,options:['There is no meeting tomorrow.','There is any meeting tomorrow.','There is some meeting tomorrow.','There is every meeting tomorrow.'],correct:'There is no meeting tomorrow.',anchor:'sane-no'},
+  {pt:'Todo mundo estava na reunião.',isFullSentence:true,options:['Everyone was at the meeting.','Someone was at the meeting.','Anyone was at the meeting.','No one was at the meeting.'],correct:'Everyone was at the meeting.',anchor:'sane-every'},
+  {pt:'Tudo está pronto pra apresentação.',isFullSentence:true,options:['Everything is ready for the presentation.','Something is ready for the presentation.','Anything is ready for the presentation.','Nothing is ready for the presentation.'],correct:'Everything is ready for the presentation.',anchor:'sane-every'},
+  {pt:'A marca dela está em todo lugar.',isFullSentence:true,options:['Her brand is everywhere.','Her brand is somewhere.','Her brand is anywhere.','Her brand is nowhere.'],correct:'Her brand is everywhere.',anchor:'sane-every'},
+  {pt:'Cada cliente é importante.',isFullSentence:true,options:['Every client is important.','Some client is important.','Any client is important.','No client is important.'],correct:'Every client is important.',anchor:'sane-every'},
+  {pt:'Todo mundo vai receber um bônus.',isFullSentence:true,options:['Everybody will get a bonus.','Somebody will get a bonus.','Anybody will get a bonus.','Nobody will get a bonus.'],correct:'Everybody will get a bonus.',anchor:'sane-every'},
+  {pt:'Eu verifiquei tudo no relatório.',isFullSentence:true,options:['I checked everything in the report.','I checked something in the report.','I checked anything in the report.','I checked nothing in the report.'],correct:'I checked everything in the report.',anchor:'sane-every'},
+  {pt:'Tem café em todo andar.',isFullSentence:true,options:['There is coffee everywhere.','There is coffee somewhere.','There is coffee anywhere.','There is coffee nowhere.'],correct:'There is coffee everywhere.',anchor:'sane-every'},
+  {pt:'Todo mundo aqui fala inglês.',isFullSentence:true,options:['Everyone here speaks English.','Someone here speaks English.','Anyone here speaks English.','No one here speaks English.'],correct:'Everyone here speaks English.',anchor:'sane-every'},
+  {pt:'Cada detalhe importa nesse projeto.',isFullSentence:true,options:['Every detail matters in this project.','Some detail matters in this project.','Any detail matters in this project.','No detail matters in this project.'],correct:'Every detail matters in this project.',anchor:'sane-every'},
+  {pt:'Tudo mudou depois da fusão.',isFullSentence:true,options:['Everything changed after the merger.','Something changed after the merger.','Anything changed after the merger.','Nothing changed after the merger.'],correct:'Everything changed after the merger.',anchor:'sane-every'},
+  {pt:'Todo mundo estava feliz com o resultado.',isFullSentence:true,options:['Everybody was happy with the result.','Somebody was happy with the result.','Anybody was happy with the result.','Nobody was happy with the result.'],correct:'Everybody was happy with the result.',anchor:'sane-every'},
+  {pt:'A empresa tem escritórios em todo lugar.',isFullSentence:true,options:['The company has offices everywhere.','The company has offices somewhere.','The company has offices anywhere.','The company has offices nowhere.'],correct:'The company has offices everywhere.',anchor:'sane-every'},
+];
+
+window['ter_bk']=[
+  {pt:'Eu tenho duas reuniões hoje.',isFullSentence:true,options:['I have two meetings today.','I has two meetings today.','I there is two meetings today.','I am have two meetings today.'],correct:'I have two meetings today.',anchor:'ter-have'},
+  {pt:'Ela tem um escritório novo.',isFullSentence:true,options:['She has a new office.','She have a new office.','She there is a new office.','She is has a new office.'],correct:'She has a new office.',anchor:'ter-have'},
+  {pt:'A empresa tem mil funcionários.',isFullSentence:true,options:['The company has a thousand employees.','The company have a thousand employees.','The company there are a thousand employees.','The company is has a thousand employees.'],correct:'The company has a thousand employees.',anchor:'ter-have'},
+  {pt:'Nós tínhamos um plano melhor.',isFullSentence:true,options:['We had a better plan.','We have a better plan.','We has a better plan.','We was had a better plan.'],correct:'We had a better plan.',anchor:'ter-have'},
+  {pt:'Ele tem três irmãos.',isFullSentence:true,options:['He has three brothers.','He have three brothers.','He there are three brothers.','He is has three brothers.'],correct:'He has three brothers.',anchor:'ter-have'},
+  {pt:'Eles têm um cliente importante.',isFullSentence:true,options:['They have an important client.','They has an important client.','They there is an important client.','They are have an important client.'],correct:'They have an important client.',anchor:'ter-have'},
+  {pt:'O Daniel tinha um carro vermelho.',isFullSentence:true,options:['Daniel had a red car.','Daniel have a red car.','Daniel has a red car.','Daniel was had a red car.'],correct:'Daniel had a red car.',anchor:'ter-have'},
+  {pt:'Você tem boas ideias.',isFullSentence:true,options:['You have good ideas.','You has good ideas.','You there are good ideas.','You are have good ideas.'],correct:'You have good ideas.',anchor:'ter-have'},
+  {pt:'A Victoria tem uma reunião amanhã.',isFullSentence:true,options:['Victoria has a meeting tomorrow.','Victoria have a meeting tomorrow.','Victoria there is a meeting tomorrow.','Victoria is has a meeting tomorrow.'],correct:'Victoria has a meeting tomorrow.',anchor:'ter-have'},
+  {pt:'Nós temos um bom relacionamento.',isFullSentence:true,options:['We have a good relationship.','We has a good relationship.','We there is a good relationship.','We are have a good relationship.'],correct:'We have a good relationship.',anchor:'ter-have'},
+  {pt:'O time tinha uma boa estratégia.',isFullSentence:true,options:['The team had a good strategy.','The team have a good strategy.','The team has a good strategy.','The team were had a good strategy.'],correct:'The team had a good strategy.',anchor:'ter-have'},
+  {pt:'Eu tenho um deadline apertado.',isFullSentence:true,options:['I have a tight deadline.','I has a tight deadline.','I there is a tight deadline.','I am have a tight deadline.'],correct:'I have a tight deadline.',anchor:'ter-have'},
+  {pt:'Tem uma reunião às 3.',isFullSentence:true,options:['There is a meeting at 3.','There are a meeting at 3.','There has a meeting at 3.','It is a meeting at 3.'],correct:'There is a meeting at 3.',anchor:'ter-afirm'},
+  {pt:'Tem vários e-mails na caixa.',isFullSentence:true,options:['There are many emails in the inbox.','There is many emails in the inbox.','There have many emails in the inbox.','They are many emails in the inbox.'],correct:'There are many emails in the inbox.',anchor:'ter-afirm'},
+  {pt:'Tinha um problema no sistema.',isFullSentence:true,options:['There was a problem in the system.','There were a problem in the system.','There is a problem in the system.','It was a problem in the system.'],correct:'There was a problem in the system.',anchor:'ter-afirm'},
+  {pt:'Vai ter uma festa amanhã.',isFullSentence:true,options:['There will be a party tomorrow.','There will is a party tomorrow.','There are be a party tomorrow.','It will be a party tomorrow.'],correct:'There will be a party tomorrow.',anchor:'ter-afirm'},
+  {pt:'Tem um café na esquina.',isFullSentence:true,options:['There is a coffee shop on the corner.','There are a coffee shop on the corner.','There has a coffee shop on the corner.','It is a coffee shop on the corner.'],correct:'There is a coffee shop on the corner.',anchor:'ter-afirm'},
+  {pt:'Tinha muitas pessoas no evento.',isFullSentence:true,options:['There were many people at the event.','There was many people at the event.','There are many people at the event.','They were many people at the event.'],correct:'There were many people at the event.',anchor:'ter-afirm'},
+  {pt:'Tem três salas livres.',isFullSentence:true,options:['There are three free rooms.','There is three free rooms.','There have three free rooms.','They are three free rooms.'],correct:'There are three free rooms.',anchor:'ter-afirm'},
+  {pt:'Vai ter dois palestrantes.',isFullSentence:true,options:['There will be two speakers.','There will are two speakers.','There are be two speakers.','They will be two speakers.'],correct:'There will be two speakers.',anchor:'ter-afirm'},
+  {pt:'Tem um erro no relatório.',isFullSentence:true,options:['There is a mistake in the report.','There are a mistake in the report.','There has a mistake in the report.','It is a mistake in the report.'],correct:'There is a mistake in the report.',anchor:'ter-afirm'},
+  {pt:'Tinha uma fila enorme no banco.',isFullSentence:true,options:['There was a huge line at the bank.','There were a huge line at the bank.','There is a huge line at the bank.','It was a huge line at the bank.'],correct:'There was a huge line at the bank.',anchor:'ter-afirm'},
+  {pt:'Tem alguns documentos na sua mesa.',isFullSentence:true,options:['There are some documents on your desk.','There is some documents on your desk.','There have some documents on your desk.','They are some documents on your desk.'],correct:'There are some documents on your desk.',anchor:'ter-afirm'},
+  {pt:'Tinha um pouco de café na cozinha de manhã.',isFullSentence:true,options:['There was some coffee in the kitchen in the morning.','There were some coffee in the kitchen in the morning.','There is some coffee in the kitchen in the morning.','It was some coffee in the kitchen in the morning.'],correct:'There was some coffee in the kitchen in the morning.',anchor:'ter-afirm'},
+  {pt:'Não tem nenhuma reunião hoje.',isFullSentence:true,options:["There isn't any meeting today.","There isn't no meeting today.","There aren't any meeting today.","There hasn't any meeting today."],correct:"There isn't any meeting today.",anchor:'ter-neg'},
+  {pt:'Não tem nenhum e-mail novo.',isFullSentence:true,options:["There aren't any new emails.","There aren't no new emails.","There isn't any new emails.","There haven't any new emails."],correct:"There aren't any new emails.",anchor:'ter-neg'},
+  {pt:'Não tinha ninguém na sala.',isFullSentence:true,options:["There wasn't anyone in the room.","There wasn't no one in the room.","There weren't anyone in the room.","There hadn't anyone in the room."],correct:"There wasn't anyone in the room.",anchor:'ter-neg'},
+  {pt:'Não vai ter problema nenhum.',isFullSentence:true,options:["There won't be any problem.","There won't be no problem.","There willn't be any problem.","There won't have any problem."],correct:"There won't be any problem.",anchor:'ter-neg'},
+  {pt:'Não tem nenhum café na cozinha.',isFullSentence:true,options:["There isn't any coffee in the kitchen.","There isn't no coffee in the kitchen.","There aren't any coffee in the kitchen.","There hasn't any coffee in the kitchen."],correct:"There isn't any coffee in the kitchen.",anchor:'ter-neg'},
+  {pt:'Não tinha cadeiras suficientes.',isFullSentence:true,options:["There weren't enough chairs.","There weren't no chairs.","There wasn't enough chairs.","There hadn't enough chairs."],correct:"There weren't enough chairs.",anchor:'ter-neg'},
+  {pt:'Não tem nada de errado com o plano.',isFullSentence:true,options:["There isn't anything wrong with the plan.","There isn't nothing wrong with the plan.","There aren't anything wrong with the plan.","There hasn't anything wrong with the plan."],correct:"There isn't anything wrong with the plan.",anchor:'ter-neg'},
+  {pt:'Não vai ter nenhuma reunião na sexta.',isFullSentence:true,options:["There won't be any meetings on Friday.","There won't be no meetings on Friday.","There willn't be any meetings on Friday.","There won't have any meetings on Friday."],correct:"There won't be any meetings on Friday.",anchor:'ter-neg'},
+  {pt:'Não tinha nenhum lugar pra estacionar.',isFullSentence:true,options:["There wasn't anywhere to park.","There wasn't nowhere to park.","There weren't anywhere to park.","There hadn't anywhere to park."],correct:"There wasn't anywhere to park.",anchor:'ter-neg'},
+  {pt:'Não tem nenhuma vaga aberta agora.',isFullSentence:true,options:["There aren't any open positions now.","There aren't no open positions now.","There isn't any open positions now.","There haven't any open positions now."],correct:"There aren't any open positions now.",anchor:'ter-neg'},
+  {pt:'Não tinha nenhum sinal de internet lá.',isFullSentence:true,options:["There wasn't any internet signal there.","There wasn't no internet signal there.","There weren't any internet signal there.","There hadn't any internet signal there."],correct:"There wasn't any internet signal there.",anchor:'ter-neg'},
+  {pt:'Não vai ter ninguém no escritório.',isFullSentence:true,options:["There won't be anyone at the office.","There won't be no one at the office.","There willn't be anyone at the office.","There won't have anyone at the office."],correct:"There won't be anyone at the office.",anchor:'ter-neg'},
+  {pt:'Tem alguma reunião hoje?',isFullSentence:true,options:['Is there any meeting today?','Is there some meeting today?','Are there any meeting today?','Has there any meeting today?'],correct:'Is there any meeting today?',anchor:'ter-perg'},
+  {pt:'Tem algum e-mail novo?',isFullSentence:true,options:['Are there any new emails?','Are there some new emails?','Is there any new emails?','Have there any new emails?'],correct:'Are there any new emails?',anchor:'ter-perg'},
+  {pt:'Tinha alguém na sala?',isFullSentence:true,options:['Was there anyone in the room?','Was there someone in the room?','Were there anyone in the room?','Had there anyone in the room?'],correct:'Was there anyone in the room?',anchor:'ter-perg'},
+  {pt:'Vai ter alguma festa?',isFullSentence:true,options:['Will there be any party?','Will there be some party?','Will there are any party?','Will there have any party?'],correct:'Will there be any party?',anchor:'ter-perg'},
+  {pt:'Tem algum café na cozinha?',isFullSentence:true,options:['Is there any coffee in the kitchen?','Is there some coffee in the kitchen?','Are there any coffee in the kitchen?','Has there any coffee in the kitchen?'],correct:'Is there any coffee in the kitchen?',anchor:'ter-perg'},
+  {pt:'Tinha muita gente no evento?',isFullSentence:true,options:['Were there many people at the event?','Were there some people at the event?','Was there many people at the event?','Had there many people at the event?'],correct:'Were there many people at the event?',anchor:'ter-perg'},
+  {pt:'Tem alguma sala livre?',isFullSentence:true,options:['Is there any free room?','Is there some free room?','Are there any free room?','Has there any free room?'],correct:'Is there any free room?',anchor:'ter-perg'},
+  {pt:'Vai ter algum palestrante amanhã?',isFullSentence:true,options:['Will there be any speakers tomorrow?','Will there be some speakers tomorrow?','Will there are any speakers tomorrow?','Will there have any speakers tomorrow?'],correct:'Will there be any speakers tomorrow?',anchor:'ter-perg'},
+  {pt:'Tinha algum problema no sistema?',isFullSentence:true,options:['Was there any problem in the system?','Was there some problem in the system?','Were there any problem in the system?','Had there any problem in the system?'],correct:'Was there any problem in the system?',anchor:'ter-perg'},
+  {pt:'Tem alguma vaga aberta?',isFullSentence:true,options:['Are there any open positions?','Are there some open positions?','Is there any open positions?','Have there any open positions?'],correct:'Are there any open positions?',anchor:'ter-perg'},
+  {pt:'Tinha cadeiras suficientes?',isFullSentence:true,options:['Were there enough chairs?','Were there some enough chairs?','Was there enough chairs?','Had there enough chairs?'],correct:'Were there enough chairs?',anchor:'ter-perg'},
+  {pt:'Vai ter alguma reunião na sexta?',isFullSentence:true,options:['Will there be any meeting on Friday?','Will there be some meeting on Friday?','Will there are any meeting on Friday?','Will there have any meeting on Friday?'],correct:'Will there be any meeting on Friday?',anchor:'ter-perg'},
+  {pt:'Eu tenho um carro novo.',isFullSentence:true,options:['I have a new car.','There is a new car.','I there is a new car.','I has a new car.'],correct:'I have a new car.',anchor:'ter-misto'},
+  {pt:'Tem um carro na garagem.',isFullSentence:true,options:['There is a car in the garage.','I have a car in the garage.','There has a car in the garage.','It is a car in the garage.'],correct:'There is a car in the garage.',anchor:'ter-misto'},
+  {pt:'Ela tem dois gatos.',isFullSentence:true,options:['She has two cats.','There are two cats.','She there are two cats.','She have two cats.'],correct:'She has two cats.',anchor:'ter-misto'},
+  {pt:'Tem dois gatos no quintal.',isFullSentence:true,options:['There are two cats in the backyard.','She has two cats in the backyard.','There is two cats in the backyard.','They are two cats in the backyard.'],correct:'There are two cats in the backyard.',anchor:'ter-misto'},
+  {pt:'Nós temos uma reunião importante.',isFullSentence:true,options:['We have an important meeting.','There is an important meeting.','We there is an important meeting.','We has an important meeting.'],correct:'We have an important meeting.',anchor:'ter-misto'},
+  {pt:'Tem uma reunião importante na agenda.',isFullSentence:true,options:['There is an important meeting on the schedule.','We have an important meeting on the schedule.','There are an important meeting on the schedule.','It is an important meeting on the schedule.'],correct:'There is an important meeting on the schedule.',anchor:'ter-misto'},
+  {pt:'O hotel tem uma piscina.',isFullSentence:true,options:['The hotel has a pool.','There is a pool.','The hotel there is a pool.','The hotel have a pool.'],correct:'The hotel has a pool.',anchor:'ter-misto'},
+  {pt:'Tem uma piscina no hotel.',isFullSentence:true,options:['There is a pool in the hotel.','The hotel has a pool in the hotel.','There are a pool in the hotel.','It is a pool in the hotel.'],correct:'There is a pool in the hotel.',anchor:'ter-misto'},
+  {pt:'Eles tinham um plano.',isFullSentence:true,options:['They had a plan.','There was a plan.','They there was a plan.','They has a plan.'],correct:'They had a plan.',anchor:'ter-misto'},
+  {pt:'Tinha um plano na mesa.',isFullSentence:true,options:['There was a plan on the table.','They had a plan on the table.','There were a plan on the table.','It was a plan on the table.'],correct:'There was a plan on the table.',anchor:'ter-misto'},
+  {pt:'A cidade tem um museu famoso.',isFullSentence:true,options:['The city has a famous museum.','There is a famous museum.','The city there is a famous museum.','The city have a famous museum.'],correct:'The city has a famous museum.',anchor:'ter-misto'},
+  {pt:'Tem um museu famoso na cidade.',isFullSentence:true,options:['There is a famous museum in the city.','The city has a famous museum in the city.','There are a famous museum in the city.','It is a famous museum in the city.'],correct:'There is a famous museum in the city.',anchor:'ter-misto'},
+];
+
 window['rev4_bk']=[
   {pt:'Este é o meu carro.',before:'This is',blank:'my',after:'car.',options:['my','mine','me','I'],anchor:'rev4'},
   {pt:'Aquela casa é minha.',before:'That house is',blank:'mine',after:'.',options:['my','mine','me','I'],anchor:'rev4'},
@@ -5507,6 +5635,25 @@ const pages=[
         </div>
         <div class="idx-item" onclick="go(84)" style="border-color:rgba(251,191,36,.3);" data-kw="revisão exercício cap6 capítulo 6 pausa">
           <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 6</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(85)" data-kw="materia bonus like just like comparação como que nem igualzinho tipo giria slash gostar cap6">
+          <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Like e Just Like</div><div class="idx-desc">Como, que nem, igualzinho — e a gíria "tipo"</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-chapter" id="idxcap7">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap7')" style="--ch-color:#a78bfa;">
+        <span class="idx-chapter-num" style="background:#a78bfa;">7</span>
+        <span class="idx-chapter-title">Capítulo 7</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap7-body">
+        <div class="idx-item" onclick="go(88)" data-kw="some any no every someone somebody something somewhere somehow anyone anybody anything anywhere anyhow anyway no one nobody nothing nowhere no way everyone everybody everything everywhere alguém ninguém qualquer tudo nada cap7">
+          <div class="idx-num">34</div><div class="idx-info"><div class="idx-name">Some, Any, No e Every</div><div class="idx-desc">Alguém, ninguém, qualquer coisa, todo lugar</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(90)" data-kw="verbo ter have has had there is there are there was there were there will be posse existencia existir haver afirmativo negativo interrogativo isn't aren't cap7">
+          <div class="idx-num">35</div><div class="idx-info"><div class="idx-name">O verbo Ter</div><div class="idx-desc">Have (posse) e There is/are (existência)</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -9220,7 +9367,7 @@ const pages=[
   <div class="pg-hd"><div class="pg-lbl">Seção 22 · To</div><div class="pg-ttl">A preposição "para"</div></div>
   <div class="pg-body">
 
-    <p class="intro">A preposição <strong>to</strong>, em português, significa <strong>para</strong> — e algumas variantes. Nesta seção, você vai entender quando usar <strong>to</strong> e identificar seus seis usos principais.</p>
+    <p class="intro" id="to-intro">A preposição <strong>to</strong>, em português, significa <strong>para</strong> — e algumas variantes. Nesta seção, você vai entender quando usar <strong>to</strong> e identificar seus seis usos principais.</p>
 
     <p class="intro" style="margin-top:14px;">Antes, uma coisa importante: o português adora <strong>contrair</strong> a palavra "para" com artigos. Essas contrações <strong>não existem em inglês</strong> — todas viram só <strong>to</strong>.</p>
 
@@ -9956,7 +10103,7 @@ const pages=[
             <div class="sense-ex-pt">André está trazendo um bolo <b>para ela</b>.</div><div class="sense-ex-pt">André está trazendo-<b>lhe</b> um bolo.</div>
             <div class="sense-ex-en"><span class="en" data-speak="André is bringing her a cake">André is bringing <b>her</b> a cake.</span></div>
           </div>
-          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">💡 <strong>Lembra do <em>wish</em>?</strong> Na seção <span class="tb-link" onclick="goAndHighlight(57,'to-wish')">To · Desejar algo</span> vimos: <em>"I wish you money"</em> (em vez de <em>"I wish money to you"</em>). É exatamente essa regra — o <em>to/for</em> some quando você cola o pronome entre o verbo e o objeto.</p></div>
+          <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">💡 <strong>Lembra do <em>wish</em>?</strong> Na seção <span class="tb-link" onclick="goAndHighlight(59,'to-wish')">To · Desejar algo</span> vimos: <em>"I wish you money"</em> (em vez de <em>"I wish money to you"</em>). É exatamente essa regra — o <em>to/for</em> some quando você cola o pronome entre o verbo e o objeto.</p></div>
           <div class="tip" style="border-left-color:#48bb78;"><p class="tip-txt">⚠️ <strong>Cuidado:</strong> isso não funciona com todos os verbos. Funciona muito bem com <em>bring, give, send, buy, make, show, tell, teach, offer, pay, write, wish</em>. Com verbos como <em>explain, suggest, describe</em>, você precisa <strong>manter o "to"</strong>: <em>She explained <strong>to me</strong> the problem</em> ✅, <em>She explained me the problem</em> ❌.</p></div>
         </div>
       </div>
@@ -10020,7 +10167,7 @@ const pages=[
   <div class="pg-hd"><div class="pg-lbl">Seção 26 · In, On, At + Pronome</div><div class="pg-ttl">In, On, At + Pronome</div></div>
   <div class="pg-body">
 
-    <p class="intro">Em português, a gente junta <strong>"em"</strong> com pronomes pra formar contrações: <strong>nele</strong> (em + ele), <strong>nela</strong> (em + ela), <strong>neles</strong> (em + eles), <strong>nelas</strong> (em + elas). Em inglês, essas contrações <strong>não existem</strong> — usamos a <span class="tb-link" onclick="go(31)">preposição (in, on, at)</span> separada, seguida do <span class="tb-link" onclick="goAndHighlight(63,'pron-obj-table')">pronome objetivo</span>.</p>
+    <p class="intro">Em português, a gente junta <strong>"em"</strong> com pronomes pra formar contrações: <strong>nele</strong> (em + ele), <strong>nela</strong> (em + ela), <strong>neles</strong> (em + eles), <strong>nelas</strong> (em + elas). Em inglês, essas contrações <strong>não existem</strong> — usamos a <span class="tb-link" onclick="go(31)">preposição (in, on, at)</span> separada, seguida do <span class="tb-link" onclick="goAndHighlight(65,'pron-obj-table')">pronome objetivo</span>.</p>
 
     <div class="quote-list">
       <div class="quote"><div class="q-pt"><b>nele</b> = em + ele</div></div>
@@ -10155,7 +10302,7 @@ const pages=[
 
     <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">E o "em" que some?</div><div class="sec-divider-line r"></div></div>
 
-    <p class="intro">Na <span class="tb-link" onclick="goAndHighlight(63,'to-some')">Seção de Pronomes Objetivos</span>, você viu que dá pra remover o "para" e colar o pronome direto depois do verbo: <em>"Caique trouxe um café para mim" → "Caique brought me a coffee"</em>.</p>
+    <p class="intro">Na <span class="tb-link" onclick="goAndHighlight(65,'to-some')">Seção de Pronomes Objetivos</span>, você viu que dá pra remover o "para" e colar o pronome direto depois do verbo: <em>"Caique trouxe um café para mim" → "Caique brought me a coffee"</em>.</p>
 
     <p class="intro" style="margin-top:10px;">Com o <strong>"em"</strong>, isso <strong>não funciona como uma regra</strong>. Cada verbo em inglês tem sua própria escolha de preposição — alguns mantêm uma (<em>think about, look at, depend on</em>), outros usam nenhuma (<em>trust, marry, enter</em>). Não dá pra simplesmente "remover o em" e esperar que funcione.</p>
 
@@ -10271,7 +10418,7 @@ const pages=[
 
     <div class="tip yel" style="margin-top:14px;">
       <div class="tip-lbl">📌 Concordância sem verbo</div>
-      <p class="tip-txt">Em respostas curtas (sem verbo), o <strong>too</strong> vem junto de um <span class="tb-link" onclick="goAndHighlight(63,'pron-obj-table')">pronome objetivo</span> — nunca do pronome pessoal.</p>
+      <p class="tip-txt">Em respostas curtas (sem verbo), o <strong>too</strong> vem junto de um <span class="tb-link" onclick="goAndHighlight(65,'pron-obj-table')">pronome objetivo</span> — nunca do pronome pessoal.</p>
       <div class="quote-list" style="margin-top:8px;">
         <div class="quote">
           <div class="q-pt">Eu também!</div>
@@ -10696,7 +10843,7 @@ const pages=[
 
     <div class="tip yel" style="margin-top:14px;">
       <div class="tip-lbl">📌 Use PP (mine, yours), nunca PPA (my, your)</div>
-      <p class="tip-txt">Quando o que vem depois de <strong>the same as</strong> é "o meu/o seu/o dele", use o <span class="tb-link" onclick="goAndHighlight(41,'poss-pron-label')">pronome de posse</span> (mine, yours, his, hers, ours, theirs) — <strong>nunca</strong> o adjetivo possessivo (my, your, his, her, our, their):<br>→ <em>My car is the same as <strong>yours</strong>.</em> ✅<br>→ <em>My car is the same as <strong>your</strong>.</em> ❌</p>
+      <p class="tip-txt">Quando o que vem depois de <strong>the same as</strong> é "o meu/o seu/o dele", use o <span class="tb-link" onclick="goAndHighlight(43,'poss-tabela')">pronome de posse</span> (mine, yours, his, hers, ours, theirs) — <strong>nunca</strong> o adjetivo possessivo (my, your, his, her, our, their):<br>→ <em>My car is the same as <strong>yours</strong>.</em> ✅<br>→ <em>My car is the same as <strong>your</strong>.</em> ❌</p>
     </div>
 
     <div class="sec-divider" id="same-puro"><div class="sec-divider-line"></div><div class="sec-divider-label">The same — sozinho, sem substantivo</div><div class="sec-divider-line r"></div></div>
@@ -10896,7 +11043,7 @@ const pages=[
 
     <div class="sec-divider" id="comp-pp"><div class="sec-divider-line"></div><div class="sec-divider-label">Pronomes de posse em comparações</div><div class="sec-divider-line r"></div></div>
 
-    <p class="intro">Quando você compara <strong>coisas que pertencem a alguém</strong>, não precisa repetir o substantivo. Em vez de dizer <em>"Meu carro é mais rápido que <strong>o seu carro</strong>"</em>, use o <span class="tb-link" onclick="goAndHighlight(43,'poss-pron-label')">pronome de posse</span>: <strong>mine, yours, his, hers, ours, theirs</strong>.</p>
+    <p class="intro">Quando você compara <strong>coisas que pertencem a alguém</strong>, não precisa repetir o substantivo. Em vez de dizer <em>"Meu carro é mais rápido que <strong>o seu carro</strong>"</em>, use o <span class="tb-link" onclick="goAndHighlight(43,'poss-tabela')">pronome de posse</span>: <strong>mine, yours, his, hers, ours, theirs</strong>.</p>
 
     <div class="pron-section">
       <div class="pron-header">📌 Comparação + PP</div>
@@ -10916,7 +11063,7 @@ const pages=[
 
     <div class="sec-divider" id="comp-one"><div class="sec-divider-line"></div><div class="sec-divider-label">One/ones em comparações</div><div class="sec-divider-line r"></div></div>
 
-    <p class="intro">Em português, é comum <strong>omitir o substantivo</strong> quando ele já apareceu na frase: <em>"Esse celular é melhor que o outro."</em> — o "celular" some na segunda parte. Em inglês <strong>isso não funciona</strong>: você não pode deixar um adjetivo (<em>the other</em>) sozinho sem nada depois. A solução é colocar o <span class="tb-link" onclick="goAndHighlight(76,'one-singular')">one/ones</span> no lugar do substantivo.</p>
+    <p class="intro">Em português, é comum <strong>omitir o substantivo</strong> quando ele já apareceu na frase: <em>"Esse celular é melhor que o outro."</em> — o "celular" some na segunda parte. Em inglês <strong>isso não funciona</strong>: você não pode deixar um adjetivo (<em>the other</em>) sozinho sem nada depois. A solução é colocar o <span class="tb-link" onclick="goAndHighlight(77,'one-singular')">one/ones</span> no lugar do substantivo.</p>
 
     <div class="tip red" style="margin-top:14px;">
       <div class="tip-lbl">⚠️ Substantivo não pode ficar oculto</div>
@@ -11219,6 +11366,485 @@ const pages=[
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 6</span><span class="ex-score" id="rev6-score">0/15</span></div><div class="ex-body" id="rev6-body"></div></div>
 </div>`,
 
+
+`<div class="page pg-sec" style="--acc:#a78bfa;">
+  <div class="sec-ghost">✨</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="bonus-eyebrow">Matéria Bônus</div>
+    <div class="sec-title">Like e<br><span class="acc">Just Like</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Como dizer "que nem", "igualzinho" e o famoso "tipo" das conversas.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🗣️</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O uso do <strong>"like"</strong> como muletinha de fala ("I was, like, so tired") ficou tão associado à cultura jovem americana dos anos 80 que ganhou até nome: <em>"Valley Girl speak"</em>, vindo das adolescentes do Vale de San Fernando, na Califórnia. Hoje é universal no inglês falado — e os linguistas, depois de décadas torcendo o nariz, já reconhecem que esse "like" tem funções reais na conversa, como suavizar ou indicar aproximação.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Matéria Bônus · Like e Just Like</div><div class="pg-ttl">Like e Just Like</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Além de significar "gostar" (o verbo <em>like</em>), a palavra <strong>like</strong> tem outro papel super comum: o de <strong>comparação</strong>, traduzindo o nosso <em>"como", "que nem", "igual a"</em>. E ainda aparece como a gíria <em>"tipo"</em>. Vamos ver os três.</p>
+
+    <div class="sec-divider" id="like-comp"><div class="sec-divider-line"></div><div class="sec-divider-label">Like — como, que nem</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando você compara duas coisas dizendo que uma é <strong>parecida</strong> com a outra, usa <strong>like</strong> + a pessoa/coisa. Equivale a "como", "que nem", "igual a".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 like + comparação</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela toca guitarra que nem o Slash.</span><span class="eg-en en" data-speak="She plays guitar like Slash.">She plays guitar <span class="hl-tambem">like</span> Slash.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele corre como um profissional.</span><span class="eg-en en" data-speak="He runs like a pro.">He runs <span class="hl-tambem">like</span> a pro.</span></div>
+        <div class="eg-row"><span class="eg-pt">Essa cidade é como uma Nova York menor.</span><span class="eg-en en" data-speak="This city is like a smaller New York.">This city is <span class="hl-tambem">like</span> a smaller New York.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você fala igual a minha mãe.</span><span class="eg-en en" data-speak="You talk like my mom.">You talk <span class="hl-tambem">like</span> my mom.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="just-like"><div class="sec-divider-line"></div><div class="sec-divider-label">Just like — igualzinho, exatamente como</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando você quer dar <strong>ênfase</strong> à comparação — "<strong>igualzinho</strong>", "exatamente como" — é só colocar <strong>just</strong> antes do like. O <em>just</em> reforça, mostrando que a semelhança é total.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 just like + comparação</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela toca guitarra igualzinho o Slash.</span><span class="eg-en en" data-speak="She plays guitar just like Slash.">She plays guitar <span class="hl-tambem">just like</span> Slash.</span></div>
+        <div class="eg-row"><span class="eg-pt">Esse lugar é igualzinho na foto.</span><span class="eg-en en" data-speak="This place is just like in the photo.">This place is <span class="hl-tambem">just like</span> in the photo.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você é igualzinho o seu pai.</span><span class="eg-en en" data-speak="You are just like your dad.">You are <span class="hl-tambem">just like</span> your dad.</span></div>
+        <div class="eg-row"><span class="eg-pt">Aconteceu exatamente como nos filmes.</span><span class="eg-en en" data-speak="It happened just like in the movies.">It happened <span class="hl-tambem">just like</span> in the movies.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 A diferença de peso</div>
+      <p class="tip-txt">→ <strong>like</strong> = "como / que nem" — uma semelhança normal.<br>→ <strong>just like</strong> = "igualzinho / exatamente como" — semelhança total, com ênfase.<br><br>É a mesma diferença entre <em>"ela canta como a Adele"</em> e <em>"ela canta igualzinho a Adele"</em>.</p>
+    </div>
+
+    <div class="sec-divider" id="like-giria"><div class="sec-divider-line"></div><div class="sec-divider-label">Like — a gíria "tipo"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">No inglês falado, o <strong>like</strong> também é jogado no meio da frase como muletinha — exatamente o nosso <strong>"tipo"</strong>. Serve pra dar uma pausa, suavizar, ou indicar que o que vem é mais ou menos assim.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 like = "tipo" (gíria)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estava, tipo, super cansado.</span><span class="eg-en en" data-speak="I was, like, so tired.">I was, <span class="hl-tambem">like</span>, so tired.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela é, tipo, a melhor cantora da banda.</span><span class="eg-en en" data-speak="She is, like, the best singer in the band.">She is, <span class="hl-tambem">like</span>, the best singer in the band.</span></div>
+        <div class="eg-row"><span class="eg-pt">Tipo, eu nem sabia o que dizer.</span><span class="eg-en en" data-speak="Like, I didn't even know what to say.">Like, I didn't even know what to say.</span></div>
+        <div class="eg-row"><span class="eg-pt">Custou, tipo, uns 50 dólares.</span><span class="eg-en en" data-speak="It cost, like, 50 dollars.">It cost, <span class="hl-tambem">like</span>, 50 dollars.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Cuidado pra não exagerar</div>
+      <p class="tip-txt">Esse <strong>like</strong> de "tipo" é <strong>informal</strong> — ótimo pra soar natural numa conversa com amigos, mas evite numa reunião de trabalho ou texto formal, igualzinho a gente faz com o "tipo" em português.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Resumindo</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14.5px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">OS TRÊS LIKE</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem">like</span> (comparação)</div><div class="togo-val">como, que nem (like Slash)</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem">just like</span> (ênfase)</div><div class="togo-val">igualzinho (just like Slash)</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond"><span class="hl-tambem">like</span> (gíria)</div><div class="togo-val">tipo (I was, like, tired)</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>`,
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">7</div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#a78bfa;"><div class="sec-ghost">34</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 34</div>
+    <div class="sec-title">Some, Any,<br><span class="acc">No e Every</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Alguém, ninguém, qualquer coisa, todo lugar — e a família inteira dessas palavras.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎵</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A palavra <strong>"Anyway"</strong> é uma das muletas mais usadas no inglês falado — americanos usam pra mudar de assunto ou voltar ao ponto, tipo nosso <em>"enfim..."</em>. Existe até um erro clássico: <em>"anyways"</em> (com S) é considerado informal/errado pela gramática formal, mas é tão comum no dia a dia que virou quase aceito. Já <em>"anyway"</em> (sem S) é a forma correta.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 34 · Some, Any, No e Every</div><div class="pg-ttl">Some, Any, No e Every</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Quatro palavrinhas — <strong>some</strong>, <strong>any</strong>, <strong>no</strong> e <strong>every</strong> — formam uma família gigante quando se juntam a <strong>-one, -body, -thing, -where</strong>. Com elas você fala de <em>alguém, ninguém, qualquer coisa, todo lugar</em> e muito mais. A boa notícia: a lógica é sempre a mesma, muda só a "base".</p>
+
+    <div class="sec-divider" id="some-grupo"><div class="sec-divider-line"></div><div class="sec-divider-label">SOME — uns, alguns, algum</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>some</strong> é a base de tudo o que é <strong>positivo e indefinido</strong>: existe, mas não se sabe exatamente quem/o quê/onde.</p>
+
+    <div class="conj-table" style="margin:14px 0;">
+      <div class="conj-row hd"><span>Inglês</span><span>Português</span></div>
+      <div class="conj-row"><span class="en" data-speak="some"><strong>some</strong></span><span>uns, umas, alguns, algumas</span></div>
+      <div class="conj-row"><span class="en" data-speak="someone"><strong>someone</strong></span><span>alguém (do contexto)</span></div>
+      <div class="conj-row"><span class="en" data-speak="somebody"><strong>somebody</strong></span><span>alguém (geral)</span></div>
+      <div class="conj-row"><span class="en" data-speak="something"><strong>something</strong></span><span>algo, alguma coisa</span></div>
+      <div class="conj-row"><span class="en" data-speak="somewhere"><strong>somewhere</strong></span><span>algum lugar</span></div>
+      <div class="conj-row"><span class="en" data-speak="somehow"><strong>somehow</strong></span><span>de algum jeito / de alguma forma</span></div>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Some na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Tem alguém na recepção.</span><span class="eg-en en" data-speak="Someone is at the reception.">Someone is at the reception.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu preciso de alguma coisa pra comer.</span><span class="eg-en en" data-speak="I need something to eat.">I need something to eat.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos almoçar em algum lugar perto.</span><span class="eg-en en" data-speak="We will have lunch somewhere close.">We will have lunch somewhere close.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou resolver isso de algum jeito.</span><span class="eg-en en" data-speak="I will solve it somehow.">I will solve it somehow.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 O some sozinho = uns, umas, alguns, algumas</div>
+      <p class="tip-txt">Você já viu o <strong>some</strong> lá nos <span class="tb-link" onclick="goAndHighlight(15,'art-a-an')">Artigos</span>: antes de um substantivo, ele significa "uns/umas/alguns/algumas".<br>→ <em>Eu tenho algumas ideias.</em> = I have <strong>some</strong> ideas.<br>→ <em>Ela enviou uns documentos.</em> = She sent <strong>some</strong> documents.<br>É a mesma palavra — só muda se vem sozinha (some) ou colada (someone, something...).</p>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Em pergunta, some vira any</div>
+      <p class="tip-txt">Na hora de fazer uma <strong>pergunta</strong>, o grupo do <em>some</em> normalmente vira o grupo do <strong>any</strong>:<br>→ <em>Tem alguém aí?</em> → Is there <strong>anyone</strong> there? (não "someone")<br>→ <em>Você quer alguma coisa?</em> → Will you want <strong>anything</strong>?</p>
+    </div>
+
+    <div class="sec-divider" id="any-grupo"><div class="sec-divider-line"></div><div class="sec-divider-label">ANY — qualquer</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>any</strong> é o <strong>"qualquer"</strong>. Também é o grupo que substitui o <em>some</em> em <strong>perguntas e negações</strong>.</p>
+
+    <div class="conj-table" style="margin:14px 0;">
+      <div class="conj-row hd"><span>Inglês</span><span>Português</span></div>
+      <div class="conj-row"><span class="en" data-speak="any"><strong>any</strong></span><span>qualquer</span></div>
+      <div class="conj-row"><span class="en" data-speak="anyone"><strong>anyone</strong></span><span>qualquer um (do contexto)</span></div>
+      <div class="conj-row"><span class="en" data-speak="anybody"><strong>anybody</strong></span><span>qualquer um (geral)</span></div>
+      <div class="conj-row"><span class="en" data-speak="anything"><strong>anything</strong></span><span>qualquer coisa</span></div>
+      <div class="conj-row"><span class="en" data-speak="anywhere"><strong>anywhere</strong></span><span>qualquer lugar</span></div>
+      <div class="conj-row"><span class="en" data-speak="anyhow"><strong>anyhow</strong></span><span>de qualquer jeito / de qualquer forma</span></div>
+      <div class="conj-row"><span class="en" data-speak="anyway"><strong>anyway</strong></span><span>enfim... / de qualquer forma...</span></div>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Any na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Qualquer um pode entrar.</span><span class="eg-en en" data-speak="Anyone can come in.">Anyone can come in.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você pode escolher qualquer coisa.</span><span class="eg-en en" data-speak="You can choose anything.">You can choose anything.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou pra qualquer lugar com você.</span><span class="eg-en en" data-speak="I will go anywhere with you.">I will go anywhere with you.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou terminar isso de qualquer jeito.</span><span class="eg-en en" data-speak="I will finish it anyhow.">I will finish it anyhow.</span></div>
+        <div class="eg-row"><span class="eg-pt">Enfim, vamos continuar.</span><span class="eg-en en" data-speak="Anyway, let's continue.">Anyway, let's continue.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Anyhow vs Anyway</div>
+      <p class="tip-txt">→ <strong>Anyhow</strong> = "de qualquer jeito / de qualquer forma" (sobre o modo de fazer algo).<br>→ <strong>Anyway</strong> = "enfim... / de qualquer forma..." (pra mudar de assunto ou retomar o ponto). É muito mais comum no dia a dia.</p>
+    </div>
+
+    <div class="sec-divider" id="no-grupo"><div class="sec-divider-line"></div><div class="sec-divider-label">NO — nenhum, ninguém, nada</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>no</strong> é a <strong>negação direta</strong>: nenhum, ninguém, nada, nenhum lugar.</p>
+
+    <div class="conj-table" style="margin:14px 0;">
+      <div class="conj-row hd"><span>Inglês</span><span>Português</span></div>
+      <div class="conj-row"><span class="en" data-speak="no"><strong>no</strong></span><span>nenhum(a)</span></div>
+      <div class="conj-row"><span class="en" data-speak="no one"><strong>no one</strong></span><span>ninguém (do contexto)</span></div>
+      <div class="conj-row"><span class="en" data-speak="nobody"><strong>nobody</strong></span><span>ninguém (geral)</span></div>
+      <div class="conj-row"><span class="en" data-speak="nothing"><strong>nothing</strong></span><span>nada</span></div>
+      <div class="conj-row"><span class="en" data-speak="nowhere"><strong>nowhere</strong></span><span>nenhum lugar</span></div>
+      <div class="conj-row"><span class="en" data-speak="no way"><strong>no way</strong></span><span>de jeito nenhum / nem ferrando</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Duas formas de negar</div>
+      <p class="tip-txt">Em inglês, dá pra negar de <strong>duas maneiras</strong> — e ambas estão certas:<br>1. Verbo no negativo + grupo do <strong>any</strong><br>2. Verbo no afirmativo + grupo do <strong>no</strong><br><br>O inglês <strong>não aceita dupla negação</strong>: ou o verbo é negativo (com any), ou a palavra é negativa (com no) — nunca os dois juntos.</p>
+    </div>
+
+    <div class="pron-section" style="margin-top:14px;">
+      <div class="pron-header">📌 As duas formas, lado a lado</div>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Eu não vou comprar nenhum bolo.</div>
+          <div class="q-en"><span class="en" data-speak="I won't buy any cake.">I won't buy <strong>any</strong> cake.</span> ✅</div>
+          <div class="q-en"><span class="en" data-speak="I will buy no cake.">I will buy <strong>no</strong> cake.</span> ✅</div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">A Victoria não vai convidar ninguém.</div>
+          <div class="q-en"><span class="en" data-speak="Victoria won't invite anyone.">Victoria won't invite <strong>anyone</strong>.</span> ✅</div>
+          <div class="q-en"><span class="en" data-speak="Victoria will invite no one.">Victoria will invite <strong>no one</strong>.</span> ✅</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="every-grupo"><div class="sec-divider-line"></div><div class="sec-divider-label">EVERY — cada, todo, tudo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>every</strong> é o <strong>"todo / cada"</strong>: pega o grupo inteiro, sem exceção.</p>
+
+    <div class="conj-table" style="margin:14px 0;">
+      <div class="conj-row hd"><span>Inglês</span><span>Português</span></div>
+      <div class="conj-row"><span class="en" data-speak="every"><strong>every</strong></span><span>cada, todo(a)</span></div>
+      <div class="conj-row"><span class="en" data-speak="everyone"><strong>everyone</strong></span><span>todo mundo (do contexto)</span></div>
+      <div class="conj-row"><span class="en" data-speak="everybody"><strong>everybody</strong></span><span>todo mundo (geral)</span></div>
+      <div class="conj-row"><span class="en" data-speak="everything"><strong>everything</strong></span><span>tudo, todas as coisas</span></div>
+      <div class="conj-row"><span class="en" data-speak="everywhere"><strong>everywhere</strong></span><span>em todo lugar, por toda parte</span></div>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Every na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Todo mundo estava na reunião.</span><span class="eg-en en" data-speak="Everyone was at the meeting.">Everyone was at the meeting.</span></div>
+        <div class="eg-row"><span class="eg-pt">Tudo está pronto pra apresentação.</span><span class="eg-en en" data-speak="Everything is ready for the presentation.">Everything is ready for the presentation.</span></div>
+        <div class="eg-row"><span class="eg-pt">A marca dela está em todo lugar.</span><span class="eg-en en" data-speak="Her brand is everywhere.">Her brand is everywhere.</span></div>
+        <div class="eg-row"><span class="eg-pt">Cada cliente é importante.</span><span class="eg-en en" data-speak="Every client is important.">Every client is important.</span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Everyone / everything são SINGULAR</div>
+      <p class="tip-txt">Apesar de "todo mundo" parecer plural, em inglês <strong>everyone, everybody, everything</strong> são tratados como <strong>singular</strong>. O verbo vai no singular:<br>→ <em>Everyone <strong>is</strong> here.</em> ✅ &nbsp; (não "everyone are")<br>→ <em>Everything <strong>was</strong> ready.</em> ✅ &nbsp; (não "everything were")<br>O mesmo vale pros grupos do some/any/no: someone <strong>is</strong>, nobody <strong>was</strong>...</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 -one vs -body</div>
+      <p class="tip-txt">As terminações <strong>-one</strong> e <strong>-body</strong> significam a mesma coisa (someone = somebody). A diferença é sutil: <strong>-one</strong> soa um pouco mais específico ("alguém do grupo que estamos falando") e <strong>-body</strong> mais geral. No dia a dia, são quase sempre intercambiáveis.</p>
+    </div>
+
+    <div class="sec-divider" id="sane-to-some"><div class="sec-divider-line"></div><div class="sec-divider-label">O "to" some antes de somewhere, anywhere...</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Você aprendeu lá no <span class="tb-link" onclick="goAndHighlight(59,'to-intro')">To</span> que "ir para um lugar" usa <strong>to</strong> (go <strong>to</strong> the party). Mas com as palavras terminadas em <strong>-where</strong> (somewhere, anywhere, nowhere, everywhere) o <strong>to desaparece</strong>. O motivo: essas palavras já carregam a ideia de "lugar / para onde" dentro delas — colocar o <em>to</em> seria repetir.</p>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Nada de "to" antes de -where</div>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote">
+          <div class="q-pt">Vamos a algum lugar hoje à noite.</div>
+          <div class="q-en"><span style="opacity:.5;text-decoration:line-through;">We will go to somewhere tonight.</span> ❌</div>
+          <div class="q-en"><span class="en" data-speak="We will go somewhere tonight.">We will go <strong>somewhere</strong> tonight.</span> ✅</div>
+        </div>
+        <div class="quote">
+          <div class="q-pt">Eu vou pra qualquer lugar com você.</div>
+          <div class="q-en"><span style="opacity:.5;text-decoration:line-through;">I will go to anywhere with you.</span> ❌</div>
+          <div class="q-en"><span class="en" data-speak="I will go anywhere with you.">I will go <strong>anywhere</strong> with you.</span> ✅</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 A mesma lógica de "here", "there" e "home"</div>
+      <p class="tip-txt">Esse desaparecimento do <em>to</em> não é só com o grupo -where. Acontece também com outras palavras que já significam "lugar/direção":<br>→ <em>I will go <strong>home</strong>.</em> (não "go to home")<br>→ <em>Come <strong>here</strong>.</em> (não "come to here")<br>→ <em>She went <strong>there</strong>.</em> (não "went to there")<br><br>💡 Regra rápida: se a palavra de lugar termina em <strong>-where</strong>, ou é <strong>here / there / home</strong>, o <em>to</em> some.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1fr 1fr 1fr;"><span>SOME</span><span>ANY</span><span>NO</span><span>EVERY</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><span>someone</span><span>anyone</span><span>no one</span><span>everyone</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><span>somebody</span><span>anybody</span><span>nobody</span><span>everybody</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><span>something</span><span>anything</span><span>nothing</span><span>everything</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1fr 1fr;"><span>somewhere</span><span>anywhere</span><span>nowhere</span><span>everywhere</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 A regra de ouro do some/any</div>
+      <p class="tip-txt">→ Frase <strong>afirmativa</strong>: use o <strong>some</strong> (Someone called you).<br>→ <strong>Pergunta</strong>: use o <strong>any</strong> (Is anyone home?).<br>→ <strong>Negação</strong>: use o <strong>any</strong> com verbo negativo (I won't invite anyone) ou o <strong>no</strong> com verbo afirmativo (I will invite no one).</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Some, Any, No e Every — exercício</span><span class="ex-score" id="sane-score">0/10</span></div><div class="ex-body" id="sane-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#34d399;"><div class="sec-ghost">35</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 35</div>
+    <div class="sec-title">O verbo<br><span class="acc">Ter</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Os dois "ter" do português: ter algo (posse) e ter no sentido de existir.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">📰</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A expressão <strong>"There is"</strong> é uma das primeiras coisas que estrangeiros aprendem — e uma das mais cantadas. A frase <em>"There is a house in New Orleans"</em>, que abre a música <strong>"The House of the Rising Sun"</strong>, é provavelmente o "there is" mais famoso da história. A música é tão antiga que ninguém sabe ao certo quem a escreveu; ela já era cantada nos campos americanos muito antes de virar sucesso mundial nos anos 60.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#34d399;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 35 · O verbo Ter</div><div class="pg-ttl">O verbo Ter</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Em português, a palavra <strong>"ter"</strong> faz dois trabalhos diferentes — e a gente nem percebe. Em inglês, cada um vira uma estrutura própria:</p>
+
+    <div class="quote-list" style="margin-top:8px;">
+      <div class="quote">
+        <div class="q-pt"><strong>1. Posse</strong> — algo pertence a alguém.</div>
+        <div class="q-en">Eu <strong>tenho</strong> um carro. → I <strong>have</strong> a car.</div>
+      </div>
+      <div class="quote">
+        <div class="q-pt"><strong>2. Existência</strong> — algo existe / "tem".</div>
+        <div class="q-en"><strong>Tem</strong> um carro na garagem. → <strong>There is</strong> a car in the garage.</div>
+      </div>
+    </div>
+
+    <p class="intro" style="margin-top:14px;">O truque pra saber qual usar: se dá pra trocar o "ter" por <strong>"possuir"</strong>, é <strong>have</strong>. Se dá pra trocar por <strong>"existir"</strong> ou "haver", é <strong>there is/are</strong>.</p>
+
+    <div class="sec-divider" id="have-posse"><div class="sec-divider-line"></div><div class="sec-divider-label">HAVE — ter no sentido de posse</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra dizer que alguém <strong>possui</strong> algo, usamos <strong>have</strong>. Igual à conjugação no presente que você já viu: muda só na 3ª pessoa (he/she/it), virando <strong>has</strong>. No passado, é <strong>had</strong> pra todos.</p>
+
+    <div class="conj-table" style="margin:14px 0;">
+      <div class="conj-row hd"><span>Pronome</span><span>Presente</span></div>
+      <div class="conj-row"><span>I / You / We / They</span><span class="en" data-speak="have"><strong>have</strong></span></div>
+      <div class="conj-row"><span>He / She / It</span><span class="en" data-speak="has"><strong>has</strong></span></div>
+      <div class="conj-row"><span>Passado (todos)</span><span class="en" data-speak="had"><strong>had</strong></span></div>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Have / Has / Had na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu tenho duas reuniões hoje.</span><span class="eg-en en" data-speak="I have two meetings today.">I <span class="hl-p3">have</span> two meetings today.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela tem um escritório novo.</span><span class="eg-en en" data-speak="She has a new office.">She <span class="hl-p3">has</span> a new office.</span></div>
+        <div class="eg-row"><span class="eg-pt">A empresa tem mil funcionários.</span><span class="eg-en en" data-speak="The company has a thousand employees.">The company <span class="hl-p3">has</span> a thousand employees.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós tínhamos um plano melhor.</span><span class="eg-en en" data-speak="We had a better plan.">We <span class="hl-p3">had</span> a better plan.</span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Pergunta e negação de posse: ainda não!</div>
+      <p class="tip-txt">Pra perguntar ou negar a posse (<em>"Você tem um carro?"</em> / <em>"Eu não tenho um carro"</em>), o inglês usa <strong>do/does/did</strong> — que você ainda <strong>não aprendeu</strong>. Então, por enquanto, use o <strong>have</strong> só em frases <strong>afirmativas</strong>. As perguntas e negações de posse virão na matéria do <em>To Do</em>.</p>
+    </div>
+
+    <div class="sec-divider" id="there-is"><div class="sec-divider-line"></div><div class="sec-divider-label">THERE IS / THERE ARE — ter no sentido de existir</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando o "ter" significa que algo <strong>existe</strong> (dá pra trocar por "existe" ou "há"), usamos <strong>there is</strong> (singular) ou <strong>there are</strong> (plural). Repare: o "there" aqui <strong>não</strong> é "lá" — é uma estrutura fixa que acompanha o verbo to be.</p>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.3fr 1.3fr;"><span>Tempo</span><span>Singular</span><span>Plural</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr 1.3fr;"><span>Presente</span><span class="en" data-speak="there is"><strong>there is</strong></span><span class="en" data-speak="there are"><strong>there are</strong></span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr 1.3fr;"><span>Passado</span><span class="en" data-speak="there was"><strong>there was</strong></span><span class="en" data-speak="there were"><strong>there were</strong></span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr 1.3fr;"><span>Futuro</span><span class="en" data-speak="there will be"><strong>there will be</strong></span><span class="en" data-speak="there will be"><strong>there will be</strong></span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 É o verbo to be disfarçado</div>
+      <p class="tip-txt">Repare que <strong>is, are, was, were, will be</strong> são todas formas do <span class="tb-link" onclick="goAndHighlight(11,'tobe-presente')">verbo to be</span> que você já domina. Por isso, <strong>negar e perguntar é fácil</strong> — funciona igual ao to be, sem precisar de do/does. É só mexer no is/are/was/were.</p>
+    </div>
+
+    <div class="sec-divider" id="there-afirm"><div class="sec-divider-line"></div><div class="sec-divider-label">Afirmativo</div><div class="sec-divider-line r"></div></div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 There is / are — afirmando</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Tem uma reunião às 3.</span><span class="eg-en en" data-speak="There is a meeting at 3.">There is a meeting at 3.</span></div>
+        <div class="eg-row"><span class="eg-pt">Tem vários e-mails na caixa.</span><span class="eg-en en" data-speak="There are many emails in the inbox.">There are many emails in the inbox.</span></div>
+        <div class="eg-row"><span class="eg-pt">Tinha um problema no sistema.</span><span class="eg-en en" data-speak="There was a problem in the system.">There was a problem in the system.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vai ter uma festa amanhã.</span><span class="eg-en en" data-speak="There will be a party tomorrow.">There will be a party tomorrow.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="there-neg"><div class="sec-divider-line"></div><div class="sec-divider-label">Negativo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra negar, é só deixar o to be negativo: <strong>there isn't, there aren't, there wasn't, there weren't, there won't be</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 There is / are — negando</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Não tem nenhuma reunião hoje.</span><span class="eg-en en" data-speak="There isn't any meeting today.">There isn't <span class="hl-coringa">any</span> meeting today.</span></div>
+        <div class="eg-row"><span class="eg-pt">Não tem nenhum e-mail novo.</span><span class="eg-en en" data-speak="There aren't any new emails.">There aren't <span class="hl-coringa">any</span> new emails.</span></div>
+        <div class="eg-row"><span class="eg-pt">Não tinha ninguém na sala.</span><span class="eg-en en" data-speak="There wasn't anyone in the room.">There wasn't <span class="hl-coringa">anyone</span> in the room.</span></div>
+        <div class="eg-row"><span class="eg-pt">Não vai ter problema nenhum.</span><span class="eg-en en" data-speak="There won't be any problem.">There won't be <span class="hl-coringa">any</span> problem.</span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Cuidado com a dupla negação (lembra do Some/Any/No?)</div>
+      <p class="tip-txt">Como você viu em <span class="tb-link" onclick="goAndHighlight(89,'no-grupo')">Some, Any, No e Every</span>, o inglês <strong>não aceita negar duas vezes</strong>. Se o <em>there</em> já está negativo (isn't/aren't), use o grupo do <strong>any</strong>:<br>→ <em>There isn't <strong>any</strong> meeting.</em> ✅<br>→ <em>There isn't <strong>no</strong> meeting.</em> ❌ (duas negações)<br><br>Se preferir usar o grupo do <strong>no</strong>, deixe o <em>there</em> <strong>afirmativo</strong>:<br>→ <em>There is <strong>no</strong> meeting.</em> ✅<br>As duas formas certas dizem a mesma coisa.</p>
+    </div>
+
+    <div class="sec-divider" id="there-perg"><div class="sec-divider-line"></div><div class="sec-divider-label">Interrogativo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra perguntar, inverta o to be com o "there", igual você já faz com o verbo to be: <strong>Is there...? Are there...? Was there...? Will there be...?</strong></p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 There is / are — perguntando</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Tem alguma reunião hoje?</span><span class="eg-en en" data-speak="Is there any meeting today?">Is there <span class="hl-coringa">any</span> meeting today?</span></div>
+        <div class="eg-row"><span class="eg-pt">Tem algum e-mail novo?</span><span class="eg-en en" data-speak="Are there any new emails?">Are there <span class="hl-coringa">any</span> new emails?</span></div>
+        <div class="eg-row"><span class="eg-pt">Tinha alguém na sala?</span><span class="eg-en en" data-speak="Was there anyone in the room?">Was there <span class="hl-coringa">anyone</span> in the room?</span></div>
+        <div class="eg-row"><span class="eg-pt">Vai ter alguma festa?</span><span class="eg-en en" data-speak="Will there be any party?">Will there be <span class="hl-coringa">any</span> party?</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Em pergunta e negação, some vira any</div>
+      <p class="tip-txt">Repare nos exemplos acima: nas <strong>perguntas</strong> e <strong>negações</strong> com there is/are, o "algum/alguma" vira <strong>any</strong> (não some) — exatamente a regra que você aprendeu em <span class="tb-link" onclick="goAndHighlight(89,'any-grupo')">Some, Any, No e Every</span>. Já no <strong>afirmativo</strong>, volta pro <strong>some</strong>: <em>There is <strong>some</strong> coffee in the kitchen.</em></p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="togo-table" style="font-size:14.5px;">
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">QUAL "TER" USAR</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Posse (= possuir)</div><div class="togo-val"><span class="hl-p3">have / has / had</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Existência (= existir/haver)</div><div class="togo-val"><span class="hl-p3">there is / are...</span></div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">EXISTÊNCIA — TODAS AS FORMAS</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Presente</div><div class="togo-val">there is / are &nbsp;·&nbsp; isn't / aren't</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Passado</div><div class="togo-val">there was / were &nbsp;·&nbsp; wasn't / weren't</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Futuro</div><div class="togo-val">there will be &nbsp;·&nbsp; won't be</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Pergunta</div><div class="togo-val">Is/Are/Was/Were there...?</div></div>
+      </div>
+      <div class="togo-sep"></div>
+      <div class="togo-section">
+        <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">REGRA DO SOME/ANY</div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Afirmativo</div><div class="togo-val">there is <span class="hl-coringa">some</span>...</div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Negativo / Pergunta</div><div class="togo-val">there isn't / Is there <span class="hl-coringa">any</span>...</div></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">O verbo Ter — exercício</span><span class="ex-score" id="ter-score">0/10</span></div><div class="ex-body" id="ter-body"></div></div>
+  </div>
+</div>`,
+
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
   <div class="soon-title">Mais conteúdo<br><span class="soon-acc">em breve</span></div>
@@ -11243,6 +11869,8 @@ function goAndHighlight(pageIdx, targetId){
     // remove any previous inline back btn
     const old=document.getElementById('inline-back-btn');
     if(old)old.remove();
+    // remove any leftover highlight
+    document.querySelectorAll('.highlight-pulse').forEach(n=>n.classList.remove('highlight-pulse'));
     // insert inline back btn right above the target element
     const btn=document.createElement('button');
     btn.id='inline-back-btn';
@@ -11250,10 +11878,30 @@ function goAndHighlight(pageIdx, targetId){
     btn.onclick=goBack;
     el.parentNode.insertBefore(btn,el);
     btn.scrollIntoView({behavior:'smooth',block:'center'});
-    let target=el;
-    while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('sense-card')&&target.id!=='art-a-an'&&!target.classList.contains('pg-body')){target=target.parentElement;}
-    target.classList.add('highlight-pulse');
-    setTimeout(()=>target.classList.remove('highlight-pulse'),5000);
+    // decide o que destacar
+    const highlighted=[];
+    const selfClasses=['rule-box','tip','pron-section','tobe-card','sense-card','conj-table','pron-table','poss-triple-table','togo-table','big-tbl-wrap','quote-list','eg-block'];
+    if(selfClasses.some(c=>el.classList.contains(c))){
+      // o próprio elemento já é um bloco de conteúdo: destaca ele
+      highlighted.push(el);
+    } else if(el.classList.contains('sec-divider')||el.classList.contains('sub-label')){
+      // é um separador/título: destaca ele + os blocos de conteúdo logo após (até o próximo divisor)
+      highlighted.push(el);
+      let sib=el.nextElementSibling;
+      let count=0;
+      while(sib&&!sib.classList.contains('sec-divider')&&!sib.classList.contains('sub-label')&&count<3){
+        highlighted.push(sib);
+        sib=sib.nextElementSibling;
+        count++;
+      }
+    } else {
+      // sobe até um container conhecido, senão destaca o próprio elemento
+      let target=el;
+      while(target.parentElement&&!target.classList.contains('rule-box')&&!target.classList.contains('tip')&&!target.classList.contains('pron-section')&&!target.classList.contains('tobe-card')&&!target.classList.contains('sense-card')&&target.id!=='art-a-an'&&!target.classList.contains('pg-body')){target=target.parentElement;}
+      highlighted.push(target.classList.contains('pg-body')?el:target);
+    }
+    highlighted.forEach(n=>n.classList.add('highlight-pulse'));
+    setTimeout(()=>highlighted.forEach(n=>n.classList.remove('highlight-pulse')),5000);
   },350);
 }
 function goBack(){
