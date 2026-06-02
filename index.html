@@ -1356,6 +1356,13 @@ function runInits(p){
   if(p===99)initEx('qw',window['qw_bk'],10);
   if(p===102)initEx('rev7',window['rev7_bk'],15);
   if(p===105)initEx('stts',window['stts_bk'],10);
+  if(p===107)initEx('gonna',window['gonna_bk'],10);
+  if(p===109)initEx('ia',window['ia_bk'],10);
+  if(p===111)initEx('justabout',window['justabout_bk'],10);
+  if(p===113)initEx('reflex',window['reflex_bk'],10);
+  if(p===115)initEx('cond',window['cond_bk'],10);
+  if(p===117)initEx('that',window['that_bk'],10);
+  if(p===120)initEx('rev8',window['rev8_bk'],15);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -4788,6 +4795,18 @@ window['qw_bk']=[
   {pt:'Por que isso importa?',isFullSentence:true,options:['Why does it matter?','What does it matter?','Why it matters?','Why does it matters?'],correct:'Why does it matter?',anchor:'qw-whatsoever'},
   {pt:'Qual prefere, café ou chá?',isFullSentence:true,options:['Which do you prefer, coffee or tea?','What do you prefer, coffee or tea?','Which you prefer, coffee or tea?','Which do you prefers, coffee or tea?'],correct:'Which do you prefer, coffee or tea?',anchor:'qw-whatsoever'},
   {pt:'Não faço a menor ideia, nadinha.',isFullSentence:true,options:['I have no clue whatsoever.','I have no clue whatever.','I have no clue however.','I have any clue whatsoever.'],correct:'I have no clue whatsoever.',anchor:'qw-whatsoever'},
+  {pt:'Eu sei onde ela mora.',isFullSentence:true,options:['I know where she lives.','I know what she lives.','I know when she lives.','I know who she lives.'],correct:'I know where she lives.',anchor:'qw-afirm'},
+  {pt:'Me diz o que você quer.',isFullSentence:true,options:['Tell me what you want.','Tell me where you want.','Tell me who you want.','Tell me how you want.'],correct:'Tell me what you want.',anchor:'qw-afirm'},
+  {pt:'Eu não sei quando ele chega.',isFullSentence:true,options:["I don't know when he arrives.","I don't know where he arrives.","I don't know what he arrives.","I don't know why he arrives."],correct:"I don't know when he arrives.",anchor:'qw-afirm'},
+  {pt:'Essa é a pessoa que me ajudou.',isFullSentence:true,options:['This is the person who helped me.','This is the person what helped me.','This is the person where helped me.','This is the person whose helped me.'],correct:'This is the person who helped me.',anchor:'qw-afirm'},
+  {pt:'Me mostra como você fez isso.',isFullSentence:true,options:['Show me how you did it.','Show me what you did it.','Show me where you did it.','Show me why you did it.'],correct:'Show me how you did it.',anchor:'qw-afirm'},
+  {pt:'É por isso que eu saí.',isFullSentence:true,options:["That's why I left.","That's what I left.","That's when I left.","That's how I left."],correct:"That's why I left.",anchor:'qw-afirm'},
+  {pt:'É por isso que estou cansado.',isFullSentence:true,options:["That's why I'm tired.","That's how I'm tired.","That's what I'm tired.","That's when I'm tired."],correct:"That's why I'm tired.",anchor:'qw-afirm'},
+  {pt:'Eu não sei por quê.',isFullSentence:true,options:["I don't know why.","I don't know what.","I don't know how.","I don't know when."],correct:"I don't know why.",anchor:'qw-afirm'},
+  {pt:'Eu entendo o que você quer dizer.',isFullSentence:true,options:['I understand what you mean.','I understand why you mean.','I understand where you mean.','I understand who you mean.'],correct:'I understand what you mean.',anchor:'qw-afirm'},
+  {pt:'Ninguém sabe onde ele está.',isFullSentence:true,options:['Nobody knows where he is.','Nobody knows what he is.','Nobody knows who he is.','Nobody knows when he is.'],correct:'Nobody knows where he is.',anchor:'qw-afirm'},
+  {pt:'Foi por isso que ela ligou.',isFullSentence:true,options:["That's why she called.","That's what she called.","That's how she called.","That's when she called."],correct:"That's why she called.",anchor:'qw-afirm'},
+  {pt:'Me conta o que aconteceu.',isFullSentence:true,options:['Tell me what happened.','Tell me why happened.','Tell me where happened.','Tell me who happened.'],correct:'Tell me what happened.',anchor:'qw-afirm'},
 ];
 
 window['stts_bk']=[
@@ -4851,6 +4870,423 @@ window['stts_bk']=[
   {pt:'Posso falar com você um minuto? (formal)',isFullSentence:true,options:['Can I speak to you for a minute?','Can I say to you for a minute?','Can I tell to you for a minute?','Can I speak you for a minute?'],correct:'Can I speak to you for a minute?',anchor:'stts-misto'},
   {pt:'Ela me contou tudo.',isFullSentence:true,options:['She told me everything.','She said me everything.','She talked me everything.','She spoke me everything.'],correct:'She told me everything.',anchor:'stts-misto'},
   {pt:'Eles disseram que sim.',isFullSentence:true,options:['They said yes.','They told yes.','They talked yes.','They spoke yes.'],correct:'They said yes.',anchor:'stts-misto'},
+];
+
+window['gonna_bk']=[
+  {pt:'Eu vou viajar amanhã.',isFullSentence:true,options:['I am going to travel tomorrow.','I is going to travel tomorrow.','I are going to travel tomorrow.','I going to travel tomorrow.'],correct:'I am going to travel tomorrow.',anchor:'gonna-afirm'},
+  {pt:'Ela vai estudar hoje à noite.',isFullSentence:true,options:['She is going to study tonight.','She are going to study tonight.','She am going to study tonight.','She going to study tonight.'],correct:'She is going to study tonight.',anchor:'gonna-afirm'},
+  {pt:'Eles vão comprar uma casa.',isFullSentence:true,options:['They are going to buy a house.','They is going to buy a house.','They am going to buy a house.','They going to buy a house.'],correct:'They are going to buy a house.',anchor:'gonna-afirm'},
+  {pt:'Nós vamos começar uma dieta.',isFullSentence:true,options:['We are going to start a diet.','We is going to start a diet.','We am going to start a diet.','We going to start a diet.'],correct:'We are going to start a diet.',anchor:'gonna-afirm'},
+  {pt:'Ele vai pedir um aumento.',isFullSentence:true,options:['He is going to ask for a raise.','He are going to ask for a raise.','He am going to ask for a raise.','He going to ask for a raise.'],correct:'He is going to ask for a raise.',anchor:'gonna-afirm'},
+  {pt:'Eu vou começar segunda-feira.',isFullSentence:true,options:['I am going to start on Monday.','I is going to start on Monday.','I are going to start on Monday.','I be going to start on Monday.'],correct:'I am going to start on Monday.',anchor:'gonna-afirm'},
+  {pt:'Você vai adorar isso.',isFullSentence:true,options:['You are going to love this.','You is going to love this.','You am going to love this.','You going to love this.'],correct:'You are going to love this.',anchor:'gonna-afirm'},
+  {pt:'Vai chover hoje à noite.',isFullSentence:true,options:['It is going to rain tonight.','It are going to rain tonight.','It am going to rain tonight.','It going to rain tonight.'],correct:'It is going to rain tonight.',anchor:'gonna-afirm'},
+  {pt:'Nós vamos nos mudar em julho.',isFullSentence:true,options:['We are going to move in July.','We is going to move in July.','We am going to move in July.','We going to move in July.'],correct:'We are going to move in July.',anchor:'gonna-afirm'},
+  {pt:'Ela vai se casar.',isFullSentence:true,options:['She is going to get married.','She are going to get married.','She am going to get married.','She going to get married.'],correct:'She is going to get married.',anchor:'gonna-afirm'},
+  {pt:'Eles vão viajar pela Europa.',isFullSentence:true,options:['They are going to travel around Europe.','They is going to travel around Europe.','They am going to travel around Europe.','They going to travel around Europe.'],correct:'They are going to travel around Europe.',anchor:'gonna-afirm'},
+  {pt:'Eu vou aprender a dirigir.',isFullSentence:true,options:['I am going to learn to drive.','I is going to learn to drive.','I are going to learn to drive.','I going to learn to drive.'],correct:'I am going to learn to drive.',anchor:'gonna-afirm'},
+  {pt:'Ela não vai vir.',isFullSentence:true,options:["She isn't going to come.","She aren't going to come.",'She not going to come.',"She doesn't going to come."],correct:"She isn't going to come.",anchor:'gonna-neg'},
+  {pt:'Eu não vou desistir.',isFullSentence:true,options:['I am not going to give up.',"I isn't going to give up.","I aren't going to give up.","I don't going to give up."],correct:'I am not going to give up.',anchor:'gonna-neg'},
+  {pt:'Eles não vão esperar.',isFullSentence:true,options:["They aren't going to wait.","They isn't going to wait.",'They not going to wait.',"They don't going to wait."],correct:"They aren't going to wait.",anchor:'gonna-neg'},
+  {pt:'Nós não vamos sair hoje.',isFullSentence:true,options:["We aren't going to go out today.","We isn't going to go out today.",'We not going to go out today.',"We don't going to go out today."],correct:"We aren't going to go out today.",anchor:'gonna-neg'},
+  {pt:'Ele não vai gostar disso.',isFullSentence:true,options:["He isn't going to like this.","He aren't going to like this.",'He not going to like this.',"He doesn't going to like this."],correct:"He isn't going to like this.",anchor:'gonna-neg'},
+  {pt:'Não vai funcionar.',isFullSentence:true,options:["It isn't going to work.","It aren't going to work.",'It not going to work.',"It doesn't going to work."],correct:"It isn't going to work.",anchor:'gonna-neg'},
+  {pt:'Você não vai acreditar.',isFullSentence:true,options:["You aren't going to believe this.","You isn't going to believe this.",'You not going to believe this.',"You don't going to believe this."],correct:"You aren't going to believe this.",anchor:'gonna-neg'},
+  {pt:'Eu não vou mudar de ideia.',isFullSentence:true,options:['I am not going to change my mind.',"I isn't going to change my mind.","I aren't going to change my mind.",'I not going to change my mind.'],correct:'I am not going to change my mind.',anchor:'gonna-neg'},
+  {pt:'Ela não vai aceitar.',isFullSentence:true,options:["She isn't going to accept.","She aren't going to accept.",'She not going to accept.',"She doesn't going to accept."],correct:"She isn't going to accept.",anchor:'gonna-neg'},
+  {pt:'Eles não vão vender a casa.',isFullSentence:true,options:["They aren't going to sell the house.","They isn't going to sell the house.",'They not going to sell the house.',"They don't going to sell the house."],correct:"They aren't going to sell the house.",anchor:'gonna-neg'},
+  {pt:'Nós não vamos atrasar.',isFullSentence:true,options:["We aren't going to be late.","We isn't going to be late.",'We not going to be late.',"We don't going to be late."],correct:"We aren't going to be late.",anchor:'gonna-neg'},
+  {pt:'Ele não vai responder.',isFullSentence:true,options:["He isn't going to answer.","He aren't going to answer.",'He not going to answer.',"He doesn't going to answer."],correct:"He isn't going to answer.",anchor:'gonna-neg'},
+  {pt:'Ela vai vir?',isFullSentence:true,options:['Is she going to come?','Are she going to come?','Does she going to come?','She is going to come?'],correct:'Is she going to come?',anchor:'gonna-perg'},
+  {pt:'Você vai me ajudar?',isFullSentence:true,options:['Are you going to help me?','Is you going to help me?','Do you going to help me?','You are going to help me?'],correct:'Are you going to help me?',anchor:'gonna-perg'},
+  {pt:'Eles vão viajar?',isFullSentence:true,options:['Are they going to travel?','Is they going to travel?','Do they going to travel?','They are going to travel?'],correct:'Are they going to travel?',anchor:'gonna-perg'},
+  {pt:'Vai chover?',isFullSentence:true,options:['Is it going to rain?','Are it going to rain?','Does it going to rain?','It is going to rain?'],correct:'Is it going to rain?',anchor:'gonna-perg'},
+  {pt:'Nós vamos conseguir?',isFullSentence:true,options:['Are we going to make it?','Is we going to make it?','Do we going to make it?','We are going to make it?'],correct:'Are we going to make it?',anchor:'gonna-perg'},
+  {pt:'Ele vai pedir desculpas?',isFullSentence:true,options:['Is he going to apologize?','Are he going to apologize?','Does he going to apologize?','He is going to apologize?'],correct:'Is he going to apologize?',anchor:'gonna-perg'},
+  {pt:'Você vai sair hoje?',isFullSentence:true,options:['Are you going to go out today?','Is you going to go out today?','Do you going to go out today?','You are going to go out today?'],correct:'Are you going to go out today?',anchor:'gonna-perg'},
+  {pt:'Ela vai aceitar o emprego?',isFullSentence:true,options:['Is she going to accept the job?','Are she going to accept the job?','Does she going to accept the job?','She is going to accept the job?'],correct:'Is she going to accept the job?',anchor:'gonna-perg'},
+  {pt:'Eles vão se mudar?',isFullSentence:true,options:['Are they going to move?','Is they going to move?','Do they going to move?','They are going to move?'],correct:'Are they going to move?',anchor:'gonna-perg'},
+  {pt:'Vai dar certo?',isFullSentence:true,options:['Is it going to work?','Are it going to work?','Does it going to work?','It is going to work?'],correct:'Is it going to work?',anchor:'gonna-perg'},
+  {pt:'Você vai comprar?',isFullSentence:true,options:['Are you going to buy it?','Is you going to buy it?','Do you going to buy it?','You are going to buy it?'],correct:'Are you going to buy it?',anchor:'gonna-perg'},
+  {pt:'Ele vai estudar pra prova?',isFullSentence:true,options:['Is he going to study for the test?','Are he going to study for the test?','Does he going to study for the test?','He is going to study for the test?'],correct:'Is he going to study for the test?',anchor:'gonna-perg'},
+  {pt:'Eu vou te ligar mais tarde. (informal)',isFullSentence:true,options:["I'm gonna call you later.","I'm going call you later.",'I gonna call you later.',"I'm gonna to call you later."],correct:"I'm gonna call you later.",anchor:'gonna-giria'},
+  {pt:'Vai dar tudo certo. (informal)',isFullSentence:true,options:["It's gonna be okay.","It's going be okay.",'It gonna be okay.',"It's gonna to be okay."],correct:"It's gonna be okay.",anchor:'gonna-giria'},
+  {pt:'A gente vai se divertir muito. (informal)',isFullSentence:true,options:["We're gonna have so much fun.","We're going have so much fun.",'We gonna have so much fun.',"We're gonna to have so much fun."],correct:"We're gonna have so much fun.",anchor:'gonna-giria'},
+  {pt:'Ela vai amar isso. (informal)',isFullSentence:true,options:["She's gonna love it.",'She gonna love it.',"She's going love it.","She's gonna to love it."],correct:"She's gonna love it.",anchor:'gonna-giria'},
+  {pt:'Eles vão ficar surpresos. (informal)',isFullSentence:true,options:["They're gonna be surprised.",'They gonna be surprised.',"They're going be surprised.","They're gonna to be surprised."],correct:"They're gonna be surprised.",anchor:'gonna-giria'},
+  {pt:'Você vai se arrepender. (informal)',isFullSentence:true,options:["You're gonna regret it.",'You gonna regret it.',"You're going regret it.","You're gonna to regret it."],correct:"You're gonna regret it.",anchor:'gonna-giria'},
+  {pt:'Eu vou tentar. (informal)',isFullSentence:true,options:["I'm gonna try.",'I gonna try.',"I'm going try.","I'm gonna to try."],correct:"I'm gonna try.",anchor:'gonna-giria'},
+  {pt:'Vai ser incrível. (informal)',isFullSentence:true,options:["It's gonna be amazing.",'It gonna be amazing.',"It's going be amazing.","It's gonna to be amazing."],correct:"It's gonna be amazing.",anchor:'gonna-giria'},
+  {pt:'A gente vai ganhar. (informal)',isFullSentence:true,options:["We're gonna win.",'We gonna win.',"We're going win.","We're gonna to win."],correct:"We're gonna win.",anchor:'gonna-giria'},
+  {pt:'Ele vai chegar atrasado. (informal)',isFullSentence:true,options:["He's gonna be late.",'He gonna be late.',"He's going be late.","He's gonna to be late."],correct:"He's gonna be late.",anchor:'gonna-giria'},
+  {pt:'Eu vou sentir saudade de você. (informal)',isFullSentence:true,options:["I'm gonna miss you.",'I gonna miss you.',"I'm going miss you.","I'm gonna to miss you."],correct:"I'm gonna miss you.",anchor:'gonna-giria'},
+  {pt:'Vai valer a pena. (informal)',isFullSentence:true,options:["It's gonna be worth it.",'It gonna be worth it.',"It's going be worth it.","It's gonna to be worth it."],correct:"It's gonna be worth it.",anchor:'gonna-giria'},
+  {pt:'Já decidi: eu vou viajar nas férias.',isFullSentence:true,options:['I am going to travel on vacation.','I am go to travel on vacation.','I going to travel on vacation.','I am will travel on vacation.'],correct:'I am going to travel on vacation.',anchor:'gonna-vswill'},
+  {pt:'O telefone está tocando — eu atendo!',isFullSentence:true,options:["I'll get it!","I'm going to get it now this second!",'I get it!','I will to get it!'],correct:"I'll get it!",anchor:'gonna-vswill'},
+  {pt:'Eles já planejaram: vão se casar em maio.',isFullSentence:true,options:['They are going to get married in May.','They is going to get married in May.','They going to get married in May.','They will going to get married in May.'],correct:'They are going to get married in May.',anchor:'gonna-vswill'},
+  {pt:'Que pesado! Eu te ajudo com isso.',isFullSentence:true,options:["I'll help you with that.",'I help you with that.','I am will help you with that.','I will to help you with that.'],correct:"I'll help you with that.",anchor:'gonna-vswill'},
+  {pt:'Ela já decidiu: vai estudar medicina.',isFullSentence:true,options:['She is going to study medicine.','She are going to study medicine.','She going to study medicine.','She will going to study medicine.'],correct:'She is going to study medicine.',anchor:'gonna-vswill'},
+  {pt:'Tá bem, eu faço isso pra você.',isFullSentence:true,options:["I'll do it for you.",'I do it for you.','I am will do it for you.','I will to do it for you.'],correct:"I'll do it for you.",anchor:'gonna-vswill'},
+  {pt:'Nós já planejamos: vamos pintar a casa.',isFullSentence:true,options:['We are going to paint the house.','We is going to paint the house.','We going to paint the house.','We will going to paint the house.'],correct:'We are going to paint the house.',anchor:'gonna-vswill'},
+  {pt:'Não se preocupe, eu pago a conta.',isFullSentence:true,options:["I'll pay the bill.",'I pay the bill.','I am will pay the bill.','I will to pay the bill.'],correct:"I'll pay the bill.",anchor:'gonna-vswill'},
+  {pt:'Ele já tinha decidido: vai vender o carro.',isFullSentence:true,options:['He is going to sell the car.','He are going to sell the car.','He going to sell the car.','He will going to sell the car.'],correct:'He is going to sell the car.',anchor:'gonna-vswill'},
+  {pt:'Esquece, eu ligo pra ela agora.',isFullSentence:true,options:["I'll call her now.",'I call her now.','I am will call her now.','I will to call her now.'],correct:"I'll call her now.",anchor:'gonna-vswill'},
+  {pt:'A gente já marcou: vamos viajar em julho.',isFullSentence:true,options:['We are going to travel in July.','We is going to travel in July.','We going to travel in July.','We will going to travel in July.'],correct:'We are going to travel in July.',anchor:'gonna-vswill'},
+  {pt:'Que ideia boa! Eu venho com você.',isFullSentence:true,options:["I'll come with you.",'I come with you.','I am will come with you.','I will to come with you.'],correct:"I'll come with you.",anchor:'gonna-vswill'},
+];
+
+window['ia_bk']=[
+  {pt:'Eu ia te ligar.',isFullSentence:true,options:['I was going to call you.','I were going to call you.','I am going to call you.','I was go to call you.'],correct:'I was going to call you.',anchor:'ia-afirm'},
+  {pt:'Ela ia viajar.',isFullSentence:true,options:['She was going to travel.','She were going to travel.','She is going to travel.','She was go to travel.'],correct:'She was going to travel.',anchor:'ia-afirm'},
+  {pt:'Nós íamos comprar a casa.',isFullSentence:true,options:['We were going to buy the house.','We was going to buy the house.','We are going to buy the house.','We were go to buy the house.'],correct:'We were going to buy the house.',anchor:'ia-afirm'},
+  {pt:'Eles iam se mudar.',isFullSentence:true,options:['They were going to move.','They was going to move.','They are going to move.','They were go to move.'],correct:'They were going to move.',anchor:'ia-afirm'},
+  {pt:'Ele ia pedir demissão.',isFullSentence:true,options:['He was going to quit.','He were going to quit.','He is going to quit.','He was go to quit.'],correct:'He was going to quit.',anchor:'ia-afirm'},
+  {pt:'Eu ia falar com você.',isFullSentence:true,options:['I was going to talk to you.','I were going to talk to you.','I am going to talk to you.','I was go to talk to you.'],correct:'I was going to talk to you.',anchor:'ia-afirm'},
+  {pt:'Você ia me contar tudo.',isFullSentence:true,options:['You were going to tell me everything.','You was going to tell me everything.','You are going to tell me everything.','You were go to tell me everything.'],correct:'You were going to tell me everything.',anchor:'ia-afirm'},
+  {pt:'Ela ia estudar mais.',isFullSentence:true,options:['She was going to study more.','She were going to study more.','She is going to study more.','She was go to study more.'],correct:'She was going to study more.',anchor:'ia-afirm'},
+  {pt:'Nós íamos viajar juntos.',isFullSentence:true,options:['We were going to travel together.','We was going to travel together.','We are going to travel together.','We were go to travel together.'],correct:'We were going to travel together.',anchor:'ia-afirm'},
+  {pt:'Eles iam ajudar.',isFullSentence:true,options:['They were going to help.','They was going to help.','They are going to help.','They were go to help.'],correct:'They were going to help.',anchor:'ia-afirm'},
+  {pt:'Eu ia comprar o presente.',isFullSentence:true,options:['I was going to buy the gift.','I were going to buy the gift.','I am going to buy the gift.','I was go to buy the gift.'],correct:'I was going to buy the gift.',anchor:'ia-afirm'},
+  {pt:'Ele ia dirigir.',isFullSentence:true,options:['He was going to drive.','He were going to drive.','He is going to drive.','He was go to drive.'],correct:'He was going to drive.',anchor:'ia-afirm'},
+  {pt:'Eu ia ligar, mas esqueci.',isFullSentence:true,options:['I was going to call, but I forgot.','I were going to call, but I forgot.','I am going to call, but I forgot.','I was go to call, but I forgot.'],correct:'I was going to call, but I forgot.',anchor:'ia-naorolou'},
+  {pt:'Ela ia vir, mas ficou doente.',isFullSentence:true,options:['She was going to come, but she got sick.','She were going to come, but she got sick.','She is going to come, but she got sick.','She was go to come, but she got sick.'],correct:'She was going to come, but she got sick.',anchor:'ia-naorolou'},
+  {pt:'Nós íamos sair, mas começou a chover.',isFullSentence:true,options:['We were going to go out, but it started to rain.','We was going to go out, but it started to rain.','We are going to go out, but it started to rain.','We were go to go out, but it started to rain.'],correct:'We were going to go out, but it started to rain.',anchor:'ia-naorolou'},
+  {pt:'Eu ia comprar, mas estava caro.',isFullSentence:true,options:['I was going to buy it, but it was expensive.','I were going to buy it, but it was expensive.','I am going to buy it, but it was expensive.','I was go to buy it, but it was expensive.'],correct:'I was going to buy it, but it was expensive.',anchor:'ia-naorolou'},
+  {pt:'Ele ia falar, mas mudou de ideia.',isFullSentence:true,options:['He was going to talk, but he changed his mind.','He were going to talk, but he changed his mind.','He is going to talk, but he changed his mind.','He was go to talk, but he changed his mind.'],correct:'He was going to talk, but he changed his mind.',anchor:'ia-naorolou'},
+  {pt:'Eles iam viajar, mas cancelaram.',isFullSentence:true,options:['They were going to travel, but they cancelled.','They was going to travel, but they cancelled.','They are going to travel, but they cancelled.','They were go to travel, but they cancelled.'],correct:'They were going to travel, but they cancelled.',anchor:'ia-naorolou'},
+  {pt:'Eu ia dormir, mas o telefone tocou.',isFullSentence:true,options:['I was going to sleep, but the phone rang.','I were going to sleep, but the phone rang.','I am going to sleep, but the phone rang.','I was go to sleep, but the phone rang.'],correct:'I was going to sleep, but the phone rang.',anchor:'ia-naorolou'},
+  {pt:'Ela ia aceitar, mas desistiu.',isFullSentence:true,options:['She was going to accept, but she gave up.','She were going to accept, but she gave up.','She is going to accept, but she gave up.','She was go to accept, but she gave up.'],correct:'She was going to accept, but she gave up.',anchor:'ia-naorolou'},
+  {pt:'Nós íamos pagar, mas não tínhamos dinheiro.',isFullSentence:true,options:['We were going to pay, but we had no money.','We was going to pay, but we had no money.','We are going to pay, but we had no money.','We were go to pay, but we had no money.'],correct:'We were going to pay, but we had no money.',anchor:'ia-naorolou'},
+  {pt:'Ele ia vir, mas perdeu o voo.',isFullSentence:true,options:['He was going to come, but he missed the flight.','He were going to come, but he missed the flight.','He is going to come, but he missed the flight.','He was go to come, but he missed the flight.'],correct:'He was going to come, but he missed the flight.',anchor:'ia-naorolou'},
+  {pt:'Eu ia escrever, mas fiquei sem tempo.',isFullSentence:true,options:['I was going to write, but I ran out of time.','I were going to write, but I ran out of time.','I am going to write, but I ran out of time.','I was go to write, but I ran out of time.'],correct:'I was going to write, but I ran out of time.',anchor:'ia-naorolou'},
+  {pt:'Eles iam comprar a casa, mas mudaram de ideia.',isFullSentence:true,options:['They were going to buy the house, but they changed their minds.','They was going to buy the house, but they changed their minds.','They are going to buy the house, but they changed their minds.','They were go to buy the house, but they changed their minds.'],correct:'They were going to buy the house, but they changed their minds.',anchor:'ia-naorolou'},
+  {pt:'Ela disse que ia chegar cedo.',isFullSentence:true,options:['She said she was going to arrive early.','She said she were going to arrive early.','She said she is going to arrive early.','She said she was go to arrive early.'],correct:'She said she was going to arrive early.',anchor:'ia-intencao'},
+  {pt:'Eu sabia que ia dar certo.',isFullSentence:true,options:['I knew it was going to work.','I knew it were going to work.','I knew it is going to work.','I knew it was go to work.'],correct:'I knew it was going to work.',anchor:'ia-intencao'},
+  {pt:'Eles prometeram que iam ajudar.',isFullSentence:true,options:['They promised they were going to help.','They promised they was going to help.','They promised they are going to help.','They promised they were go to help.'],correct:'They promised they were going to help.',anchor:'ia-intencao'},
+  {pt:'Ele falou que ia ligar.',isFullSentence:true,options:['He said he was going to call.','He said he were going to call.','He said he is going to call.','He said he was go to call.'],correct:'He said he was going to call.',anchor:'ia-intencao'},
+  {pt:'Nós achávamos que íamos ganhar.',isFullSentence:true,options:['We thought we were going to win.','We thought we was going to win.','We thought we are going to win.','We thought we were go to win.'],correct:'We thought we were going to win.',anchor:'ia-intencao'},
+  {pt:'Ela contou que ia se mudar.',isFullSentence:true,options:['She told me she was going to move.','She told me she were going to move.','She told me she is going to move.','She told me she was go to move.'],correct:'She told me she was going to move.',anchor:'ia-intencao'},
+  {pt:'Eu pensei que ia chover.',isFullSentence:true,options:['I thought it was going to rain.','I thought it were going to rain.','I thought it is going to rain.','I thought it was go to rain.'],correct:'I thought it was going to rain.',anchor:'ia-intencao'},
+  {pt:'Eles disseram que iam viajar.',isFullSentence:true,options:['They said they were going to travel.','They said they was going to travel.','They said they are going to travel.','They said they were go to travel.'],correct:'They said they were going to travel.',anchor:'ia-intencao'},
+  {pt:'Ele prometeu que ia mudar.',isFullSentence:true,options:['He promised he was going to change.','He promised he were going to change.','He promised he is going to change.','He promised he was go to change.'],correct:'He promised he was going to change.',anchor:'ia-intencao'},
+  {pt:'Eu tinha certeza que ia funcionar.',isFullSentence:true,options:['I was sure it was going to work.','I was sure it were going to work.','I was sure it is going to work.','I was sure it was go to work.'],correct:'I was sure it was going to work.',anchor:'ia-intencao'},
+  {pt:'Ela avisou que ia atrasar.',isFullSentence:true,options:['She warned she was going to be late.','She warned she were going to be late.','She warned she is going to be late.','She warned she was go to be late.'],correct:'She warned she was going to be late.',anchor:'ia-intencao'},
+  {pt:'Nós sabíamos que eles iam vencer.',isFullSentence:true,options:['We knew they were going to win.','We knew they was going to win.','We knew they are going to win.','We knew they were go to win.'],correct:'We knew they were going to win.',anchor:'ia-intencao'},
+  {pt:'Ele não ia ajudar.',isFullSentence:true,options:["He wasn't going to help.","He weren't going to help.","He isn't going to help.","He didn't going to help."],correct:"He wasn't going to help.",anchor:'ia-neg'},
+  {pt:'Eu não ia desistir.',isFullSentence:true,options:["I wasn't going to give up.","I weren't going to give up.",'I am not going to give up.',"I didn't going to give up."],correct:"I wasn't going to give up.",anchor:'ia-neg'},
+  {pt:'Eles não iam esperar.',isFullSentence:true,options:["They weren't going to wait.","They wasn't going to wait.","They aren't going to wait.","They didn't going to wait."],correct:"They weren't going to wait.",anchor:'ia-neg'},
+  {pt:'Ela não ia aceitar.',isFullSentence:true,options:["She wasn't going to accept.","She weren't going to accept.","She isn't going to accept.","She didn't going to accept."],correct:"She wasn't going to accept.",anchor:'ia-neg'},
+  {pt:'Nós não íamos sair.',isFullSentence:true,options:["We weren't going to go out.","We wasn't going to go out.","We aren't going to go out.","We didn't going to go out."],correct:"We weren't going to go out.",anchor:'ia-neg'},
+  {pt:'Eu não ia contar pra ninguém.',isFullSentence:true,options:["I wasn't going to tell anyone.","I weren't going to tell anyone.",'I am not going to tell anyone.',"I didn't going to tell anyone."],correct:"I wasn't going to tell anyone.",anchor:'ia-neg'},
+  {pt:'Ele não ia mudar de ideia.',isFullSentence:true,options:["He wasn't going to change his mind.","He weren't going to change his mind.","He isn't going to change his mind.","He didn't going to change his mind."],correct:"He wasn't going to change his mind.",anchor:'ia-neg'},
+  {pt:'Eles não iam vender.',isFullSentence:true,options:["They weren't going to sell.","They wasn't going to sell.","They aren't going to sell.","They didn't going to sell."],correct:"They weren't going to sell.",anchor:'ia-neg'},
+  {pt:'Ela não ia vir mesmo.',isFullSentence:true,options:["She wasn't going to come anyway.","She weren't going to come anyway.","She isn't going to come anyway.","She didn't going to come anyway."],correct:"She wasn't going to come anyway.",anchor:'ia-neg'},
+  {pt:'Nós não íamos conseguir.',isFullSentence:true,options:["We weren't going to make it.","We wasn't going to make it.","We aren't going to make it.","We didn't going to make it."],correct:"We weren't going to make it.",anchor:'ia-neg'},
+  {pt:'Eu não ia gostar disso.',isFullSentence:true,options:["I wasn't going to like it.","I weren't going to like it.",'I am not going to like it.',"I didn't going to like it."],correct:"I wasn't going to like it.",anchor:'ia-neg'},
+  {pt:'Você não ia entender.',isFullSentence:true,options:["You weren't going to understand.","You wasn't going to understand.","You aren't going to understand.","You didn't going to understand."],correct:"You weren't going to understand.",anchor:'ia-neg'},
+  {pt:'Ele ia ajudar?',isFullSentence:true,options:['Was he going to help?','Were he going to help?','Is he going to help?','Did he going to help?'],correct:'Was he going to help?',anchor:'ia-perg'},
+  {pt:'Você ia me contar?',isFullSentence:true,options:['Were you going to tell me?','Was you going to tell me?','Are you going to tell me?','Did you going to tell me?'],correct:'Were you going to tell me?',anchor:'ia-perg'},
+  {pt:'Eles iam viajar?',isFullSentence:true,options:['Were they going to travel?','Was they going to travel?','Are they going to travel?','Did they going to travel?'],correct:'Were they going to travel?',anchor:'ia-perg'},
+  {pt:'Ela ia aceitar?',isFullSentence:true,options:['Was she going to accept?','Were she going to accept?','Is she going to accept?','Did she going to accept?'],correct:'Was she going to accept?',anchor:'ia-perg'},
+  {pt:'Nós íamos conseguir?',isFullSentence:true,options:['Were we going to make it?','Was we going to make it?','Are we going to make it?','Did we going to make it?'],correct:'Were we going to make it?',anchor:'ia-perg'},
+  {pt:'Você ia sair?',isFullSentence:true,options:['Were you going to go out?','Was you going to go out?','Are you going to go out?','Did you going to go out?'],correct:'Were you going to go out?',anchor:'ia-perg'},
+  {pt:'Ele ia comprar mesmo?',isFullSentence:true,options:['Was he going to buy it?','Were he going to buy it?','Is he going to buy it?','Did he going to buy it?'],correct:'Was he going to buy it?',anchor:'ia-perg'},
+  {pt:'Eles iam se mudar?',isFullSentence:true,options:['Were they going to move?','Was they going to move?','Are they going to move?','Did they going to move?'],correct:'Were they going to move?',anchor:'ia-perg'},
+  {pt:'Ela ia falar com você?',isFullSentence:true,options:['Was she going to talk to you?','Were she going to talk to you?','Is she going to talk to you?','Did she going to talk to you?'],correct:'Was she going to talk to you?',anchor:'ia-perg'},
+  {pt:'Você ia desistir?',isFullSentence:true,options:['Were you going to give up?','Was you going to give up?','Are you going to give up?','Did you going to give up?'],correct:'Were you going to give up?',anchor:'ia-perg'},
+  {pt:'Ele ia dirigir?',isFullSentence:true,options:['Was he going to drive?','Were he going to drive?','Is he going to drive?','Did he going to drive?'],correct:'Was he going to drive?',anchor:'ia-perg'},
+  {pt:'Nós íamos pagar?',isFullSentence:true,options:['Were we going to pay?','Was we going to pay?','Are we going to pay?','Did we going to pay?'],correct:'Were we going to pay?',anchor:'ia-perg'},
+];
+
+window['justabout_bk']=[
+  {pt:'Eu acabei de chegar.',isFullSentence:true,options:['I just arrived.','I just arrive.','I am just arrived.','I just arriving.'],correct:'I just arrived.',anchor:'just-passado'},
+  {pt:'Ela acabou de sair.',isFullSentence:true,options:['She just left.','She just leave.','She just leaved.','She is just left.'],correct:'She just left.',anchor:'just-passado'},
+  {pt:'Eles acabaram de comer.',isFullSentence:true,options:['They just ate.','They just eat.','They just eated.','They are just ate.'],correct:'They just ate.',anchor:'just-passado'},
+  {pt:'Eu acabei de te ligar.',isFullSentence:true,options:['I just called you.','I just call you.','I am just called you.','I just calling you.'],correct:'I just called you.',anchor:'just-passado'},
+  {pt:'A gente acabou de comprar a casa.',isFullSentence:true,options:['We just bought the house.','We just buy the house.','We just buyed the house.','We are just bought the house.'],correct:'We just bought the house.',anchor:'just-passado'},
+  {pt:'Ele acabou de acordar.',isFullSentence:true,options:['He just woke up.','He just wake up.','He just waked up.','He is just woke up.'],correct:'He just woke up.',anchor:'just-passado'},
+  {pt:'Eu acabei de terminar.',isFullSentence:true,options:['I just finished.','I just finish.','I am just finished.','I just finishing.'],correct:'I just finished.',anchor:'just-passado'},
+  {pt:'Ela acabou de me mandar mensagem.',isFullSentence:true,options:['She just texted me.','She just text me.','She just texed me.','She is just texted me.'],correct:'She just texted me.',anchor:'just-passado'},
+  {pt:'Nós acabamos de assistir o filme.',isFullSentence:true,options:['We just watched the movie.','We just watch the movie.','We are just watched the movie.','We just watching the movie.'],correct:'We just watched the movie.',anchor:'just-passado'},
+  {pt:'Eles acabaram de chegar em casa.',isFullSentence:true,options:['They just got home.','They just get home.','They just getted home.','They are just got home.'],correct:'They just got home.',anchor:'just-passado'},
+  {pt:'Eu acabei de ver isso.',isFullSentence:true,options:['I just saw it.','I just see it.','I just seed it.','I am just saw it.'],correct:'I just saw it.',anchor:'just-passado'},
+  {pt:'Ele acabou de sair do trabalho.',isFullSentence:true,options:['He just left work.','He just leave work.','He just leaved work.','He is just left work.'],correct:'He just left work.',anchor:'just-passado'},
+  {pt:'A reunião acabou de terminar.',isFullSentence:true,options:['The meeting just ended.','The meeting just end.','The meeting just ended ago.','The meeting is just ended.'],correct:'The meeting just ended.',anchor:'just-passado'},
+  {pt:'Eu acabei de pagar a conta.',isFullSentence:true,options:['I just paid the bill.','I just pay the bill.','I just payed the bill.','I am just paid the bill.'],correct:'I just paid the bill.',anchor:'just-passado'},
+  {pt:'Eu estou prestes a sair.',isFullSentence:true,options:['I am about to leave.','I is about to leave.','I am about to leaving.','I about to leave.'],correct:'I am about to leave.',anchor:'about-presente'},
+  {pt:'O filme está prestes a começar.',isFullSentence:true,options:['The movie is about to start.','The movie are about to start.','The movie is about to starting.','The movie about to start.'],correct:'The movie is about to start.',anchor:'about-presente'},
+  {pt:'Eles estão prestes a chegar.',isFullSentence:true,options:['They are about to arrive.','They is about to arrive.','They are about to arriving.','They about to arrive.'],correct:'They are about to arrive.',anchor:'about-presente'},
+  {pt:'Ela está quase terminando.',isFullSentence:true,options:['She is about to finish.','She are about to finish.','She is about to finishing.','She about to finish.'],correct:'She is about to finish.',anchor:'about-presente'},
+  {pt:'Nós estamos prestes a sair.',isFullSentence:true,options:['We are about to go out.','We is about to go out.','We are about to going out.','We about to go out.'],correct:'We are about to go out.',anchor:'about-presente'},
+  {pt:'Eu estou prestes a desistir.',isFullSentence:true,options:['I am about to give up.','I is about to give up.','I am about to giving up.','I about to give up.'],correct:'I am about to give up.',anchor:'about-presente'},
+  {pt:'Ele está prestes a falar.',isFullSentence:true,options:['He is about to speak.','He are about to speak.','He is about to speaking.','He about to speak.'],correct:'He is about to speak.',anchor:'about-presente'},
+  {pt:'A loja está prestes a fechar.',isFullSentence:true,options:['The store is about to close.','The store are about to close.','The store is about to closing.','The store about to close.'],correct:'The store is about to close.',anchor:'about-presente'},
+  {pt:'Vocês estão prestes a descobrir.',isFullSentence:true,options:['You are about to find out.','You is about to find out.','You are about to finding out.','You about to find out.'],correct:'You are about to find out.',anchor:'about-presente'},
+  {pt:'Eu estou prestes a explodir (de raiva).',isFullSentence:true,options:['I am about to explode.','I is about to explode.','I am about to exploding.','I about to explode.'],correct:'I am about to explode.',anchor:'about-presente'},
+  {pt:'O trem está prestes a partir.',isFullSentence:true,options:['The train is about to leave.','The train are about to leave.','The train is about to leaving.','The train about to leave.'],correct:'The train is about to leave.',anchor:'about-presente'},
+  {pt:'Eles estão prestes a se casar.',isFullSentence:true,options:['They are about to get married.','They is about to get married.','They are about to getting married.','They about to get married.'],correct:'They are about to get married.',anchor:'about-presente'},
+  {pt:'Ela está prestes a ligar pra você.',isFullSentence:true,options:['She is about to call you.','She are about to call you.','She is about to calling you.','She about to call you.'],correct:'She is about to call you.',anchor:'about-presente'},
+  {pt:'Nós estamos prestes a começar.',isFullSentence:true,options:['We are about to start.','We is about to start.','We are about to starting.','We about to start.'],correct:'We are about to start.',anchor:'about-presente'},
+  {pt:'Eu estava prestes a sair quando você ligou.',isFullSentence:true,options:['I was about to leave when you called.','I were about to leave when you called.','I am about to leave when you called.','I was about to leaving when you called.'],correct:'I was about to leave when you called.',anchor:'about-passado'},
+  {pt:'Ela estava quase desistindo.',isFullSentence:true,options:['She was about to give up.','She were about to give up.','She is about to give up.','She was about to giving up.'],correct:'She was about to give up.',anchor:'about-passado'},
+  {pt:'Nós estávamos prestes a começar.',isFullSentence:true,options:['We were about to start.','We was about to start.','We are about to start.','We were about to starting.'],correct:'We were about to start.',anchor:'about-passado'},
+  {pt:'Ele estava prestes a falar.',isFullSentence:true,options:['He was about to speak.','He were about to speak.','He is about to speak.','He was about to speaking.'],correct:'He was about to speak.',anchor:'about-passado'},
+  {pt:'Eu estava prestes a te mandar mensagem.',isFullSentence:true,options:['I was about to text you.','I were about to text you.','I am about to text you.','I was about to texting you.'],correct:'I was about to text you.',anchor:'about-passado'},
+  {pt:'Eles estavam prestes a sair.',isFullSentence:true,options:['They were about to leave.','They was about to leave.','They are about to leave.','They were about to leaving.'],correct:'They were about to leave.',anchor:'about-passado'},
+  {pt:'O jogo estava prestes a acabar.',isFullSentence:true,options:['The game was about to end.','The game were about to end.','The game is about to end.','The game was about to ending.'],correct:'The game was about to end.',anchor:'about-passado'},
+  {pt:'Ela estava prestes a chorar.',isFullSentence:true,options:['She was about to cry.','She were about to cry.','She is about to cry.','She was about to crying.'],correct:'She was about to cry.',anchor:'about-passado'},
+  {pt:'Nós estávamos prestes a comprar.',isFullSentence:true,options:['We were about to buy it.','We was about to buy it.','We are about to buy it.','We were about to buying it.'],correct:'We were about to buy it.',anchor:'about-passado'},
+  {pt:'Eu estava quase dormindo.',isFullSentence:true,options:['I was about to fall asleep.','I were about to fall asleep.','I am about to fall asleep.','I was about to falling asleep.'],correct:'I was about to fall asleep.',anchor:'about-passado'},
+  {pt:'O avião estava prestes a decolar.',isFullSentence:true,options:['The plane was about to take off.','The plane were about to take off.','The plane is about to take off.','The plane was about to taking off.'],correct:'The plane was about to take off.',anchor:'about-passado'},
+  {pt:'Eles estavam prestes a vencer.',isFullSentence:true,options:['They were about to win.','They was about to win.','They are about to win.','They were about to winning.'],correct:'They were about to win.',anchor:'about-passado'},
+  {pt:'Ele não está prestes a desistir.',isFullSentence:true,options:["He isn't about to give up.","He aren't about to give up.",'He not about to give up.',"He doesn't about to give up."],correct:"He isn't about to give up.",anchor:'about-negperg'},
+  {pt:'Eu não estou prestes a sair.',isFullSentence:true,options:['I am not about to leave.',"I isn't about to leave.","I aren't about to leave.","I don't about to leave."],correct:'I am not about to leave.',anchor:'about-negperg'},
+  {pt:'Ela está prestes a sair?',isFullSentence:true,options:['Is she about to leave?','Are she about to leave?','Does she about to leave?','She is about to leave?'],correct:'Is she about to leave?',anchor:'about-negperg'},
+  {pt:'Eles estão prestes a chegar?',isFullSentence:true,options:['Are they about to arrive?','Is they about to arrive?','Do they about to arrive?','They are about to arrive?'],correct:'Are they about to arrive?',anchor:'about-negperg'},
+  {pt:'Nós não estamos prestes a desistir.',isFullSentence:true,options:["We aren't about to give up.","We isn't about to give up.",'We not about to give up.',"We don't about to give up."],correct:"We aren't about to give up.",anchor:'about-negperg'},
+  {pt:'O filme está prestes a começar?',isFullSentence:true,options:['Is the movie about to start?','Are the movie about to start?','Does the movie about to start?','The movie is about to start?'],correct:'Is the movie about to start?',anchor:'about-negperg'},
+  {pt:'Você está prestes a sair?',isFullSentence:true,options:['Are you about to leave?','Is you about to leave?','Do you about to leave?','You are about to leave?'],correct:'Are you about to leave?',anchor:'about-negperg'},
+  {pt:'Ele não estava prestes a falar.',isFullSentence:true,options:["He wasn't about to speak.","He weren't about to speak.","He isn't about to speak.","He didn't about to speak."],correct:"He wasn't about to speak.",anchor:'about-negperg'},
+  {pt:'Ela estava prestes a ligar?',isFullSentence:true,options:['Was she about to call?','Were she about to call?','Did she about to call?','She was about to call?'],correct:'Was she about to call?',anchor:'about-negperg'},
+  {pt:'Eu não estava prestes a desistir.',isFullSentence:true,options:["I wasn't about to give up.","I weren't about to give up.",'I am not about to give up.',"I didn't about to give up."],correct:"I wasn't about to give up.",anchor:'about-negperg'},
+  {pt:'Eu acabei de almoçar.',isFullSentence:true,options:['I just had lunch.','I am about to have lunch.','I just have lunch.','I was about to had lunch.'],correct:'I just had lunch.',anchor:'justabout-misto'},
+  {pt:'Eu estou prestes a chegar.',isFullSentence:true,options:['I am about to arrive.','I just arrived.','I am about to arrived.','I just arrive.'],correct:'I am about to arrive.',anchor:'justabout-misto'},
+  {pt:'Ela acabou de chegar em casa.',isFullSentence:true,options:['She just got home.','She is about to get home.','She just get home.','She was about to got home.'],correct:'She just got home.',anchor:'justabout-misto'},
+  {pt:'Ela está prestes a sair.',isFullSentence:true,options:['She is about to leave.','She just left.','She is about to left.','She just leave.'],correct:'She is about to leave.',anchor:'justabout-misto'},
+  {pt:'Eles acabaram de terminar.',isFullSentence:true,options:['They just finished.','They are about to finish.','They just finish.','They about to finished.'],correct:'They just finished.',anchor:'justabout-misto'},
+  {pt:'Eles estão prestes a terminar.',isFullSentence:true,options:['They are about to finish.','They just finished.','They are about to finished.','They just finish.'],correct:'They are about to finish.',anchor:'justabout-misto'},
+  {pt:'O filme acabou de começar.',isFullSentence:true,options:['The movie just started.','The movie is about to start.','The movie just start.','The movie was about to started.'],correct:'The movie just started.',anchor:'justabout-misto'},
+  {pt:'O show está prestes a começar.',isFullSentence:true,options:['The show is about to start.','The show just started.','The show is about to started.','The show just start.'],correct:'The show is about to start.',anchor:'justabout-misto'},
+  {pt:'Eu acabei de acordar.',isFullSentence:true,options:['I just woke up.','I am about to wake up.','I just wake up.','I am about to woke up.'],correct:'I just woke up.',anchor:'justabout-misto'},
+  {pt:'Eu estou prestes a dormir.',isFullSentence:true,options:['I am about to sleep.','I just slept.','I am about to slept.','I just sleep.'],correct:'I am about to sleep.',anchor:'justabout-misto'},
+];
+
+window['reflex_bk']=[
+  {pt:'Eu me machuquei.',isFullSentence:true,options:['I hurt myself.','I hurt yourself.','I hurt himself.','I hurt themselves.'],correct:'I hurt myself.',anchor:'reflex-acao'},
+  {pt:'Ela se cortou.',isFullSentence:true,options:['She cut herself.','She cut himself.','She cut herselves.','She cut themselves.'],correct:'She cut herself.',anchor:'reflex-acao'},
+  {pt:'Nós nos protegemos.',isFullSentence:true,options:['We protected ourselves.','We protected ourself.','We protected themselves.','We protected yourselves.'],correct:'We protected ourselves.',anchor:'reflex-acao'},
+  {pt:'Eles se apresentaram.',isFullSentence:true,options:['They introduced themselves.','They introduced themself.','They introduced theirselves.','They introduced himself.'],correct:'They introduced themselves.',anchor:'reflex-acao'},
+  {pt:'Ele se cortou.',isFullSentence:true,options:['He cut himself.','He cut herself.','He cut hisself.','He cut themselves.'],correct:'He cut himself.',anchor:'reflex-acao'},
+  {pt:'Cuide-se!',isFullSentence:true,options:['Take care of yourself!','Take care of myself!','Take care of himself!','Take care of yourselves!'],correct:'Take care of yourself!',anchor:'reflex-acao'},
+  {pt:'Eu me apresentei.',isFullSentence:true,options:['I introduced myself.','I introduced yourself.','I introduced meself.','I introduced ourselves.'],correct:'I introduced myself.',anchor:'reflex-acao'},
+  {pt:'Ela se olhou no espelho.',isFullSentence:true,options:['She looked at herself in the mirror.','She looked at himself in the mirror.','She looked at herselves in the mirror.','She looked at themselves in the mirror.'],correct:'She looked at herself in the mirror.',anchor:'reflex-acao'},
+  {pt:'Vocês se machucaram?',isFullSentence:true,options:['Did you hurt yourselves?','Did you hurt yourself?','Did you hurt themselves?','Did you hurt ourselves?'],correct:'Did you hurt yourselves?',anchor:'reflex-acao'},
+  {pt:'O gato se lambeu.',isFullSentence:true,options:['The cat licked itself.','The cat licked himself.','The cat licked itselves.','The cat licked themselves.'],correct:'The cat licked itself.',anchor:'reflex-acao'},
+  {pt:'Nós nos preparamos.',isFullSentence:true,options:['We prepared ourselves.','We prepared ourself.','We prepared themselves.','We prepared yourselves.'],correct:'We prepared ourselves.',anchor:'reflex-acao'},
+  {pt:'Ele se queimou.',isFullSentence:true,options:['He burned himself.','He burned hisself.','He burned herself.','He burned themselves.'],correct:'He burned himself.',anchor:'reflex-acao'},
+  {pt:'Eles se machucaram.',isFullSentence:true,options:['They hurt themselves.','They hurt themself.','They hurt theirselves.','They hurt himself.'],correct:'They hurt themselves.',anchor:'reflex-acao'},
+  {pt:'Eu me vesti rápido.',isFullSentence:true,options:['I dressed myself quickly.','I dressed meself quickly.','I dressed yourself quickly.','I dressed ourselves quickly.'],correct:'I dressed myself quickly.',anchor:'reflex-acao'},
+  {pt:'Ela se ensinou a tocar violão.',isFullSentence:true,options:['She taught herself to play guitar.','She taught himself to play guitar.','She taught herselves to play guitar.','She taught themselves to play guitar.'],correct:'She taught herself to play guitar.',anchor:'reflex-acao'},
+  {pt:'Comporte-se!',isFullSentence:true,options:['Behave yourself!','Behave myself!','Behave himself!','Behave themselves!'],correct:'Behave yourself!',anchor:'reflex-acao'},
+  {pt:'Eu mesmo fiz isso.',isFullSentence:true,options:['I did it myself.','I did it yourself.','I did it himself.','I did it themselves.'],correct:'I did it myself.',anchor:'reflex-enfase'},
+  {pt:'Ela mesma construiu a casa.',isFullSentence:true,options:['She built the house herself.','She built the house himself.','She built the house herselves.','She built the house themselves.'],correct:'She built the house herself.',anchor:'reflex-enfase'},
+  {pt:'O presidente mesmo respondeu.',isFullSentence:true,options:['The president himself answered.','The president herself answered.','The president hisself answered.','The president themselves answered.'],correct:'The president himself answered.',anchor:'reflex-enfase'},
+  {pt:'Eu mesmo vou fazer.',isFullSentence:true,options:['I will do it myself.','I will do it yourself.','I will do it meself.','I will do it ourselves.'],correct:'I will do it myself.',anchor:'reflex-enfase'},
+  {pt:'Eles mesmos pintaram a casa.',isFullSentence:true,options:['They painted the house themselves.','They painted the house themself.','They painted the house theirselves.','They painted the house himself.'],correct:'They painted the house themselves.',anchor:'reflex-enfase'},
+  {pt:'Nós mesmos cozinhamos.',isFullSentence:true,options:['We cooked it ourselves.','We cooked it ourself.','We cooked it themselves.','We cooked it yourselves.'],correct:'We cooked it ourselves.',anchor:'reflex-enfase'},
+  {pt:'Você mesmo escreveu isso?',isFullSentence:true,options:['Did you write this yourself?','Did you write this myself?','Did you write this himself?','Did you write this yourselves?'],correct:'Did you write this yourself?',anchor:'reflex-enfase'},
+  {pt:'Ele mesmo dirigiu até lá.',isFullSentence:true,options:['He drove there himself.','He drove there hisself.','He drove there herself.','He drove there themselves.'],correct:'He drove there himself.',anchor:'reflex-enfase'},
+  {pt:'Ela mesma resolveu o problema.',isFullSentence:true,options:['She solved the problem herself.','She solved the problem himself.','She solved the problem herselves.','She solved the problem themselves.'],correct:'She solved the problem herself.',anchor:'reflex-enfase'},
+  {pt:'Eu mesma fiz o bolo.',isFullSentence:true,options:['I made the cake myself.','I made the cake yourself.','I made the cake meself.','I made the cake ourselves.'],correct:'I made the cake myself.',anchor:'reflex-enfase'},
+  {pt:'Vocês mesmos decidiram.',isFullSentence:true,options:['You decided it yourselves.','You decided it yourself.','You decided it themselves.','You decided it ourselves.'],correct:'You decided it yourselves.',anchor:'reflex-enfase'},
+  {pt:'A rainha mesma apareceu.',isFullSentence:true,options:['The queen herself appeared.','The queen himself appeared.','The queen herselves appeared.','The queen themselves appeared.'],correct:'The queen herself appeared.',anchor:'reflex-enfase'},
+  {pt:'Eu moro sozinho.',isFullSentence:true,options:['I live by myself.','I live by yourself.','I live by himself.','I live by themselves.'],correct:'I live by myself.',anchor:'reflex-by'},
+  {pt:'Ela fez isso sozinha.',isFullSentence:true,options:['She did it by herself.','She did it by himself.','She did it by herselves.','She did it by themselves.'],correct:'She did it by herself.',anchor:'reflex-by'},
+  {pt:'As crianças brincaram sozinhas.',isFullSentence:true,options:['The kids played by themselves.','The kids played by themself.','The kids played by theirselves.','The kids played by himself.'],correct:'The kids played by themselves.',anchor:'reflex-by'},
+  {pt:'Ele viajou sozinho.',isFullSentence:true,options:['He traveled by himself.','He traveled by hisself.','He traveled by herself.','He traveled by themselves.'],correct:'He traveled by himself.',anchor:'reflex-by'},
+  {pt:'Eu estudei sozinho.',isFullSentence:true,options:['I studied by myself.','I studied by yourself.','I studied by meself.','I studied by ourselves.'],correct:'I studied by myself.',anchor:'reflex-by'},
+  {pt:'Nós fizemos tudo sozinhos.',isFullSentence:true,options:['We did everything by ourselves.','We did everything by ourself.','We did everything by themselves.','We did everything by yourselves.'],correct:'We did everything by ourselves.',anchor:'reflex-by'},
+  {pt:'Você consegue fazer isso sozinho?',isFullSentence:true,options:['Can you do it by yourself?','Can you do it by myself?','Can you do it by himself?','Can you do it by yourselves?'],correct:'Can you do it by yourself?',anchor:'reflex-by'},
+  {pt:'Ela mora sozinha.',isFullSentence:true,options:['She lives by herself.','She lives by himself.','She lives by herselves.','She lives by themselves.'],correct:'She lives by herself.',anchor:'reflex-by'},
+  {pt:'O bebê comeu sozinho.',isFullSentence:true,options:['The baby ate by itself.','The baby ate by himself.','The baby ate by itselves.','The baby ate by themselves.'],correct:'The baby ate by itself.',anchor:'reflex-by'},
+  {pt:'Eles construíram sozinhos.',isFullSentence:true,options:['They built it by themselves.','They built it by themself.','They built it by theirselves.','They built it by himself.'],correct:'They built it by themselves.',anchor:'reflex-by'},
+  {pt:'Eu prefiro trabalhar sozinho.',isFullSentence:true,options:['I prefer to work by myself.','I prefer to work by yourself.','I prefer to work by meself.','I prefer to work by ourselves.'],correct:'I prefer to work by myself.',anchor:'reflex-by'},
+  {pt:'Ele cozinha sozinho.',isFullSentence:true,options:['He cooks by himself.','He cooks by hisself.','He cooks by herself.','He cooks by themselves.'],correct:'He cooks by himself.',anchor:'reflex-by'},
+  {pt:'Eu me orgulho de mim mesmo.',isFullSentence:true,options:['I am proud of myself.','I am proud of yourself.','I am proud of himself.','I am proud of themselves.'],correct:'I am proud of myself.',anchor:'reflex-misto'},
+  {pt:'Eles se odeiam (um ao outro).',isFullSentence:true,options:['They hate each other.','They hate themselves.','They hate each others.','They hate themself.'],correct:'They hate each other.',anchor:'reflex-misto'},
+  {pt:'Eles se culpam (um ao outro).',isFullSentence:true,options:['They blame each other.','They blame themselves.','They blame each others.','They blame themself.'],correct:'They blame each other.',anchor:'reflex-misto'},
+  {pt:'Ele fala sozinho.',isFullSentence:true,options:['He talks to himself.','He talks to hisself.','He talks to herself.','He talks to themselves.'],correct:'He talks to himself.',anchor:'reflex-misto'},
+  {pt:'Nós nos defendemos.',isFullSentence:true,options:['We defended ourselves.','We defended ourself.','We defended themselves.','We defended yourselves.'],correct:'We defended ourselves.',anchor:'reflex-misto'},
+  {pt:'Eu me perguntei por quê.',isFullSentence:true,options:['I asked myself why.','I asked yourself why.','I asked meself why.','I asked ourselves why.'],correct:'I asked myself why.',anchor:'reflex-misto'},
+  {pt:'Cuidem-se, pessoal!',isFullSentence:true,options:['Take care of yourselves, everyone!','Take care of yourself, everyone!','Take care of themselves, everyone!','Take care of ourselves, everyone!'],correct:'Take care of yourselves, everyone!',anchor:'reflex-misto'},
+  {pt:'Ela se vê como uma líder.',isFullSentence:true,options:['She sees herself as a leader.','She sees himself as a leader.','She sees herselves as a leader.','She sees themselves as a leader.'],correct:'She sees herself as a leader.',anchor:'reflex-misto'},
+  {pt:'O cachorro se coçou.',isFullSentence:true,options:['The dog scratched itself.','The dog scratched himself.','The dog scratched itselves.','The dog scratched themselves.'],correct:'The dog scratched itself.',anchor:'reflex-misto'},
+  {pt:'Eu me dei um presente.',isFullSentence:true,options:['I gave myself a gift.','I gave yourself a gift.','I gave meself a gift.','I gave ourselves a gift.'],correct:'I gave myself a gift.',anchor:'reflex-misto'},
+  {pt:'Nós nos amamos (um ao outro).',isFullSentence:true,options:['We love each other.','We love ourselves.','We love each others.','We love ourself.'],correct:'We love each other.',anchor:'reflex-misto'},
+  {pt:'Você devia se orgulhar.',isFullSentence:true,options:['You should be proud of yourself.','You should be proud of myself.','You should be proud of himself.','You should be proud of yourselves.'],correct:'You should be proud of yourself.',anchor:'reflex-misto'},
+  {pt:'Ela se machucou jogando.',isFullSentence:true,options:['She hurt herself playing.','She hurt himself playing.','She hurt herselves playing.','She hurt themselves playing.'],correct:'She hurt herself playing.',anchor:'reflex-misto'},
+  {pt:'Nós nos preparamos bem.',isFullSentence:true,options:['We prepared ourselves well.','We prepared ourself well.','We prepared themselves well.','We prepared yourselves well.'],correct:'We prepared ourselves well.',anchor:'reflex-misto'},
+  {pt:'Ele se considera inteligente.',isFullSentence:true,options:['He considers himself smart.','He considers hisself smart.','He considers herself smart.','He considers themselves smart.'],correct:'He considers himself smart.',anchor:'reflex-misto'},
+  {pt:'Eu me cortei cozinhando.',isFullSentence:true,options:['I cut myself cooking.','I cut yourself cooking.','I cut meself cooking.','I cut ourselves cooking.'],correct:'I cut myself cooking.',anchor:'reflex-misto'},
+  {pt:'As meninas se vestiram sozinhas.',isFullSentence:true,options:['The girls dressed themselves.','The girls dressed themself.','The girls dressed theirselves.','The girls dressed herself.'],correct:'The girls dressed themselves.',anchor:'reflex-misto'},
+  {pt:'Eu me sinto bem.',isFullSentence:true,options:['I feel good about myself.','I feel good about yourself.','I feel good about meself.','I feel good about ourselves.'],correct:'I feel good about myself.',anchor:'reflex-misto'},
+  {pt:'Eles se abraçaram (um ao outro).',isFullSentence:true,options:['They hugged each other.','They hugged themselves.','They hugged themself.','They hugged each others.'],correct:'They hugged each other.',anchor:'reflex-misto'},
+  {pt:'Comporte-se, crianças!',isFullSentence:true,options:['Behave yourselves, children!','Behave yourself, children!','Behave themselves, children!','Behave ourselves, children!'],correct:'Behave yourselves, children!',anchor:'reflex-misto'},
+];
+
+window['cond_bk']=[
+  {pt:'Se chover, eu vou ficar em casa.',isFullSentence:true,options:['If it rains, I will stay home.','If it will rain, I will stay home.','If it rains, I stay home.','If it rains, I would stay home.'],correct:'If it rains, I will stay home.',anchor:'cond-first'},
+  {pt:'Se você estudar, você vai passar.',isFullSentence:true,options:['If you study, you will pass.','If you will study, you will pass.','If you study, you pass.','If you study, you would pass.'],correct:'If you study, you will pass.',anchor:'cond-first'},
+  {pt:'Eu te ligo se eu tiver tempo.',isFullSentence:true,options:['I will call you if I have time.','I will call you if I will have time.','I call you if I have time.','I would call you if I have time.'],correct:'I will call you if I have time.',anchor:'cond-first'},
+  {pt:'Se ela vier, nós vamos sair.',isFullSentence:true,options:['If she comes, we will go out.','If she will come, we will go out.','If she comes, we go out.','If she comes, we would go out.'],correct:'If she comes, we will go out.',anchor:'cond-first'},
+  {pt:'Se você correr, você vai chegar a tempo.',isFullSentence:true,options:['If you run, you will arrive on time.','If you will run, you will arrive on time.','If you run, you arrive on time.','If you run, you would arrive on time.'],correct:'If you run, you will arrive on time.',anchor:'cond-first'},
+  {pt:'Eu vou ficar bravo se você mentir.',isFullSentence:true,options:['I will be angry if you lie.','I will be angry if you will lie.','I am angry if you lie.','I would be angry if you lie.'],correct:'I will be angry if you lie.',anchor:'cond-first'},
+  {pt:'Se eles ganharem, vão comemorar.',isFullSentence:true,options:['If they win, they will celebrate.','If they will win, they will celebrate.','If they win, they celebrate.','If they win, they would celebrate.'],correct:'If they win, they will celebrate.',anchor:'cond-first'},
+  {pt:'Se fizer sol, a gente vai à praia.',isFullSentence:true,options:['If it is sunny, we will go to the beach.','If it will be sunny, we will go to the beach.','If it is sunny, we go to the beach.','If it is sunny, we would go to the beach.'],correct:'If it is sunny, we will go to the beach.',anchor:'cond-first'},
+  {pt:'Você vai se machucar se cair.',isFullSentence:true,options:['You will get hurt if you fall.','You will get hurt if you will fall.','You get hurt if you fall.','You would get hurt if you fall.'],correct:'You will get hurt if you fall.',anchor:'cond-first'},
+  {pt:'Se eu terminar cedo, eu te encontro.',isFullSentence:true,options:['If I finish early, I will meet you.','If I will finish early, I will meet you.','If I finish early, I meet you.','If I finish early, I would meet you.'],correct:'If I finish early, I will meet you.',anchor:'cond-first'},
+  {pt:'Se você não comer, vai ficar com fome.',isFullSentence:true,options:["If you don't eat, you will be hungry.","If you won't eat, you will be hungry.","If you don't eat, you are hungry.","If you don't eat, you would be hungry."],correct:"If you don't eat, you will be hungry.",anchor:'cond-first'},
+  {pt:'Nós vamos viajar se tivermos dinheiro.',isFullSentence:true,options:['We will travel if we have money.','We will travel if we will have money.','We travel if we have money.','We would travel if we have money.'],correct:'We will travel if we have money.',anchor:'cond-first'},
+  {pt:'Se ele ligar, me avisa.',isFullSentence:true,options:['If he calls, tell me.','If he will call, tell me.','If he call, tell me.','If he calls, you would tell me.'],correct:'If he calls, tell me.',anchor:'cond-first'},
+  {pt:'Você vai passar se estudar bastante.',isFullSentence:true,options:['You will pass if you study hard.','You will pass if you will study hard.','You pass if you study hard.','You would pass if you study hard.'],correct:'You will pass if you study hard.',anchor:'cond-first'},
+  {pt:'Se eu tivesse dinheiro, eu viajaria.',isFullSentence:true,options:['If I had money, I would travel.','If I have money, I would travel.','If I had money, I will travel.','If I had money, I traveled.'],correct:'If I had money, I would travel.',anchor:'cond-second'},
+  {pt:'Se eu fosse você, eu não faria isso.',isFullSentence:true,options:["If I were you, I wouldn't do that.","If I am you, I wouldn't do that.","If I were you, I won't do that.","If I were you, I didn't do that."],correct:"If I were you, I wouldn't do that.",anchor:'cond-second'},
+  {pt:'O que você faria se ganhasse na loteria?',isFullSentence:true,options:['What would you do if you won the lottery?','What will you do if you won the lottery?','What would you do if you win the lottery?','What did you do if you won the lottery?'],correct:'What would you do if you won the lottery?',anchor:'cond-second'},
+  {pt:'Se ela soubesse, ela te contaria.',isFullSentence:true,options:['If she knew, she would tell you.','If she knows, she would tell you.','If she knew, she will tell you.','If she knew, she told you.'],correct:'If she knew, she would tell you.',anchor:'cond-second'},
+  {pt:'Eu compraria um carro se eu pudesse.',isFullSentence:true,options:['I would buy a car if I could.','I will buy a car if I could.','I would buy a car if I can.','I bought a car if I could.'],correct:'I would buy a car if I could.',anchor:'cond-second'},
+  {pt:'Se nós morássemos perto, nos veríamos mais.',isFullSentence:true,options:['If we lived nearby, we would see each other more.','If we live nearby, we would see each other more.','If we lived nearby, we will see each other more.','If we lived nearby, we saw each other more.'],correct:'If we lived nearby, we would see each other more.',anchor:'cond-second'},
+  {pt:'Se eu fosse rico, eu ajudaria todo mundo.',isFullSentence:true,options:['If I were rich, I would help everyone.','If I am rich, I would help everyone.','If I were rich, I will help everyone.','If I were rich, I helped everyone.'],correct:'If I were rich, I would help everyone.',anchor:'cond-second'},
+  {pt:'Ela ficaria feliz se você viesse.',isFullSentence:true,options:['She would be happy if you came.','She will be happy if you came.','She would be happy if you come.','She was happy if you came.'],correct:'She would be happy if you came.',anchor:'cond-second'},
+  {pt:'Se eu tivesse tempo, eu aprenderia francês.',isFullSentence:true,options:['If I had time, I would learn French.','If I have time, I would learn French.','If I had time, I will learn French.','If I had time, I learned French.'],correct:'If I had time, I would learn French.',anchor:'cond-second'},
+  {pt:'O que ele diria se soubesse a verdade?',isFullSentence:true,options:['What would he say if he knew the truth?','What will he say if he knew the truth?','What would he say if he knows the truth?','What did he say if he knew the truth?'],correct:'What would he say if he knew the truth?',anchor:'cond-second'},
+  {pt:'Eu não diria isso se não fosse verdade.',isFullSentence:true,options:["I wouldn't say it if it weren't true.","I won't say it if it weren't true.","I wouldn't say it if it isn't true.","I didn't say it if it weren't true."],correct:"I wouldn't say it if it weren't true.",anchor:'cond-second'},
+  {pt:'Se eles tivessem um carro, viajariam mais.',isFullSentence:true,options:['If they had a car, they would travel more.','If they have a car, they would travel more.','If they had a car, they will travel more.','If they had a car, they traveled more.'],correct:'If they had a car, they would travel more.',anchor:'cond-second'},
+  {pt:'Eu viveria na praia se pudesse.',isFullSentence:true,options:['I would live at the beach if I could.','I will live at the beach if I could.','I would live at the beach if I can.','I lived at the beach if I could.'],correct:'I would live at the beach if I could.',anchor:'cond-second'},
+  {pt:'Se você me amasse, você ficaria.',isFullSentence:true,options:['If you loved me, you would stay.','If you love me, you would stay.','If you loved me, you will stay.','If you loved me, you stayed.'],correct:'If you loved me, you would stay.',anchor:'cond-second'},
+  {pt:'Se eu tivesse estudado, eu teria passado.',isFullSentence:true,options:['If I had studied, I would have passed.','If I studied, I would have passed.','If I had studied, I would pass.','If I had studied, I will have passed.'],correct:'If I had studied, I would have passed.',anchor:'cond-third'},
+  {pt:'Se ela tivesse vindo, teria gostado.',isFullSentence:true,options:['If she had come, she would have liked it.','If she came, she would have liked it.','If she had come, she would like it.','If she had come, she will have liked it.'],correct:'If she had come, she would have liked it.',anchor:'cond-third'},
+  {pt:'Eu teria te ajudado se você tivesse pedido.',isFullSentence:true,options:['I would have helped you if you had asked.','I would help you if you had asked.','I would have helped you if you asked.','I will have helped you if you had asked.'],correct:'I would have helped you if you had asked.',anchor:'cond-third'},
+  {pt:'Se nós tivéssemos saído antes, não teríamos perdido o voo.',isFullSentence:true,options:["If we had left earlier, we wouldn't have missed the flight.","If we left earlier, we wouldn't have missed the flight.","If we had left earlier, we wouldn't miss the flight.","If we had left earlier, we won't have missed the flight."],correct:"If we had left earlier, we wouldn't have missed the flight.",anchor:'cond-third'},
+  {pt:'Se ele tivesse me avisado, eu teria ido.',isFullSentence:true,options:['If he had told me, I would have gone.','If he told me, I would have gone.','If he had told me, I would go.','If he had told me, I will have gone.'],correct:'If he had told me, I would have gone.',anchor:'cond-third'},
+  {pt:'Eu teria comprado se tivesse visto.',isFullSentence:true,options:['I would have bought it if I had seen it.','I would buy it if I had seen it.','I would have bought it if I saw it.','I will have bought it if I had seen it.'],correct:'I would have bought it if I had seen it.',anchor:'cond-third'},
+  {pt:'Se você tivesse me escutado, isso não teria acontecido.',isFullSentence:true,options:["If you had listened to me, this wouldn't have happened.","If you listened to me, this wouldn't have happened.","If you had listened to me, this wouldn't happen.","If you had listened to me, this won't have happened."],correct:"If you had listened to me, this wouldn't have happened.",anchor:'cond-third'},
+  {pt:'Ela teria ganhado se tivesse treinado mais.',isFullSentence:true,options:['She would have won if she had trained more.','She would win if she had trained more.','She would have won if she trained more.','She will have won if she had trained more.'],correct:'She would have won if she had trained more.',anchor:'cond-third'},
+  {pt:'Se eu tivesse sabido, eu teria te contado.',isFullSentence:true,options:['If I had known, I would have told you.','If I knew, I would have told you.','If I had known, I would tell you.','If I had known, I will have told you.'],correct:'If I had known, I would have told you.',anchor:'cond-third'},
+  {pt:'Nós teríamos vencido se tivéssemos jogado melhor.',isFullSentence:true,options:['We would have won if we had played better.','We would win if we had played better.','We would have won if we played better.','We will have won if we had played better.'],correct:'We would have won if we had played better.',anchor:'cond-third'},
+  {pt:'Se eles tivessem economizado, teriam comprado a casa.',isFullSentence:true,options:['If they had saved, they would have bought the house.','If they saved, they would have bought the house.','If they had saved, they would buy the house.','If they had saved, they will have bought the house.'],correct:'If they had saved, they would have bought the house.',anchor:'cond-third'},
+  {pt:'Eu teria ligado se tivesse o seu número.',isFullSentence:true,options:['I would have called if I had had your number.','I would call if I had had your number.','I would have called if I had your number.','I will have called if I had had your number.'],correct:'I would have called if I had had your number.',anchor:'cond-third'},
+  {pt:'Se ela tivesse acordado cedo, não teria se atrasado.',isFullSentence:true,options:["If she had woken up early, she wouldn't have been late.","If she woke up early, she wouldn't have been late.","If she had woken up early, she wouldn't be late.","If she had woken up early, she won't have been late."],correct:"If she had woken up early, she wouldn't have been late.",anchor:'cond-third'},
+  {pt:'Você teria gostado se tivesse ido.',isFullSentence:true,options:['You would have liked it if you had gone.','You would like it if you had gone.','You would have liked it if you went.','You will have liked it if you had gone.'],correct:'You would have liked it if you had gone.',anchor:'cond-third'},
+  {pt:'Se você esquenta a água, ela ferve.',isFullSentence:true,options:['If you heat water, it boils.','If you will heat water, it boils.','If you heat water, it will boil.','If you heat water, it would boil.'],correct:'If you heat water, it boils.',anchor:'cond-zero-outros'},
+  {pt:'Se não chove, as plantas morrem.',isFullSentence:true,options:["If it doesn't rain, plants die.","If it won't rain, plants die.","If it doesn't rain, plants will die.","If it doesn't rain, plants would die."],correct:"If it doesn't rain, plants die.",anchor:'cond-zero-outros'},
+  {pt:'Eu fico feliz se você está feliz.',isFullSentence:true,options:['I am happy if you are happy.','I will be happy if you are happy.','I am happy if you will be happy.','I would be happy if you are happy.'],correct:'I am happy if you are happy.',anchor:'cond-zero-outros'},
+  {pt:'Gelo derrete se você o esquenta.',isFullSentence:true,options:['Ice melts if you heat it.','Ice will melt if you heat it.','Ice melts if you will heat it.','Ice would melt if you heat it.'],correct:'Ice melts if you heat it.',anchor:'cond-zero-outros'},
+  {pt:'Não vou, a menos que você venha.',isFullSentence:true,options:["I won't go unless you come.","I won't go unless you will come.","I won't go unless you came.","I won't go unless you would come."],correct:"I won't go unless you come.",anchor:'cond-zero-outros'},
+  {pt:'A menos que você estude, você vai reprovar.',isFullSentence:true,options:['Unless you study, you will fail.','Unless you will study, you will fail.','Unless you studied, you will fail.','Unless you study, you fail.'],correct:'Unless you study, you will fail.',anchor:'cond-zero-outros'},
+  {pt:'Anda, senão a gente vai se atrasar.',isFullSentence:true,options:['Hurry up, or else we will be late.','Hurry up, or else we are late.','Hurry up, or else we would be late.','Hurry up, or else we late.'],correct:'Hurry up, or else we will be late.',anchor:'cond-zero-outros'},
+  {pt:'Precisamos sair agora. Caso contrário, vamos nos atrasar.',isFullSentence:true,options:["We need to leave now. Otherwise, we will be late.","We need to leave now. Otherwise, we are late.","We need to leave now. Otherwise, we would be late.","We need to leave now. Otherwise, we were late."],correct:"We need to leave now. Otherwise, we will be late.",anchor:'cond-zero-outros'},
+  {pt:'Se não, a gente cancela.',isFullSentence:true,options:['If not, we will cancel.','If not, we cancel.','If not, we would cancel.','If not, we canceled.'],correct:'If not, we will cancel.',anchor:'cond-zero-outros'},
+  {pt:'Estude, senão você vai se arrepender.',isFullSentence:true,options:['Study, or else you will regret it.','Study, or else you regret it.','Study, or else you would regret it.','Study, or else you regretted it.'],correct:'Study, or else you will regret it.',anchor:'cond-zero-outros'},
+  {pt:'A menos que chova, vamos jogar.',isFullSentence:true,options:['Unless it rains, we will play.','Unless it will rain, we will play.','Unless it rained, we will play.','Unless it rains, we play.'],correct:'Unless it rains, we will play.',anchor:'cond-zero-outros'},
+  {pt:'Se você mistura azul e amarelo, dá verde.',isFullSentence:true,options:['If you mix blue and yellow, you get green.','If you will mix blue and yellow, you get green.','If you mix blue and yellow, you will get green.','If you mix blue and yellow, you would get green.'],correct:'If you mix blue and yellow, you get green.',anchor:'cond-zero-outros'},
+  {pt:'Traga um casaco; caso contrário você vai sentir frio.',isFullSentence:true,options:['Bring a coat; otherwise you will be cold.','Bring a coat; otherwise you are cold.','Bring a coat; otherwise you would be cold.','Bring a coat; otherwise you were cold.'],correct:'Bring a coat; otherwise you will be cold.',anchor:'cond-zero-outros'},
+  {pt:'A menos que ele se desculpe, eu não falo com ele.',isFullSentence:true,options:["Unless he apologizes, I won't talk to him.","Unless he will apologize, I won't talk to him.","Unless he apologized, I won't talk to him.","Unless he apologizes, I don't talk to him."],correct:"Unless he apologizes, I won't talk to him.",anchor:'cond-zero-outros'},
+  {pt:'Se você toca em fogo, você se queima.',isFullSentence:true,options:['If you touch fire, you get burned.','If you will touch fire, you get burned.','If you touch fire, you will get burned.','If you touch fire, you would get burned.'],correct:'If you touch fire, you get burned.',anchor:'cond-zero-outros'},
+  {pt:'Coma agora, senão vai esfriar.',isFullSentence:true,options:['Eat now, or else it will get cold.','Eat now, or else it gets cold.','Eat now, or else it would get cold.','Eat now, or else it got cold.'],correct:'Eat now, or else it will get cold.',anchor:'cond-zero-outros'},
+  {pt:'A menos que você pergunte, ninguém vai te ajudar.',isFullSentence:true,options:['Unless you ask, no one will help you.','Unless you will ask, no one will help you.','Unless you asked, no one will help you.','Unless you ask, no one help you.'],correct:'Unless you ask, no one will help you.',anchor:'cond-zero-outros'},
+  {pt:'Plantas crescem se você as rega.',isFullSentence:true,options:['Plants grow if you water them.','Plants will grow if you water them.','Plants grow if you will water them.','Plants would grow if you water them.'],correct:'Plants grow if you water them.',anchor:'cond-zero-outros'},
+];
+
+window['that_bk']=[
+  {pt:'Ela disse que ela é legal.',isFullSentence:true,options:['She said she is nice.','She said what she is nice.','She said which she is nice.','She said who she is nice.'],correct:'She said she is nice.',anchor:'that-conj'},
+  {pt:'Eu acho que você está certo.',isFullSentence:true,options:['I think you are right.','I think what you are right.','I think which you are right.','I think who you are right.'],correct:'I think you are right.',anchor:'that-conj'},
+  {pt:'Eu sei que ele vai vir.',isFullSentence:true,options:['I know he will come.','I know what he will come.','I know which he will come.','I know who he will come.'],correct:'I know he will come.',anchor:'that-conj'},
+  {pt:'Eu espero que dê tudo certo.',isFullSentence:true,options:['I hope everything works out.','I hope what everything works out.','I hope which everything works out.','I hope who everything works out.'],correct:'I hope everything works out.',anchor:'that-conj'},
+  {pt:'Ele acredita que vai funcionar.',isFullSentence:true,options:['He believes it will work.','He believes what it will work.','He believes which it will work.','He believes who it will work.'],correct:'He believes it will work.',anchor:'that-conj'},
+  {pt:'Eu acho que vai chover.',isFullSentence:true,options:['I think it will rain.','I think what it will rain.','I think which it will rain.','I think who it will rain.'],correct:'I think it will rain.',anchor:'that-conj'},
+  {pt:'Ela contou que estava cansada.',isFullSentence:true,options:['She told me she was tired.','She told me what she was tired.','She told me which she was tired.','She told me who she was tired.'],correct:'She told me she was tired.',anchor:'that-conj'},
+  {pt:'Eu sei que você consegue.',isFullSentence:true,options:['I know you can do it.','I know what you can do it.','I know which you can do it.','I know who you can do it.'],correct:'I know you can do it.',anchor:'that-conj'},
+  {pt:'Eu espero que você esteja bem.',isFullSentence:true,options:['I hope you are well.','I hope what you are well.','I hope which you are well.','I hope who you are well.'],correct:'I hope you are well.',anchor:'that-conj'},
+  {pt:'Ele disse que vai chegar tarde.',isFullSentence:true,options:['He said he will arrive late.','He said what he will arrive late.','He said which he will arrive late.','He said who he will arrive late.'],correct:'He said he will arrive late.',anchor:'that-conj'},
+  {pt:'Eu acho que é uma boa ideia.',isFullSentence:true,options:['I think it is a good idea.','I think what it is a good idea.','I think which it is a good idea.','I think who it is a good idea.'],correct:'I think it is a good idea.',anchor:'that-conj'},
+  {pt:'Ela sabe que eu estava lá.',isFullSentence:true,options:['She knows I was there.','She knows what I was there.','She knows which I was there.','She knows who I was there.'],correct:'She knows I was there.',anchor:'that-conj'},
+  {pt:'Eu acredito que vai dar certo.',isFullSentence:true,options:['I believe it will work out.','I believe what it will work out.','I believe which it will work out.','I believe who it will work out.'],correct:'I believe it will work out.',anchor:'that-conj'},
+  {pt:'Eles disseram que estavam ocupados.',isFullSentence:true,options:['They said they were busy.','They said what they were busy.','They said which they were busy.','They said who they were busy.'],correct:'They said they were busy.',anchor:'that-conj'},
+  {pt:'Eu acho que ela está feliz.',isFullSentence:true,options:['I think she is happy.','I think what she is happy.','I think which she is happy.','I think who she is happy.'],correct:'I think she is happy.',anchor:'that-conj'},
+  {pt:'Ele espera que você venha.',isFullSentence:true,options:['He hopes you will come.','He hopes what you will come.','He hopes which you will come.','He hopes who you will come.'],correct:'He hopes you will come.',anchor:'that-conj'},
+  {pt:'O livro que eu li era ótimo.',isFullSentence:true,options:['The book I read was great.','The book what I read was great.','The book who I read was great.','The book I read it was great.'],correct:'The book I read was great.',anchor:'that-rel-pode'},
+  {pt:'O filme que a gente viu foi longo.',isFullSentence:true,options:['The movie we watched was long.','The movie what we watched was long.','The movie who we watched was long.','The movie we watched it was long.'],correct:'The movie we watched was long.',anchor:'that-rel-pode'},
+  {pt:'A pessoa que você conheceu é minha irmã.',isFullSentence:true,options:['The person you met is my sister.','The person what you met is my sister.','The person which you met is my sister.','The person you met her is my sister.'],correct:'The person you met is my sister.',anchor:'that-rel-pode'},
+  {pt:'A casa que eles compraram é linda.',isFullSentence:true,options:['The house they bought is beautiful.','The house what they bought is beautiful.','The house who they bought is beautiful.','The house they bought it is beautiful.'],correct:'The house they bought is beautiful.',anchor:'that-rel-pode'},
+  {pt:'A música que eu ouvi é triste.',isFullSentence:true,options:['The song I heard is sad.','The song what I heard is sad.','The song who I heard is sad.','The song I heard it is sad.'],correct:'The song I heard is sad.',anchor:'that-rel-pode'},
+  {pt:'O carro que ele dirige é rápido.',isFullSentence:true,options:['The car he drives is fast.','The car what he drives is fast.','The car who he drives is fast.','The car he drives it is fast.'],correct:'The car he drives is fast.',anchor:'that-rel-pode'},
+  {pt:'A comida que você fez estava deliciosa.',isFullSentence:true,options:['The food you made was delicious.','The food what you made was delicious.','The food who you made was delicious.','The food you made it was delicious.'],correct:'The food you made was delicious.',anchor:'that-rel-pode'},
+  {pt:'O presente que ela ganhou era caro.',isFullSentence:true,options:['The gift she got was expensive.','The gift what she got was expensive.','The gift who she got was expensive.','The gift she got it was expensive.'],correct:'The gift she got was expensive.',anchor:'that-rel-pode'},
+  {pt:'A cidade que nós visitamos era linda.',isFullSentence:true,options:['The city we visited was beautiful.','The city what we visited was beautiful.','The city who we visited was beautiful.','The city we visited it was beautiful.'],correct:'The city we visited was beautiful.',anchor:'that-rel-pode'},
+  {pt:'O trabalho que eu fiz foi difícil.',isFullSentence:true,options:['The work I did was hard.','The work what I did was hard.','The work who I did was hard.','The work I did it was hard.'],correct:'The work I did was hard.',anchor:'that-rel-pode'},
+  {pt:'A história que ele contou era engraçada.',isFullSentence:true,options:['The story he told was funny.','The story what he told was funny.','The story who he told was funny.','The story he told it was funny.'],correct:'The story he told was funny.',anchor:'that-rel-pode'},
+  {pt:'As fotos que você tirou são lindas.',isFullSentence:true,options:['The photos you took are beautiful.','The photos what you took are beautiful.','The photos who you took are beautiful.','The photos you took them are beautiful.'],correct:'The photos you took are beautiful.',anchor:'that-rel-pode'},
+  {pt:'O bolo que ela fez sumiu rápido.',isFullSentence:true,options:['The cake she made disappeared fast.','The cake what she made disappeared fast.','The cake who she made disappeared fast.','The cake she made it disappeared fast.'],correct:'The cake she made disappeared fast.',anchor:'that-rel-pode'},
+  {pt:'A roupa que eu comprei era cara.',isFullSentence:true,options:['The clothes I bought were expensive.','The clothes what I bought were expensive.','The clothes who I bought were expensive.','The clothes I bought them were expensive.'],correct:'The clothes I bought were expensive.',anchor:'that-rel-pode'},
+  {pt:'O homem que mora aqui é simpático.',isFullSentence:true,options:['The man that lives here is friendly.','The man lives here is friendly.','The man who lives here it is friendly.','The man what lives here is friendly.'],correct:'The man that lives here is friendly.',anchor:'that-rel-fica'},
+  {pt:'O cachorro que late muito é meu.',isFullSentence:true,options:['The dog that barks a lot is mine.','The dog barks a lot is mine.','The dog what barks a lot is mine.','The dog barks a lot it is mine.'],correct:'The dog that barks a lot is mine.',anchor:'that-rel-fica'},
+  {pt:'A garota que ganhou o prêmio é minha amiga.',isFullSentence:true,options:['The girl that won the prize is my friend.','The girl won the prize is my friend.','The girl what won the prize is my friend.','The girl won the prize she is my friend.'],correct:'The girl that won the prize is my friend.',anchor:'that-rel-fica'},
+  {pt:'O carro que está na garagem é novo.',isFullSentence:true,options:['The car that is in the garage is new.','The car is in the garage is new.','The car what is in the garage is new.','The car is in the garage it is new.'],correct:'The car that is in the garage is new.',anchor:'that-rel-fica'},
+  {pt:'A pessoa que ligou era minha mãe.',isFullSentence:true,options:['The person that called was my mom.','The person called was my mom.','The person what called was my mom.','The person called she was my mom.'],correct:'The person that called was my mom.',anchor:'that-rel-fica'},
+  {pt:'O aluno que estuda passa.',isFullSentence:true,options:['The student that studies passes.','The student studies passes.','The student what studies passes.','The student studies he passes.'],correct:'The student that studies passes.',anchor:'that-rel-fica'},
+  {pt:'O prédio que fica na esquina é antigo.',isFullSentence:true,options:['The building that is on the corner is old.','The building is on the corner is old.','The building what is on the corner is old.','The building is on the corner it is old.'],correct:'The building that is on the corner is old.',anchor:'that-rel-fica'},
+  {pt:'A mulher que trabalha lá é gentil.',isFullSentence:true,options:['The woman that works there is kind.','The woman works there is kind.','The woman what works there is kind.','The woman works there she is kind.'],correct:'The woman that works there is kind.',anchor:'that-rel-fica'},
+  {pt:'O gato que dorme no sofá é gordo.',isFullSentence:true,options:['The cat that sleeps on the sofa is fat.','The cat sleeps on the sofa is fat.','The cat what sleeps on the sofa is fat.','The cat sleeps on the sofa it is fat.'],correct:'The cat that sleeps on the sofa is fat.',anchor:'that-rel-fica'},
+  {pt:'O time que ganhou comemorou.',isFullSentence:true,options:['The team that won celebrated.','The team won celebrated.','The team what won celebrated.','The team won they celebrated.'],correct:'The team that won celebrated.',anchor:'that-rel-fica'},
+  {pt:'A criança que chorou estava com fome.',isFullSentence:true,options:['The child that cried was hungry.','The child cried was hungry.','The child what cried was hungry.','The child cried she was hungry.'],correct:'The child that cried was hungry.',anchor:'that-rel-fica'},
+  {pt:'O professor que ensina inglês é ótimo.',isFullSentence:true,options:['The teacher that teaches English is great.','The teacher teaches English is great.','The teacher what teaches English is great.','The teacher teaches English he is great.'],correct:'The teacher that teaches English is great.',anchor:'that-rel-fica'},
+  {pt:'A loja que abriu é cara.',isFullSentence:true,options:['The store that opened is expensive.','The store opened is expensive.','The store what opened is expensive.','The store opened it is expensive.'],correct:'The store that opened is expensive.',anchor:'that-rel-fica'},
+  {pt:'O barulho que acordou todo mundo era um alarme.',isFullSentence:true,options:['The noise that woke everyone was an alarm.','The noise woke everyone was an alarm.','The noise what woke everyone was an alarm.','The noise woke everyone it was an alarm.'],correct:'The noise that woke everyone was an alarm.',anchor:'that-rel-fica'},
+  {pt:'Eu acho que ela é inteligente.',isFullSentence:true,options:['I think she is smart.','I think which she is smart.','I think she smart.','I think who is she smart.'],correct:'I think she is smart.',anchor:'that-misto'},
+  {pt:'O filme que assistimos era bom.',isFullSentence:true,options:['The movie we watched was good.','The movie what we watched was good.','The movie watched was good.','The movie we watched it was good.'],correct:'The movie we watched was good.',anchor:'that-misto'},
+  {pt:'Ela disse que estava com fome.',isFullSentence:true,options:['She said she was hungry.','She said which she was hungry.','She said was hungry she.','She said what was she hungry.'],correct:'She said she was hungry.',anchor:'that-misto'},
+  {pt:'O homem que está falando é meu chefe.',isFullSentence:true,options:['The man that is speaking is my boss.','The man is speaking is my boss.','The man what is speaking is my boss.','The man is speaking he is my boss.'],correct:'The man that is speaking is my boss.',anchor:'that-misto'},
+  {pt:'Eu sei que você está cansado.',isFullSentence:true,options:['I know you are tired.','I know which you are tired.','I know are you tired.','I know what are you tired.'],correct:'I know you are tired.',anchor:'that-misto'},
+  {pt:'A casa que eu quero é cara.',isFullSentence:true,options:['The house I want is expensive.','The house what I want is expensive.','The house want is expensive.','The house I want it is expensive.'],correct:'The house I want is expensive.',anchor:'that-misto'},
+  {pt:'Eu espero que você goste.',isFullSentence:true,options:['I hope you like it.','I hope which you like it.','I hope like you it.','I hope what you like it.'],correct:'I hope you like it.',anchor:'that-misto'},
+  {pt:'A pessoa que mora lá viajou.',isFullSentence:true,options:['The person that lives there traveled.','The person lives there traveled.','The person what lives there traveled.','The person lives there she traveled.'],correct:'The person that lives there traveled.',anchor:'that-misto'},
+  {pt:'Ele acha que vai chover.',isFullSentence:true,options:['He thinks it will rain.','He thinks which it will rain.','He thinks will it rain.','He thinks what will rain.'],correct:'He thinks it will rain.',anchor:'that-misto'},
+  {pt:'O livro que você me deu é incrível.',isFullSentence:true,options:['The book you gave me is amazing.','The book what you gave me is amazing.','The book gave me is amazing.','The book you gave me it is amazing.'],correct:'The book you gave me is amazing.',anchor:'that-misto'},
+  {pt:'Eu acredito que ela vem.',isFullSentence:true,options:['I believe she is coming.','I believe which she is coming.','I believe is she coming.','I believe what is she coming.'],correct:'I believe she is coming.',anchor:'that-misto'},
+  {pt:'O cachorro que corre no parque é meu.',isFullSentence:true,options:['The dog that runs in the park is mine.','The dog runs in the park is mine.','The dog what runs in the park is mine.','The dog runs in the park it is mine.'],correct:'The dog that runs in the park is mine.',anchor:'that-misto'},
+  {pt:'Ela contou que se mudou.',isFullSentence:true,options:['She told me she moved.','She told me which she moved.','She told me moved she.','She told me what she moved.'],correct:'She told me she moved.',anchor:'that-misto'},
+  {pt:'A música que toca agora é minha favorita.',isFullSentence:true,options:['The song that is playing now is my favorite.','The song is playing now is my favorite.','The song what is playing now is my favorite.','The song is playing now it is my favorite.'],correct:'The song that is playing now is my favorite.',anchor:'that-misto'},
+  {pt:'Eu sei que ele mente.',isFullSentence:true,options:['I know he lies.','I know which he lies.','I know lies he.','I know what he lies.'],correct:'I know he lies.',anchor:'that-misto'},
+  {pt:'O café que eu bebi estava quente.',isFullSentence:true,options:['The coffee I drank was hot.','The coffee what I drank was hot.','The coffee drank was hot.','The coffee I drank it was hot.'],correct:'The coffee I drank was hot.',anchor:'that-misto'},
+];
+
+window['rev8_bk']=[
+  {pt:'Eu disse a ela a verdade.',isFullSentence:true,options:['I told her the truth.','I said her the truth.','I talked her the truth.','I spoke her the truth.'],correct:'I told her the truth.',anchor:'stts'},
+  {pt:'O que você disse?',isFullSentence:true,options:['What did you say?','What did you tell?','What did you talk?','What did you speak?'],correct:'What did you say?',anchor:'stts'},
+  {pt:'Eu preciso conversar com você.',isFullSentence:true,options:['I need to talk to you.','I need to say to you.','I need to tell to you.','I need to talk you.'],correct:'I need to talk to you.',anchor:'stts'},
+  {pt:'Eu falo inglês.',isFullSentence:true,options:['I speak English.','I talk English.','I say English.','I tell English.'],correct:'I speak English.',anchor:'stts'},
+  {pt:'Me conta a verdade.',isFullSentence:true,options:['Tell me the truth.','Say me the truth.','Talk me the truth.','Speak me the truth.'],correct:'Tell me the truth.',anchor:'stts'},
+  {pt:'Eu vou viajar amanhã.',isFullSentence:true,options:['I am going to travel tomorrow.','I is going to travel tomorrow.','I are going to travel tomorrow.','I going to travel tomorrow.'],correct:'I am going to travel tomorrow.',anchor:'gonna'},
+  {pt:'Ela não vai vir.',isFullSentence:true,options:["She isn't going to come.","She aren't going to come.",'She not going to come.',"She doesn't going to come."],correct:"She isn't going to come.",anchor:'gonna'},
+  {pt:'Você vai me ajudar?',isFullSentence:true,options:['Are you going to help me?','Is you going to help me?','Do you going to help me?','You are going to help me?'],correct:'Are you going to help me?',anchor:'gonna'},
+  {pt:'A gente vai se divertir muito. (informal)',isFullSentence:true,options:["We're gonna have so much fun.","We're going have so much fun.",'We gonna have so much fun.',"We're gonna to have so much fun."],correct:"We're gonna have so much fun.",anchor:'gonna'},
+  {pt:'Eles vão comprar uma casa.',isFullSentence:true,options:['They are going to buy a house.','They is going to buy a house.','They am going to buy a house.','They going to buy a house.'],correct:'They are going to buy a house.',anchor:'gonna'},
+  {pt:'Eu ia te ligar, mas esqueci.',isFullSentence:true,options:['I was going to call you, but I forgot.','I were going to call you, but I forgot.','I am going to call you, but I forgot.','I was go to call you, but I forgot.'],correct:'I was going to call you, but I forgot.',anchor:'ia'},
+  {pt:'Nós íamos comprar a casa.',isFullSentence:true,options:['We were going to buy the house.','We was going to buy the house.','We are going to buy the house.','We were go to buy the house.'],correct:'We were going to buy the house.',anchor:'ia'},
+  {pt:'Ela disse que ia chegar cedo.',isFullSentence:true,options:['She said she was going to arrive early.','She said she were going to arrive early.','She said she is going to arrive early.','She said she was go to arrive early.'],correct:'She said she was going to arrive early.',anchor:'ia'},
+  {pt:'Ele não ia ajudar.',isFullSentence:true,options:["He wasn't going to help.","He weren't going to help.","He isn't going to help.","He didn't going to help."],correct:"He wasn't going to help.",anchor:'ia'},
+  {pt:'Você ia me contar?',isFullSentence:true,options:['Were you going to tell me?','Was you going to tell me?','Are you going to tell me?','Did you going to tell me?'],correct:'Were you going to tell me?',anchor:'ia'},
+  {pt:'Eu acabei de chegar.',isFullSentence:true,options:['I just arrived.','I just arrive.','I am just arrived.','I just arriving.'],correct:'I just arrived.',anchor:'justabout'},
+  {pt:'Eu estou prestes a sair.',isFullSentence:true,options:['I am about to leave.','I is about to leave.','I am about to leaving.','I about to leave.'],correct:'I am about to leave.',anchor:'justabout'},
+  {pt:'Ela acabou de sair.',isFullSentence:true,options:['She just left.','She just leave.','She just leaved.','She is just left.'],correct:'She just left.',anchor:'justabout'},
+  {pt:'Eu estava prestes a sair quando você ligou.',isFullSentence:true,options:['I was about to leave when you called.','I were about to leave when you called.','I am about to leave when you called.','I was about to leaving when you called.'],correct:'I was about to leave when you called.',anchor:'justabout'},
+  {pt:'O filme está prestes a começar.',isFullSentence:true,options:['The movie is about to start.','The movie are about to start.','The movie is about to starting.','The movie about to start.'],correct:'The movie is about to start.',anchor:'justabout'},
+  {pt:'Eu me machuquei.',isFullSentence:true,options:['I hurt myself.','I hurt yourself.','I hurt himself.','I hurt themselves.'],correct:'I hurt myself.',anchor:'reflex'},
+  {pt:'Ela se cortou.',isFullSentence:true,options:['She cut herself.','She cut himself.','She cut herselves.','She cut themselves.'],correct:'She cut herself.',anchor:'reflex'},
+  {pt:'Eu moro sozinho.',isFullSentence:true,options:['I live by myself.','I live by yourself.','I live by himself.','I live by themselves.'],correct:'I live by myself.',anchor:'reflex'},
+  {pt:'Eles se abraçaram (um ao outro).',isFullSentence:true,options:['They hugged each other.','They hugged themselves.','They hugged themself.','They hugged each others.'],correct:'They hugged each other.',anchor:'reflex'},
+  {pt:'Eu mesmo fiz isso.',isFullSentence:true,options:['I did it myself.','I did it yourself.','I did it himself.','I did it themselves.'],correct:'I did it myself.',anchor:'reflex'},
+  {pt:'Se chover, eu vou ficar em casa.',isFullSentence:true,options:['If it rains, I will stay home.','If it will rain, I will stay home.','If it rains, I stay home.','If it rains, I would stay home.'],correct:'If it rains, I will stay home.',anchor:'cond'},
+  {pt:'Se eu tivesse dinheiro, eu viajaria.',isFullSentence:true,options:['If I had money, I would travel.','If I have money, I would travel.','If I had money, I will travel.','If I had money, I traveled.'],correct:'If I had money, I would travel.',anchor:'cond'},
+  {pt:'Se eu fosse você, eu não faria isso.',isFullSentence:true,options:["If I were you, I wouldn't do that.","If I am you, I wouldn't do that.","If I were you, I won't do that.","If I were you, I didn't do that."],correct:"If I were you, I wouldn't do that.",anchor:'cond'},
+  {pt:'Se eu tivesse estudado, eu teria passado.',isFullSentence:true,options:['If I had studied, I would have passed.','If I studied, I would have passed.','If I had studied, I would pass.','If I had studied, I will have passed.'],correct:'If I had studied, I would have passed.',anchor:'cond'},
+  {pt:'Não vou, a menos que você venha.',isFullSentence:true,options:["I won't go unless you come.","I won't go unless you will come.","I won't go unless you came.","I won't go unless you would come."],correct:"I won't go unless you come.",anchor:'cond'},
+  {pt:'Se você esquenta a água, ela ferve.',isFullSentence:true,options:['If you heat water, it boils.','If you will heat water, it boils.','If you heat water, it will boil.','If you heat water, it would boil.'],correct:'If you heat water, it boils.',anchor:'cond'},
+  {pt:'Eu acho que você está certo.',isFullSentence:true,options:['I think you are right.','I think what you are right.','I think which you are right.','I think who you are right.'],correct:'I think you are right.',anchor:'that'},
+  {pt:'O livro que eu li era ótimo.',isFullSentence:true,options:['The book I read was great.','The book what I read was great.','The book who I read was great.','The book I read it was great.'],correct:'The book I read was great.',anchor:'that'},
+  {pt:'O homem que mora aqui é simpático.',isFullSentence:true,options:['The man that lives here is friendly.','The man lives here is friendly.','The man who lives here it is friendly.','The man what lives here is friendly.'],correct:'The man that lives here is friendly.',anchor:'that'},
+  {pt:'Ela disse que estava cansada.',isFullSentence:true,options:['She said she was tired.','She said which she was tired.','She said was tired she.','She said what was she tired.'],correct:'She said she was tired.',anchor:'that'},
+  {pt:'A pessoa que você conheceu é minha irmã.',isFullSentence:true,options:['The person you met is my sister.','The person what you met is my sister.','The person which you met is my sister.','The person you met her is my sister.'],correct:'The person you met is my sister.',anchor:'that'},
 ];
 
 window['rev7_bk']=[
@@ -6063,6 +6499,30 @@ const pages=[
       <div class="idx-chapter-body" id="idxcap8-body">
         <div class="idx-item" onclick="go(104)" data-kw="say said tell told talk talked speak spoke dizer falar conversar contar say vs tell talk to talk with talk about speak idiomas o que para quem cap8">
           <div class="idx-num">40</div><div class="idx-info"><div class="idx-name">Say, Tell, Talk &amp; Speak</div><div class="idx-desc">Dizer, contar, conversar e falar — quando usar cada um</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(106)" data-kw="futuro proximo going to gonna am is are going to vou vai vamos plano future near future will vs going to cap8">
+          <div class="idx-num">41</div><div class="idx-info"><div class="idx-name">Futuro Próximo</div><div class="idx-desc">Going to e a gíria gonna — planos já decididos</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(108)" data-kw="ia iam iamos passado was going to were going to plano que nao aconteceu intencao passada cap8">
+          <div class="idx-num">42</div><div class="idx-info"><div class="idx-name">O "ia" do passado</div><div class="idx-desc">Was/were going to — o plano que ia acontecer</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(110)" data-kw="acabou de just passado prestes a about to to be quase agora mesmo recem just arrived am about to was about to cap8">
+          <div class="idx-num">43</div><div class="idx-info"><div class="idx-name">Acabou de, Prestes a</div><div class="idx-desc">Just + passado e to be + about to</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(112)" data-kw="pronomes reflexivos reflexive myself yourself himself herself itself ourselves yourselves themselves se mesmo by myself sozinho cap8">
+          <div class="idx-num">44</div><div class="idx-info"><div class="idx-name">Pronomes Reflexivos</div><div class="idx-desc">Myself, yourself, himself... a ação que volta</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(114)" data-kw="condicionais if zero first second third conditional condicional se entao would will had would have unless otherwise or else if not cap8">
+          <div class="idx-num">45</div><div class="idx-info"><div class="idx-name">Condicionais (If)</div><div class="idx-desc">Os 4 tipos de if + unless, otherwise, or else</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(116)" data-kw="that omissao que pode sumir omitir conjuncao relativo she said that i think that the book that i read omitir that opcional cap8">
+          <div class="idx-num">46</div><div class="idx-info"><div class="idx-name">Quando o "que" pode sumir</div><div class="idx-desc">O that opcional depois de say/think e em relativas</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(118)" data-kw="materia bonus internet slang girias abreviacoes siglas u you r are lol omg btw idk brb tbh imo asap dm thx pls online chat jogos cap8">
+          <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Internet Slang</div><div class="idx-desc">Abreviações e siglas: u, thx, lol, omg, btw...</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(120)" style="border-color:rgba(251,113,133,.3);" data-kw="revisão exercício cap8 capítulo 8 pausa say tell talk speak futuro proximo ia acabou prestes reflexivos condicionais that">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 8</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -7367,11 +7827,11 @@ const pages=[
     <p class="intro">Em português, usamos fui, foi, fomos e foram para indicar deslocamento, mas também para indicar estado ou identidade — algo que não ocorre em inglês.</p>
     <div class="eg-block">
       <div class="eg-row" style="flex-direction:column;align-items:flex-start;gap:2px;">
-        <span class="eg-pt">Sophia foi feliz. (= Sophia era feliz.)</span>
+        <span class="eg-pt">Sophia foi feliz. (Sophia era feliz.)</span>
         <span class="eg-en en" data-speak="Sophia was happy">Sophia <span class="hl-tobe">was</span> happy.</span>
       </div>
       <div class="eg-row" style="flex-direction:column;align-items:flex-start;gap:2px;">
-        <span class="eg-pt">Daniel e Bruno foram amigos. (= eram amigos.)</span>
+        <span class="eg-pt">Daniel e Bruno foram amigos. (eram amigos.)</span>
         <span class="eg-en en" data-speak="Daniel and Bruno were friends">Daniel and Bruno <span class="hl-tobe">were</span> friends.</span>
       </div>
     </div>
@@ -12221,8 +12681,8 @@ const pages=[
     <div class="togo-table" style="font-size:14.5px;">
       <div class="togo-section">
         <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">QUAL "TER" USAR</div>
-        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Posse (= possuir)</div><div class="togo-val"><span class="hl-p3"><span class="enw" data-speak="have">have</span> / <span class="enw" data-speak="has">has</span> / <span class="enw" data-speak="had">had</span></span></div></div>
-        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Existência (= existir/haver)</div><div class="togo-val"><span class="hl-p3"><span class="enw" data-speak="there is">there is</span> / <span class="enw" data-speak="are">there are</span>...</span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Posse (possuir)</div><div class="togo-val"><span class="hl-p3"><span class="enw" data-speak="have">have</span> / <span class="enw" data-speak="has">has</span> / <span class="enw" data-speak="had">had</span></span></div></div>
+        <div class="togo-row" style="font-size:14px;padding:9px 0;"><div class="togo-cond">Existência (existir/haver)</div><div class="togo-val"><span class="hl-p3"><span class="enw" data-speak="there is">there is</span> / <span class="enw" data-speak="are">there are</span>...</span></div></div>
       </div>
       <div class="togo-sep"></div>
       <div class="togo-section">
@@ -13018,6 +13478,45 @@ const pages=[
       </div>
     </div>
 
+    <div class="sec-divider" id="qw-afirmativa"><div class="sec-divider-line"></div><div class="sec-divider-label">Não é só pergunta: WH em frases afirmativas</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Apesar do nome "question words", essas palavras <strong>não aparecem só em perguntas</strong>. Elas também ligam ideias no meio de frases <strong>afirmativas</strong> (declarações), como o nosso "o que / onde / quando / quem / por que". Repare que aqui a frase <strong>não é pergunta</strong> — não tem inversão nem ponto de interrogação.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 WH dentro de afirmativas</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu sei onde ela mora.</span><span class="eg-en en" data-speak="I know where she lives.">I know <span class="hl-coringa">where</span> she lives.</span></div>
+        <div class="eg-row"><span class="eg-pt">Me diz o que você quer.</span><span class="eg-en en" data-speak="Tell me what you want.">Tell me <span class="hl-coringa">what</span> you want.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não sei quando ele chega.</span><span class="eg-en en" data-speak="I don't know when he arrives.">I don't know <span class="hl-coringa">when</span> he arrives.</span></div>
+        <div class="eg-row"><span class="eg-pt">Essa é a pessoa que me ajudou.</span><span class="eg-en en" data-speak="This is the person who helped me.">This is the person <span class="hl-coringa">who</span> helped me.</span></div>
+        <div class="eg-row"><span class="eg-pt">Me mostra como você fez isso.</span><span class="eg-en en" data-speak="Show me how you did it.">Show me <span class="hl-coringa">how</span> you did it.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Pergunta x afirmativa</div>
+      <p class="tip-txt">Na <strong>pergunta</strong>, a WH vem no começo e há inversão: <em>Where <span class="enw" data-speak="does she live">does she live</span>?</em><br>Na <strong>afirmativa</strong>, a WH vem no meio e a ordem é normal (sujeito + verbo): <em>I know where <span class="enw" data-speak="she lives">she lives</span>.</em> Sem inversão, sem "?".</p>
+    </div>
+
+    <div class="sec-divider" id="qw-why-ind"><div class="sec-divider-line"></div><div class="sec-divider-label">Why em afirmativas: "por isso / a razão pela qual"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>why</strong> merece destaque. Fora das perguntas, ele aparece muito em afirmativas com o sentido de <strong>"(é) por isso (que)"</strong> ou <strong>"a razão pela qual"</strong>. É super comum na fala.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Why declarando o motivo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">É por isso que eu saí.</span><span class="eg-en en" data-speak="That's why I left.">That's <span class="hl-coringa">why</span> I left.</span></div>
+        <div class="eg-row"><span class="eg-pt">É por isso que estou cansado.</span><span class="eg-en en" data-speak="That's why I'm tired.">That's <span class="hl-coringa">why</span> I'm tired.</span></div>
+        <div class="eg-row"><span class="eg-pt">A razão pela qual ele saiu é simples.</span><span class="eg-en en" data-speak="The reason why he left is simple.">The reason <span class="hl-coringa">why</span> he left is simple.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não sei por quê.</span><span class="eg-en en" data-speak="I don't know why.">I don't know <span class="hl-coringa">why</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 That's why = "é por isso que"</div>
+      <p class="tip-txt">Guarde a expressão <span class="enw" data-speak="that's why">that's why</span> — é o jeito mais natural de dizer "(é) por isso (que)". <em>I woke up late; that's why I missed the bus.</em> (Acordei tarde; foi por isso que perdi o ônibus.)</p>
+    </div>
+
     <div class="sec-divider" id="qw-where-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Where também liga frases: "onde / em que / no qual"</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>where</strong> não serve só pra perguntar "onde?". Ele também aparece no meio da frase, ligando um <strong>lugar</strong> ao que acontece nele. Em português a gente diz isso de <strong>oito</strong> jeitos diferentes — <strong>onde, em que, no qual, na qual, nos quais, nas quais</strong>... — mas em inglês é tudo o mesmo <strong>where</strong>.</p>
@@ -13435,6 +13934,894 @@ const pages=[
     <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Say, Tell, Talk &amp; Speak — exercício</span><span class="ex-score" id="stts-score">0/10</span></div><div class="ex-body" id="stts-body"></div></div>
   </div>
 </div>`,
+
+`<div class="page pg-sec" style="--acc:#38bdf8;"><div class="sec-ghost">41</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 41</div>
+    <div class="sec-title">Futuro<br><span class="acc">Próximo</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O "vou fazer" de planos já decididos — going to e o gonna.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🚀</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Quando uma sonda espacial é lançada, os cientistas já calcularam onde os planetas vão estar <strong>anos no futuro</strong> — não para onde apontar agora, mas para o ponto de encontro. A sonda <strong>Voyager 1</strong>, lançada em 1977, ainda viaja pelo espaço hoje e é o objeto feito por humanos mais distante da Terra, a mais de 24 bilhões de quilômetros.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#38bdf8;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 41 · Futuro Próximo</div><div class="pg-ttl">Futuro Próximo</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Você já sabe o futuro com <strong>will</strong>. Agora vem o outro jeito de falar do futuro: o <strong>going to</strong>, usado pra <strong>planos que você já decidiu</strong> — "eu vou fazer", "ela vai viajar". É um dos mais usados no inglês do dia a dia.</p>
+
+    <div class="sec-divider" id="gonna-form"><div class="sec-divider-line"></div><div class="sec-divider-label">A fórmula: to be + going to + verbo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">A receita usa o <strong>verbo to be</strong> (am/is/are) que você já conhece, mais <strong>going to</strong>, mais o verbo principal. O to be muda conforme o sujeito:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 going to + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu vou viajar amanhã.</span><span class="eg-en en" data-speak="I am going to travel tomorrow.">I <span class="hl-p3">am going to</span> travel tomorrow.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela vai estudar hoje à noite.</span><span class="eg-en en" data-speak="She is going to study tonight.">She <span class="hl-p3">is going to</span> study tonight.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles vão comprar uma casa.</span><span class="eg-en en" data-speak="They are going to buy a house.">They <span class="hl-p3">are going to</span> buy a house.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós vamos começar uma dieta.</span><span class="eg-en en" data-speak="We are going to start a diet.">We <span class="hl-p3">are going to</span> start a diet.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 É o to be que muda</div>
+      <p class="tip-txt">O <strong>going to</strong> nunca muda — quem se ajusta ao sujeito é o to be:<br>→ I <span class="enw" data-speak="am going to">am going to</span><br>→ He/She/It <span class="enw" data-speak="is going to">is going to</span><br>→ You/We/They <span class="enw" data-speak="are going to">are going to</span></p>
+    </div>
+
+    <div class="sec-divider" id="gonna-neg"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Como tem o <strong>to be</strong> dentro, é fácil: pra negar, nega o to be (isn't/aren't); pra perguntar, inverte o to be com o sujeito. Igualzinho você já faz com o to be sozinho.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Afirmar · Negar · Perguntar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela vai vir.</span><span class="eg-en en" data-speak="She is going to come.">She <span class="hl-p3">is going to</span> come.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela não vai vir.</span><span class="eg-en en" data-speak="She isn't going to come.">She <span class="hl-wont">isn't going to</span> come.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela vai vir?</span><span class="eg-en en" data-speak="Is she going to come?"><span class="hl-p3">Is</span> she <span class="hl-p3">going to</span> come?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="gonna-giria"><div class="sec-divider-line"></div><div class="sec-divider-label">Gonna — a gíria de "going to"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Na fala do dia a dia, os nativos quase nunca dizem "going to" devagar — eles juntam tudo e falam <strong class="enw" data-speak="gonna">gonna</strong>. É <strong>gíria</strong> (informal): você ouve em músicas, filmes e conversas o tempo todo, mas <strong>na escrita formal</strong> use "going to".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 going to → gonna (informal)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu vou te ligar mais tarde.</span><span class="eg-en en" data-speak="I'm gonna call you later.">I'm <span class="hl-tambem">gonna</span> call you later.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vai dar tudo certo.</span><span class="eg-en en" data-speak="It's gonna be okay.">It's <span class="hl-tambem">gonna</span> be okay.</span></div>
+        <div class="eg-row"><span class="eg-pt">A gente vai se divertir muito.</span><span class="eg-en en" data-speak="We're gonna have so much fun.">We're <span class="hl-tambem">gonna</span> have so much fun.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Gonna é só pra fala/informal</div>
+      <p class="tip-txt">O <span class="enw" data-speak="gonna">gonna</span> é a forma "preguiçosa" de falar <em>going to</em> — perfeito pra conversa, mensagens e música. Mas em e-mail de trabalho, prova ou texto sério, escreva <strong>going to</strong> por extenso. E nunca use gonna se a frase não tiver verbo depois (não existe "I'm gonna the party" — aí é "I'm going to the party", movimento).</p>
+    </div>
+
+    <div class="sec-divider" id="gonna-will"><div class="sec-divider-line"></div><div class="sec-divider-label">Going to x Will — qual usar?</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Os dois falam do futuro, mas com uma diferença de "clima":</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 A diferença</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote">
+          <div class="q-pt"><strong>going to</strong> = plano <strong>já decidido</strong> antes de falar</div>
+          <div class="q-en">I'm going to visit my mom this weekend. <span style="opacity:.6">(já planejado)</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>will</strong> = decisão <strong>na hora</strong> ou previsão</div>
+          <div class="q-en">The phone is ringing — I'll get it! <span style="opacity:.6">(decidiu agora)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Regra prática</div>
+      <p class="tip-txt">Já tinha decidido? Use <span class="enw" data-speak="going to">going to</span>. Decidiu agora, na hora da fala? Use <span class="enw" data-speak="will">will</span>. Nos dois casos a pessoa entende — mas o going to soa mais natural pra planos.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.4fr;"><span>Sujeito</span><span>Forma</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>I</span><span class="enw" data-speak="I am going to">am going to</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>He / She / It</span><span class="enw" data-speak="is going to">is going to</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>You / We / They</span><span class="enw" data-speak="are going to">are going to</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>Gíria (todos)</span><span class="enw" data-speak="gonna">gonna</span></div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Futuro Próximo — exercício</span><span class="ex-score" id="gonna-score">0/10</span></div><div class="ex-body" id="gonna-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#6366f1;"><div class="sec-ghost">42</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 42</div>
+    <div class="sec-title">O "ia"<br><span class="acc">do passado</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Aquele plano que você ia fazer... mas não rolou.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎨</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A cor <strong>roxa</strong> já foi mais valiosa que ouro. Na Antiguidade, o corante púrpura era extraído de um tipo de caracol marinho, e eram necessários <strong>milhares de caracóis</strong> para tingir uma única roupa. Por isso, só imperadores e reis podiam usá-la — daí a expressão "nascer em berço de ouro" ter como prima a ideia de "vestir a púrpura".</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#6366f1;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 42 · O "ia" do passado</div><div class="pg-ttl">O "ia" do passado</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Agora a versão no passado do <strong>going to</strong>: o nosso <strong>"ia, iam, íamos"</strong> — aquele plano ou intenção que existia no passado, e que muitas vezes <strong>não chegou a acontecer</strong>. "Eu ia ligar, mas esqueci."</p>
+
+    <div class="sec-divider" id="ia-form"><div class="sec-divider-line"></div><div class="sec-divider-label">A fórmula: was/were going to + verbo</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">É só trocar o to be do presente (am/is/are) pelo <strong>passado</strong> (was/were) que você já conhece. O resto é igual.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 was/were going to + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu ia te ligar.</span><span class="eg-en en" data-speak="I was going to call you.">I <span class="hl-p3">was going to</span> call you.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela ia viajar.</span><span class="eg-en en" data-speak="She was going to travel.">She <span class="hl-p3">was going to</span> travel.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós íamos comprar a casa.</span><span class="eg-en en" data-speak="We were going to buy the house.">We <span class="hl-p3">were going to</span> buy the house.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles iam se mudar.</span><span class="eg-en en" data-speak="They were going to move.">They <span class="hl-p3">were going to</span> move.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 was ou were?</div>
+      <p class="tip-txt">Mesma regra do passado do to be:<br>→ I / He / She / It → <span class="enw" data-speak="was going to">was going to</span><br>→ You / We / They → <span class="enw" data-speak="were going to">were going to</span></p>
+    </div>
+
+    <div class="sec-divider" id="ia-naorolou"><div class="sec-divider-line"></div><div class="sec-divider-label">O uso mais comum: o plano que não rolou</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Na maioria das vezes, o "ia" vem junto de um <strong>"mas..."</strong> — o plano existia, mas algo mudou. É o jeito perfeito de explicar por que algo <strong>não aconteceu</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 ...mas não rolou</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu ia ligar, mas esqueci.</span><span class="eg-en en" data-speak="I was going to call, but I forgot.">I <span class="hl-p3">was going to</span> call, but I forgot.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela ia vir, mas ficou doente.</span><span class="eg-en en" data-speak="She was going to come, but she got sick.">She <span class="hl-p3">was going to</span> come, but she got sick.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós íamos sair, mas começou a chover.</span><span class="eg-en en" data-speak="We were going to go out, but it started to rain.">We <span class="hl-p3">were going to</span> go out, but it started to rain.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="ia-intencao"><div class="sec-divider-line"></div><div class="sec-divider-label">O outro uso: a intenção passada</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Também serve pra contar o que alguém <strong>pretendia/dizia que ia fazer</strong> — sem necessariamente dizer se rolou ou não.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Intenção no passado</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela disse que ia chegar cedo.</span><span class="eg-en en" data-speak="She said she was going to arrive early.">She said she <span class="hl-p3">was going to</span> arrive early.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu sabia que ia dar certo.</span><span class="eg-en en" data-speak="I knew it was going to work.">I knew it <span class="hl-p3">was going to</span> work.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles prometeram que iam ajudar.</span><span class="eg-en en" data-speak="They promised they were going to help.">They promised they <span class="hl-p3">were going to</span> help.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="ia-negperg"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">De novo: tem o to be dentro (was/were), então é só negar ou inverter ele.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Afirmar · Negar · Perguntar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ele ia ajudar.</span><span class="eg-en en" data-speak="He was going to help.">He <span class="hl-p3">was going to</span> help.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele não ia ajudar.</span><span class="eg-en en" data-speak="He wasn't going to help.">He <span class="hl-wont">wasn't going to</span> help.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele ia ajudar?</span><span class="eg-en en" data-speak="Was he going to help?"><span class="hl-p3">Was</span> he <span class="hl-p3">going to</span> help?</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Resumindo os dois tempos</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="is going to">is going to</span> = vai (futuro, plano pra frente)<br>→ <span class="enw" data-speak="was going to">was going to</span> = ia (plano que estava no passado, muitas vezes não cumprido)<br>Mesmíssima estrutura, só muda o tempo do to be.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">O "ia" do passado — exercício</span><span class="ex-score" id="ia-score">0/10</span></div><div class="ex-body" id="ia-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#10b981;"><div class="sec-ghost">43</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 43</div>
+    <div class="sec-title">Acabou de,<br><span class="acc">Prestes a</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O que mal aconteceu e o que está quase acontecendo.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">⚡</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Um <strong>relâmpago</strong> dura cerca de 30 milionésimos de segundo, mas é tão quente que aquece o ar à sua volta a quase <strong>30.000 °C</strong> — cinco vezes mais que a superfície do Sol. O estrondo do trovão é justamente esse ar superaquecido se expandindo de repente, mais rápido que a velocidade do som.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#10b981;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 43 · Acabou de, Prestes a</div><div class="pg-ttl">Acabou de, Prestes a</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Duas situações bem próximas no tempo: algo que <strong>acabou de</strong> acontecer (segundos atrás) e algo que está <strong>prestes a</strong> acontecer (vai acontecer já já). Cada uma tem sua estrutura simples.</p>
+
+    <div class="sec-divider" id="just-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Acabou de — sujeito + just + passado</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra dizer que algo <strong>acabou de</strong> acontecer, é só encaixar a palavra <strong class="enw" data-speak="just">just</strong> <strong>antes do verbo no passado</strong>. O just aqui significa "agora mesmo, há pouquinho".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 sujeito + just + verbo no passado</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu acabei de chegar.</span><span class="eg-en en" data-speak="I just arrived.">I <span class="hl-p3">just</span> arrived.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela acabou de sair.</span><span class="eg-en en" data-speak="She just left.">She <span class="hl-p3">just</span> left.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles acabaram de comer.</span><span class="eg-en en" data-speak="They just ate.">They <span class="hl-p3">just</span> ate.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu acabei de te ligar.</span><span class="eg-en en" data-speak="I just called you.">I <span class="hl-p3">just</span> called you.</span></div>
+        <div class="eg-row"><span class="eg-pt">A gente acabou de comprar a casa.</span><span class="eg-en en" data-speak="We just bought the house.">We <span class="hl-p3">just</span> bought the house.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 O verbo vai pro passado normal</div>
+      <p class="tip-txt">O <span class="enw" data-speak="just">just</span> não muda o verbo — ele só entra na frente do verbo que já vai pro passado (regular com -ed ou irregular). <em>arrive → arrived</em>, <em>leave → left</em>, <em>eat → ate</em>. É o passado que você já conhece, com o just no meio.</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Cuidado: outro "just"</div>
+      <p class="tip-txt">Esse <span class="enw" data-speak="just">just</span> de "acabou de" é diferente do <span class="enw" data-speak="just">just</span> que significa "só/apenas" (I have just one dollar = só um dólar). O sentido vem do contexto — aqui, junto de um verbo no passado, é sempre "acabou de".</p>
+    </div>
+
+    <div class="sec-divider" id="about-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Prestes a — to be + about to</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra dizer que algo está <strong>prestes a</strong> / <strong>quase</strong> acontecer (vai rolar em segundos), usa-se o <strong>to be</strong> + <strong class="enw" data-speak="about to">about to</strong> + verbo. É o nosso "está prestes a", "está quase", "tava pra".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 sujeito + to be + about to + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estou prestes a sair.</span><span class="eg-en en" data-speak="I am about to leave.">I <span class="hl-tambem">am about to</span> leave.</span></div>
+        <div class="eg-row"><span class="eg-pt">O filme está prestes a começar.</span><span class="eg-en en" data-speak="The movie is about to start.">The movie <span class="hl-tambem">is about to</span> start.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles estão prestes a chegar.</span><span class="eg-en en" data-speak="They are about to arrive.">They <span class="hl-tambem">are about to</span> arrive.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela está quase terminando.</span><span class="eg-en en" data-speak="She is about to finish.">She <span class="hl-tambem">is about to</span> finish.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 É o to be que muda</div>
+      <p class="tip-txt">O <strong>about to</strong> nunca muda; quem se ajusta ao sujeito é o to be (igual no going to):<br>→ I <span class="enw" data-speak="am about to">am about to</span><br>→ He/She/It <span class="enw" data-speak="is about to">is about to</span><br>→ You/We/They <span class="enw" data-speak="are about to">are about to</span></p>
+    </div>
+
+    <div class="sec-divider" id="about-passado"><div class="sec-divider-line"></div><div class="sec-divider-label">"Estava prestes a" — no passado</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Como tem o to be dentro, dá pra jogar pro passado só trocando am/is/are por <strong>was/were</strong> — "estava prestes a", "tava quase".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 was/were about to</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estava prestes a sair quando você ligou.</span><span class="eg-en en" data-speak="I was about to leave when you called.">I <span class="hl-tambem">was about to</span> leave when you called.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela estava quase desistindo.</span><span class="eg-en en" data-speak="She was about to give up.">She <span class="hl-tambem">was about to</span> give up.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós estávamos prestes a começar.</span><span class="eg-en en" data-speak="We were about to start.">We <span class="hl-tambem">were about to</span> start.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="about-negperg"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar (prestes a)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">De novo: tem o to be, então é só negar ou inverter ele.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Afirmar · Negar · Perguntar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ele está prestes a falar.</span><span class="eg-en en" data-speak="He is about to speak.">He <span class="hl-tambem">is about to</span> speak.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele não está prestes a falar.</span><span class="eg-en en" data-speak="He isn't about to speak.">He <span class="hl-wont">isn't about to</span> speak.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele está prestes a falar?</span><span class="eg-en en" data-speak="Is he about to speak?"><span class="hl-tambem">Is</span> he <span class="hl-tambem">about to</span> speak?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.4fr;"><span>Ideia</span><span>Estrutura</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>acabou de (há pouco)</span><span class="enw" data-speak="just">sujeito + just + passado</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>está prestes a</span><span class="enw" data-speak="is about to">to be + about to + verbo</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.4fr;"><span>estava prestes a</span><span class="enw" data-speak="was about to">was/were about to + verbo</span></div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Os dois lados do "agora"</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="just">just</span> + passado = acabou de acontecer (olhando pra trás, há segundos)<br>→ <span class="enw" data-speak="about to">about to</span> = está prestes a acontecer (olhando pra frente, em segundos)</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Acabou de, Prestes a — exercício</span><span class="ex-score" id="justabout-score">0/10</span></div><div class="ex-body" id="justabout-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#f59e0b;"><div class="sec-ghost">44</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 44</div>
+    <div class="sec-title">Pronomes<br><span class="acc">Reflexivos</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Quando a ação volta pra quem fez — eu mesmo, ela mesma...</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🪞</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Poucos animais se reconhecem no <strong>espelho</strong>. Além dos humanos, só alguns — como golfinhos, elefantes, certas aves e grandes primatas — entendem que o reflexo é eles mesmos, e não outro animal. Esse "teste do espelho" é usado por cientistas como um indício de autoconsciência.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#f59e0b;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 44 · Pronomes Reflexivos</div><div class="pg-ttl">Pronomes Reflexivos</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Os <strong>pronomes reflexivos</strong> são usados quando a ação <strong>volta pra própria pessoa</strong> que fez — "eu me machuquei", "ela se cortou", "nós nos divertimos". Em inglês, eles terminam em <strong>-self</strong> (singular) ou <strong>-selves</strong> (plural).</p>
+
+    <div class="sec-divider" id="reflex-tabela"><div class="sec-divider-line"></div><div class="sec-divider-label">Os 8 pronomes reflexivos</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Pronome</span><span>Reflexivo</span><span>Sentido</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="I">I</span><span class="enw" data-speak="myself">myself</span><span>eu mesmo / me</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="you">you</span><span class="enw" data-speak="yourself">yourself</span><span>você mesmo / se</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="he">he</span><span class="enw" data-speak="himself">himself</span><span>ele mesmo / se</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="she">she</span><span class="enw" data-speak="herself">herself</span><span>ela mesma / se</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="it">it</span><span class="enw" data-speak="itself">itself</span><span>(coisa/animal) se</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="we">we</span><span class="enw" data-speak="ourselves">ourselves</span><span>nós mesmos / nos</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="you">you</span><span class="enw" data-speak="yourselves">yourselves</span><span>vocês mesmos / se</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.2fr;"><span class="enw" data-speak="they">they</span><span class="enw" data-speak="themselves">themselves</span><span>eles mesmos / se</span></div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 -self vira -selves no plural</div>
+      <p class="tip-txt">No singular termina em <strong>-self</strong> (myself, yourself, himself...). No plural, vira <strong>-selves</strong> (ourselves, yourselves, themselves). Repare: <em>you</em> tem os dois — <span class="enw" data-speak="yourself">yourself</span> (você) e <span class="enw" data-speak="yourselves">yourselves</span> (vocês).</p>
+    </div>
+
+<div class="sec-divider" id="reflex-acao"><div class="sec-divider-line"></div><div class="sec-divider-label">Quando a ação volta pra você</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O uso principal: o sujeito e o "alvo" da ação são a <strong>mesma pessoa</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Ação reflexiva</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu me machuquei.</span><span class="eg-en en" data-speak="I hurt myself.">I hurt <span class="hl-p1">myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela se cortou.</span><span class="eg-en en" data-speak="She cut herself.">She cut <span class="hl-p1">herself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós nos machucamos.</span><span class="eg-en en" data-speak="We hurt ourselves.">We hurt <span class="hl-p1">ourselves</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Cuide-se!</span><span class="eg-en en" data-speak="Take care of yourself!">Take care of <span class="hl-p1">yourself</span>!</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles se apresentaram.</span><span class="eg-en en" data-speak="They introduced themselves.">They introduced <span class="hl-p1">themselves</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="reflex-enfase"><div class="sec-divider-line"></div><div class="sec-divider-label">Ênfase: "eu mesmo" (eu que fiz)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Também servem pra dar <strong>ênfase</strong> — destacar que foi a própria pessoa, ninguém mais. Aqui equivale ao nosso "eu mesmo", "ela mesma".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Ênfase</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu mesmo fiz isso.</span><span class="eg-en en" data-speak="I did it myself.">I did it <span class="hl-p1">myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela mesma construiu a casa.</span><span class="eg-en en" data-speak="She built the house herself.">She built the house <span class="hl-p1">herself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">O presidente mesmo respondeu.</span><span class="eg-en en" data-speak="The president himself answered.">The president <span class="hl-p1">himself</span> answered.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="reflex-by"><div class="sec-divider-line"></div><div class="sec-divider-label">By + reflexivo = sozinho</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Quando você junta <strong class="enw" data-speak="by">by</strong> + reflexivo, dá a ideia de <strong>"sozinho", "por conta própria"</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 by + reflexivo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu moro sozinho.</span><span class="eg-en en" data-speak="I live by myself.">I live <span class="hl-p1">by myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela fez isso sozinha.</span><span class="eg-en en" data-speak="She did it by herself.">She did it <span class="hl-p1">by herself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">As crianças brincaram sozinhas.</span><span class="eg-en en" data-speak="The kids played by themselves.">The kids played <span class="hl-p1">by themselves</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="reflex-eachother"><div class="sec-divider-line"></div><div class="sec-divider-label">Reflexivo x Recíproco: -selves vs each other</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Esse é o pulo do gato. Em português usamos "se" pra tudo, mas em inglês muda o sentido conforme a ação <strong>volta pra própria pessoa</strong> (reflexivo) ou é <strong>mútua, de um pro outro</strong> (recíproco = <strong class="enw" data-speak="each other">each other</strong>). Compare:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Três frases, três sentidos</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote">
+          <div class="q-pt"><strong>We hugged.</strong></div>
+          <div class="q-en">A gente se abraçou. <span style="opacity:.6">(vago — subentende um ao outro)</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>We hugged ourselves.</strong></div>
+          <div class="q-en">Cada um abraçou a si mesmo. <span style="opacity:.6">(cada um abraçou o próprio corpo — estranho!)</span></div>
+        </div>
+        <div class="quote">
+          <div class="q-pt"><strong>We hugged each other.</strong></div>
+          <div class="q-en">A gente se abraçou (um ao outro). <span style="opacity:.6">(o sentido normal)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 A regra</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="ourselves">ourselves</span>/<span class="enw" data-speak="themselves">themselves</span> = a ação volta pra <strong>cada um sobre si mesmo</strong>.<br>→ <span class="enw" data-speak="each other">each other</span> = a ação é <strong>mútua</strong>, de uma pessoa pra outra.<br>Então <em>They blamed themselves</em> (se culparam — cada um a si) é diferente de <em>They blamed each other</em> (se culparam — um ao outro).</p>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Mais comparações</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eles se olharam (um ao outro).</span><span class="eg-en en" data-speak="They looked at each other.">They looked at <span class="hl-coringa">each other</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela se olhou (no espelho).</span><span class="eg-en en" data-speak="She looked at herself.">She looked at <span class="hl-p1">herself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós nos ajudamos (um ao outro).</span><span class="eg-en en" data-speak="We helped each other.">We helped <span class="hl-coringa">each other</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu me ajudei (a mim mesmo).</span><span class="eg-en en" data-speak="I helped myself.">I helped <span class="hl-p1">myself</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="reflex-posicao"><div class="sec-divider-line"></div><div class="sec-divider-label">Onde colocar o reflexivo na frase</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">A posição muda conforme a função dele na frase. São três casos:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">1️⃣ Depois do verbo (quando é o alvo da ação)</div>
+      <p style="margin:6px 0;font-size:14px;">É o mais comum. O reflexivo vem <strong>logo depois do verbo</strong>, como objeto:</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu me machuquei.</span><span class="eg-en en" data-speak="I hurt myself.">I hurt <span class="hl-p1">myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela se cortou.</span><span class="eg-en en" data-speak="She cut herself.">She cut <span class="hl-p1">herself</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">2️⃣ Depois de uma preposição</div>
+      <p style="margin:6px 0;font-size:14px;">Quando vem depois de palavras como <em>at, of, to, about, by</em>, o reflexivo fica <strong>depois da preposição</strong>:</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela olhou pra si mesma.</span><span class="eg-en en" data-speak="She looked at herself.">She looked at <span class="hl-p1">herself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu me orgulho de mim mesmo.</span><span class="eg-en en" data-speak="I am proud of myself.">I am proud of <span class="hl-p1">myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ele fala sozinho (consigo mesmo).</span><span class="eg-en en" data-speak="He talks to himself.">He talks to <span class="hl-p1">himself</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">3️⃣ Pra dar ênfase: no fim (mais comum) ou após o sujeito</div>
+      <p style="margin:6px 0;font-size:14px;">Quando é só pra <strong>enfatizar</strong> "eu mesmo / ela mesma", há duas posições possíveis. O mais comum e natural é no <strong>fim da frase</strong>; colado no sujeito também vale, mas soa mais formal/enfático:</p>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu fiz isso (eu mesmo). <strong style="color:var(--acc);">· mais comum</strong></span><span class="eg-en en" data-speak="I did it myself.">I did it <span class="hl-p1">myself</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu mesmo fiz isso. <strong style="color:var(--acc);">· mais formal</strong></span><span class="eg-en en" data-speak="I myself did it.">I <span class="hl-p1">myself</span> did it.</span></div>
+        <div class="eg-row"><span class="eg-pt">A própria professora corrigiu.</span><span class="eg-en en" data-speak="The teacher herself corrected it.">The teacher <span class="hl-p1">herself</span> corrected it.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:12px;">
+      <div class="tip-lbl">📌 Na dúvida, jogue pro fim</div>
+      <p class="tip-txt">Pra ênfase, o <strong>fim da frase</strong> é a posição mais comum no dia a dia: <em>I did it <span class="enw" data-speak="myself">myself</span></em>, <em>She built it <span class="enw" data-speak="herself">herself</span></em>. A posição junto ao sujeito (<em>I myself...</em>) existe, mas é mais formal e menos frequente.</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 O resumo da posição</div>
+      <p class="tip-txt">→ é o <strong>alvo</strong> do verbo? vem <strong>depois do verbo</strong> (I hurt myself).<br>→ vem depois de <strong>preposição</strong>? fica depois dela (proud of myself).<br>→ é só <strong>ênfase</strong>? de preferência no <strong>fim</strong> (I did it myself); junto do sujeito (I myself) é mais formal.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Pronomes Reflexivos — exercício</span><span class="ex-score" id="reflex-score">0/10</span></div><div class="ex-body" id="reflex-body"></div></div>
+  </div>
+</div>`
+
+,
+
+`<div class="page pg-sec" style="--acc:#e11d48;"><div class="sec-ghost">45</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 45</div>
+    <div class="sec-title">Condicionais<br><span class="acc">(If)</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Se isso acontecer, então aquilo — os quatro tipos de "if".</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🦋</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O <strong>"efeito borboleta"</strong> é a ideia de que o bater de asas de uma borboleta poderia, em tese, influenciar a formação de um tornado do outro lado do mundo semanas depois. Surgiu de estudos sobre o clima nos anos 1960 e virou símbolo de como pequenas causas podem ter grandes consequências — um "se" levando a outro.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#e11d48;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 45 · Condicionais</div><div class="pg-ttl">Condicionais (If)</div></div>
+  <div class="pg-body">
+
+    <p class="intro">As <strong>condicionais</strong> falam de causa e consequência: <strong>"se</strong> isso acontecer, <strong>então</strong> aquilo". A palavra-chave é <strong class="enw" data-speak="if">if</strong> (se). Existem quatro tipos, do mais real ao mais impossível — e o segredo é qual <strong>tempo verbal</strong> entra em cada parte.</p>
+
+    <div class="tip yel" style="margin-top:6px;">
+      <div class="tip-lbl">📌 A frase tem duas partes</div>
+      <p class="tip-txt">→ a parte do <strong class="enw" data-speak="if">if</strong> (a condição) e a parte do <strong>resultado</strong>. A ordem pode inverter: <em>If it rains, I will stay</em> = <em>I will stay if it rains</em> (sem vírgula quando o if vem no meio).</p>
+    </div>
+
+    <div class="sec-divider" id="cond-zero"><div class="sec-divider-line"></div><div class="sec-divider-label">Zero — verdades sempre (if + presente, presente)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra <strong>fatos e verdades</strong> que sempre acontecem. Os dois lados ficam no <strong>presente</strong>. Aqui o <em>if</em> equivale a <strong>"quando / sempre que"</strong> (<span class="enw" data-speak="whenever">whenever</span>) — tanto que dá pra trocar o <em>if</em> por <em>when</em> sem mudar o sentido.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Zero Conditional</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Se (quando) você esquenta a água, ela ferve.</span><span class="eg-en en" data-speak="If you heat water, it boils."><span class="hl-coringa">If</span> you heat water, it boils.</span></div>
+        <div class="eg-row"><span class="eg-pt">Sempre que não chove, as plantas morrem.</span><span class="eg-en en" data-speak="Whenever it doesn't rain, plants die."><span class="hl-coringa">Whenever</span> it doesn't rain, plants die.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu fico feliz quando você está feliz.</span><span class="eg-en en" data-speak="I am happy when you are happy.">I am happy <span class="hl-coringa">when</span> you are happy.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 If = when, aqui</div>
+      <p class="tip-txt">Como é uma verdade que sempre se repete, o <span class="hl-coringa enw" data-speak="if">if</span> tem o sentido de <span class="enw" data-speak="when">when</span> / <span class="enw" data-speak="whenever">whenever</span> (quando / sempre que). <em>If you heat water, it boils</em> = <em>When you heat water, it boils</em>. As duas dizem a mesma coisa.</p>
+    </div>
+
+    <div class="sec-divider" id="cond-first"><div class="sec-divider-line"></div><div class="sec-divider-label">First — real e provável (if + presente, will)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra algo <strong>real que pode acontecer</strong> no futuro. O <em>if</em> fica no <strong>presente</strong> e o resultado usa <strong>will</strong> (ou o futuro próximo, <span class="enw" data-speak="going to">going to</span>). É a condicional mais usada.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 First Conditional</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Se chover, eu vou ficar em casa.</span><span class="eg-en en" data-speak="If it rains, I will stay home."><span class="hl-coringa">If</span> it rains, I <span class="hl-will">will</span> stay home.</span></div>
+        <div class="eg-row"><span class="eg-pt">Se você estudar, você vai passar.</span><span class="eg-en en" data-speak="If you study, you will pass."><span class="hl-coringa">If</span> you study, you <span class="hl-will">will</span> pass.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu te ligo se eu tiver tempo.</span><span class="eg-en en" data-speak="I will call you if I have time.">I <span class="hl-will">will</span> call you <span class="hl-coringa">if</span> I have time.</span></div>
+        <div class="eg-row"><span class="eg-pt">Se chover, a gente vai ficar em casa.</span><span class="eg-en en" data-speak="If it rains, we are going to stay home."><span class="hl-coringa">If</span> it rains, we <span class="hl-will">are going to</span> stay home.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Depois do if, não use will</div>
+      <p class="tip-txt">O <span class="hl-will enw" data-speak="will">will</span> fica só no <strong>resultado</strong>, nunca na parte do if. É <em>If it rains...</em> ✅, não "If it will rain" ❌.</p>
+    </div>
+
+    <div class="sec-divider" id="cond-second"><div class="sec-divider-line"></div><div class="sec-divider-label">Second — hipótese (if + passado, would)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra situações <strong>hipotéticas ou imaginárias</strong> — "se eu fosse...", "se eu tivesse...". O <em>if</em> fica no <strong>passado</strong> e o resultado normalmente usa <strong class="enw" data-speak="would">would</strong>, que equivale a "ia/iria".</p>
+
+    <div class="tip" style="margin-top:6px;">
+      <div class="tip-lbl">💡 Nem sempre é would</div>
+      <p class="tip-txt">O resultado pode trocar o <span class="enw" data-speak="would">would</span> por outro modal, conforme o sentido: <span class="enw" data-speak="could">could</span> (poderia) ou <span class="enw" data-speak="might">might</span> (talvez). Ex: <em>If I had time, I <span class="enw" data-speak="could">could</span> help you.</em></p>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Second Conditional</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Se eu tivesse dinheiro, eu viajaria.</span><span class="eg-en en" data-speak="If I had money, I would travel."><span class="hl-coringa">If</span> I had money, I <span class="hl-p1">would</span> travel.</span></div>
+        <div class="eg-row"><span class="eg-pt">Se eu fosse você, eu não faria isso.</span><span class="eg-en en" data-speak="If I were you, I wouldn't do that."><span class="hl-coringa">If</span> I were you, I <span class="hl-wont">wouldn't</span> do that.</span></div>
+        <div class="eg-row"><span class="eg-pt">O que você faria se ganhasse na loteria?</span><span class="eg-en en" data-speak="What would you do if you won the lottery?">What <span class="hl-p1">would</span> you do <span class="hl-coringa">if</span> you won the lottery?</span></div>
+        <div class="eg-row"><span class="eg-pt">Se eu tivesse um carro, eu poderia te levar.</span><span class="eg-en en" data-speak="If I had a car, I could give you a ride."><span class="hl-coringa">If</span> I had a car, I <span class="hl-p1">could</span> give you a ride.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Na hipótese, o to be é SEMPRE "were"</div>
+      <p class="tip-txt">Esta é a regra de ouro do second conditional: depois do <span class="hl-coringa enw" data-speak="if">if</span>, o passado do to be vira <strong class="enw" data-speak="were">were</strong> pra <strong>todos</strong> os sujeitos — não existe "was" aqui:<br>→ If I <span class="enw" data-speak="were">were</span>... &nbsp; If you <span class="enw" data-speak="were">were</span>...<br>→ If he/she/it <span class="enw" data-speak="were">were</span>... <span style="opacity:.6">(nunca "if he was")</span><br>→ If we/they <span class="enw" data-speak="were">were</span>...<br>Por isso é sempre <em>If I <span class="enw" data-speak="were">were</span> you</em> (Se eu fosse você), <em>If she <span class="enw" data-speak="were">were</span> here</em> (Se ela estivesse aqui).</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 E o "If I was"?</div>
+      <p class="tip-txt">Você pode ouvir nativos dizendo <em>If I was...</em> na conversa bem informal — mas isso é considerado errado no inglês "certo". Em prova, escrita e pra falar bem, use sempre <span class="enw" data-speak="were">were</span> na hipótese.</p>
+    </div>
+
+    <div class="sec-divider" id="cond-third"><div class="sec-divider-line"></div><div class="sec-divider-label">Third — passado que não rolou (if + had + particípio, would have + particípio)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra um <strong>arrependimento</strong> ou algo no passado que <strong>não aconteceu</strong> ("se eu tivesse estudado..."). Traduz quase literal do português: <strong>"tivesse" = had + verbo</strong>, <strong>"teria" = would have + verbo</strong>.</p>
+
+    <div class="tip" style="margin-top:6px;">
+      <div class="tip-lbl">💡 Nem sempre é would have</div>
+      <p class="tip-txt">Igual ao second, o resultado pode trocar o <span class="enw" data-speak="would have">would have</span> por <span class="enw" data-speak="could have">could have</span> (poderia ter), conforme o sentido. Ex: <em>If I had known, I <span class="enw" data-speak="could have">could have</span> helped.</em></p>
+    </div>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Third Conditional</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Se eu tivesse estudado, eu teria passado.</span><span class="eg-en en" data-speak="If I had studied, I would have passed."><span class="hl-coringa">If</span> I <span class="hl-p1">had studied</span>, I <span class="hl-p1">would have passed</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Se ela tivesse vindo, teria gostado.</span><span class="eg-en en" data-speak="If she had come, she would have liked it."><span class="hl-coringa">If</span> she <span class="hl-p1">had come</span>, she <span class="hl-p1">would have liked</span> it.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu teria te ajudado se você tivesse pedido.</span><span class="eg-en en" data-speak="I would have helped you if you had asked.">I <span class="hl-p1">would have helped</span> you <span class="hl-coringa">if</span> you <span class="hl-p1">had asked</span>.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 As quatro num relance</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:12.5px;">
+      <div class="conj-row hd" style="grid-template-columns:.7fr 1fr 1fr;"><span>Tipo</span><span>Parte do IF</span><span>Resultado</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1fr 1fr;"><span>Zero</span><span>presente</span><span>presente</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1fr 1fr;"><span>First</span><span>presente</span><span class="enw" data-speak="will">will + verbo</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1fr 1fr;"><span>Second</span><span>passado</span><span class="enw" data-speak="would">would + verbo</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1fr 1fr;"><span>Third</span><span class="enw" data-speak="had">had + particípio</span><span class="enw" data-speak="would have">would have + part.</span></div>
+    </div>
+
+    <div class="sec-divider" id="cond-outros"><div class="sec-divider-line"></div><div class="sec-divider-label">Else, otherwise, unless, if not</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Palavras que andam junto das condicionais:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 As parceiras do if</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote"><div class="q-pt"><strong>if not</strong> = "se não"</div><div class="q-en">If not, we will cancel. (Se não, a gente cancela.)</div></div>
+        <div class="quote"><div class="q-pt"><strong>unless</strong> = "a menos que / a não ser que" (if not, em uma palavra)</div><div class="q-en">I won't go unless you come. (Não vou, a menos que você venha.)</div></div>
+        <div class="quote"><div class="q-pt"><strong>or else</strong> = "senão / caso contrário" (com aviso/ameaça)</div><div class="q-en">Hurry up, or else we'll be late. (Anda, senão vamos nos atrasar.)</div></div>
+        <div class="quote"><div class="q-pt"><strong>otherwise</strong> = "caso contrário" (mais formal que or else)</div><div class="q-en">We need to leave now. Otherwise, we'll be late. (Precisamos sair agora. Caso contrário, vamos nos atrasar.)</div></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 unless = if not</div>
+      <p class="tip-txt">O <span class="enw" data-speak="unless">unless</span> é só um jeito mais curto de dizer "if not". <em>Unless you study</em> = <em>If you don't study</em>. Os dois dizem a mesma coisa.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Condicionais — exercício</span><span class="ex-score" id="cond-score">0/10</span></div><div class="ex-body" id="cond-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#06b6d4;"><div class="sec-ghost">46</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 46</div>
+    <div class="sec-title">Quando o "que"<br><span class="acc">pode sumir</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O "that" que aparece e some sem mudar o sentido.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🤫</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O <strong>silêncio</strong> tem um custo no cérebro: estudos mostram que duas pessoas conversando ficam desconfortáveis com pausas de apenas <strong>4 segundos</strong>. Esse incômodo é tão forte que costumamos preencher o vazio na hora — por isso "deixar uma palavra de fora" numa frase, como o <em>that</em>, soa tão natural: a gente adora encurtar o caminho.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#06b6d4;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 46 · Quando o "que" pode sumir</div><div class="pg-ttl">Quando o "que" pode sumir</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Em português, o <strong>"que"</strong> quase nunca some — "Ela disse <strong>que</strong> está bem". Mas em inglês, esse <strong class="enw" data-speak="that">that</strong> muitas vezes é <strong>opcional</strong>: você pode falar com ou sem ele, e o sentido continua igual. Saber quando ele some deixa seu inglês muito mais natural.</p>
+
+    <div class="sec-divider" id="that-conj"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" depois de say, think, know...</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Depois de verbos como <strong>say, tell, think, know, believe, hope</strong>, o <strong class="enw" data-speak="that">that</strong> ("que") liga as duas partes da frase. Nesses casos, ele quase sempre <strong>pode sumir</strong> — e na fala do dia a dia, normalmente some.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Com ou sem that — mesmo sentido</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Ela disse que ela é legal.</span><span class="eg-en en" data-speak="She said she is nice.">She said <span class="hl-coringa">(that)</span> she is nice.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu acho que você está certo.</span><span class="eg-en en" data-speak="I think you are right.">I think <span class="hl-coringa">(that)</span> you are right.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu sei que ele vai vir.</span><span class="eg-en en" data-speak="I know he will come.">I know <span class="hl-coringa">(that)</span> he will come.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu espero que dê tudo certo.</span><span class="eg-en en" data-speak="I hope everything works out.">I hope <span class="hl-coringa">(that)</span> everything works out.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 O (that) entre parênteses</div>
+      <p class="tip-txt">Quando você vir <span class="hl-coringa">(that)</span> entre parênteses, significa: <strong>pode estar ali ou não</strong>, tanto faz. <em>She said she is nice</em> e <em>She said that she is nice</em> são a mesma coisa — a versão sem é só mais leve e comum na fala.</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">🧠 O macete da cabeça</div>
+      <p class="tip-txt">Uma dica fácil: se o verbo é uma ação feita com <strong>alguma parte da cabeça</strong> — pensar (<span class="enw" data-speak="think">think</span>, cérebro), ver (<span class="enw" data-speak="see">see</span>, olho), saber (<span class="enw" data-speak="know">know</span>), achar/sentir (<span class="enw" data-speak="feel">feel</span>), dizer (<span class="enw" data-speak="say">say</span>, boca) — o <strong>that</strong> explicativo normalmente <strong>não é necessário</strong>. <em>I think you're right</em>, <em>I see what you mean</em>, <em>I feel something is wrong</em>.</p>
+    </div>
+
+    <div class="sec-divider" id="that-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" que se refere a uma coisa (relativo)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O outro <strong>that</strong> é o que aponta pra uma <strong>coisa</strong> já citada — "o livro <strong>que</strong> eu li", "o filme <strong>que</strong> a gente viu". Esse também pode sumir, <strong>mas só em um caso</strong>: quando vem outro sujeito logo depois.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Pode sumir (vem outro sujeito depois)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">O livro que eu li era ótimo.</span><span class="eg-en en" data-speak="The book I read was great.">The book <span class="hl-coringa">(that)</span> I read was great.</span></div>
+        <div class="eg-row"><span class="eg-pt">O filme que a gente viu foi longo.</span><span class="eg-en en" data-speak="The movie we watched was long.">The movie <span class="hl-coringa">(that)</span> we watched was long.</span></div>
+        <div class="eg-row"><span class="eg-pt">A pessoa que você conheceu é minha irmã.</span><span class="eg-en en" data-speak="The person you met is my sister.">The person <span class="hl-coringa">(that)</span> you met is my sister.</span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ Quando NÃO pode sumir</div>
+      <p class="tip-txt">Se o <strong>that</strong> for o próprio <strong>sujeito</strong> do verbo seguinte (não vem outro sujeito depois), ele <strong>fica</strong>. <em>The man <span class="enw" data-speak="that">that</span> lives here</em> ✅ (o homem que mora aqui) — aqui não dá pra tirar, senão fica "the man lives here" e some a ligação. Repare: depois do that vem direto o verbo (lives), não um novo sujeito.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 O macete</div><div class="sec-divider-line r"></div></div>
+
+    <div class="pron-section">
+      <div class="pron-header">🔑 Como saber se o that pode sumir</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote"><div class="q-pt">Depois de <strong>say, think, know, hope...</strong> → pode sumir (quase sempre some)</div></div>
+        <div class="quote"><div class="q-pt">Vem <strong>outro sujeito</strong> logo depois do that → pode sumir</div></div>
+        <div class="quote"><div class="q-pt">O that é o <strong>sujeito</strong> (vem um verbo logo depois) → NÃO some</div></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Na dúvida, pode deixar o that</div>
+      <p class="tip-txt">Colocar o <span class="enw" data-speak="that">that</span> nunca está errado — ele só às vezes é desnecessário. Se ficar na dúvida se pode tirar, <strong>deixe ele lá</strong>: a frase continua correta. Tirar é questão de soar mais natural, não de regra obrigatória.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Quando o "que" pode sumir — exercício</span><span class="ex-score" id="that-score">0/10</span></div><div class="ex-body" id="that-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#a78bfa;">
+  <div class="sec-ghost">✨</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="bonus-eyebrow">Matéria Bônus</div>
+    <div class="sec-title">Internet<br><span class="acc">Slang</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">As abreviações e siglas que todo mundo usa online.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">📡</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A primeira mensagem enviada pela internet, em 1969, era pra ser a palavra "LOGIN" — mas o sistema travou depois das duas primeiras letras. Então, sem querer, a primeiríssima "mensagem" da história da internet foi simplesmente: <strong>"LO"</strong>.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Matéria Bônus · Internet Slang</div><div class="pg-ttl">Internet Slang</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Se você joga online, usa redes sociais ou conversa em inglês por mensagem, vai esbarrar em <strong>abreviações</strong> o tempo todo. Os nativos escrevem rápido e cortam tudo — "you" vira <strong>u</strong>, "thanks" vira <strong>thx</strong>. Aqui estão as mais comuns pra você não ficar perdido.</p>
+
+    <div class="tip red" style="margin-top:6px;">
+      <div class="tip-lbl">⚠️ Só pra conversa informal</div>
+      <p class="tip-txt">Tudo isso é gíria de mensagem, jogo e rede social. <strong>Nunca</strong> use em e-mail de trabalho, prova ou texto formal — ali se escreve tudo por extenso e certo.</p>
+    </div>
+
+    <div class="sec-divider" id="slang-palavras"><div class="sec-divider-line"></div><div class="sec-divider-label">Palavras encurtadas</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Palavras comuns que viram uma letra ou número (muitas pela <strong>sonoridade</strong>: a letra "u" se lê igual a "you", o número "2" igual a "to"):</p>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
+      <div class="conj-row hd" style="grid-template-columns:.8fr 1.2fr;"><span>Abreviação</span><span>Significa</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="you">u</span><span>you (você)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="your">ur</span><span>your / you're (seu / você é)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="are">r</span><span>are (está/são)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="why">y</span><span>why (por quê)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="okay">k / kk</span><span>ok (beleza)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="please">pls / plz</span><span>please (por favor)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="thanks">thx / ty</span><span>thanks / thank you (obrigado)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="before">b4</span><span>before (antes)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="to">2</span><span>to / too (para / também)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="for">4</span><span>for (para)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="and">n</span><span>and (e)</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.2fr;"><span class="enw" data-speak="see you">cya</span><span>see you (até mais)</span></div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Onde você está?</span><span class="eg-en en" data-speak="Where are you?">Where <span class="hl-tambem">r u</span>?</span></div>
+        <div class="eg-row"><span class="eg-pt">Te vejo amanhã, obrigado!</span><span class="eg-en en" data-speak="See you tomorrow, thanks!"><span class="hl-tambem">cya</span> tomorrow, <span class="hl-tambem">thx</span>!</span></div>
+        <div class="eg-row"><span class="eg-pt">Você está pronto?</span><span class="eg-en en" data-speak="Are you ready?"><span class="hl-tambem">r u</span> ready?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="slang-siglas"><div class="sec-divider-line"></div><div class="sec-divider-label">Siglas (as iniciais de uma frase)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Essas são as iniciais de uma frase inteira em inglês. As mais usadas no mundo todo:</p>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:.7fr 1.3fr;"><span>Sigla</span><span>Significa</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="L O L">lol</span><span>laughing out loud (rindo alto — "kkk")</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="O M G">omg</span><span>oh my god (meu deus)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="B T W">btw</span><span>by the way (a propósito)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="I D K">idk</span><span>I don't know (não sei)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="B R B">brb</span><span>be right back (já volto)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="T B H">tbh</span><span>to be honest (sendo sincero)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="I M O">imo</span><span>in my opinion (na minha opinião)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="F Y I">fyi</span><span>for your information (pra você saber)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="A S A P">asap</span><span>as soon as possible (o quanto antes)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="I R L">irl</span><span>in real life (na vida real)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="N P">np</span><span>no problem (sem problema)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="A K A">aka</span><span>also known as (também conhecido como)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="D M">dm</span><span>direct message (mensagem privada)</span></div>
+      <div class="conj-row" style="grid-template-columns:.7fr 1.3fr;"><span class="enw" data-speak="G G">gg</span><span>good game (bom jogo — fim de partida)</span></div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Kkk, não sei, a propósito.</span><span class="eg-en en" data-speak="lol, I don't know, by the way"><span class="hl-coringa">lol</span>, <span class="hl-coringa">idk</span>, <span class="hl-coringa">btw</span>.</span></div>
+        <div class="eg-row"><span class="eg-pt">Já volto, sem problema!</span><span class="eg-en en" data-speak="be right back, no problem"><span class="hl-coringa">brb</span>, <span class="hl-coringa">np</span>!</span></div>
+        <div class="eg-row"><span class="eg-pt">Sendo sincero, na minha opinião você está certo.</span><span class="eg-en en" data-speak="to be honest, in my opinion you are right"><span class="hl-coringa">tbh</span>, <span class="hl-coringa">imo</span> you are right.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Algumas viram fala também</div>
+      <p class="tip-txt">Algumas siglas já são tão comuns que as pessoas <strong>falam</strong> elas em voz alta, soletrando as letras: "<span class="enw" data-speak="O M G">OMG</span>", "<span class="enw" data-speak="B T W">BTW</span>", "<span class="enw" data-speak="A S A P">ASAP</span>". O <span class="enw" data-speak="lol">lol</span> muita gente fala como uma palavra só ("lól") — virou parte do inglês falado.</p>
+    </div>
+
+  </div>
+</div>`
+,
+
+`<div class="page pg-content" style="--acc:#fb7185;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 8 — say/tell/talk/speak, futuro próximo, o "ia", acabou de/prestes a, reflexivos, condicionais e o "that" que some.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 8.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 8</span><span class="ex-score" id="rev8-score">0/15</span></div><div class="ex-body" id="rev8-body"></div></div>
+</div>`
+
+
+
+
+,
 
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>

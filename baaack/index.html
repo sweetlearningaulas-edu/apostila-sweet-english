@@ -1328,14 +1328,14 @@ function runInits(p){
   if(p===33)initEx('demo',window['demo_bk'],10);
   if(p===35)initEx('indem',window['indem_bk'],10);
   if(p===37)initEx('queexp',window['queexp_bk'],10);
-  if(p===38)initEx('rev3',window['rev3_bk'],15);
+  if(p===40)initEx('rev3',window['rev3_bk'],15);
   if(p===43)initEx('poss',window['poss_bk'],15);
   if(p===45)initEx('caso',window['caso_bk'],10);
   if(p===46)initEx('ofdem',window['ofdem_bk'],10);
   if(p===49)initEx('from',window['from_bk'],10);
   if(p===51)initEx('fromdem',window['fromdem_bk'],10);
   if(p===53)initEx('desome',window['desome_bk'],10);
-  if(p===54)initEx('rev4',window['rev4_bk'],15);
+  if(p===56)initEx('rev4',window['rev4_bk'],15);
   if(p===63)initEx('toforinf',window['toforinf_bk'],10);
   if(p===65)initEx('pronobj',window['pronobj_bk'],10);
   if(p===67)initEx('inonatpron',window['inonatpron_bk'],10);
@@ -1347,13 +1347,15 @@ function runInits(p){
   if(p===79)initEx('comp',window['comp_bk'],10);
   if(p===81)initEx('sup',window['sup_bk'],10);
   if(p===83)initEx('irreg',window['irreg_bk'],10);
-  if(p===84)initEx('rev6',window['rev6_bk'],15);
+  if(p===86)initEx('rev6',window['rev6_bk'],15);
   if(p===89)initEx('sane',window['sane_bk'],10);
   if(p===91)initEx('ter',window['ter_bk'],10);
   if(p===93)initEx('todo',window['todo_bk'],10);
   if(p===95)initEx('modal',window['modal_bk'],10);
   if(p===97)initEx('tag',window['tag_bk'],10);
   if(p===99)initEx('qw',window['qw_bk'],10);
+  if(p===102)initEx('rev7',window['rev7_bk'],15);
+  if(p===105)initEx('stts',window['stts_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -2835,12 +2837,6 @@ window['togo_bk']=[
   {pt:'Nós vamos ao parque no domingo.',before:'We',blank:'will go',after:'to the park on Sunday.',options:['go','goes','went','will go'],anchor:'togo-future'},
   {pt:'Ela vai ao salão amanhã de manhã.',before:'She',blank:'will go',after:'to the salon tomorrow morning.',options:['go','goes','went','will go'],anchor:'togo-future'},
   {pt:'Patrick vai ao escritório de manhã cedo.',before:'Patrick',blank:'will go',after:'to the office early in the morning.',options:['go','goes','went','will go'],anchor:'togo-future'},
-  {pt:'Eu vou viajar no fim do ano.',before:'I',blank:'am going to',after:'travel at the end of the year.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
-  {pt:'Ela vai estudar para a prova.',before:'She',blank:'is going to',after:'study for the test.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
-  {pt:'Eles vão se mudar em julho.',before:'They',blank:'are going to',after:'move in July.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
-  {pt:'Nós vamos comprar uma casa nova.',before:'We',blank:'are going to',after:'buy a new house.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
-  {pt:'Logan vai pedir um aumento.',before:'Logan',blank:'is going to',after:'ask for a raise.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
-  {pt:'Eu vou começar uma dieta segunda-feira.',before:'I',blank:'am going to',after:'start a diet on Monday.',options:['am going to','is going to','are going to','will'],anchor:'togo-going'},
   {pt:'Ela vai ao trabalho de carro.',before:'She',blank:'goes',after:'to work by car.',options:['go','goes','went','will go'],anchor:'togo-pres'},
   {pt:'Eu vou ao parque todo domingo.',before:'I',blank:'go',after:'to the park every Sunday.',options:['go','goes','went','will go'],anchor:'togo-pres'},
   {pt:'Eles vão ao cinema duas vezes por mês.',before:'They',blank:'go',after:'to the movies twice a month.',options:['go','goes','went','will go'],anchor:'togo-pres'},
@@ -4742,8 +4738,8 @@ window['qw_bk']=[
   {pt:'Quando vocês chegaram?',isFullSentence:true,options:['When did you arrive?','Where did you arrive?','When you arrived?','When did you arrived?'],correct:'When did you arrive?',anchor:'qw-basic'},
   {pt:'Por que ela saiu cedo?',isFullSentence:true,options:['Why did she leave early?','What did she leave early?','Why she left early?','Why did she left early?'],correct:'Why did she leave early?',anchor:'qw-basic'},
   {pt:'Quem é aquele homem?',isFullSentence:true,options:['Who is that man?','What is that man?','Who that man is?','Who are that man?'],correct:'Who is that man?',anchor:'qw-basic'},
-  {pt:'O que está acontecendo?',isFullSentence:true,options:['What is happening?','Where is happening?','What happening?','What does happening?'],correct:'What is happening?',anchor:'qw-basic'},
-  {pt:'Onde você trabalha?',isFullSentence:true,options:['Where do you work?','What do you work?','Where you work?','Where do you works?'],correct:'Where do you work?',anchor:'qw-basic'},
+  {pt:'As caixas nas quais eu guardo meus sapatos são velhas.',isFullSentence:true,options:['The boxes where I keep my shoes are old.','The boxes which I keep my shoes are old.','The boxes where I keep my shoes is old.','The boxes when I keep my shoes are old.'],correct:'The boxes where I keep my shoes are old.',anchor:'qw-basic'},
+  {pt:'O local onde ela trabalha é grande.',isFullSentence:true,options:['The place where she works is big.','The place when she works is big.','The place which she works is big.','The place where she work is big.'],correct:'The place where she works is big.',anchor:'qw-basic'},
   {pt:'Qual é a sua cor favorita?',isFullSentence:true,options:['What is your favorite color?','Which is your favorite color?','What your favorite color is?','What are your favorite color?'],correct:'What is your favorite color?',anchor:'qw-which-how'},
   {pt:'Qual você quer, o azul ou o vermelho?',isFullSentence:true,options:['Which one do you want, the blue or the red?','What one do you want, the blue or the red?','Which one you want, the blue or the red?','Which one do you wants, the blue or the red?'],correct:'Which one do you want, the blue or the red?',anchor:'qw-which-how'},
   {pt:'Quantos livros você tem?',isFullSentence:true,options:['How many books do you have?','How much books do you have?','How many books you have?','How many book do you have?'],correct:'How many books do you have?',anchor:'qw-which-how'},
@@ -4760,11 +4756,11 @@ window['qw_bk']=[
   {pt:'De quem são esses livros?',isFullSentence:true,options:['Whose books are these?','Who books are these?','Whose are these books?','Whose books these are?'],correct:'Whose books are these?',anchor:'qw-whose-misc'},
   {pt:'Quem fez o bolo?',isFullSentence:true,options:['Who made the cake?','What made the cake?','Who did make the cake?','Who makes the cake yesterday?'],correct:'Who made the cake?',anchor:'qw-whose-misc'},
   {pt:'Por que isso aconteceu?',isFullSentence:true,options:['Why did this happen?','What did this happen?','Why this happened?','Why did this happened?'],correct:'Why did this happen?',anchor:'qw-whose-misc'},
-  {pt:'De quem é a vez?',isFullSentence:true,options:['Whose turn is it?','Who turn is it?','Whose is it turn?','Whose turn it is?'],correct:'Whose turn is it?',anchor:'qw-whose-misc'},
+  {pt:'O homem cujo carro foi roubado ligou.',isFullSentence:true,options:['The man whose car was stolen called.','The man who car was stolen called.','The man whose car were stolen called.','The man whom car was stolen called.'],correct:'The man whose car was stolen called.',anchor:'qw-whose-misc'},
   {pt:'Quem vai dirigir?',isFullSentence:true,options:['Who will drive?','What will drive?','Who will drives?','Who is drive?'],correct:'Who will drive?',anchor:'qw-whose-misc'},
   {pt:'Por que você fez isso?',isFullSentence:true,options:['Why did you do that?','What did you do that?','Why you did that?','Why did you did that?'],correct:'Why did you do that?',anchor:'qw-whose-misc'},
   {pt:'Quem mora aqui?',isFullSentence:true,options:['Who lives here?','What lives here?','Who do live here?','Who live here?'],correct:'Who lives here?',anchor:'qw-whose-misc'},
-  {pt:'De quem é a culpa?',isFullSentence:true,options:['Whose fault is it?','Who fault is it?','Whose is it fault?','Whose fault it is?'],correct:'Whose fault is it?',anchor:'qw-whose-misc'},
+  {pt:'A mulher cuja filha estuda aqui é médica.',isFullSentence:true,options:['The woman whose daughter studies here is a doctor.','The woman who daughter studies here is a doctor.','The woman whose daughter study here is a doctor.','The woman whom daughter studies here is a doctor.'],correct:'The woman whose daughter studies here is a doctor.',anchor:'qw-whose-misc'},
   {pt:'Por que ela está chorando?',isFullSentence:true,options:['Why is she crying?','What is she crying?','Why she is crying?','Why does she crying?'],correct:'Why is she crying?',anchor:'qw-whose-misc'},
   {pt:'Quem quer café?',isFullSentence:true,options:['Who wants coffee?','What wants coffee?','Who do want coffee?','Who want coffee?'],correct:'Who wants coffee?',anchor:'qw-whose-misc'},
   {pt:'De quem foi a ideia?',isFullSentence:true,options:['Whose idea was it?','Who idea was it?','Whose was it idea?','Whose idea it was?'],correct:'Whose idea was it?',anchor:'qw-whose-misc'},
@@ -4792,6 +4788,108 @@ window['qw_bk']=[
   {pt:'Por que isso importa?',isFullSentence:true,options:['Why does it matter?','What does it matter?','Why it matters?','Why does it matters?'],correct:'Why does it matter?',anchor:'qw-whatsoever'},
   {pt:'Qual prefere, café ou chá?',isFullSentence:true,options:['Which do you prefer, coffee or tea?','What do you prefer, coffee or tea?','Which you prefer, coffee or tea?','Which do you prefers, coffee or tea?'],correct:'Which do you prefer, coffee or tea?',anchor:'qw-whatsoever'},
   {pt:'Não faço a menor ideia, nadinha.',isFullSentence:true,options:['I have no clue whatsoever.','I have no clue whatever.','I have no clue however.','I have any clue whatsoever.'],correct:'I have no clue whatsoever.',anchor:'qw-whatsoever'},
+];
+
+window['stts_bk']=[
+  {pt:'Eu disse que ela vai estar lá.',isFullSentence:true,options:['I said she will be there.','I told she will be there.','I talked she will be there.','I spoke she will be there.'],correct:'I said she will be there.',anchor:'stts-say'},
+  {pt:'Eles vão dizer que não vão.',isFullSentence:true,options:["They will say they won't go.","They will tell they won't go.","They will talk they won't go.","They will speak they won't go."],correct:"They will say they won't go.",anchor:'stts-say'},
+  {pt:'Ela disse a verdade.',isFullSentence:true,options:['She said the truth.','She told the truth.','She talked the truth.','She spoke the truth.'],correct:'She said the truth.',anchor:'stts-say'},
+  {pt:'O que você disse?',isFullSentence:true,options:['What did you say?','What did you tell?','What did you talk?','What did you speak?'],correct:'What did you say?',anchor:'stts-say'},
+  {pt:'Ele disse que está cansado.',isFullSentence:true,options:['He said he is tired.','He told he is tired.','He talked he is tired.','He spoke he is tired.'],correct:'He said he is tired.',anchor:'stts-say'},
+  {pt:'Eu não disse isso.',isFullSentence:true,options:["I didn't say that.","I didn't tell that.","I didn't talk that.","I didn't speak that."],correct:"I didn't say that.",anchor:'stts-say'},
+  {pt:'Ela diz que está tudo bem.',isFullSentence:true,options:['She says everything is fine.','She tells everything is fine.','She talks everything is fine.','She speaks everything is fine.'],correct:'She says everything is fine.',anchor:'stts-say'},
+  {pt:'Eu disse sim.',isFullSentence:true,options:['I said yes.','I told yes.','I talked yes.','I spoke yes.'],correct:'I said yes.',anchor:'stts-say'},
+  {pt:'Eles disseram que vão chegar tarde.',isFullSentence:true,options:['They said they will arrive late.','They told they will arrive late.','They talked they will arrive late.','They spoke they will arrive late.'],correct:'They said they will arrive late.',anchor:'stts-say'},
+  {pt:'Diga olá.',isFullSentence:true,options:['Say hello.','Tell hello.','Talk hello.','Speak hello.'],correct:'Say hello.',anchor:'stts-say'},
+  {pt:'Eu sempre digo a verdade.',isFullSentence:true,options:['I always say the truth.','I always tell the truth.','I always talk the truth.','I always speak the truth.'],correct:'I always say the truth.',anchor:'stts-say'},
+  {pt:'Ela disse que está feliz.',isFullSentence:true,options:['She said she is happy.','She told she is happy.','She talked she is happy.','She spoke she is happy.'],correct:'She said she is happy.',anchor:'stts-say'},
+  {pt:'Eu disse para ela que eu vou estar lá.',isFullSentence:true,options:['I told her I will be there.','I said her I will be there.','I talked her I will be there.','I spoke her I will be there.'],correct:'I told her I will be there.',anchor:'stts-tell'},
+  {pt:'Ela não vai contar pra ele que está grávida.',isFullSentence:true,options:["She won't tell him she's pregnant.","She won't say him she's pregnant.","She won't talk him she's pregnant.","She won't speak him she's pregnant."],correct:"She won't tell him she's pregnant.",anchor:'stts-tell'},
+  {pt:'Me conta a verdade.',isFullSentence:true,options:['Tell me the truth.','Say me the truth.','Talk me the truth.','Speak me the truth.'],correct:'Tell me the truth.',anchor:'stts-tell'},
+  {pt:'Eu contei pra eles sobre o plano.',isFullSentence:true,options:['I told them about the plan.','I said them about the plan.','I talked them about the plan.','I spoke them about the plan.'],correct:'I told them about the plan.',anchor:'stts-tell'},
+  {pt:'Ele me contou um segredo.',isFullSentence:true,options:['He told me a secret.','He said me a secret.','He talked me a secret.','He spoke me a secret.'],correct:'He told me a secret.',anchor:'stts-tell'},
+  {pt:'Conta pra gente o que aconteceu.',isFullSentence:true,options:['Tell us what happened.','Say us what happened.','Talk us what happened.','Speak us what happened.'],correct:'Tell us what happened.',anchor:'stts-tell'},
+  {pt:'Ela vai te contar amanhã.',isFullSentence:true,options:['She will tell you tomorrow.','She will say you tomorrow.','She will talk you tomorrow.','She will speak you tomorrow.'],correct:'She will tell you tomorrow.',anchor:'stts-tell'},
+  {pt:'Eu não contei pra ninguém.',isFullSentence:true,options:["I didn't tell anyone.","I didn't say anyone.","I didn't talk anyone.","I didn't speak anyone."],correct:"I didn't tell anyone.",anchor:'stts-tell'},
+  {pt:'Me diga seu nome.',isFullSentence:true,options:['Tell me your name.','Say me your name.','Talk me your name.','Speak me your name.'],correct:'Tell me your name.',anchor:'stts-tell'},
+  {pt:'Eles contaram pra ela sobre a festa.',isFullSentence:true,options:['They told her about the party.','They said her about the party.','They talked her about the party.','They spoke her about the party.'],correct:'They told her about the party.',anchor:'stts-tell'},
+  {pt:'Não conta pra ele.',isFullSentence:true,options:["Don't tell him.","Don't say him.","Don't talk him.","Don't speak him."],correct:"Don't tell him.",anchor:'stts-tell'},
+  {pt:'Eu te disse!',isFullSentence:true,options:['I told you!','I said you!','I talked you!','I spoke you!'],correct:'I told you!',anchor:'stts-tell'},
+  {pt:'Eu estava conversando com uma menina.',isFullSentence:true,options:['I was talking with a girl.','I was saying with a girl.','I was telling with a girl.','I was speaking with a girl.'],correct:'I was talking with a girl.',anchor:'stts-talk'},
+  {pt:'Eu preciso conversar com você.',isFullSentence:true,options:['I need to talk to you.','I need to say to you.','I need to tell to you.','I need to talk you.'],correct:'I need to talk to you.',anchor:'stts-talk'},
+  {pt:'Nós conversamos sobre o futuro.',isFullSentence:true,options:['We talked about the future.','We said about the future.','We told about the future.','We talked the future.'],correct:'We talked about the future.',anchor:'stts-talk'},
+  {pt:'Eles estão conversando agora.',isFullSentence:true,options:['They are talking now.','They are saying now.','They are telling now.','They are talk now.'],correct:'They are talking now.',anchor:'stts-talk'},
+  {pt:'Vamos conversar sobre isso.',isFullSentence:true,options:["Let's talk about it.","Let's say about it.","Let's tell about it.","Let's talk it."],correct:"Let's talk about it.",anchor:'stts-talk'},
+  {pt:'Eu gosto de conversar com meus amigos.',isFullSentence:true,options:['I like to talk with my friends.','I like to say with my friends.','I like to tell with my friends.','I like to talk my friends.'],correct:'I like to talk with my friends.',anchor:'stts-talk'},
+  {pt:'Ela quer conversar com você.',isFullSentence:true,options:['She wants to talk to you.','She wants to say to you.','She wants to tell to you.','She wants to talk you.'],correct:'She wants to talk to you.',anchor:'stts-talk'},
+  {pt:'Nós conversamos a noite toda.',isFullSentence:true,options:['We talked all night.','We said all night.','We told all night.','We spoke all night with.'],correct:'We talked all night.',anchor:'stts-talk'},
+  {pt:'Sobre o que vocês estão conversando?',isFullSentence:true,options:['What are you talking about?','What are you saying about?','What are you telling about?','What are you talking?'],correct:'What are you talking about?',anchor:'stts-talk'},
+  {pt:'Eu preciso conversar sobre o trabalho.',isFullSentence:true,options:['I need to talk about work.','I need to say about work.','I need to tell about work.','I need to talk work.'],correct:'I need to talk about work.',anchor:'stts-talk'},
+  {pt:'Eles conversaram por horas.',isFullSentence:true,options:['They talked for hours.','They said for hours.','They told for hours.','They talk for hours.'],correct:'They talked for hours.',anchor:'stts-talk'},
+  {pt:'Podemos conversar mais tarde?',isFullSentence:true,options:['Can we talk later?','Can we say later?','Can we tell later?','Can we talk about later?'],correct:'Can we talk later?',anchor:'stts-talk'},
+  {pt:'Eu preciso falar com você.',isFullSentence:true,options:['I need to speak to you.','I need to say to you.','I need to tell to you.','I need to speak you.'],correct:'I need to speak to you.',anchor:'stts-speak'},
+  {pt:'Eu falo inglês.',isFullSentence:true,options:['I speak English.','I talk English.','I say English.','I tell English.'],correct:'I speak English.',anchor:'stts-speak'},
+  {pt:'Ela fala três idiomas.',isFullSentence:true,options:['She speaks three languages.','She talks three languages.','She says three languages.','She tells three languages.'],correct:'She speaks three languages.',anchor:'stts-speak'},
+  {pt:'Posso falar com o gerente?',isFullSentence:true,options:['Can I speak to the manager?','Can I say to the manager?','Can I tell to the manager?','Can I speak the manager?'],correct:'Can I speak to the manager?',anchor:'stts-speak'},
+  {pt:'Você fala espanhol?',isFullSentence:true,options:['Do you speak Spanish?','Do you talk Spanish?','Do you say Spanish?','Do you tell Spanish?'],correct:'Do you speak Spanish?',anchor:'stts-speak'},
+  {pt:'Ele não fala francês.',isFullSentence:true,options:["He doesn't speak French.","He doesn't talk French.","He doesn't say French.","He doesn't tell French."],correct:"He doesn't speak French.",anchor:'stts-speak'},
+  {pt:'Eu gostaria de falar com o diretor.',isFullSentence:true,options:['I would like to speak to the director.','I would like to say to the director.','I would like to tell to the director.','I would like to speak the director.'],correct:'I would like to speak to the director.',anchor:'stts-speak'},
+  {pt:'Nós falamos português.',isFullSentence:true,options:['We speak Portuguese.','We talk Portuguese.','We say Portuguese.','We tell Portuguese.'],correct:'We speak Portuguese.',anchor:'stts-speak'},
+  {pt:'Por favor, fale mais devagar.',isFullSentence:true,options:['Please speak slower.','Please say slower.','Please tell slower.','Please talk slower it.'],correct:'Please speak slower.',anchor:'stts-speak'},
+  {pt:'Quantos idiomas você fala?',isFullSentence:true,options:['How many languages do you speak?','How many languages do you talk?','How many languages do you say?','How many languages do you tell?'],correct:'How many languages do you speak?',anchor:'stts-speak'},
+  {pt:'Ela fala muito bem em público.',isFullSentence:true,options:['She speaks very well in public.','She talks very well in public.','She says very well in public.','She tells very well in public.'],correct:'She speaks very well in public.',anchor:'stts-speak'},
+  {pt:'Eu preciso falar com o seu chefe.',isFullSentence:true,options:['I need to speak to your boss.','I need to say to your boss.','I need to tell to your boss.','I need to speak your boss.'],correct:'I need to speak to your boss.',anchor:'stts-speak'},
+  {pt:'Eu disse a verdade.',isFullSentence:true,options:['I said the truth.','I told the truth.','I talked the truth.','I spoke the truth.'],correct:'I said the truth.',anchor:'stts-misto'},
+  {pt:'Eu disse a ela a verdade.',isFullSentence:true,options:['I told her the truth.','I said her the truth.','I talked her the truth.','I spoke her the truth.'],correct:'I told her the truth.',anchor:'stts-misto'},
+  {pt:'Ele me disse que está doente.',isFullSentence:true,options:['He told me he is sick.','He said me he is sick.','He talked me he is sick.','He spoke me he is sick.'],correct:'He told me he is sick.',anchor:'stts-misto'},
+  {pt:'Ele disse que está doente.',isFullSentence:true,options:['He said he is sick.','He told he is sick.','He talked he is sick.','He spoke he is sick.'],correct:'He said he is sick.',anchor:'stts-misto'},
+  {pt:'Eu falo inglês e espanhol.',isFullSentence:true,options:['I speak English and Spanish.','I talk English and Spanish.','I say English and Spanish.','I tell English and Spanish.'],correct:'I speak English and Spanish.',anchor:'stts-misto'},
+  {pt:'Nós conversamos sobre você.',isFullSentence:true,options:['We talked about you.','We said about you.','We told about you.','We talked you.'],correct:'We talked about you.',anchor:'stts-misto'},
+  {pt:'Me conta o que aconteceu.',isFullSentence:true,options:['Tell me what happened.','Say me what happened.','Talk me what happened.','Speak me what happened.'],correct:'Tell me what happened.',anchor:'stts-misto'},
+  {pt:'O que ela disse?',isFullSentence:true,options:['What did she say?','What did she tell?','What did she talk?','What did she speak?'],correct:'What did she say?',anchor:'stts-misto'},
+  {pt:'Eu preciso conversar com você sobre isso.',isFullSentence:true,options:['I need to talk to you about this.','I need to say to you about this.','I need to tell to you about this.','I need to talk you about this.'],correct:'I need to talk to you about this.',anchor:'stts-misto'},
+  {pt:'Posso falar com você um minuto? (formal)',isFullSentence:true,options:['Can I speak to you for a minute?','Can I say to you for a minute?','Can I tell to you for a minute?','Can I speak you for a minute?'],correct:'Can I speak to you for a minute?',anchor:'stts-misto'},
+  {pt:'Ela me contou tudo.',isFullSentence:true,options:['She told me everything.','She said me everything.','She talked me everything.','She spoke me everything.'],correct:'She told me everything.',anchor:'stts-misto'},
+  {pt:'Eles disseram que sim.',isFullSentence:true,options:['They said yes.','They told yes.','They talked yes.','They spoke yes.'],correct:'They said yes.',anchor:'stts-misto'},
+];
+
+window['rev7_bk']=[
+  {pt:'Tem alguém na recepção.',isFullSentence:true,options:['Someone is at the reception.','Anyone is at the reception.','No one is at the reception.','Everyone is at the reception.'],correct:'Someone is at the reception.',anchor:'sane'},
+  {pt:'Tem algum problema?',isFullSentence:true,options:['Is there any problem?','Is there some problem?','Is there no problem?','Is there every problem?'],correct:'Is there any problem?',anchor:'sane'},
+  {pt:'Não tem ninguém aqui.',isFullSentence:true,options:["There isn't anyone here.","There isn't someone here.","There isn't everyone here.",'There is anyone here.'],correct:"There isn't anyone here.",anchor:'sane'},
+  {pt:'Eu posso fazer qualquer coisa.',isFullSentence:true,options:['I can do anything.','I can do something.','I can do nothing.','I can do everything.'],correct:'I can do anything.',anchor:'sane'},
+  {pt:'Todo mundo gostou da festa.',isFullSentence:true,options:['Everyone liked the party.','Anyone liked the party.','Someone liked the party.','No one liked the party.'],correct:'Everyone liked the party.',anchor:'sane'},
+  {pt:'Não tem nada na geladeira.',isFullSentence:true,options:['There is nothing in the fridge.','There is anything in the fridge.','There is something in the fridge.','There is everything in the fridge.'],correct:'There is nothing in the fridge.',anchor:'sane'},
+  {pt:'Eu tenho dois carros.',isFullSentence:true,options:['I have two cars.','I am two cars.','There are two cars I.','I has two cars.'],correct:'I have two cars.',anchor:'ter'},
+  {pt:'Ela tem uma irmã.',isFullSentence:true,options:['She has a sister.','She have a sister.','She is a sister.','There is a sister she.'],correct:'She has a sister.',anchor:'ter'},
+  {pt:'Tem uma reunião hoje.',isFullSentence:true,options:['There is a meeting today.','There are a meeting today.','It has a meeting today.','There is have a meeting today.'],correct:'There is a meeting today.',anchor:'ter'},
+  {pt:'Tem muitos livros na mesa.',isFullSentence:true,options:['There are many books on the table.','There is many books on the table.','It has many books on the table.','There are many books in the table.'],correct:'There are many books on the table.',anchor:'ter'},
+  {pt:'Não tem café.',isFullSentence:true,options:["There isn't any coffee.","There aren't any coffee.","There isn't some coffee.","It doesn't have coffee."],correct:"There isn't any coffee.",anchor:'ter'},
+  {pt:'Vai ter uma festa amanhã.',isFullSentence:true,options:['There will be a party tomorrow.','There will is a party tomorrow.','It will have a party tomorrow.','There is will be a party tomorrow.'],correct:'There will be a party tomorrow.',anchor:'ter'},
+  {pt:'Você gosta de café?',isFullSentence:true,options:['Do you like coffee?','You like coffee?','Are you like coffee?','Does you like coffee?'],correct:'Do you like coffee?',anchor:'todo'},
+  {pt:'Ela não trabalha aqui.',isFullSentence:true,options:["She doesn't work here.","She don't work here.","She isn't work here.","She doesn't works here."],correct:"She doesn't work here.",anchor:'todo'},
+  {pt:'Eles não foram à festa.',isFullSentence:true,options:["They didn't go to the party.","They didn't went to the party.","They don't go to the party.","They weren't go to the party."],correct:"They didn't go to the party.",anchor:'todo'},
+  {pt:'Ele faz a lição de casa?',isFullSentence:true,options:['Does he do the homework?','Does he does the homework?','Do he do the homework?','Is he do the homework?'],correct:'Does he do the homework?',anchor:'todo'},
+  {pt:'O que você fez ontem?',isFullSentence:true,options:['What did you do yesterday?','What did you did yesterday?','What you did yesterday?','What do you do yesterday?'],correct:'What did you do yesterday?',anchor:'todo'},
+  {pt:'Eu realmente gosto disso.',isFullSentence:true,options:['I do like this.','I am like this.','I does like this.','I did likes this.'],correct:'I do like this.',anchor:'todo'},
+  {pt:'Eu sei nadar.',isFullSentence:true,options:['I can swim.','I can to swim.','I cans swim.','I can swims.'],correct:'I can swim.',anchor:'modal'},
+  {pt:'Você poderia me ajudar?',isFullSentence:true,options:['Could you help me?','Do you could help me?','Could you to help me?','Could you helps me?'],correct:'Could you help me?',anchor:'modal'},
+  {pt:'Você deveria descansar.',isFullSentence:true,options:['You should rest.','You should to rest.','You shoulds rest.','You should rests.'],correct:'You should rest.',anchor:'modal'},
+  {pt:'Eu gostaria de um café.',isFullSentence:true,options:['I would like a coffee.','I would to like a coffee.','I would likes a coffee.','I woulds like a coffee.'],correct:'I would like a coffee.',anchor:'modal'},
+  {pt:'Você tem que usar capacete.',isFullSentence:true,options:['You must wear a helmet.','You must to wear a helmet.','You must wears a helmet.','You musts wear a helmet.'],correct:'You must wear a helmet.',anchor:'modal'},
+  {pt:'Você não precisa vir.',isFullSentence:true,options:["You don't have to come.","You mustn't come.","You don't has to come.","You don't have to comes."],correct:"You don't have to come.",anchor:'modal'},
+  {pt:'Ela é inteligente, né?',isFullSentence:true,options:["She is smart, isn't she?",'She is smart, is she?',"She is smart, doesn't she?","She is smart, isn't it?"],correct:"She is smart, isn't she?",anchor:'tag'},
+  {pt:'Você vai ajudar, né?',isFullSentence:true,options:["You will help, won't you?",'You will help, will you?',"You will help, don't you?","You will help, won't they?"],correct:"You will help, won't you?",anchor:'tag'},
+  {pt:'Você gosta de café, né?',isFullSentence:true,options:["You like coffee, don't you?",'You like coffee, do you?',"You like coffee, aren't you?","You like coffee, don't they?"],correct:"You like coffee, don't you?",anchor:'tag'},
+  {pt:'Ela sabe nadar, né?',isFullSentence:true,options:["She can swim, can't she?",'She can swim, can she?',"She can swim, doesn't she?","She can swim, can't he?"],correct:"She can swim, can't she?",anchor:'tag'},
+  {pt:'Eu estou atrasado, né?',isFullSentence:true,options:["I am late, aren't I?",'I am late, am I?',"I am late, amn't I?","I am late, aren't you?"],correct:"I am late, aren't I?",anchor:'tag'},
+  {pt:'Vamos começar, vamos?',isFullSentence:true,options:["Let's start, shall we?","Let's start, will we?","Let's start, do we?","Let's start, shall you?"],correct:"Let's start, shall we?",anchor:'tag'},
+  {pt:'Onde ela mora?',isFullSentence:true,options:['Where does she live?','What does she live?','Where she lives?','Where does she lives?'],correct:'Where does she live?',anchor:'qw'},
+  {pt:'O que você quer?',isFullSentence:true,options:['What do you want?','Where do you want?','What you want?','What do you wants?'],correct:'What do you want?',anchor:'qw'},
+  {pt:'Quantos livros você tem?',isFullSentence:true,options:['How many books do you have?','How much books do you have?','How many books you have?','How many book do you have?'],correct:'How many books do you have?',anchor:'qw'},
+  {pt:'Quanto custa isso?',isFullSentence:true,options:['How much is it?','How many is it?','How much it is?','How much are it?'],correct:'How much is it?',anchor:'qw'},
+  {pt:'De quem é esse carro?',isFullSentence:true,options:['Whose car is this?','Who car is this?','Whose is this car?','Whose car this is?'],correct:'Whose car is this?',anchor:'qw'},
+  {pt:'Faça o que você quiser.',isFullSentence:true,options:['Do whatever you want.','Do whenever you want.','Do whatsoever you want.','Do however you want.'],correct:'Do whatever you want.',anchor:'qw'},
 ];
 
 window['rev4_bk']=[
@@ -5812,11 +5910,11 @@ const pages=[
         <div class="idx-item" onclick="go(36)" data-kw="que explicativo who that which relativo menino que estava the boy who was">
           <div class="idx-num">15</div><div class="idx-info"><div class="idx-name">Que (explicativo)</div><div class="idx-desc">Who, That, Which</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(38)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
-          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
-        </div>
-        <div class="idx-item" onclick="go(39)" data-kw="materia bonus plural substantivos plural nouns regular ends in s ch sh x z f fe vogal consoante y o irregular man men child children foot feet tooth teeth mouse mice person people sheep deer fish series cap3">
+        <div class="idx-item" onclick="go(38)" data-kw="materia bonus plural substantivos plural nouns regular ends in s ch sh x z f fe vogal consoante y o irregular man men child children foot feet tooth teeth mouse mice person people sheep deer fish series cap3">
           <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Plural dos Substantivos</div><div class="idx-desc">As 8 formas de transformar singular em plural</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(40)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap3 capítulo 3">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 3</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -5847,11 +5945,11 @@ const pages=[
         <div class="idx-item" onclick="go(52)" data-kw="de some verbo gostar precisar esquecer lembrar desistir do da dos das daquele daquela cap4">
           <div class="idx-num">21</div><div class="idx-info"><div class="idx-name">Quando o "de" some</div><div class="idx-desc">Verbos que pedem "de" e o "de" some em inglês</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(54)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap4 capítulo 4 posse of from de some">
-          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 4</div></div><div class="idx-arrow">→</div>
-        </div>
-        <div class="idx-item" onclick="go(55)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
+        <div class="idx-item" onclick="go(54)" data-kw="materia bonus falsos cognatos false friends pretend push library realize actually parents lunch notice costume exit fabric college sensible eventually cigar legend">
           <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Falsos Cognatos</div><div class="idx-desc">Palavras que parecem traduzir sozinhas — e te enganam</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(56)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap4 capítulo 4 posse of from de some">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 4</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -5913,11 +6011,11 @@ const pages=[
         <div class="idx-item" onclick="go(82)" data-kw="comparativo superlativo irregular good better best bad worse worst much many more most little less least far farther further old older cap6">
           <div class="idx-num">33</div><div class="idx-info"><div class="idx-name">Irregulares</div><div class="idx-desc">Good→better→best, bad→worse→worst, far, old...</div></div><div class="idx-arrow">→</div>
         </div>
-        <div class="idx-item" onclick="go(84)" style="border-color:rgba(251,191,36,.3);" data-kw="revisão exercício cap6 capítulo 6 pausa">
-          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 6</div></div><div class="idx-arrow">→</div>
-        </div>
-        <div class="idx-item" onclick="go(85)" data-kw="materia bonus like just like comparação como que nem igualzinho tipo giria slash gostar cap6">
+        <div class="idx-item" onclick="go(84)" data-kw="materia bonus like just like comparação como que nem igualzinho tipo giria slash gostar cap6">
           <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Like e Just Like</div><div class="idx-desc">Como, que nem, igualzinho — e a gíria "tipo"</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(86)" style="border-color:rgba(251,191,36,.3);" data-kw="revisão exercício cap6 capítulo 6 pausa">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 6</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -5946,6 +6044,25 @@ const pages=[
         </div>
         <div class="idx-item" onclick="go(98)" data-kw="question words wh what where when who why which whose how how many how much how often whatever whenever wherever whoever whichever however whatsoever palavras de pergunta cap7">
           <div class="idx-num">39</div><div class="idx-info"><div class="idx-name">Question Words</div><div class="idx-desc">What, where, when, who, how — e os -ever</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(100)" data-kw="materia bonus let's lets let's go vamos bora shall we let's not convite sugestao cap7">
+          <div class="idx-num" style="color:#a78bfa;">✨</div><div class="idx-info"><div class="idx-name">Matéria Bônus · Let's, Shall we?</div><div class="idx-desc">Vamos, bora — convites e sugestões</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(102)" style="border-color:rgba(255,213,128,.3);" data-kw="revisão exercício cap7 capítulo 7 some any no every verbo ter to do modais tag questions question words">
+          <div class="idx-num" style="color:var(--yel);">☕</div><div class="idx-info"><div class="idx-name">Pausa para Revisão</div><div class="idx-desc">Exercício de tudo do Capítulo 7</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-chapter" id="idxcap8">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap8')" style="--ch-color:#fb7185;">
+        <span class="idx-chapter-num" style="background:#fb7185;">8</span>
+        <span class="idx-chapter-title">Capítulo 8</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap8-body">
+        <div class="idx-item" onclick="go(104)" data-kw="say said tell told talk talked speak spoke dizer falar conversar contar say vs tell talk to talk with talk about speak idiomas o que para quem cap8">
+          <div class="idx-num">40</div><div class="idx-info"><div class="idx-name">Say, Tell, Talk &amp; Speak</div><div class="idx-desc">Dizer, contar, conversar e falar — quando usar cada um</div></div><div class="idx-arrow">→</div>
         </div>
       </div>
     </div>
@@ -7365,7 +7482,6 @@ const pages=[
   </div>
 </div>`,
 
-
 `<div class="page pg-chapter">
   <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
   <div class="ch-eyebrow">Capítulo</div>
@@ -8153,20 +8269,6 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-content" style="--acc:#f6ad55;">
-  <div class="rev-big-hd">
-    <div class="rev-big-icon">☕</div>
-    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
-    <div class="rev-big-line"></div>
-    <div class="rev-big-desc">Fim do Capítulo 3 — in/on/at, demonstrativos e que explicativo.</div>
-  </div>
-  <div class="pg-body">
-    <p class="intro">Exercício com todas as matérias do Capítulo 3.</p>
-  </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
-</div>`,
-
-
 `<div class="page pg-sec" style="--acc:#a78bfa;">
   <div class="sec-ghost">✨</div>
   <div class="sec-topbar">
@@ -8348,6 +8450,18 @@ const pages=[
   </div>
 </div>`,
 
+`<div class="page pg-content" style="--acc:#f6ad55;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 3 — in/on/at, demonstrativos e que explicativo.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 3.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 3</span><span class="ex-score" id="rev3-score">0/10</span></div><div class="ex-body" id="rev3-body"></div></div>
+</div>`,
 
 `<div class="page pg-chapter">
   <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
@@ -9322,19 +9436,6 @@ const pages=[
   </div>
 </div>`,
 
-`<div class="page pg-content" style="--acc:#f6ad55;">
-  <div class="rev-big-hd">
-    <div class="rev-big-icon">☕</div>
-    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
-    <div class="rev-big-line"></div>
-    <div class="rev-big-desc">Fim do Capítulo 4 — posse, of, from e o "de" que some.</div>
-  </div>
-  <div class="pg-body">
-    <p class="intro">Exercício com todas as matérias do Capítulo 4.</p>
-  </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 4</span><span class="ex-score" id="rev4-score">0/15</span></div><div class="ex-body" id="rev4-body"></div></div>
-</div>`,
-
 `<div class="page pg-sec" style="--acc:#a78bfa;">
   <div class="sec-ghost">✨</div>
   <div class="sec-topbar">
@@ -9621,6 +9722,19 @@ const pages=[
     </div>
 
   </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#f6ad55;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 4 — posse, of, from e o "de" que some.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 4.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 4</span><span class="ex-score" id="rev4-score">0/15</span></div><div class="ex-body" id="rev4-body"></div></div>
 </div>`,
 
 `<div class="page pg-chapter">
@@ -11030,7 +11144,6 @@ const pages=[
   </div>
 </div>`,
 
-
 `<div class="page pg-sec" style="--acc:#fbbf24;"><div class="sec-ghost">29</div>
   <div class="sec-topbar">
     <div class="sec-topbar-right">
@@ -11159,7 +11272,6 @@ const pages=[
   </div>
 </div>`,
 
-
 `<div class="page pg-sec" style="--acc:#22d3ee;"><div class="sec-ghost">30</div>
   <div class="sec-topbar">
     <div class="sec-topbar-right">
@@ -11228,7 +11340,6 @@ const pages=[
     <div class="ex-wrap"><div class="ex-header"><span class="ex-title">One e Ones — exercício</span><span class="ex-score" id="oneones-score">0/10</span></div><div class="ex-body" id="oneones-body"></div></div>
   </div>
 </div>`,
-
 
 `<div class="page pg-sec" style="--acc:#4ade80;"><div class="sec-ghost">31</div>
   <div class="sec-topbar">
@@ -11413,7 +11524,6 @@ const pages=[
   </div>
 </div>`,
 
-
 `<div class="page pg-sec" style="--acc:#60a5fa;"><div class="sec-ghost">32</div>
   <div class="sec-topbar">
     <div class="sec-topbar-right">
@@ -11552,7 +11662,6 @@ const pages=[
   </div>
 </div>`,
 
-
 `<div class="page pg-sec" style="--acc:#fc8181;"><div class="sec-ghost">33</div>
   <div class="sec-topbar">
     <div class="sec-topbar-right">
@@ -11644,20 +11753,6 @@ const pages=[
     <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Irregulares — exercício</span><span class="ex-score" id="irreg-score">0/10</span></div><div class="ex-body" id="irreg-body"></div></div>
   </div>
 </div>`,
-
-`<div class="page pg-content" style="--acc:#fbbf24;">
-  <div class="rev-big-hd">
-    <div class="rev-big-icon">☕</div>
-    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
-    <div class="rev-big-line"></div>
-    <div class="rev-big-desc">Fim do Capítulo 6 — também, muitos, very/same, one/ones, comparativos, superlativos e irregulares.</div>
-  </div>
-  <div class="pg-body">
-    <p class="intro">Exercício com todas as matérias do Capítulo 6.</p>
-  </div>
-  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 6</span><span class="ex-score" id="rev6-score">0/15</span></div><div class="ex-body" id="rev6-body"></div></div>
-</div>`,
-
 
 `<div class="page pg-sec" style="--acc:#a78bfa;">
   <div class="sec-ghost">✨</div>
@@ -11755,6 +11850,19 @@ const pages=[
     </div>
 
   </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#fbbf24;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 6 — também, muitos, very/same, one/ones, comparativos, superlativos e irregulares.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 6.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 6</span><span class="ex-score" id="rev6-score">0/15</span></div><div class="ex-body" id="rev6-body"></div></div>
 </div>`,
 
 `<div class="page pg-chapter">
@@ -12882,12 +12990,12 @@ const pages=[
     <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
       <div class="conj-row hd" style="grid-template-columns:1fr 1.3fr;"><span>Palavra</span><span>Significado</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="what">what</span><span>o que / qual</span></div>
-      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="where">where</span><span>onde / aonde</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="where">where</span><span>onde / em que / no qual</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="when">when</span><span>quando</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="who">who</span><span>quem</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="why">why</span><span>por que</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="which">which</span><span>qual (entre opções)</span></div>
-      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="whose">whose</span><span>de quem</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="whose">whose</span><span>de quem / cujo / cuja</span></div>
       <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="how">how</span><span>como</span></div>
     </div>
 
@@ -12908,6 +13016,64 @@ const pages=[
         <div class="eg-row"><span class="eg-pt">Por que você está atrasado?</span><span class="eg-en en" data-speak="Why are you late?"><span class="hl-p3">Why</span> are you late?</span></div>
         <div class="eg-row"><span class="eg-pt">De quem é esse carro?</span><span class="eg-en en" data-speak="Whose car is this?"><span class="hl-p3">Whose</span> car is this?</span></div>
       </div>
+    </div>
+
+    <div class="sec-divider" id="qw-where-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Where também liga frases: "onde / em que / no qual"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>where</strong> não serve só pra perguntar "onde?". Ele também aparece no meio da frase, ligando um <strong>lugar</strong> ao que acontece nele. Em português a gente diz isso de <strong>oito</strong> jeitos diferentes — <strong>onde, em que, no qual, na qual, nos quais, nas quais</strong>... — mas em inglês é tudo o mesmo <strong>where</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Todas são a mesma coisa</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote"><div class="q-pt">O local <strong>onde</strong> ela trabalha</div></div>
+        <div class="quote"><div class="q-pt">O local <strong>em que</strong> ela trabalha</div></div>
+        <div class="quote"><div class="q-pt">A loja <strong>na qual</strong> ela trabalha</div></div>
+      </div>
+      <div class="eg-block" style="margin-top:8px;">
+        <div class="eg-row"><span class="eg-pt">↳ todas viram:</span><span class="eg-en en" data-speak="The place where she works">The place <span class="hl-coringa">where</span> she works</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 O inglês não muda — singular, plural, masculino, feminino</div>
+      <p class="tip-txt">No português, "qual" vira <strong>no qual / na qual / nos quais / nas quais</strong> conforme gênero e número. Em inglês <strong>nada disso muda</strong>: é sempre <span class="enw" data-speak="where">where</span>.<br>→ As caixas <strong>nas quais</strong> eu guardo meus sapatos = The boxes <span class="hl-coringa">where</span> I keep my shoes.</p>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Mais exemplos</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">A cidade onde eu nasci.</span><span class="eg-en en" data-speak="The city where I was born.">The city <span class="hl-coringa">where</span> I was born.</span></div>
+        <div class="eg-row"><span class="eg-pt">A loja na qual ela trabalha.</span><span class="eg-en en" data-speak="The store where she works.">The store <span class="hl-coringa">where</span> she works.</span></div>
+        <div class="eg-row"><span class="eg-pt">As caixas nas quais eu guardo meus sapatos.</span><span class="eg-en en" data-speak="The boxes where I keep my shoes.">The boxes <span class="hl-coringa">where</span> I keep my shoes.</span></div>
+        <div class="eg-row"><span class="eg-pt">Os armários nos quais ele guarda os documentos.</span><span class="eg-en en" data-speak="The cabinets where he keeps the documents.">The cabinets <span class="hl-coringa">where</span> he keeps the documents.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="qw-whose-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Whose: "de quem" e também "cujo / cuja"</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>whose</strong> tem dois trabalhos. Em <strong>pergunta</strong> é "de quem?" (Whose car is this?). Mas ele também liga frases no sentido de <strong>"cujo, cuja, cujos, cujas"</strong> — mostrando que algo <strong>pertence</strong> a alguém que acabou de ser citado.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Whose = de quem (pergunta)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">De quem é esse carro?</span><span class="eg-en en" data-speak="Whose car is this?"><span class="hl-coringa">Whose</span> car is this?</span></div>
+        <div class="eg-row"><span class="eg-pt">De quem são essas chaves?</span><span class="eg-en en" data-speak="Whose keys are these?"><span class="hl-coringa">Whose</span> keys are these?</span></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Whose = cujo / cuja (liga frases)</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">O homem cujo carro foi roubado.</span><span class="eg-en en" data-speak="The man whose car was stolen.">The man <span class="hl-coringa">whose</span> car was stolen.</span></div>
+        <div class="eg-row"><span class="eg-pt">A mulher cuja filha estuda aqui.</span><span class="eg-en en" data-speak="The woman whose daughter studies here.">The woman <span class="hl-coringa">whose</span> daughter studies here.</span></div>
+        <div class="eg-row"><span class="eg-pt">A empresa cujos lucros caíram.</span><span class="eg-en en" data-speak="The company whose profits dropped.">The company <span class="hl-coringa">whose</span> profits dropped.</span></div>
+        <div class="eg-row"><span class="eg-pt">O escritor cujos livros eu amo.</span><span class="eg-en en" data-speak="The writer whose books I love.">The writer <span class="hl-coringa">whose</span> books I love.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Igual ao where: o inglês não flexiona</div>
+      <p class="tip-txt">No português muda (cujo / cuja / cujos / cujas), mas em inglês é sempre <span class="enw" data-speak="whose">whose</span>. E ele serve pra <strong>pessoas e coisas</strong> (the man whose..., the company whose...). A ideia é sempre de <strong>posse</strong>: o que vem depois do whose <strong>pertence</strong> a quem foi citado antes.</p>
     </div>
 
     <div class="sec-divider" id="qw-which"><div class="sec-divider-line"></div><div class="sec-divider-label">What vs Which — qual a diferença?</div><div class="sec-divider-line r"></div></div>
@@ -12999,7 +13165,8 @@ const pages=[
         <div class="togo-hd" style="font-size:15px;letter-spacing:1px;">PERGUNTAR</div>
         <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">what / where / when</div><div class="togo-val">o que / onde / quando</div></div>
         <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">who / why / how</div><div class="togo-val">quem / por que / como</div></div>
-        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">which / whose</div><div class="togo-val">qual (opções) / de quem</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">which</div><div class="togo-val">qual (entre opções)</div></div>
+        <div class="togo-row" style="font-size:13.5px;padding:8px 0;"><div class="togo-cond">whose</div><div class="togo-val">de quem / cujo / cuja</div></div>
       </div>
       <div class="togo-sep"></div>
       <div class="togo-section">
@@ -13013,11 +13180,261 @@ const pages=[
     <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
     <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Question Words — exercício</span><span class="ex-score" id="qw-score">0/10</span></div><div class="ex-body" id="qw-body"></div></div>
   </div>
-</div>`
+</div>`,
 
+`<div class="page pg-sec" style="--acc:#a78bfa;">
+  <div class="sec-ghost">✨</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="bonus-eyebrow">Matéria Bônus</div>
+    <div class="sec-title">Let's,<br><span class="acc">Shall we?</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O jeito natural de dizer "vamos", "bora" e fazer convites.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🎬</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">A frase <strong>"Let's go"</strong> é uma das expressões em inglês mais reconhecidas no mundo todo, mesmo por quem não fala o idioma. Ela aparece em incontáveis filmes, músicas e jogos — e virou praticamente um grito universal de empolgação, ao lado de "OK" e "wow", que também são entendidos em quase todos os países.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
 
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="pg-hd"><div class="pg-lbl">Matéria Bônus · Let's, Shall we?</div><div class="pg-ttl">Let's, Shall we?</div></div>
+  <div class="pg-body">
 
-,
+    <p class="intro">Quando você quer chamar alguém pra fazer algo <strong>junto com você</strong> — "vamos almoçar", "bora!", "vamos começar" — o inglês usa <strong>let's</strong>. É uma das estruturas mais úteis do dia a dia, e bem fácil.</p>
+
+    <div class="sec-divider" id="lets-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Let's — vamos (fazer algo juntos)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong class="enw" data-speak="let's">let's</strong> é a forma curta de <strong>let us</strong> ("deixe-nos"), mas na prática significa só <strong>"vamos"</strong>. A receita é simples: <strong>let's + verbo no infinitivo</strong> (sem to).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Let's + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Vamos começar.</span><span class="eg-en en" data-speak="Let's start."><span class="hl-tambem">Let's</span> start.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos almoçar.</span><span class="eg-en en" data-speak="Let's have lunch."><span class="hl-tambem">Let's</span> have lunch.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos assistir um filme.</span><span class="eg-en en" data-speak="Let's watch a movie."><span class="hl-tambem">Let's</span> watch a movie.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos tentar de novo.</span><span class="eg-en en" data-speak="Let's try again."><span class="hl-tambem">Let's</span> try again.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="lets-go"><div class="sec-divider-line"></div><div class="sec-divider-label">Let's go — vamos, bora!</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O campeão de uso: <strong class="enw" data-speak="let's go">let's go</strong> é o nosso <strong>"vamos!", "bora!", "vamos embora"</strong>. Serve tanto pra chamar pra sair quanto como grito de empolgação.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Let's go</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Bora! / Vamos!</span><span class="eg-en en" data-speak="Let's go!"><span class="hl-tambem">Let's go!</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos pra casa.</span><span class="eg-en en" data-speak="Let's go home."><span class="hl-tambem">Let's go</span> home.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos para a praia.</span><span class="eg-en en" data-speak="Let's go to the beach."><span class="hl-tambem">Let's go</span> to the beach.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos dormir.</span><span class="eg-en en" data-speak="Let's go to sleep."><span class="hl-tambem">Let's go</span> to sleep.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="lets-not"><div class="sec-divider-line"></div><div class="sec-divider-label">Let's not — vamos não, melhor não</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra negar — "<strong>vamos não</strong>", "é melhor não fazermos isso" — é só colocar <strong class="enw" data-speak="not">not</strong> depois do let's.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Let's not + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Vamos não brigar.</span><span class="eg-en en" data-speak="Let's not fight."><span class="hl-tambem">Let's not</span> fight.</span></div>
+        <div class="eg-row"><span class="eg-pt">É melhor não falar sobre isso.</span><span class="eg-en en" data-speak="Let's not talk about it."><span class="hl-tambem">Let's not</span> talk about it.</span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos não nos atrasar.</span><span class="eg-en en" data-speak="Let's not be late."><span class="hl-tambem">Let's not</span> be late.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="lets-shall"><div class="sec-divider-line"></div><div class="sec-divider-label">Shall we? — vamos?, confirmando</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Lembra das tag questions? A "tag" de uma frase com <strong>let's</strong> é <strong class="enw" data-speak="shall we?">shall we?</strong> — aquele "<strong>vamos?</strong>" no fim, pra confirmar ou convidar com gentileza. Também pode aparecer sozinho.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Shall we?</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Vamos começar, vamos?</span><span class="eg-en en" data-speak="Let's start, shall we?">Let's start, <span class="hl-coringa">shall we?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos, então? / Vamos nessa?</span><span class="eg-en en" data-speak="Shall we?"><span class="hl-coringa">Shall we?</span></span></div>
+        <div class="eg-row"><span class="eg-pt">Vamos pedir agora, vamos?</span><span class="eg-en en" data-speak="Let's order now, shall we?">Let's order now, <span class="hl-coringa">shall we?</span></span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Resumindo</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="let's">let's</span> + verbo = vamos fazer algo (Let's eat)<br>→ <span class="enw" data-speak="let's go">let's go</span> = vamos / bora<br>→ <span class="enw" data-speak="let's not">let's not</span> + verbo = vamos não<br>→ <span class="enw" data-speak="shall we?">shall we?</span> = "vamos?" no fim, pra confirmar</p>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Let's go x Go</div>
+      <p class="tip-txt">Repare na diferença de quem age: <em>Go!</em> é uma ordem pra <strong>outra pessoa</strong> ("vai!"), enquanto <em>Let's go!</em> inclui <strong>você junto</strong> ("vamos nós dois/todos!"). O <span class="enw" data-speak="let's">let's</span> sempre traz a ideia de "a gente".</p>
+    </div>
+
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#a78bfa;">
+  <div class="rev-big-hd">
+    <div class="rev-big-icon">☕</div>
+    <div class="rev-big-title">Pausa para<br><span class="rev-acc">Revisão</span></div>
+    <div class="rev-big-line"></div>
+    <div class="rev-big-desc">Fim do Capítulo 7 — some/any/no/every, o verbo ter, to do, modais, tag questions e question words.</div>
+  </div>
+  <div class="pg-body">
+    <p class="intro">Exercício com todas as matérias do Capítulo 7.</p>
+  </div>
+  <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 7</span><span class="ex-score" id="rev7-score">0/15</span></div><div class="ex-body" id="rev7-body"></div></div>
+</div>`,
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">8</div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#fbbf24;"><div class="sec-ghost">40</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 40</div>
+    <div class="sec-title">Say, Tell,<br><span class="acc">Talk &amp; Speak</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Quatro jeitos de "dizer/falar" — e quando usar cada um.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🦜</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O <strong>papagaio-cinzento-africano</strong> não só imita sons — ele entende contexto. Um famoso papagaio chamado Alex aprendeu cerca de 100 palavras, sabia identificar cores e formas, e contava até seis. Antes de dormir, costumava dizer ao seu pesquisador: "boa noite, te vejo amanhã".</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#fbbf24;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 40 · Say, Tell, Talk &amp; Speak</div><div class="pg-ttl">Say, Tell, Talk &amp; Speak</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Em português a gente usa "dizer", "falar" e "conversar" meio misturados. Em inglês existem <strong>quatro</strong> verbos, e cada um tem um <strong>foco</strong> diferente. Sacar esse foco é a chave pra escolher certo.</p>
+
+    <div class="pron-section" id="stts-resumo">
+      <div class="pron-header">🟡 A diferença num relance</div>
+      <div class="quote-list" style="margin-top:8px;">
+        <div class="quote"><div class="q-pt"><strong>say</strong> → foco <strong>no que foi dito</strong></div></div>
+        <div class="quote"><div class="q-pt"><strong>tell</strong> → foco <strong>em para quem</strong> foi dito</div></div>
+        <div class="quote"><div class="q-pt"><strong>talk</strong> → foco <strong>na conversa/interação</strong></div></div>
+        <div class="quote"><div class="q-pt"><strong>speak</strong> → igual ao talk, mas <strong>mais formal</strong></div></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="stts-say"><div class="sec-divider-line"></div><div class="sec-divider-label">Say / Said — o QUE foi dito</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>say</strong> (passado <strong>said</strong>) foca <strong>no conteúdo</strong> — o que a pessoa falou. Normalmente vem seguido direto da informação, sem dizer pra quem.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Say / Said</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu disse que ela vai estar lá.</span><span class="eg-en en" data-speak="I said she will be there.">I <span class="hl-tambem">said</span> she will be there.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles vão dizer que não vão.</span><span class="eg-en en" data-speak="They will say they won't go.">They will <span class="hl-tambem">say</span> they won't go.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela disse a verdade.</span><span class="eg-en en" data-speak="She said the truth.">She <span class="hl-tambem">said</span> the truth.</span></div>
+        <div class="eg-row"><span class="eg-pt">O que você disse?</span><span class="eg-en en" data-speak="What did you say?">What did you <span class="hl-tambem">say</span>?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="stts-tell"><div class="sec-divider-line"></div><div class="sec-divider-label">Tell / Told — PARA QUEM foi dito</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>tell</strong> (passado <strong>told</strong>) foca <strong>na pessoa</strong> que recebeu a mensagem. Por isso quase sempre vem seguido de <strong>quem</strong> (her, him, me, them...).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Tell / Told</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu disse para ela que eu vou estar lá.</span><span class="eg-en en" data-speak="I told her I will be there.">I <span class="hl-tambem">told</span> her I will be there.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela não vai contar pra ele que está grávida.</span><span class="eg-en en" data-speak="She won't tell him she's pregnant.">She won't <span class="hl-tambem">tell</span> him she's pregnant.</span></div>
+        <div class="eg-row"><span class="eg-pt">Me conta a verdade.</span><span class="eg-en en" data-speak="Tell me the truth."><span class="hl-tambem">Tell</span> me the truth.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu contei pra eles sobre o plano.</span><span class="eg-en en" data-speak="I told them about the plan.">I <span class="hl-tambem">told</span> them about the plan.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 O macete say x tell</div>
+      <p class="tip-txt">Pense assim: <strong>say</strong> alguma coisa, <strong>tell</strong> alguém.<br>→ I <span class="enw" data-speak="said">said</span> the truth. (disse a verdade — o quê)<br>→ I <span class="enw" data-speak="told">told</span> her the truth. (disse a ela — pra quem)<br>Repare: depois do <em>tell</em> vem logo a pessoa (her, him, me).</p>
+    </div>
+
+    <div class="sec-divider" id="stts-talk"><div class="sec-divider-line"></div><div class="sec-divider-label">Talk / Talked — a CONVERSA</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>talk</strong> (passado <strong>talked</strong>) foca <strong>na interação</strong> — duas pessoas conversando. É o "conversar / bater papo". Ele vem com três preposições, cada uma com um sentido:</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 As três combinações do talk</div>
+      <div class="quote-list" style="margin-top:6px;">
+        <div class="quote"><div class="q-pt"><strong>talk to</strong> = falar <strong>com</strong> (já tem um assunto definido, mais direcionado)</div></div>
+        <div class="quote"><div class="q-pt"><strong>talk with</strong> = falar <strong>com</strong> (só bater um papo, troca de ideias)</div></div>
+        <div class="quote"><div class="q-pt"><strong>talk about</strong> = falar <strong>sobre</strong> (o assunto)</div></div>
+      </div>
+    </div>
+
+    <div class="pron-section" style="margin-top:12px;">
+      <div class="pron-header">📌 Talk na prática</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estava conversando com uma menina.</span><span class="eg-en en" data-speak="I was talking with a girl.">I was <span class="hl-tambem">talking with</span> a girl.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu preciso conversar com você.</span><span class="eg-en en" data-speak="I need to talk to you.">I need to <span class="hl-tambem">talk to</span> you.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós conversamos sobre o futuro.</span><span class="eg-en en" data-speak="We talked about the future.">We <span class="hl-tambem">talked about</span> the future.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eles estão conversando agora.</span><span class="eg-en en" data-speak="They are talking now.">They are <span class="hl-tambem">talking</span> now.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="stts-speak"><div class="sec-divider-line"></div><div class="sec-divider-label">Speak / Spoke — o talk formal</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>speak</strong> (passado <strong>spoke</strong>) é praticamente igual ao talk, só que <strong>mais formal</strong>. Também é o verbo usado pra dizer que você <strong>fala um idioma</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Speak / Spoke</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu preciso falar com você. <span style="opacity:.6">(formal)</span></span><span class="eg-en en" data-speak="I need to speak to you.">I need to <span class="hl-tambem">speak to</span> you.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu falo inglês.</span><span class="eg-en en" data-speak="I speak English.">I <span class="hl-tambem">speak</span> English.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela fala três idiomas.</span><span class="eg-en en" data-speak="She speaks three languages.">She <span class="hl-tambem">speaks</span> three languages.</span></div>
+        <div class="eg-row"><span class="eg-pt">Posso falar com o gerente?</span><span class="eg-en en" data-speak="Can I speak to the manager?">Can I <span class="hl-tambem">speak to</span> the manager?</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Talk x Speak</div>
+      <p class="tip-txt">No dia a dia, com amigos, prefira <span class="enw" data-speak="talk">talk</span> (mais leve). Em situações sérias/profissionais, ou pra idiomas, use <span class="enw" data-speak="speak">speak</span>. <em>Can I talk to you?</em> (casual) x <em>Can I speak to you?</em> (formal).</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1fr 1.4fr;"><span>Verbo</span><span>Passado</span><span>Foco</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="say">say</span><span class="enw" data-speak="said">said</span><span>o QUE foi dito</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="tell">tell</span><span class="enw" data-speak="told">told</span><span>PARA QUEM foi dito</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="talk">talk</span><span class="enw" data-speak="talked">talked</span><span>a conversa (casual)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1fr 1.4fr;"><span class="enw" data-speak="speak">speak</span><span class="enw" data-speak="spoke">spoke</span><span>a conversa (formal) / idiomas</span></div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ O erro mais comum</div>
+      <p class="tip-txt">Não use <em>say</em> com a pessoa logo atrás. "I said her" ❌ → o certo é <em>I <span class="enw" data-speak="told">told</span> her</em> ✅, ou <em>I <span class="enw" data-speak="said">said</span> to her</em>. Lembre: <strong>say</strong> o quê, <strong>tell</strong> alguém.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Say, Tell, Talk &amp; Speak — exercício</span><span class="ex-score" id="stts-score">0/10</span></div><div class="ex-body" id="stts-body"></div></div>
+  </div>
+</div>`,
 
 `<div class="page pg-soon">
   <div class="soon-icon">🚧</div>
@@ -13025,8 +13442,6 @@ const pages=[
   <div class="soon-line"></div>
   <div class="soon-desc">Novos capítulos e matérias estão a caminho. Continue praticando o que aprendeu!</div>
 </div>`
-
-
 ];
 
 /* ── ENGINE ── */
