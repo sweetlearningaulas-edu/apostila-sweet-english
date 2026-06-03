@@ -39,10 +39,7 @@ body.light #frame{box-shadow:0 8px 40px rgba(0,0,0,.12);}
 #ctr{font-size:clamp(10px,2.8vw,13px);color:var(--m);letter-spacing:clamp(0px,0.5vw,1px);min-width:clamp(38px,11vw,62px);text-align:center;}
 #tts-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 16px;font-size:12px;font-weight:600;color:var(--blue);opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;z-index:300;box-shadow:0 4px 20px rgba(0,0,0,.2);}
 #tts-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-@keyframes chatPulse{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.35),0 0 0 0 rgba(196,160,255,.45);}70%{box-shadow:0 4px 20px rgba(0,0,0,.35),0 0 0 12px rgba(196,160,255,0);}}
-#chat-btn{position:fixed;bottom:76px;right:16px;z-index:150;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));border:none;color:#fff;font-size:20px;cursor:grab;box-shadow:0 4px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;animation:chatPulse 2.6s ease-out infinite;touch-action:none;user-select:none;-webkit-user-select:none;}
-#chat-btn.dragging{cursor:grabbing;animation:none;transition:none;box-shadow:0 14px 32px rgba(0,0,0,.5);}
-#chat-btn:active{cursor:grabbing;}
+70%{box-shadow:0 4px 20px rgba(0,0,0,.35),0 0 0 12px rgba(196,160,255,0);}}
 #chat-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;}
 #chat-overlay.open{opacity:1;pointer-events:all;}
 #chat-panel{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:420px;height:72vh;background:var(--bg);border-radius:20px 20px 0 0;z-index:500;display:flex;flex-direction:column;box-shadow:0 -20px 60px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.4,0,.2,1);border-top:1px solid var(--line);}
@@ -193,7 +190,7 @@ body.light .tobe-card{box-shadow:0 1px 6px rgba(0,0,0,.07);}
 .sec-divider{display:flex;align-items:center;gap:10px;margin:22px 0;}
 .sec-divider-line{flex:1;height:1.5px;background:linear-gradient(to right,var(--acc,var(--blue)),transparent);}
 .sec-divider-line.r{background:linear-gradient(to left,var(--acc,var(--blue)),transparent);}
-.sec-divider-label{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc,var(--blue));white-space:nowrap;padding:3px 10px;border-radius:99px;background:rgba(110,181,255,.08);border:1px solid rgba(110,181,255,.18);}
+.sec-divider-label{font-size:clamp(9px,2.7vw,11.5px);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc,var(--blue));white-space:nowrap;text-align:center;line-height:1.2;padding:7px 16px;border-radius:16px;background:color-mix(in srgb,var(--acc,var(--blue)) 13%,transparent);border:1.5px solid color-mix(in srgb,var(--acc,var(--blue)) 32%,transparent);}
 
 /* Irony block */
 .irony-block{background:var(--card2);border-radius:11px;padding:13px 15px;border-left:3px solid var(--yel);}
@@ -646,7 +643,7 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .tri-ex-mid{font-size:13px;color:var(--m);font-style:italic;padding:4px 10px;background:rgba(246,173,85,.06);border-radius:6px;border:1px dashed rgba(246,173,85,.25);align-self:flex-start;}
 .tri-ex-en{font-size:16px;font-weight:600;color:var(--tx);}
 .contrac-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
-@media (max-width:380px){.contrac-grid{grid-template-columns:1fr;}}
+@media (max-width:380px){.contrac-grid{grid-template-columns:1fr;}.sec-divider-label{letter-spacing:.8px;padding:6px 13px;}}
 .contrac-item{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:7px;font-size:15px;}
 .contrac-word{font-weight:800;color:#fc8181;font-size:17px;}
 .contrac-eq{color:var(--m);font-weight:500;font-size:15px;}
@@ -689,6 +686,9 @@ body.t-jade.light .page{background:radial-gradient(ellipse at 20% 0%,#a7f3d0 0%,
 .sec-topbar-right{display:flex;gap:6px;}
 .nb-sm{width:clamp(26px,7.5vw,42px);height:clamp(26px,7.5vw,42px);font-size:clamp(11px,3vw,16px);}
 .nb-idx{position:absolute;left:clamp(8px,3vw,20px);}
+.nb-ai{position:absolute;right:calc(clamp(8px,3vw,20px) + clamp(26px,7.5vw,42px) + 6px);color:var(--purple);border-color:rgba(196,160,255,.3)!important;}
+.nb-ai:hover{background:rgba(196,160,255,.12)!important;}
+.nb-ai.active{background:var(--purple)!important;color:#fff!important;border-color:var(--purple)!important;}
 .sec-lvl-bars{display:flex;gap:10px;align-items:center;}
 .sec-mid{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:0;overflow:hidden;}
 .ex-start-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;}
@@ -724,8 +724,7 @@ body.light .curiosidade-fact strong{color:#000;}
   #nav{max-width:100%;height:56px;background:var(--card);border-top:1px solid var(--line);padding:0 32px;}
   .nb{width:48px;height:48px;font-size:20px;}
   #ctr{font-size:13px;}
-  #chat-btn{bottom:68px;right:22px;width:54px;height:54px;font-size:22px;}
-  #chat-panel{max-width:520px;}
+    #chat-panel{max-width:520px;}
   .pg-hd{padding:28px 36px 20px;}
   .pg-lbl{font-size:10px;}
   .pg-ttl{font-size:28px;}
@@ -889,6 +888,7 @@ body.no-shimmer .en{animation:none !important;text-shadow:none !important;}
 /* ── TOOLS POPUP ── */
 .nb-tools{position:absolute;right:clamp(8px,3vw,20px);color:var(--blue);border-color:rgba(110,181,255,.25)!important}
 .nb-tools:hover{background:rgba(110,181,255,.1)!important}
+.nb-tools.active{background:var(--blue)!important;color:#fff!important;border-color:var(--blue)!important;}
 #tools-popup{position:fixed;bottom:84px;right:12px;width:min(320px,calc(100vw - 24px));background:var(--card);border-radius:20px;border:1px solid rgba(255,255,255,.07);box-shadow:0 8px 40px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.06) inset;z-index:8000;display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:popupIn .18s ease}
 @keyframes popupIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 #tools-popup.open{display:flex}
@@ -1096,7 +1096,6 @@ body.ex-timer-hidden .ex-timer,body.ex-timer-hidden .game-timer{display:none !im
 <body class="dark">
 <div id="prog"><div id="prog-fill"></div></div>
 <div id="tts-toast">🔊 <span id="toast-word"></span></div>
-<button id="chat-btn" onclick="toggleChat()">💬</button>
 
 <div id="chat-overlay" onclick="closeChat()"></div>
 <div id="chat-panel">
@@ -1118,6 +1117,7 @@ body.ex-timer-hidden .ex-timer,body.ex-timer-hidden .game-timer{display:none !im
   <div id="nav">
     <button class="nb nb-sm nb-idx" onclick="go(2)" title="Índice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     <button class="nb nb-sm nb-tools" onclick="openToolsPopup()" title="Ferramentas"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></button>
+    <button class="nb nb-sm nb-ai" onclick="toggleChat()" title="Tirar dúvidas com a IA"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button>
     <button class="nb" id="prev" onclick="goPrev()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div id="ctr"></div>
     <button class="nb" id="next" onclick="goNext()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -1125,8 +1125,8 @@ body.ex-timer-hidden .ex-timer,body.ex-timer-hidden .game-timer{display:none !im
 <script>
 
 /* ── TOOLS POPUP ── */
-function openToolsPopup(){document.getElementById('tools-popup').classList.add('open');document.getElementById('tools-overlay').classList.add('open');}
-function closeToolsPopup(){document.getElementById('tools-popup').classList.remove('open');document.getElementById('tools-overlay').classList.remove('open');}
+function openToolsPopup(){document.getElementById('tools-popup').classList.add('open');document.getElementById('tools-overlay').classList.add('open');const tb=document.querySelector('.nb-tools');if(tb)tb.classList.add('active');}
+function closeToolsPopup(){document.getElementById('tools-popup').classList.remove('open');document.getElementById('tools-overlay').classList.remove('open');const tb=document.querySelector('.nb-tools');if(tb)tb.classList.remove('active');}
 
 /* ── TOOL MODAL ── */
 function openToolModal(id){
@@ -1331,7 +1331,7 @@ function runInits(p){
   if(p===40)initEx('rev3',window['rev3_bk'],15);
   if(p===43)initEx('poss',window['poss_bk'],15);
   if(p===45)initEx('caso',window['caso_bk'],10);
-  if(p===46)initEx('ofdem',window['ofdem_bk'],10);
+  if(p===47)initEx('ofdem',window['ofdem_bk'],10);
   if(p===49)initEx('from',window['from_bk'],10);
   if(p===51)initEx('fromdem',window['fromdem_bk'],10);
   if(p===53)initEx('desome',window['desome_bk'],10);
@@ -1363,6 +1363,8 @@ function runInits(p){
   if(p===115)initEx('cond',window['cond_bk'],10);
   if(p===117)initEx('that',window['that_bk'],10);
   if(p===120)initEx('rev8',window['rev8_bk'],15);
+  if(p===123)initEx('takeget',window['takeget_bk'],10);
+  if(p===125)initEx('usedto',window['usedto_bk'],10);
 }
 function goPrevSec(){for(let j=cur-1;j>=0;j--){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1||pages[j].indexOf('pg-idx')>-1){go(j);return;}}go(0);}
 function goNextSec(){for(let j=cur+1;j<pages.length;j++){if(pages[j].indexOf('pg-chapter')>-1||pages[j].indexOf('rev-big-hd')>-1){go(j);return;}}go(pages.length-1);}
@@ -1444,7 +1446,7 @@ Cap.7 — Auxiliares, perguntas e modais:
 - Pg 93: O verbo To Do (do/does/did — negar e perguntar)
 - Pg 95: Modal Verbs (can, could, should, would, must, may)
 - Pg 97: Tag Questions (o 'né?' — aren't you?, isn't it?, did she?)
-- Pg 99: Question Words (what, where, when, who, how, why — e os -ever; whose/where relativo)
+- Pg 99: Question Words (what, where, when, who, how, why — e os -ever; também em frases afirmativas, não só perguntas: why afirmativo "that's why"=por isso, how afirmativo "that's how"=é assim que; whose/where relativo)
 - Pg 101: BÔNUS: Let's, Shall we? (vamos, bora, let's not)
 
 Cap.8 — Avançado:
@@ -1456,6 +1458,10 @@ Cap.8 — Avançado:
 - Pg 115: Condicionais (if zero/first/second/third; unless, otherwise, or else)
 - Pg 117: Quando o 'que' pode sumir (that opcional após say/think e em relativas)
 - Pg 119: BÔNUS: Internet Slang (u, thx, lol, omg, btw, idk...)
+
+Cap.9 — Verbos coringa:
+- Pg 124: Take e Get (GET = conseguir/receber/ganhar, ficar +adjetivo, chegar, entender 'I get it'; TAKE = pegar/levar, levar tempo 'it takes', tomar banho/remédio/ônibus/decisão, escolher/ficar com 'I'll take this'; took/got no passado)
+- Pg 125: Used To / Be Used To (used to + verbo = costumava fazer no passado, hábito que parou — I used to play; na negativa/pergunta o d cai: didn't use to / Did you use to. be used to + -ing/substantivo = estar acostumado com algo agora — I am used to waking up early. A diferença está no to be na frente)
 
 REGRAS OBRIGATÓRIAS:
 1. Responda SEMPRE em português do Brasil
@@ -1470,8 +1476,8 @@ REGRAS OBRIGATÓRIAS:
 
 const LOGO_SRC="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9InMtc2hhcGUiPgogICAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9InRvcC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyNTIiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImJvdC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMjQ4IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjI2MCIvPgogICAgPC9jbGlwUGF0aD4KICAgIAogICAgPCEtLSBVUyBmbGFnIHN0cmlwZXMgLS0+CiAgICA8cGF0dGVybiBpZD0idXMtc3RyaXBlcyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iODAiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTY4Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxNjgiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMCIgICAgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSIxMi45MiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMjUuODUiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMzguNzciIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IndoaXRlIi8+CiAgICAgIDxyZWN0IHk9IjUxLjY5IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjY0LjYyIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB5PSI3Ny41NCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSI5MC40NiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTAzLjM4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjExNi4zMSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTI5LjIzIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjE0Mi4xNSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTU1LjA4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkCBPVVRFUiBSSU5HIOKVkOKVkCAtLT4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuMjUiLz4KCiAgPCEtLSDilZDilZAgVE9QIEJBTk5FUiAtIFNXRUVUIExFQVJOSU5HIOKVkOKVkCAtLT4KICA8IS0tIEJhbm5lciBzaGFwZSAtLT4KICA8cGF0aCBkPSJNNjQgMjA1IFE4MCAxMjAgMTU1IDcyIFEyMDAgNDUgMjUwIDQyIFEzMDAgNDUgMzQ1IDcyIFE0MjAgMTIwIDQzNiAyMDUgTDQxOCAyMTAgUTQwOCAxMzIgMzQwIDg2IFEyOTggNjAgMjUwIDU4IFEyMDIgNjAgMTYwIDg2IFE5MiAxMzIgODIgMjEwIFoiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggaWQ9InRwYXRoIiBkPSJNIDgyIDIwOCBBIDE3OCAxNzggMCAwIDEgNDE4IDIwOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgVmVyZGFuYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzExMSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHRQYXRoIGhyZWY9IiN0cGF0aCIgc3RhcnRPZmZzZXQ9IjUwJSI+U1dFRVQgTEVBUk5JTkc8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgQk9UVE9NIEJBTk5FUiAtIEFVTEFTIFBBUlRJQ1VMQVJFUyDilZDilZAgLS0+CiAgPHBhdGggZD0iTTY0IDI5NSBRODIgMzgwIDE1NSA0MjggUTIwMCA0NTUgMjUwIDQ1OCBRMzAwIDQ1NSAzNDUgNDI4IFE0MTggMzgwIDQzNiAyOTUgTDQxOCAyOTAgUTQwNiAzNjggMzQwIDQxMiBRMjk4IDQzOCAyNTAgNDQwIFEyMDIgNDM4IDE2MCA0MTIgUTkyIDM2OCA4MiAyOTAgWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBpZD0iYnBhdGgiIGQ9Ik0gODQgMjkyIEEgMTc2IDE3NiAwIDAgMCA0MTYgMjkyIiBmaWxsPSJub25lIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIiBsZXR0ZXItc3BhY2luZz0iMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dFBhdGggaHJlZj0iI2JwYXRoIiBzdGFydE9mZnNldD0iNTAlIj5BVUxBUyBQQVJUSUNVTEFSRVM8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgUyBMRVRURVIgLSBVTklURUQgU1RBVEVTICh0b3AgaGFsZikg4pWQ4pWQIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNzLXNoYXBlKSI+CiAgICA8IS0tIFRvcCBoYWxmOiBVUyBmbGFnIC0tPgogICAgPGcgY2xpcC1wYXRoPSJ1cmwoI3RvcC1oYWxmKSI+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI2NyIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxODUiIGZpbGw9InVybCgjdXMtc3RyaXBlcykiLz4KICAgICAgPCEtLSBCbHVlIGNhbnRvbiAtLT4KICAgICAgPHJlY3QgeD0iOTAiIHk9IjY3IiB3aWR0aD0iMTQyIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzNDM0I2RSIvPgogICAgICA8IS0tIFN0YXJzIHNpbXBsaWZpZWQgYXMgd2hpdGUgY2lyY2xlcyAtLT4KICAgICAgPGcgZmlsbD0id2hpdGUiPgogICAgICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTI4IiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSI4MyIgcj0iNCIvPjxjaXJjbGUgY3g9IjE2NCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTgyIiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSI4MyIgcj0iNCIvPgogICAgICAgIDxjaXJjbGUgY3g9IjExOSIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTM3IiBjeT0iOTYiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI5NiIgcj0iNCIvPjxjaXJjbGUgY3g9IjE3MyIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTkxIiBjeT0iOTYiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDkiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxMjIiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMzUiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxNDgiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjEiIHI9IjQiLz4KICAgICAgPC9nPgogICAgPC9nPgoKICAgIDwhLS0gQm90dG9tIGhhbGY6IFVLIGZsYWcgLS0+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjYm90LWhhbGYpIj4KICAgICAgPCEtLSBOYXZ5IGJhY2tncm91bmQgLS0+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIyNDgiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTg3IiBmaWxsPSIjMDEyMTY5Ii8+CiAgICAgIDwhLS0gV2hpdGUgZGlhZ29uYWxzIChTdC4gUGF0cmljayArIFN0LiBBbmRyZXcgY29tYmluZWQpIC0tPgogICAgICA8bGluZSB4MT0iOTAiIHkxPSIyNDgiIHgyPSI0MTAiIHkyPSI0MzUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNTIiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUyIi8+CiAgICAgIDwhLS0gUmVkIGRpYWdvbmFscyAtLT4KICAgICAgPGxpbmUgeDE9IjkwIiB5MT0iMjQ4IiB4Mj0iNDEwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPCEtLSBXaGl0ZSBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIyMiIgeT0iMjQ4IiB3aWR0aD0iNTYiIGhlaWdodD0iMTg3IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB4PSI5MCIgeT0iMzEwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8IS0tIFJlZCBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIzMiIgeT0iMjQ4IiB3aWR0aD0iMzYiIGhlaWdodD0iMTg3IiBmaWxsPSIjQzgxMDJFIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIzMjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMzYiIGZpbGw9IiNDODEwMkUiLz4KICAgIDwvZz4KCiAgICA8IS0tIFMgc3Ryb2tlIG91dGxpbmUgLS0+CiAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuNSkiIHN0cm9rZS13aWR0aD0iNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICA8L2c+CgogIDwhLS0g4pWQ4pWQIENPTk5FQ1RJTkcgQVJDIExJTkVTIOKVkOKVkCAtLT4KICA8cGF0aCBkPSJNIDY0IDIwNSBBIDE5NSAxOTUgMCAwIDAgNjQgMjk1IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgogIDxwYXRoIGQ9Ik0gNDM2IDIwNSBBIDE5NSAxOTUgMCAwIDEgNDM2IDI5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+";
 function toggleChat(){chatOpen?closeChat():openChat();}
-function openChat(){chatOpen=true;document.getElementById('chat-panel').classList.add('open');document.getElementById('chat-overlay').classList.add('open');document.getElementById('chat-btn').textContent='✕';const msgsEl=document.getElementById('chat-msgs');if(msgsEl&&msgsEl.children.length===0)addMsg('ai','Olá! 👋 Pode me perguntar qualquer dúvida de inglês da apostila. Sou uma IA e posso cometer erros — em caso de dúvidas, consulte o professor.');}
-function closeChat(){chatOpen=false;document.getElementById('chat-panel').classList.remove('open');document.getElementById('chat-overlay').classList.remove('open');document.getElementById('chat-btn').textContent='💬';}
+function openChat(){chatOpen=true;document.getElementById('chat-panel').classList.add('open');document.getElementById('chat-overlay').classList.add('open');const aiBtn=document.querySelector('.nb-ai');if(aiBtn)aiBtn.classList.add('active');const msgsEl=document.getElementById('chat-msgs');if(msgsEl&&msgsEl.children.length===0)addMsg('ai','Olá! 👋 Pode me perguntar qualquer dúvida de inglês da apostila. Sou uma IA e posso cometer erros — em caso de dúvidas, consulte o professor.');}
+function closeChat(){chatOpen=false;document.getElementById('chat-panel').classList.remove('open');document.getElementById('chat-overlay').classList.remove('open');const aiBtn=document.querySelector('.nb-ai');if(aiBtn)aiBtn.classList.remove('active');}
 function addMsg(r,txt){const msgs=document.getElementById('chat-msgs');const d=document.createElement('div');d.className='msg '+r;const fmt=txt.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');d.innerHTML=`<div class="msg-bubble">${fmt}</div>`;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
 function addTyping(){const msgs=document.getElementById('chat-msgs');const d=document.createElement('div');d.className='msg ai';d.id='typ';d.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
 function remTyping(){const t=document.getElementById('typ');if(t)t.remove();}
@@ -4846,7 +4852,7 @@ window['qw_bk']=[
   {pt:'Me diz o que você quer.',isFullSentence:true,options:['Tell me what you want.','Tell me where you want.','Tell me who you want.','Tell me how you want.'],correct:'Tell me what you want.',anchor:'qw-afirm'},
   {pt:'Eu não sei quando ele chega.',isFullSentence:true,options:["I don't know when he arrives.","I don't know where he arrives.","I don't know what he arrives.","I don't know why he arrives."],correct:"I don't know when he arrives.",anchor:'qw-afirm'},
   {pt:'Essa é a pessoa que me ajudou.',isFullSentence:true,options:['This is the person who helped me.','This is the person what helped me.','This is the person where helped me.','This is the person whose helped me.'],correct:'This is the person who helped me.',anchor:'qw-afirm'},
-  {pt:'Me mostra como você fez isso.',isFullSentence:true,options:['Show me how you did it.','Show me what you did it.','Show me where you did it.','Show me why you did it.'],correct:'Show me how you did it.',anchor:'qw-afirm'},
+  {pt:'Eu não lembro quem disse isso.',isFullSentence:true,options:["I don't remember who said that.","I don't remember what said that.","I don't remember why said that.","I don't remember where said that."],correct:"I don't remember who said that.",anchor:'qw-afirm'},
   {pt:'É por isso que eu saí.',isFullSentence:true,options:["That's why I left.","That's what I left.","That's when I left.","That's how I left."],correct:"That's why I left.",anchor:'qw-afirm'},
   {pt:'É por isso que estou cansado.',isFullSentence:true,options:["That's why I'm tired.","That's how I'm tired.","That's what I'm tired.","That's when I'm tired."],correct:"That's why I'm tired.",anchor:'qw-afirm'},
   {pt:'Eu não sei por quê.',isFullSentence:true,options:["I don't know why.","I don't know what.","I don't know how.","I don't know when."],correct:"I don't know why.",anchor:'qw-afirm'},
@@ -4854,6 +4860,11 @@ window['qw_bk']=[
   {pt:'Ninguém sabe onde ele está.',isFullSentence:true,options:['Nobody knows where he is.','Nobody knows what he is.','Nobody knows who he is.','Nobody knows when he is.'],correct:'Nobody knows where he is.',anchor:'qw-afirm'},
   {pt:'Foi por isso que ela ligou.',isFullSentence:true,options:["That's why she called.","That's what she called.","That's how she called.","That's when she called."],correct:"That's why she called.",anchor:'qw-afirm'},
   {pt:'Me conta o que aconteceu.',isFullSentence:true,options:['Tell me what happened.','Tell me why happened.','Tell me where happened.','Tell me who happened.'],correct:'Tell me what happened.',anchor:'qw-afirm'},
+  {pt:'Eu sei como fazer isso.',isFullSentence:true,options:['I know how to do it.','I know what to do it.','I know why to do it.','I know where to do it.'],correct:'I know how to do it.',anchor:'qw-afirm'},
+  {pt:'É assim que funciona.',isFullSentence:true,options:["That's how it works.","That's what it works.","That's why it works.","That's where it works."],correct:"That's how it works.",anchor:'qw-afirm'},
+  {pt:'Foi assim que a gente se conheceu.',isFullSentence:true,options:["That's how we met.","That's what we met.","That's why we met.","That's when we met."],correct:"That's how we met.",anchor:'qw-afirm'},
+  {pt:'Foi assim que eu aprendi inglês.',isFullSentence:true,options:["That's how I learned English.","That's what I learned English.","That's why I learned English.","That's where I learned English."],correct:"That's how I learned English.",anchor:'qw-afirm'},
+  {pt:'Ninguém sabe como ele conseguiu.',isFullSentence:true,options:['Nobody knows how he did it.','Nobody knows what he did it.','Nobody knows why he did it.','Nobody knows who he did it.'],correct:'Nobody knows how he did it.',anchor:'qw-afirm'},
 ];
 
 window['stts_bk']=[
@@ -5334,6 +5345,144 @@ window['rev8_bk']=[
   {pt:'O homem que mora aqui é simpático.',isFullSentence:true,options:['The man that lives here is friendly.','The man lives here is friendly.','The man who lives here it is friendly.','The man what lives here is friendly.'],correct:'The man that lives here is friendly.',anchor:'that'},
   {pt:'Ela disse que estava cansada.',isFullSentence:true,options:['She said she was tired.','She said which she was tired.','She said was tired she.','She said what was she tired.'],correct:'She said she was tired.',anchor:'that'},
   {pt:'A pessoa que você conheceu é minha irmã.',isFullSentence:true,options:['The person you met is my sister.','The person what you met is my sister.','The person which you met is my sister.','The person you met her is my sister.'],correct:'The person you met is my sister.',anchor:'that'},
+];
+
+window['takeget_bk']=[
+  {pt:'Eu consegui um novo emprego.',isFullSentence:true,options:['I got a new job.','I took a new job.','I get a new job.','I taked a new job.'],correct:'I got a new job.',anchor:'get-obter'},
+  {pt:'Ela ganhou um presente.',isFullSentence:true,options:['She got a gift.','She took a gift.','She get a gift.','She gots a gift.'],correct:'She got a gift.',anchor:'get-obter'},
+  {pt:'Onde você comprou isso?',isFullSentence:true,options:['Where did you get that?','Where did you take that?','Where did you got that?','Where did you gets that?'],correct:'Where did you get that?',anchor:'get-obter'},
+  {pt:'Me traz uma água?',isFullSentence:true,options:['Can you get me some water?','Can you take me some water?','Can you got me some water?','Can you gets me some water?'],correct:'Can you get me some water?',anchor:'get-obter'},
+  {pt:'Eu recebi a sua mensagem.',isFullSentence:true,options:['I got your message.','I took your message.','I get your message.','I gotten your message.'],correct:'I got your message.',anchor:'get-obter'},
+  {pt:'Ele conseguiu os ingressos.',isFullSentence:true,options:['He got the tickets.','He took the tickets.','He get the tickets.','He gots the tickets.'],correct:'He got the tickets.',anchor:'get-obter'},
+  {pt:'Você recebeu o e-mail?',isFullSentence:true,options:['Did you get the email?','Did you take the email?','Did you got the email?','Did you gets the email?'],correct:'Did you get the email?',anchor:'get-obter'},
+  {pt:'Eu vou comprar pão.',isFullSentence:true,options:['I will get some bread.','I will take some bread.','I will got some bread.','I will gets some bread.'],correct:'I will get some bread.',anchor:'get-obter'},
+  {pt:'Ela ganhou uma boa nota.',isFullSentence:true,options:['She got a good grade.','She took a good grade.','She get a good grade.','She gots a good grade.'],correct:'She got a good grade.',anchor:'get-obter'},
+  {pt:'A gente conseguiu uma mesa.',isFullSentence:true,options:['We got a table.','We took a table.','We get a table.','We gots a table.'],correct:'We got a table.',anchor:'get-obter'},
+  {pt:'Eu fiquei cansado.',isFullSentence:true,options:['I got tired.','I took tired.','I get tired.','I gotten tired.'],correct:'I got tired.',anchor:'get-ficar'},
+  {pt:'Está ficando frio.',isFullSentence:true,options:['It is getting cold.','It is taking cold.','It is get cold.','It is gets cold.'],correct:'It is getting cold.',anchor:'get-ficar'},
+  {pt:'Não fica bravo.',isFullSentence:true,options:["Don't get angry.","Don't take angry.","Don't gets angry.","Don't got angry."],correct:"Don't get angry.",anchor:'get-ficar'},
+  {pt:'Ela ficou doente.',isFullSentence:true,options:['She got sick.','She took sick.','She get sick.','She gotten sick.'],correct:'She got sick.',anchor:'get-ficar'},
+  {pt:'Eu fico nervoso antes das provas.',isFullSentence:true,options:['I get nervous before tests.','I take nervous before tests.','I got nervous before tests.','I gets nervous before tests.'],correct:'I get nervous before tests.',anchor:'get-ficar'},
+  {pt:'Está ficando tarde.',isFullSentence:true,options:['It is getting late.','It is taking late.','It is get late.','It is gets late.'],correct:'It is getting late.',anchor:'get-ficar'},
+  {pt:'Ele ficou bravo comigo.',isFullSentence:true,options:['He got angry with me.','He took angry with me.','He get angry with me.','He gets angry with me.'],correct:'He got angry with me.',anchor:'get-ficar'},
+  {pt:'Você vai ficar melhor.',isFullSentence:true,options:['You will get better.','You will take better.','You will got better.','You will gets better.'],correct:'You will get better.',anchor:'get-ficar'},
+  {pt:'As coisas estão ficando difíceis.',isFullSentence:true,options:['Things are getting hard.','Things are taking hard.','Things are get hard.','Things are gets hard.'],correct:'Things are getting hard.',anchor:'get-ficar'},
+  {pt:'Eu fiquei com fome.',isFullSentence:true,options:['I got hungry.','I took hungry.','I get hungry.','I gotten hungry.'],correct:'I got hungry.',anchor:'get-ficar'},
+  {pt:'Eu cheguei em casa tarde.',isFullSentence:true,options:['I got home late.','I took home late.','I get home late.','I gotten home late.'],correct:'I got home late.',anchor:'get-chegar'},
+  {pt:'Que horas você chegou no trabalho?',isFullSentence:true,options:['What time did you get to work?','What time did you take to work?','What time did you got to work?','What time did you gets to work?'],correct:'What time did you get to work?',anchor:'get-chegar'},
+  {pt:'A gente chegou cedo.',isFullSentence:true,options:['We got there early.','We took there early.','We get there early.','We gots there early.'],correct:'We got there early.',anchor:'get-chegar'},
+  {pt:'Eles chegaram no aeroporto.',isFullSentence:true,options:['They got to the airport.','They took to the airport.','They get to the airport.','They gots to the airport.'],correct:'They got to the airport.',anchor:'get-chegar'},
+  {pt:'Quando você chega em casa?',isFullSentence:true,options:['When do you get home?','When do you take home?','When do you got home?','When do you gets home?'],correct:'When do you get home?',anchor:'get-chegar'},
+  {pt:'Ela chegou atrasada.',isFullSentence:true,options:['She got there late.','She took there late.','She get there late.','She gotten there late.'],correct:'She got there late.',anchor:'get-chegar'},
+  {pt:'Como eu chego na estação?',isFullSentence:true,options:['How do I get to the station?','How do I take to the station?','How do I got to the station?','How do I gets to the station?'],correct:'How do I get to the station?',anchor:'get-chegar'},
+  {pt:'Nós chegamos em casa à meia-noite.',isFullSentence:true,options:['We got home at midnight.','We took home at midnight.','We get home at midnight.','We gots home at midnight.'],correct:'We got home at midnight.',anchor:'get-chegar'},
+  {pt:'Pega o seu guarda-chuva.',isFullSentence:true,options:['Take your umbrella.','Get your umbrella took.','Take your umbrella getting.','Took your umbrella.'],correct:'Take your umbrella.',anchor:'take-levar'},
+  {pt:'Eu vou te levar pra casa.',isFullSentence:true,options:['I will take you home.','I will get you home.','I will took you home.','I will takes you home.'],correct:'I will take you home.',anchor:'take-levar'},
+  {pt:'Ela pegou minhas chaves.',isFullSentence:true,options:['She took my keys.','She get my keys.','She take my keys.','She taked my keys.'],correct:'She took my keys.',anchor:'take-levar'},
+  {pt:'Leva um casaco.',isFullSentence:true,options:['Take a coat.','Get a coat took.','Takes a coat.','Took a coat now.'],correct:'Take a coat.',anchor:'take-levar'},
+  {pt:'Eu levei meu filho pra escola.',isFullSentence:true,options:['I took my son to school.','I get my son to school.','I take my son to school yesterday.','I taked my son to school.'],correct:'I took my son to school.',anchor:'take-levar'},
+  {pt:'Pega essa caneta.',isFullSentence:true,options:['Take this pen.','Get this pen took.','Takes this pen.','Took this pen now.'],correct:'Take this pen.',anchor:'take-levar'},
+  {pt:'Eles me levaram ao médico.',isFullSentence:true,options:['They took me to the doctor.','They get me to the doctor.','They take me to the doctor yesterday.','They taked me to the doctor.'],correct:'They took me to the doctor.',anchor:'take-levar'},
+  {pt:'Não pega o meu celular.',isFullSentence:true,options:["Don't take my phone.","Don't get my phone took.","Don't takes my phone.","Don't took my phone."],correct:"Don't take my phone.",anchor:'take-levar'},
+  {pt:'Eu vou levar essas malas.',isFullSentence:true,options:['I will take these bags.','I will get these bags took.','I will took these bags.','I will takes these bags.'],correct:'I will take these bags.',anchor:'take-levar'},
+  {pt:'Ela me levou pra casa.',isFullSentence:true,options:['She took me home.','She get me home.','She take me home yesterday.','She taked me home.'],correct:'She took me home.',anchor:'take-levar'},
+  {pt:'Leva duas horas.',isFullSentence:true,options:['It takes two hours.','It gets two hours.','It take two hours.','It taked two hours.'],correct:'It takes two hours.',anchor:'take-tempo'},
+  {pt:'Quanto tempo demora?',isFullSentence:true,options:['How long does it take?','How long does it get?','How long does it takes?','How long does it took?'],correct:'How long does it take?',anchor:'take-tempo'},
+  {pt:'Demorou muito tempo.',isFullSentence:true,options:['It took a long time.','It got a long time.','It take a long time.','It taked a long time.'],correct:'It took a long time.',anchor:'take-tempo'},
+  {pt:'Leva dez minutos a pé.',isFullSentence:true,options:['It takes ten minutes on foot.','It gets ten minutes on foot.','It take ten minutes on foot.','It taked ten minutes on foot.'],correct:'It takes ten minutes on foot.',anchor:'take-tempo'},
+  {pt:'Quanto tempo demorou?',isFullSentence:true,options:['How long did it take?','How long did it get?','How long did it takes?','How long did it took?'],correct:'How long did it take?',anchor:'take-tempo'},
+  {pt:'Vai levar a semana toda.',isFullSentence:true,options:['It will take all week.','It will get all week.','It will takes all week.','It will took all week.'],correct:'It will take all week.',anchor:'take-tempo'},
+  {pt:'Não demora muito.',isFullSentence:true,options:["It doesn't take long.","It doesn't get long.","It don't take long.","It doesn't takes long."],correct:"It doesn't take long.",anchor:'take-tempo'},
+  {pt:'A viagem leva cinco horas.',isFullSentence:true,options:['The trip takes five hours.','The trip gets five hours.','The trip take five hours.','The trip taked five hours.'],correct:'The trip takes five hours.',anchor:'take-tempo'},
+  {pt:'Eu tomo banho todo dia.',isFullSentence:true,options:['I take a shower every day.','I get a shower every day.','I take a shower every day yesterday.','I taked a shower every day.'],correct:'I take a shower every day.',anchor:'take-tomar'},
+  {pt:'Tome o remédio.',isFullSentence:true,options:['Take the medicine.','Get the medicine took.','Takes the medicine.','Took the medicine now.'],correct:'Take the medicine.',anchor:'take-tomar'},
+  {pt:'Eu pego o ônibus pro trabalho.',isFullSentence:true,options:['I take the bus to work.','I get the bus to work.','I take the bus to work yesterday.','I taked the bus to work.'],correct:'I take the bus to work.',anchor:'take-tomar'},
+  {pt:'Você precisa tomar uma decisão.',isFullSentence:true,options:['You need to take a decision.','You need to get a decision.','You need to takes a decision.','You need to took a decision.'],correct:'You need to take a decision.',anchor:'take-tomar'},
+  {pt:'Ela toma banho de manhã.',isFullSentence:true,options:['She takes a shower in the morning.','She gets a shower in the morning.','She take a shower in the morning.','She taked a shower in the morning.'],correct:'She takes a shower in the morning.',anchor:'take-tomar'},
+  {pt:'Vamos pegar um táxi.',isFullSentence:true,options:["Let's take a taxi.","Let's get a taxi took.","Let's takes a taxi.","Let's took a taxi."],correct:"Let's take a taxi.",anchor:'take-tomar'},
+  {pt:'Ele toma o remédio toda noite.',isFullSentence:true,options:['He takes the medicine every night.','He gets the medicine every night.','He take the medicine every night.','He taked the medicine every night.'],correct:'He takes the medicine every night.',anchor:'take-tomar'},
+  {pt:'Eu peguei o trem.',isFullSentence:true,options:['I took the train.','I get the train.','I take the train yesterday.','I taked the train.'],correct:'I took the train.',anchor:'take-tomar'},
+  {pt:'Eu fiquei cansado depois do trabalho.',isFullSentence:true,options:['I got tired after work.','I took tired after work.','I get tired after work yesterday.','I taked tired after work.'],correct:'I got tired after work.',anchor:'takeget-misto'},
+  {pt:'Pega o seu casaco.',isFullSentence:true,options:['Take your coat.','Get your coat took.','Takes your coat.','Took your coat now.'],correct:'Take your coat.',anchor:'takeget-misto'},
+  {pt:'Quanto tempo leva pra chegar lá?',isFullSentence:true,options:['How long does it take to get there?','How long does it get to take there?','How long does it takes to get there?','How long does it take to gets there?'],correct:'How long does it take to get there?',anchor:'takeget-misto'},
+  {pt:'Eu cheguei em casa e tomei banho.',isFullSentence:true,options:['I got home and took a shower.','I took home and got a shower.','I get home and take a shower.','I gotten home and taked a shower.'],correct:'I got home and took a shower.',anchor:'takeget-misto'},
+  {pt:'Ela ganhou um presente e ficou feliz.',isFullSentence:true,options:['She got a gift and got happy.','She took a gift and took happy.','She get a gift and get happy.','She gots a gift and gots happy.'],correct:'She got a gift and got happy.',anchor:'takeget-misto'},
+  {pt:'Pega o ônibus, senão você vai chegar atrasado.',isFullSentence:true,options:['Take the bus, or you will get there late.','Get the bus, or you will take there late.','Take the bus, or you will take there late.','Get the bus, or you will get there late.'],correct:'Take the bus, or you will get there late.',anchor:'takeget-misto'},
+  {pt:'Eu entendi.',isFullSentence:true,options:['I get it.','I take it.','I gets it.','I getting it.'],correct:'I get it.',anchor:'get-entender'},
+  {pt:'Você entendeu a piada?',isFullSentence:true,options:['Did you get the joke?','Did you take the joke?','Did you got the joke?','Did you gets the joke?'],correct:'Did you get the joke?',anchor:'get-entender'},
+  {pt:'Eu não entendo você.',isFullSentence:true,options:["I don't get you.","I don't take you.","I don't gets you.","I doesn't get you."],correct:"I don't get you.",anchor:'get-entender'},
+  {pt:'Ele não entendeu nada.',isFullSentence:true,options:["He didn't get it.","He didn't take it.","He didn't got it.","He don't get it."],correct:"He didn't get it.",anchor:'get-entender'},
+  {pt:'Agora eu entendi.',isFullSentence:true,options:['Now I get it.','Now I take it.','Now I gets it.','Now I getted it.'],correct:'Now I get it.',anchor:'get-entender'},
+  {pt:'Você entende o que eu quero dizer?',isFullSentence:true,options:['Do you get what I mean?','Do you take what I mean?','Do you gets what I mean?','Does you get what I mean?'],correct:'Do you get what I mean?',anchor:'get-entender'},
+  {pt:'Eu vou ficar com esse.',isFullSentence:true,options:['I will take this one.','I will get this one.','I will takes this one.','I will took this one.'],correct:'I will take this one.',anchor:'take-escolher'},
+  {pt:'Eu vou querer o frango.',isFullSentence:true,options:['I will take the chicken.','I will get the chicken.','I will takes the chicken.','I will took the chicken.'],correct:'I will take the chicken.',anchor:'take-escolher'},
+  {pt:'Eu fico com os dois.',isFullSentence:true,options:["I'll take both.","I'll get both.","I'll takes both.","I'll took both."],correct:"I'll take both.",anchor:'take-escolher'},
+  {pt:'Qual você vai escolher?',isFullSentence:true,options:['Which one will you take?','Which one will you get?','Which one will you takes?','Which one will you took?'],correct:'Which one will you take?',anchor:'take-escolher'},
+  {pt:'Eu vou ficar com o azul.',isFullSentence:true,options:["I'll take the blue one.","I'll get the blue one.","I'll takes the blue one.","I'll took the blue one."],correct:"I'll take the blue one.",anchor:'take-escolher'},
+  {pt:'Ela escolheu o vestido vermelho.',isFullSentence:true,options:['She took the red dress.','She get the red dress.','She taked the red dress.','She takes the red dress.'],correct:'She took the red dress.',anchor:'take-escolher'},
+];
+
+window['usedto_bk']=[
+  {pt:'Eu jogava futebol.',isFullSentence:true,options:['I used to play soccer.','I use to play soccer.','I used to playing soccer.','I am used to play soccer.'],correct:'I used to play soccer.',anchor:'used-afirm'},
+  {pt:'Ela dormia cedo.',isFullSentence:true,options:['She used to sleep early.','She use to sleep early.','She used to sleeping early.','She is used to sleep early.'],correct:'She used to sleep early.',anchor:'used-afirm'},
+  {pt:'A gente comprava naquela loja.',isFullSentence:true,options:['We used to buy at that store.','We use to buy at that store.','We used to buying at that store.','We are used to buy at that store.'],correct:'We used to buy at that store.',anchor:'used-afirm'},
+  {pt:'Eu morava no Rio.',isFullSentence:true,options:['I used to live in Rio.','I use to live in Rio.','I used to living in Rio.','I am used to live in Rio.'],correct:'I used to live in Rio.',anchor:'used-afirm'},
+  {pt:'Ele fumava.',isFullSentence:true,options:['He used to smoke.','He use to smoke.','He used to smoking.','He is used to smoke.'],correct:'He used to smoke.',anchor:'used-afirm'},
+  {pt:'Nós estudávamos juntos.',isFullSentence:true,options:['We used to study together.','We use to study together.','We used to studying together.','We are used to study together.'],correct:'We used to study together.',anchor:'used-afirm'},
+  {pt:'Eu bebia muito café.',isFullSentence:true,options:['I used to drink a lot of coffee.','I use to drink a lot of coffee.','I used to drinking a lot of coffee.','I am used to drink a lot of coffee.'],correct:'I used to drink a lot of coffee.',anchor:'used-afirm'},
+  {pt:'Ela trabalhava aos sábados.',isFullSentence:true,options:['She used to work on Saturdays.','She use to work on Saturdays.','She used to working on Saturdays.','She is used to work on Saturdays.'],correct:'She used to work on Saturdays.',anchor:'used-afirm'},
+  {pt:'Eles moravam aqui.',isFullSentence:true,options:['They used to live here.','They use to live here.','They used to living here.','They are used to live here.'],correct:'They used to live here.',anchor:'used-afirm'},
+  {pt:'Eu acordava cedo.',isFullSentence:true,options:['I used to wake up early.','I use to wake up early.','I used to waking up early.','I am used to wake up early.'],correct:'I used to wake up early.',anchor:'used-afirm'},
+  {pt:'A gente ia à praia todo verão.',isFullSentence:true,options:['We used to go to the beach every summer.','We use to go to the beach every summer.','We used to going to the beach every summer.','We are used to go to the beach every summer.'],correct:'We used to go to the beach every summer.',anchor:'used-afirm'},
+  {pt:'Ele tinha um cachorro.',isFullSentence:true,options:['He used to have a dog.','He use to have a dog.','He used to having a dog.','He is used to have a dog.'],correct:'He used to have a dog.',anchor:'used-afirm'},
+  {pt:'Eu assistia desenhos.',isFullSentence:true,options:['I used to watch cartoons.','I use to watch cartoons.','I used to watching cartoons.','I am used to watch cartoons.'],correct:'I used to watch cartoons.',anchor:'used-afirm'},
+  {pt:'Minha avó cozinhava pra gente.',isFullSentence:true,options:['My grandma used to cook for us.','My grandma use to cook for us.','My grandma used to cooking for us.','My grandma is used to cook for us.'],correct:'My grandma used to cook for us.',anchor:'used-afirm'},
+  {pt:'Eu era tímido.',isFullSentence:true,options:['I used to be shy.','I use to be shy.','I used to being shy.','I am used to be shy.'],correct:'I used to be shy.',anchor:'used-afirm'},
+  {pt:'Eles viajavam muito.',isFullSentence:true,options:['They used to travel a lot.','They use to travel a lot.','They used to traveling a lot.','They are used to travel a lot.'],correct:'They used to travel a lot.',anchor:'used-afirm'},
+  {pt:'Eu não jogava futebol.',isFullSentence:true,options:["I didn't use to play soccer.","I didn't used to play soccer.","I don't use to play soccer.","I wasn't use to play soccer."],correct:"I didn't use to play soccer.",anchor:'used-negperg'},
+  {pt:'Você jogava futebol?',isFullSentence:true,options:['Did you use to play soccer?','Did you used to play soccer?','Do you use to play soccer?','Were you use to play soccer?'],correct:'Did you use to play soccer?',anchor:'used-negperg'},
+  {pt:'Ela não morava aqui.',isFullSentence:true,options:["She didn't use to live here.","She didn't used to live here.","She doesn't use to live here.","She wasn't use to live here."],correct:"She didn't use to live here.",anchor:'used-negperg'},
+  {pt:'Você morava no Rio?',isFullSentence:true,options:['Did you use to live in Rio?','Did you used to live in Rio?','Do you use to live in Rio?','Were you use to live in Rio?'],correct:'Did you use to live in Rio?',anchor:'used-negperg'},
+  {pt:'Eu não bebia café.',isFullSentence:true,options:["I didn't use to drink coffee.","I didn't used to drink coffee.","I don't use to drink coffee.","I wasn't use to drink coffee."],correct:"I didn't use to drink coffee.",anchor:'used-negperg'},
+  {pt:'Ele fumava antes?',isFullSentence:true,options:['Did he use to smoke?','Did he used to smoke?','Does he use to smoke?','Was he use to smoke?'],correct:'Did he use to smoke?',anchor:'used-negperg'},
+  {pt:'Nós não saíamos muito.',isFullSentence:true,options:["We didn't use to go out much.","We didn't used to go out much.","We don't use to go out much.","We weren't use to go out much."],correct:"We didn't use to go out much.",anchor:'used-negperg'},
+  {pt:'Vocês estudavam juntos?',isFullSentence:true,options:['Did you use to study together?','Did you used to study together?','Do you use to study together?','Were you use to study together?'],correct:'Did you use to study together?',anchor:'used-negperg'},
+  {pt:'Ela não trabalhava aos sábados.',isFullSentence:true,options:["She didn't use to work on Saturdays.","She didn't used to work on Saturdays.","She doesn't use to work on Saturdays.","She wasn't use to work on Saturdays."],correct:"She didn't use to work on Saturdays.",anchor:'used-negperg'},
+  {pt:'Você acordava cedo?',isFullSentence:true,options:['Did you use to wake up early?','Did you used to wake up early?','Do you use to wake up early?','Were you use to wake up early?'],correct:'Did you use to wake up early?',anchor:'used-negperg'},
+  {pt:'Eu não gostava de café.',isFullSentence:true,options:["I didn't use to like coffee.","I didn't used to like coffee.","I don't use to like coffee.","I wasn't use to like coffee."],correct:"I didn't use to like coffee.",anchor:'used-negperg'},
+  {pt:'Eles moravam aqui?',isFullSentence:true,options:['Did they use to live here?','Did they used to live here?','Do they use to live here?','Were they use to live here?'],correct:'Did they use to live here?',anchor:'used-negperg'},
+  {pt:'A gente não tinha carro.',isFullSentence:true,options:["We didn't use to have a car.","We didn't used to have a car.","We don't use to have a car.","We weren't use to have a car."],correct:"We didn't use to have a car.",anchor:'used-negperg'},
+  {pt:'Ela cozinhava antes?',isFullSentence:true,options:['Did she use to cook?','Did she used to cook?','Does she use to cook?','Was she use to cook?'],correct:'Did she use to cook?',anchor:'used-negperg'},
+  {pt:'Eu estou acostumado a acordar cedo.',isFullSentence:true,options:['I am used to waking up early.','I used to wake up early.','I am use to waking up early.','I am used to wake up early.'],correct:'I am used to waking up early.',anchor:'beused'},
+  {pt:'Ela está acostumada com o barulho.',isFullSentence:true,options:['She is used to the noise.','She used to the noise.','She is use to the noise.','She is used to noising.'],correct:'She is used to the noise.',anchor:'beused'},
+  {pt:'Nós estamos acostumados a trabalhar muito.',isFullSentence:true,options:['We are used to working hard.','We used to work hard.','We are use to working hard.','We are used to work hard.'],correct:'We are used to working hard.',anchor:'beused'},
+  {pt:'Eu não estou acostumado com esse frio.',isFullSentence:true,options:['I am not used to this cold.','I not used to this cold.','I am not use to this cold.',"I don't used to this cold."],correct:'I am not used to this cold.',anchor:'beused'},
+  {pt:'Ele está acostumado a dirigir à noite.',isFullSentence:true,options:['He is used to driving at night.','He used to drive at night.','He is use to driving at night.','He is used to drive at night.'],correct:'He is used to driving at night.',anchor:'beused'},
+  {pt:'Você está acostumado com isso?',isFullSentence:true,options:['Are you used to this?','Did you use to this?','Are you use to this?','Do you used to this?'],correct:'Are you used to this?',anchor:'beused'},
+  {pt:'Eu estou acostumado a estudar de manhã.',isFullSentence:true,options:['I am used to studying in the morning.','I used to study in the morning.','I am use to studying in the morning.','I am used to study in the morning.'],correct:'I am used to studying in the morning.',anchor:'beused'},
+  {pt:'Ela está acostumada com a rotina.',isFullSentence:true,options:['She is used to the routine.','She used to the routine.','She is use to the routine.','She is used to routining.'],correct:'She is used to the routine.',anchor:'beused'},
+  {pt:'Eles estão acostumados a viajar.',isFullSentence:true,options:['They are used to traveling.','They used to travel.','They are use to traveling.','They are used to travel.'],correct:'They are used to traveling.',anchor:'beused'},
+  {pt:'Eu já me acostumei com a cidade.',isFullSentence:true,options:['I am used to the city now.','I used to the city now.','I am use to the city now.','I am used to citying now.'],correct:'I am used to the city now.',anchor:'beused'},
+  {pt:'Você se acostuma com o tempo.',isFullSentence:true,options:['You get used to it with time.','You used to it with time.','You get use to it with time.','You are used to it timing.'],correct:'You get used to it with time.',anchor:'beused'},
+  {pt:'Ela está acostumada a falar em público.',isFullSentence:true,options:['She is used to speaking in public.','She used to speak in public.','She is use to speaking in public.','She is used to speak in public.'],correct:'She is used to speaking in public.',anchor:'beused'},
+  {pt:'Nós não estamos acostumados com calor.',isFullSentence:true,options:["We aren't used to the heat.","We didn't use to the heat.","We aren't use to the heat.","We aren't used to heating."],correct:"We aren't used to the heat.",anchor:'beused'},
+  {pt:'Eu estou acostumado com longas caminhadas.',isFullSentence:true,options:['I am used to long walks.','I used to long walks.','I am use to long walks.','I am used to long walking.'],correct:'I am used to long walks.',anchor:'beused'},
+  {pt:'Eu jogava tênis. (costumava)',isFullSentence:true,options:['I used to play tennis.','I am used to playing tennis.','I use to play tennis.','I used to playing tennis.'],correct:'I used to play tennis.',anchor:'usedto-misto'},
+  {pt:'Eu estou acostumado a jogar tênis.',isFullSentence:true,options:['I am used to playing tennis.','I used to play tennis.','I am use to playing tennis.','I am used to play tennis.'],correct:'I am used to playing tennis.',anchor:'usedto-misto'},
+  {pt:'Ela morava sozinha.',isFullSentence:true,options:['She used to live alone.','She is used to living alone.','She use to live alone.','She used to living alone.'],correct:'She used to live alone.',anchor:'usedto-misto'},
+  {pt:'Ela está acostumada a morar sozinha.',isFullSentence:true,options:['She is used to living alone.','She used to live alone.','She is use to living alone.','She is used to live alone.'],correct:'She is used to living alone.',anchor:'usedto-misto'},
+  {pt:'Eu acordava tarde.',isFullSentence:true,options:['I used to wake up late.','I am used to waking up late.','I use to wake up late.','I used to waking up late.'],correct:'I used to wake up late.',anchor:'usedto-misto'},
+  {pt:'Eu estou acostumado a acordar tarde.',isFullSentence:true,options:['I am used to waking up late.','I used to wake up late.','I am use to waking up late.','I am used to wake up late.'],correct:'I am used to waking up late.',anchor:'usedto-misto'},
+  {pt:'Você jogava videogame?',isFullSentence:true,options:['Did you use to play video games?','Are you used to playing video games?','Did you used to play video games?','Do you use to play video games?'],correct:'Did you use to play video games?',anchor:'usedto-misto'},
+  {pt:'Você está acostumado a jogar videogame?',isFullSentence:true,options:['Are you used to playing video games?','Did you use to play video games?','Are you use to playing video games?','Are you used to play video games?'],correct:'Are you used to playing video games?',anchor:'usedto-misto'},
+  {pt:'Ele trabalhava à noite.',isFullSentence:true,options:['He used to work at night.','He is used to working at night.','He use to work at night.','He used to working at night.'],correct:'He used to work at night.',anchor:'usedto-misto'},
+  {pt:'Ele está acostumado a trabalhar à noite.',isFullSentence:true,options:['He is used to working at night.','He used to work at night.','He is use to working at night.','He is used to work at night.'],correct:'He is used to working at night.',anchor:'usedto-misto'},
+  {pt:'Eu não comia carne.',isFullSentence:true,options:["I didn't use to eat meat.",'I am not used to eating meat.',"I didn't used to eat meat.","I don't use to eat meat."],correct:"I didn't use to eat meat.",anchor:'usedto-misto'},
+  {pt:'Eu não estou acostumado a comer carne.',isFullSentence:true,options:['I am not used to eating meat.',"I didn't use to eat meat.",'I am not use to eating meat.','I am not used to eat meat.'],correct:'I am not used to eating meat.',anchor:'usedto-misto'},
+  {pt:'A gente viajava de trem.',isFullSentence:true,options:['We used to travel by train.','We are used to traveling by train.','We use to travel by train.','We used to traveling by train.'],correct:'We used to travel by train.',anchor:'usedto-misto'},
+  {pt:'A gente está acostumada a viajar de trem.',isFullSentence:true,options:['We are used to traveling by train.','We used to travel by train.','We are use to traveling by train.','We are used to travel by train.'],correct:'We are used to traveling by train.',anchor:'usedto-misto'},
+  {pt:'Ela estudava à tarde.',isFullSentence:true,options:['She used to study in the afternoon.','She is used to studying in the afternoon.','She use to study in the afternoon.','She used to studying in the afternoon.'],correct:'She used to study in the afternoon.',anchor:'usedto-misto'},
+  {pt:'Ela está acostumada a estudar à tarde.',isFullSentence:true,options:['She is used to studying in the afternoon.','She used to study in the afternoon.','She is use to studying in the afternoon.','She is used to study in the afternoon.'],correct:'She is used to studying in the afternoon.',anchor:'usedto-misto'},
 ];
 
 window['rev7_bk']=[
@@ -6574,6 +6723,22 @@ const pages=[
       </div>
     </div>
 
+    <div class="idx-chapter" id="idxcap9">
+      <button class="idx-chapter-btn" onclick="toggleIdxCap('idxcap9')" style="--ch-color:#ea7317;">
+        <span class="idx-chapter-num" style="background:#ea7317;">9</span>
+        <span class="idx-chapter-title">Capítulo 9</span>
+        <span class="idx-chapter-arrow">▾</span>
+      </button>
+      <div class="idx-chapter-body" id="idxcap9-body">
+        <div class="idx-item" onclick="go(122)" data-kw="take get took got pegar levar conseguir receber ganhar ficar chegar tomar banho remedio onibus decisao levar tempo verbos coringa cap9">
+          <div class="idx-num">47</div><div class="idx-info"><div class="idx-name">Take e Get</div><div class="idx-desc">Pegar/levar/tomar e conseguir/ficar/chegar</div></div><div class="idx-arrow">→</div>
+        </div>
+        <div class="idx-item" onclick="go(124)" data-kw="used to be used to costumava habito passado jogava dormia comprava acostumado didn't use to did you use to acostumar cap9">
+          <div class="idx-num">48</div><div class="idx-info"><div class="idx-name">Used To, Be Used To</div><div class="idx-desc">Costumava fazer e estar acostumado com</div></div><div class="idx-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>`,
 
@@ -6858,7 +7023,7 @@ const pages=[
     <p class="intro">O verbo <span class="en" data-speak="to be">to be</span> em português é o verbo <strong>ser</strong> e o verbo <strong>estar</strong>.</p>
 
     <!-- ════ PRESENTE ════ -->
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Presente</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Presente</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-presente">
       <div class="tobe-card-hd">Presente — Afirmativo</div>
@@ -7060,7 +7225,7 @@ const pages=[
     </div>
 
     <!-- ════ PASSADO ════ -->
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Passado</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Passado</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-passado">
       <div class="tobe-card-hd pur">Passado — Afirmativo</div>
@@ -7164,7 +7329,7 @@ const pages=[
     </div>
 
     <!-- ════ FUTURO ════ -->
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Futuro</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Futuro</div><div class="sec-divider-line r"></div></div>
 
     <div class="tobe-card" id="tobe-futuro">
       <div class="tobe-card-hd yel">Futuro — Afirmativo</div>
@@ -8808,7 +8973,7 @@ const pages=[
 
     <p class="intro">A regra geral em inglês é simples: <strong>adicionar S</strong> no final da palavra para deixar plural. <em>1 car → 2 cars, 1 book → 2 books</em>. Mas existem alguns padrões que fogem dessa regra — e é por isso que vale a pena conhecer cada exceção.</p>
 
-    <div class="sec-divider" id="plural-es"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em S, CH, SH, X ou Z — adiciona ES</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="plural-es"><div class="sec-divider-line"></div><div class="sec-divider-label">S, CH, SH, X, Z → ES</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Palavras que terminam em sons de <strong>chiado ou assobio</strong> (S, CH, SH, X, Z) precisam de <strong>ES</strong> no plural — só pra dar pra pronunciar.</p>
 
@@ -8823,7 +8988,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="plural-cy"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em CONSOANTE + Y — remove Y, adiciona IES</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="plural-cy"><div class="sec-divider-line"></div><div class="sec-divider-label">Consoante + Y → IES</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Quando tem <strong>consoante antes do Y</strong>, troca o Y por <strong>IES</strong>.</p>
 
@@ -8838,7 +9003,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="plural-co"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em CONSOANTE + O — adiciona ES</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="plural-co"><div class="sec-divider-line"></div><div class="sec-divider-label">Consoante + O → ES</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Com <strong>consoante antes do O</strong>, adiciona <strong>ES</strong>.</p>
 
@@ -8857,7 +9022,7 @@ const pages=[
       <p class="tip-txt">Algumas palavras com consoante + O fogem da regra e só ganham <strong>S</strong>: <em>piano → pianos, photo → photos</em>. Decorar caso a caso.</p>
     </div>
 
-    <div class="sec-divider" id="plural-fe"><div class="sec-divider-line"></div><div class="sec-divider-label">Termina em F ou FE — remove F/FE, adiciona VES</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="plural-fe"><div class="sec-divider-line"></div><div class="sec-divider-label">F / FE → VES</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Palavras terminadas em <strong>F</strong> ou <strong>FE</strong> trocam essa terminação por <strong>VES</strong>. O som de F vira som de V.</p>
 
@@ -9857,7 +10022,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">E quando aparecer "do, da, dos, das"?</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">E o "do, da, dos, das"?</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Aqui mora um detalhe importante. Lembre-se que <strong>do, da, dos, das</strong> são uma contração:</p>
 
@@ -12307,7 +12472,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="just-like"><div class="sec-divider-line"></div><div class="sec-divider-label">Just like — igualzinho, exatamente como</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="just-like"><div class="sec-divider-line"></div><div class="sec-divider-label">Just like — igualzinho</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Quando você quer dar <strong>ênfase</strong> à comparação — "<strong>igualzinho</strong>", "exatamente como" — é só colocar <strong class="enw" data-speak="just">just</strong> antes do like. O <em class="enw" data-speak="just">just</em> reforça, mostrando que a semelhança é total.</p>
 
@@ -12542,7 +12707,7 @@ const pages=[
       <p class="tip-txt">As terminações <strong class="enw" data-speak="-one">-one</strong> e <strong>-body</strong> significam a mesma coisa (someone = somebody). A diferença é sutil: <strong class="enw" data-speak="-one">-one</strong> soa um pouco mais específico ("alguém do grupo que estamos falando") e <strong>-body</strong> mais geral. No dia a dia, são quase sempre intercambiáveis.</p>
     </div>
 
-    <div class="sec-divider" id="sane-to-some"><div class="sec-divider-line"></div><div class="sec-divider-label">O "to" some antes de somewhere, anywhere...</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="sane-to-some"><div class="sec-divider-line"></div><div class="sec-divider-label">O "to" some antes de somewhere</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Você aprendeu lá no <span class="tb-link" onclick="goAndHighlight(59,'to-intro')">To</span> que "ir para um lugar" usa <strong class="enw" data-speak="to">to</strong> (go <strong class="enw" data-speak="to">to</strong> the party). Mas com as palavras terminadas em <strong>-where</strong> (somewhere, anywhere, nowhere, everywhere) o <strong>to desaparece</strong>. O motivo: essas palavras já carregam a ideia de "lugar / para onde" dentro delas — colocar o <em class="enw" data-speak="to">to</em> seria repetir.</p>
 
@@ -12657,7 +12822,7 @@ const pages=[
       <p class="tip-txt">Pra perguntar ou negar a posse (<em>"Você tem um carro?"</em> / <em>"Eu não tenho um carro"</em>), o inglês usa <strong class="enw" data-speak="do or does or did">do/does/did</strong> — que você ainda <strong>não aprendeu</strong>. Então, por enquanto, use o <strong class="enw" data-speak="have">have</strong> só em frases <strong>afirmativas</strong>. As perguntas e negações de posse virão na matéria do <em class="enw" data-speak="To Do">To Do</em>.</p>
     </div>
 
-    <div class="sec-divider" id="there-is"><div class="sec-divider-line"></div><div class="sec-divider-label">THERE IS / THERE ARE — ter no sentido de existir</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="there-is"><div class="sec-divider-line"></div><div class="sec-divider-label">There is / There are — existir</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Quando o "ter" significa que algo <strong>existe</strong> (dá pra trocar por "existe" ou "há"), usamos <strong class="enw" data-speak="there is">there is</strong> (singular) ou <strong class="enw" data-speak="there are">there are</strong> (plural). Repare: o "there" aqui <strong>não</strong> é "lá" — é uma estrutura fixa que acompanha o verbo to be.</p>
 
@@ -12813,7 +12978,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="tomake-conj"><div class="sec-divider-line"></div><div class="sec-divider-label">To Make (fazer/preparar) — conjugação</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="tomake-conj"><div class="sec-divider-line"></div><div class="sec-divider-label">To Make — fazer / preparar</div><div class="sec-divider-line r"></div></div>
 
     <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
       <div class="conj-row hd" style="grid-template-columns:1fr 1fr 1fr;"><span>Presente</span><span>Passado</span><span>Futuro</span></div>
@@ -12830,7 +12995,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">A grande novidade: negar e perguntar</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Até agora você só conseguia negar e perguntar com o verbo <strong class="enw" data-speak="to be">to be</strong> e o <strong class="enw" data-speak="will">will</strong>. Com o <strong class="enw" data-speak="to do">to do</strong>, você finalmente vai poder fazer isso com <strong>qualquer verbo comum</strong> (gostar, fazer, jogar, comer...). Mas primeiro, dois conceitos.</p>
 
@@ -12845,7 +13010,7 @@ const pages=[
       <p style="margin-top:8px;font-size:14px;opacity:.85;">Esses verbos já sabem se negar sozinhos. O problema são os verbos comuns (like, do, play...), que <strong>não</strong> têm negação própria — e é aí que entra o to do.</p>
     </div>
 
-    <div class="sec-divider" id="todo-dont"><div class="sec-divider-line"></div><div class="sec-divider-label">don't — negar no presente (I, You, We, They)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="todo-dont"><div class="sec-divider-line"></div><div class="sec-divider-label">don't — negar (I/You/We/They)</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O auxiliar <strong class="enw" data-speak="don't">don't</strong> (do not) nega verbos comuns conjugados no <strong>presente</strong>, nos pronomes <strong>I, You, We, They</strong>.</p>
 
@@ -12858,7 +13023,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="todo-doesnt"><div class="sec-divider-line"></div><div class="sec-divider-label">doesn't — negar no presente (He, She, It)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="todo-doesnt"><div class="sec-divider-line"></div><div class="sec-divider-label">doesn't — negar (He/She/It)</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O auxiliar <strong class="enw" data-speak="doesn't">doesn't</strong> (does not) nega verbos comuns no <strong>presente</strong>, nos pronomes <strong>He, She, It</strong>. E tem um detalhe importante:</p>
 
@@ -12894,7 +13059,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Agora as perguntas</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Agora as perguntas</div><div class="sec-divider-line r"></div></div>
 
     <div class="pron-section" id="verbo-auxiliar">
       <div class="pron-header">🟡 O que é "verbo auxiliar"</div>
@@ -12906,7 +13071,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="todo-do-perg"><div class="sec-divider-line"></div><div class="sec-divider-label">do — perguntar no presente (I, You, We, They)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="todo-do-perg"><div class="sec-divider-line"></div><div class="sec-divider-label">do — perguntar (I/You/We/They)</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Verbos comuns não têm um auxiliar pra inverter. Então, pra fazer pergunta no <strong>presente</strong> (I, You, We, They), a gente acrescenta o <strong class="enw" data-speak="do">do</strong> <strong>artificialmente</strong> na frente.</p>
 
@@ -12919,7 +13084,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="todo-does-perg"><div class="sec-divider-line"></div><div class="sec-divider-label">does — perguntar no presente (He, She, It)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="todo-does-perg"><div class="sec-divider-line"></div><div class="sec-divider-label">does — perguntar (He/She/It)</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra perguntar no presente com <strong>He, She, It</strong>, usamos o <strong class="enw" data-speak="does">does</strong>. E aqui também o <strong>S some</strong> do verbo principal (foi pro does).</p>
 
@@ -12970,7 +13135,7 @@ const pages=[
       <p class="tip-txt">Repare: a resposta usa o <strong>mesmo</strong> auxiliar da pergunta. <span class="enw" data-speak="Do">Do</span> you...? → I <span class="enw" data-speak="do">do</span>. &nbsp;·&nbsp; <span class="enw" data-speak="Does">Does</span> she...? → She <span class="enw" data-speak="does">does</span>. &nbsp;·&nbsp; <span class="enw" data-speak="Did">Did</span> they...? → They <span class="enw" data-speak="did">did</span>. Pra negar, é só usar a forma negativa (I <span class="enw" data-speak="don't">don't</span>).</p>
     </div>
 
-    <div class="sec-divider" id="todo-aux-verbo"><div class="sec-divider-line"></div><div class="sec-divider-label">O detalhe esperto: do auxiliar + do verbo</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="todo-aux-verbo"><div class="sec-divider-line"></div><div class="sec-divider-label">Detalhe: do auxiliar + do verbo</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong class="enw" data-speak="to do">to do</strong> é, ao mesmo tempo, um <strong>verbo auxiliar</strong> (pra perguntar/negar) e o <strong>verbo "fazer"</strong>. Quando ele aparece como verbo principal, ele ainda precisa de <strong>outro</strong> do/does/did na frente pra virar pergunta ou negação — porque, como verbo "fazer", ele <strong>não</strong> tem auxiliar próprio.</p>
 
@@ -13076,7 +13241,7 @@ const pages=[
       <p class="tip-txt">Os modais <strong>nunca</strong> ganham S na terceira pessoa. É <em>He <span class="enw" data-speak="can">can</span></em>, não "he cans". Vale pra todos eles.</p>
     </div>
 
-    <div class="sec-divider" id="modal-can"><div class="sec-divider-line"></div><div class="sec-divider-label">Can / Can't — poder, saber, conseguir</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-can"><div class="sec-divider-line"></div><div class="sec-divider-label">Can / Can't — poder/saber</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>can</strong> tem dois usos que andam juntos: <strong>capacidade</strong> ("saber/conseguir fazer") e <strong>permissão</strong> informal ("pode"). A mesma palavra serve pros dois — o contexto diz qual é. A negação é <strong>can't</strong>.</p>
 
@@ -13109,7 +13274,7 @@ const pages=[
       <p class="tip-txt">→ Presente: <span class="enw" data-speak="can">can</span> (I can do it)<br>→ Passado: <span class="enw" data-speak="could">could</span> (I could do it)<br>→ Futuro: <span class="enw" data-speak="will be able to">will be able to</span> (I will be able to do it)<br><br>Repare que no <em>will be able to</em> o verbo vem com <strong>to</strong> (be able <strong>to</strong> finish) — é a exceção, porque aqui quem é modal é o <em>will</em>, não o "be able".</p>
     </div>
 
-    <div class="sec-divider" id="modal-could"><div class="sec-divider-line"></div><div class="sec-divider-label">Could / Couldn't — podia, poderia</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-could"><div class="sec-divider-line"></div><div class="sec-divider-label">Could / Couldn't — podia</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>could</strong> tem três usos: é o <strong>passado do can</strong> ("conseguia/podia"), serve pra <strong>pedidos educados</strong> ("poderia?"), e indica <strong>possibilidade futura</strong> ("poderia / talvez aconteça"). A negação é <strong>couldn't</strong>.</p>
 
@@ -13134,7 +13299,7 @@ const pages=[
       <p class="tip-txt">Pra pedir algo de forma <strong>gentil</strong>, prefira <em>Could you...?</em> a <em>Can you...?</em>. É a diferença entre "você pode?" e "você poderia?".</p>
     </div>
 
-    <div class="sec-divider" id="modal-should"><div class="sec-divider-line"></div><div class="sec-divider-label">Should / Shouldn't — deveria (conselho)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-should"><div class="sec-divider-line"></div><div class="sec-divider-label">Should / Shouldn't — deveria</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>should</strong> dá <strong>conselho</strong> ou recomendação: "deveria". A negação <strong>shouldn't</strong> = "não deveria".</p>
 
@@ -13148,7 +13313,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="modal-would"><div class="sec-divider-line"></div><div class="sec-divider-label">Would / Wouldn't — gostaria, ia (condicional)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-would"><div class="sec-divider-line"></div><div class="sec-divider-label">Would / Wouldn't — gostaria, ia</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>would</strong> traz a ideia de <strong>condicional</strong> ("ia/gostaria") e aparece muito em <strong>pedidos educados</strong> e ofertas. A negação é <strong>wouldn't</strong>.</p>
 
@@ -13172,7 +13337,7 @@ const pages=[
       <p class="tip-txt">Repare no padrão: assim como <span class="enw" data-speak="could">could</span> é a versão gentil do <span class="enw" data-speak="can">can</span>, o <span class="enw" data-speak="would">would</span> é a versão gentil do <span class="enw" data-speak="will">will</span>.<br>→ <span class="enw" data-speak="Will you help me?">Will you help me?</span> <span style="opacity:.6">(direto)</span><br>→ <span class="enw" data-speak="Would you help me?">Would you help me?</span> <span style="opacity:.6">(educado)</span></p>
     </div>
 
-    <div class="sec-divider" id="modal-must"><div class="sec-divider-line"></div><div class="sec-divider-label">Must / Mustn't — dever (obrigação e dedução)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-must"><div class="sec-divider-line"></div><div class="sec-divider-label">Must / Mustn't — dever</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>must</strong> tem dois usos. O primeiro é <strong>obrigação forte</strong>: "ter que/dever". A negação <strong>mustn't</strong> é uma <strong>proibição</strong> ("não pode de jeito nenhum").</p>
 
@@ -13201,7 +13366,7 @@ const pages=[
       <p class="tip-txt">É o contexto que diz:<br>→ <span class="enw" data-speak="You must study">You must study</span> = você <strong>tem que</strong> estudar <span style="opacity:.6">(obrigação)</span><br>→ <span class="enw" data-speak="You must be smart">You must be smart</span> = você <strong>deve ser</strong> inteligente <span style="opacity:.6">(dedução)</span><br><br>Em geral, quando o must vem antes de <em>be</em> ou de um verbo de estado (know, have...), costuma ser dedução.</p>
     </div>
 
-    <div class="sec-divider" id="modal-haveto"><div class="sec-divider-line"></div><div class="sec-divider-label">Have to / Has to — ter que (o irmão do Must)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-haveto"><div class="sec-divider-line"></div><div class="sec-divider-label">Have to / Has to — ter que</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">No dia a dia, os americanos usam muito mais <strong>have to</strong> do que <em>must</em> pra falar de obrigação. Significa a mesma coisa: <strong>"ter que"</strong>. Na terceira pessoa (he/she/it) vira <strong>has to</strong>, e no passado <strong>had to</strong>.</p>
 
@@ -13224,7 +13389,7 @@ const pages=[
       <p class="tip-txt">Aqui mora a maior pegadinha dos modais. As negações <strong>parecem</strong> iguais mas dizem o oposto:<br><br>→ <span class="enw" data-speak="You mustn't go">You mustn't go</span> = você <strong>não pode</strong> ir (é proibido)<br>→ <span class="enw" data-speak="You don't have to go">You don't have to go</span> = você <strong>não precisa</strong> ir (mas pode, se quiser)<br><br>Um <strong>proíbe</strong>; o outro diz que <strong>não é obrigatório</strong>.</p>
     </div>
 
-    <div class="sec-divider" id="modal-may"><div class="sec-divider-line"></div><div class="sec-divider-label">May / May not — poder (permissão, possibilidade)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="modal-may"><div class="sec-divider-line"></div><div class="sec-divider-label">May / May not — poder</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>may</strong> indica <strong>permissão formal</strong> ou <strong>possibilidade</strong> ("pode ser que"). A negação é <strong>may not</strong> (esse não tem forma contraída comum).</p>
 
@@ -13383,7 +13548,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="tag-do"><div class="sec-divider-line"></div><div class="sec-divider-label">Com verbo comum — entra o do/does/did</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="tag-do"><div class="sec-divider-line"></div><div class="sec-divider-label">Com verbo comum — do/does/did</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Quando a frase tem um <strong>verbo comum</strong> (sem auxiliar), a tag usa o <span class="tb-link" onclick="goAndHighlight(93,'todo-conj')">do/does/did</span> — exatamente como você aprendeu no To Do. O tempo manda: presente → do/does, passado → did.</p>
 
@@ -13492,7 +13657,7 @@ const pages=[
 
     <p class="intro">As <strong>question words</strong> (palavras de pergunta) são as que abrem perguntas <strong>abertas</strong> — aquelas que não se respondem com "sim/não", mas pedem uma informação. Em inglês, quase todas começam com <strong>WH</strong>, por isso também são chamadas de <strong>WH-words</strong>.</p>
 
-    <div class="sec-divider" id="qw-lista"><div class="sec-divider-line"></div><div class="sec-divider-label">As principais</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider" id="qw-lista"><div class="sec-divider-line"></div><div class="sec-divider-label">As principais</div><div class="sec-divider-line r"></div></div>
 
     <div class="conj-table" style="margin:14px 0;font-size:13.5px;">
       <div class="conj-row hd" style="grid-template-columns:1fr 1.3fr;"><span>Palavra</span><span>Significado</span></div>
@@ -13525,7 +13690,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="qw-afirmativa"><div class="sec-divider-line"></div><div class="sec-divider-label">Não é só pergunta: WH em frases afirmativas</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider" id="qw-afirmativa"><div class="sec-divider-line"></div><div class="sec-divider-label">WH em frases afirmativas</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Apesar do nome "question words", essas palavras <strong>não aparecem só em perguntas</strong>. Elas também ligam ideias no meio de frases <strong>afirmativas</strong> (declarações), como o nosso "o que / onde / quando / quem / por que". Repare que aqui a frase <strong>não é pergunta</strong> — não tem inversão nem ponto de interrogação.</p>
 
@@ -13536,7 +13701,7 @@ const pages=[
         <div class="eg-row"><span class="eg-pt">Me diz o que você quer.</span><span class="eg-en en" data-speak="Tell me what you want.">Tell me <span class="hl-coringa">what</span> you want.</span></div>
         <div class="eg-row"><span class="eg-pt">Eu não sei quando ele chega.</span><span class="eg-en en" data-speak="I don't know when he arrives.">I don't know <span class="hl-coringa">when</span> he arrives.</span></div>
         <div class="eg-row"><span class="eg-pt">Essa é a pessoa que me ajudou.</span><span class="eg-en en" data-speak="This is the person who helped me.">This is the person <span class="hl-coringa">who</span> helped me.</span></div>
-        <div class="eg-row"><span class="eg-pt">Me mostra como você fez isso.</span><span class="eg-en en" data-speak="Show me how you did it.">Show me <span class="hl-coringa">how</span> you did it.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não lembro quem disse isso.</span><span class="eg-en en" data-speak="I don't remember who said that.">I don't remember <span class="hl-coringa">who</span> said that.</span></div>
       </div>
     </div>
 
@@ -13545,7 +13710,7 @@ const pages=[
       <p class="tip-txt">Na <strong>pergunta</strong>, a WH vem no começo e há inversão: <em>Where <span class="enw" data-speak="does she live">does she live</span>?</em><br>Na <strong>afirmativa</strong>, a WH vem no meio e a ordem é normal (sujeito + verbo): <em>I know where <span class="enw" data-speak="she lives">she lives</span>.</em> Sem inversão, sem "?".</p>
     </div>
 
-    <div class="sec-divider" id="qw-why-ind"><div class="sec-divider-line"></div><div class="sec-divider-label">Why em afirmativas: "por isso / a razão pela qual"</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="qw-why-ind"><div class="sec-divider-line"></div><div class="sec-divider-label">Why afirmativo — por isso</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>why</strong> merece destaque. Fora das perguntas, ele aparece muito em afirmativas com o sentido de <strong>"(é) por isso (que)"</strong> ou <strong>"a razão pela qual"</strong>. É super comum na fala.</p>
 
@@ -13564,7 +13729,26 @@ const pages=[
       <p class="tip-txt">Guarde a expressão <span class="enw" data-speak="that's why">that's why</span> — é o jeito mais natural de dizer "(é) por isso (que)". <em>I woke up late; that's why I missed the bus.</em> (Acordei tarde; foi por isso que perdi o ônibus.)</p>
     </div>
 
-    <div class="sec-divider" id="qw-where-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Where também liga frases: "onde / em que / no qual"</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="qw-how-ind"><div class="sec-divider-line"></div><div class="sec-divider-label">How afirmativo — como / o jeito que</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Igual ao why, o <strong>how</strong> também aparece muito fora das perguntas, com o sentido de <strong>"como"</strong> ou <strong>"o jeito que / a maneira como"</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 How declarando "como"</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu sei como fazer isso.</span><span class="eg-en en" data-speak="I know how to do it.">I know <span class="hl-coringa">how</span> to do it.</span></div>
+        <div class="eg-row"><span class="eg-pt">É assim que funciona.</span><span class="eg-en en" data-speak="That's how it works.">That's <span class="hl-coringa">how</span> it works.</span></div>
+        <div class="eg-row"><span class="eg-pt">Me mostra como você fez.</span><span class="eg-en en" data-speak="Show me how you did it.">Show me <span class="hl-coringa">how</span> you did it.</span></div>
+        <div class="eg-row"><span class="eg-pt">Foi assim que a gente se conheceu.</span><span class="eg-en en" data-speak="That's how we met.">That's <span class="hl-coringa">how</span> we met.</span></div>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 That's how = "é assim que"</div>
+      <p class="tip-txt">Assim como o <span class="enw" data-speak="that's why">that's why</span>, guarde o <span class="enw" data-speak="that's how">that's how</span> = "é assim que / foi assim que". <em>That's how I learned English.</em> (Foi assim que eu aprendi inglês.)</p>
+    </div>
+
+    <div class="sec-divider" id="qw-where-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Where relativo — onde / em que</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>where</strong> não serve só pra perguntar "onde?". Ele também aparece no meio da frase, ligando um <strong>lugar</strong> ao que acontece nele. Em português a gente diz isso de <strong>oito</strong> jeitos diferentes — <strong>onde, em que, no qual, na qual, nos quais, nas quais</strong>... — mas em inglês é tudo o mesmo <strong>where</strong>.</p>
 
@@ -13595,7 +13779,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="qw-whose-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Whose: "de quem" e também "cujo / cuja"</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="qw-whose-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">Whose — de quem / cujo</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>whose</strong> tem dois trabalhos. Em <strong>pergunta</strong> é "de quem?" (Whose car is this?). Mas ele também liga frases no sentido de <strong>"cujo, cuja, cujos, cujas"</strong> — mostrando que algo <strong>pertence</strong> a alguém que acabou de ser citado.</p>
 
@@ -13887,7 +14071,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="stts-say"><div class="sec-divider-line"></div><div class="sec-divider-label">Say / Said — o QUE foi dito</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider" id="stts-say"><div class="sec-divider-line"></div><div class="sec-divider-label">Say / Said — o QUE foi dito</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>say</strong> (passado <strong>said</strong>) foca <strong>no conteúdo</strong> — o que a pessoa falou. Normalmente vem seguido direto da informação, sem dizer pra quem.</p>
 
@@ -13920,7 +14104,7 @@ const pages=[
       <p class="tip-txt">Pense assim: <strong>say</strong> alguma coisa, <strong>tell</strong> alguém.<br>→ I <span class="enw" data-speak="said">said</span> the truth. (disse a verdade — o quê)<br>→ I <span class="enw" data-speak="told">told</span> her the truth. (disse a ela — pra quem)<br>Repare: depois do <em>tell</em> vem logo a pessoa (her, him, me).</p>
     </div>
 
-    <div class="sec-divider" id="stts-talk"><div class="sec-divider-line"></div><div class="sec-divider-label">Talk / Talked — a CONVERSA</div><div class="sec-divider-line r"></div></div>
+<div class="sec-divider" id="stts-talk"><div class="sec-divider-line"></div><div class="sec-divider-label">Talk / Talked — a CONVERSA</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O <strong>talk</strong> (passado <strong>talked</strong>) foca <strong>na interação</strong> — duas pessoas conversando. É o "conversar / bater papo". Ele vem com três preposições, cada uma com um sentido:</p>
 
@@ -14132,7 +14316,7 @@ const pages=[
 
     <p class="intro">Agora a versão no passado do <strong>going to</strong>: o nosso <strong>"ia, iam, íamos"</strong> — aquele plano ou intenção que existia no passado, e que muitas vezes <strong>não chegou a acontecer</strong>. "Eu ia ligar, mas esqueci."</p>
 
-    <div class="sec-divider" id="ia-form"><div class="sec-divider-line"></div><div class="sec-divider-label">A fórmula: was/were going to + verbo</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="ia-form"><div class="sec-divider-line"></div><div class="sec-divider-label">was/were going to + verbo</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">É só trocar o to be do presente (am/is/are) pelo <strong>passado</strong> (was/were) que você já conhece. O resto é igual.</p>
 
@@ -14151,7 +14335,7 @@ const pages=[
       <p class="tip-txt">Mesma regra do passado do to be:<br>→ I / He / She / It → <span class="enw" data-speak="was going to">was going to</span><br>→ You / We / They → <span class="enw" data-speak="were going to">were going to</span></p>
     </div>
 
-    <div class="sec-divider" id="ia-naorolou"><div class="sec-divider-line"></div><div class="sec-divider-label">O uso mais comum: o plano que não rolou</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="ia-naorolou"><div class="sec-divider-line"></div><div class="sec-divider-label">O plano que não rolou</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Na maioria das vezes, o "ia" vem junto de um <strong>"mas..."</strong> — o plano existia, mas algo mudou. É o jeito perfeito de explicar por que algo <strong>não aconteceu</strong>.</p>
 
@@ -14231,7 +14415,7 @@ const pages=[
 
     <p class="intro">Duas situações bem próximas no tempo: algo que <strong>acabou de</strong> acontecer (segundos atrás) e algo que está <strong>prestes a</strong> acontecer (vai acontecer já já). Cada uma tem sua estrutura simples.</p>
 
-    <div class="sec-divider" id="just-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Acabou de — sujeito + just + passado</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="just-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Acabou de — just + passado</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra dizer que algo <strong>acabou de</strong> acontecer, é só encaixar a palavra <strong class="enw" data-speak="just">just</strong> <strong>antes do verbo no passado</strong>. O just aqui significa "agora mesmo, há pouquinho".</p>
 
@@ -14411,7 +14595,7 @@ const pages=[
       </div>
     </div>
 
-    <div class="sec-divider" id="reflex-eachother"><div class="sec-divider-line"></div><div class="sec-divider-label">Reflexivo x Recíproco: -selves vs each other</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="reflex-eachother"><div class="sec-divider-line"></div><div class="sec-divider-label">-selves vs each other</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Esse é o pulo do gato. Em português usamos "se" pra tudo, mas em inglês muda o sentido conforme a ação <strong>volta pra própria pessoa</strong> (reflexivo) ou é <strong>mútua, de um pro outro</strong> (recíproco = <strong class="enw" data-speak="each other">each other</strong>). Compare:</p>
 
@@ -14534,7 +14718,7 @@ const pages=[
       <p class="tip-txt">→ a parte do <strong class="enw" data-speak="if">if</strong> (a condição) e a parte do <strong>resultado</strong>. A ordem pode inverter: <em>If it rains, I will stay</em> = <em>I will stay if it rains</em> (sem vírgula quando o if vem no meio).</p>
     </div>
 
-    <div class="sec-divider" id="cond-zero"><div class="sec-divider-line"></div><div class="sec-divider-label">Zero — verdades sempre (if + presente, presente)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="cond-zero"><div class="sec-divider-line"></div><div class="sec-divider-label">Zero — verdades de sempre</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra <strong>fatos e verdades</strong> que sempre acontecem. Os dois lados ficam no <strong>presente</strong>. Aqui o <em>if</em> equivale a <strong>"quando / sempre que"</strong> (<span class="enw" data-speak="whenever">whenever</span>) — tanto que dá pra trocar o <em>if</em> por <em>when</em> sem mudar o sentido.</p>
 
@@ -14552,7 +14736,7 @@ const pages=[
       <p class="tip-txt">Como é uma verdade que sempre se repete, o <span class="hl-coringa enw" data-speak="if">if</span> tem o sentido de <span class="enw" data-speak="when">when</span> / <span class="enw" data-speak="whenever">whenever</span> (quando / sempre que). <em>If you heat water, it boils</em> = <em>When you heat water, it boils</em>. As duas dizem a mesma coisa.</p>
     </div>
 
-    <div class="sec-divider" id="cond-first"><div class="sec-divider-line"></div><div class="sec-divider-label">First — real e provável (if + presente, will)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="cond-first"><div class="sec-divider-line"></div><div class="sec-divider-label">First — real e provável</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra algo <strong>real que pode acontecer</strong> no futuro. O <em>if</em> fica no <strong>presente</strong> e o resultado usa <strong>will</strong> (ou o futuro próximo, <span class="enw" data-speak="going to">going to</span>). É a condicional mais usada.</p>
 
@@ -14571,7 +14755,7 @@ const pages=[
       <p class="tip-txt">O <span class="hl-will enw" data-speak="will">will</span> fica só no <strong>resultado</strong>, nunca na parte do if. É <em>If it rains...</em> ✅, não "If it will rain" ❌.</p>
     </div>
 
-    <div class="sec-divider" id="cond-second"><div class="sec-divider-line"></div><div class="sec-divider-label">Second — hipótese (if + passado, would)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="cond-second"><div class="sec-divider-line"></div><div class="sec-divider-label">Second — hipótese</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra situações <strong>hipotéticas ou imaginárias</strong> — "se eu fosse...", "se eu tivesse...". O <em>if</em> fica no <strong>passado</strong> e o resultado normalmente usa <strong class="enw" data-speak="would">would</strong>, que equivale a "ia/iria".</p>
 
@@ -14600,7 +14784,7 @@ const pages=[
       <p class="tip-txt">Você pode ouvir nativos dizendo <em>If I was...</em> na conversa bem informal — mas isso é considerado errado no inglês "certo". Em prova, escrita e pra falar bem, use sempre <span class="enw" data-speak="were">were</span> na hipótese.</p>
     </div>
 
-    <div class="sec-divider" id="cond-third"><div class="sec-divider-line"></div><div class="sec-divider-label">Third — passado que não rolou (if + had + particípio, would have + particípio)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="cond-third"><div class="sec-divider-line"></div><div class="sec-divider-label">Third — o passado que não rolou</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Pra um <strong>arrependimento</strong> ou algo no passado que <strong>não aconteceu</strong> ("se eu tivesse estudado..."). Traduz quase literal do português: <strong>"tivesse" = had + verbo</strong>, <strong>"teria" = would have + verbo</strong>.</p>
 
@@ -14683,7 +14867,7 @@ const pages=[
 
     <p class="intro">Em português, o <strong>"que"</strong> quase nunca some — "Ela disse <strong>que</strong> está bem". Mas em inglês, esse <strong class="enw" data-speak="that">that</strong> muitas vezes é <strong>opcional</strong>: você pode falar com ou sem ele, e o sentido continua igual. Saber quando ele some deixa seu inglês muito mais natural.</p>
 
-    <div class="sec-divider" id="that-conj"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" depois de say, think, know...</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="that-conj"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" depois de say/think</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">Depois de verbos como <strong>say, tell, think, know, believe, hope</strong>, o <strong class="enw" data-speak="that">that</strong> ("que") liga as duas partes da frase. Nesses casos, ele quase sempre <strong>pode sumir</strong> — e na fala do dia a dia, normalmente some.</p>
 
@@ -14707,7 +14891,7 @@ const pages=[
       <p class="tip-txt">Uma dica fácil: se o verbo é uma ação feita com <strong>alguma parte da cabeça</strong> — pensar (<span class="enw" data-speak="think">think</span>, cérebro), ver (<span class="enw" data-speak="see">see</span>, olho), saber (<span class="enw" data-speak="know">know</span>), achar/sentir (<span class="enw" data-speak="feel">feel</span>), dizer (<span class="enw" data-speak="say">say</span>, boca) — o <strong>that</strong> explicativo normalmente <strong>não é necessário</strong>. <em>I think you're right</em>, <em>I see what you mean</em>, <em>I feel something is wrong</em>.</p>
     </div>
 
-    <div class="sec-divider" id="that-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" que se refere a uma coisa (relativo)</div><div class="sec-divider-line r"></div></div>
+    <div class="sec-divider" id="that-rel"><div class="sec-divider-line"></div><div class="sec-divider-label">O "that" relativo (uma coisa)</div><div class="sec-divider-line r"></div></div>
 
     <p class="intro">O outro <strong>that</strong> é o que aponta pra uma <strong>coisa</strong> já citada — "o livro <strong>que</strong> eu li", "o filme <strong>que</strong> a gente viu". Esse também pode sumir, <strong>mas só em um caso</strong>: quando vem outro sujeito logo depois.</p>
 
@@ -14863,7 +15047,288 @@ const pages=[
     <p class="intro">Exercício com todas as matérias do Capítulo 8.</p>
   </div>
   <div class="ex-wrap"><div class="ex-header"><span class="ex-title">☕ Revisão Cap. 8</span><span class="ex-score" id="rev8-score">0/15</span></div><div class="ex-body" id="rev8-body"></div></div>
+</div>`,
+
+`<div class="page pg-chapter">
+  <button class="ch-idx-btn" onclick="go(2)">← Índice</button>
+  <div class="ch-eyebrow">Capítulo</div>
+  <div class="ch-num">9</div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#ea7317;"><div class="sec-ghost">47</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 47</div>
+    <div class="sec-title">Take<br><span class="acc">e Get</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">Dois verbos coringa que aparecem o tempo todo.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🐙</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">O <strong>polvo</strong> tem três corações e sangue azul. Dois corações bombeam sangue para as guelras e um para o resto do corpo — mas esse coração principal <strong>para de bater</strong> quando o polvo nada. Por isso ele prefere rastejar: nadar o deixa exausto.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#ea7317;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 47 · Take e Get</div><div class="pg-ttl">Take e Get</div></div>
+  <div class="pg-body">
+
+    <p class="intro"><strong class="enw" data-speak="take">take</strong> e <strong class="enw" data-speak="get">get</strong> são dois dos verbos mais usados do inglês — e dos mais "camaleões": mudam de sentido conforme a frase. A boa notícia é que dá pra organizar os usos principais em poucos grupos. Vamos por partes.</p>
+
+    <div class="tip yel" style="margin-top:6px;">
+      <div class="tip-lbl">📌 Os passados (irregulares)</div>
+      <p class="tip-txt">→ <span class="enw" data-speak="take">take</span> → <span class="enw" data-speak="took">took</span> (passado)<br>→ <span class="enw" data-speak="get">get</span> → <span class="enw" data-speak="got">got</span> (passado)</p>
+    </div>
+
+    <div class="sub-label" style="margin-top:18px;">Parte 1 · GET</div>
+    <p class="intro">O <strong class="enw" data-speak="get">get</strong> tem uma ideia central: <strong>algo que acontece com você</strong> ou que você passa a ter. Daí saem os sentidos de obter, ficar, chegar e entender.</p>
+
+    <div class="sec-divider" id="get-conseguir"><div class="sec-divider-line"></div><div class="sec-divider-label">GET = conseguir / receber / ganhar</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O sentido mais comum do <strong>get</strong> é <strong>obter</strong> algo — conseguir, receber, ganhar, comprar.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Get = obter</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu consegui um novo emprego.</span><span class="eg-en en" data-speak="I got a new job.">I <span class="hl-p1">got</span> a new job.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela ganhou um presente.</span><span class="eg-en en" data-speak="She got a gift.">She <span class="hl-p1">got</span> a gift.</span></div>
+        <div class="eg-row"><span class="eg-pt">Onde você comprou isso?</span><span class="eg-en en" data-speak="Where did you get that?">Where did you <span class="hl-p1">get</span> that?</span></div>
+        <div class="eg-row"><span class="eg-pt">Me traz uma água?</span><span class="eg-en en" data-speak="Can you get me some water?">Can you <span class="hl-p1">get</span> me some water?</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="get-ficar"><div class="sec-divider-line"></div><div class="sec-divider-label">GET = ficar (mudança de estado)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Com um adjetivo depois, o <strong>get</strong> vira <strong>"ficar"</strong> — uma mudança que acontece (ficar cansado, ficar com frio, ficar bravo).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Get + adjetivo = ficar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu fiquei cansado.</span><span class="eg-en en" data-speak="I got tired.">I <span class="hl-p1">got</span> tired.</span></div>
+        <div class="eg-row"><span class="eg-pt">Está ficando frio.</span><span class="eg-en en" data-speak="It is getting cold.">It is <span class="hl-p1">getting</span> cold.</span></div>
+        <div class="eg-row"><span class="eg-pt">Não fica bravo.</span><span class="eg-en en" data-speak="Don't get angry.">Don't <span class="hl-p1">get</span> angry.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela ficou doente.</span><span class="eg-en en" data-speak="She got sick.">She <span class="hl-p1">got</span> sick.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="get-chegar"><div class="sec-divider-line"></div><div class="sec-divider-label">GET = chegar (a um lugar)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>get</strong> também significa <strong>chegar</strong> — geralmente com <em>to</em> (mas "chegar em casa" é <em>get home</em>, sem o to).</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Get = chegar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu cheguei em casa tarde.</span><span class="eg-en en" data-speak="I got home late.">I <span class="hl-p1">got</span> home late.</span></div>
+        <div class="eg-row"><span class="eg-pt">Que horas você chegou no trabalho?</span><span class="eg-en en" data-speak="What time did you get to work?">What time did you <span class="hl-p1">get</span> to work?</span></div>
+        <div class="eg-row"><span class="eg-pt">A gente chegou cedo.</span><span class="eg-en en" data-speak="We got there early.">We <span class="hl-p1">got</span> there early.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="get-entender"><div class="sec-divider-line"></div><div class="sec-divider-label">GET = entender (informal)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Na conversa, <strong>get</strong> também é <strong>"entender", "sacar"</strong> — bem comum no dia a dia.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Get = entender</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu entendi.</span><span class="eg-en en" data-speak="I get it.">I <span class="hl-p1">get</span> it.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você entendeu a piada?</span><span class="eg-en en" data-speak="Did you get the joke?">Did you <span class="hl-p1">get</span> the joke?</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não entendo você.</span><span class="eg-en en" data-speak="I don't get you.">I don't <span class="hl-p1">get</span> you.</span></div>
+      </div>
+    </div>
+
+    <div class="sub-label" style="margin-top:18px;">Parte 2 · TAKE</div>
+    <p class="intro">O <strong class="enw" data-speak="take">take</strong> tem a ideia oposta: <strong>algo que você faz com uma coisa</strong> — você pega, leva, tira, ocupa. Daí saem os sentidos de pegar/levar, levar tempo, tomar e escolher.</p>
+
+    <div class="sec-divider" id="take-pegar"><div class="sec-divider-line"></div><div class="sec-divider-label">TAKE = pegar / levar</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O sentido base do <strong>take</strong> é <strong>pegar algo</strong> (e geralmente levar junto). É o oposto de "trazer" — você pega e leva pra longe de onde está.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Take = pegar / levar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Pega o seu guarda-chuva.</span><span class="eg-en en" data-speak="Take your umbrella."><span class="hl-tambem">Take</span> your umbrella.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou te levar pra casa.</span><span class="eg-en en" data-speak="I will take you home.">I will <span class="hl-tambem">take</span> you home.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela pegou minhas chaves.</span><span class="eg-en en" data-speak="She took my keys.">She <span class="hl-tambem">took</span> my keys.</span></div>
+        <div class="eg-row"><span class="eg-pt">Leva um casaco.</span><span class="eg-en en" data-speak="Take a coat."><span class="hl-tambem">Take</span> a coat.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="take-tempo"><div class="sec-divider-line"></div><div class="sec-divider-label">TAKE = levar (tempo)</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Pra dizer quanto <strong>tempo</strong> algo leva/demora, usa-se <strong>take</strong>. Quase sempre com <em>it</em>: "it takes...".</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Take = levar tempo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Leva duas horas.</span><span class="eg-en en" data-speak="It takes two hours.">It <span class="hl-tambem">takes</span> two hours.</span></div>
+        <div class="eg-row"><span class="eg-pt">Quanto tempo demora?</span><span class="eg-en en" data-speak="How long does it take?">How long does it <span class="hl-tambem">take</span>?</span></div>
+        <div class="eg-row"><span class="eg-pt">Demorou muito tempo.</span><span class="eg-en en" data-speak="It took a long time.">It <span class="hl-tambem">took</span> a long time.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="take-tomar"><div class="sec-divider-line"></div><div class="sec-divider-label">TAKE = tomar</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">O <strong>take</strong> aparece em várias combinações fixas onde em português usamos "tomar", "fazer" ou "pegar":</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Combinações comuns com take</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu tomo banho todo dia.</span><span class="eg-en en" data-speak="I take a shower every day.">I <span class="hl-tambem">take</span> a shower every day.</span></div>
+        <div class="eg-row"><span class="eg-pt">Tome o remédio.</span><span class="eg-en en" data-speak="Take the medicine."><span class="hl-tambem">Take</span> the medicine.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu pego o ônibus pro trabalho.</span><span class="eg-en en" data-speak="I take the bus to work.">I <span class="hl-tambem">take</span> the bus to work.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você precisa tomar uma decisão.</span><span class="eg-en en" data-speak="You need to take a decision.">You need to <span class="hl-tambem">take</span> a decision.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider" id="take-escolher"><div class="sec-divider-line"></div><div class="sec-divider-label">TAKE = escolher / ficar com</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Na hora de <strong>escolher</strong> ou <strong>ficar com</strong> algo (numa loja, num menu), também se usa <strong>take</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Take = escolher / ficar com</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu vou ficar com esse.</span><span class="eg-en en" data-speak="I will take this one.">I will <span class="hl-tambem">take</span> this one.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu vou querer o frango.</span><span class="eg-en en" data-speak="I will take the chicken.">I will <span class="hl-tambem">take</span> the chicken.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu fico com os dois.</span><span class="eg-en en" data-speak="I'll take both.">I'll <span class="hl-tambem">take</span> both.</span></div>
+      </div>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 Para decorar</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:13px;">
+      <div class="conj-row hd" style="grid-template-columns:.8fr 1.4fr;"><span>Verbo</span><span>Sentidos principais</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.4fr;"><span class="enw" data-speak="get">get</span><span>conseguir / receber · ficar (+adj) · chegar · entender</span></div>
+      <div class="conj-row" style="grid-template-columns:.8fr 1.4fr;"><span class="enw" data-speak="take">take</span><span>pegar / levar · levar tempo · tomar (banho, remédio, ônibus) · escolher / ficar com</span></div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 Get "ficar" x Take "pegar"</div>
+      <p class="tip-txt">Um macete pra não confundir: <span class="enw" data-speak="get">get</span> costuma ser algo que <strong>acontece com você</strong> (você consegue, fica, chega), enquanto <span class="enw" data-speak="take">take</span> é algo que <strong>você faz com uma coisa</strong> (pega, leva, toma).</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Take e Get — exercício</span><span class="ex-score" id="takeget-score">0/10</span></div><div class="ex-body" id="takeget-body"></div></div>
+  </div>
+</div>`,
+
+`<div class="page pg-sec" style="--acc:#d6336c;"><div class="sec-ghost">48</div>
+  <div class="sec-topbar">
+    <div class="sec-topbar-right">
+      <button class="sec-theme-btn" onclick="openThemePicker()">🎨 Tema</button>
+      <button class="sec-mode-btn" onclick="toggleDarkLight()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="sec-mid">
+    <div class="sec-eyebrow">Seção 48</div>
+    <div class="sec-title">Used To,<br><span class="acc">Be Used To</span></div>
+    <div class="sec-sep"></div>
+    <div class="sec-desc">O que você costumava fazer — e aquilo a que se acostumou.</div>
+    <div class="sec-lvl"><div class="sec-lvl-bars"><div class="lv on"></div><div class="lv on"></div><div class="lv on"></div></div></div>
+  </div>
+  <div class="curiosidade">
+    <div class="curiosidade-body">
+      <div class="curiosidade-icon">🦕</div>
+      <div class="curiosidade-text">
+        <div class="curiosidade-label">Você sabia?</div>
+        <div class="curiosidade-fact">Os <strong>tubarões</strong> existem há mais tempo que as árvores. Eles já nadavam nos oceanos há cerca de 400 milhões de anos, enquanto as primeiras árvores surgiram uns 50 milhões de anos depois. Ou seja: o planeta "costumava ter" tubarões muito antes de ter florestas.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+`<div class="page pg-content" style="--acc:#d6336c;">
+  <div class="pg-hd"><div class="pg-lbl">Seção 48 · Used To, Be Used To</div><div class="pg-ttl">Used To, Be Used To</div></div>
+  <div class="pg-body">
+
+    <p class="intro">Duas estruturas que parecem iguais, mas dizem coisas <strong>bem diferentes</strong>: <strong class="enw" data-speak="used to">used to</strong> (o que você <strong>costumava</strong> fazer no passado) e <strong class="enw" data-speak="be used to">be used to</strong> (estar <strong>acostumado</strong> com algo). Vamos separar bem as duas.</p>
+
+<div class="sec-divider" id="used-afirm"><div class="sec-divider-line"></div><div class="sec-divider-label">Used to — eu costumava / eu fazia</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">É o nosso "eu <strong>jogava</strong>", "ela <strong>dormia</strong> cedo", "a gente <strong>comprava</strong> lá" — coisas que eram um hábito <strong>antes</strong>, mas pararam. A fórmula é <strong>used to + verbo</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 used to + verbo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu jogava futebol. (costumava)</span><span class="eg-en en" data-speak="I used to play soccer.">I <span class="hl-p1">used to</span> play soccer.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela dormia cedo.</span><span class="eg-en en" data-speak="She used to sleep early.">She <span class="hl-p1">used to</span> sleep early.</span></div>
+        <div class="eg-row"><span class="eg-pt">A gente comprava naquela loja.</span><span class="eg-en en" data-speak="We used to buy at that store.">We <span class="hl-p1">used to</span> buy at that store.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu morava no Rio.</span><span class="eg-en en" data-speak="I used to live in Rio.">I <span class="hl-p1">used to</span> live in Rio.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Sempre dá a ideia de "não é mais assim"</div>
+      <p class="tip-txt">O <span class="enw" data-speak="used to">used to</span> sempre marca um contraste com o presente: <em>I used to smoke</em> = eu fumava (mas <strong>parei</strong>). Se ainda acontece, não é used to — é presente normal.</p>
+    </div>
+
+    <div class="sec-divider" id="used-neg"><div class="sec-divider-line"></div><div class="sec-divider-label">Negar e perguntar: o "d" cai</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Aqui está o pulo do gato. Na <strong>negativa</strong> e na <strong>pergunta</strong>, entra o <strong>did/didn't</strong> (que você já conhece do "to do") — e como o <em>did</em> já marca o passado, o <strong>used</strong> perde o "d" e vira <strong class="enw" data-speak="use to">use to</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 Afirmar · Negar · Perguntar</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu jogava futebol.</span><span class="eg-en en" data-speak="I used to play soccer.">I <span class="hl-p1">used to</span> play soccer.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não jogava futebol.</span><span class="eg-en en" data-speak="I didn't use to play soccer.">I <span class="hl-wont">didn't use to</span> play soccer.</span></div>
+        <div class="eg-row"><span class="eg-pt">Você jogava futebol?</span><span class="eg-en en" data-speak="Did you use to play soccer?"><span class="hl-p3">Did</span> you <span class="hl-p3">use to</span> play soccer?</span></div>
+      </div>
+    </div>
+
+    <div class="tip red" style="margin-top:14px;">
+      <div class="tip-lbl">⚠️ used to → use to (sem o d)</div>
+      <p class="tip-txt">Afirmativo: <em>used to</em> (com d). Com <strong>didn't</strong> ou <strong>Did...?</strong>: vira <em>use to</em> (sem d), porque o <span class="enw" data-speak="did">did</span> já carrega o passado. É o mesmo que acontece com qualquer verbo: <em>didn't play</em>, não "didn't played".</p>
+    </div>
+
+<div class="sec-divider" id="beused-base"><div class="sec-divider-line"></div><div class="sec-divider-label">Be used to — estar acostumado</div><div class="sec-divider-line r"></div></div>
+
+    <p class="intro">Atenção: esse é <strong>diferente</strong>. Aqui tem o <strong>verbo to be</strong> (am/is/are/was/were) na frente, e significa <strong>"estar acostumado com / a"</strong>. A fórmula é <strong>to be + used to + substantivo ou verbo-ing</strong>.</p>
+
+    <div class="pron-section">
+      <div class="pron-header">📌 to be + used to + -ing / substantivo</div>
+      <div class="eg-block">
+        <div class="eg-row"><span class="eg-pt">Eu estou acostumado a acordar cedo.</span><span class="eg-en en" data-speak="I am used to waking up early.">I am <span class="hl-tambem">used to</span> waking up early.</span></div>
+        <div class="eg-row"><span class="eg-pt">Ela está acostumada com o barulho.</span><span class="eg-en en" data-speak="She is used to the noise.">She is <span class="hl-tambem">used to</span> the noise.</span></div>
+        <div class="eg-row"><span class="eg-pt">Nós estamos acostumados a trabalhar muito.</span><span class="eg-en en" data-speak="We are used to working hard.">We are <span class="hl-tambem">used to</span> working hard.</span></div>
+        <div class="eg-row"><span class="eg-pt">Eu não estou acostumado com esse frio.</span><span class="eg-en en" data-speak="I am not used to this cold.">I am not <span class="hl-tambem">used to</span> this cold.</span></div>
+      </div>
+    </div>
+
+    <div class="tip yel" style="margin-top:14px;">
+      <div class="tip-lbl">📌 Por que vira -ing?</div>
+      <p class="tip-txt">Depois de <span class="enw" data-speak="used to">used to</span> (acostumado), se vier um verbo, ele ganha <strong>-ing</strong>: <em>used to <span class="enw" data-speak="waking">waking</span> up</em>, <em>used to <span class="enw" data-speak="working">working</span></em>. É porque o "to" aqui é preposição, e preposição pede verbo com -ing.</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">📋 A grande diferença</div><div class="sec-divider-line r"></div></div>
+
+    <div class="conj-table" style="margin:14px 0;font-size:12.5px;">
+      <div class="conj-row hd" style="grid-template-columns:1fr 1.3fr;"><span>Estrutura</span><span>Sentido</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="used to play">used to + verbo</span><span>costumava fazer (passado, parou)</span></div>
+      <div class="conj-row" style="grid-template-columns:1fr 1.3fr;"><span class="enw" data-speak="be used to playing">be used to + -ing</span><span>estar acostumado com (agora)</span></div>
+    </div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-lbl">💡 O detalhe que muda tudo: o to be</div>
+      <p class="tip-txt">A diferença está no <strong>to be</strong> na frente:<br>→ <em>I <span class="enw" data-speak="used to wake up early">used to</span> wake up early</em> = eu acordava cedo (não mais).<br>→ <em>I <span class="enw" data-speak="am used to waking up early">am used to</span> waking up early</em> = estou acostumado a acordar cedo (agora).<br>Tem "am/is/are"? É "acostumado". Não tem? É "costumava".</p>
+    </div>
+
+    <div class="sec-divider"><div class="sec-divider-line"></div><div class="sec-divider-label">Pratique</div><div class="sec-divider-line r"></div></div>
+    <div class="ex-wrap"><div class="ex-header"><span class="ex-title">Used To, Be Used To — exercício</span><span class="ex-score" id="usedto-score">0/10</span></div><div class="ex-body" id="usedto-body"></div></div>
+  </div>
 </div>`
+
+
 
 
 
@@ -15443,14 +15908,14 @@ function updateThemeUI(){
 /* ── FOCUS MODE ── */
 // Containers cujos filhos diretos são blocos focáveis
 const _SPLIT_PARENTS=new Set(['pg-body','quote-list','rule-list','blist',
-  'inonat-list','eg-block','conj-big','tobe-card-body','ex-list',
-  'togo-section','togo-table','rule-box','tip','poss-ex-block',
-  'poss-ex-sentences','indem-ex-block','cp-formula-body','que-card',
-  'cp-formula','demo-example','irony-block','inonat-bubble-body',
+  'inonat-list','eg-block','tobe-card-body','ex-list',
+  'togo-table','rule-box',
+  'poss-ex-sentences','cp-formula-body','que-card',
+  'cp-formula','demo-example','inonat-bubble-body',
   'cp-expr-list','demo-list','poss-ex-list','indem-decomp-list',
-  'que-summary','indem-examples','poss-legend','cp-expr-item',
-  'sense-list','sense-body','demo-item','tobe-card','curiosidade-body',
-  'curiosidade-text','que-ex-block','inonat-bubble','indem-ex-line',
+  'indem-examples','poss-legend',
+  'sense-list','sense-body','tobe-card','curiosidade-body',
+  'curiosidade-text','indem-ex-line',
   'ex-options','ex-sentence','ex-finish']);
 // Tables and self-contained interactive blocks — never split inside; the whole unit is the focus target
 const _TABLE_ROOTS=new Set(['conj-table','pron-table','poss-triple-table',

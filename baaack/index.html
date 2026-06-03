@@ -1389,37 +1389,84 @@ document.addEventListener('click',e=>{const el=e.target.closest('.en,.enw');if(e
 const chatH=[];let chatOpen=false;
 const SYS=`Você é o assistente da apostila "Home Sweet English" da Sweet Learning.
 
-CONTEÚDO DA APOSTILA (use SEMPRE que possível):
+CONTEÚDO DA APOSTILA (use SEMPRE que possível; a página citada é a que o aluno vê no rodapé):
 Cap.1 — Fundamentos:
 - Pg 5: Pronomes Pessoais (I, You, He, She, It, We, They)
-- Pg 8: O que é um Verbo (a ação da frase)
-- Pg 10: Continuous Tenses (-ndo em inglês, regras do -ing)
-- Pg 12: Verbo To Be (am/is/are/was/were/will be, negativo, interrogativo)
-- Pg 14: Adjetivos (posição, sem plural)
-- Pg 16: Artigos (the, a, an, some)
-Cap.3 — Preposições:
-- Pg 32: In, On, At (em/no/na — tempo, lugar, tecnologia)
-- Pg 34: Pronomes Demonstrativos (this/these/that/those/here/there)
-- Pg 36: In, On, At + Demonstrativos (neste/nessa/naquele)
-- Pg 38: Que explicativo (who/that/which)
+- Pg 7: O que é um Verbo (a ação da frase)
+- Pg 9: Continuous Tenses (-ndo em inglês, regras do -ing)
+- Pg 11: Verbo To Be (am/is/are/was/were/will be, negativo, interrogativo)
+- Pg 13: Adjetivos (posição, sem plural)
+- Pg 15: Artigos (the, a, an, some)
 
 Cap.2 — Tempos Verbais:
-- Pg 20: Presente Simple (+s no he/she/it, regras -es/-ies)
-- Pg 22: Passado Simple (regulares -ed, irregulares)
-- Pg 24: Futuro (will/won't)
-- Pg 26: To Go (go/goes/went/will go vs was/were)
-- Pg 28: Sujeito Oculto (obrigatório em inglês)
+- Pg 19: Presente Simples (+s no he/she/it, regras -es/-ies)
+- Pg 21: Passado Simples (regulares -ed, irregulares)
+- Pg 23: Futuro (will/won't)
+- Pg 25: To Go (go/goes/went/will go vs was/were)
+- Pg 27: Sujeito Oculto (obrigatório em inglês)
+
+Cap.3 — Preposições e demonstrativos:
+- Pg 31: In, On, At (em/no/na — tempo, lugar, tecnologia)
+- Pg 33: Pronomes Demonstrativos (this/these/that/those/here/there)
+- Pg 35: In, On, At + Demonstrativos (neste/nessa/naquele)
+- Pg 37: Que explicativo (who/that/which)
+- Pg 39: BÔNUS: Plural dos Substantivos (as 8 formas)
+
+Cap.4 — Posse, origem e o 'de':
+- Pg 44: Pronomes de Posse (my/your/his — mine/yours/hers)
+- Pg 45: Caso Possessivo e Of (teacher's car, end of the movie)
+- Pg 47: Of + Demonstrativos (of this/that/those)
+- Pg 49: From (origem, momento, vs posse)
+- Pg 51: From + Demonstrativos
+- Pg 53: Quando o 'de' some (verbos que dispensam o 'de' em inglês)
+- Pg 55: BÔNUS: Falsos Cognatos
+
+Cap.5 — To, For e os objetivos:
+- Pg 59: To (a preposição 'para')
+- Pg 61: For (o outro 'para')
+- Pg 63: To / For + Infinitivo (to, -ing ou for + -ing)
+- Pg 65: Pronomes Objetivos (me, you, him, her, it, us, them)
+- Pg 67: In, On, At + Pronome (nele/nela/neles/nelas)
+
+Cap.6 — Quantidade e comparações:
+- Pg 71: Também (also, too, as well)
+- Pg 73: Os 'muitos' (very, so, too, many, much, a lot of)
+- Pg 75: Very e Very Same (reforço)
+- Pg 77: One e Ones (substituir o substantivo)
+- Pg 79: Adjetivos Comparativos (maior que, tão alto quanto)
+- Pg 81: Adjetivos Superlativos (o mais alto, o melhor)
+- Pg 83: Irregulares (good/better/best, bad/worse/worst, far, old)
+- Pg 85: BÔNUS: Like e Just Like (como, que nem, a gíria 'tipo')
+
+Cap.7 — Auxiliares, perguntas e modais:
+- Pg 89: Some, Any, No e Every (alguém, ninguém, qualquer, todo)
+- Pg 91: O verbo Ter (have = posse; there is/are = existência)
+- Pg 93: O verbo To Do (do/does/did — negar e perguntar)
+- Pg 95: Modal Verbs (can, could, should, would, must, may)
+- Pg 97: Tag Questions (o 'né?' — aren't you?, isn't it?, did she?)
+- Pg 99: Question Words (what, where, when, who, how, why — e os -ever; whose/where relativo)
+- Pg 101: BÔNUS: Let's, Shall we? (vamos, bora, let's not)
+
+Cap.8 — Avançado:
+- Pg 105: Say, Tell, Talk & Speak (dizer/contar/conversar/falar)
+- Pg 107: Futuro Próximo (going to / gonna; going to vs will)
+- Pg 109: O 'ia' do passado (was/were going to — plano que não rolou)
+- Pg 111: Acabou de / Prestes a (just + passado; to be + about to)
+- Pg 113: Pronomes Reflexivos (myself...themselves; by + reflexivo; each other)
+- Pg 115: Condicionais (if zero/first/second/third; unless, otherwise, or else)
+- Pg 117: Quando o 'que' pode sumir (that opcional após say/think e em relativas)
+- Pg 119: BÔNUS: Internet Slang (u, thx, lol, omg, btw, idk...)
 
 REGRAS OBRIGATÓRIAS:
 1. Responda SEMPRE em português do Brasil
 2. Máximo 2-3 linhas para dúvidas simples, 1 parágrafo curto para complexas
-3. SEMPRE mencione a página da apostila quando o assunto estiver lá. Ex: "Como vimos na página 20..."
+3. SEMPRE mencione a página da apostila quando o assunto estiver lá. Ex: "Como vimos na página 21..."
 4. Só use conhecimento externo se o assunto NÃO está na apostila
 5. Nunca diga "americanos" — diga "falantes da língua inglesa"
 6. Tom de amigo, não de livro
-9. NUNCA mencione o nome do professor ou "Caique" nas respostas
-7. Se houver chance de erro, diga: "Confirme com o professor."
-8. NUNCA faça respostas longas`;
+7. NUNCA mencione o nome do professor ou "Caique" nas respostas
+8. Se houver chance de erro, diga: "Confirme com o professor."
+9. NUNCA faça respostas longas`;
 
 const LOGO_SRC="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9InMtc2hhcGUiPgogICAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9InRvcC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyNTIiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImJvdC1oYWxmIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMjQ4IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjI2MCIvPgogICAgPC9jbGlwUGF0aD4KICAgIAogICAgPCEtLSBVUyBmbGFnIHN0cmlwZXMgLS0+CiAgICA8cGF0dGVybiBpZD0idXMtc3RyaXBlcyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iODAiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTY4Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxNjgiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMCIgICAgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSIxMi45MiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMjUuODUiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IiNCMjIyMzQiLz4KICAgICAgPHJlY3QgeT0iMzguNzciIHdpZHRoPSI0MDAiIGhlaWdodD0iMTIuOTIiIGZpbGw9IndoaXRlIi8+CiAgICAgIDxyZWN0IHk9IjUxLjY5IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjY0LjYyIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB5PSI3Ny41NCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0iI0IyMjIzNCIvPgogICAgICA8cmVjdCB5PSI5MC40NiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTAzLjM4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjExNi4zMSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTI5LjIzIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICAgIDxyZWN0IHk9IjE0Mi4xNSIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMi45MiIgZmlsbD0id2hpdGUiLz4KICAgICAgPHJlY3QgeT0iMTU1LjA4IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyLjkyIiBmaWxsPSIjQjIyMjM0Ii8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkCBPVVRFUiBSSU5HIOKVkOKVkCAtLT4KICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuMjUiLz4KCiAgPCEtLSDilZDilZAgVE9QIEJBTk5FUiAtIFNXRUVUIExFQVJOSU5HIOKVkOKVkCAtLT4KICA8IS0tIEJhbm5lciBzaGFwZSAtLT4KICA8cGF0aCBkPSJNNjQgMjA1IFE4MCAxMjAgMTU1IDcyIFEyMDAgNDUgMjUwIDQyIFEzMDAgNDUgMzQ1IDcyIFE0MjAgMTIwIDQzNiAyMDUgTDQxOCAyMTAgUTQwOCAxMzIgMzQwIDg2IFEyOTggNjAgMjUwIDU4IFEyMDIgNjAgMTYwIDg2IFE5MiAxMzIgODIgMjEwIFoiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggaWQ9InRwYXRoIiBkPSJNIDgyIDIwOCBBIDE3OCAxNzggMCAwIDEgNDE4IDIwOCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgVmVyZGFuYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzExMSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHRQYXRoIGhyZWY9IiN0cGF0aCIgc3RhcnRPZmZzZXQ9IjUwJSI+U1dFRVQgTEVBUk5JTkc8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgQk9UVE9NIEJBTk5FUiAtIEFVTEFTIFBBUlRJQ1VMQVJFUyDilZDilZAgLS0+CiAgPHBhdGggZD0iTTY0IDI5NSBRODIgMzgwIDE1NSA0MjggUTIwMCA0NTUgMjUwIDQ1OCBRMzAwIDQ1NSAzNDUgNDI4IFE0MTggMzgwIDQzNiAyOTUgTDQxOCAyOTAgUTQwNiAzNjggMzQwIDQxMiBRMjk4IDQzOCAyNTAgNDQwIFEyMDIgNDM4IDE2MCA0MTIgUTkyIDM2OCA4MiAyOTAgWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBpZD0iYnBhdGgiIGQ9Ik0gODQgMjkyIEEgMTc2IDE3NiAwIDAgMCA0MTYgMjkyIiBmaWxsPSJub25lIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIiBsZXR0ZXItc3BhY2luZz0iMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dFBhdGggaHJlZj0iI2JwYXRoIiBzdGFydE9mZnNldD0iNTAlIj5BVUxBUyBQQVJUSUNVTEFSRVM8L3RleHRQYXRoPgogIDwvdGV4dD4KCiAgPCEtLSDilZDilZAgUyBMRVRURVIgLSBVTklURUQgU1RBVEVTICh0b3AgaGFsZikg4pWQ4pWQIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNzLXNoYXBlKSI+CiAgICA8IS0tIFRvcCBoYWxmOiBVUyBmbGFnIC0tPgogICAgPGcgY2xpcC1wYXRoPSJ1cmwoI3RvcC1oYWxmKSI+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI2NyIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxODUiIGZpbGw9InVybCgjdXMtc3RyaXBlcykiLz4KICAgICAgPCEtLSBCbHVlIGNhbnRvbiAtLT4KICAgICAgPHJlY3QgeD0iOTAiIHk9IjY3IiB3aWR0aD0iMTQyIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzNDM0I2RSIvPgogICAgICA8IS0tIFN0YXJzIHNpbXBsaWZpZWQgYXMgd2hpdGUgY2lyY2xlcyAtLT4KICAgICAgPGcgZmlsbD0id2hpdGUiPgogICAgICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTI4IiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSI4MyIgcj0iNCIvPjxjaXJjbGUgY3g9IjE2NCIgY3k9IjgzIiByPSI0Ii8+PGNpcmNsZSBjeD0iMTgyIiBjeT0iODMiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSI4MyIgcj0iNCIvPgogICAgICAgIDxjaXJjbGUgY3g9IjExOSIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTM3IiBjeT0iOTYiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI5NiIgcj0iNCIvPjxjaXJjbGUgY3g9IjE3MyIgY3k9Ijk2IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTkxIiBjeT0iOTYiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMDkiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDkiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxMjIiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxMjIiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxMzUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMzUiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNzMiIGN5PSIxNDgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTEiIGN5PSIxNDgiIHI9IjQiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNDYiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIxODIiIGN5PSIxNjEiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjEiIHI9IjQiLz4KICAgICAgPC9nPgogICAgPC9nPgoKICAgIDwhLS0gQm90dG9tIGhhbGY6IFVLIGZsYWcgLS0+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjYm90LWhhbGYpIj4KICAgICAgPCEtLSBOYXZ5IGJhY2tncm91bmQgLS0+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIyNDgiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTg3IiBmaWxsPSIjMDEyMTY5Ii8+CiAgICAgIDwhLS0gV2hpdGUgZGlhZ29uYWxzIChTdC4gUGF0cmljayArIFN0LiBBbmRyZXcgY29tYmluZWQpIC0tPgogICAgICA8bGluZSB4MT0iOTAiIHkxPSIyNDgiIHgyPSI0MTAiIHkyPSI0MzUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNTIiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUyIi8+CiAgICAgIDwhLS0gUmVkIGRpYWdvbmFscyAtLT4KICAgICAgPGxpbmUgeDE9IjkwIiB5MT0iMjQ4IiB4Mj0iNDEwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPGxpbmUgeDE9IjQxMCIgeTE9IjI0OCIgeDI9IjkwIiB5Mj0iNDM1IiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iMzAiLz4KICAgICAgPCEtLSBXaGl0ZSBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIyMiIgeT0iMjQ4IiB3aWR0aD0iNTYiIGhlaWdodD0iMTg3IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8cmVjdCB4PSI5MCIgeT0iMzEwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJ3aGl0ZSIvPgogICAgICA8IS0tIFJlZCBjcm9zcyBvZiBTdCBHZW9yZ2UgLS0+CiAgICAgIDxyZWN0IHg9IjIzMiIgeT0iMjQ4IiB3aWR0aD0iMzYiIGhlaWdodD0iMTg3IiBmaWxsPSIjQzgxMDJFIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIzMjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMzYiIGZpbGw9IiNDODEwMkUiLz4KICAgIDwvZz4KCiAgICA8IS0tIFMgc3Ryb2tlIG91dGxpbmUgLS0+CiAgICA8dGV4dCB4PSIyNTAiIHk9IjMzNSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBWZXJkYW5hLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuNSkiIHN0cm9rZS13aWR0aD0iNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UzwvdGV4dD4KICA8L2c+CgogIDwhLS0g4pWQ4pWQIENPTk5FQ1RJTkcgQVJDIExJTkVTIOKVkOKVkCAtLT4KICA8cGF0aCBkPSJNIDY0IDIwNSBBIDE5NSAxOTUgMCAwIDAgNjQgMjk1IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgogIDxwYXRoIGQ9Ik0gNDM2IDIwNSBBIDE5NSAxOTUgMCAwIDEgNDM2IDI5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+";
 function toggleChat(){chatOpen?closeChat():openChat();}
